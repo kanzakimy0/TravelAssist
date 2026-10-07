@@ -1,0 +1,61 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
+import {pathToFileURL} from 'node:url';
+const [checkout, output] = process.argv.slice(2);
+assert.ok(checkout && output, 'Usage: node validate-core-fix.mjs CHECKOUT EXTERNAL_OUTPUT');
+process.chdir(checkout);
+const load = file => import(pathToFileURL(path.resolve(file)).href);
+const {execute,testEnvironment,resolveCommand} = await load('tools/qa/task-035-process.mjs');
+const {context,versions,verifyEvents} = await load('tools/qa/task-035-receipt.mjs');
+const {hash,fileHash,root} = await load('tools/qa/task-035-inventory.mjs');
+fs.mkdirSync(output,{recursive:true});
+const git=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim();
+const binding=context();
+assert.equal(binding.checkoutSha,'116d4c66f2f0aed61527b89c703d24f93ec4a4b2');
+assert.equal(git('status','--porcelain'),'');
+assert.equal(fs.existsSync('.artifacts'),false,'First run requires absent .artifacts');
+const report={schemaVersion:1,purpose:'R035-01 through 04 focused validation, not full business baseline',binding,runtime:versions(),artifactBefore:false,steps:[]};
+const save=()=>fs.writeFileSync(path.join(output,'focused-results.json'),JSON.stringify(report,null,2)+'\n');
+save();
+async function run(name,command,args,{cwd=root,timeoutMs=60000,expectedExit=0}={}){
+ const logPath=path.join(output,name+'.log');
+ const execution=await execute({command,args,cwd,env:testEnvironment(),timeoutMs,logPath});
+ const record={name,execution,log:path.basename(logPath),logSha256:hash(fs.readFileSync(logPath))};
+ report.steps.push(record); save();
+ assert.equal(execution.exitCode,expectedExit,name);assert.equal(execution.error,null,name);assert.equal(execution.timeout,false,name);assert.equal(execution.signal,null,name);
+ return record;
+}
+await run('inventory','npm',['run','test:baseline:inventory','--','--check']);
+await run('focused-first',process.execPath,['--import','./tests/register-route-ts.mjs','--test','tests/task-035-test-baseline.test.mjs','tests/task-035-runner.test.mjs']);
+report.artifactAfterFirstFocused=fs.existsSync('.artifacts');assert.equal(report.artifactAfterFirstFocused,false);save();
+const reporter=pathToFileURL(path.resolve('tools/qa/task-035-reporter.mjs')).href;
+async function nodeEvents(name,files,expectedExit=0){
+ const eventPath=path.join(output,name+'.jsonl');
+ const record=await run(name,process.execPath,['--import','./tests/register-route-ts.mjs','--test','--test-reporter=tap','--test-reporter-destination=stdout','--test-reporter='+reporter,'--test-reporter-destination='+eventPath,...files],{expectedExit});
+ const text=fs.readFileSync(eventPath,'utf8');record.events=path.basename(eventPath);record.eventsSha256=hash(text);record.files=files.map(file=>({path:file,sha256:hash(fs.readFileSync(file))}));
+ try{record.counts=verifyEvents(text,files,root);record.validator='ACCEPTED';}catch(error){record.validator='REJECTED';record.validationError=error.message;}
+ save();return record;
+}
+const rights='tests/task-086-rights-binding.test.mjs',rightsHash=fileHash(rights);
+assert.equal((await nodeEvents('real-top-assert',[rights])).validator,'ACCEPTED');
+assert.equal((await nodeEvents('related-regression',['tests/task-035-test-baseline.test.mjs','tests/task-035-runner.test.mjs','tests/task-086-b-ci-revision.test.mjs',rights])).validator,'ACCEPTED');
+const empty=path.join(output,'empty.mjs');fs.writeFileSync(empty,'');
+assert.equal((await nodeEvents('empty-rejection',[empty])).validator,'REJECTED');
+const fault=path.join(output,'original-assert-fault.mjs');
+const original=fs.readFileSync(rights,'utf8').replace(/from "(\.\.\/[^\"]+)"/g,(_,specifier)=>'from '+JSON.stringify(pathToFileURL(path.resolve('tests',specifier)).href));
+fs.writeFileSync(fault,original+'\nassert.equal(1, 2, "CORE_FIX_SYNTHETIC_FAULT_AFTER_ORIGINAL_ASSERTIONS");\n');
+assert.equal((await nodeEvents('original-assert-fault',[fault],1)).validator,'REJECTED');
+assert.equal(fileHash(rights),rightsHash);
+const npmCwd=path.join(output,'npm project with spaces');fs.mkdirSync(npmCwd);
+fs.writeFileSync(path.join(npmCwd,'package.json'),JSON.stringify({private:true,scripts:{ok:'node ok.cjs',fail:'node -e "process.exit(7)"'}}));
+fs.writeFileSync(path.join(npmCwd,'ok.cjs'),"process.stdout.write(JSON.stringify(process.argv.slice(2)))");
+await run('windows-npm-version','npm',['--version'],{cwd:npmCwd});
+await run('windows-npm-script','npm',['run','ok','--','two words','literal&value'],{cwd:npmCwd});
+await run('windows-npm-nonzero','npm',['run','fail'],{cwd:npmCwd,expectedExit:7});
+report.npmResolution=resolveCommand('npm',['run','lint']);
+report.protectedInputsUnchanged={rightsSha256:rightsHash,packageSha256:fileHash('package.json'),lockSha256:fileHash('package-lock.json')};
+report.cleanAfter=git('status','--porcelain')==='';assert.equal(report.cleanAfter,true);
+report.status='PASS';save();
+console.log(JSON.stringify({status:report.status,head:binding.checkoutSha,steps:report.steps.map(s=>({name:s.name,exit:s.execution.exitCode,counts:s.counts,validator:s.validator}))},null,2));
