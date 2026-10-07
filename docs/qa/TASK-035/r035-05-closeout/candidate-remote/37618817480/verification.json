@@ -1,0 +1,3394 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "observedAt": "2026-10-07T13:05:57.566Z",
+  "expectedBranchHead": "3b3c0359c38c9b6363119f599ce272691e4f0ed4",
+  "baseSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+  "actualCheckoutSha": "49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+  "event": "pull_request",
+  "revisionKind": "PR_MERGE_RESULT",
+  "runId": "37618817480",
+  "runAttempt": "1",
+  "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37618817480",
+  "runConclusion": "success",
+  "ordinaryCounts": {
+    "tests": 3905,
+    "passed": 3905,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "topLevel": 3865,
+    "suites": 0,
+    "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+  },
+  "requiredLanes": [
+    "assets",
+    "regression-0",
+    "regression-1",
+    "regression-2",
+    "regression-3",
+    "rebuild",
+    "ordinary",
+    "graph-first",
+    "graph-second",
+    "extraction",
+    "resume",
+    "quality"
+  ],
+  "receipts": [
+    {
+      "lane": "assets",
+      "status": "PASS",
+      "counts": {
+        "tests": 165,
+        "passed": 165,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 165,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "selectedFiles": 5,
+      "receiptSha256": "71d39454f0a7264fc6fa6440ec0edb5ab487f492e0957187e0b05c667001b40e",
+      "logSha256": "9810ed64bc2dd69c45e3609378c3a7eea640c28019c1e0be79b783292697dc67",
+      "eventsSha256": "53a0745afb89681e3646bdd9633d0632b0c535e3e8fea3f14fbcb871be29a804",
+      "nativeReceiptSha256": null,
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      },
+      "commands": [
+        [
+          "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+          "tools/qa/task-086-regression-lanes.mjs",
+          "assets"
+        ]
+      ],
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1530000,
+          "startedAt": "2026-10-07T12:08:59.884Z",
+          "endedAt": "2026-10-07T12:09:58.530Z",
+          "argv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/qa/task-086-regression-lanes.mjs",
+            "assets"
+          ],
+          "spawnArgv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/qa/task-086-regression-lanes.mjs",
+            "assets"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        }
+      ],
+      "receiptPath": "task035-assets-49ffe14188d67265e8779b1c9fe059c18a7c14ad/37618817480/1/assets/61cc387b-4ac5-40e5-bd74-0d07658900c3/receipt.json"
+    },
+    {
+      "lane": "extraction",
+      "status": "PASS",
+      "counts": null,
+      "selectedFiles": 0,
+      "receiptSha256": "d892e8361b948f1963e970b3f214ce39f0679de8cdcf3ba27d595228ef9ffad2",
+      "logSha256": "3b9ca31cf9f21c11f3f4881f7a78b382174359263f7cbe6b9b01f75e19cd3729",
+      "eventsSha256": null,
+      "nativeReceiptSha256": "8b6b5299e4a587706aa38907deca50ad2d05dcac250fdda5ef6596c50f21cf1c",
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      },
+      "commands": [
+        [
+          "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+          "tools/transport/task-086-validation.mjs",
+          "extract",
+          ".artifacts/task086-lanes"
+        ]
+      ],
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1200000,
+          "startedAt": "2026-10-07T12:08:55.522Z",
+          "endedAt": "2026-10-07T12:09:12.316Z",
+          "argv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/transport/task-086-validation.mjs",
+            "extract",
+            ".artifacts/task086-lanes"
+          ],
+          "spawnArgv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/transport/task-086-validation.mjs",
+            "extract",
+            ".artifacts/task086-lanes"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        }
+      ],
+      "receiptPath": "task035-extraction-49ffe14188d67265e8779b1c9fe059c18a7c14ad/37618817480/1/extraction/43dbfdba-b7d7-4528-a2cd-bf99a7bcf7aa/receipt.json"
+    },
+    {
+      "lane": "graph-first",
+      "status": "PASS",
+      "counts": null,
+      "selectedFiles": 0,
+      "receiptSha256": "fb587f3337855ed5a4e1179d6f2fe5dea838a3e0e1c640bfeacea94284e546f1",
+      "logSha256": "511347a88f60b450a24c45af8f1c2c785c4c1177dbad0146c0f2cb7b4188c1e7",
+      "eventsSha256": null,
+      "nativeReceiptSha256": "97a1ac590be54fa489126153d0d1734f9f138be3e9561f6e8d12ecef11f0b95a",
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      },
+      "commands": [
+        [
+          "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+          "tools/transport/task-086-validation.mjs",
+          "first",
+          ".artifacts/task086-lanes"
+        ]
+      ],
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 2400000,
+          "startedAt": "2026-10-07T12:08:46.534Z",
+          "endedAt": "2026-10-07T12:31:12.575Z",
+          "argv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/transport/task-086-validation.mjs",
+            "first",
+            ".artifacts/task086-lanes"
+          ],
+          "spawnArgv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/transport/task-086-validation.mjs",
+            "first",
+            ".artifacts/task086-lanes"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        }
+      ],
+      "receiptPath": "task035-graph-first-49ffe14188d67265e8779b1c9fe059c18a7c14ad/37618817480/1/graph-first/366a7b3c-f066-433b-8159-2753322f0b45/receipt.json"
+    },
+    {
+      "lane": "graph-second",
+      "status": "PASS",
+      "counts": null,
+      "selectedFiles": 0,
+      "receiptSha256": "3b7e27bd970690dfd0287c36fd711f1c8c2e81983a0215365d8d612485daf0eb",
+      "logSha256": "c669f470c23b73796441bdbad8029f44e2ba03189a354a0a23e4a7b9dc42ac7b",
+      "eventsSha256": null,
+      "nativeReceiptSha256": "cb4dde018dfb5d5c4ce66a567c749e9fe070e995d0f8f29247d5ed8893e340b9",
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      },
+      "commands": [
+        [
+          "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+          "tools/transport/task-086-validation.mjs",
+          "second",
+          ".artifacts/task086-lanes"
+        ]
+      ],
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 2400000,
+          "startedAt": "2026-10-07T12:08:45.920Z",
+          "endedAt": "2026-10-07T12:29:21.386Z",
+          "argv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/transport/task-086-validation.mjs",
+            "second",
+            ".artifacts/task086-lanes"
+          ],
+          "spawnArgv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/transport/task-086-validation.mjs",
+            "second",
+            ".artifacts/task086-lanes"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        }
+      ],
+      "receiptPath": "task035-graph-second-49ffe14188d67265e8779b1c9fe059c18a7c14ad/37618817480/1/graph-second/b25f8dfa-508c-4c02-838b-64f43b093ad4/receipt.json"
+    },
+    {
+      "lane": "quality",
+      "status": "PASS",
+      "counts": null,
+      "selectedFiles": 0,
+      "receiptSha256": "17f06c9c54a912d142ad34fdf1b7560d177405a183210c5a0bbfe813ccf72f03",
+      "logSha256": "43a18b9b0c91f2461d94a2bdd11ab757542b4c661ff9a2a045d4c6026001efd2",
+      "eventsSha256": null,
+      "nativeReceiptSha256": null,
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.15",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      },
+      "commands": [
+        [
+          "npm",
+          "run",
+          "deploy:validate:local"
+        ],
+        [
+          "npm",
+          "run",
+          "lint"
+        ],
+        [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        [
+          "npm",
+          "run",
+          "format:check:deploy"
+        ],
+        [
+          "npm",
+          "run",
+          "deploy:build:local"
+        ],
+        [
+          "npm",
+          "run",
+          "deploy:verify-artifact"
+        ],
+        [
+          "git",
+          "diff",
+          "--check"
+        ]
+      ],
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1440000,
+          "startedAt": "2026-10-07T12:08:48.612Z",
+          "endedAt": "2026-10-07T12:08:48.836Z",
+          "argv": [
+            "npm",
+            "run",
+            "deploy:validate:local"
+          ],
+          "spawnArgv": [
+            "npm",
+            "run",
+            "deploy:validate:local"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        },
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1439776,
+          "startedAt": "2026-10-07T12:08:48.836Z",
+          "endedAt": "2026-10-07T12:09:12.720Z",
+          "argv": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "spawnArgv": [
+            "npm",
+            "run",
+            "lint"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        },
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1415892,
+          "startedAt": "2026-10-07T12:09:12.720Z",
+          "endedAt": "2026-10-07T12:09:27.944Z",
+          "argv": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "spawnArgv": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        },
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1400668,
+          "startedAt": "2026-10-07T12:09:27.944Z",
+          "endedAt": "2026-10-07T12:09:41.670Z",
+          "argv": [
+            "npm",
+            "run",
+            "format:check:deploy"
+          ],
+          "spawnArgv": [
+            "npm",
+            "run",
+            "format:check:deploy"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        },
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1386942,
+          "startedAt": "2026-10-07T12:09:41.670Z",
+          "endedAt": "2026-10-07T12:10:24.855Z",
+          "argv": [
+            "npm",
+            "run",
+            "deploy:build:local"
+          ],
+          "spawnArgv": [
+            "npm",
+            "run",
+            "deploy:build:local"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        },
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1343757,
+          "startedAt": "2026-10-07T12:10:24.855Z",
+          "endedAt": "2026-10-07T12:10:25.835Z",
+          "argv": [
+            "npm",
+            "run",
+            "deploy:verify-artifact"
+          ],
+          "spawnArgv": [
+            "npm",
+            "run",
+            "deploy:verify-artifact"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        },
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1342777,
+          "startedAt": "2026-10-07T12:10:25.835Z",
+          "endedAt": "2026-10-07T12:10:25.849Z",
+          "argv": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "spawnArgv": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        }
+      ],
+      "receiptPath": "task035-quality-49ffe14188d67265e8779b1c9fe059c18a7c14ad/37618817480/1/quality/2f630e43-3a36-4c58-938b-92f8c0156608/receipt.json"
+    },
+    {
+      "lane": "ordinary",
+      "status": "PASS",
+      "counts": {
+        "tests": 3905,
+        "passed": 3905,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 3865,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "selectedFiles": 154,
+      "receiptSha256": "c94de909c886fdf686fb5767c859c1bf0cc3fcfdf287b71d4b9ef1a37487a3c3",
+      "logSha256": "9b8800f57b5802e712ed6e6d8ef652ce63942f108bb485b435739be1d9c33c44",
+      "eventsSha256": "2a011916b8cf047cb6a3ff5985f28bb78f1628e700d9c552ef38226f953bc68c",
+      "nativeReceiptSha256": null,
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.15",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      },
+      "commands": [
+        [
+          "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "--test-concurrency=1",
+          "--test-reporter=tap",
+          "--test-reporter-destination=stdout",
+          "--test-reporter=./tools/qa/task-035-reporter.mjs",
+          "--test-reporter-destination=/home/runner/work/TravelAssist/TravelAssist/.artifacts/task-035/candidate/37618817480/1/ordinary/c5976890-b0cb-4a9d-86ff-66095cd88fb0/events.jsonl",
+          "tests/browser-trip-save.test.mjs",
+          "tests/bulk-booking.test.mjs",
+          "tests/detail-card-actions.test.mjs",
+          "tests/detail-compact-board.test.mjs",
+          "tests/detail-overview-locations.test.mjs",
+          "tests/planner-artwork.test.mjs",
+          "tests/planner-audit-fixes.test.mjs",
+          "tests/planner-audit-regressions.test.mjs",
+          "tests/planner-concept-refinement.test.mjs",
+          "tests/planner-local-integration.test.mjs",
+          "tests/planner-meal-booking-refinement.test.mjs",
+          "tests/planner-quick-menu-design.test.mjs",
+          "tests/planner-range-enrichment.test.mjs",
+          "tests/planner-responsive-density.test.mjs",
+          "tests/planner-route-board.test.mjs",
+          "tests/planner-sight-timeline.test.mjs",
+          "tests/planner-status-stack.test.mjs",
+          "tests/planner-track-actions.test.mjs",
+          "tests/planner-working-plan.test.mjs",
+          "tests/poi-remaining-review.test.mjs",
+          "tests/pr-governance.test.mjs",
+          "tests/task-007-background.test.mjs",
+          "tests/task-007-calendar.test.mjs",
+          "tests/task-007-info-popover.test.mjs",
+          "tests/task-008-planner.test.mjs",
+          "tests/task-0081-map-booking.test.mjs",
+          "tests/task-0082-visuals.test.mjs",
+          "tests/task-0083-interactions.test.mjs",
+          "tests/task-010-b-global-logo-navigation.test.mjs",
+          "tests/task-010-navigation.test.mjs",
+          "tests/task-011-trip-detail-workspace.test.mjs",
+          "tests/task-012-planner-v05.test.mjs",
+          "tests/task-013-1-asset-variants.test.mjs",
+          "tests/task-013-2-core-generation-manifest.test.mjs",
+          "tests/task-013-3-1-japan-destination-closure.test.mjs",
+          "tests/task-013-3-japan-destination-resolution.test.mjs",
+          "tests/task-013-assets.test.mjs",
+          "tests/task-015-db-foundation.test.mjs",
+          "tests/task-016-user-profile.test.mjs",
+          "tests/task-018-authentication.test.mjs",
+          "tests/task-019-trip-plan.test.mjs",
+          "tests/task-022-ekiworld-routing.test.mjs",
+          "tests/task-022-route-contract.test.mjs",
+          "tests/task-022-routing-boundary.test.mjs",
+          "tests/task-023-planner-route-integration.test.mjs",
+          "tests/task-024-main-shell.test.mjs",
+          "tests/task-025-2-concept-fidelity.test.mjs",
+          "tests/task-025-2-coral-palette.test.mjs",
+          "tests/task-025-2-v11.test.mjs",
+          "tests/task-025-environment-deployment.test.mjs",
+          "tests/task-035-runner.test.mjs",
+          "tests/task-035-test-baseline.test.mjs",
+          "tests/task-036-planning-contracts.test.mjs",
+          "tests/task-037-planning-contract-soak.test.mjs",
+          "tests/task-041-region-graph-pilot.test.mjs",
+          "tests/task-042-preference-schema.test.mjs",
+          "tests/task-043-master-code-registry.test.mjs",
+          "tests/task-044-companion-schema.test.mjs",
+          "tests/task-045-preference-api.test.mjs",
+          "tests/task-045-region-master-code-integration.test.mjs",
+          "tests/task-046-preference-contract.test.mjs",
+          "tests/task-047-companion-api.test.mjs",
+          "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+          "tests/task-048-trip-persistence-model.test.mjs",
+          "tests/task-049-trip-library-api.test.mjs",
+          "tests/task-050-a-poi-schema.test.mjs",
+          "tests/task-050-profile-api.test.mjs",
+          "tests/task-051-a-planner-store.test.mjs",
+          "tests/task-052-account-deletion.test.mjs",
+          "tests/task-053-preference-presets.test.mjs",
+          "tests/task-054-personal-center-migration.test.mjs",
+          "tests/task-055-private-boundaries.test.mjs",
+          "tests/task-055-test-runner.test.mjs",
+          "tests/task-060-profile-ui.test.mjs",
+          "tests/task-061-trip-library-live.test.mjs",
+          "tests/task-062-schema-union.test.mjs",
+          "tests/task-063-engine-apply.test.mjs",
+          "tests/task-064-runtime-rollback.test.mjs",
+          "tests/task-065-engine-certification.test.mjs",
+          "tests/task-067-main-system-state.test.mjs",
+          "tests/task-068-candidate-enrichment.test.mjs",
+          "tests/task-068-corpus-combination.test.mjs",
+          "tests/task-070-p0-evidence-review.test.mjs",
+          "tests/task-076-ai-runtime.test.mjs",
+          "tests/task-081-a-poi-detail-api.test.mjs",
+          "tests/task-082-a-poi-edge-graph.test.mjs",
+          "tests/task-082-personal-ai-history.test.mjs",
+          "tests/task-083-a-poi-runtime.test.mjs",
+          "tests/task-083-canonical-owner-correction.test.mjs",
+          "tests/task-084-a-canonical100-boundary.test.mjs",
+          "tests/task-084-a-real-pilot100.test.mjs",
+          "tests/task-084-a-recommendation-scoring.test.mjs",
+          "tests/task-084-v2-amendment.test.mjs",
+          "tests/task-086-aguni-capability.test.mjs",
+          "tests/task-086-airport-selector-preflight.test.mjs",
+          "tests/task-086-b-autonomous-remediation.test.mjs",
+          "tests/task-086-b-ci-revision.test.mjs",
+          "tests/task-086-b-derived-gtfs.test.mjs",
+          "tests/task-086-b-gtfs-sections.test.mjs",
+          "tests/task-086-b-mobility-backbone.test.mjs",
+          "tests/task-086-b-p11-succession.test.mjs",
+          "tests/task-086-b-pattern-corrections.test.mjs",
+          "tests/task-086-b-rebuild.test.mjs",
+          "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+          "tests/task-086-b-selected-gtfs.test.mjs",
+          "tests/task-086-b-sonic-corrections.test.mjs",
+          "tests/task-086-b-stage-closeout.test.mjs",
+          "tests/task-086-certification-engine-repair.test.mjs",
+          "tests/task-086-conditional-query-cache.test.mjs",
+          "tests/task-086-context-registry.test.mjs",
+          "tests/task-086-dynamic-od-evidence-order.test.mjs",
+          "tests/task-086-dynamic-od.test.mjs",
+          "tests/task-086-facility-registry.test.mjs",
+          "tests/task-086-final-closeout.test.mjs",
+          "tests/task-086-fixed-phone-reception.test.mjs",
+          "tests/task-086-gtfs-agency-subset.test.mjs",
+          "tests/task-086-hamayuso-qualified.test.mjs",
+          "tests/task-086-hateruma-air-passenger.test.mjs",
+          "tests/task-086-historical-facility-stop.test.mjs",
+          "tests/task-086-iwami-fixed-flight.test.mjs",
+          "tests/task-086-licensed-package-date-binding.test.mjs",
+          "tests/task-086-native-facility.test.mjs",
+          "tests/task-086-noto-dynamic-od.test.mjs",
+          "tests/task-086-od-production-pipeline.test.mjs",
+          "tests/task-086-od-registry.test.mjs",
+          "tests/task-086-od-seed-lifecycle.test.mjs",
+          "tests/task-086-okushiri-capability.test.mjs",
+          "tests/task-086-onboard-applicability.test.mjs",
+          "tests/task-086-onboard-request.test.mjs",
+          "tests/task-086-phase-header-preflight.test.mjs",
+          "tests/task-086-public-conditional-applicability.test.mjs",
+          "tests/task-086-publication-recovery.test.mjs",
+          "tests/task-086-qualified-hotel.test.mjs",
+          "tests/task-086-readmittable-closeout.test.mjs",
+          "tests/task-086-retained-cross-package-transfer.test.mjs",
+          "tests/task-086-rights-binding.test.mjs",
+          "tests/task-086-service-access-contract.test.mjs",
+          "tests/task-086-service-access-pipeline.test.mjs",
+          "tests/task-088-a-trusted-baseline.test.mjs",
+          "tests/trip-preparation.test.mjs",
+          "tests/trip-status-personal-center-followup.test.mjs",
+          "tests/wbs-4-17-trip-contract.test.mjs",
+          "tests/wbs-4-21-rule-feasibility.test.mjs",
+          "tests/wbs-5-10-trip-library.test.mjs",
+          "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+          "tests/wbs-5-3-auth-callback.test.mjs",
+          "tests/wbs-5-3-auth-user-flow.test.mjs",
+          "tests/wbs-5-5-preferences.test.mjs",
+          "tests/wbs-5-6-companions.test.mjs",
+          "tests/wbs-5-7-mobility-preference.test.mjs",
+          "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+          "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+          "tests/wbs-5.4-v2.test.mjs",
+          "tests/wbs-9-12-personal-center-qa.test.mjs"
+        ]
+      ],
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1800000,
+          "startedAt": "2026-10-07T12:56:55.516Z",
+          "endedAt": "2026-10-07T13:01:13.891Z",
+          "argv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "--import",
+            "./tests/register-route-ts.mjs",
+            "--test",
+            "--test-concurrency=1",
+            "--test-reporter=tap",
+            "--test-reporter-destination=stdout",
+            "--test-reporter=./tools/qa/task-035-reporter.mjs",
+            "--test-reporter-destination=/home/runner/work/TravelAssist/TravelAssist/.artifacts/task-035/candidate/37618817480/1/ordinary/c5976890-b0cb-4a9d-86ff-66095cd88fb0/events.jsonl",
+            "tests/browser-trip-save.test.mjs",
+            "tests/bulk-booking.test.mjs",
+            "tests/detail-card-actions.test.mjs",
+            "tests/detail-compact-board.test.mjs",
+            "tests/detail-overview-locations.test.mjs",
+            "tests/planner-artwork.test.mjs",
+            "tests/planner-audit-fixes.test.mjs",
+            "tests/planner-audit-regressions.test.mjs",
+            "tests/planner-concept-refinement.test.mjs",
+            "tests/planner-local-integration.test.mjs",
+            "tests/planner-meal-booking-refinement.test.mjs",
+            "tests/planner-quick-menu-design.test.mjs",
+            "tests/planner-range-enrichment.test.mjs",
+            "tests/planner-responsive-density.test.mjs",
+            "tests/planner-route-board.test.mjs",
+            "tests/planner-sight-timeline.test.mjs",
+            "tests/planner-status-stack.test.mjs",
+            "tests/planner-track-actions.test.mjs",
+            "tests/planner-working-plan.test.mjs",
+            "tests/poi-remaining-review.test.mjs",
+            "tests/pr-governance.test.mjs",
+            "tests/task-007-background.test.mjs",
+            "tests/task-007-calendar.test.mjs",
+            "tests/task-007-info-popover.test.mjs",
+            "tests/task-008-planner.test.mjs",
+            "tests/task-0081-map-booking.test.mjs",
+            "tests/task-0082-visuals.test.mjs",
+            "tests/task-0083-interactions.test.mjs",
+            "tests/task-010-b-global-logo-navigation.test.mjs",
+            "tests/task-010-navigation.test.mjs",
+            "tests/task-011-trip-detail-workspace.test.mjs",
+            "tests/task-012-planner-v05.test.mjs",
+            "tests/task-013-1-asset-variants.test.mjs",
+            "tests/task-013-2-core-generation-manifest.test.mjs",
+            "tests/task-013-3-1-japan-destination-closure.test.mjs",
+            "tests/task-013-3-japan-destination-resolution.test.mjs",
+            "tests/task-013-assets.test.mjs",
+            "tests/task-015-db-foundation.test.mjs",
+            "tests/task-016-user-profile.test.mjs",
+            "tests/task-018-authentication.test.mjs",
+            "tests/task-019-trip-plan.test.mjs",
+            "tests/task-022-ekiworld-routing.test.mjs",
+            "tests/task-022-route-contract.test.mjs",
+            "tests/task-022-routing-boundary.test.mjs",
+            "tests/task-023-planner-route-integration.test.mjs",
+            "tests/task-024-main-shell.test.mjs",
+            "tests/task-025-2-concept-fidelity.test.mjs",
+            "tests/task-025-2-coral-palette.test.mjs",
+            "tests/task-025-2-v11.test.mjs",
+            "tests/task-025-environment-deployment.test.mjs",
+            "tests/task-035-runner.test.mjs",
+            "tests/task-035-test-baseline.test.mjs",
+            "tests/task-036-planning-contracts.test.mjs",
+            "tests/task-037-planning-contract-soak.test.mjs",
+            "tests/task-041-region-graph-pilot.test.mjs",
+            "tests/task-042-preference-schema.test.mjs",
+            "tests/task-043-master-code-registry.test.mjs",
+            "tests/task-044-companion-schema.test.mjs",
+            "tests/task-045-preference-api.test.mjs",
+            "tests/task-045-region-master-code-integration.test.mjs",
+            "tests/task-046-preference-contract.test.mjs",
+            "tests/task-047-companion-api.test.mjs",
+            "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+            "tests/task-048-trip-persistence-model.test.mjs",
+            "tests/task-049-trip-library-api.test.mjs",
+            "tests/task-050-a-poi-schema.test.mjs",
+            "tests/task-050-profile-api.test.mjs",
+            "tests/task-051-a-planner-store.test.mjs",
+            "tests/task-052-account-deletion.test.mjs",
+            "tests/task-053-preference-presets.test.mjs",
+            "tests/task-054-personal-center-migration.test.mjs",
+            "tests/task-055-private-boundaries.test.mjs",
+            "tests/task-055-test-runner.test.mjs",
+            "tests/task-060-profile-ui.test.mjs",
+            "tests/task-061-trip-library-live.test.mjs",
+            "tests/task-062-schema-union.test.mjs",
+            "tests/task-063-engine-apply.test.mjs",
+            "tests/task-064-runtime-rollback.test.mjs",
+            "tests/task-065-engine-certification.test.mjs",
+            "tests/task-067-main-system-state.test.mjs",
+            "tests/task-068-candidate-enrichment.test.mjs",
+            "tests/task-068-corpus-combination.test.mjs",
+            "tests/task-070-p0-evidence-review.test.mjs",
+            "tests/task-076-ai-runtime.test.mjs",
+            "tests/task-081-a-poi-detail-api.test.mjs",
+            "tests/task-082-a-poi-edge-graph.test.mjs",
+            "tests/task-082-personal-ai-history.test.mjs",
+            "tests/task-083-a-poi-runtime.test.mjs",
+            "tests/task-083-canonical-owner-correction.test.mjs",
+            "tests/task-084-a-canonical100-boundary.test.mjs",
+            "tests/task-084-a-real-pilot100.test.mjs",
+            "tests/task-084-a-recommendation-scoring.test.mjs",
+            "tests/task-084-v2-amendment.test.mjs",
+            "tests/task-086-aguni-capability.test.mjs",
+            "tests/task-086-airport-selector-preflight.test.mjs",
+            "tests/task-086-b-autonomous-remediation.test.mjs",
+            "tests/task-086-b-ci-revision.test.mjs",
+            "tests/task-086-b-derived-gtfs.test.mjs",
+            "tests/task-086-b-gtfs-sections.test.mjs",
+            "tests/task-086-b-mobility-backbone.test.mjs",
+            "tests/task-086-b-p11-succession.test.mjs",
+            "tests/task-086-b-pattern-corrections.test.mjs",
+            "tests/task-086-b-rebuild.test.mjs",
+            "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+            "tests/task-086-b-selected-gtfs.test.mjs",
+            "tests/task-086-b-sonic-corrections.test.mjs",
+            "tests/task-086-b-stage-closeout.test.mjs",
+            "tests/task-086-certification-engine-repair.test.mjs",
+            "tests/task-086-conditional-query-cache.test.mjs",
+            "tests/task-086-context-registry.test.mjs",
+            "tests/task-086-dynamic-od-evidence-order.test.mjs",
+            "tests/task-086-dynamic-od.test.mjs",
+            "tests/task-086-facility-registry.test.mjs",
+            "tests/task-086-final-closeout.test.mjs",
+            "tests/task-086-fixed-phone-reception.test.mjs",
+            "tests/task-086-gtfs-agency-subset.test.mjs",
+            "tests/task-086-hamayuso-qualified.test.mjs",
+            "tests/task-086-hateruma-air-passenger.test.mjs",
+            "tests/task-086-historical-facility-stop.test.mjs",
+            "tests/task-086-iwami-fixed-flight.test.mjs",
+            "tests/task-086-licensed-package-date-binding.test.mjs",
+            "tests/task-086-native-facility.test.mjs",
+            "tests/task-086-noto-dynamic-od.test.mjs",
+            "tests/task-086-od-production-pipeline.test.mjs",
+            "tests/task-086-od-registry.test.mjs",
+            "tests/task-086-od-seed-lifecycle.test.mjs",
+            "tests/task-086-okushiri-capability.test.mjs",
+            "tests/task-086-onboard-applicability.test.mjs",
+            "tests/task-086-onboard-request.test.mjs",
+            "tests/task-086-phase-header-preflight.test.mjs",
+            "tests/task-086-public-conditional-applicability.test.mjs",
+            "tests/task-086-publication-recovery.test.mjs",
+            "tests/task-086-qualified-hotel.test.mjs",
+            "tests/task-086-readmittable-closeout.test.mjs",
+            "tests/task-086-retained-cross-package-transfer.test.mjs",
+            "tests/task-086-rights-binding.test.mjs",
+            "tests/task-086-service-access-contract.test.mjs",
+            "tests/task-086-service-access-pipeline.test.mjs",
+            "tests/task-088-a-trusted-baseline.test.mjs",
+            "tests/trip-preparation.test.mjs",
+            "tests/trip-status-personal-center-followup.test.mjs",
+            "tests/wbs-4-17-trip-contract.test.mjs",
+            "tests/wbs-4-21-rule-feasibility.test.mjs",
+            "tests/wbs-5-10-trip-library.test.mjs",
+            "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+            "tests/wbs-5-3-auth-callback.test.mjs",
+            "tests/wbs-5-3-auth-user-flow.test.mjs",
+            "tests/wbs-5-5-preferences.test.mjs",
+            "tests/wbs-5-6-companions.test.mjs",
+            "tests/wbs-5-7-mobility-preference.test.mjs",
+            "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+            "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+            "tests/wbs-5.4-v2.test.mjs",
+            "tests/wbs-9-12-personal-center-qa.test.mjs"
+          ],
+          "spawnArgv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "--import",
+            "./tests/register-route-ts.mjs",
+            "--test",
+            "--test-concurrency=1",
+            "--test-reporter=tap",
+            "--test-reporter-destination=stdout",
+            "--test-reporter=./tools/qa/task-035-reporter.mjs",
+            "--test-reporter-destination=/home/runner/work/TravelAssist/TravelAssist/.artifacts/task-035/candidate/37618817480/1/ordinary/c5976890-b0cb-4a9d-86ff-66095cd88fb0/events.jsonl",
+            "tests/browser-trip-save.test.mjs",
+            "tests/bulk-booking.test.mjs",
+            "tests/detail-card-actions.test.mjs",
+            "tests/detail-compact-board.test.mjs",
+            "tests/detail-overview-locations.test.mjs",
+            "tests/planner-artwork.test.mjs",
+            "tests/planner-audit-fixes.test.mjs",
+            "tests/planner-audit-regressions.test.mjs",
+            "tests/planner-concept-refinement.test.mjs",
+            "tests/planner-local-integration.test.mjs",
+            "tests/planner-meal-booking-refinement.test.mjs",
+            "tests/planner-quick-menu-design.test.mjs",
+            "tests/planner-range-enrichment.test.mjs",
+            "tests/planner-responsive-density.test.mjs",
+            "tests/planner-route-board.test.mjs",
+            "tests/planner-sight-timeline.test.mjs",
+            "tests/planner-status-stack.test.mjs",
+            "tests/planner-track-actions.test.mjs",
+            "tests/planner-working-plan.test.mjs",
+            "tests/poi-remaining-review.test.mjs",
+            "tests/pr-governance.test.mjs",
+            "tests/task-007-background.test.mjs",
+            "tests/task-007-calendar.test.mjs",
+            "tests/task-007-info-popover.test.mjs",
+            "tests/task-008-planner.test.mjs",
+            "tests/task-0081-map-booking.test.mjs",
+            "tests/task-0082-visuals.test.mjs",
+            "tests/task-0083-interactions.test.mjs",
+            "tests/task-010-b-global-logo-navigation.test.mjs",
+            "tests/task-010-navigation.test.mjs",
+            "tests/task-011-trip-detail-workspace.test.mjs",
+            "tests/task-012-planner-v05.test.mjs",
+            "tests/task-013-1-asset-variants.test.mjs",
+            "tests/task-013-2-core-generation-manifest.test.mjs",
+            "tests/task-013-3-1-japan-destination-closure.test.mjs",
+            "tests/task-013-3-japan-destination-resolution.test.mjs",
+            "tests/task-013-assets.test.mjs",
+            "tests/task-015-db-foundation.test.mjs",
+            "tests/task-016-user-profile.test.mjs",
+            "tests/task-018-authentication.test.mjs",
+            "tests/task-019-trip-plan.test.mjs",
+            "tests/task-022-ekiworld-routing.test.mjs",
+            "tests/task-022-route-contract.test.mjs",
+            "tests/task-022-routing-boundary.test.mjs",
+            "tests/task-023-planner-route-integration.test.mjs",
+            "tests/task-024-main-shell.test.mjs",
+            "tests/task-025-2-concept-fidelity.test.mjs",
+            "tests/task-025-2-coral-palette.test.mjs",
+            "tests/task-025-2-v11.test.mjs",
+            "tests/task-025-environment-deployment.test.mjs",
+            "tests/task-035-runner.test.mjs",
+            "tests/task-035-test-baseline.test.mjs",
+            "tests/task-036-planning-contracts.test.mjs",
+            "tests/task-037-planning-contract-soak.test.mjs",
+            "tests/task-041-region-graph-pilot.test.mjs",
+            "tests/task-042-preference-schema.test.mjs",
+            "tests/task-043-master-code-registry.test.mjs",
+            "tests/task-044-companion-schema.test.mjs",
+            "tests/task-045-preference-api.test.mjs",
+            "tests/task-045-region-master-code-integration.test.mjs",
+            "tests/task-046-preference-contract.test.mjs",
+            "tests/task-047-companion-api.test.mjs",
+            "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+            "tests/task-048-trip-persistence-model.test.mjs",
+            "tests/task-049-trip-library-api.test.mjs",
+            "tests/task-050-a-poi-schema.test.mjs",
+            "tests/task-050-profile-api.test.mjs",
+            "tests/task-051-a-planner-store.test.mjs",
+            "tests/task-052-account-deletion.test.mjs",
+            "tests/task-053-preference-presets.test.mjs",
+            "tests/task-054-personal-center-migration.test.mjs",
+            "tests/task-055-private-boundaries.test.mjs",
+            "tests/task-055-test-runner.test.mjs",
+            "tests/task-060-profile-ui.test.mjs",
+            "tests/task-061-trip-library-live.test.mjs",
+            "tests/task-062-schema-union.test.mjs",
+            "tests/task-063-engine-apply.test.mjs",
+            "tests/task-064-runtime-rollback.test.mjs",
+            "tests/task-065-engine-certification.test.mjs",
+            "tests/task-067-main-system-state.test.mjs",
+            "tests/task-068-candidate-enrichment.test.mjs",
+            "tests/task-068-corpus-combination.test.mjs",
+            "tests/task-070-p0-evidence-review.test.mjs",
+            "tests/task-076-ai-runtime.test.mjs",
+            "tests/task-081-a-poi-detail-api.test.mjs",
+            "tests/task-082-a-poi-edge-graph.test.mjs",
+            "tests/task-082-personal-ai-history.test.mjs",
+            "tests/task-083-a-poi-runtime.test.mjs",
+            "tests/task-083-canonical-owner-correction.test.mjs",
+            "tests/task-084-a-canonical100-boundary.test.mjs",
+            "tests/task-084-a-real-pilot100.test.mjs",
+            "tests/task-084-a-recommendation-scoring.test.mjs",
+            "tests/task-084-v2-amendment.test.mjs",
+            "tests/task-086-aguni-capability.test.mjs",
+            "tests/task-086-airport-selector-preflight.test.mjs",
+            "tests/task-086-b-autonomous-remediation.test.mjs",
+            "tests/task-086-b-ci-revision.test.mjs",
+            "tests/task-086-b-derived-gtfs.test.mjs",
+            "tests/task-086-b-gtfs-sections.test.mjs",
+            "tests/task-086-b-mobility-backbone.test.mjs",
+            "tests/task-086-b-p11-succession.test.mjs",
+            "tests/task-086-b-pattern-corrections.test.mjs",
+            "tests/task-086-b-rebuild.test.mjs",
+            "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+            "tests/task-086-b-selected-gtfs.test.mjs",
+            "tests/task-086-b-sonic-corrections.test.mjs",
+            "tests/task-086-b-stage-closeout.test.mjs",
+            "tests/task-086-certification-engine-repair.test.mjs",
+            "tests/task-086-conditional-query-cache.test.mjs",
+            "tests/task-086-context-registry.test.mjs",
+            "tests/task-086-dynamic-od-evidence-order.test.mjs",
+            "tests/task-086-dynamic-od.test.mjs",
+            "tests/task-086-facility-registry.test.mjs",
+            "tests/task-086-final-closeout.test.mjs",
+            "tests/task-086-fixed-phone-reception.test.mjs",
+            "tests/task-086-gtfs-agency-subset.test.mjs",
+            "tests/task-086-hamayuso-qualified.test.mjs",
+            "tests/task-086-hateruma-air-passenger.test.mjs",
+            "tests/task-086-historical-facility-stop.test.mjs",
+            "tests/task-086-iwami-fixed-flight.test.mjs",
+            "tests/task-086-licensed-package-date-binding.test.mjs",
+            "tests/task-086-native-facility.test.mjs",
+            "tests/task-086-noto-dynamic-od.test.mjs",
+            "tests/task-086-od-production-pipeline.test.mjs",
+            "tests/task-086-od-registry.test.mjs",
+            "tests/task-086-od-seed-lifecycle.test.mjs",
+            "tests/task-086-okushiri-capability.test.mjs",
+            "tests/task-086-onboard-applicability.test.mjs",
+            "tests/task-086-onboard-request.test.mjs",
+            "tests/task-086-phase-header-preflight.test.mjs",
+            "tests/task-086-public-conditional-applicability.test.mjs",
+            "tests/task-086-publication-recovery.test.mjs",
+            "tests/task-086-qualified-hotel.test.mjs",
+            "tests/task-086-readmittable-closeout.test.mjs",
+            "tests/task-086-retained-cross-package-transfer.test.mjs",
+            "tests/task-086-rights-binding.test.mjs",
+            "tests/task-086-service-access-contract.test.mjs",
+            "tests/task-086-service-access-pipeline.test.mjs",
+            "tests/task-088-a-trusted-baseline.test.mjs",
+            "tests/trip-preparation.test.mjs",
+            "tests/trip-status-personal-center-followup.test.mjs",
+            "tests/wbs-4-17-trip-contract.test.mjs",
+            "tests/wbs-4-21-rule-feasibility.test.mjs",
+            "tests/wbs-5-10-trip-library.test.mjs",
+            "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+            "tests/wbs-5-3-auth-callback.test.mjs",
+            "tests/wbs-5-3-auth-user-flow.test.mjs",
+            "tests/wbs-5-5-preferences.test.mjs",
+            "tests/wbs-5-6-companions.test.mjs",
+            "tests/wbs-5-7-mobility-preference.test.mjs",
+            "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+            "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+            "tests/wbs-5.4-v2.test.mjs",
+            "tests/wbs-9-12-personal-center-qa.test.mjs"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        }
+      ],
+      "receiptPath": "task035-rebuild-49ffe14188d67265e8779b1c9fe059c18a7c14ad/37618817480/1/ordinary/c5976890-b0cb-4a9d-86ff-66095cd88fb0/receipt.json"
+    },
+    {
+      "lane": "rebuild",
+      "status": "PASS",
+      "counts": {
+        "tests": 1,
+        "passed": 1,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 1,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "selectedFiles": 1,
+      "receiptSha256": "42877abc6e7ad7703e9f4cd503be3922c1fac65a78e28d7b5d17f7e4fe8d4e4c",
+      "logSha256": "52b82920ea3cabceccc000a100d9ca3cd5e4cb2ed715d5b343092cf1a1a53b73",
+      "eventsSha256": "f51691e8ffc3c9008649325dfd6c42054c011cb90f963f4346b066077556805b",
+      "nativeReceiptSha256": null,
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.15",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      },
+      "commands": [
+        [
+          "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+          "tools/qa/task-086-regression-lanes.mjs",
+          "rebuild"
+        ]
+      ],
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 930000,
+          "startedAt": "2026-10-07T12:56:52.921Z",
+          "endedAt": "2026-10-07T12:56:55.207Z",
+          "argv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/qa/task-086-regression-lanes.mjs",
+            "rebuild"
+          ],
+          "spawnArgv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/qa/task-086-regression-lanes.mjs",
+            "rebuild"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        }
+      ],
+      "receiptPath": "task035-rebuild-49ffe14188d67265e8779b1c9fe059c18a7c14ad/37618817480/1/rebuild/631c13c3-97a7-4600-9e59-792ce4027b67/receipt.json"
+    },
+    {
+      "lane": "regression-0",
+      "status": "PASS",
+      "counts": {
+        "tests": 861,
+        "passed": 861,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 861,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "selectedFiles": 37,
+      "receiptSha256": "3e95c3175b19304050b68ee253d84e7e18a752a7e71f1c17e39f9d8e557728f4",
+      "logSha256": "7c447888d9d773455e86c9f1b543cc3882027e227014bec0a252a7ca6e191635",
+      "eventsSha256": "5e9ff072a714a39b33abe537bc7d3d5a768859a8d751ca461bef30b5a37552a2",
+      "nativeReceiptSha256": null,
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      },
+      "commands": [
+        [
+          "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+          "tools/qa/task-086-regression-lanes.mjs",
+          "regression-0"
+        ]
+      ],
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1530000,
+          "startedAt": "2026-10-07T12:08:47.950Z",
+          "endedAt": "2026-10-07T12:09:03.487Z",
+          "argv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/qa/task-086-regression-lanes.mjs",
+            "regression-0"
+          ],
+          "spawnArgv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/qa/task-086-regression-lanes.mjs",
+            "regression-0"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        }
+      ],
+      "receiptPath": "task035-regression-0-49ffe14188d67265e8779b1c9fe059c18a7c14ad/37618817480/1/regression-0/5040b403-c7aa-4664-932d-c994f952981b/receipt.json"
+    },
+    {
+      "lane": "regression-1",
+      "status": "PASS",
+      "counts": {
+        "tests": 528,
+        "passed": 528,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 488,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "selectedFiles": 37,
+      "receiptSha256": "3178f80d8deef3ae2674c2c8add2305084879eb0a6c485a37c7486de2626684e",
+      "logSha256": "699ae89fff22f7573bf3957655f622ebbb12cf2e640fc59bd1a78955d89ca72b",
+      "eventsSha256": "eb6868c391f7a6bf38b4794c01636374a5d02cc83e22286bad40ded6b03d3359",
+      "nativeReceiptSha256": null,
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.15",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      },
+      "commands": [
+        [
+          "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+          "tools/qa/task-086-regression-lanes.mjs",
+          "regression-1"
+        ]
+      ],
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1530000,
+          "startedAt": "2026-10-07T12:08:47.476Z",
+          "endedAt": "2026-10-07T12:10:33.020Z",
+          "argv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/qa/task-086-regression-lanes.mjs",
+            "regression-1"
+          ],
+          "spawnArgv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/qa/task-086-regression-lanes.mjs",
+            "regression-1"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        }
+      ],
+      "receiptPath": "task035-regression-1-49ffe14188d67265e8779b1c9fe059c18a7c14ad/37618817480/1/regression-1/0d079fad-412b-4480-92f0-c3e12b9cda37/receipt.json"
+    },
+    {
+      "lane": "regression-2",
+      "status": "PASS",
+      "counts": {
+        "tests": 1157,
+        "passed": 1157,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 1157,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "selectedFiles": 37,
+      "receiptSha256": "117a24f8af6236b509eb6ed74681ab8fb0ec6a4bd1f4bc87eea893e0672e6222",
+      "logSha256": "ef3e88da03e0820d7fe9106360a251bbad9dba5db35eac92e24a827babdfbda0",
+      "eventsSha256": "12e7e452828379c658578db3f019fb88e248adf8b9f3702af05d125380922ace",
+      "nativeReceiptSha256": null,
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      },
+      "commands": [
+        [
+          "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+          "tools/qa/task-086-regression-lanes.mjs",
+          "regression-2"
+        ]
+      ],
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1530000,
+          "startedAt": "2026-10-07T12:09:31.057Z",
+          "endedAt": "2026-10-07T12:10:01.248Z",
+          "argv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/qa/task-086-regression-lanes.mjs",
+            "regression-2"
+          ],
+          "spawnArgv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/qa/task-086-regression-lanes.mjs",
+            "regression-2"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        }
+      ],
+      "receiptPath": "task035-regression-2-49ffe14188d67265e8779b1c9fe059c18a7c14ad/37618817480/1/regression-2/9f609393-2110-4702-ac3e-017d07ac0b29/receipt.json"
+    },
+    {
+      "lane": "regression-3",
+      "status": "PASS",
+      "counts": {
+        "tests": 1193,
+        "passed": 1193,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 1193,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "selectedFiles": 37,
+      "receiptSha256": "307bfd2b7ecc1d64bca809c1021f36b97901d20071eda3e4b09e7c2fde3a77cc",
+      "logSha256": "d5d65b7bf06adb7f8fd932e1671c556ac0ab183c988deac63fa66dfb99c70d06",
+      "eventsSha256": "8f09f57cf00b07c6be2dac69f8f3fd04641ae114ac9a82e3dc05b5d9af9adaaf",
+      "nativeReceiptSha256": null,
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      },
+      "commands": [
+        [
+          "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+          "tools/qa/task-086-regression-lanes.mjs",
+          "regression-3"
+        ]
+      ],
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 1530000,
+          "startedAt": "2026-10-07T12:08:48.032Z",
+          "endedAt": "2026-10-07T12:10:18.079Z",
+          "argv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/qa/task-086-regression-lanes.mjs",
+            "regression-3"
+          ],
+          "spawnArgv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/qa/task-086-regression-lanes.mjs",
+            "regression-3"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        }
+      ],
+      "receiptPath": "task035-regression-3-49ffe14188d67265e8779b1c9fe059c18a7c14ad/37618817480/1/regression-3/1efa4d60-798e-4b92-8b7e-6ac56ca3efbc/receipt.json"
+    },
+    {
+      "lane": "resume",
+      "status": "PASS",
+      "counts": null,
+      "selectedFiles": 0,
+      "receiptSha256": "af6cf59f6e1d80a7551dfecf4939f73f225c0b88fe17395ebd036179aa1da69c",
+      "logSha256": "3a2ed8eeae0d232a9fb0a3a6ebd1d04009c6a9176edcbb48169218d518d5c2c0",
+      "eventsSha256": null,
+      "nativeReceiptSha256": "ab36214e0163cdb9e89c49816fa6ebf12cf0bc2e96689aaf0361b4a45abb4b39",
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      },
+      "commands": [
+        [
+          "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+          "tools/transport/task-086-validation.mjs",
+          "resume",
+          ".artifacts/task086-lanes"
+        ]
+      ],
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "error": null,
+          "timeoutMs": 2400000,
+          "startedAt": "2026-10-07T12:32:24.140Z",
+          "endedAt": "2026-10-07T12:55:42.858Z",
+          "argv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/transport/task-086-validation.mjs",
+            "resume",
+            ".artifacts/task086-lanes"
+          ],
+          "spawnArgv": [
+            "/opt/hostedtoolcache/node/24.21.0/x64/bin/node",
+            "tools/transport/task-086-validation.mjs",
+            "resume",
+            ".artifacts/task086-lanes"
+          ],
+          "npmCliSha256": null,
+          "cwd": "/home/runner/work/TravelAssist/TravelAssist"
+        }
+      ],
+      "receiptPath": "task035-resume-49ffe14188d67265e8779b1c9fe059c18a7c14ad/37618817480/1/resume/9363d934-49a2-429b-a374-1da1d8387f06/receipt.json"
+    }
+  ],
+  "globalAggregateSha256": "f34ad10e8361d8c16e3b3996fdc26aed5bdf7807f47d21413d8d402a19056f7e",
+  "legacyAggregateSha256": "fc4fb9b31bc5852607e77130bec9dea963037016deb323c446cbfd8e47b84bdd",
+  "proofSha256": "1ad8bf0d3f68e386364f1971e1dcdeb17f97b4c4f89b58db32dd7d379f4cbdf2",
+  "proofChecks": {
+    "fullDeterministicRebuild": "PASS",
+    "resumeChecksumSkip": "PASS",
+    "exceptionProofInputPreserved": "PASS",
+    "publishedArtifactComparison": "PASS",
+    "resumeCorruptionInvalidation": "PASS"
+  },
+  "boundInputsVerified": 516,
+  "certificationInputSha256": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+  "graphs": [
+    {
+      "lane": "first",
+      "manifestSha256": "39ba210105acdd7a641f556a9a547916e003c422a87934fe608ff910befc6642",
+      "batchesVerified": 1337,
+      "coreArtifactsVerified": 27
+    },
+    {
+      "lane": "second",
+      "manifestSha256": "39ba210105acdd7a641f556a9a547916e003c422a87934fe608ff910befc6642",
+      "batchesVerified": 1337,
+      "coreArtifactsVerified": 27
+    },
+    {
+      "lane": "resume",
+      "manifestSha256": "39ba210105acdd7a641f556a9a547916e003c422a87934fe608ff910befc6642",
+      "batchesVerified": 1337,
+      "coreArtifactsVerified": 27
+    }
+  ],
+  "jobs": [
+    {
+      "id": 112783616278,
+      "name": "Clean graph / second",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T12:07:51Z",
+      "completed_at": "2026-10-07T12:29:29Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T12:07:52Z",
+          "completed_at": "2026-10-07T12:07:52Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T12:07:52Z",
+          "completed_at": "2026-10-07T12:08:28Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T12:08:28Z",
+          "completed_at": "2026-10-07T12:08:32Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T12:08:32Z",
+          "completed_at": "2026-10-07T12:08:32Z"
+        },
+        {
+          "name": "Verify and record actual event checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T12:08:32Z",
+          "completed_at": "2026-10-07T12:08:32Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T12:08:32Z",
+          "completed_at": "2026-10-07T12:08:45Z"
+        },
+        {
+          "name": "Run npm run test:baseline:inventory -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T12:08:45Z",
+          "completed_at": "2026-10-07T12:08:45Z"
+        },
+        {
+          "name": "Run node tools/qa/task-035-baseline.mjs --job graph-second",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T12:08:45Z",
+          "completed_at": "2026-10-07T12:29:21Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T12:29:21Z",
+          "completed_at": "2026-10-07T12:29:25Z"
+        },
+        {
+          "name": "Retain TASK-035 global receipt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-07T12:29:25Z",
+          "completed_at": "2026-10-07T12:29:26Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-07T12:29:26Z",
+          "completed_at": "2026-10-07T12:29:26Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-07T12:29:26Z",
+          "completed_at": "2026-10-07T12:29:26Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-07T12:29:26Z",
+          "completed_at": "2026-10-07T12:29:26Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-07T12:29:26Z",
+          "completed_at": "2026-10-07T12:29:26Z"
+        }
+      ]
+    },
+    {
+      "id": 112783616484,
+      "name": "Retained raw source reproduction",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T12:07:50Z",
+      "completed_at": "2026-10-07T12:09:18Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T12:07:51Z",
+          "completed_at": "2026-10-07T12:07:52Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T12:07:52Z",
+          "completed_at": "2026-10-07T12:08:28Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T12:08:28Z",
+          "completed_at": "2026-10-07T12:08:35Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T12:08:35Z",
+          "completed_at": "2026-10-07T12:08:35Z"
+        },
+        {
+          "name": "Verify and record actual event checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T12:08:35Z",
+          "completed_at": "2026-10-07T12:08:36Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T12:08:36Z",
+          "completed_at": "2026-10-07T12:08:54Z"
+        },
+        {
+          "name": "Run npm run test:baseline:inventory -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T12:08:54Z",
+          "completed_at": "2026-10-07T12:08:54Z"
+        },
+        {
+          "name": "Run node tools/qa/task-035-baseline.mjs --job extraction",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T12:08:54Z",
+          "completed_at": "2026-10-07T12:09:12Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T12:09:12Z",
+          "completed_at": "2026-10-07T12:09:13Z"
+        },
+        {
+          "name": "Retain TASK-035 global receipt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-07T12:09:13Z",
+          "completed_at": "2026-10-07T12:09:15Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-07T12:09:15Z",
+          "completed_at": "2026-10-07T12:09:15Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-07T12:09:15Z",
+          "completed_at": "2026-10-07T12:09:15Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-07T12:09:15Z",
+          "completed_at": "2026-10-07T12:09:15Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-07T12:09:15Z",
+          "completed_at": "2026-10-07T12:09:15Z"
+        }
+      ]
+    },
+    {
+      "id": 112783616597,
+      "name": "Full Node regression / regression-1",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T12:07:50Z",
+      "completed_at": "2026-10-07T12:10:38Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T12:07:51Z",
+          "completed_at": "2026-10-07T12:07:52Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T12:07:52Z",
+          "completed_at": "2026-10-07T12:08:29Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T12:08:29Z",
+          "completed_at": "2026-10-07T12:08:33Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T12:08:33Z",
+          "completed_at": "2026-10-07T12:08:33Z"
+        },
+        {
+          "name": "Verify and record actual event checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T12:08:33Z",
+          "completed_at": "2026-10-07T12:08:33Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T12:08:33Z",
+          "completed_at": "2026-10-07T12:08:46Z"
+        },
+        {
+          "name": "Run npm run test:baseline:inventory -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T12:08:46Z",
+          "completed_at": "2026-10-07T12:08:46Z"
+        },
+        {
+          "name": "Run npm run test:baseline:lane -- --lane regression-1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T12:08:46Z",
+          "completed_at": "2026-10-07T12:10:33Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T12:10:33Z",
+          "completed_at": "2026-10-07T12:10:34Z"
+        },
+        {
+          "name": "Retain TASK-035 global receipt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-07T12:10:34Z",
+          "completed_at": "2026-10-07T12:10:35Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-07T12:10:35Z",
+          "completed_at": "2026-10-07T12:10:35Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-07T12:10:35Z",
+          "completed_at": "2026-10-07T12:10:35Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-07T12:10:35Z",
+          "completed_at": "2026-10-07T12:10:35Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-07T12:10:35Z",
+          "completed_at": "2026-10-07T12:10:35Z"
+        }
+      ]
+    },
+    {
+      "id": 112783616665,
+      "name": "Full Node regression / regression-2",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T12:08:26Z",
+      "completed_at": "2026-10-07T12:10:04Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T12:08:27Z",
+          "completed_at": "2026-10-07T12:08:27Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T12:08:27Z",
+          "completed_at": "2026-10-07T12:09:07Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T12:09:07Z",
+          "completed_at": "2026-10-07T12:09:09Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T12:09:09Z",
+          "completed_at": "2026-10-07T12:09:10Z"
+        },
+        {
+          "name": "Verify and record actual event checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T12:09:10Z",
+          "completed_at": "2026-10-07T12:09:10Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T12:09:10Z",
+          "completed_at": "2026-10-07T12:09:29Z"
+        },
+        {
+          "name": "Run npm run test:baseline:inventory -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T12:09:29Z",
+          "completed_at": "2026-10-07T12:09:29Z"
+        },
+        {
+          "name": "Run npm run test:baseline:lane -- --lane regression-2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T12:09:29Z",
+          "completed_at": "2026-10-07T12:10:01Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T12:10:01Z",
+          "completed_at": "2026-10-07T12:10:02Z"
+        },
+        {
+          "name": "Retain TASK-035 global receipt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-07T12:10:02Z",
+          "completed_at": "2026-10-07T12:10:02Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-07T12:10:02Z",
+          "completed_at": "2026-10-07T12:10:02Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-07T12:10:02Z",
+          "completed_at": "2026-10-07T12:10:03Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-07T12:10:03Z",
+          "completed_at": "2026-10-07T12:10:03Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-07T12:10:03Z",
+          "completed_at": "2026-10-07T12:10:03Z"
+        }
+      ]
+    },
+    {
+      "id": 112783616670,
+      "name": "Lint, types, formatting and build",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T12:07:50Z",
+      "completed_at": "2026-10-07T12:10:29Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T12:07:50Z",
+          "completed_at": "2026-10-07T12:07:51Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T12:07:51Z",
+          "completed_at": "2026-10-07T12:08:27Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T12:08:27Z",
+          "completed_at": "2026-10-07T12:08:29Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T12:08:29Z",
+          "completed_at": "2026-10-07T12:08:29Z"
+        },
+        {
+          "name": "Verify and record actual event checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T12:08:29Z",
+          "completed_at": "2026-10-07T12:08:29Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T12:08:29Z",
+          "completed_at": "2026-10-07T12:08:47Z"
+        },
+        {
+          "name": "Run npm run test:baseline:inventory -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T12:08:47Z",
+          "completed_at": "2026-10-07T12:08:47Z"
+        },
+        {
+          "name": "Run node tools/qa/task-035-baseline.mjs --job quality",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T12:08:47Z",
+          "completed_at": "2026-10-07T12:10:25Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T12:10:25Z",
+          "completed_at": "2026-10-07T12:10:26Z"
+        },
+        {
+          "name": "Retain TASK-035 global receipt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-07T12:10:26Z",
+          "completed_at": "2026-10-07T12:10:27Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-07T12:10:27Z",
+          "completed_at": "2026-10-07T12:10:27Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-07T12:10:27Z",
+          "completed_at": "2026-10-07T12:10:27Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-07T12:10:27Z",
+          "completed_at": "2026-10-07T12:10:27Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-07T12:10:27Z",
+          "completed_at": "2026-10-07T12:10:27Z"
+        }
+      ]
+    },
+    {
+      "id": 112783616696,
+      "name": "Full Node regression / regression-3",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T12:07:50Z",
+      "completed_at": "2026-10-07T12:10:22Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T12:07:50Z",
+          "completed_at": "2026-10-07T12:07:51Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T12:07:51Z",
+          "completed_at": "2026-10-07T12:08:26Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T12:08:26Z",
+          "completed_at": "2026-10-07T12:08:32Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T12:08:32Z",
+          "completed_at": "2026-10-07T12:08:32Z"
+        },
+        {
+          "name": "Verify and record actual event checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T12:08:32Z",
+          "completed_at": "2026-10-07T12:08:32Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T12:08:32Z",
+          "completed_at": "2026-10-07T12:08:46Z"
+        },
+        {
+          "name": "Run npm run test:baseline:inventory -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T12:08:46Z",
+          "completed_at": "2026-10-07T12:08:47Z"
+        },
+        {
+          "name": "Run npm run test:baseline:lane -- --lane regression-3",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T12:08:47Z",
+          "completed_at": "2026-10-07T12:10:18Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T12:10:18Z",
+          "completed_at": "2026-10-07T12:10:19Z"
+        },
+        {
+          "name": "Retain TASK-035 global receipt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-07T12:10:19Z",
+          "completed_at": "2026-10-07T12:10:20Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-07T12:10:20Z",
+          "completed_at": "2026-10-07T12:10:20Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-07T12:10:20Z",
+          "completed_at": "2026-10-07T12:10:20Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-07T12:10:20Z",
+          "completed_at": "2026-10-07T12:10:20Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-07T12:10:20Z",
+          "completed_at": "2026-10-07T12:10:20Z"
+        }
+      ]
+    },
+    {
+      "id": 112783616740,
+      "name": "Full Node regression / assets",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T12:07:50Z",
+      "completed_at": "2026-10-07T12:10:04Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T12:07:51Z",
+          "completed_at": "2026-10-07T12:07:52Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T12:07:52Z",
+          "completed_at": "2026-10-07T12:08:36Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T12:08:36Z",
+          "completed_at": "2026-10-07T12:08:40Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T12:08:40Z",
+          "completed_at": "2026-10-07T12:08:41Z"
+        },
+        {
+          "name": "Verify and record actual event checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T12:08:41Z",
+          "completed_at": "2026-10-07T12:08:41Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T12:08:41Z",
+          "completed_at": "2026-10-07T12:08:59Z"
+        },
+        {
+          "name": "Run npm run test:baseline:inventory -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T12:08:59Z",
+          "completed_at": "2026-10-07T12:08:59Z"
+        },
+        {
+          "name": "Run npm run test:baseline:lane -- --lane assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T12:08:59Z",
+          "completed_at": "2026-10-07T12:09:58Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T12:09:58Z",
+          "completed_at": "2026-10-07T12:09:59Z"
+        },
+        {
+          "name": "Retain TASK-035 global receipt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-07T12:09:59Z",
+          "completed_at": "2026-10-07T12:10:01Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-07T12:10:01Z",
+          "completed_at": "2026-10-07T12:10:01Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-07T12:10:01Z",
+          "completed_at": "2026-10-07T12:10:01Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-07T12:10:01Z",
+          "completed_at": "2026-10-07T12:10:01Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-07T12:10:01Z",
+          "completed_at": "2026-10-07T12:10:01Z"
+        }
+      ]
+    },
+    {
+      "id": 112783616836,
+      "name": "Clean graph / first",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T12:07:51Z",
+      "completed_at": "2026-10-07T12:31:20Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T12:07:51Z",
+          "completed_at": "2026-10-07T12:07:52Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T12:07:52Z",
+          "completed_at": "2026-10-07T12:08:28Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T12:08:28Z",
+          "completed_at": "2026-10-07T12:08:31Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T12:08:31Z",
+          "completed_at": "2026-10-07T12:08:31Z"
+        },
+        {
+          "name": "Verify and record actual event checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T12:08:31Z",
+          "completed_at": "2026-10-07T12:08:31Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T12:08:31Z",
+          "completed_at": "2026-10-07T12:08:45Z"
+        },
+        {
+          "name": "Run npm run test:baseline:inventory -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T12:08:45Z",
+          "completed_at": "2026-10-07T12:08:46Z"
+        },
+        {
+          "name": "Run node tools/qa/task-035-baseline.mjs --job graph-first",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T12:08:46Z",
+          "completed_at": "2026-10-07T12:31:12Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T12:31:12Z",
+          "completed_at": "2026-10-07T12:31:17Z"
+        },
+        {
+          "name": "Retain TASK-035 global receipt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-07T12:31:17Z",
+          "completed_at": "2026-10-07T12:31:18Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-07T12:31:18Z",
+          "completed_at": "2026-10-07T12:31:18Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-07T12:31:18Z",
+          "completed_at": "2026-10-07T12:31:18Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-07T12:31:18Z",
+          "completed_at": "2026-10-07T12:31:18Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-07T12:31:18Z",
+          "completed_at": "2026-10-07T12:31:18Z"
+        }
+      ]
+    },
+    {
+      "id": 112783617086,
+      "name": "Full Node regression / regression-0",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T12:07:50Z",
+      "completed_at": "2026-10-07T12:09:08Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T12:07:51Z",
+          "completed_at": "2026-10-07T12:07:53Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T12:07:53Z",
+          "completed_at": "2026-10-07T12:08:28Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T12:08:28Z",
+          "completed_at": "2026-10-07T12:08:32Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T12:08:32Z",
+          "completed_at": "2026-10-07T12:08:32Z"
+        },
+        {
+          "name": "Verify and record actual event checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T12:08:32Z",
+          "completed_at": "2026-10-07T12:08:33Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T12:08:33Z",
+          "completed_at": "2026-10-07T12:08:46Z"
+        },
+        {
+          "name": "Run npm run test:baseline:inventory -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T12:08:46Z",
+          "completed_at": "2026-10-07T12:08:47Z"
+        },
+        {
+          "name": "Run npm run test:baseline:lane -- --lane regression-0",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T12:08:47Z",
+          "completed_at": "2026-10-07T12:09:03Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T12:09:03Z",
+          "completed_at": "2026-10-07T12:09:04Z"
+        },
+        {
+          "name": "Retain TASK-035 global receipt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-07T12:09:04Z",
+          "completed_at": "2026-10-07T12:09:05Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-07T12:09:05Z",
+          "completed_at": "2026-10-07T12:09:05Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-07T12:09:05Z",
+          "completed_at": "2026-10-07T12:09:06Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-07T12:09:06Z",
+          "completed_at": "2026-10-07T12:09:06Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-07T12:09:06Z",
+          "completed_at": "2026-10-07T12:09:06Z"
+        }
+      ]
+    },
+    {
+      "id": 112783618947,
+      "name": "Install, test and build",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-10-07T12:07:48Z",
+      "completed_at": "2026-10-07T12:07:47Z",
+      "steps": []
+    },
+    {
+      "id": 112792914660,
+      "name": "Stable complete graph resume",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T12:31:24Z",
+      "completed_at": "2026-10-07T12:55:50Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T12:31:24Z",
+          "completed_at": "2026-10-07T12:31:26Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T12:31:26Z",
+          "completed_at": "2026-10-07T12:32:03Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T12:32:03Z",
+          "completed_at": "2026-10-07T12:32:06Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T12:32:06Z",
+          "completed_at": "2026-10-07T12:32:06Z"
+        },
+        {
+          "name": "Verify and record actual event checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T12:32:06Z",
+          "completed_at": "2026-10-07T12:32:06Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T12:32:06Z",
+          "completed_at": "2026-10-07T12:32:21Z"
+        },
+        {
+          "name": "Run npm run test:baseline:inventory -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T12:32:21Z",
+          "completed_at": "2026-10-07T12:32:21Z"
+        },
+        {
+          "name": "Run actions/download-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T12:32:21Z",
+          "completed_at": "2026-10-07T12:32:23Z"
+        },
+        {
+          "name": "Run node tools/qa/task-035-baseline.mjs --job resume",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T12:32:23Z",
+          "completed_at": "2026-10-07T12:55:42Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-07T12:55:42Z",
+          "completed_at": "2026-10-07T12:55:47Z"
+        },
+        {
+          "name": "Retain TASK-035 global receipt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-07T12:55:47Z",
+          "completed_at": "2026-10-07T12:55:48Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-07T12:55:48Z",
+          "completed_at": "2026-10-07T12:55:48Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-07T12:55:48Z",
+          "completed_at": "2026-10-07T12:55:48Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-07T12:55:48Z",
+          "completed_at": "2026-10-07T12:55:48Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-07T12:55:48Z",
+          "completed_at": "2026-10-07T12:55:48Z"
+        }
+      ]
+    },
+    {
+      "id": 112802981515,
+      "name": "Deterministic, recovery and published-artifact proof",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T12:55:53Z",
+      "completed_at": "2026-10-07T13:01:19Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T12:55:54Z",
+          "completed_at": "2026-10-07T12:55:57Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T12:55:57Z",
+          "completed_at": "2026-10-07T12:56:29Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T12:56:29Z",
+          "completed_at": "2026-10-07T12:56:32Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T12:56:32Z",
+          "completed_at": "2026-10-07T12:56:32Z"
+        },
+        {
+          "name": "Verify and record actual event checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T12:56:32Z",
+          "completed_at": "2026-10-07T12:56:32Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T12:56:32Z",
+          "completed_at": "2026-10-07T12:56:46Z"
+        },
+        {
+          "name": "Run npm run test:baseline:inventory -- --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T12:56:46Z",
+          "completed_at": "2026-10-07T12:56:46Z"
+        },
+        {
+          "name": "Run actions/download-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T12:56:46Z",
+          "completed_at": "2026-10-07T12:56:49Z"
+        },
+        {
+          "name": "Run actions/download-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T12:56:49Z",
+          "completed_at": "2026-10-07T12:56:51Z"
+        },
+        {
+          "name": "Run actions/download-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-07T12:56:51Z",
+          "completed_at": "2026-10-07T12:56:52Z"
+        },
+        {
+          "name": "Execute original rebuild regression with complete exact-head lane receipts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-07T12:56:52Z",
+          "completed_at": "2026-10-07T12:56:55Z"
+        },
+        {
+          "name": "Run the complete unified entry with current-head graph proof",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-07T12:56:55Z",
+          "completed_at": "2026-10-07T13:01:13Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-07T13:01:13Z",
+          "completed_at": "2026-10-07T13:01:15Z"
+        },
+        {
+          "name": "Retain TASK-035 global receipt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-07T13:01:15Z",
+          "completed_at": "2026-10-07T13:01:16Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-10-07T13:01:16Z",
+          "completed_at": "2026-10-07T13:01:16Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-07T13:01:16Z",
+          "completed_at": "2026-10-07T13:01:16Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-10-07T13:01:16Z",
+          "completed_at": "2026-10-07T13:01:16Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-07T13:01:16Z",
+          "completed_at": "2026-10-07T13:01:16Z"
+        }
+      ]
+    },
+    {
+      "id": 112805305078,
+      "name": "TASK086 exact-head Quality Gate",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-07T13:01:22Z",
+      "completed_at": "2026-10-07T13:02:16Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T13:01:23Z",
+          "completed_at": "2026-10-07T13:01:24Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T13:01:24Z",
+          "completed_at": "2026-10-07T13:02:04Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T13:02:04Z",
+          "completed_at": "2026-10-07T13:02:07Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T13:02:07Z",
+          "completed_at": "2026-10-07T13:02:07Z"
+        },
+        {
+          "name": "Run node tools/qa/ci-revision.mjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T13:02:07Z",
+          "completed_at": "2026-10-07T13:02:07Z"
+        },
+        {
+          "name": "Run actions/download-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T13:02:07Z",
+          "completed_at": "2026-10-07T13:02:08Z"
+        },
+        {
+          "name": "Run actions/download-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T13:02:08Z",
+          "completed_at": "2026-10-07T13:02:10Z"
+        },
+        {
+          "name": "Fail closed unless every required lane completed",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T13:02:10Z",
+          "completed_at": "2026-10-07T13:02:10Z"
+        },
+        {
+          "name": "Run actions/download-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-07T13:02:10Z",
+          "completed_at": "2026-10-07T13:02:11Z"
+        },
+        {
+          "name": "Validate complete global receipts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-07T13:02:11Z",
+          "completed_at": "2026-10-07T13:02:11Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-07T13:02:11Z",
+          "completed_at": "2026-10-07T13:02:12Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-07T13:02:12Z",
+          "completed_at": "2026-10-07T13:02:13Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-07T13:02:13Z",
+          "completed_at": "2026-10-07T13:02:13Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-07T13:02:13Z",
+          "completed_at": "2026-10-07T13:02:13Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-07T13:02:13Z",
+          "completed_at": "2026-10-07T13:02:13Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-07T13:02:13Z",
+          "completed_at": "2026-10-07T13:02:13Z"
+        }
+      ]
+    }
+  ],
+  "artifactMetadata": [
+    {
+      "id": 11484016258,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4NDAxNjI1OA==",
+      "name": "task035-rebuild-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 150015,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11484016258",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11484016258/zip",
+      "expired": false,
+      "digest": "sha256:18e4dd28f230fe76251c302e53b6cf546269bfe83eaee30c75c77f2d3e0f36e0",
+      "created_at": "2026-10-07T13:01:16Z",
+      "updated_at": "2026-10-07T13:01:16Z",
+      "expires_at": "2026-11-06T13:01:15Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11483991376,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4Mzk5MTM3Ng==",
+      "name": "task086-proof-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 357813,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11483991376",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11483991376/zip",
+      "expired": false,
+      "digest": "sha256:724da5769131c9d73d29e717bfb936ab47c76d7b545f02e5128400cc6e9d7b3e",
+      "created_at": "2026-10-07T13:01:15Z",
+      "updated_at": "2026-10-07T13:01:15Z",
+      "expires_at": "2026-10-10T13:01:14Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11483910316,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MzkxMDMxNg==",
+      "name": "task035-resume-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 61887,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11483910316",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11483910316/zip",
+      "expired": false,
+      "digest": "sha256:906ecc5c13476b84e36f74ad40a19b752b81abf55513000dd1f1d07b18020fc2",
+      "created_at": "2026-10-07T12:55:48Z",
+      "updated_at": "2026-10-07T12:55:48Z",
+      "expires_at": "2026-11-06T12:55:47Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11483438162,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MzQzODE2Mg==",
+      "name": "task035-final-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 2607,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11483438162",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11483438162/zip",
+      "expired": false,
+      "digest": "sha256:3bc0c4b5fbd112c30173842e26efd0e2944544f1e58adcdbe5c040f3ae104eff",
+      "created_at": "2026-10-07T13:02:12Z",
+      "updated_at": "2026-10-07T13:02:12Z",
+      "expires_at": "2026-11-06T13:02:11Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11483403192,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MzQwMzE5Mg==",
+      "name": "task086-final-exact-head-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 41143,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11483403192",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11483403192/zip",
+      "expired": false,
+      "digest": "sha256:091363608cba3cddec40029d06b85c2af3635aed6ae28426fcf6a51f189ff468",
+      "created_at": "2026-10-07T13:02:13Z",
+      "updated_at": "2026-10-07T13:02:13Z",
+      "expires_at": "2026-11-06T13:02:12Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11483004631,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MzAwNDYzMQ==",
+      "name": "task086-resume-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 26773740,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11483004631",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11483004631/zip",
+      "expired": false,
+      "digest": "sha256:918ef91f8924ddecb48af1ecf030395022c2590170aef8e7cf52fb009dbe7a9d",
+      "created_at": "2026-10-07T12:55:47Z",
+      "updated_at": "2026-10-07T12:55:47Z",
+      "expires_at": "2026-10-10T12:55:43Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11482312199,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MjMxMjE5OQ==",
+      "name": "task086-graph-second-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 26749518,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11482312199",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11482312199/zip",
+      "expired": false,
+      "digest": "sha256:ec6c3121a941953eb1184d26f6db6f290188426e50d0b3cfa48069cf2d342c9d",
+      "created_at": "2026-10-07T12:29:25Z",
+      "updated_at": "2026-10-07T12:29:25Z",
+      "expires_at": "2026-10-10T12:29:21Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11482022386,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MjAyMjM4Ng==",
+      "name": "task035-graph-second-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 61961,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11482022386",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11482022386/zip",
+      "expired": false,
+      "digest": "sha256:b509789d2b6e07a3d67006dd6624867a9a9698a306e794d2683ff5212d76dedc",
+      "created_at": "2026-10-07T12:29:26Z",
+      "updated_at": "2026-10-07T12:29:26Z",
+      "expires_at": "2026-11-06T12:29:25Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11481918366,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MTkxODM2Ng==",
+      "name": "task086-graph-first-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 26744114,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481918366",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481918366/zip",
+      "expired": false,
+      "digest": "sha256:6529873f69a043281f2844097608f49974056e32d59a53ba2f98f984f6feefad",
+      "created_at": "2026-10-07T12:31:16Z",
+      "updated_at": "2026-10-07T12:31:16Z",
+      "expires_at": "2026-10-10T12:31:13Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11481740087,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MTc0MDA4Nw==",
+      "name": "task035-assets-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 29769,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481740087",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481740087/zip",
+      "expired": false,
+      "digest": "sha256:bb26799c2c3cd7009a84617899aea5185a2aeb59cb2fb60f6c503ccccfe6ad3b",
+      "created_at": "2026-10-07T12:10:01Z",
+      "updated_at": "2026-10-07T12:10:01Z",
+      "expires_at": "2026-11-06T12:10:00Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11481720093,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MTcyMDA5Mw==",
+      "name": "task035-regression-2-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 85434,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481720093",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481720093/zip",
+      "expired": false,
+      "digest": "sha256:79b562c58baff145249573199a74caf71b4e161bf6b25db485e680e7d458c795",
+      "created_at": "2026-10-07T12:10:02Z",
+      "updated_at": "2026-10-07T12:10:02Z",
+      "expires_at": "2026-11-06T12:10:02Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11481420476,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MTQyMDQ3Ng==",
+      "name": "task086-regression-regression-2-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 44629,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481420476",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481420476/zip",
+      "expired": false,
+      "digest": "sha256:205ba17f471b9d92ccec19066cde3a0ac5182ab6762af0355a705a8b833e34bc",
+      "created_at": "2026-10-07T12:10:02Z",
+      "updated_at": "2026-10-07T12:10:02Z",
+      "expires_at": "2026-10-10T12:10:01Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11481409731,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MTQwOTczMQ==",
+      "name": "task035-graph-first-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 61959,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481409731",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481409731/zip",
+      "expired": false,
+      "digest": "sha256:227ac4c58c79e53d44915a0ee579daacdc9898b285ca03d9c4a4d7dc221a7361",
+      "created_at": "2026-10-07T12:31:17Z",
+      "updated_at": "2026-10-07T12:31:17Z",
+      "expires_at": "2026-11-06T12:31:17Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11481305611,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MTMwNTYxMQ==",
+      "name": "task086-regression-assets-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 18188,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481305611",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481305611/zip",
+      "expired": false,
+      "digest": "sha256:5690b9d816c0dcde05378dfc1e30ef9aaeae1c030495d0ffbec51e54661b61b9",
+      "created_at": "2026-10-07T12:09:59Z",
+      "updated_at": "2026-10-07T12:09:59Z",
+      "expires_at": "2026-10-10T12:09:58Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11481195752,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MTE5NTc1Mg==",
+      "name": "task086-regression-regression-1-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 32398,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481195752",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481195752/zip",
+      "expired": false,
+      "digest": "sha256:178dcd4eb5377dd8a130260e50abd3eaf11bcdbc7df917135c721237109d934e",
+      "created_at": "2026-10-07T12:10:34Z",
+      "updated_at": "2026-10-07T12:10:34Z",
+      "expires_at": "2026-10-10T12:10:33Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11481150735,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MTE1MDczNQ==",
+      "name": "task035-regression-1-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 59665,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481150735",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481150735/zip",
+      "expired": false,
+      "digest": "sha256:eb294f33f6ff0511b0af85e307b310f93ecd99443139b620e68a5532ac50c259",
+      "created_at": "2026-10-07T12:10:35Z",
+      "updated_at": "2026-10-07T12:10:35Z",
+      "expires_at": "2026-11-06T12:10:34Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11481008963,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MTAwODk2Mw==",
+      "name": "task035-quality-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 12269,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481008963",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481008963/zip",
+      "expired": false,
+      "digest": "sha256:95899516f367085130875188e366e81dbe02a24e3dace9fa3ae5f1b92787d74a",
+      "created_at": "2026-10-07T12:10:27Z",
+      "updated_at": "2026-10-07T12:10:27Z",
+      "expires_at": "2026-11-06T12:10:26Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11481008755,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MTAwODc1NQ==",
+      "name": "task035-regression-0-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 78577,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481008755",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11481008755/zip",
+      "expired": false,
+      "digest": "sha256:4034ff356d66a58ae928a33815eac43366e0d4c6244357961ce512592a4cabd0",
+      "created_at": "2026-10-07T12:09:05Z",
+      "updated_at": "2026-10-07T12:09:05Z",
+      "expires_at": "2026-11-06T12:09:04Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11480908789,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MDkwODc4OQ==",
+      "name": "task086-extraction-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 29331,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11480908789",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11480908789/zip",
+      "expired": false,
+      "digest": "sha256:6ef92d7d9150db0bd621ff66313d612e2d72bbe0e3acd8ec0b3266e7dd3c55ec",
+      "created_at": "2026-10-07T12:09:13Z",
+      "updated_at": "2026-10-07T12:09:13Z",
+      "expires_at": "2026-10-10T12:09:12Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11480898849,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MDg5ODg0OQ==",
+      "name": "task035-extraction-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 60423,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11480898849",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11480898849/zip",
+      "expired": false,
+      "digest": "sha256:4c92f624894cea44acb925132a7948e7fa0cc7e094557229ffda2ac6f318b24a",
+      "created_at": "2026-10-07T12:09:14Z",
+      "updated_at": "2026-10-07T12:09:14Z",
+      "expires_at": "2026-11-06T12:09:13Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11480874014,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MDg3NDAxNA==",
+      "name": "task035-regression-3-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 86479,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11480874014",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11480874014/zip",
+      "expired": false,
+      "digest": "sha256:52190c8763f11b88686a2a69a65286faf7ccb66e236f7c58d6cbd8121c3c4e9d",
+      "created_at": "2026-10-07T12:10:20Z",
+      "updated_at": "2026-10-07T12:10:20Z",
+      "expires_at": "2026-11-06T12:10:19Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11480764178,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MDc2NDE3OA==",
+      "name": "task086-quality-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 432,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11480764178",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11480764178/zip",
+      "expired": false,
+      "digest": "sha256:c701449c4710cdec09b6952945bfb9b68f11850724bac5922dade1ff35037ec8",
+      "created_at": "2026-10-07T12:10:26Z",
+      "updated_at": "2026-10-07T12:10:26Z",
+      "expires_at": "2026-10-10T12:10:26Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11480723891,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MDcyMzg5MQ==",
+      "name": "task086-regression-regression-0-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 41182,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11480723891",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11480723891/zip",
+      "expired": false,
+      "digest": "sha256:c3df30dbe33aac3a11d46783f85fd59ea22e30b9355a28495557655f782013de",
+      "created_at": "2026-10-07T12:09:04Z",
+      "updated_at": "2026-10-07T12:09:04Z",
+      "expires_at": "2026-10-10T12:09:03Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    },
+    {
+      "id": 11480604135,
+      "node_id": "MDg6QXJ0aWZhY3QxMTQ4MDYwNDEzNQ==",
+      "name": "task086-regression-regression-3-49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "size_in_bytes": 46645,
+      "url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11480604135",
+      "archive_download_url": "https://api.github.com/repos/kanzakimy0/TravelAssist/actions/artifacts/11480604135/zip",
+      "expired": false,
+      "digest": "sha256:030f790ee7f42fcfedaadbe1c0294a284874a41144259bd20b926a5c201ddd2e",
+      "created_at": "2026-10-07T12:10:19Z",
+      "updated_at": "2026-10-07T12:10:19Z",
+      "expires_at": "2026-10-10T12:10:18Z",
+      "workflow_run": {
+        "id": 37618817480,
+        "repository_id": 1357014865,
+        "head_repository_id": 1357014865,
+        "head_branch": "codex/a-test-baseline-freeze",
+        "head_sha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4"
+      }
+    }
+  ],
+  "artifactFileCount": 8212,
+  "limitations": []
+}

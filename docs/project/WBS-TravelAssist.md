@@ -1,5 +1,42 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-035-A / WBS 9.1 R035-05 派生报告刷新追踪（2026-10-07）
+
+- Canonical Owner A，B执行；#265 / Draft PR #272 / 原实现分支不变。
+- **待审查（R035-05已修复，实现候选完整两类CI通过；最终文档HEAD回执见#265/#272，等待人工验收）**；治理18/18、认证聚焦21/21，R035-01～04未回退。
+- 两轮隔离生成仅推广9项派生JSON；543项绑定输入、552项实际输入及route-enabled业务投影不变，人工裁决/历史证据/数据/规则不变。
+- [本轮Result](../tasks/RESULT-FIX-TASK-035-b-wbs-9-1-r035-05-evidence-refresh-closeout.md) / [QA](../qa/TASK-035/r035-05-closeout/README.md)。实现候选3b3c0359c的完整npm test各3905/3905、强制分片、TASK-086证明链、quality及两类完整聚合通过；本追踪提交的最终HEAD必须另经同等CI并在#265/#272回执确认，未完成前不宣称最终人工验收条件满足。
+- 以下旧阶段追踪保留其历史版本结论；不能当作本轮最终状态。PR Open/Draft，Issue Open，未合并。
+
+## TASK-035-A / WBS 9.1 R035-01～04 核心修复追踪（2026-10-07）
+
+- **R035-01～04 已修复 / 待复核**；Canonical Owner A，B implementation / QA；沿用 #265 / Draft PR #272 / `codex/a-test-baseline-freeze`。
+- 精确实现与本地验证：`116d4c66f2f0aed61527b89c703d24f93ec4a4b2`。新 checkout 无 .artifacts 首次治理18/18，相关聚焦22/22；真实 Windows npm 与完整 local quality（lint/typecheck/format/deploy build/artifact/diff）通过。
+- **WBS 9.1 总体仍阻塞（R035-05，共享 CI / 冻结认证绑定）**；未处理或刷新 TASK-085/086 数据/规则/证据，未重跑全仓/图证明链。当前不具备合并条件，不将局部修复写成整项完成。
+- 详见 [Core fix Result](../tasks/RESULT-FIX-TASK-035-b-wbs-9-1-r035-core-fixes.md) 与 [QA](../qa/TASK-035/phase-2/core-fix/README.md)。PR 保持 Draft、Issue Open，未合并/auto-merge/APPROVE；交付后等待人工复核。
+
+## TASK-035-A / WBS 9.1 Phase 2（2026-10-06）
+
+- **阻塞（TASK-035-A Phase 2；TASK086冻结认证绑定失效；A Owner，B执行；#265/#272）**。原分支正常整合 develop `4888b4d` 与任务发布 `997ce9e`；Canonical Owner 保持 A。
+- 实现与验证范围见 [Phase 2 Task](../tasks/AMENDMENT-TASK-035-b-wbs-9-1-phase2-baseline-integration.md)。候选72fe79f29两个托管事件均3项必跑断言失败；package/workflow字节改变使冻结认证input SHA失效，禁止越界刷新证据。见 [Phase2 Result](../tasks/RESULT-TASK-035-b-wbs-9-1-phase2-baseline-integration.md)。PR #272保持Draft，不置待审查、不完成。
+
+## TASK-035-A / WBS 9.1 测试框架与全局基线（2026-09-10，待审查）
+
+- Owner A / Shared QA；Issue [#265](https://github.com/kanzakimy0/TravelAssist/issues/265)；分支 `codex/a-test-baseline-freeze`；执行基线 `origin/develop@171900698180b80220017c9c4bec551b72792f27`。
+- 已冻结 Node、Contract、Integration、Local DB/Auth runtime、Browser/E2E、Live Provider 的统一分层，补齐 `npm test`、clean-checkout `next typegen` 与共享 Edge smoke；Quality Gate 改用唯一 Node 入口，未安装第二套测试框架。
+- 分支实测 Node baseline 713 项：711 PASS、2 FAIL；两项均为 develop 既有 Asset catalog stale（4 个已移除 design SVG 仍在 inventory / verify-only 非 no-op），保持可见并移交 Asset owner，不以 skip/quarantine 伪装通过。TASK-035 专项 3/3、Route 28/28、DB static 13/13、Local Profile 25/25、Local Auth 16/16、Edge browser 8/8、lint/typecheck/build/deploy local checks 通过。
+- 全仓 format 仍有 31 份既有文档 debt；CI deploy scope 与本 Task 改动格式通过。Security PR #231 与 Observability PR #245 仍为 Open Draft，未复制或预合并；live Ekiworld/Mapbox/OAuth/SMS、Safari/移动真机、云部署按分类 Deferred。
+- WBS 9.1 更新为 **待审查**；实现 `91cd32a`；Draft PR [#272](https://github.com/kanzakimy0/TravelAssist/pull/272) 与 Issue 保持 Review，不自动合并。完整基线：`docs/qa/test-baseline.md`；Result：`docs/tasks/RESULT-TASK-035-a-test-baseline-freeze.md`。
+
+## TASK-035-A / WBS 9.1 Phase 1 审计追踪（2026-10-06）
+
+- Canonical Owner：A / Shared Infrastructure / QA；执行支持：B；沿用 [Issue #265](https://github.com/kanzakimy0/TravelAssist/issues/265) 与 [原实现 PR #272](https://github.com/kanzakimy0/TravelAssist/pull/272)。
+- 开始状态：进行中（#265 / TASK-035-A；B 执行 Phase 1 audit；原实现 PR #272 未合并）。仅审计，不授权 runner/CI 实现。
+- 审计基线：develop `4888b4d507ee75d4f6b9914eb1a8d5661813f64b`；旧 PR head `f157f23ba1b93def006c2703ea8f42dcd9266c01`；任务发布 `4fbbe4a12626b41ddcad15cc9ebf9440698192fc`。
+- 历史保留：原 PR 2026-09-10 的“待审查”、713 cases / 711 PASS / 2 FAIL 是旧分支证据；并非当前 develop 的验收或本阶段实测。原 PR 仍 Open / Draft。
+- 本阶段任务：[Audit-only Amendment](../tasks/AMENDMENT-TASK-035-b-wbs-9-1-phase1-audit-only.md)；审计文档分支 `docs/b-wbs-9-1-phase1-audit-20261006`。父 WBS 9.1 不标记完成。
+- 阶段交付：**进行中（Phase 1 审计成果待人工审查；runner/CI 后续阶段未授权）**。586 候选全部归类，183 测试文件；CI 静态直接/间接选择 156 文件，27 文件未证明覆盖。两次清单生成一致；业务测试、图重建、DB/browser/Provider 未执行。详见 [审计报告](../qa/TASK-035/phase-1/README.md) 与 [本阶段 Result](../tasks/RESULT-TASK-035-b-wbs-9-1-phase1-audit-only.md)。原 PR 历史“待审查”不替代本阶段人工审查。
+
 ## TASK-083-A / WBS 7.4.1 Real 100 POI Canonical Admission（2026-09-27）
 
 - 2026-09-27 历史 checkpoint：Issue #438；[PR #444](https://github.com/kanzakimy0/TravelAssist/pull/444) 当时为 Draft；implementation branch `codex/a-task-083-real-poi-canonical-admission`；WBS 7.4.1 当时为 **A / 待审查**。
@@ -756,6 +793,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-015-A | 8.1 / 8.4 | A | 已完成（基础范围；运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `c14ea30`（验收）；`24dff4e`（合并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Merged |
 | TASK-016-B | 8.2 | B | 已完成（用户验收通过且已合并） | #200 Closed | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema` | 实现 `27a7ba8`；复验 `0eab355`；合并 `d118d4d` | [#209](https://github.com/kanzakimy0/TravelAssist/pull/209) Merged |
 | TASK-018-B | 8.3 | B | 已完成（用户授权现场验收通过且已合并） | #214 Closed | `docs/tasks/TASK-018-b-authentication-core.md`（spec分支） / `docs/tasks/RESULT-TASK-018-b-authentication-core.md` | `feature/b-authentication-core` | 基线 `39890af`；实现 `7e84dd0`；复验 `371191f`；merge `7f805e0` | [#218](https://github.com/kanzakimy0/TravelAssist/pull/218) Merged；621 tests / Auth 16 / RLS 25 PASS；不启动下一 Task |
+| TASK-035-A | 9.1 | A / Shared QA；B 执行 | 待审查（R035-05已修复；候选完整验证通过；最终HEAD回执见#265/#272） | #265 | `docs/tasks/AMENDMENT-TASK-035-b-wbs-9-1-phase2-baseline-integration.md` | `codex/a-test-baseline-freeze` | 当前分支 | [#272](https://github.com/kanzakimy0/TravelAssist/pull/272) Open / Draft |
 | TASK-036-A | 4.47 | A | 已完成（用户验收通过；主体与三个 review invariants 均已合入；P0 设计仍保留 Freeze Candidate 标签） | #291 Open | `docs/tasks/TASK-036-a-trip-planning-contract-foundation.md` / `docs/tasks/RESULT-TASK-036-a-trip-planning-contract-foundation.md` | `codex/a-trip-planning-contract-foundation` | `7a95da6`（主体）；`e8cf842`（review fixes）；`e99b8bb`（合入最新 develop）；`446b5da`（合并） | [#293](https://github.com/kanzakimy0/TravelAssist/pull/293) Merged → `develop` |
 | TASK-037-A | 9.13 | A | 已完成（用户验收授权合并；4,000 次确定性 mutation / fuzz、wire round-trip、规模观测、全仓回归与 GitHub CI 通过；未开始真实 100 POI Pilot） | #297 Open | `docs/tasks/TASK-037-a-planning-contract-soak-fuzz-qa.md`（Task publication branch） / `docs/tasks/RESULT-TASK-037-a-planning-contract-soak-fuzz-qa.md` | `codex/a-planning-contract-soak-qa` | `ebed4d1`（实现与 QA evidence）；`cfe6ef8`（追踪）；`7589f09`（合入最新 develop） | [#298](https://github.com/kanzakimy0/TravelAssist/pull/298) Merged → `develop`（本次授权） |
 | TASK-043-A | 2.18 | A | 待审查（Canonical Master Code Registry Governance Candidate；50/50 Region allocation；不自动完成 4.48） | #311 Open | `docs/tasks/TASK-043-a-master-code-registry.md` / `docs/tasks/RESULT-TASK-043-a-master-code-registry.md` | `codex/a-master-code-registry` | `8f450d4`（实现）；追踪提交见 PR | [#326](https://github.com/kanzakimy0/TravelAssist/pull/326) Draft → `develop` |
@@ -1142,7 +1180,7 @@ TASK-023-A tracking (2026-09-09):
 
 | WBS ID | 工作项                                  | 负责人 | 优先级 | 依赖            | 状态   |
 | ------ | --------------------------------------- | ------ | ------ | --------------- | ------ |
-| 9.1    | 测试框架与全局基线                      | A      | P1     | 2.9,2.10        | 未开始 |
+| 9.1 | 测试框架与全局基线 | A | P1 | 2.9,2.10 | 待审查（R035-05已修复；候选完整验证通过；最终HEAD回执见#265/#272；A Owner，B执行） |
 | 9.2    | Planner / Map / Route 单元与集成测试    | A      | P1     | 4.x,7.x         | 未开始 |
 | 9.3    | AI 集成测试                             | A      | P1     | 6.x             | 未开始 |
 | 9.4    | 主系统 E2E                              | A      | P1     | 3.x,4.x,6.x,7.x | 未开始 |

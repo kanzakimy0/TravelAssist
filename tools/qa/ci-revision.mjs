@@ -9,12 +9,17 @@ export function classifyCiRevision({
   checkoutSha,
   checkoutParents = [],
   ref,
+  expectedHead,
 }) {
   const valid = (x) => typeof x === "string" && /^[0-9a-f]{40}$/.test(x);
   const branchHeadSha =
     eventName === "pull_request" ? event.pull_request?.head?.sha : eventSha;
   if (!valid(branchHeadSha) || !valid(checkoutSha))
     throw Error("CI_REVISION_SHA_MISSING_OR_INVALID");
+  if (expectedHead && !valid(expectedHead))
+    throw Error("EXPECTED_HEAD_INVALID");
+  if (expectedHead && expectedHead !== checkoutSha)
+    throw Error("EXPECTED_HEAD_MISMATCH");
   const direct = branchHeadSha === checkoutSha;
   if (
     eventName === "pull_request" &&
@@ -55,6 +60,7 @@ export function recordCiRevision(env = process.env) {
       .split(" ")
       .filter(Boolean),
     ref: env.GITHUB_REF,
+    expectedHead: env.EXPECTED_HEAD,
   });
   const file = path.resolve(".artifacts/ci/revision.json");
   fs.mkdirSync(path.dirname(file), { recursive: true });

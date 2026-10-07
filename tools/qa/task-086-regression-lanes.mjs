@@ -59,7 +59,10 @@ export function runRegressionLane(lane) {
   const inventory = regressionInventory();
   assert.ok(inventory.lanes[lane]?.length, "Unknown or empty regression lane");
   const startedAt = new Date().toISOString();
-  const directory = path.join(root, ".artifacts/ci");
+  const directory = process.env.TASK035_LANE_OUTPUT
+    ? path.resolve(process.env.TASK035_LANE_OUTPUT)
+    : path.join(root, ".artifacts/ci");
+  assert.ok(directory.startsWith(path.join(root, ".artifacts") + path.sep));
   fs.mkdirSync(directory, { recursive: true });
   fs.writeFileSync(
     path.join(directory, "regression-inventory.json"),
@@ -70,6 +73,14 @@ export function runRegressionLane(lane) {
     "./tests/register-route-ts.mjs",
     "--test",
     "--test-concurrency=1",
+    ...(process.env.TASK035_EVENTS_FILE
+      ? [
+          "--test-reporter=tap",
+          "--test-reporter-destination=stdout",
+          "--test-reporter=./tools/qa/task-035-reporter.mjs",
+          "--test-reporter-destination=" + process.env.TASK035_EVENTS_FILE,
+        ]
+      : []),
     ...inventory.lanes[lane],
   ];
   const timeoutMs = lane === "rebuild" ? 15 * 60000 : 25 * 60000;

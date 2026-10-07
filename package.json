@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "test": "node tools/qa/task-035-baseline.mjs",
+    "qa:browser:smoke": "node tools/qa/task-035-browser-smoke.mjs",
     "test:trip-plan": "node --test tests/task-019-trip-plan.test.mjs",
     "test:ai-runtime": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test tests/task-076-ai-runtime.test.mjs",
     "test:ai-runtime:bundle": "node tests/task-076-ai-client-bundle.mjs",
@@ -95,7 +97,9 @@
     "test:profile-ui": "node --import ./tests/register-route-ts.mjs --test tests/task-060-profile-ui.test.mjs",
     "test:profile-ui:local": "node --import ./tests/register-route-ts.mjs --test tests/task-060-profile-ui.runtime.mjs",
     "test:trip-library-ui": "node --import ./tests/register-route-ts.mjs --test tests/task-061-trip-library-live.test.mjs",
-    "test:trip-library-ui:local": "node --import ./tests/register-route-ts.mjs --test tests/task-061-trip-library-live.runtime.mjs"
+    "test:trip-library-ui:local": "node --import ./tests/register-route-ts.mjs --test tests/task-061-trip-library-live.runtime.mjs",
+    "test:baseline:inventory": "node tools/qa/task-035-inventory.mjs",
+    "test:baseline:lane": "node tools/qa/task-035-baseline.mjs"
   },
   "overrides": {
     "@esbuild-kit/core-utils": {

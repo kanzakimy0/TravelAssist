@@ -3,7 +3,7 @@ name: Quality gate
 on:
   pull_request:
   push:
-    branches: [develop]
+    branches: [develop, codex/a-test-baseline-freeze]
   workflow_dispatch:
     inputs:
       task086FinalCloseout:
@@ -20,6 +20,9 @@ on:
         options: ["35", "90"]
         default: "35"
 
+env:
+  EXPECTED_HEAD: ${{ inputs.expectedHead || '' }}
+
 permissions:
   contents: read
 
@@ -29,7 +32,7 @@ concurrency:
 
 jobs:
   verify:
-    if: ${{ !(inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop') }}
+    if: ${{ !(inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze') }}
     name: Install, test and build
     runs-on: ubuntu-latest
     timeout-minutes: ${{ fromJSON(inputs.validationTimeoutMinutes || '35') }}
@@ -45,12 +48,17 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
       - name: Record branch HEAD and actual checkout revision
         run: node tools/qa/ci-revision.mjs
 
       - name: Install locked dependencies
         run: npm ci
+
+      - run: npm run test:baseline:inventory -- --check
 
       - name: Validate local deployment contract
         run: npm run deploy:validate:local
@@ -59,16 +67,16 @@ jobs:
         env:
           TASK086_VERIFY_PUBLISHED: ${{ inputs.task086FinalCloseout && '1' || '0' }}
           TASK086_REBUILD_RECEIPT: ${{ inputs.task086FinalCloseout && format('{0}/task086-deterministic-rebuild.json', runner.temp) || '' }}
-        run: node --import ./tests/register-route-ts.mjs --test "tests/*.test.mjs"
+        run: npm test
 
-      - name: Retain final-closeout revision and deterministic proof
-        if: always() && inputs.task086FinalCloseout
+      - name: Retain applicable revision and test receipts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: task086-final-closeout-${{ github.sha }}
           path: |
             .artifacts/ci/revision.json
-            ${{ runner.temp }}/task086-deterministic-rebuild.json
+            .artifacts/task-035/candidate/
           if-no-files-found: error
           include-hidden-files: true
 
@@ -92,7 +100,7 @@ jobs:
 
   regression:
     name: Full Node regression / ${{ matrix.lane }}
-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     strategy:
@@ -108,6 +116,9 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Verify and record actual event checkout
         env:
           EXPECTED_HEAD: ${{ inputs.expectedHead }}
@@ -115,7 +126,8 @@ jobs:
           test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           node tools/qa/ci-revision.mjs
       - run: npm ci
-      - run: node tools/qa/task-086-regression-lanes.mjs ${{ matrix.lane }}
+      - run: npm run test:baseline:inventory -- --check
+      - run: npm run test:baseline:lane -- --lane ${{ matrix.lane }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -126,9 +138,19 @@ jobs:
           include-hidden-files: true
           retention-days: 3
 
+      - name: Retain TASK-035 global receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: task035-${{ matrix.lane }}-${{ github.sha }}
+          path: .artifacts/task-035/candidate/
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 30
+
   graph:
     name: Clean graph / ${{ matrix.lane }}
-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     strategy:
@@ -144,6 +166,9 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Verify and record actual event checkout
         env:
           EXPECTED_HEAD: ${{ inputs.expectedHead }}
@@ -151,7 +176,8 @@ jobs:
           test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           node tools/qa/ci-revision.mjs
       - run: npm ci
-      - run: timeout --signal=TERM --kill-after=30s 2400s node tools/transport/task-086-validation.mjs ${{ matrix.lane }} .artifacts/task086-lanes
+      - run: npm run test:baseline:inventory -- --check
+      - run: node tools/qa/task-035-baseline.mjs --job graph-${{ matrix.lane }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -163,9 +189,19 @@ jobs:
           include-hidden-files: true
           retention-days: 3
 
+      - name: Retain TASK-035 global receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: task035-graph-${{ matrix.lane }}-${{ github.sha }}
+          path: .artifacts/task-035/candidate/
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 30
+
   extraction:
     name: Retained raw source reproduction
-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -177,6 +213,9 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Verify and record actual event checkout
         env:
           EXPECTED_HEAD: ${{ inputs.expectedHead }}
@@ -184,7 +223,8 @@ jobs:
           test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           node tools/qa/ci-revision.mjs
       - run: npm ci
-      - run: timeout --signal=TERM --kill-after=30s 1200s node tools/transport/task-086-validation.mjs extract .artifacts/task086-lanes
+      - run: npm run test:baseline:inventory -- --check
+      - run: node tools/qa/task-035-baseline.mjs --job extraction
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -196,10 +236,20 @@ jobs:
           include-hidden-files: true
           retention-days: 3
 
+      - name: Retain TASK-035 global receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: task035-extraction-${{ github.sha }}
+          path: .artifacts/task-035/candidate/
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 30
+
   resume:
     name: Stable complete graph resume
     needs: graph
-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -211,6 +261,9 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Verify and record actual event checkout
         env:
           EXPECTED_HEAD: ${{ inputs.expectedHead }}
@@ -218,11 +271,12 @@ jobs:
           test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           node tools/qa/ci-revision.mjs
       - run: npm ci
+      - run: npm run test:baseline:inventory -- --check
       - uses: actions/download-artifact@v4
         with:
           name: task086-graph-first-${{ github.sha }}
           path: .artifacts
-      - run: timeout --signal=TERM --kill-after=30s 2400s node tools/transport/task-086-validation.mjs resume .artifacts/task086-lanes
+      - run: node tools/qa/task-035-baseline.mjs --job resume
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -234,10 +288,20 @@ jobs:
           include-hidden-files: true
           retention-days: 3
 
+      - name: Retain TASK-035 global receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: task035-resume-${{ github.sha }}
+          path: .artifacts/task-035/candidate/
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 30
+
   proof:
     name: Deterministic, recovery and published-artifact proof
     needs: [graph, extraction, resume]
-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -249,6 +313,9 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Verify and record actual event checkout
         env:
           EXPECTED_HEAD: ${{ inputs.expectedHead }}
@@ -256,6 +323,7 @@ jobs:
           test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           node tools/qa/ci-revision.mjs
       - run: npm ci
+      - run: npm run test:baseline:inventory -- --check
       - uses: actions/download-artifact@v4
         with:
           pattern: task086-graph-*-${{ github.sha }}
@@ -274,7 +342,13 @@ jobs:
           TASK086_VERIFIED_LANES_DIR: ${{ github.workspace }}/.artifacts/task086-lanes
           TASK086_VERIFY_PUBLISHED: "1"
           TASK086_REBUILD_RECEIPT: ${{ github.workspace }}/.artifacts/task086-lanes/deterministic-recovery-proof.json
-        run: node tools/qa/task-086-regression-lanes.mjs rebuild
+        run: npm run test:baseline:lane -- --lane rebuild
+      - name: Run the complete unified entry with current-head graph proof
+        env:
+          TASK086_VERIFIED_LANES_DIR: ${{ github.workspace }}/.artifacts/task086-lanes
+          TASK086_VERIFY_PUBLISHED: "1"
+          TASK086_REBUILD_RECEIPT: ${{ github.workspace }}/.artifacts/task086-lanes/deterministic-recovery-proof.json
+        run: npm test
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -287,9 +361,19 @@ jobs:
           include-hidden-files: true
           retention-days: 3
 
+      - name: Retain TASK-035 global receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: task035-rebuild-${{ github.sha }}
+          path: .artifacts/task-035/candidate/
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 30
+
   quality:
     name: Lint, types, formatting and build
-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}
+    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -301,6 +385,9 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Verify and record actual event checkout
         env:
           EXPECTED_HEAD: ${{ inputs.expectedHead }}
@@ -308,13 +395,8 @@ jobs:
           test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           node tools/qa/ci-revision.mjs
       - run: npm ci
-      - run: npm run deploy:validate:local
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm run format:check:deploy
-      - run: npm run deploy:build:local
-      - run: npm run deploy:verify-artifact
-      - run: git diff --check
+      - run: npm run test:baseline:inventory -- --check
+      - run: node tools/qa/task-035-baseline.mjs --job quality
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -325,13 +407,34 @@ jobs:
           include-hidden-files: true
           retention-days: 3
 
+      - name: Retain TASK-035 global receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: task035-quality-${{ github.sha }}
+          path: .artifacts/task-035/candidate/
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 30
+
   closeout-quality-gate:
     name: TASK086 exact-head Quality Gate
     needs: [regression, graph, extraction, resume, proof, quality]
-    if: ${{ always() && (inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop') }}
+    if: ${{ always() && (inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze') }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: node tools/qa/ci-revision.mjs
       - uses: actions/download-artifact@v4
         if: ${{ needs.proof.result == 'success' }}
         with:
@@ -400,6 +503,20 @@ jobs:
           output.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
           print(json.dumps({k:receipt[k] for k in ['status','actualCheckoutSha','fullRegressionFiles','batchCount','executionBlockers','qualityGateUrl']}))
           PY
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: task035-*-${{ github.sha }}
+          path: .artifacts/task035-collected
+      - name: Validate complete global receipts
+        run: node tools/qa/task-035-receipt.mjs .artifacts/task035-collected
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: task035-final-${{ github.sha }}
+          path: .artifacts/ci/task-035-final-receipt.json
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 30
       - uses: actions/upload-artifact@v4
         with:
           name: task086-final-exact-head-${{ github.sha }}
