@@ -261,3 +261,32 @@ Final counts and timings are recorded in `RESULT-TASK-035-a-test-baseline-freeze
 | Many historical Planner tests overlap behavior and increase loader warnings/runtime                 | Accepted duplication; no silent deletion                    | A / Planner: consolidate only when preserving named regression coverage and Result traceability           |
 
 WBS 9.1 can move to `待审查` because the framework, entry point, inventory and truthful non-pass taxonomy are frozen. It cannot move to `已完成` until the Draft PR is merged and the user accepts it. The two Asset failures do not become PASS merely because the governance work is complete.
+
+## R035-01–04 core fix execution model (2026-10-07)
+
+The current inventory is `docs/qa/TASK-035/phase-2/core-fix/test-inventory.json`.
+`core-fix/execution-model.json` is an append-only review supplement to the original
+Phase 2 policy: it binds the updated TASK-035 governance test to its previous hash
+and records the exact path/hash of the reviewed top-level assertion script.
+The original policy, inventory, and validation evidence remain historical inputs.
+Selection and TASK-086 lane partitioning are unchanged.
+
+On Node v24, registered tests contribute their file-summary counters. Suite
+containers are recorded separately; nested registered tests count once. The
+unchanged `tests/task-086-rights-binding.test.mjs` has top-level assertions and a
+`node:test` teardown hook, so its successful zero-registration file summary
+contributes one file test to the final summary. No other zero-registration file
+is implicitly accepted. Selection, source hash, successful process completion,
+file summaries, final totals, and receipt counts must all agree. Missing,
+negative, fractional, contradictory, skipped, cancelled, failed, or todo counts
+fail validation. Child stdout/TAP never contributes additional tests.
+
+On Windows the controlled npm launcher executes the installed `npm-cli.js` with
+Node and separate argv entries. It records both the logical command and spawned
+argv plus the CLI hash; it does not enable a general shell. POSIX retains direct
+spawn. The governance import check accepts a checkout without `.artifacts` and
+also checks an existing sentinel in an isolated mirror.
+
+These four fixes require independent review. WBS 9.1 remains blocked by R035-05
+(shared integration/frozen certification binding); the fixes do not refresh or
+weaken TASK-086 evidence or imply a complete baseline PASS.

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "nodeMajor": 24,
+  "canonicalOwner": "A",
+  "reviewTask": "19c84116f1865866c61ee84a0858b0c0d557af46",
+  "requiredUpdates": [
+    {
+      "path": "tests/task-035-runner.test.mjs",
+      "previousSha256": "50c829a121b3982eab3344e423baec2574e52aa7f2bd8a25ff98a421b260cd9f",
+      "sha256": "195835d6e3a721a73bbf9184b2d9c9654b7aa5df84914e56e1b0be1e6ad358e3",
+      "reason": "R035-01 through R035-04 focused governance regressions only"
+    }
+  ],
+  "assertionScripts": [
+    {
+      "path": "tests/task-086-rights-binding.test.mjs",
+      "sha256": "164e49e38f1fa2a825a6a076b32da3fd95a5854ed9f9b6035ce8a5678f296211",
+      "reason": "Reviewed top-level assertions with node:test after hook, offline mocked acquisition; unchanged original business assertions"
+    }
+  ]
+}

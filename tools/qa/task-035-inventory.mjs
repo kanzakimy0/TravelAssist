@@ -10,10 +10,22 @@ export const root = path.resolve(
   "../..",
 );
 export const qa = "docs/qa/TASK-035/phase-2";
+export const modelPath = `${qa}/core-fix/execution-model.json`;
+export const inventoryPath = `${qa}/core-fix/test-inventory.json`;
 export const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 export const readJson = (file) => JSON.parse(fs.readFileSync(file, "utf8"));
 export const fileHash = (file) =>
   hash(fs.readFileSync(path.resolve(root, file)));
+// Append-only review supplement: the original Phase 2 policy stays immutable.
+export function executionModel() {
+  return readJson(path.join(root, modelPath));
+}
+export function isAssertionScript(file) {
+  const entry = executionModel().assertionScripts.find((e) => e.path === file);
+  if (!entry) return false;
+  assert.equal(fileHash(file), entry.sha256, "ASSERTION_SCRIPT_HASH_DRIFT");
+  return true;
+}
 export function validatePartition(files, lanes) {
   assert.ok(files.length, "EMPTY_SELECTION");
   assert.equal(new Set(files).size, files.length, "DUPLICATE_FILE");
@@ -39,6 +51,26 @@ export function inventory() {
   const legacy = regressionInventory();
   validatePartition(legacy.files, legacy.lanes);
   const policy = readJson(path.join(root, qa, "execution-policy.json"));
+  const supplement = executionModel();
+  for (const update of supplement.requiredUpdates) {
+    assert.ok(
+      [
+        "tests/task-035-runner.test.mjs",
+        "tests/task-035-test-baseline.test.mjs",
+      ].includes(update.path),
+      "UNRELATED_REVIEW_UPDATE",
+    );
+    const previous = policy.required.find((e) => e.path === update.path);
+    assert.equal(previous?.sha256, update.previousSha256, "REVIEW_UPDATE_BASE");
+    previous.sha256 = update.sha256;
+  }
+  for (const script of supplement.assertionScripts) {
+    assert.equal(
+      policy.required.find((e) => e.path === script.path)?.sha256,
+      script.sha256,
+      "UNREVIEWED_ASSERTION_SCRIPT",
+    );
+  }
   const entries = legacy.files.map((file) => {
     const review = policy.required.find((r) => r.path === file);
     assert.ok(review, `UNREVIEWED_REQUIRED_ENTRY: ${file}`);
@@ -46,6 +78,9 @@ export function inventory() {
     return {
       path: file,
       sha256: fileHash(file),
+      executionType: isAssertionScript(file)
+        ? "top-level-assertion"
+        : "registered-node-test",
       lane: Object.keys(legacy.lanes).find((lane) =>
         legacy.lanes[lane].includes(file),
       ),
@@ -101,7 +136,7 @@ export function inventory() {
 export function checkInventory() {
   const actual = inventory();
   assert.deepEqual(
-    readJson(path.join(root, qa, "test-inventory.json")),
+    readJson(path.join(root, inventoryPath)),
     actual,
     "INVENTORY_DRIFT",
   );
@@ -113,7 +148,7 @@ if (
 ) {
   if (process.argv.includes("--write"))
     fs.writeFileSync(
-      path.join(root, qa, "test-inventory.json"),
+      path.join(root, inventoryPath),
       JSON.stringify(inventory(), null, 2) + "\n",
     );
   else {

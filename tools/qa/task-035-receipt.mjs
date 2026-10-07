@@ -10,8 +10,12 @@ import {
   fileHash,
   readJson,
   checkInventory,
+  inventoryPath,
+  modelPath,
+  isAssertionScript,
 } from "./task-035-inventory.mjs";
 import { classifyCiRevision } from "./ci-revision.mjs";
+import { resolveCommand } from "./task-035-process.mjs";
 
 export function expectedHead(expected, actual) {
   assert.ok(
@@ -20,33 +24,107 @@ export function expectedHead(expected, actual) {
   );
   assert.ok(!expected || expected === actual, "EXPECTED_HEAD_MISMATCH");
 }
+const countKeys = [
+  "tests",
+  "passed",
+  "failed",
+  "cancelled",
+  "skipped",
+  "todo",
+  "topLevel",
+  "suites",
+];
+export function verifyCounts(counts) {
+  for (const key of countKeys)
+    assert.ok(
+      Number.isSafeInteger(counts?.[key]) && counts[key] >= 0,
+      `INVALID_COUNT:${key}`,
+    );
+  assert.equal(
+    counts.tests,
+    counts.passed +
+      counts.failed +
+      counts.cancelled +
+      counts.skipped +
+      counts.todo,
+    "COUNT_TOTAL_MISMATCH",
+  );
+  assert.ok(
+    counts.topLevel <= counts.tests + counts.suites,
+    "COUNT_TOP_LEVEL_MISMATCH",
+  );
+}
 export function verifyEvents(text, files, cwd) {
+  assert.ok(files.length, "EMPTY_SELECTION");
   const events = text.trim().split("\n").filter(Boolean).map(JSON.parse);
   const summaries = events.filter((e) => e.type === "test:summary");
   const final = summaries.filter((e) => !e.file);
   assert.equal(final.length, 1, "MISSING_OR_DUPLICATE_FINAL_SUMMARY");
   const perFile = summaries.filter((e) => e.file);
-  const selected = files.map((f) => path.resolve(cwd, f)).sort();
+  const paths = /^[a-z]:[\\/]|^\\\\/i.test(cwd) ? path.win32 : path.posix;
+  const selected = files.map((f) => paths.resolve(cwd, f)).sort();
+  assert.equal(
+    new Set(selected).size,
+    selected.length,
+    "DUPLICATE_SELECTED_FILE",
+  );
   assert.deepEqual(
-    perFile.map((e) => path.resolve(e.file)).sort(),
+    perFile.map((e) => paths.resolve(e.file)).sort(),
     selected,
     "EXECUTED_FILE_SET_MISMATCH",
   );
   for (const summary of [...perFile, ...final]) {
+    verifyCounts(summary.counts);
+    assert.equal(
+      summary.success,
+      summary.counts.failed === 0 && summary.counts.cancelled === 0,
+      "SUCCESS_COUNT_MISMATCH",
+    );
     assert.equal(summary.success, true, "TEST_FAILURE");
-    assert.ok(summary.counts.tests > 0, "ZERO_TESTS");
     for (const key of ["skipped", "todo", "cancelled", "failed"])
-      assert.equal(
-        summary.counts[key] ?? 0,
-        0,
-        `UNEXPECTED_${key.toUpperCase()}`,
-      );
+      assert.equal(summary.counts[key], 0, `UNEXPECTED_${key.toUpperCase()}`);
   }
+  // Node v24 excludes suite containers from tests and includes nested tests once.
+  // A reviewed zero-registration script contributes one synthetic file test only
+  // to the final summary. Never infer that execution model from zero counts alone.
+  const expected = Object.fromEntries(countKeys.map((key) => [key, 0]));
+  for (const summary of perFile) {
+    const file = paths
+      .relative(cwd, paths.resolve(summary.file))
+      .replaceAll("\\", "/");
+    if (isAssertionScript(file)) {
+      for (const key of countKeys)
+        assert.equal(summary.counts[key], 0, "ASSERTION_SCRIPT_MODEL_DRIFT");
+      expected.tests++;
+      expected.passed++;
+      expected.topLevel++;
+    } else {
+      assert.ok(summary.counts.tests > 0, "ZERO_TESTS");
+      assert.ok(summary.counts.topLevel > 0, "MISSING_TOP_LEVEL_TEST");
+      for (const key of countKeys) expected[key] += summary.counts[key];
+    }
+  }
+  for (const key of countKeys)
+    assert.equal(
+      final[0].counts[key],
+      expected[key],
+      `FINAL_COUNT_MISMATCH:${key}`,
+    );
   return {
-    ...final[0].counts,
+    ...expected,
     definition:
-      "Node final summary, excludes suite containers; nested child TAP/stdout is not added. Indirect Python/projection assertions are represented by parent tests.",
+      "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added.",
   };
+}
+export function verifyReceiptCounts(text, receipt) {
+  verifyCounts(receipt.counts);
+  const counts = verifyEvents(
+    text,
+    receipt.files.map((e) => e.path),
+    receipt.cwd,
+  );
+  assert.deepEqual(receipt.counts, counts, "COUNT_MISMATCH");
+  return counts;
 }
 const git = (...args) =>
   execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
@@ -74,6 +152,8 @@ export function context(env = process.env) {
     ".github/workflows/release-rehearsal.yml",
     `${qa}/execution-policy.json`,
     `${qa}/test-inventory.json`,
+    modelPath,
+    inventoryPath,
     ...fs
       .readdirSync(path.join(root, "tools/qa"))
       .filter((x) => x.startsWith("task-035-") && x.endsWith(".mjs"))
@@ -115,7 +195,7 @@ export function context(env = process.env) {
     inputHashes: hashes,
     protectedWorktreeClean: true,
     inputDigest: hash(JSON.stringify(hashes)),
-    inventoryHash: fileHash(`${qa}/test-inventory.json`),
+    inventoryHash: fileHash(inventoryPath),
     runId: env.GITHUB_RUN_ID ?? "local",
     runAttempt: env.GITHUB_RUN_ATTEMPT ?? "1",
     job: env.GITHUB_JOB ?? "local",
@@ -128,14 +208,8 @@ export function versions() {
   const python =
     process.env.PYTHON ?? (process.platform === "win32" ? "python" : "python3");
   const p = spawnSync(python, ["--version"], { encoding: "utf8" });
-  const npm =
-    process.platform === "win32"
-      ? spawnSync(
-          process.env.ComSpec ?? "cmd.exe",
-          ["/d", "/s", "/c", "npm --version"],
-          { encoding: "utf8" },
-        )
-      : spawnSync("npm", ["--version"], { encoding: "utf8" });
+  const launch = resolveCommand("npm", ["--version"]);
+  const npm = spawnSync(launch.command, launch.args, { encoding: "utf8" });
   assert.equal(p.status, 0, "PYTHON_UNAVAILABLE");
   assert.equal(npm.status, 0, "NPM_UNAVAILABLE");
   return {
@@ -247,6 +321,7 @@ export function verifyReceiptShape(receipt) {
       "MISSING_TEST_EVIDENCE",
     );
     assert.equal(receipt.countStatus, "VERIFIED", "UNVERIFIED_COUNTS");
+    verifyCounts(receipt.counts);
   } else if (
     ["graph-first", "graph-second", "extraction", "resume"].includes(
       receipt.lane,
@@ -295,12 +370,7 @@ export function aggregateDirectory(directory) {
       const events = fs.readFileSync(path.join(base, "events.jsonl"));
       assert.equal(hash(events), r.eventsSha256, "EVENT_HASH_MISMATCH");
       // Cross-host absolute paths use the recorded cwd to normalize the same file set.
-      const counts = verifyEvents(
-        events.toString(),
-        r.files.map((e) => e.path),
-        r.cwd,
-      );
-      assert.deepEqual(counts, r.counts, "COUNT_MISMATCH");
+      verifyReceiptCounts(events.toString(), r);
       assert.deepEqual(
         r.files,
         selected.entries
