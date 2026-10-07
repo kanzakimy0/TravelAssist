@@ -1,0 +1,946 @@
+{
+  "schemaVersion": 1,
+  "calls": [
+    {
+      "function": "certify",
+      "model": "pass-A / retained-only",
+      "sourceSupplements": "docs/qa/TASK-086/readmittable-closeout/reviewed-evidence.json#/sourceSupplements",
+      "capabilityReviews": [],
+      "reason": "Recompute engine-only pass before ODbL capability supplement"
+    },
+    {
+      "function": "generateCloseout",
+      "model": "final",
+      "sourceSupplements": "docs/qa/TASK-086/readmittable-closeout/reviewed-evidence.json#/sourceSupplements",
+      "capabilityReviews": "docs/qa/TASK-086/certification-engine-repair/capability-reviews.json#/reviews",
+      "reason": "Unmodified generator uses these reviewed defaults"
+    },
+    {
+      "function": "generateRepairReport",
+      "model": "pass-A versus final",
+      "reason": "Two separately regenerated directories, never shared final cache"
+    }
+  ],
+  "runs": [
+    {
+      "round": "first",
+      "startedAt": "2026-10-07T11:57:01.895Z",
+      "endedAt": "2026-10-07T11:58:34.409Z",
+      "passADirectory": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\first\\pass-a",
+      "finalDirectory": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\first\\final",
+      "closeoutDirectory": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\first\\closeout",
+      "retainedResult": {
+        "status": "BLOCKED_CERTIFIED_NATIONAL_BACKBONE",
+        "certifiedNodes": 4060,
+        "certifiedEdges": 9407,
+        "certifiedTransfers": 1072,
+        "blockers": 7,
+        "bindingSha256": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82"
+      },
+      "finalResult": {
+        "status": "BLOCKED_CERTIFIED_NATIONAL_BACKBONE",
+        "certifiedNodes": 4061,
+        "certifiedEdges": 9409,
+        "certifiedTransfers": 1072,
+        "blockers": 6,
+        "bindingSha256": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82"
+      },
+      "repairSummary": {
+        "schemaVersion": 1,
+        "inputSha256": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+        "before": {
+          "node": 1174,
+          "edge": 2460,
+          "transfer": 37
+        },
+        "passA": {
+          "node": 4060,
+          "edge": 9407,
+          "transfer": 1072
+        },
+        "after": {
+          "node": 4061,
+          "edge": 9409,
+          "transfer": 1072
+        },
+        "engineOnlyRecovered": {
+          "node": 2886,
+          "edge": 6947,
+          "transfer": 1035
+        },
+        "additionalEvidenceRecovered": {
+          "node": 1,
+          "edge": 2,
+          "transfer": 0
+        },
+        "disabled": {
+          "node": 0,
+          "edge": 0,
+          "transfer": 0
+        },
+        "fullPreviousQuarantineEvaluated": 11556,
+        "allFrozenCandidatesRecomputed": true,
+        "coverageRequirementsPreserved": true,
+        "nationalCorridors": [
+          {
+            "id": "東京:京都",
+            "label": "東京 ↔ 京都",
+            "status": "PASS"
+          },
+          {
+            "id": "東京:大阪",
+            "label": "東京 ↔ 大阪",
+            "status": "PASS"
+          },
+          {
+            "id": "東京:河口湖",
+            "label": "東京 ↔ 河口湖",
+            "status": "PASS"
+          },
+          {
+            "id": "大阪:京都",
+            "label": "大阪 ↔ 京都",
+            "status": "PASS"
+          },
+          {
+            "id": "大阪:三ノ宮",
+            "label": "大阪 ↔ 三ノ宮",
+            "status": "PASS"
+          },
+          {
+            "id": "大阪:奈良",
+            "label": "大阪 ↔ 奈良",
+            "status": "PASS"
+          },
+          {
+            "id": "博多:熊本",
+            "label": "博多 ↔ 熊本",
+            "status": "PASS"
+          },
+          {
+            "id": "札幌:旭川",
+            "label": "札幌 ↔ 旭川",
+            "status": "PASS"
+          },
+          {
+            "id": "札幌:函館",
+            "label": "札幌 ↔ 函館",
+            "status": "PASS"
+          },
+          {
+            "id": "national:札幌:東京",
+            "label": "Hokkaido ↔ Honshu",
+            "status": "PASS"
+          },
+          {
+            "id": "national:仙台:東京",
+            "label": "Tohoku ↔ Kanto",
+            "status": "PASS"
+          },
+          {
+            "id": "national:東京:名古屋",
+            "label": "Kanto ↔ Chubu / Tokyo ↔ Nagoya",
+            "status": "PASS"
+          },
+          {
+            "id": "national:東京:大阪",
+            "label": "Tokyo ↔ Kansai",
+            "status": "PASS"
+          },
+          {
+            "id": "national:大阪:広島",
+            "label": "Kansai ↔ Chugoku",
+            "status": "PASS"
+          },
+          {
+            "id": "national:岡山:高松",
+            "label": "Honshu ↔ Shikoku",
+            "status": "PASS"
+          },
+          {
+            "id": "national:広島:博多",
+            "label": "Chugoku ↔ Kyushu",
+            "status": "PASS"
+          }
+        ],
+        "graphIntegrity": {
+          "danglingReferenceCount": 0,
+          "selfEdgeCount": 0,
+          "duplicateEdgeCount": 0,
+          "duplicateCanonicalIdentityCount": 0,
+          "invalidDirectionCount": 0,
+          "impossibleModeTransitionCount": 0,
+          "invalidEndpointSerializationCount": 0,
+          "orphanNodeIds": [],
+          "danglingPatternReferenceCount": 0,
+          "quarantinedMetricCount": 0,
+          "invalidOperatorLineOrAccessRelationshipCount": 0,
+          "invalidTransferCount": 0,
+          "orphanNodeCount": 0,
+          "isolatedComponentCount": 16,
+          "componentCount": 17,
+          "unexpectedDisconnectedComponents": 16,
+          "serializationRoundTrip": "PASS",
+          "projectionReplaySha256": "3caabd50406d7082a379e29e068eb5e4756788d351c45bf6821e84eab8510bf0",
+          "deterministicProjection": "REQUIRES_SECOND_IDENTICAL_EXECUTION_COMPARISON",
+          "fullGeneratorReplay": "SEPARATE_CURRENT_INPUT_REGRESSION_RECEIPT_REQUIRED"
+        },
+        "sourceCounts": {
+          "certified": 734,
+          "remaining": 0
+        },
+        "disabledReasons": {
+          "edge": {
+            "QUARANTINED -> CERTIFIED": 6949
+          },
+          "node": {
+            "QUARANTINED -> CERTIFIED": 2887
+          },
+          "source_dependency": {
+            "QUARANTINED -> CERTIFIED": 685
+          },
+          "transfer": {
+            "QUARANTINED -> CERTIFIED": 1035
+          }
+        },
+        "sourceFamiliesRecovered": 236,
+        "finalCI": "REQUIRES_CURRENT_EXACT_HEAD_REMOTE_RESULT",
+        "tokenUsage": "UNKNOWN",
+        "billing": "UNKNOWN",
+        "newAgents": 0,
+        "trafficDataChanged": false,
+        "remainingOriginalObligations": 6,
+        "originalNationalAcceptance": "BLOCKED_CERTIFIED_NATIONAL_BACKBONE",
+        "gatewayConnectivity": {
+          "total": 86,
+          "pass": 86
+        }
+      },
+      "hashes": {
+        "closeout": {
+          "closeout-summary.json": "970c4da76eeb9d56518e0489618acc2b9bcf6c47339d10e21b85e391c4d044a5",
+          "root-dispositions.jsonl": "a6f7f5793ffd7c2015b0a6a1e46f64c269c452b684b4318b8aa38cff84bb563a",
+          "route-disabled.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "route-enabled/edges.jsonl": "7763110dfc3b99996a8c4f41953d51e0c45b477f32ab4544c1518a735a1db246",
+          "route-enabled/evidence.jsonl": "6cd24cf376efbd510c9a8beadeac16b7566f9421d32f6a0811ed206342f7a6c8",
+          "route-enabled/nodes.jsonl": "62d5ebe7442cb4d8c281c6caf464be47c70ff4cd6dac483525ca0a14b47e69da",
+          "route-enabled/service-patterns.jsonl": "f028df3f575827c481e3d1fdf250b692c88530846d33eb19a934a8bc8c7f18cb",
+          "route-enabled/sources.json": "5bfa7ae910a2a98677c2f92e45b94cc81980cf1703919d070d275581d6fa7f24",
+          "route-enabled/transfers.jsonl": "4f1d2d63746032b3d79bf7bccf1b27d780259b22d85bf5eb9978caf6a7ae67b3",
+          "routing-eligibility.json": "bcfa8662044839210bd8c75842d8ab82d7333d19818e5b7663661c98946c29e3",
+          "terminal-entities.jsonl-index.json": "8c81aad1a382a0fed3cbe65e1b63aa89adc2804ddf0ef4acb73e24008615244a"
+        },
+        "repair": {
+          "certification-engine-repair-audit.json": "b3c34ce46e4d68eb0602c1bfe3cfe179cb38939f7440f850d4a0adc746253751",
+          "certification-engine-repair-audit.md": "58159478e85b4a962d56527daea088dd7a07ed179392fc408c870ac2688f5b50",
+          "corridor-cut-audit.json": "b257e35311e01c44fa08de5aebb32b23d2928503266e492b551cbcaed4e83fa0",
+          "corridor-cut-audit.md": "b811a45cf3c83adf80d2e65e236c12c11c16cb965b5cfd89ddfbd635a16f26b1",
+          "quarantine-recertification-diff.000.jsonl": "6568b784eb8245ce7551ba2dbc4668f66ef445b048c9adfcd2ea677281633add",
+          "quarantine-recertification-diff.001.jsonl": "33c90cbfd4e2e05afe1df13d4ca5dadcab374cc185927064567fc95a238fc461",
+          "quarantine-recertification-diff.002.jsonl": "4cae98835b260b7ab8dea555b5b3abf8a083cfe85b6a74848b3b2f6922d7cfef",
+          "quarantine-recertification-diff.003.jsonl": "8ab413c463c336beb1838894f3288be6ace02de891aa74db44af81da20017f9c",
+          "quarantine-recertification-diff.004.jsonl": "8f7b99163ed32c2ea865efdd8535bf1494a56c67a103ecf06a70f0c65db5d0d9",
+          "quarantine-recertification-diff.005.jsonl": "ca35c2a55ee1586e1010d977bccb340e870d02cb3ed2e72cf572548da9c888e0",
+          "quarantine-recertification-diff.006.jsonl": "280957e7c980325575014c788982bb7482146b0a45549196e12c24ee0829f519",
+          "quarantine-recertification-diff.007.jsonl": "6f17fd9ea574c38fa2f01e5d4ef114ff53ad0acdcf0d72542edd0ffb6cd4ec02",
+          "quarantine-recertification-diff.008.jsonl": "8baa3307a6c98637f6ec0d2579abc63efe23459a134fbedad9e158f78a5d795f",
+          "quarantine-recertification-diff.009.jsonl": "2deb71efec0c54b7df1d3102aaac84a157301c48c998110582725a7c4eb563cb",
+          "quarantine-recertification-diff.010.jsonl": "5ca79025b9e2a16322937ac6b27f88d53a7a47c48d7753f6919200df7bdae482",
+          "quarantine-recertification-diff.011.jsonl": "f0849d6c5ab8671e8a74c4b55c9c7cd85d4e5bba9f9b2599bced896e4586be74",
+          "quarantine-recertification-diff.json": "c68227a129d0d33f90517cda68c3167d910b8ddf6b7977ff6bff28da2afa1c05",
+          "quarantine-recertification-diff.md": "f09744c2e241eb0ebf4e84ade65790ef6ba400f343701edef26e5148806ea124",
+          "recertification-summary.json": "fd7439a68547fa5fadc5bb207a1fe1b403f02fee426fb74b7138410e365308bf",
+          "remaining-original-obligations.json": "b1aa2b407a923f9b86d3a6f3d35b30db1ccb01104045d1333847254d5a2eaa7f",
+          "source-family-recovery-summary.json": "ea0e8b76cca3f3db1016c5afdac945c9bbdd7541f081f3d855d593b4acbce648",
+          "tokyo-ueno-acceptance.json": "1caff02aed6372494bc0b22be7bdcdcf2e0c5e8b6d84891a3761b42d64469c3d"
+        },
+        "passA": {
+          "certified-backbone/edges.jsonl": "6e8c47705b0356e1523c09a1171618806e67da3adefb7f5a5c3ee994f8efbd35",
+          "certified-backbone/evidence.jsonl": "28ebd3f4beafab6f85586c4c6b987f769ed30d1e71766fc5e78bccece7ec99ec",
+          "certified-backbone/manifest.json": "1db5d69ffb7b0061cf947edc0f6c16bac8e67f642e56fc9b4ddcab843a4be513",
+          "certified-backbone/nodes.jsonl": "b7047569acc574da36a7191feb0ae27f67b3e01fae3396a6a750ef0e62eb4bcf",
+          "certified-backbone/service-patterns.jsonl": "3536dcb35f4d81e6daf49feeb9f4e9447534fd42be7ecf27a7c690f9c68cb6fe",
+          "certified-backbone/sources.json": "2559d5ae819d48b84c7c41da01bd74dadb95da12c81a4c5c43bde6b820b76c92",
+          "certified-backbone/transfers.jsonl": "4f1d2d63746032b3d79bf7bccf1b27d780259b22d85bf5eb9978caf6a7ae67b3",
+          "final-acceptance.json": "f70b45f3425288693dc5cb7069474e76e02703f467b91d8f69c37662cf73c1b9",
+          "final-blocker-inventory.json": "b3c606311e1c61e1d697e19bac1cc9ba3334369e77187abc608cd98244e5b6db",
+          "FINAL-BLOCKER-INVENTORY.md": "265ce3660b6e3a2a9c492c7d48867b2163622b38156555b0d75edcf4f120a906",
+          "final-edge-audit.json": "b471ddc9cf44195b81861b189caf994ca183cc6b28a644731ed38b122312cd49",
+          "final-graph-integrity.json": "17d0c122000d465ca5eba780127fa5519d2d8460e67d3eb3f2bce76d7479caa1",
+          "FINAL-GRAPH-INTEGRITY.md": "75f50999f2cdf3b3535266ff2195bfb3b2d5d9dcf2f66b37120445ff103e6316",
+          "final-node-identity-audit.json": "79e32f323d6d08bf4d7181a793b8fc6e8c79f00a30e0e4c5d7ec133e04c2c92b",
+          "FINAL-NODE-IDENTITY-AUDIT.md": "c104447cea89869a6076c1eb9d99ec1d3536d19ff5bb97b53084cec971cae1ac",
+          "final-source-certification.json": "fda540d179a159d6b86bc7a1daecf829d60f2b6057ea8036b214bebe0345d60a",
+          "FINAL-SOURCE-CERTIFICATION.md": "6954ea71ff4bda75c09710cf88e553d1e6ce4f48f4760ee6c6ac535934fa136d",
+          "final-transfer-audit.json": "f0a106ad18bd1f2e1c43e9d6ef7e4de406533bfc857b4f1018e17b504f1a402c",
+          "FINAL-TRANSFER-AUDIT.md": "81a7833d39f445c8195729cd13a15489e883cd94df0847f8167b5ba15bbbfc96"
+        },
+        "final": {
+          "certified-backbone/edges.jsonl": "7763110dfc3b99996a8c4f41953d51e0c45b477f32ab4544c1518a735a1db246",
+          "certified-backbone/evidence.jsonl": "6cd24cf376efbd510c9a8beadeac16b7566f9421d32f6a0811ed206342f7a6c8",
+          "certified-backbone/manifest.json": "8a928787dc9f21980ea57964c25702908db945bddad4af8d0181ae1bd9b60e2d",
+          "certified-backbone/nodes.jsonl": "62d5ebe7442cb4d8c281c6caf464be47c70ff4cd6dac483525ca0a14b47e69da",
+          "certified-backbone/service-patterns.jsonl": "f028df3f575827c481e3d1fdf250b692c88530846d33eb19a934a8bc8c7f18cb",
+          "certified-backbone/sources.json": "5bfa7ae910a2a98677c2f92e45b94cc81980cf1703919d070d275581d6fa7f24",
+          "certified-backbone/transfers.jsonl": "4f1d2d63746032b3d79bf7bccf1b27d780259b22d85bf5eb9978caf6a7ae67b3",
+          "final-acceptance.json": "cb5e779bdf4552e32a433e8692f0ae107524dc607788ed75532a87406bbd1468",
+          "final-blocker-inventory.json": "af95d7c5d0f3c624fc1f98b594203da3377c1b479b865fce1682d5223da27725",
+          "FINAL-BLOCKER-INVENTORY.md": "547bb681036a418df66f3ff62a6243eac2d844b150364916985965cb2a8febb1",
+          "final-edge-audit.json": "2033fa746565fee9e9059715d31aebd932b37ee46e00d837c855c800f5e4f8a7",
+          "final-graph-integrity.json": "02c07e4cc8964453e9df3aacc625d197d9b8f6f7921aca9bc6e208a3faa28890",
+          "FINAL-GRAPH-INTEGRITY.md": "0d3c9a19be3b3a76945bf0a2bdd86c480948c384db39e32ef30dee33d752f3ff",
+          "final-node-identity-audit.json": "be9a5f14e975f16a36af85f14cee7e2fcfa2e79b0bc2d194417da7e126d61eba",
+          "FINAL-NODE-IDENTITY-AUDIT.md": "bc4a820779223378a41210846c8a3e96c961040d7e72bcde27bec082f8f971cd",
+          "final-source-certification.json": "55c08af42bc256ba8d306515cb7316407a85cd13342d851add813f33d6a9e62e",
+          "FINAL-SOURCE-CERTIFICATION.md": "4e0e891715bf7e00baa5662929435408630d17408c65e4e80b43de6a0be4fa7e",
+          "final-transfer-audit.json": "f0a106ad18bd1f2e1c43e9d6ef7e4de406533bfc857b4f1018e17b504f1a402c",
+          "FINAL-TRANSFER-AUDIT.md": "81a7833d39f445c8195729cd13a15489e883cd94df0847f8167b5ba15bbbfc96"
+        }
+      }
+    },
+    {
+      "round": "second",
+      "startedAt": "2026-10-07T11:58:34.753Z",
+      "endedAt": "2026-10-07T11:59:58.629Z",
+      "passADirectory": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\pass-a",
+      "finalDirectory": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\final",
+      "closeoutDirectory": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\closeout",
+      "retainedResult": {
+        "status": "BLOCKED_CERTIFIED_NATIONAL_BACKBONE",
+        "certifiedNodes": 4060,
+        "certifiedEdges": 9407,
+        "certifiedTransfers": 1072,
+        "blockers": 7,
+        "bindingSha256": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82"
+      },
+      "finalResult": {
+        "status": "BLOCKED_CERTIFIED_NATIONAL_BACKBONE",
+        "certifiedNodes": 4061,
+        "certifiedEdges": 9409,
+        "certifiedTransfers": 1072,
+        "blockers": 6,
+        "bindingSha256": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82"
+      },
+      "repairSummary": {
+        "schemaVersion": 1,
+        "inputSha256": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+        "before": {
+          "node": 1174,
+          "edge": 2460,
+          "transfer": 37
+        },
+        "passA": {
+          "node": 4060,
+          "edge": 9407,
+          "transfer": 1072
+        },
+        "after": {
+          "node": 4061,
+          "edge": 9409,
+          "transfer": 1072
+        },
+        "engineOnlyRecovered": {
+          "node": 2886,
+          "edge": 6947,
+          "transfer": 1035
+        },
+        "additionalEvidenceRecovered": {
+          "node": 1,
+          "edge": 2,
+          "transfer": 0
+        },
+        "disabled": {
+          "node": 0,
+          "edge": 0,
+          "transfer": 0
+        },
+        "fullPreviousQuarantineEvaluated": 11556,
+        "allFrozenCandidatesRecomputed": true,
+        "coverageRequirementsPreserved": true,
+        "nationalCorridors": [
+          {
+            "id": "東京:京都",
+            "label": "東京 ↔ 京都",
+            "status": "PASS"
+          },
+          {
+            "id": "東京:大阪",
+            "label": "東京 ↔ 大阪",
+            "status": "PASS"
+          },
+          {
+            "id": "東京:河口湖",
+            "label": "東京 ↔ 河口湖",
+            "status": "PASS"
+          },
+          {
+            "id": "大阪:京都",
+            "label": "大阪 ↔ 京都",
+            "status": "PASS"
+          },
+          {
+            "id": "大阪:三ノ宮",
+            "label": "大阪 ↔ 三ノ宮",
+            "status": "PASS"
+          },
+          {
+            "id": "大阪:奈良",
+            "label": "大阪 ↔ 奈良",
+            "status": "PASS"
+          },
+          {
+            "id": "博多:熊本",
+            "label": "博多 ↔ 熊本",
+            "status": "PASS"
+          },
+          {
+            "id": "札幌:旭川",
+            "label": "札幌 ↔ 旭川",
+            "status": "PASS"
+          },
+          {
+            "id": "札幌:函館",
+            "label": "札幌 ↔ 函館",
+            "status": "PASS"
+          },
+          {
+            "id": "national:札幌:東京",
+            "label": "Hokkaido ↔ Honshu",
+            "status": "PASS"
+          },
+          {
+            "id": "national:仙台:東京",
+            "label": "Tohoku ↔ Kanto",
+            "status": "PASS"
+          },
+          {
+            "id": "national:東京:名古屋",
+            "label": "Kanto ↔ Chubu / Tokyo ↔ Nagoya",
+            "status": "PASS"
+          },
+          {
+            "id": "national:東京:大阪",
+            "label": "Tokyo ↔ Kansai",
+            "status": "PASS"
+          },
+          {
+            "id": "national:大阪:広島",
+            "label": "Kansai ↔ Chugoku",
+            "status": "PASS"
+          },
+          {
+            "id": "national:岡山:高松",
+            "label": "Honshu ↔ Shikoku",
+            "status": "PASS"
+          },
+          {
+            "id": "national:広島:博多",
+            "label": "Chugoku ↔ Kyushu",
+            "status": "PASS"
+          }
+        ],
+        "graphIntegrity": {
+          "danglingReferenceCount": 0,
+          "selfEdgeCount": 0,
+          "duplicateEdgeCount": 0,
+          "duplicateCanonicalIdentityCount": 0,
+          "invalidDirectionCount": 0,
+          "impossibleModeTransitionCount": 0,
+          "invalidEndpointSerializationCount": 0,
+          "orphanNodeIds": [],
+          "danglingPatternReferenceCount": 0,
+          "quarantinedMetricCount": 0,
+          "invalidOperatorLineOrAccessRelationshipCount": 0,
+          "invalidTransferCount": 0,
+          "orphanNodeCount": 0,
+          "isolatedComponentCount": 16,
+          "componentCount": 17,
+          "unexpectedDisconnectedComponents": 16,
+          "serializationRoundTrip": "PASS",
+          "projectionReplaySha256": "3caabd50406d7082a379e29e068eb5e4756788d351c45bf6821e84eab8510bf0",
+          "deterministicProjection": "REQUIRES_SECOND_IDENTICAL_EXECUTION_COMPARISON",
+          "fullGeneratorReplay": "SEPARATE_CURRENT_INPUT_REGRESSION_RECEIPT_REQUIRED"
+        },
+        "sourceCounts": {
+          "certified": 734,
+          "remaining": 0
+        },
+        "disabledReasons": {
+          "edge": {
+            "QUARANTINED -> CERTIFIED": 6949
+          },
+          "node": {
+            "QUARANTINED -> CERTIFIED": 2887
+          },
+          "source_dependency": {
+            "QUARANTINED -> CERTIFIED": 685
+          },
+          "transfer": {
+            "QUARANTINED -> CERTIFIED": 1035
+          }
+        },
+        "sourceFamiliesRecovered": 236,
+        "finalCI": "REQUIRES_CURRENT_EXACT_HEAD_REMOTE_RESULT",
+        "tokenUsage": "UNKNOWN",
+        "billing": "UNKNOWN",
+        "newAgents": 0,
+        "trafficDataChanged": false,
+        "remainingOriginalObligations": 6,
+        "originalNationalAcceptance": "BLOCKED_CERTIFIED_NATIONAL_BACKBONE",
+        "gatewayConnectivity": {
+          "total": 86,
+          "pass": 86
+        }
+      },
+      "hashes": {
+        "closeout": {
+          "closeout-summary.json": "970c4da76eeb9d56518e0489618acc2b9bcf6c47339d10e21b85e391c4d044a5",
+          "root-dispositions.jsonl": "a6f7f5793ffd7c2015b0a6a1e46f64c269c452b684b4318b8aa38cff84bb563a",
+          "route-disabled.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "route-enabled/edges.jsonl": "7763110dfc3b99996a8c4f41953d51e0c45b477f32ab4544c1518a735a1db246",
+          "route-enabled/evidence.jsonl": "6cd24cf376efbd510c9a8beadeac16b7566f9421d32f6a0811ed206342f7a6c8",
+          "route-enabled/nodes.jsonl": "62d5ebe7442cb4d8c281c6caf464be47c70ff4cd6dac483525ca0a14b47e69da",
+          "route-enabled/service-patterns.jsonl": "f028df3f575827c481e3d1fdf250b692c88530846d33eb19a934a8bc8c7f18cb",
+          "route-enabled/sources.json": "5bfa7ae910a2a98677c2f92e45b94cc81980cf1703919d070d275581d6fa7f24",
+          "route-enabled/transfers.jsonl": "4f1d2d63746032b3d79bf7bccf1b27d780259b22d85bf5eb9978caf6a7ae67b3",
+          "routing-eligibility.json": "bcfa8662044839210bd8c75842d8ab82d7333d19818e5b7663661c98946c29e3",
+          "terminal-entities.jsonl-index.json": "8c81aad1a382a0fed3cbe65e1b63aa89adc2804ddf0ef4acb73e24008615244a"
+        },
+        "repair": {
+          "certification-engine-repair-audit.json": "b3c34ce46e4d68eb0602c1bfe3cfe179cb38939f7440f850d4a0adc746253751",
+          "certification-engine-repair-audit.md": "58159478e85b4a962d56527daea088dd7a07ed179392fc408c870ac2688f5b50",
+          "corridor-cut-audit.json": "b257e35311e01c44fa08de5aebb32b23d2928503266e492b551cbcaed4e83fa0",
+          "corridor-cut-audit.md": "b811a45cf3c83adf80d2e65e236c12c11c16cb965b5cfd89ddfbd635a16f26b1",
+          "quarantine-recertification-diff.000.jsonl": "6568b784eb8245ce7551ba2dbc4668f66ef445b048c9adfcd2ea677281633add",
+          "quarantine-recertification-diff.001.jsonl": "33c90cbfd4e2e05afe1df13d4ca5dadcab374cc185927064567fc95a238fc461",
+          "quarantine-recertification-diff.002.jsonl": "4cae98835b260b7ab8dea555b5b3abf8a083cfe85b6a74848b3b2f6922d7cfef",
+          "quarantine-recertification-diff.003.jsonl": "8ab413c463c336beb1838894f3288be6ace02de891aa74db44af81da20017f9c",
+          "quarantine-recertification-diff.004.jsonl": "8f7b99163ed32c2ea865efdd8535bf1494a56c67a103ecf06a70f0c65db5d0d9",
+          "quarantine-recertification-diff.005.jsonl": "ca35c2a55ee1586e1010d977bccb340e870d02cb3ed2e72cf572548da9c888e0",
+          "quarantine-recertification-diff.006.jsonl": "280957e7c980325575014c788982bb7482146b0a45549196e12c24ee0829f519",
+          "quarantine-recertification-diff.007.jsonl": "6f17fd9ea574c38fa2f01e5d4ef114ff53ad0acdcf0d72542edd0ffb6cd4ec02",
+          "quarantine-recertification-diff.008.jsonl": "8baa3307a6c98637f6ec0d2579abc63efe23459a134fbedad9e158f78a5d795f",
+          "quarantine-recertification-diff.009.jsonl": "2deb71efec0c54b7df1d3102aaac84a157301c48c998110582725a7c4eb563cb",
+          "quarantine-recertification-diff.010.jsonl": "5ca79025b9e2a16322937ac6b27f88d53a7a47c48d7753f6919200df7bdae482",
+          "quarantine-recertification-diff.011.jsonl": "f0849d6c5ab8671e8a74c4b55c9c7cd85d4e5bba9f9b2599bced896e4586be74",
+          "quarantine-recertification-diff.json": "c68227a129d0d33f90517cda68c3167d910b8ddf6b7977ff6bff28da2afa1c05",
+          "quarantine-recertification-diff.md": "f09744c2e241eb0ebf4e84ade65790ef6ba400f343701edef26e5148806ea124",
+          "recertification-summary.json": "fd7439a68547fa5fadc5bb207a1fe1b403f02fee426fb74b7138410e365308bf",
+          "remaining-original-obligations.json": "b1aa2b407a923f9b86d3a6f3d35b30db1ccb01104045d1333847254d5a2eaa7f",
+          "source-family-recovery-summary.json": "ea0e8b76cca3f3db1016c5afdac945c9bbdd7541f081f3d855d593b4acbce648",
+          "tokyo-ueno-acceptance.json": "1caff02aed6372494bc0b22be7bdcdcf2e0c5e8b6d84891a3761b42d64469c3d"
+        },
+        "passA": {
+          "certified-backbone/edges.jsonl": "6e8c47705b0356e1523c09a1171618806e67da3adefb7f5a5c3ee994f8efbd35",
+          "certified-backbone/evidence.jsonl": "28ebd3f4beafab6f85586c4c6b987f769ed30d1e71766fc5e78bccece7ec99ec",
+          "certified-backbone/manifest.json": "1db5d69ffb7b0061cf947edc0f6c16bac8e67f642e56fc9b4ddcab843a4be513",
+          "certified-backbone/nodes.jsonl": "b7047569acc574da36a7191feb0ae27f67b3e01fae3396a6a750ef0e62eb4bcf",
+          "certified-backbone/service-patterns.jsonl": "3536dcb35f4d81e6daf49feeb9f4e9447534fd42be7ecf27a7c690f9c68cb6fe",
+          "certified-backbone/sources.json": "2559d5ae819d48b84c7c41da01bd74dadb95da12c81a4c5c43bde6b820b76c92",
+          "certified-backbone/transfers.jsonl": "4f1d2d63746032b3d79bf7bccf1b27d780259b22d85bf5eb9978caf6a7ae67b3",
+          "final-acceptance.json": "f70b45f3425288693dc5cb7069474e76e02703f467b91d8f69c37662cf73c1b9",
+          "final-blocker-inventory.json": "b3c606311e1c61e1d697e19bac1cc9ba3334369e77187abc608cd98244e5b6db",
+          "FINAL-BLOCKER-INVENTORY.md": "265ce3660b6e3a2a9c492c7d48867b2163622b38156555b0d75edcf4f120a906",
+          "final-edge-audit.json": "b471ddc9cf44195b81861b189caf994ca183cc6b28a644731ed38b122312cd49",
+          "final-graph-integrity.json": "17d0c122000d465ca5eba780127fa5519d2d8460e67d3eb3f2bce76d7479caa1",
+          "FINAL-GRAPH-INTEGRITY.md": "75f50999f2cdf3b3535266ff2195bfb3b2d5d9dcf2f66b37120445ff103e6316",
+          "final-node-identity-audit.json": "79e32f323d6d08bf4d7181a793b8fc6e8c79f00a30e0e4c5d7ec133e04c2c92b",
+          "FINAL-NODE-IDENTITY-AUDIT.md": "c104447cea89869a6076c1eb9d99ec1d3536d19ff5bb97b53084cec971cae1ac",
+          "final-source-certification.json": "fda540d179a159d6b86bc7a1daecf829d60f2b6057ea8036b214bebe0345d60a",
+          "FINAL-SOURCE-CERTIFICATION.md": "6954ea71ff4bda75c09710cf88e553d1e6ce4f48f4760ee6c6ac535934fa136d",
+          "final-transfer-audit.json": "f0a106ad18bd1f2e1c43e9d6ef7e4de406533bfc857b4f1018e17b504f1a402c",
+          "FINAL-TRANSFER-AUDIT.md": "81a7833d39f445c8195729cd13a15489e883cd94df0847f8167b5ba15bbbfc96"
+        },
+        "final": {
+          "certified-backbone/edges.jsonl": "7763110dfc3b99996a8c4f41953d51e0c45b477f32ab4544c1518a735a1db246",
+          "certified-backbone/evidence.jsonl": "6cd24cf376efbd510c9a8beadeac16b7566f9421d32f6a0811ed206342f7a6c8",
+          "certified-backbone/manifest.json": "8a928787dc9f21980ea57964c25702908db945bddad4af8d0181ae1bd9b60e2d",
+          "certified-backbone/nodes.jsonl": "62d5ebe7442cb4d8c281c6caf464be47c70ff4cd6dac483525ca0a14b47e69da",
+          "certified-backbone/service-patterns.jsonl": "f028df3f575827c481e3d1fdf250b692c88530846d33eb19a934a8bc8c7f18cb",
+          "certified-backbone/sources.json": "5bfa7ae910a2a98677c2f92e45b94cc81980cf1703919d070d275581d6fa7f24",
+          "certified-backbone/transfers.jsonl": "4f1d2d63746032b3d79bf7bccf1b27d780259b22d85bf5eb9978caf6a7ae67b3",
+          "final-acceptance.json": "cb5e779bdf4552e32a433e8692f0ae107524dc607788ed75532a87406bbd1468",
+          "final-blocker-inventory.json": "af95d7c5d0f3c624fc1f98b594203da3377c1b479b865fce1682d5223da27725",
+          "FINAL-BLOCKER-INVENTORY.md": "547bb681036a418df66f3ff62a6243eac2d844b150364916985965cb2a8febb1",
+          "final-edge-audit.json": "2033fa746565fee9e9059715d31aebd932b37ee46e00d837c855c800f5e4f8a7",
+          "final-graph-integrity.json": "02c07e4cc8964453e9df3aacc625d197d9b8f6f7921aca9bc6e208a3faa28890",
+          "FINAL-GRAPH-INTEGRITY.md": "0d3c9a19be3b3a76945bf0a2bdd86c480948c384db39e32ef30dee33d752f3ff",
+          "final-node-identity-audit.json": "be9a5f14e975f16a36af85f14cee7e2fcfa2e79b0bc2d194417da7e126d61eba",
+          "FINAL-NODE-IDENTITY-AUDIT.md": "bc4a820779223378a41210846c8a3e96c961040d7e72bcde27bec082f8f971cd",
+          "final-source-certification.json": "55c08af42bc256ba8d306515cb7316407a85cd13342d851add813f33d6a9e62e",
+          "FINAL-SOURCE-CERTIFICATION.md": "4e0e891715bf7e00baa5662929435408630d17408c65e4e80b43de6a0be4fa7e",
+          "final-transfer-audit.json": "f0a106ad18bd1f2e1c43e9d6ef7e4de406533bfc857b4f1018e17b504f1a402c",
+          "FINAL-TRANSFER-AUDIT.md": "81a7833d39f445c8195729cd13a15489e883cd94df0847f8167b5ba15bbbfc96"
+        }
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/qa/TASK-086/readmittable-closeout/route-disabled.jsonl",
+      "generator": "generateCloseout",
+      "oldSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "newSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\closeout\\route-disabled.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/readmittable-closeout/root-dispositions.jsonl",
+      "generator": "generateCloseout",
+      "oldSha256": "a6f7f5793ffd7c2015b0a6a1e46f64c269c452b684b4318b8aa38cff84bb563a",
+      "newSha256": "a6f7f5793ffd7c2015b0a6a1e46f64c269c452b684b4318b8aa38cff84bb563a",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\closeout\\root-dispositions.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/readmittable-closeout/routing-eligibility.json",
+      "generator": "generateCloseout",
+      "oldSha256": "a70f93cecd1dff362c0226c21b9b047850db76f9fb24ebe8379598bfea21daea",
+      "newSha256": "bcfa8662044839210bd8c75842d8ab82d7333d19818e5b7663661c98946c29e3",
+      "changed": true,
+      "differences": [
+        {
+          "jsonPointer": "/inputSha256",
+          "before": "f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305",
+          "after": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+          "reason": "Existing generator recomputed currentBinding()"
+        }
+      ],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\closeout\\routing-eligibility.json"
+    },
+    {
+      "path": "docs/qa/TASK-086/readmittable-closeout/closeout-summary.json",
+      "generator": "generateCloseout",
+      "oldSha256": "12c290a60c06767674de3205017a60597cecb9e6a44eaf852cf54be52dee52b5",
+      "newSha256": "970c4da76eeb9d56518e0489618acc2b9bcf6c47339d10e21b85e391c4d044a5",
+      "changed": true,
+      "differences": [
+        {
+          "jsonPointer": "/inputSha256",
+          "before": "f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305",
+          "after": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+          "reason": "Existing generator recomputed currentBinding()"
+        },
+        {
+          "jsonPointer": "/eligibilitySha256",
+          "before": "a70f93cecd1dff362c0226c21b9b047850db76f9fb24ebe8379598bfea21daea",
+          "after": "bcfa8662044839210bd8c75842d8ab82d7333d19818e5b7663661c98946c29e3",
+          "reason": "Hash of regenerated routing-eligibility.json"
+        }
+      ],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\closeout\\closeout-summary.json"
+    },
+    {
+      "path": "docs/qa/TASK-086/readmittable-closeout/terminal-entities.jsonl-index.json",
+      "generator": "generateCloseout",
+      "oldSha256": "e3dc8f8787c1a7ec8c4b77ad908781d6088d1a1ca15aa2af263497a5223893d3",
+      "newSha256": "8c81aad1a382a0fed3cbe65e1b63aa89adc2804ddf0ef4acb73e24008615244a",
+      "changed": true,
+      "differences": [
+        {
+          "jsonPointer": "/inputSha256",
+          "before": "f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305",
+          "after": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+          "reason": "Existing generator recomputed currentBinding()"
+        }
+      ],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\closeout\\terminal-entities.jsonl-index.json"
+    },
+    {
+      "path": "docs/qa/TASK-086/readmittable-closeout/route-enabled/nodes.jsonl",
+      "generator": "generateCloseout",
+      "oldSha256": "62d5ebe7442cb4d8c281c6caf464be47c70ff4cd6dac483525ca0a14b47e69da",
+      "newSha256": "62d5ebe7442cb4d8c281c6caf464be47c70ff4cd6dac483525ca0a14b47e69da",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\closeout\\route-enabled\\nodes.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/readmittable-closeout/route-enabled/edges.jsonl",
+      "generator": "generateCloseout",
+      "oldSha256": "7763110dfc3b99996a8c4f41953d51e0c45b477f32ab4544c1518a735a1db246",
+      "newSha256": "7763110dfc3b99996a8c4f41953d51e0c45b477f32ab4544c1518a735a1db246",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\closeout\\route-enabled\\edges.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/readmittable-closeout/route-enabled/transfers.jsonl",
+      "generator": "generateCloseout",
+      "oldSha256": "4f1d2d63746032b3d79bf7bccf1b27d780259b22d85bf5eb9978caf6a7ae67b3",
+      "newSha256": "4f1d2d63746032b3d79bf7bccf1b27d780259b22d85bf5eb9978caf6a7ae67b3",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\closeout\\route-enabled\\transfers.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/readmittable-closeout/route-enabled/service-patterns.jsonl",
+      "generator": "generateCloseout",
+      "oldSha256": "f028df3f575827c481e3d1fdf250b692c88530846d33eb19a934a8bc8c7f18cb",
+      "newSha256": "f028df3f575827c481e3d1fdf250b692c88530846d33eb19a934a8bc8c7f18cb",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\closeout\\route-enabled\\service-patterns.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/readmittable-closeout/route-enabled/evidence.jsonl",
+      "generator": "generateCloseout",
+      "oldSha256": "6cd24cf376efbd510c9a8beadeac16b7566f9421d32f6a0811ed206342f7a6c8",
+      "newSha256": "6cd24cf376efbd510c9a8beadeac16b7566f9421d32f6a0811ed206342f7a6c8",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\closeout\\route-enabled\\evidence.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/readmittable-closeout/route-enabled/sources.json",
+      "generator": "generateCloseout",
+      "oldSha256": "5bfa7ae910a2a98677c2f92e45b94cc81980cf1703919d070d275581d6fa7f24",
+      "newSha256": "5bfa7ae910a2a98677c2f92e45b94cc81980cf1703919d070d275581d6fa7f24",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\closeout\\route-enabled\\sources.json"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.json",
+      "generator": "generateRepairReport",
+      "oldSha256": "ad82a01786a416a28648aad0393ec174b44f3912e2dceaf8b05dea9dea7d5ca9",
+      "newSha256": "c68227a129d0d33f90517cda68c3167d910b8ddf6b7977ff6bff28da2afa1c05",
+      "changed": true,
+      "differences": [
+        {
+          "jsonPointer": "/inputSha256",
+          "before": "f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305",
+          "after": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+          "reason": "Existing generator recomputed currentBinding()"
+        }
+      ],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.json"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/corridor-cut-audit.json",
+      "generator": "generateRepairReport",
+      "oldSha256": "3db56e4418393d72b5182515ce66d6a9a98e07bac29623b519716cc21b219baf",
+      "newSha256": "b257e35311e01c44fa08de5aebb32b23d2928503266e492b551cbcaed4e83fa0",
+      "changed": true,
+      "differences": [
+        {
+          "jsonPointer": "/inputSha256",
+          "before": "f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305",
+          "after": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+          "reason": "Existing generator recomputed currentBinding()"
+        }
+      ],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\corridor-cut-audit.json"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/corridor-cut-audit.md",
+      "generator": "generateRepairReport",
+      "oldSha256": "b811a45cf3c83adf80d2e65e236c12c11c16cb965b5cfd89ddfbd635a16f26b1",
+      "newSha256": "b811a45cf3c83adf80d2e65e236c12c11c16cb965b5cfd89ddfbd635a16f26b1",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\corridor-cut-audit.md"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/tokyo-ueno-acceptance.json",
+      "generator": "generateRepairReport",
+      "oldSha256": "7ab8c82ac0f8acfa94b76f4654233afef585b3ebe599bdbcf3e4d982fbe1e887",
+      "newSha256": "1caff02aed6372494bc0b22be7bdcdcf2e0c5e8b6d84891a3761b42d64469c3d",
+      "changed": true,
+      "differences": [
+        {
+          "jsonPointer": "/inputSha256",
+          "before": "f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305",
+          "after": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+          "reason": "Existing generator recomputed currentBinding()"
+        }
+      ],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\tokyo-ueno-acceptance.json"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/source-family-recovery-summary.json",
+      "generator": "generateRepairReport",
+      "oldSha256": "6f5e05f6f7915e72f9cadb99b2a8106d9ec1cff11f9d6bc122d9c50b6259fe7e",
+      "newSha256": "ea0e8b76cca3f3db1016c5afdac945c9bbdd7541f081f3d855d593b4acbce648",
+      "changed": true,
+      "differences": [
+        {
+          "jsonPointer": "/inputSha256",
+          "before": "f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305",
+          "after": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+          "reason": "Existing generator recomputed currentBinding()"
+        }
+      ],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\source-family-recovery-summary.json"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/remaining-original-obligations.json",
+      "generator": "generateRepairReport",
+      "oldSha256": "24cbb22ca0bf93be4ad887bfe7eaa26d96364d76c2c897880ae4c2d9c9f2cb56",
+      "newSha256": "b1aa2b407a923f9b86d3a6f3d35b30db1ccb01104045d1333847254d5a2eaa7f",
+      "changed": true,
+      "differences": [
+        {
+          "jsonPointer": "/inputSha256",
+          "before": "f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305",
+          "after": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+          "reason": "Existing generator recomputed currentBinding()"
+        }
+      ],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\remaining-original-obligations.json"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/recertification-summary.json",
+      "generator": "generateRepairReport",
+      "oldSha256": "4048f997e0bbeaf56830089afbf5f4c017e48659419a036157a23512294a2657",
+      "newSha256": "fd7439a68547fa5fadc5bb207a1fe1b403f02fee426fb74b7138410e365308bf",
+      "changed": true,
+      "differences": [
+        {
+          "jsonPointer": "/inputSha256",
+          "before": "f656c16e9c0263ea46c85a54f3dce3870c50e26523e41813cade66b617a78305",
+          "after": "2a36319c73ed01193f9043a883647fec6555f8cf0aaf2ed745a95bc72a573e82",
+          "reason": "Existing generator recomputed currentBinding()"
+        }
+      ],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\recertification-summary.json"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.md",
+      "generator": "generateRepairReport",
+      "oldSha256": "f09744c2e241eb0ebf4e84ade65790ef6ba400f343701edef26e5148806ea124",
+      "newSha256": "f09744c2e241eb0ebf4e84ade65790ef6ba400f343701edef26e5148806ea124",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.md"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/certification-engine-repair-audit.json",
+      "generator": "generateRepairReport",
+      "oldSha256": "b3c34ce46e4d68eb0602c1bfe3cfe179cb38939f7440f850d4a0adc746253751",
+      "newSha256": "b3c34ce46e4d68eb0602c1bfe3cfe179cb38939f7440f850d4a0adc746253751",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\certification-engine-repair-audit.json"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/certification-engine-repair-audit.md",
+      "generator": "generateRepairReport",
+      "oldSha256": "58159478e85b4a962d56527daea088dd7a07ed179392fc408c870ac2688f5b50",
+      "newSha256": "58159478e85b4a962d56527daea088dd7a07ed179392fc408c870ac2688f5b50",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\certification-engine-repair-audit.md"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.000.jsonl",
+      "generator": "generateRepairReport",
+      "oldSha256": "6568b784eb8245ce7551ba2dbc4668f66ef445b048c9adfcd2ea677281633add",
+      "newSha256": "6568b784eb8245ce7551ba2dbc4668f66ef445b048c9adfcd2ea677281633add",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.000.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.001.jsonl",
+      "generator": "generateRepairReport",
+      "oldSha256": "33c90cbfd4e2e05afe1df13d4ca5dadcab374cc185927064567fc95a238fc461",
+      "newSha256": "33c90cbfd4e2e05afe1df13d4ca5dadcab374cc185927064567fc95a238fc461",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.001.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.002.jsonl",
+      "generator": "generateRepairReport",
+      "oldSha256": "4cae98835b260b7ab8dea555b5b3abf8a083cfe85b6a74848b3b2f6922d7cfef",
+      "newSha256": "4cae98835b260b7ab8dea555b5b3abf8a083cfe85b6a74848b3b2f6922d7cfef",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.002.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.003.jsonl",
+      "generator": "generateRepairReport",
+      "oldSha256": "8ab413c463c336beb1838894f3288be6ace02de891aa74db44af81da20017f9c",
+      "newSha256": "8ab413c463c336beb1838894f3288be6ace02de891aa74db44af81da20017f9c",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.003.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.004.jsonl",
+      "generator": "generateRepairReport",
+      "oldSha256": "8f7b99163ed32c2ea865efdd8535bf1494a56c67a103ecf06a70f0c65db5d0d9",
+      "newSha256": "8f7b99163ed32c2ea865efdd8535bf1494a56c67a103ecf06a70f0c65db5d0d9",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.004.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.005.jsonl",
+      "generator": "generateRepairReport",
+      "oldSha256": "ca35c2a55ee1586e1010d977bccb340e870d02cb3ed2e72cf572548da9c888e0",
+      "newSha256": "ca35c2a55ee1586e1010d977bccb340e870d02cb3ed2e72cf572548da9c888e0",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.005.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.006.jsonl",
+      "generator": "generateRepairReport",
+      "oldSha256": "280957e7c980325575014c788982bb7482146b0a45549196e12c24ee0829f519",
+      "newSha256": "280957e7c980325575014c788982bb7482146b0a45549196e12c24ee0829f519",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.006.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.007.jsonl",
+      "generator": "generateRepairReport",
+      "oldSha256": "6f17fd9ea574c38fa2f01e5d4ef114ff53ad0acdcf0d72542edd0ffb6cd4ec02",
+      "newSha256": "6f17fd9ea574c38fa2f01e5d4ef114ff53ad0acdcf0d72542edd0ffb6cd4ec02",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.007.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.008.jsonl",
+      "generator": "generateRepairReport",
+      "oldSha256": "8baa3307a6c98637f6ec0d2579abc63efe23459a134fbedad9e158f78a5d795f",
+      "newSha256": "8baa3307a6c98637f6ec0d2579abc63efe23459a134fbedad9e158f78a5d795f",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.008.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.009.jsonl",
+      "generator": "generateRepairReport",
+      "oldSha256": "2deb71efec0c54b7df1d3102aaac84a157301c48c998110582725a7c4eb563cb",
+      "newSha256": "2deb71efec0c54b7df1d3102aaac84a157301c48c998110582725a7c4eb563cb",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.009.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.010.jsonl",
+      "generator": "generateRepairReport",
+      "oldSha256": "5ca79025b9e2a16322937ac6b27f88d53a7a47c48d7753f6919200df7bdae482",
+      "newSha256": "5ca79025b9e2a16322937ac6b27f88d53a7a47c48d7753f6919200df7bdae482",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.010.jsonl"
+    },
+    {
+      "path": "docs/qa/TASK-086/certification-engine-repair/quarantine-recertification-diff.011.jsonl",
+      "generator": "generateRepairReport",
+      "oldSha256": "f0849d6c5ab8671e8a74c4b55c9c7cd85d4e5bba9f9b2599bced896e4586be74",
+      "newSha256": "f0849d6c5ab8671e8a74c4b55c9c7cd85d4e5bba9f9b2599bced896e4586be74",
+      "changed": false,
+      "differences": [],
+      "generatedFile": "I:\\CodexWorktrees\\task035-r03505-work\\generation-1\\second\\repair\\quarantine-recertification-diff.011.jsonl"
+    }
+  ]
+}

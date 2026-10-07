@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-035-A / WBS 9.1 R035-05 派生报告刷新追踪（2026-10-07）
+
+- Canonical Owner A，B执行；#265 / Draft PR #272 / 原实现分支不变。
+- **进行中（R035-05本地修复通过，等待完整两类CI）**；治理18/18、认证聚焦21/21，R035-01～04未回退。
+- 两轮隔离生成仅推广9项派生JSON；543项绑定输入、552项实际输入及route-enabled业务投影不变，人工裁决/历史证据/数据/规则不变。
+- [本轮Result](../tasks/RESULT-FIX-TASK-035-b-wbs-9-1-r035-05-evidence-refresh-closeout.md) / [QA](../qa/TASK-035/r035-05-closeout/README.md)。完整npm test、强制分片、TASK-086证明链、quality及exact-head/merge-result聚合待验证，暂不交人工验收、不完成。
+- 以下旧阶段追踪保留其历史版本结论；不能当作本轮最终状态。PR Open/Draft，Issue Open，未合并。
+
 ## TASK-035-A / WBS 9.1 R035-01～04 核心修复追踪（2026-10-07）
 
 - **R035-01～04 已修复 / 待复核**；Canonical Owner A，B implementation / QA；沿用 #265 / Draft PR #272 / `codex/a-test-baseline-freeze`。
@@ -785,7 +793,7 @@ TASK-013.1-A：2026-09-08 用户授权验收合并后继续 013.2。已安全整
 | TASK-015-A | 8.1 / 8.4 | A | 已完成（基础范围；运行及整合验收通过） | #173 | `docs/tasks/TASK-015-a-db-orm-migration-foundation.md` / `docs/tasks/RESULT-TASK-015-a-db-orm-migration-foundation.md` | `feature/a-db-orm-migration-foundation` | `c14ea30`（验收）；`24dff4e`（合并） | [#186](https://github.com/kanzakimy0/TravelAssist/pull/186) Merged |
 | TASK-016-B | 8.2 | B | 已完成（用户验收通过且已合并） | #200 Closed | `docs/tasks/TASK-016-b-user-profile-schema.md`（spec分支） | `feature/b-user-profile-schema` | 实现 `27a7ba8`；复验 `0eab355`；合并 `d118d4d` | [#209](https://github.com/kanzakimy0/TravelAssist/pull/209) Merged |
 | TASK-018-B | 8.3 | B | 已完成（用户授权现场验收通过且已合并） | #214 Closed | `docs/tasks/TASK-018-b-authentication-core.md`（spec分支） / `docs/tasks/RESULT-TASK-018-b-authentication-core.md` | `feature/b-authentication-core` | 基线 `39890af`；实现 `7e84dd0`；复验 `371191f`；merge `7f805e0` | [#218](https://github.com/kanzakimy0/TravelAssist/pull/218) Merged；621 tests / Auth 16 / RLS 25 PASS；不启动下一 Task |
-| TASK-035-A | 9.1 | A / Shared QA；B 执行 | 阻塞（R035-05；R035-01～04已修复待复核） | #265 | `docs/tasks/AMENDMENT-TASK-035-b-wbs-9-1-phase2-baseline-integration.md` | `codex/a-test-baseline-freeze` | 当前分支 | [#272](https://github.com/kanzakimy0/TravelAssist/pull/272) Open / Draft |
+| TASK-035-A | 9.1 | A / Shared QA；B 执行 | 进行中（R035-05本地修复通过；完整CI待验证） | #265 | `docs/tasks/AMENDMENT-TASK-035-b-wbs-9-1-phase2-baseline-integration.md` | `codex/a-test-baseline-freeze` | 当前分支 | [#272](https://github.com/kanzakimy0/TravelAssist/pull/272) Open / Draft |
 | TASK-036-A | 4.47 | A | 已完成（用户验收通过；主体与三个 review invariants 均已合入；P0 设计仍保留 Freeze Candidate 标签） | #291 Open | `docs/tasks/TASK-036-a-trip-planning-contract-foundation.md` / `docs/tasks/RESULT-TASK-036-a-trip-planning-contract-foundation.md` | `codex/a-trip-planning-contract-foundation` | `7a95da6`（主体）；`e8cf842`（review fixes）；`e99b8bb`（合入最新 develop）；`446b5da`（合并） | [#293](https://github.com/kanzakimy0/TravelAssist/pull/293) Merged → `develop` |
 | TASK-037-A | 9.13 | A | 已完成（用户验收授权合并；4,000 次确定性 mutation / fuzz、wire round-trip、规模观测、全仓回归与 GitHub CI 通过；未开始真实 100 POI Pilot） | #297 Open | `docs/tasks/TASK-037-a-planning-contract-soak-fuzz-qa.md`（Task publication branch） / `docs/tasks/RESULT-TASK-037-a-planning-contract-soak-fuzz-qa.md` | `codex/a-planning-contract-soak-qa` | `ebed4d1`（实现与 QA evidence）；`cfe6ef8`（追踪）；`7589f09`（合入最新 develop） | [#298](https://github.com/kanzakimy0/TravelAssist/pull/298) Merged → `develop`（本次授权） |
 | TASK-043-A | 2.18 | A | 待审查（Canonical Master Code Registry Governance Candidate；50/50 Region allocation；不自动完成 4.48） | #311 Open | `docs/tasks/TASK-043-a-master-code-registry.md` / `docs/tasks/RESULT-TASK-043-a-master-code-registry.md` | `codex/a-master-code-registry` | `8f450d4`（实现）；追踪提交见 PR | [#326](https://github.com/kanzakimy0/TravelAssist/pull/326) Draft → `develop` |
@@ -1172,7 +1180,7 @@ TASK-023-A tracking (2026-09-09):
 
 | WBS ID | 工作项                                  | 负责人 | 优先级 | 依赖            | 状态   |
 | ------ | --------------------------------------- | ------ | ------ | --------------- | ------ |
-| 9.1 | 测试框架与全局基线 | A | P1 | 2.9,2.10 | 阻塞（R035-05；R035-01～04已修复待复核；#265/#272；A Owner，B执行） |
+| 9.1 | 测试框架与全局基线 | A | P1 | 2.9,2.10 | 进行中（R035-05本地修复通过；完整CI待验证；#265/#272；A Owner，B执行） |
 | 9.2    | Planner / Map / Route 单元与集成测试    | A      | P1     | 4.x,7.x         | 未开始 |
 | 9.3    | AI 集成测试                             | A      | P1     | 6.x             | 未开始 |
 | 9.4    | 主系统 E2E                              | A      | P1     | 3.x,4.x,6.x,7.x | 未开始 |

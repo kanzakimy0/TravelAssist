@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "status": "PENDING_FULL_INTEGRATION",
+  "canonicalOwner": "A",
+  "executor": "B",
+  "sourceCheckoutSha": "48bac2f2184c352b3d829165b2597851b4dbf45a",
+  "developSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+  "taskPublicationSha": "f3cfc08ff86f31ce1ba2224716360c655c62d049",
+  "localEnvironment": {
+    "platform": "win32",
+    "node": "v24.18.0",
+    "npm": "11.16.0",
+    "python": "3.14.6",
+    "generationWorktree": "I:/CodexWorktrees/TravelAssist-TASK035-CoreFixVerify",
+    "validationWorktree": "I:\\CodexWorktrees\\TravelAssist-TASK035-CoreFix"
+  },
+  "localCandidateNote": "Focused checks ran on the task-owned candidate working tree before commit; these are not clean exact-head hosted evidence.",
+  "generatorHelper": {
+    "path": "tools/qa/task-035-refresh-derived.mjs",
+    "sha256": "e35f2814cf23ddd1c58cb61233e55f1385283b400dbed4d8724da32b98a720f0"
+  },
+  "commands": [
+    {
+      "command": "npm ci --cache I:/CodexWorktrees/task035-review-npm-cache --no-audit --no-fund",
+      "exitCode": 0,
+      "status": "PASS",
+      "passed": null,
+      "log": "logs/npm-ci.log.gz",
+      "rawLogSha256": "e83d5f3eecdb53db28fb80ce94a53007b58311f6e3a3c056b8fd6ebf93fc1d41",
+      "gzipSha256": "6a9137af26767cffc117506515c3086feb7c3fbadd0466bc514f7581cedb114f"
+    },
+    {
+      "command": "npm run test:baseline:inventory -- --check",
+      "exitCode": 0,
+      "status": "PASS",
+      "passed": null,
+      "log": "logs/inventory.log.gz",
+      "rawLogSha256": "25404ff7bfc70d187c9cfdc1e3fb545ccb5e58e562bff41bc6b96f7959d70c1f",
+      "gzipSha256": "a3b4280dfa33ce54dc65e8b4a32e18ddd3953330b25173d4e4e4286df893cfde"
+    },
+    {
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-035-test-baseline.test.mjs tests/task-035-runner.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "passed": 18,
+      "log": "logs/governance.log.gz",
+      "rawLogSha256": "bb57e6fe95b7ec4f1b4a60431b0be1620c3ac0175d269a2b4f07a809d7a0a6d3",
+      "gzipSha256": "ecd6876ab09b2f136941442250f2d899260fe80cc8dd486c13150ef2bb3a4381"
+    },
+    {
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-086-certification-engine-repair.test.mjs tests/task-086-readmittable-closeout.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "passed": 21,
+      "log": "logs/certification-focused.log.gz",
+      "rawLogSha256": "fabf06237b1f5387692c3f85ee83c0661a49db3907f762d352578933e077e4d2",
+      "gzipSha256": "a073fd284d3681b449db037563353264e226230110817fbdeb43232fb04a4495"
+    },
+    {
+      "command": "node tools/qa/task-035-refresh-derived.mjs I:/CodexWorktrees/TravelAssist-TASK035-CoreFixVerify I:/CodexWorktrees/task035-r03505-work/generation-1",
+      "exitCode": 0,
+      "status": "PASS",
+      "passed": null,
+      "log": "logs/generation-1.log.gz",
+      "rawLogSha256": "f6fa2d2fbea3c9446fcb76728a5b5385d5c96c018aadc77896b971bf8cf4430c",
+      "gzipSha256": "8f3f3244aa5e0c15a38024b2a849da36bdc95120ecfa95207426f7660e37e8f3"
+    }
+  ],
+  "additionalChecks": [
+    {
+      "command": "node node_modules/eslint/bin/eslint.js tools/qa/task-035-refresh-derived.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node node_modules/prettier/bin/prettier.cjs --check tools/qa/task-035-refresh-derived.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "coreFixes": "R035-01..04 preserved; governance 18/18 including Windows npm subprocess regression",
+  "R03505": "FIXED_IN_LOCAL_CANDIDATE",
+  "fullNpmTest": "PENDING",
+  "branchExactHead": "PENDING",
+  "prMergeResult": "PENDING",
+  "completeAggregate": "PENDING",
+  "humanAcceptanceReady": false
+}
