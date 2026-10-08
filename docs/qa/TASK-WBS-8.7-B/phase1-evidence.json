@@ -1,0 +1,307 @@
+{
+  "schemaVersion": "1.0",
+  "task": "WBS-8.7-B-Phase1",
+  "recordedAt": "2026-10-08T01:59:23.894Z",
+  "status": "CONTRACT_REVIEW_REQUIRED",
+  "baseDevelopSha": "8f60c8b94d3f5148abeb414d0d8e209e5d736cea",
+  "upstreamHeadSha": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+  "mergeBaseSha": "f08daa9f8aa9b459fbd294f08e4bd29e16624647",
+  "documentBranchSha": "c8c1a36d27a3314fe69fda51868092ced7bba214",
+  "initialWorktree": {
+    "statusShort": "",
+    "branch": "(detached)",
+    "head": "8f60c8b94d3f5148abeb414d0d8e209e5d736cea"
+  },
+  "branch": "codex/b-wbs-8-7-phase1-contract-review",
+  "canonicalOwner": "A",
+  "executor": "B",
+  "upstreamBranchModified": false,
+  "applicationCodeModified": false,
+  "mergeAudit": {
+    "command": "git merge-tree --write-tree 8f60c8b94d3f5148abeb414d0d8e209e5d736cea 97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+    "exitCode": 1,
+    "resultTree": "39a66d88da6e6b7da87a21d77cd7cb80d13295eb",
+    "conflictPaths": ["docs/project/WBS-TravelAssist.md"],
+    "markerLines": {
+      "start": 1086,
+      "end": 1092
+    },
+    "sourceLines": {
+      "develop": [
+        {
+          "line": 1083,
+          "text": "| 6.10   | AI Loading / Error / 降级          | A      | P1     | 6.4      | 进行中（#419 / TASK-077-A；在已合并 server fallback 基础上接 streaming/UI degradation） |"
+        },
+        {
+          "line": 1086,
+          "text": "| 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 进行中（#419 / TASK-077-A 启动基础对话/Orchestrator/Streaming；#420 后续补修改确认与成功反馈） |"
+        },
+        {
+          "line": 1087,
+          "text": "| 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 已完成（#434 / TASK-082-B；用户验收，PR #435 normal merge；只读投影范围） |"
+        }
+      ],
+      "upstream": [
+        {
+          "line": 1009,
+          "text": "| 6.10   | AI Loading / Error / 降级          | A      | P1     | 6.4      | 待审查（#419 / TASK-077-A；Loading / Streaming / Tool / Error / Stop 降级状态与安全恢复已实现并通过本地 Gate，待 Draft PR 合并验收） |"
+        },
+        {
+          "line": 1012,
+          "text": "| 6.13   | AI 主对话 UI / 修改确认 / 成功反馈 | A      | P0     | 1.19,6.6 | 部分完成（#419 / TASK-077-A 基础 Conversation / Orchestrator / 只读 Tool / Streaming UI 已实现并待审查；修改确认与成功反馈仍由 #420 / TASK-078-A 承担） |"
+        },
+        {
+          "line": 1013,
+          "text": "| 6.14   | 个人中心 AI 历史（可选）           | B      | P3     | 6.2,5.1  | 未开始 |"
+        }
+      ]
+    },
+    "rawSha256": "8cdb58f6b2f01c027799a248930bc4e20f6c9f6119fd2fca0e5b00e61a5b745f"
+  },
+  "changedFileCount": 25,
+  "changedFiles": [
+    {
+      "status": "M",
+      "path": "docs/project/AI-WBS-6.4-6.13-runtime-completion-plan.md",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "7c18ad5d74fb241855ee30fff0400b05dda0baba",
+      "developBlob": "8316973e521255b8cfcf5637249dc9768fd94445"
+    },
+    {
+      "status": "M",
+      "path": "docs/project/WBS-TravelAssist.md",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "b30da878773e77ec0d70847ab4ab4204bb49385a",
+      "developBlob": "f5dce4a1a30731be59c35ee41c5443bc91b12c93"
+    },
+    {
+      "status": "A",
+      "path": "docs/qa/TASK-077/README.md",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "da4f3b368fe178ee693a4c5b7bc9255aceac5148",
+      "developBlob": null
+    },
+    {
+      "status": "A",
+      "path": "docs/qa/TASK-077/acceptance-evidence.json",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "efa4ed1124c5358b923aa91f8b7a6130c34b663c",
+      "developBlob": null
+    },
+    {
+      "status": "A",
+      "path": "docs/tasks/RESULT-TASK-077-a-ai-conversation-orchestrator.md",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "470830543974dd1d6313139d74827f81e9228d44",
+      "developBlob": null
+    },
+    {
+      "status": "M",
+      "path": "package.json",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "3693a63418014e496bbc8e6f5dafd521e23815ab",
+      "developBlob": "97ad78706ac44450f29578d904cc9dac3d44e50f"
+    },
+    {
+      "status": "A",
+      "path": "src/app/api/ai/conversation/route.ts",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "3d3da60ecdf9acd85b05e0d5c738c075b1223525",
+      "developBlob": null
+    },
+    {
+      "status": "M",
+      "path": "src/features/home/components/ai-conversation-panel.module.css",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "049c81ff259c3794f4228a65e5819f236c698a4f",
+      "developBlob": "206b246e09fb874b314c803fed453fa6d575d7aa"
+    },
+    {
+      "status": "M",
+      "path": "src/features/home/components/ai-conversation-panel.tsx",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "a027a203eb3b058e18edf4154ca9a9d6bbba1785",
+      "developBlob": "8a94c47bba7381e9c4ab9892e7a51cbce3ff042a"
+    },
+    {
+      "status": "A",
+      "path": "src/features/home/components/ai-conversation-runtime.tsx",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "93a6fedf3adc6c922ae80034807515a4214e7716",
+      "developBlob": null
+    },
+    {
+      "status": "A",
+      "path": "src/features/home/model/ai-conversation-stream.ts",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "3362b7d7203fa3f1ea108efada3332569deb2225",
+      "developBlob": null
+    },
+    {
+      "status": "A",
+      "path": "src/server/ai/conversation/fake-model.ts",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "17fdd473bb27a5112db83b41c97642555f108deb",
+      "developBlob": null
+    },
+    {
+      "status": "A",
+      "path": "src/server/ai/conversation/model.ts",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "529b12fb1149e91c70d9c6641dcc690efa58febb",
+      "developBlob": null
+    },
+    {
+      "status": "A",
+      "path": "src/server/ai/conversation/openai-model.ts",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "205a300215d20b578f3f73c4d3d729155cf6d4b7",
+      "developBlob": null
+    },
+    {
+      "status": "A",
+      "path": "src/server/ai/conversation/orchestrator.ts",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "e28f238bb6c8988343d6c6099527364e4a566daf",
+      "developBlob": null
+    },
+    {
+      "status": "A",
+      "path": "src/server/ai/conversation/transport.ts",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "3312d79b389f4084a2606ce01a783bad8b39430b",
+      "developBlob": null
+    },
+    {
+      "status": "M",
+      "path": "src/server/ai/prompts/registry.ts",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "6bcb9071adea7c3e4b2cd65237354408498f512a",
+      "developBlob": "90099c2ddb7f6ac8d3a6699b906b20f010260bc6"
+    },
+    {
+      "status": "A",
+      "path": "src/server/ai/tools/registry.ts",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "566edd51e486bc6ebe94276bd840f75a298992bc",
+      "developBlob": null
+    },
+    {
+      "status": "A",
+      "path": "src/shared/contracts/ai-conversation/index.ts",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "51094ffa1fa4228f4824c7e70e0f1d3cdbe9c5e5",
+      "developBlob": null
+    },
+    {
+      "status": "A",
+      "path": "src/shared/contracts/ai-conversation/runtime.ts",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "db9e2130f522d4918a41d20946e8b9b0aff52b4b",
+      "developBlob": null
+    },
+    {
+      "status": "M",
+      "path": "tests/task-025-2-concept-fidelity.test.mjs",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "dc8fe3524f489d8312278ed7004178cd0fa70efb",
+      "developBlob": "eeae523f01e72b6dbe63fb6a82f25828b66cb654"
+    },
+    {
+      "status": "M",
+      "path": "tests/task-067-main-system-state.test.mjs",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "4b7c770a99b60cb9120de1d2a74890b84e73f182",
+      "developBlob": "c5911e9a4913f3e5c097ad7c6748a51d63dd1705"
+    },
+    {
+      "status": "M",
+      "path": "tests/task-076-ai-runtime.test.mjs",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "fa3c699f2fe4b3491e184adbf8012d60d058e3f9",
+      "developBlob": "d441ebe831a8b7377f172485ef4f63cc2b8a0137"
+    },
+    {
+      "status": "A",
+      "path": "tests/task-077-ai-client-bundle.mjs",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "8be6f9cfe9730b93455d190dfc5054a5143b629c",
+      "developBlob": null
+    },
+    {
+      "status": "A",
+      "path": "tests/task-077-ai-conversation.test.mjs",
+      "sourceCommit": "97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1",
+      "sourceBlob": "92cc6910ebcf5fb1a303700ea3435c3db56a8621",
+      "developBlob": null
+    }
+  ],
+  "upstreamReducerProbe": {
+    "scope": "Exact upstream runtime.ts transpiled in memory; synthetic input; NOT integrated runtime QA",
+    "sourceSha256": "7fed9a2d1137bd380f266662da4124f2fa1f20cdf3b6ae816094d92274bce8f1",
+    "duplicateDeltaText": "XX",
+    "expectedIfDeduplicated": "X",
+    "lateDeltaText": "FinalX",
+    "terminalTextIfGuarded": "Final",
+    "toolEventLeavesProjectionUnchanged": true
+  },
+  "baselineTests": [
+    {
+      "label": "ai-runtime",
+      "command": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test --test-reporter=tap tests/task-076-ai-runtime.test.mjs",
+      "head": "8f60c8b94d3f5148abeb414d0d8e209e5d736cea",
+      "sourceTree": "8b0e2631bf365acff68551e8bfd28df3014c4443",
+      "startedAt": "2026-10-08T01:59:23.950Z",
+      "endedAt": "2026-10-08T01:59:26.243Z",
+      "exitCode": 0,
+      "status": "PASS",
+      "tests": 14,
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "log": "baseline-ai-runtime.log",
+      "logSha256": "9378af4e7013d46923f45e79205b0e37542d2c8887c684c27018ee98c78d621a"
+    },
+    {
+      "label": "personal-history",
+      "command": "node --import ./tests/register-route-ts.mjs --test --test-reporter=tap tests/task-082-personal-ai-history.test.mjs",
+      "head": "8f60c8b94d3f5148abeb414d0d8e209e5d736cea",
+      "sourceTree": "8b0e2631bf365acff68551e8bfd28df3014c4443",
+      "startedAt": "2026-10-08T01:59:26.243Z",
+      "endedAt": "2026-10-08T01:59:26.839Z",
+      "exitCode": 0,
+      "status": "PASS",
+      "tests": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "log": "baseline-personal-history.log",
+      "logSha256": "27247a2e7cf586d1b4c2eafd507635cc73cbedd97b5d41817498f54ff28332dd"
+    }
+  ],
+  "notRun": [
+    {
+      "gate": "PR426 latest-develop integrated tests",
+      "reason": "No runtime integration in Phase 1; upstream historical PASS is not current baseline evidence"
+    },
+    {
+      "gate": "Schema/migration/RLS/persistence E2E",
+      "reason": "Forbidden until contract approval and Phase 2 authorization"
+    },
+    {
+      "gate": "full lint/typecheck/build/Quality Gate locally",
+      "reason": "Phase 1 documentation and read-only audit only; not claimed PASS; PR checks reported separately"
+    }
+  ],
+  "environment": {
+    "node": "v24.18.0",
+    "git": "2.55.0.windows.3",
+    "npmInstall": {
+      "command": "npm ci --no-audit --no-fund",
+      "exitCode": 0,
+      "packages": 396,
+      "log": "npm-ci.log",
+      "warnings": "deprecated packages and allow-scripts pending warnings retained; lockfile unchanged"
+    }
+  }
+}
