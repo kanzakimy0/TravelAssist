@@ -20,6 +20,8 @@ In **Settings → Rules → Rulesets → develop**, require a pull request befor
 
 ## Publication and verification
 
-Publish from `ci/manual-pr-governance-fix`, which does not match the existing `feature/**` auto-PR trigger, as an explicitly created **Draft** PR to `develop`. Do not enable auto-merge or merge the repair PR automatically. The merged `develop` workflow remains vulnerable until this repair is manually accepted and merged; the branch itself has no remaining workflow merge path.
+The repair was published from `ci/manual-pr-governance-fix` as Draft PR #446, without enabling auto-merge. Before publication, all 32 open PRs were confirmed Draft, so opening the review PR did not give the legacy global workflow an open non-Draft target.
 
-Before publication, all 32 open PRs were confirmed Draft, so opening this Draft review PR cannot give the still-active legacy auto-merge workflow an open non-Draft target. Recheck this immediately before creating the PR.
+The user explicitly accepted PR #446 and authorized a normal merge. Its exact head was `9ba1491c89448c9ac889f954ecc32a24489cb2c1`; Quality gate run #477 (`36396435128`) completed successfully on that head. After a fresh fetch confirmed the PR was ahead 1 / behind 0 against `develop`, the PR was marked Ready and immediately merged with method `merge` and an expected-head-SHA guard. The merge commit was `511508c9a59c3b94c7d72cedbf5ff559da69ded8`, with parents `45f8e78b3c74cfac9b78965caac38c63e3d49378` and `9ba1491c89448c9ac889f954ecc32a24489cb2c1`.
+
+Post-merge `origin/develop` was `511508c9a59c3b94c7d72cedbf5ff559da69ded8`. The merge commit is in its history; `.github/workflows/auto-merge.yml` does not exist; `.github/workflows/auto-create-pr.yml` includes `--draft` and no `gh pr merge`; and the governance tests passed 3/3 on a checkout of that exact `origin/develop` commit. No TASK-082-A business code or PR #445 history was changed. GitHub Ruleset configuration remains the administrator action above.
