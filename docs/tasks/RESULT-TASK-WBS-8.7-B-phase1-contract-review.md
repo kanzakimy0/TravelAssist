@@ -14,7 +14,8 @@ Phase 1 的审计、Proposal 与基线证据供人工审查；不表示 6.2 持�
 - PR #426 原 head：`97a53d5f1fc1fdb5c2c445103fc4c0173be9aca1`。
 - Merge-base：`f08daa9f8aa9b459fbd294f08e4bd29e16624647`。
 - 任务文档分支 head：`c8c1a36d27a3314fe69fda51868092ced7bba214`，只导入本轮三个指定任务文件。
-- 本轮 Draft PR：发布后填入；最终远端 exact head 在 PR 描述和交付消息记录。不能把包含自身 SHA 的自引用文件当成可构造要求；审计证据始终绑定上述不可变源 SHA。
+- 本轮 Draft PR：[PR #470](https://github.com/kanzakimy0/TravelAssist/pull/470) → develop，Draft / Open，等待人工审核。
+- 审计内容提交：`5c42418317b6a733a6c051bf01ff1e037b28bb9f`。随后仅补发布元数据；最终远端 exact head 记录在 PR 描述和交付消息，审计及基线证据仍绑定上述不可变源 SHA。
 
 ## 已交付审查材料
 
