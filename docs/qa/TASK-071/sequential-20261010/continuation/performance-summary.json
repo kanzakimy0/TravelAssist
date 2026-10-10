@@ -1,0 +1,827 @@
+{
+  "experimentId": "6c02fe07-280e-4bce-93a8-b3becb7d6628",
+  "head": "1bef6c8b634a24eacfa554a6612526679919d95c",
+  "status": "PERFORMANCE_RECORDED",
+  "tickFrequency": 100,
+  "tickSource": "getconf CLK_TCK",
+  "sequentialGraphExecution": true,
+  "lanes": {
+    "graph-second": {
+      "status": "PASS",
+      "monotonicDurationMs": 2063653.652991,
+      "monotonicSampledLowerBoundMs": null,
+      "configuredInnerExecutions": [
+        {
+          "startedAt": "2026-10-10T13:22:41.126Z",
+          "endedAt": "2026-10-10T13:57:14.229Z",
+          "timeoutMs": 2400000,
+          "timeout": false,
+          "signal": null,
+          "exitCode": 0
+        }
+      ],
+      "processCpuPercentOneCore100": {
+        "samples": 136,
+        "min": 71.545203299848,
+        "median": 105.30242052919404,
+        "p95": 112.88910206601999,
+        "max": 118.03523524486069
+      },
+      "hostCpuTotalPercent": {
+        "samples": 68,
+        "min": 15,
+        "median": 24,
+        "p95": 46,
+        "max": 57
+      },
+      "hostCpuAtLeast50PercentSamples": 1,
+      "processes": [
+        {
+          "pid": 300,
+          "command": "MainThread",
+          "samples": 139,
+          "peakRssKiB": 101088,
+          "maxIo": {
+            "rchar": 1067458912,
+            "wchar": 491082000,
+            "syscr": 20196,
+            "syscw": 4951,
+            "read_bytes": 318738432,
+            "write_bytes": 461234176,
+            "cancelled_write_bytes": 4096
+          },
+          "lastUserTicks": 57,
+          "lastSystemTicks": 102
+        },
+        {
+          "pid": 580,
+          "command": "MainThread",
+          "samples": 137,
+          "peakRssKiB": 1930928,
+          "maxIo": {
+            "rchar": 391046528,
+            "wchar": 320485379,
+            "syscr": 6868,
+            "syscw": 4095,
+            "read_bytes": 3510272,
+            "write_bytes": 290684928,
+            "cancelled_write_bytes": 4096
+          },
+          "lastUserTicks": 205847,
+          "lastSystemTicks": 12360
+        }
+      ],
+      "sampleCount": 139
+    },
+    "resume": {
+      "status": "PASS",
+      "monotonicDurationMs": 2082447.552231,
+      "monotonicSampledLowerBoundMs": null,
+      "configuredInnerExecutions": [
+        {
+          "startedAt": "2026-10-10T13:57:14.797Z",
+          "endedAt": "2026-10-10T14:32:25.705Z",
+          "timeoutMs": 2399999,
+          "timeout": false,
+          "signal": null,
+          "exitCode": 0
+        }
+      ],
+      "processCpuPercentOneCore100": {
+        "samples": 138,
+        "min": 74.19795837887031,
+        "median": 108.58892606639809,
+        "p95": 114.88269052751778,
+        "max": 117.09799287024337
+      },
+      "hostCpuTotalPercent": {
+        "samples": 69,
+        "min": 13,
+        "median": 24,
+        "p95": 40,
+        "max": 52
+      },
+      "hostCpuAtLeast50PercentSamples": 1,
+      "processes": [
+        {
+          "pid": 300,
+          "command": "MainThread",
+          "samples": 141,
+          "peakRssKiB": 80544,
+          "maxIo": {
+            "rchar": 2139928057,
+            "wchar": 920588171,
+            "syscr": 45798,
+            "syscw": 7078,
+            "read_bytes": 388972544,
+            "write_bytes": 852869120,
+            "cancelled_write_bytes": 4096
+          },
+          "lastUserTicks": 78,
+          "lastSystemTicks": 129
+        },
+        {
+          "pid": 890,
+          "command": "MainThread",
+          "samples": 139,
+          "peakRssKiB": 2131508,
+          "maxIo": {
+            "rchar": 654401991,
+            "wchar": 288626147,
+            "syscr": 14850,
+            "syscw": 1662,
+            "read_bytes": 70234112,
+            "write_bytes": 251531264,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 215059,
+          "lastSystemTicks": 10660
+        },
+        {
+          "pid": 913,
+          "command": "python3",
+          "samples": 1,
+          "peakRssKiB": 138624,
+          "maxIo": {
+            "rchar": 7128216,
+            "wchar": 1,
+            "syscr": 224,
+            "syscw": 1,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 34,
+          "lastSystemTicks": 22
+        },
+        {
+          "pid": 916,
+          "command": "python3",
+          "samples": 1,
+          "peakRssKiB": 135524,
+          "maxIo": {
+            "rchar": 9650323,
+            "wchar": 1,
+            "syscr": 244,
+            "syscw": 1,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 16,
+          "lastSystemTicks": 19
+        }
+      ],
+      "sampleCount": 141
+    },
+    "extraction": {
+      "status": "PASS",
+      "monotonicDurationMs": 21370.208967,
+      "monotonicSampledLowerBoundMs": null,
+      "configuredInnerExecutions": [
+        {
+          "startedAt": "2026-10-10T14:32:26.331Z",
+          "endedAt": "2026-10-10T14:32:48.052Z",
+          "timeoutMs": 1200000,
+          "timeout": false,
+          "signal": null,
+          "exitCode": 0
+        }
+      ],
+      "processCpuPercentOneCore100": {
+        "samples": 0,
+        "min": null,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "hostCpuTotalPercent": {
+        "samples": 1,
+        "min": 12,
+        "median": 12,
+        "p95": 12,
+        "max": 12
+      },
+      "hostCpuAtLeast50PercentSamples": 0,
+      "processes": [
+        {
+          "pid": 300,
+          "command": "MainThread",
+          "samples": 3,
+          "peakRssKiB": 80884,
+          "maxIo": {
+            "rchar": 2456247874,
+            "wchar": 945559218,
+            "syscr": 55461,
+            "syscw": 7491,
+            "read_bytes": 389087232,
+            "write_bytes": 877330432,
+            "cancelled_write_bytes": 24203264
+          },
+          "lastUserTicks": 83,
+          "lastSystemTicks": 135
+        },
+        {
+          "pid": 1163,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 135048,
+          "maxIo": {
+            "rchar": 238969521,
+            "wchar": 20375802,
+            "syscr": 4630,
+            "syscw": 148,
+            "read_bytes": 114688,
+            "write_bytes": 20422656,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 30,
+          "lastSystemTicks": 24
+        },
+        {
+          "pid": 1191,
+          "command": "python3",
+          "samples": 1,
+          "peakRssKiB": 55508,
+          "maxIo": {
+            "rchar": 2236304,
+            "wchar": 1,
+            "syscr": 148,
+            "syscw": 1,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 11,
+          "lastSystemTicks": 5
+        }
+      ],
+      "sampleCount": 3
+    },
+    "rebuild": {
+      "status": "PASS",
+      "monotonicDurationMs": 5058.441575,
+      "monotonicSampledLowerBoundMs": null,
+      "configuredInnerExecutions": [
+        {
+          "startedAt": "2026-10-10T14:32:48.600Z",
+          "endedAt": "2026-10-10T14:32:53.357Z",
+          "timeoutMs": 930000,
+          "timeout": false,
+          "signal": null,
+          "exitCode": 0
+        }
+      ],
+      "processCpuPercentOneCore100": {
+        "samples": 0,
+        "min": null,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "hostCpuTotalPercent": {
+        "samples": 0,
+        "min": null,
+        "median": null,
+        "p95": null,
+        "max": null
+      },
+      "hostCpuAtLeast50PercentSamples": 0,
+      "processes": [
+        {
+          "pid": 300,
+          "command": "MainThread",
+          "samples": 2,
+          "peakRssKiB": 82040,
+          "maxIo": {
+            "rchar": 3489781070,
+            "wchar": 947465434,
+            "syscr": 79565,
+            "syscw": 7741,
+            "read_bytes": 595390464,
+            "write_bytes": 878247936,
+            "cancelled_write_bytes": 24264704
+          },
+          "lastUserTicks": 87,
+          "lastSystemTicks": 142
+        }
+      ],
+      "sampleCount": 2
+    },
+    "ordinary": {
+      "status": "FAIL",
+      "monotonicDurationMs": 427919.935101,
+      "monotonicSampledLowerBoundMs": null,
+      "configuredInnerExecutions": [
+        {
+          "startedAt": "2026-10-10T14:32:53.949Z",
+          "endedAt": "2026-10-10T14:40:09.681Z",
+          "timeoutMs": 1800000,
+          "timeout": false,
+          "signal": null,
+          "exitCode": 1
+        }
+      ],
+      "processCpuPercentOneCore100": {
+        "samples": 41,
+        "min": 0,
+        "median": 0.7997195645795037,
+        "p95": 109.97787182336351,
+        "max": 112.75606765265648
+      },
+      "hostCpuTotalPercent": {
+        "samples": 15,
+        "min": 17,
+        "median": 26,
+        "p95": 31,
+        "max": 39
+      },
+      "hostCpuAtLeast50PercentSamples": 0,
+      "processes": [
+        {
+          "pid": 300,
+          "command": "MainThread",
+          "samples": 31,
+          "peakRssKiB": 83404,
+          "maxIo": {
+            "rchar": 19306212156,
+            "wchar": 1775337702,
+            "syscr": 355761,
+            "syscw": 75668,
+            "read_bytes": 1384194048,
+            "write_bytes": 1266159616,
+            "cancelled_write_bytes": 64020480
+          },
+          "lastUserTicks": 120,
+          "lastSystemTicks": 170
+        },
+        {
+          "pid": 1651,
+          "command": "MainThread",
+          "samples": 29,
+          "peakRssKiB": 82792,
+          "maxIo": {
+            "rchar": 11884402784,
+            "wchar": 537621497,
+            "syscr": 242913,
+            "syscw": 53035,
+            "read_bytes": 726855680,
+            "write_bytes": 100175872,
+            "cancelled_write_bytes": 24993792
+          },
+          "lastUserTicks": 159,
+          "lastSystemTicks": 57
+        },
+        {
+          "pid": 1657,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 64572,
+          "maxIo": {
+            "rchar": 64915,
+            "wchar": 11,
+            "syscr": 39,
+            "syscw": 4,
+            "read_bytes": 4059136,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 4,
+          "lastSystemTicks": 3
+        },
+        {
+          "pid": 1798,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 440044,
+          "maxIo": {
+            "rchar": 91842016,
+            "wchar": 28,
+            "syscr": 184,
+            "syscw": 7,
+            "read_bytes": 91955200,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 115,
+          "lastSystemTicks": 61
+        },
+        {
+          "pid": 1805,
+          "command": "python3",
+          "samples": 1,
+          "peakRssKiB": 263404,
+          "maxIo": {
+            "rchar": 2172769682,
+            "wchar": 1962,
+            "syscr": 6935,
+            "syscw": 18,
+            "read_bytes": 38318080,
+            "write_bytes": 45056,
+            "cancelled_write_bytes": 24576
+          },
+          "lastUserTicks": 811,
+          "lastSystemTicks": 123
+        },
+        {
+          "pid": 1907,
+          "command": "MainThread",
+          "samples": 2,
+          "peakRssKiB": 159156,
+          "maxIo": {
+            "rchar": 965816627,
+            "wchar": 159033,
+            "syscr": 39323,
+            "syscw": 1412,
+            "read_bytes": 443453440,
+            "write_bytes": 180224,
+            "cancelled_write_bytes": 65536
+          },
+          "lastUserTicks": 71,
+          "lastSystemTicks": 29
+        },
+        {
+          "pid": 1918,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 109016,
+          "maxIo": {
+            "rchar": 168704058,
+            "wchar": 1930,
+            "syscr": 10244,
+            "syscw": 243,
+            "read_bytes": 174886912,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 82,
+          "lastSystemTicks": 63
+        },
+        {
+          "pid": 2004,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 463536,
+          "maxIo": {
+            "rchar": 26642094,
+            "wchar": 11,
+            "syscr": 209,
+            "syscw": 4,
+            "read_bytes": 8343552,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 929,
+          "lastSystemTicks": 76
+        },
+        {
+          "pid": 2011,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 514672,
+          "maxIo": {
+            "rchar": 280040457,
+            "wchar": 90138574,
+            "syscr": 8889,
+            "syscw": 6881,
+            "read_bytes": 8048640,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 688,
+          "lastSystemTicks": 148
+        },
+        {
+          "pid": 2370,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 441704,
+          "maxIo": {
+            "rchar": 137955980,
+            "wchar": 11,
+            "syscr": 404,
+            "syscw": 4,
+            "read_bytes": 425984,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 1084,
+          "lastSystemTicks": 92
+        },
+        {
+          "pid": 2663,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 73320,
+          "maxIo": {
+            "rchar": 30606620,
+            "wchar": 68463,
+            "syscr": 2972,
+            "syscw": 466,
+            "read_bytes": 118784,
+            "write_bytes": 139264,
+            "cancelled_write_bytes": 45056
+          },
+          "lastUserTicks": 12,
+          "lastSystemTicks": 10
+        },
+        {
+          "pid": 3440,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 96168,
+          "maxIo": {
+            "rchar": 163387,
+            "wchar": 91432,
+            "syscr": 54,
+            "syscw": 357,
+            "read_bytes": 208896,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 18,
+          "lastSystemTicks": 7
+        },
+        {
+          "pid": 3447,
+          "command": "esbuild",
+          "samples": 1,
+          "peakRssKiB": 11520,
+          "maxIo": {
+            "rchar": 23395,
+            "wchar": 8442,
+            "syscr": 11,
+            "syscw": 4,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 0,
+          "lastSystemTicks": 0
+        },
+        {
+          "pid": 3453,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 343316,
+          "maxIo": {
+            "rchar": 632768,
+            "wchar": 18,
+            "syscr": 221,
+            "syscw": 4,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 69,
+          "lastSystemTicks": 29
+        },
+        {
+          "pid": 3607,
+          "command": "MainThread",
+          "samples": 4,
+          "peakRssKiB": 3189732,
+          "maxIo": {
+            "rchar": 168131,
+            "wchar": 27,
+            "syscr": 57,
+            "syscw": 6,
+            "read_bytes": 12288,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 5019,
+          "lastSystemTicks": 491
+        },
+        {
+          "pid": 3635,
+          "command": "MainThread",
+          "samples": 3,
+          "peakRssKiB": 780400,
+          "maxIo": {
+            "rchar": 1786449456,
+            "wchar": 42084966,
+            "syscr": 8280,
+            "syscw": 150,
+            "read_bytes": 1105920,
+            "write_bytes": 42438656,
+            "cancelled_write_bytes": 5902336
+          },
+          "lastUserTicks": 3360,
+          "lastSystemTicks": 327
+        },
+        {
+          "pid": 3732,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 78224,
+          "maxIo": {
+            "rchar": 2582759,
+            "wchar": 124406,
+            "syscr": 227,
+            "syscw": 34,
+            "read_bytes": 0,
+            "write_bytes": 184320,
+            "cancelled_write_bytes": 12288
+          },
+          "lastUserTicks": 15,
+          "lastSystemTicks": 5
+        },
+        {
+          "pid": 3741,
+          "command": "python3",
+          "samples": 1,
+          "peakRssKiB": 54788,
+          "maxIo": {
+            "rchar": 10915567,
+            "wchar": 1,
+            "syscr": 157,
+            "syscw": 1,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 9,
+          "lastSystemTicks": 4
+        },
+        {
+          "pid": 3784,
+          "command": "MainThread",
+          "samples": 3,
+          "peakRssKiB": 191848,
+          "maxIo": {
+            "rchar": 451678767,
+            "wchar": 222187883,
+            "syscr": 32362,
+            "syscw": 1960,
+            "read_bytes": 12288,
+            "write_bytes": 24576,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 164,
+          "lastSystemTicks": 125
+        },
+        {
+          "pid": 3803,
+          "command": "python3",
+          "samples": 1,
+          "peakRssKiB": 38416,
+          "maxIo": {
+            "rchar": 6741332,
+            "wchar": 1,
+            "syscr": 223,
+            "syscw": 1,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 5,
+          "lastSystemTicks": 5
+        },
+        {
+          "pid": 3896,
+          "command": "python3",
+          "samples": 1,
+          "peakRssKiB": 123844,
+          "maxIo": {
+            "rchar": 6738384,
+            "wchar": 1,
+            "syscr": 224,
+            "syscw": 1,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 17,
+          "lastSystemTicks": 10
+        },
+        {
+          "pid": 3945,
+          "command": "python3",
+          "samples": 1,
+          "peakRssKiB": 9856,
+          "maxIo": {
+            "rchar": 283433,
+            "wchar": 1,
+            "syscr": 44,
+            "syscw": 1,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 1,
+          "lastSystemTicks": 0
+        },
+        {
+          "pid": 4011,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 89696,
+          "maxIo": {
+            "rchar": 48003720,
+            "wchar": 1768950,
+            "syscr": 4507,
+            "syscw": 179,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 24,
+          "lastSystemTicks": 7
+        },
+        {
+          "pid": 4036,
+          "command": "python3",
+          "samples": 1,
+          "peakRssKiB": 42020,
+          "maxIo": {
+            "rchar": 1852429,
+            "wchar": 1,
+            "syscr": 137,
+            "syscw": 1,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 7,
+          "lastSystemTicks": 2
+        },
+        {
+          "pid": 4102,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 57904,
+          "maxIo": {
+            "rchar": 96984471,
+            "wchar": 33332,
+            "syscr": 9092,
+            "syscw": 92,
+            "read_bytes": 14225408,
+            "write_bytes": 24576,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 7,
+          "lastSystemTicks": 6
+        },
+        {
+          "pid": 4153,
+          "command": "python",
+          "samples": 1,
+          "peakRssKiB": 252808,
+          "maxIo": {
+            "rchar": 20780813,
+            "wchar": 469,
+            "syscr": 1682,
+            "syscw": 6,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 86,
+          "lastSystemTicks": 23
+        },
+        {
+          "pid": 4371,
+          "command": "MainThread",
+          "samples": 1,
+          "peakRssKiB": 80532,
+          "maxIo": {
+            "rchar": 15255058,
+            "wchar": 11,
+            "syscr": 500,
+            "syscw": 4,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 6,
+          "lastSystemTicks": 7
+        },
+        {
+          "pid": 4386,
+          "command": "MainThread",
+          "samples": 6,
+          "peakRssKiB": 859464,
+          "maxIo": {
+            "rchar": 3009950043,
+            "wchar": 286436029,
+            "syscr": 15774,
+            "syscw": 132,
+            "read_bytes": 0,
+            "write_bytes": 286507008,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 8040,
+          "lastSystemTicks": 1120
+        }
+      ],
+      "sampleCount": 31
+    }
+  },
+  "limitations": [
+    "CPU samples approximate observed intervals; no entire-process CPU total is inferred from child/parent sums.",
+    "Per-process I/O counters are preserved separately; parent and child I/O are not added.",
+    "This is a local Linux validation, not a GitHub runner. Host load and VM lifetime differ from the prior run; no single-factor causal claim is made.",
+    "Raw timestamps and monotonic duration are separate; no configured timer was increased."
+  ]
+}

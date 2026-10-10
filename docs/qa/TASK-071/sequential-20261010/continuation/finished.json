@@ -1,0 +1,115 @@
+{
+  "experimentId": "6c02fe07-280e-4bce-93a8-b3becb7d6628",
+  "segmentId": "790113fb-457f-43c5-977d-79b0a04beb87",
+  "status": "EXECUTION_COMPLETED",
+  "taskComplete": false,
+  "head": "1bef6c8b634a24eacfa554a6612526679919d95c",
+  "startedAt": "2026-10-10T13:22:40.558Z",
+  "endedAt": "2026-10-10T14:40:09.994Z",
+  "sourceClean": true,
+  "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+  "preservedFirst": {
+    "receipt": "/mnt/i/Codex/task071-isolation-20261010/native-proof/first.receipt.json",
+    "sha256": "d5903a937d50413b7fa87ed473f0264f0de04f2355a6492734fee04de5bcc02a",
+    "canonicalId": "81f7ca9e-88ff-48b1-bdf0-455b53a9454f",
+    "bindingVerified": true,
+    "allArtifactHashesVerified": true
+  },
+  "outcomes": [
+    {
+      "lane": "graph-second",
+      "status": "PASS",
+      "monotonicDurationMs": 2063653.652991,
+      "receipt": "canonical/graph-second.json",
+      "canonicalId": "d9837c02-05f2-45b5-bcec-f656a2e2b0c3",
+      "executions": [
+        {
+          "startedAt": "2026-10-10T13:22:41.126Z",
+          "endedAt": "2026-10-10T13:57:14.229Z",
+          "timeoutMs": 2400000,
+          "timeout": false,
+          "signal": null,
+          "exitCode": 0
+        }
+      ],
+      "nativeReceiptSha256": "640a8a57bc7ad568f8ee69bd898a8445d1aec8ed64966f901774dfaf6370c974"
+    },
+    {
+      "lane": "resume",
+      "status": "PASS",
+      "monotonicDurationMs": 2082447.552231,
+      "receipt": "canonical/resume.json",
+      "canonicalId": "efedd4c9-146f-4376-b6d6-65b8a1a32801",
+      "executions": [
+        {
+          "startedAt": "2026-10-10T13:57:14.797Z",
+          "endedAt": "2026-10-10T14:32:25.705Z",
+          "timeoutMs": 2399999,
+          "timeout": false,
+          "signal": null,
+          "exitCode": 0
+        }
+      ],
+      "nativeReceiptSha256": "1a3ed4914386283d868b3eb6cd077c851162ad0ffde88fac9193a4e781fa9405"
+    },
+    {
+      "lane": "extraction",
+      "status": "PASS",
+      "monotonicDurationMs": 21370.208967,
+      "receipt": "canonical/extraction.json",
+      "canonicalId": "6529e224-f7a9-4a3b-8f3d-dc94307cbe68",
+      "executions": [
+        {
+          "startedAt": "2026-10-10T14:32:26.331Z",
+          "endedAt": "2026-10-10T14:32:48.052Z",
+          "timeoutMs": 1200000,
+          "timeout": false,
+          "signal": null,
+          "exitCode": 0
+        }
+      ],
+      "nativeReceiptSha256": "7d6fe591cd5b570ed5ac53796f39104500e54123143631bfc58423ad10d6d777"
+    },
+    {
+      "lane": "rebuild",
+      "status": "PASS",
+      "monotonicDurationMs": 5058.441575,
+      "receipt": "canonical/rebuild.json",
+      "canonicalId": "064a79c3-0c2a-4e05-9e56-d28925a74ccb",
+      "executions": [
+        {
+          "startedAt": "2026-10-10T14:32:48.600Z",
+          "endedAt": "2026-10-10T14:32:53.357Z",
+          "timeoutMs": 930000,
+          "timeout": false,
+          "signal": null,
+          "exitCode": 0
+        }
+      ],
+      "nativeReceiptSha256": null
+    },
+    {
+      "lane": "ordinary",
+      "status": "FAIL",
+      "monotonicDurationMs": 427919.935101,
+      "receipt": "canonical/ordinary.json",
+      "canonicalId": "cff7d317-261b-416c-86b9-115dba6b947c",
+      "executions": [
+        {
+          "startedAt": "2026-10-10T14:32:53.949Z",
+          "endedAt": "2026-10-10T14:40:09.681Z",
+          "timeoutMs": 1800000,
+          "timeout": false,
+          "signal": null,
+          "exitCode": 1
+        }
+      ],
+      "nativeReceiptSha256": null
+    }
+  ],
+  "originalGeneratorExecuted": false,
+  "sourceHostedCI": "NOT_RUN",
+  "D1": "HOLD_OWNER",
+  "D2": "HOLD_OWNER",
+  "D3": "HOLD_OWNER"
+}

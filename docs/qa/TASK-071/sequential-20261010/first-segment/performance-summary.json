@@ -1,0 +1,83 @@
+{
+  "experimentId": "6c02fe07-280e-4bce-93a8-b3becb7d6628",
+  "head": "1bef6c8b634a24eacfa554a6612526679919d95c",
+  "status": "PERFORMANCE_RECORDED",
+  "tickFrequency": 100,
+  "tickSource": "getconf CLK_TCK",
+  "sequentialGraphExecution": true,
+  "lanes": {
+    "graph-first": {
+      "status": "PASS",
+      "monotonicDurationMs": null,
+      "monotonicSampledLowerBoundMs": 2295454.982011,
+      "configuredInnerExecutions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 2400000,
+          "startedAt": "2026-10-10T09:05:55.997Z",
+          "endedAt": "2026-10-10T09:47:31.195Z"
+        }
+      ],
+      "processCpuPercentOneCore100": {
+        "samples": 152,
+        "min": 70.78535404306515,
+        "median": 113.32063864167246,
+        "p95": 122.50594978255502,
+        "max": 126.21762095619945
+      },
+      "hostCpuTotalPercent": {
+        "samples": 82,
+        "min": 7,
+        "median": 39,
+        "p95": 71,
+        "max": 77
+      },
+      "hostCpuAtLeast50PercentSamples": 32,
+      "processes": [
+        {
+          "pid": 300,
+          "command": "MainThread",
+          "samples": 154,
+          "peakRssKiB": 68128,
+          "maxIo": {
+            "rchar": 11630562,
+            "wchar": 287567,
+            "syscr": 7681,
+            "syscw": 757,
+            "read_bytes": 71995392,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "lastUserTicks": 73,
+          "lastSystemTicks": 95
+        },
+        {
+          "pid": 570,
+          "command": "MainThread",
+          "samples": 153,
+          "peakRssKiB": 1885384,
+          "maxIo": {
+            "rchar": 391046479,
+            "wchar": 163728547,
+            "syscr": 6862,
+            "syscw": 2661,
+            "read_bytes": 106467328,
+            "write_bytes": 130269184,
+            "cancelled_write_bytes": 4096
+          },
+          "lastUserTicks": 248885,
+          "lastSystemTicks": 13170
+        }
+      ],
+      "sampleCount": 154
+    }
+  },
+  "limitations": [
+    "CPU samples approximate observed intervals; no entire-process CPU total is inferred from child/parent sums.",
+    "Per-process I/O counters are preserved separately; parent and child I/O are not added.",
+    "This is a local Linux validation, not a GitHub runner. Host load and VM lifetime differ from the prior run; no single-factor causal claim is made.",
+    "Raw timestamps and monotonic duration are separate; no configured timer was increased."
+  ]
+}

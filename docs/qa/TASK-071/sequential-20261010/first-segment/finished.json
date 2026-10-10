@@ -1,0 +1,46 @@
+{
+  "experimentId": "6c02fe07-280e-4bce-93a8-b3becb7d6628",
+  "status": "WAITING_FOR_RUNTIME_WINDOW",
+  "taskComplete": false,
+  "head": "1bef6c8b634a24eacfa554a6612526679919d95c",
+  "startedAt": "2026-10-10T09:05:55.474Z",
+  "endedAt": "2026-10-10T09:50:21.239761+00:00",
+  "sourceClean": true,
+  "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+  "outcomes": [
+    {
+      "lane": "graph-first",
+      "status": "PASS",
+      "monotonicDurationMs": null,
+      "monotonicDurationNote": "Boundary guard stopped external orchestration after original receipt was sealed and before its duration summary was persisted; original timer result and raw samples remain authoritative",
+      "monotonicSampledLowerBoundMs": 2295454.982011,
+      "receipt": "canonical/graph-first.json",
+      "canonicalId": "81f7ca9e-88ff-48b1-bdf0-455b53a9454f",
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 2400000,
+          "startedAt": "2026-10-10T09:05:55.997Z",
+          "endedAt": "2026-10-10T09:47:31.195Z"
+        }
+      ],
+      "nativeReceiptSha256": "d5903a937d50413b7fa87ed473f0264f0de04f2355a6492734fee04de5bcc02a"
+    }
+  ],
+  "remainingLanes": {
+    "graph-second": "NOT_RUN_RUNTIME_HOLD",
+    "resume": "NOT_RUN_PREREQUISITE",
+    "extraction": "NOT_RUN",
+    "rebuild": "NOT_RUN_PREREQUISITE",
+    "ordinary": "NOT_RERUN"
+  },
+  "strictHostIsolationAchieved": false,
+  "limitation": "External high CPU workload resumed during first graph; this is a sequential but host-contended observation, not a fully isolated experiment",
+  "originalGeneratorExecuted": false,
+  "D1": "HOLD_OWNER",
+  "D2": "HOLD_OWNER",
+  "D3": "HOLD_OWNER",
+  "sourceHostedCI": "NOT_RUN"
+}

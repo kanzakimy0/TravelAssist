@@ -1,0 +1,75 @@
+[
+  {
+    "lane": "rebuild",
+    "canonicalStatus": "PASS",
+    "countStatus": "VERIFIED",
+    "observedFinalSummary": {
+      "type": "test:summary",
+      "success": true,
+      "counts": {
+        "tests": 1,
+        "failed": 0,
+        "passed": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 1,
+        "suites": 0
+      },
+      "duration_ms": 4634.600582
+    },
+    "completedDirectFiles": 1,
+    "failedFiles": [],
+    "note": "Failed canonical counts remain UNVERIFIED; no duplicate partition totals are added."
+  },
+  {
+    "lane": "ordinary",
+    "canonicalStatus": "FAIL",
+    "countStatus": "UNVERIFIED",
+    "observedFinalSummary": {
+      "type": "test:summary",
+      "success": false,
+      "counts": {
+        "tests": 3939,
+        "failed": 3,
+        "passed": 3936,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 3899,
+        "suites": 0
+      },
+      "duration_ms": 427670.99647
+    },
+    "completedDirectFiles": 155,
+    "failedFiles": [
+      {
+        "path": "tests/task-086-certification-engine-repair.test.mjs",
+        "counts": {
+          "tests": 17,
+          "failed": 2,
+          "passed": 15,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "topLevel": 17,
+          "suites": 0
+        }
+      },
+      {
+        "path": "tests/task-086-readmittable-closeout.test.mjs",
+        "counts": {
+          "tests": 4,
+          "failed": 1,
+          "passed": 3,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "topLevel": 4,
+          "suites": 0
+        }
+      }
+    ],
+    "note": "Failed canonical counts remain UNVERIFIED; no duplicate partition totals are added."
+  }
+]

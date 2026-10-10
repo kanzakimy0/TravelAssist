@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-10-10T14:41:03.382Z",
+  "canonicalOwner": "A",
+  "executor": "B",
+  "generalAuthorization": "ACTIVE",
+  "D1": "HOLD_OWNER",
+  "D2": "HOLD_OWNER",
+  "D3": "HOLD_OWNER",
+  "latestCommentId": 6095699498,
+  "latestInstruction": {
+    "url": "https://github.com/kanzakimy0/TravelAssist/issues/404#issuecomment-6095699498",
+    "body": "## WBS 9.10 / TASK-071-A — 最新 QA 复核：下一步避免重复重跑（2026-10-10）\n\n直接复核原 PR #231 文档 HEAD `5479b93e058baa30ab35acfa9434bf556d960e89` 的 convergence QA。源码候选 `1bef6c8b634a24eacfa554a6612526679919d95c` 仅本地，当前任何旧 CI 不能作为它的验收。\n\n**新发现，优先排查：** 本地 Linux 的 `graph-first` 和 `graph-second` 都在 `2026-10-10T07:06:04Z` 启动，各自超出既有 `2400000ms` inner budget 后 SIGKILL。其并发发生于**同一 Linux 验证环境**，可能形成严重资源争用；而原 TASK-035 已通过的 GitHub graph 作业分别运行在独立 hosted runners，参考耗时约 18–27 分钟/个。这是测试拓扑差异，不能凭当前并发超时断言生成算法需要加时或修改。**请 B/Codex 先让 graph-first、graph-second 在隔离 runners 或严格顺序、互不共享高负载的独立 clean 环境重跑原命令，保持原预算/源码/输入不变；记录 CPU/RSS/I/O、SHA、run/attempt、原生 proof。** 只在复验仍失败时分析性能/算法，不要直接增加 timeout 或反复并发重跑。\n\nCanonical 3935/3939 的 4 失败可分成两个因果组：1 项 `task-086-b-rebuild` 因缺少图证明；另 3 项为冻结 `package.json` 绑定/已发布产物证明。**先拿到成功的当次 graph first/second/resume proof；待最终 package/workflow 固定且 D3 明确批准，再仅一次执行原 R035-05 派生认证刷新、证明业务等价并重测全部 4 项。** 不能把 4 项失败直接当作 4 个互不相干的业务 bug。\n\n**Owner 仍须直接在本 Issue 一次性回应：** D1 两项当前外部来源及 14 组历史命中（47 次）逐组处置、安全例外或专业凭据事件处理；D2 四个 9.1 reviewed test 文件及已验收 proof-backed 执行模型是否接受；D3 仅在输入冻结后允许使用原生成器双重确定性和语义等价刷新。现有 D1–D3 请求和用户转述的一般 B 执行授权**都不是**安全例外/冻结派生的直接批准。未批部分继续 HOLD，不输出或联网验证疑似凭据。\n\n本轮 **不创建新 TASK、不开第二 implementation PR、不自动合并**；全部正常技术诊断由 B 在原 TASK-071-A 内自闭环推进。只有图证明、TASK-086 三失败、tracked/history 安全处置、当前源代码 exact-head 与 PR merge-result 强制 Security/Quality 全部实际 PASS，才可提交 #231 最终人工验收。当前 WBS 9.10 仍 BLOCKED。",
+    "bodySha256": "46f2e37a885f07f530cb8136d87c9d71803affbd46a4e484a91e8cfe0d9d1e65",
+    "readInFull": true,
+    "meaning": "Sequential isolated original graph validation requested; no D1-D3 approval"
+  },
+  "earlierDecisionEvidence": [
+    {
+      "id": 6093462830,
+      "url": "https://github.com/kanzakimy0/TravelAssist/issues/404#issuecomment-6093462830",
+      "author": "EURAISA",
+      "createdAt": "2026-10-10T03:49:15Z",
+      "updatedAt": "2026-10-10T03:49:15Z",
+      "bodySha256": "398c4b830a0297ee49eb10a95129c072ff9c0e504a2eb8211861450f1f371b7c",
+      "meaning": "USER_RELAYED_GENERAL_B_EXECUTION_AUTHORIZATION"
+    },
+    {
+      "id": 6093604543,
+      "url": "https://github.com/kanzakimy0/TravelAssist/issues/404#issuecomment-6093604543",
+      "author": "EURAISA",
+      "createdAt": "2026-10-10T04:07:37Z",
+      "updatedAt": "2026-10-10T04:07:37Z",
+      "bodySha256": "9fedf9f1f4e1a11e3dc328f16bb3890634fa7e769807835915f541471138194b",
+      "meaning": "OWNER_DECISION_REQUEST_NOT_APPROVAL"
+    },
+    {
+      "id": 6094076796,
+      "url": "https://github.com/kanzakimy0/TravelAssist/issues/404#issuecomment-6094076796",
+      "author": "EURAISA",
+      "createdAt": "2026-10-10T05:10:02Z",
+      "updatedAt": "2026-10-10T05:11:25Z",
+      "bodySha256": "a025f3348bc7e75ff0e1a2b221016637d67745e8672cbc788e3e2971ce9c86fc",
+      "meaning": "PRIOR_EXECUTION_RECEIPT_NOT_OWNER_APPROVAL"
+    },
+    {
+      "id": 6094176408,
+      "url": "https://github.com/kanzakimy0/TravelAssist/issues/404#issuecomment-6094176408",
+      "author": "EURAISA",
+      "createdAt": "2026-10-10T05:23:20Z",
+      "updatedAt": "2026-10-10T05:23:20Z",
+      "bodySha256": "d407a57354cb37ad723361541164019c5f6db89e2b5817aeeabd2e12de6985ed",
+      "meaning": "OWNER_DECISION_REQUEST_NOT_APPROVAL"
+    }
+  ],
+  "issueBody": {
+    "url": "https://github.com/kanzakimy0/TravelAssist/issues/404",
+    "updatedAt": "2026-10-10T05:23:20Z",
+    "bodySha256": "7b1e1dccf94587fd0d0d641df51285dca3b6332d7cf7472c71f7bdef4f516be0",
+    "readInFull": true
+  },
+  "remote": {
+    "head": "5479b93e058baa30ab35acfa9434bf556d960e89",
+    "draft": true,
+    "state": "open",
+    "autoMerge": null,
+    "mergeable": false,
+    "reportedPrBase": "a16ea611b8fb24cfe751615d54a3828f7ef564ca",
+    "actualDevelop": "cfd51e42f96e43f84f406c6aab5aab6e408b713e"
+  }
+}
