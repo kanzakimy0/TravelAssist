@@ -1189,7 +1189,7 @@ TASK-023-A tracking (2026-09-09):
 | 9.7    | 跨模块 E2E：偏好→Planner                | A+B    | P0     | 4.18,5.14       | 未开始 |
 | 9.8    | 跨模块 E2E：Planner→保存→个人中心       | A+B    | P0     | 4.19,5.19       | 未开始 |
 | 9.9    | API Rate Limit / Security Headers / CSP | A      | P1     | 6.4,7.x         | 未开始 |
-| 9.10 | Secret 扫描 / 全局安全 | A | P1 | 2.8 | 阻塞（#404 / TASK-071-A；A Canonical Owner，B 授权代办；原 Draft PR #231；安全发现与 D1/D3 HOLD_OWNER，D2 待 Owner 确认；one-pass QA 已记录，未验收） |
+| 9.10 | Secret 扫描 / 全局安全 | A | P1 | 2.8 | 阻塞（#404 / TASK-071-A；A Canonical Owner，B 授权执行；原 Draft PR #231；收敛 QA 及门禁真实状态已记录，D1/D2/D3 HOLD_OWNER；未验收、未合并） |
 | 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 进行中（#405 / TASK-072-A；复用 PR #245，需 latest-develop Full Refresh） |
 | 9.12   | B 模块响应式 / 可访问性 QA              | B      | P2     | 5.20            | 已完成（用户验收通过） |
 | 9.13   | Planning Contract Soak / Fuzz / Consistency QA | A | P0 | 4.47 / TASK-036 review-fix semantics | 已完成（TASK-037-A 用户验收授权合并；#298；未开始真实 100 POI Pilot） |

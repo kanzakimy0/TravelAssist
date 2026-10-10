@@ -1,0 +1,652 @@
+{
+  "schemaVersion": 1,
+  "status": "BLOCKED_TECHNICAL_AND_HOLD_OWNER",
+  "canonicalOwner": "A",
+  "executor": "B",
+  "observedAt": "2026-10-10T08:00:01.669Z",
+  "sourceCandidate": {
+    "head": "1bef6c8b634a24eacfa554a6612526679919d95c",
+    "develop": "cfd51e42f96e43f84f406c6aab5aab6e408b713e",
+    "originalCandidate": "7e3160ac78cb3b1dbc27b4d2194bc98ca72f5bdb",
+    "normalDocumentationMerge": "b1be62f8fc17c1c0ad57e74660f18f899d003c44",
+    "clean": true,
+    "published": false,
+    "publicationHold": "D1; existing request forbids publishing unresolved source candidate",
+    "path": "I:/Codex/TravelAssist-task071-20261010"
+  },
+  "riskMatrix": {
+    "currentSource": {
+      "gate": "FAIL",
+      "owner": "HOLD_OWNER",
+      "decision": "D1",
+      "unresolved": 2
+    },
+    "history": {
+      "gate": "FAIL",
+      "owner": "HOLD_OWNER",
+      "decision": "D1",
+      "unresolved": 47,
+      "groups": 14
+    },
+    "inventory": {
+      "gate": "PASS",
+      "owner": "HOLD_OWNER",
+      "decision": "D2",
+      "direct": 155,
+      "indirect": 4,
+      "reviewedFiles": [
+        "tests/task-013-assets.test.mjs",
+        "tests/task-025-2-coral-palette.test.mjs",
+        "tests/task-076-ai-runtime.test.mjs",
+        "tests/task-020-security.test.mjs"
+      ]
+    },
+    "rebuild": {
+      "gate": "FAIL",
+      "workflowRepair": "PASS_STATIC_AND_FOCUSED",
+      "plainUnpreparedNpmTest": "NOT_RETESTED; repeated full graph computation unchanged",
+      "qaAcceptance": "HOLD_OWNER_D2",
+      "nativeProof": null,
+      "windowsGraphFirst": "FAIL_TIMEOUT_2400000_MS",
+      "windowsGraphSecond": "FAIL_TIMEOUT_2400000_MS",
+      "acceptedCIReferenceRuntime": "Linux x64, Node v24.21.0, npm 11.19.0, Python 3.12.14; reference only, not candidate evidence"
+    },
+    "frozenBinding": {
+      "gate": "FAIL",
+      "owner": "HOLD_OWNER",
+      "decision": "D3",
+      "refreshExecuted": false,
+      "doubleDerivedGeneration": "NOT_RUN_OWNER_HOLD",
+      "businessProjection": "NOT_RUN_OWNER_HOLD",
+      "sourceRightsProjection": "NOT_RUN_OWNER_HOLD",
+      "originalGeneratorSha256": "e35f2814cf23ddd1c58cb61233e55f1385283b400dbed4d8724da32b98a720f0",
+      "activeFailureLocations": [
+        "tests/task-086-certification-engine-repair.test.mjs:369",
+        "tests/task-086-certification-engine-repair.test.mjs:403",
+        "tests/task-086-readmittable-closeout.test.mjs:167"
+      ]
+    },
+    "hostedCI": {
+      "gate": "NOT_RUN",
+      "reason": "Unpublished source candidate; no exact-head or current PR merge-result run can be claimed"
+    }
+  },
+  "executions": [
+    {
+      "name": "ai-bundle",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/ai-bundle.json"
+    },
+    {
+      "name": "ai-runtime",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/ai-runtime.json"
+    },
+    {
+      "name": "assets",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/assets.json"
+    },
+    {
+      "name": "boundary",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/boundary.json"
+    },
+    {
+      "name": "bundle",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/bundle.json"
+    },
+    {
+      "name": "canary-build",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/canary-build.json"
+    },
+    {
+      "name": "canonical-aggregate",
+      "status": "FAIL",
+      "exitCode": 1,
+      "timeout": false,
+      "receipt": "executions/canonical-aggregate.json"
+    },
+    {
+      "name": "canonical-node",
+      "status": "FAIL",
+      "exitCode": 1,
+      "timeout": false,
+      "receipt": "executions/canonical-node.json"
+    },
+    {
+      "name": "diff-check",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/diff-check.json"
+    },
+    {
+      "name": "extraction",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/extraction.json"
+    },
+    {
+      "name": "graph-first",
+      "status": "FAIL",
+      "exitCode": 1,
+      "timeout": false,
+      "receipt": "executions/graph-first.json"
+    },
+    {
+      "name": "graph-second",
+      "status": "FAIL",
+      "exitCode": 1,
+      "timeout": false,
+      "receipt": "executions/graph-second.json"
+    },
+    {
+      "name": "history",
+      "status": "FAIL",
+      "exitCode": 1,
+      "timeout": false,
+      "receipt": "executions/history.json"
+    },
+    {
+      "name": "inventory",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/inventory.json"
+    },
+    {
+      "name": "python-fixture",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/python-fixture.json"
+    },
+    {
+      "name": "quality",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/quality.json"
+    },
+    {
+      "name": "rebuild",
+      "status": "FAIL",
+      "exitCode": 1,
+      "timeout": false,
+      "receipt": "executions/rebuild.json"
+    },
+    {
+      "name": "regression-0",
+      "status": "FAIL",
+      "exitCode": 1,
+      "timeout": false,
+      "receipt": "executions/regression-0.json"
+    },
+    {
+      "name": "regression-1",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/regression-1.json"
+    },
+    {
+      "name": "regression-2",
+      "status": "FAIL",
+      "exitCode": 1,
+      "timeout": false,
+      "receipt": "executions/regression-2.json"
+    },
+    {
+      "name": "regression-3",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/regression-3.json"
+    },
+    {
+      "name": "security-format",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/security-format.json"
+    },
+    {
+      "name": "security-tests",
+      "status": "PASS",
+      "exitCode": 0,
+      "timeout": false,
+      "receipt": "executions/security-tests.json"
+    },
+    {
+      "name": "tracked",
+      "status": "FAIL",
+      "exitCode": 1,
+      "timeout": false,
+      "receipt": "executions/tracked.json"
+    }
+  ],
+  "canonical": [
+    {
+      "lane": "assets",
+      "status": "PASS",
+      "countStatus": "VERIFIED",
+      "counts": {
+        "tests": 166,
+        "passed": 166,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 166,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "runId": "local",
+      "runAttempt": "1",
+      "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1530000,
+          "startedAt": "2026-10-10T06:52:26.534Z",
+          "endedAt": "2026-10-10T06:53:43.112Z"
+        }
+      ],
+      "validationError": null,
+      "receipt": "canonical/assets.json"
+    },
+    {
+      "lane": "extraction",
+      "status": "PASS",
+      "countStatus": "NOT_APPLICABLE_COMMAND_GATE",
+      "counts": null,
+      "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "runId": "local",
+      "runAttempt": "1",
+      "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1200000,
+          "startedAt": "2026-10-10T06:43:35.338Z",
+          "endedAt": "2026-10-10T06:44:03.242Z"
+        }
+      ],
+      "validationError": null,
+      "receipt": "canonical/extraction.json"
+    },
+    {
+      "lane": "graph-first",
+      "status": "FAIL",
+      "countStatus": "NOT_APPLICABLE_COMMAND_GATE",
+      "counts": null,
+      "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "runId": "local",
+      "runAttempt": "1",
+      "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+      "executions": [
+        {
+          "exitCode": null,
+          "signal": "SIGKILL",
+          "timeout": true,
+          "timeoutMs": 2400000,
+          "startedAt": "2026-10-10T07:06:04.817Z",
+          "endedAt": "2026-10-10T07:48:38.823Z"
+        }
+      ],
+      "validationError": "NONZERO_EXIT\n\nnull !== 0\n",
+      "receipt": "canonical/graph-first.json"
+    },
+    {
+      "lane": "graph-second",
+      "status": "FAIL",
+      "countStatus": "NOT_APPLICABLE_COMMAND_GATE",
+      "counts": null,
+      "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "runId": "local",
+      "runAttempt": "1",
+      "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+      "executions": [
+        {
+          "exitCode": null,
+          "signal": "SIGKILL",
+          "timeout": true,
+          "timeoutMs": 2400000,
+          "startedAt": "2026-10-10T07:06:04.838Z",
+          "endedAt": "2026-10-10T07:48:38.822Z"
+        }
+      ],
+      "validationError": "NONZERO_EXIT\n\nnull !== 0\n",
+      "receipt": "canonical/graph-second.json"
+    },
+    {
+      "lane": "ordinary",
+      "status": "FAIL",
+      "countStatus": "UNVERIFIED",
+      "counts": null,
+      "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "runId": "local",
+      "runAttempt": "1",
+      "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+      "executions": [
+        {
+          "exitCode": 1,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1800000,
+          "startedAt": "2026-10-10T07:48:43.186Z",
+          "endedAt": "2026-10-10T07:59:38.198Z"
+        }
+      ],
+      "validationError": "NONZERO_EXIT\n\n1 !== 0\n",
+      "receipt": "canonical/ordinary.json"
+    },
+    {
+      "lane": "quality",
+      "status": "PASS",
+      "countStatus": "NOT_APPLICABLE_COMMAND_GATE",
+      "counts": null,
+      "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "runId": "local",
+      "runAttempt": "1",
+      "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1440000,
+          "startedAt": "2026-10-10T07:01:08.680Z",
+          "endedAt": "2026-10-10T07:01:08.957Z"
+        },
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1439722,
+          "startedAt": "2026-10-10T07:01:08.958Z",
+          "endedAt": "2026-10-10T07:01:41.245Z"
+        },
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1407435,
+          "startedAt": "2026-10-10T07:01:41.245Z",
+          "endedAt": "2026-10-10T07:02:01.898Z"
+        },
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1386782,
+          "startedAt": "2026-10-10T07:02:01.898Z",
+          "endedAt": "2026-10-10T07:02:22.515Z"
+        },
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1366165,
+          "startedAt": "2026-10-10T07:02:22.515Z",
+          "endedAt": "2026-10-10T07:03:20.569Z"
+        },
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1308111,
+          "startedAt": "2026-10-10T07:03:20.569Z",
+          "endedAt": "2026-10-10T07:03:22.392Z"
+        },
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1306288,
+          "startedAt": "2026-10-10T07:03:22.392Z",
+          "endedAt": "2026-10-10T07:03:22.410Z"
+        }
+      ],
+      "validationError": null,
+      "receipt": "canonical/quality.json"
+    },
+    {
+      "lane": "rebuild",
+      "status": "FAIL",
+      "countStatus": "UNVERIFIED",
+      "counts": null,
+      "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "runId": "local",
+      "runAttempt": "1",
+      "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+      "executions": [
+        {
+          "exitCode": 1,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 930000,
+          "startedAt": "2026-10-10T07:48:40.638Z",
+          "endedAt": "2026-10-10T07:48:42.564Z"
+        }
+      ],
+      "validationError": "NONZERO_EXIT\n\n1 !== 0\n",
+      "receipt": "canonical/rebuild.json"
+    },
+    {
+      "lane": "regression-0",
+      "status": "FAIL",
+      "countStatus": "UNVERIFIED",
+      "counts": null,
+      "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "runId": "local",
+      "runAttempt": "1",
+      "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+      "executions": [
+        {
+          "exitCode": 1,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1530000,
+          "startedAt": "2026-10-10T06:53:43.578Z",
+          "endedAt": "2026-10-10T06:56:05.865Z"
+        }
+      ],
+      "validationError": "NONZERO_EXIT\n\n1 !== 0\n",
+      "receipt": "canonical/regression-0.json"
+    },
+    {
+      "lane": "regression-1",
+      "status": "PASS",
+      "countStatus": "VERIFIED",
+      "counts": {
+        "tests": 856,
+        "passed": 856,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 856,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "runId": "local",
+      "runAttempt": "1",
+      "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1530000,
+          "startedAt": "2026-10-10T06:56:06.221Z",
+          "endedAt": "2026-10-10T06:56:31.010Z"
+        }
+      ],
+      "validationError": null,
+      "receipt": "canonical/regression-1.json"
+    },
+    {
+      "lane": "regression-2",
+      "status": "FAIL",
+      "countStatus": "UNVERIFIED",
+      "counts": null,
+      "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "runId": "local",
+      "runAttempt": "1",
+      "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+      "executions": [
+        {
+          "exitCode": 1,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1530000,
+          "startedAt": "2026-10-10T06:56:31.462Z",
+          "endedAt": "2026-10-10T06:59:55.067Z"
+        }
+      ],
+      "validationError": "NONZERO_EXIT\n\n1 !== 0\n",
+      "receipt": "canonical/regression-2.json"
+    },
+    {
+      "lane": "regression-3",
+      "status": "PASS",
+      "countStatus": "VERIFIED",
+      "counts": {
+        "tests": 1180,
+        "passed": 1180,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 1180,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "runId": "local",
+      "runAttempt": "1",
+      "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+      "executions": [
+        {
+          "exitCode": 0,
+          "signal": null,
+          "timeout": false,
+          "timeoutMs": 1530000,
+          "startedAt": "2026-10-10T06:59:55.411Z",
+          "endedAt": "2026-10-10T07:01:08.212Z"
+        }
+      ],
+      "validationError": null,
+      "receipt": "canonical/regression-3.json"
+    },
+    {
+      "lane": "resume",
+      "status": "NOT_RUN",
+      "countStatus": "UNVERIFIED",
+      "counts": null,
+      "receipt": null,
+      "reason": "No actual exact-head receipt; prerequisite graph proof failed"
+    }
+  ],
+  "ownerDecisionEvidence": "owner-decisions.json",
+  "requiredGate": "FAIL",
+  "documentationPublication": "Recorded externally in original PR 231 / Issue 404 after this docs-only commit; source gate receipts do not transfer to that SHA",
+  "supportedLocalValidation": {
+    "head": "1bef6c8b634a24eacfa554a6612526679919d95c",
+    "root": "/tmp/travelassist-task071-linux-20261010-1bef6c8b",
+    "node": "v24.21.0",
+    "platform": "linux",
+    "npm": "11.19.0",
+    "python": "Python 3.12.3",
+    "develop": "cfd51e42f96e43f84f406c6aab5aab6e408b713e",
+    "clean": true,
+    "shallow": "false",
+    "alternateObjects": false,
+    "promisor": false,
+    "fsckExitCode": 0,
+    "missingObjects": 0,
+    "independentClone": true,
+    "npmCiExitCode": 0,
+    "npmCiLogSha256": "3c790ae5c5f5b711f413959a42f5a72f69aa62010b7c4dc05d30d5fb35e21bf2",
+    "originalSource": "I:/Codex/TravelAssist-task071-20261010",
+    "originalCodeCandidateReused": true,
+    "environmentRepair": {
+      "head": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "reason": "Original generator calls python; Ubuntu initially provided only python3",
+      "repair": "Task-private runtime bin/python symlink to /usr/bin/python3; no global or repository edit",
+      "python": "Python 3.12.3",
+      "retainedPartialOutputs": "/tmp/travelassist-task071-linux-20261010-1bef6c8b/.artifacts/task086-lanes/failed-missing-python-20261010",
+      "initialGateReceipts": "/mnt/i/Codex/task071-convergence/linux/gates",
+      "sourceClean": true
+    },
+    "evidence": "linux-environment.json",
+    "finished": "linux-finished.json"
+  },
+  "windowsDiagnosticAttempt": "windows-attempt/gate-matrix.json",
+  "hostedRevisionMatrix": {
+    "sourceExactHead": {
+      "requestedSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "quality": {
+        "status": "NOT_RUN",
+        "actualCheckoutSha": null,
+        "runId": null,
+        "runAttempt": null
+      },
+      "security": {
+        "status": "NOT_RUN",
+        "actualCheckoutSha": null,
+        "runId": null,
+        "runAttempt": null
+      },
+      "reason": "D1 publication hold; source candidate remains local"
+    },
+    "prMergeResult": {
+      "status": "UNAVAILABLE",
+      "prHeadAtSnapshot": "90b59b57d61dfb8e05b432867bff7730422afe39",
+      "develop": "cfd51e42f96e43f84f406c6aab5aab6e408b713e",
+      "reportedCachedPrBase": "a16ea611b8fb24cfe751615d54a3828f7ef564ca",
+      "actualCheckoutSha": null,
+      "quality": {
+        "status": "NOT_RUN",
+        "actualCheckoutSha": null,
+        "runId": null,
+        "runAttempt": null
+      },
+      "security": {
+        "status": "NOT_RUN",
+        "actualCheckoutSha": null,
+        "runId": null,
+        "runAttempt": null
+      },
+      "reason": "Original PR conflicts; no current accepted merge-result checkout"
+    },
+    "documentationPublication": {
+      "status": "RECORDED_SEPARATELY_AFTER_DOCS_COMMIT",
+      "sourceAcceptance": false,
+      "evidence": "Original PR 231 / Issue 404 consolidated delivery receipt"
+    }
+  }
+}

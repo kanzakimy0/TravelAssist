@@ -1,0 +1,279 @@
+diff --git a/.github/workflows/quality-gate.yml b/.github/workflows/quality-gate.yml
+index 219b726e6..546becc28 100644
+--- a/.github/workflows/quality-gate.yml
++++ b/.github/workflows/quality-gate.yml
+@@ -35 +35 @@ jobs:
+-    if: ${{ !(inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze') }}
++    if: ${{ !(inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-global-security-baseline' || github.ref == 'refs/heads/codex/a-global-security-baseline') }}
+@@ -103 +103 @@ jobs:
+-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}
++    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-global-security-baseline' || github.ref == 'refs/heads/codex/a-global-security-baseline' }}
+@@ -153 +153 @@ jobs:
+-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}
++    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-global-security-baseline' || github.ref == 'refs/heads/codex/a-global-security-baseline' }}
+@@ -204 +204 @@ jobs:
+-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}
++    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-global-security-baseline' || github.ref == 'refs/heads/codex/a-global-security-baseline' }}
+@@ -252 +252 @@ jobs:
+-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}
++    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-global-security-baseline' || github.ref == 'refs/heads/codex/a-global-security-baseline' }}
+@@ -304 +304 @@ jobs:
+-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}
++    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-global-security-baseline' || github.ref == 'refs/heads/codex/a-global-security-baseline' }}
+@@ -376 +376 @@ jobs:
+-    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' }}
++    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-global-security-baseline' || github.ref == 'refs/heads/codex/a-global-security-baseline' }}
+@@ -423 +423 @@ jobs:
+-    if: ${{ always() && (inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze') }}
++    if: ${{ always() && (inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-test-baseline-freeze' || github.head_ref == 'codex/a-global-security-baseline' || github.ref == 'refs/heads/codex/a-global-security-baseline') }}
+diff --git a/.github/workflows/security.yml b/.github/workflows/security.yml
+index 1ea2fd1c6..e545f27ed 100644
+--- a/.github/workflows/security.yml
++++ b/.github/workflows/security.yml
+@@ -7,0 +8,8 @@ on:
++    inputs:
++      expectedHead:
++        description: Exact branch checkout SHA expected for this verification
++        type: string
++        default: ""
++
++env:
++  EXPECTED_HEAD: ${{ inputs.expectedHead || '' }}
+@@ -42 +49,0 @@ jobs:
+-      - run: npm test
+@@ -59,0 +67,235 @@ jobs:
++
++  # Reuse the accepted TASK-035 / TASK-086 proof chain. Full npm test remains
++  # mandatory in proof; every receipt binds this checkout, run and attempt.
++  graph:
++    name: Clean graph / ${{ matrix.lane }}
++    runs-on: ubuntu-latest
++    timeout-minutes: 45
++    strategy:
++      fail-fast: false
++      matrix:
++        lane: [first, second]
++    steps:
++      - uses: actions/checkout@v4
++        with:
++          fetch-depth: 0
++          persist-credentials: false
++      - uses: actions/setup-node@v4
++        with:
++          node-version-file: .nvmrc
++          cache: npm
++      - uses: actions/setup-python@v5
++        with:
++          python-version: "3.12"
++      - name: Verify and record actual event checkout
++        env:
++          EXPECTED_HEAD: ${{ inputs.expectedHead }}
++        run: |
++          test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
++          node tools/qa/ci-revision.mjs
++      - run: npm ci
++      - run: npm run test:baseline:inventory -- --check
++      - run: node tools/qa/task-035-baseline.mjs --job graph-${{ matrix.lane }}
++      - uses: actions/upload-artifact@v4
++        if: always()
++        with:
++          name: task086-graph-${{ matrix.lane }}-${{ github.sha }}
++          path: |
++            .artifacts/ci/revision.json
++            .artifacts/task086-lanes/
++          if-no-files-found: error
++          include-hidden-files: true
++          retention-days: 3
++
++      - name: Retain TASK-035 global receipt
++        if: always()
++        uses: actions/upload-artifact@v4
++        with:
++          name: task035-graph-${{ matrix.lane }}-${{ github.sha }}
++          path: .artifacts/task-035/candidate/
++          if-no-files-found: error
++          include-hidden-files: true
++          retention-days: 30
++
++  extraction:
++    name: Retained raw source reproduction
++    runs-on: ubuntu-latest
++    timeout-minutes: 25
++    steps:
++      - uses: actions/checkout@v4
++        with:
++          fetch-depth: 0
++          persist-credentials: false
++      - uses: actions/setup-node@v4
++        with:
++          node-version-file: .nvmrc
++          cache: npm
++      - uses: actions/setup-python@v5
++        with:
++          python-version: "3.12"
++      - name: Verify and record actual event checkout
++        env:
++          EXPECTED_HEAD: ${{ inputs.expectedHead }}
++        run: |
++          test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
++          node tools/qa/ci-revision.mjs
++      - run: npm ci
++      - run: npm run test:baseline:inventory -- --check
++      - run: node tools/qa/task-035-baseline.mjs --job extraction
++      - uses: actions/upload-artifact@v4
++        if: always()
++        with:
++          name: task086-extraction-${{ github.sha }}
++          path: |
++            .artifacts/ci/revision.json
++            .artifacts/task086-lanes/
++          if-no-files-found: error
++          include-hidden-files: true
++          retention-days: 3
++
++      - name: Retain TASK-035 global receipt
++        if: always()
++        uses: actions/upload-artifact@v4
++        with:
++          name: task035-extraction-${{ github.sha }}
++          path: .artifacts/task-035/candidate/
++          if-no-files-found: error
++          include-hidden-files: true
++          retention-days: 30
++
++  resume:
++    name: Stable complete graph resume
++    needs: graph
++    runs-on: ubuntu-latest
++    timeout-minutes: 45
++    steps:
++      - uses: actions/checkout@v4
++        with:
++          fetch-depth: 0
++          persist-credentials: false
++      - uses: actions/setup-node@v4
++        with:
++          node-version-file: .nvmrc
++          cache: npm
++      - uses: actions/setup-python@v5
++        with:
++          python-version: "3.12"
++      - name: Verify and record actual event checkout
++        env:
++          EXPECTED_HEAD: ${{ inputs.expectedHead }}
++        run: |
++          test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
++          node tools/qa/ci-revision.mjs
++      - run: npm ci
++      - run: npm run test:baseline:inventory -- --check
++      - uses: actions/download-artifact@v4
++        with:
++          name: task086-graph-first-${{ github.sha }}
++          path: .artifacts
++      - run: node tools/qa/task-035-baseline.mjs --job resume
++      - uses: actions/upload-artifact@v4
++        if: always()
++        with:
++          name: task086-resume-${{ github.sha }}
++          path: |
++            .artifacts/ci/revision.json
++            .artifacts/task086-lanes/
++          if-no-files-found: error
++          include-hidden-files: true
++          retention-days: 3
++
++      - name: Retain TASK-035 global receipt
++        if: always()
++        uses: actions/upload-artifact@v4
++        with:
++          name: task035-resume-${{ github.sha }}
++          path: .artifacts/task-035/candidate/
++          if-no-files-found: error
++          include-hidden-files: true
++          retention-days: 30
++
++  proof:
++    name: Deterministic, recovery and published-artifact proof
++    needs: [graph, extraction, resume]
++    runs-on: ubuntu-latest
++    timeout-minutes: 25
++    steps:
++      - uses: actions/checkout@v4
++        with:
++          fetch-depth: 0
++          persist-credentials: false
++      - uses: actions/setup-node@v4
++        with:
++          node-version-file: .nvmrc
++          cache: npm
++      - uses: actions/setup-python@v5
++        with:
++          python-version: "3.12"
++      - name: Verify and record actual event checkout
++        env:
++          EXPECTED_HEAD: ${{ inputs.expectedHead }}
++        run: |
++          test -z "$EXPECTED_HEAD" || test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
++          node tools/qa/ci-revision.mjs
++      - run: npm ci
++      - run: npm run test:baseline:inventory -- --check
++      - uses: actions/download-artifact@v4
++        with:
++          pattern: task086-graph-*-${{ github.sha }}
++          merge-multiple: true
++          path: .artifacts
++      - uses: actions/download-artifact@v4
++        with:
++          name: task086-resume-${{ github.sha }}
++          path: .artifacts
++      - uses: actions/download-artifact@v4
++        with:
++          name: task086-extraction-${{ github.sha }}
++          path: .artifacts
++      - name: Execute original rebuild regression with complete exact-head lane receipts
++        env:
++          TASK086_VERIFIED_LANES_DIR: ${{ github.workspace }}/.artifacts/task086-lanes
++          TASK086_VERIFY_PUBLISHED: "1"
++          TASK086_REBUILD_RECEIPT: ${{ github.workspace }}/.artifacts/task086-lanes/deterministic-recovery-proof.json
++        run: npm run test:baseline:lane -- --lane rebuild
++      - name: Run the complete unified entry with current-head graph proof
++        env:
++          TASK086_VERIFIED_LANES_DIR: ${{ github.workspace }}/.artifacts/task086-lanes
++          TASK086_VERIFY_PUBLISHED: "1"
++          TASK086_REBUILD_RECEIPT: ${{ github.workspace }}/.artifacts/task086-lanes/deterministic-recovery-proof.json
++        run: npm test
++      - uses: actions/upload-artifact@v4
++        if: always()
++        with:
++          name: task086-proof-${{ github.sha }}
++          path: |
++            .artifacts/ci/
++            .artifacts/task086-lanes/*.receipt.json
++            .artifacts/task086-lanes/deterministic-recovery-proof.json
++          if-no-files-found: error
++          include-hidden-files: true
++          retention-days: 3
++
++      - name: Retain TASK-035 global receipt
++        if: always()
++        uses: actions/upload-artifact@v4
++        with:
++          name: task035-rebuild-${{ github.sha }}
++          path: .artifacts/task-035/candidate/
++          if-no-files-found: error
++          include-hidden-files: true
++          retention-days: 30
++
++  complete:
++    name: Security mandatory gate
++    if: ${{ always() }}
++    needs: [security, graph, extraction, resume, proof]
++    runs-on: ubuntu-latest
++    permissions:
++      contents: read
++    steps:
++      - name: Require every security and canonical proof job
++        env:
++          RESULTS: ${{ toJSON(needs) }}
++        run: |
++          node -e 'const jobs=JSON.parse(process.env.RESULTS); const failed=Object.entries(jobs).filter(([,job])=>job.result!=="success").map(([name])=>name); if(failed.length) { console.error("Required jobs failed or skipped: "+failed.join(", ")); process.exit(1); }'

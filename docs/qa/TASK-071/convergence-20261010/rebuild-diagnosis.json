@@ -1,0 +1,803 @@
+{
+  "status": "REBUILD_REMAINS_TECHNICALLY_BLOCKED",
+  "observedAt": "2026-10-10T05:42:16.687Z",
+  "candidateHead": "1bef6c8b634a24eacfa554a6612526679919d95c",
+  "baselineHead": "cfd51e42f96e43f84f406c6aab5aab6e408b713e",
+  "baselineClean": true,
+  "nodeVersion": "v24.18.0",
+  "platform": "win32",
+  "profiles": [
+    {
+      "name": "baseline",
+      "durationUs": 90059031,
+      "samples": 54142,
+      "profileSha256": "8436dd070b0ef3720672c0b31d1eba77da3918e0549b885c2891f8e81ea81b69",
+      "top": [
+        {
+          "frame": "canonical task-086-model.mjs:84",
+          "samples": 14904
+        },
+        {
+          "frame": " task-086-model.mjs:85",
+          "samples": 9974
+        },
+        {
+          "frame": "passengerAdjacency task-086-model.mjs:1606",
+          "samples": 3052
+        },
+        {
+          "frame": "update hash:136",
+          "samples": 2703
+        },
+        {
+          "frame": "spawnSync child_process:1128",
+          "samples": 2412
+        },
+        {
+          "frame": "queryPassengerAdjacency task-086-model.mjs:1617",
+          "samples": 2356
+        },
+        {
+          "frame": "allowsEdge task-086-service-access-contract.mjs:612",
+          "samples": 1882
+        },
+        {
+          "frame": "(garbage collector) :0",
+          "samples": 1137
+        },
+        {
+          "frame": "buildSurfaceIndex task-086-model.mjs:2353",
+          "samples": 788
+        },
+        {
+          "frame": " task-086-model.mjs:1614",
+          "samples": 786
+        },
+        {
+          "frame": "auditGraph task-086-model.mjs:1797",
+          "samples": 705
+        },
+        {
+          "frame": " task-086-remediate.mjs:1011",
+          "samples": 702
+        },
+        {
+          "frame": "bind task-086-remediate.mjs:666",
+          "samples": 699
+        },
+        {
+          "frame": "assess task-086-public-conditional-applicability.mjs:31",
+          "samples": 696
+        },
+        {
+          "frame": "queryGraph task-086-model.mjs:1653",
+          "samples": 693
+        },
+        {
+          "frame": "attachODContexts task-086-dynamic-od-registry.mjs:204",
+          "samples": 610
+        },
+        {
+          "frame": "allowsServiceAccess task-086-model.mjs:206",
+          "samples": 470
+        },
+        {
+          "frame": "runRemediation task-086-remediate.mjs:318",
+          "samples": 439
+        },
+        {
+          "frame": "(program) :0",
+          "samples": 375
+        },
+        {
+          "frame": " task-086-public-conditional-applicability.mjs:67",
+          "samples": 373
+        }
+      ],
+      "intentionalTermination": "90 second offline profiling sample, not a test gate; worker writes CPU profile then terminates only its own process"
+    },
+    {
+      "name": "candidate",
+      "durationUs": 90034086,
+      "samples": 54560,
+      "profileSha256": "d3e60d5a7ac5f78bf5b1877bba9ffde7ac8bb9a867c2d061010e3a404f46c401",
+      "top": [
+        {
+          "frame": "canonical task-086-model.mjs:84",
+          "samples": 15026
+        },
+        {
+          "frame": " task-086-model.mjs:85",
+          "samples": 10124
+        },
+        {
+          "frame": "passengerAdjacency task-086-model.mjs:1606",
+          "samples": 3151
+        },
+        {
+          "frame": "update hash:136",
+          "samples": 2698
+        },
+        {
+          "frame": "queryPassengerAdjacency task-086-model.mjs:1617",
+          "samples": 2316
+        },
+        {
+          "frame": "spawnSync child_process:1128",
+          "samples": 2262
+        },
+        {
+          "frame": "allowsEdge task-086-service-access-contract.mjs:612",
+          "samples": 1920
+        },
+        {
+          "frame": "(garbage collector) :0",
+          "samples": 1170
+        },
+        {
+          "frame": " task-086-model.mjs:1614",
+          "samples": 827
+        },
+        {
+          "frame": "queryGraph task-086-model.mjs:1653",
+          "samples": 794
+        },
+        {
+          "frame": "buildSurfaceIndex task-086-model.mjs:2353",
+          "samples": 791
+        },
+        {
+          "frame": "assess task-086-public-conditional-applicability.mjs:31",
+          "samples": 710
+        },
+        {
+          "frame": "auditGraph task-086-model.mjs:1797",
+          "samples": 690
+        },
+        {
+          "frame": "attachODContexts task-086-dynamic-od-registry.mjs:204",
+          "samples": 658
+        },
+        {
+          "frame": "bind task-086-remediate.mjs:666",
+          "samples": 650
+        },
+        {
+          "frame": " task-086-remediate.mjs:1011",
+          "samples": 606
+        },
+        {
+          "frame": "allowsServiceAccess task-086-model.mjs:206",
+          "samples": 496
+        },
+        {
+          "frame": "validatedSurfaceServiceRoundTrip task-086-model.mjs:2420",
+          "samples": 481
+        },
+        {
+          "frame": "(program) :0",
+          "samples": 414
+        },
+        {
+          "frame": "restrictedEdge task-086-air-passenger-shuttle.mjs:52",
+          "samples": 385
+        }
+      ],
+      "intentionalTermination": "90 second offline profiling sample, not a test gate; worker writes CPU profile then terminates only its own process"
+    }
+  ],
+  "referenceRuns": [
+    {
+      "run": "37618817480",
+      "referenceOnly": true,
+      "receiptSha256": "fb587f3337855ed5a4e1179d6f2fe5dea838a3e0e1c640bfeacea94284e546f1",
+      "checkoutSha": "49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "lane": "graph-first",
+      "status": "PASS",
+      "durationsMs": [
+        1346041
+      ],
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      }
+    },
+    {
+      "run": "37618817480",
+      "referenceOnly": true,
+      "receiptSha256": "af6cf59f6e1d80a7551dfecf4939f73f225c0b88fe17395ebd036179aa1da69c",
+      "checkoutSha": "49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "lane": "resume",
+      "status": "PASS",
+      "durationsMs": [
+        1398718
+      ],
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      }
+    },
+    {
+      "run": "37618817480",
+      "referenceOnly": true,
+      "receiptSha256": "d892e8361b948f1963e970b3f214ce39f0679de8cdcf3ba27d595228ef9ffad2",
+      "checkoutSha": "49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "lane": "extraction",
+      "status": "PASS",
+      "durationsMs": [
+        16794
+      ],
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      }
+    },
+    {
+      "run": "37618817480",
+      "referenceOnly": true,
+      "receiptSha256": "c94de909c886fdf686fb5767c859c1bf0cc3fcfdf287b71d4b9ef1a37487a3c3",
+      "checkoutSha": "49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "lane": "ordinary",
+      "status": "PASS",
+      "durationsMs": [
+        258375
+      ],
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.15",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      }
+    },
+    {
+      "run": "37618817480",
+      "referenceOnly": true,
+      "receiptSha256": "3b7e27bd970690dfd0287c36fd711f1c8c2e81983a0215365d8d612485daf0eb",
+      "checkoutSha": "49ffe14188d67265e8779b1c9fe059c18a7c14ad",
+      "lane": "graph-second",
+      "status": "PASS",
+      "durationsMs": [
+        1235466
+      ],
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      }
+    },
+    {
+      "run": "37618811966",
+      "referenceOnly": true,
+      "receiptSha256": "9c8c98b785ddf6c90a929d752d86f55661bf1abbe1d4451f31152a047fbd13de",
+      "checkoutSha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4",
+      "lane": "ordinary",
+      "status": "PASS",
+      "durationsMs": [
+        375388
+      ],
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      }
+    },
+    {
+      "run": "37618811966",
+      "referenceOnly": true,
+      "receiptSha256": "4bc754bd78da0e1e1fac7b6be2a096b57bc108682e087ff8f2dfe88a10043165",
+      "checkoutSha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4",
+      "lane": "resume",
+      "status": "PASS",
+      "durationsMs": [
+        1066039
+      ],
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      }
+    },
+    {
+      "run": "37618811966",
+      "referenceOnly": true,
+      "receiptSha256": "f0336ce111aab0246f2cf032a204021ec7891423865ee76270de8a6fff230acf",
+      "checkoutSha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4",
+      "lane": "graph-first",
+      "status": "PASS",
+      "durationsMs": [
+        1517338
+      ],
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      }
+    },
+    {
+      "run": "37618811966",
+      "referenceOnly": true,
+      "receiptSha256": "e1ed3ec1cd80e5d5db0002a0e97aa92b42e3eef3b9bb663d448549270344a3ba",
+      "checkoutSha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4",
+      "lane": "extraction",
+      "status": "PASS",
+      "durationsMs": [
+        16930
+      ],
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.14",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      }
+    },
+    {
+      "run": "37618811966",
+      "referenceOnly": true,
+      "receiptSha256": "1e832bf6457d3c9a57e5a9d2514fdd39c0737454bc945759e9c5a020e32c62b8",
+      "checkoutSha": "3b3c0359c38c9b6363119f599ce272691e4f0ed4",
+      "lane": "graph-second",
+      "status": "PASS",
+      "durationsMs": [
+        1610018
+      ],
+      "runtime": {
+        "node": "v24.21.0",
+        "npm": "11.19.0",
+        "python": "Python 3.12.15",
+        "pythonCommand": "python3",
+        "os": "linux",
+        "arch": "x64"
+      }
+    }
+  ],
+  "unchangedFiles": [
+    {
+      "path": "tools/transport/task-086-run.mjs",
+      "sha256": "1ff73366ae3d6d76e1262ea42c8367ae36cc56945ce2337c6d3a1bd75ab34507",
+      "identicalToDevelop": true
+    },
+    {
+      "path": "tools/transport/task-086-remediate.mjs",
+      "sha256": "ae8ff22c94a811dc2a71e5d074ecaa12af3ce097b2c24dd68bd56234a4ad7bda",
+      "identicalToDevelop": true
+    },
+    {
+      "path": "tools/transport/task-086-model.mjs",
+      "sha256": "2c0596d7dcc40df1e0a9e41a9bc2f4fd16f14990c97b93b02f90dc1a142041a0",
+      "identicalToDevelop": true
+    },
+    {
+      "path": "tools/transport/task-086-verify.mjs",
+      "sha256": "67f14825ceba1d9a093059ea8b655fd605a55cdc144621076871c83239f5e8c3",
+      "identicalToDevelop": true
+    },
+    {
+      "path": "tools/transport/task-086-validation-lanes.mjs",
+      "sha256": "5de15b26bfdafdd377c257117a0c7ab645a3949b45026ce0aed62d90e930657d",
+      "identicalToDevelop": true
+    },
+    {
+      "path": "tests/task-086-b-rebuild.test.mjs",
+      "sha256": "45242f598c0b4063fb5fbb69e9a8df93ae75b3f0e5fcd55fbfbeb247d532e9c5",
+      "identicalToDevelop": true
+    }
+  ],
+  "conclusions": [
+    "Plain ordinary runner has 1800000 ms total budget; without TASK086_VERIFIED_LANES_DIR the rebuild test synchronously runs extraction plus first, second, and full resume.",
+    "Accepted Linux receipts independently spend approximately 18-27 minutes on each graph/resume. Their ordinary full suite reuses same-run exact-head proofs and completes in approximately 4-6 minutes.",
+    "Same-system clean develop and candidate 90-second profiles have closely matching CPU hotspots: canonicalization, adjacency/path traversal, eligibility and hashing. No security runtime change was found in graph/test bytes. Samples do not constitute completed baseline rebuild proof.",
+    "Quality scope now selects original security branch for the accepted specialized pipeline, preserving original push triggers. Security copies accepted graph/extraction/resume/proof jobs and retains full npm test with verifyPublished enabled plus a fail-closed all-job gate.",
+    "No generator, algorithm, business inputs, assertion, scanner budget, 30-minute ordinary budget or 40-minute graph budget was changed. Plain npm test without prior proof still performs expensive repeated graph work; no claim that the invocation without precomputed proofs became faster.",
+    "Full candidate lane, required rebuild and canonical receipts must be evaluated separately; workflow repair alone is not PASS. D2 QA acceptance of this existing supported model remains HOLD_OWNER."
+  ],
+  "acceptedBranchSourceComparison": {
+    "reference": "3b3c0359c38c9b6363119f599ce272691e4f0ed4",
+    "develop": "cfd51e42f96e43f84f406c6aab5aab6e408b713e",
+    "scope": [
+      "tools/transport",
+      "data/transport",
+      "tests/task-086-b-rebuild.test.mjs"
+    ],
+    "gitDiffEmpty": true
+  },
+  "finalTechnicalConclusion": "The workflow routing/budget mismatch was repaired, but current Linux graph-first and graph-second still hit their original 2400000 ms inner timers. No native graph proof or resume acceptance exists. Local runtime completion is unresolved; no old CI result is reused. Configured timer budgets and actual UTC timestamps are recorded separately.",
+  "finalObservedAt": "2026-10-10T07:59:57.827Z",
+  "localSupportedValidation": {
+    "environment": {
+      "head": "1bef6c8b634a24eacfa554a6612526679919d95c",
+      "root": "/tmp/travelassist-task071-linux-20261010-1bef6c8b",
+      "node": "v24.21.0",
+      "platform": "linux",
+      "npm": "11.19.0",
+      "python": "Python 3.12.3",
+      "develop": "cfd51e42f96e43f84f406c6aab5aab6e408b713e",
+      "clean": true,
+      "shallow": "false",
+      "alternateObjects": false,
+      "promisor": false,
+      "fsckExitCode": 0,
+      "missingObjects": 0,
+      "independentClone": true,
+      "npmCiExitCode": 0,
+      "npmCiLogSha256": "3c790ae5c5f5b711f413959a42f5a72f69aa62010b7c4dc05d30d5fb35e21bf2",
+      "originalSource": "I:/Codex/TravelAssist-task071-20261010",
+      "originalCodeCandidateReused": true,
+      "environmentRepair": {
+        "head": "1bef6c8b634a24eacfa554a6612526679919d95c",
+        "reason": "Original generator calls python; Ubuntu initially provided only python3",
+        "repair": "Task-private runtime bin/python symlink to /usr/bin/python3; no global or repository edit",
+        "python": "Python 3.12.3",
+        "retainedPartialOutputs": "/tmp/travelassist-task071-linux-20261010-1bef6c8b/.artifacts/task086-lanes/failed-missing-python-20261010",
+        "initialGateReceipts": "/mnt/i/Codex/task071-convergence/linux/gates",
+        "sourceClean": true
+      }
+    },
+    "lanes": {
+      "assets": {
+        "status": "PASS",
+        "countStatus": "VERIFIED",
+        "counts": {
+          "tests": 166,
+          "passed": 166,
+          "failed": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "topLevel": 166,
+          "suites": 0,
+          "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+        },
+        "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+        "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+        "runId": "local",
+        "runAttempt": "1",
+        "runtime": {
+          "node": "v24.21.0",
+          "npm": "11.19.0",
+          "python": "Python 3.12.3",
+          "pythonCommand": "python3",
+          "os": "linux",
+          "arch": "x64"
+        },
+        "durationsMs": [
+          76578
+        ],
+        "timeouts": [
+          false
+        ],
+        "validationError": null
+      },
+      "extraction": {
+        "status": "PASS",
+        "countStatus": "NOT_APPLICABLE_COMMAND_GATE",
+        "counts": null,
+        "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+        "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+        "runId": "local",
+        "runAttempt": "1",
+        "runtime": {
+          "node": "v24.21.0",
+          "npm": "11.19.0",
+          "python": "Python 3.12.3",
+          "pythonCommand": "python3",
+          "os": "linux",
+          "arch": "x64"
+        },
+        "durationsMs": [
+          27904
+        ],
+        "timeouts": [
+          false
+        ],
+        "validationError": null
+      },
+      "graph-first": {
+        "status": "FAIL",
+        "countStatus": "NOT_APPLICABLE_COMMAND_GATE",
+        "counts": null,
+        "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+        "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+        "runId": "local",
+        "runAttempt": "1",
+        "runtime": {
+          "node": "v24.21.0",
+          "npm": "11.19.0",
+          "python": "Python 3.12.3",
+          "pythonCommand": "python3",
+          "os": "linux",
+          "arch": "x64"
+        },
+        "durationsMs": [
+          2554006
+        ],
+        "timeouts": [
+          true
+        ],
+        "validationError": "NONZERO_EXIT\n\nnull !== 0\n"
+      },
+      "graph-second": {
+        "status": "FAIL",
+        "countStatus": "NOT_APPLICABLE_COMMAND_GATE",
+        "counts": null,
+        "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+        "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+        "runId": "local",
+        "runAttempt": "1",
+        "runtime": {
+          "node": "v24.21.0",
+          "npm": "11.19.0",
+          "python": "Python 3.12.3",
+          "pythonCommand": "python3",
+          "os": "linux",
+          "arch": "x64"
+        },
+        "durationsMs": [
+          2553984
+        ],
+        "timeouts": [
+          true
+        ],
+        "validationError": "NONZERO_EXIT\n\nnull !== 0\n"
+      },
+      "ordinary": {
+        "status": "FAIL",
+        "countStatus": "UNVERIFIED",
+        "counts": null,
+        "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+        "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+        "runId": "local",
+        "runAttempt": "1",
+        "runtime": {
+          "node": "v24.21.0",
+          "npm": "11.19.0",
+          "python": "Python 3.12.3",
+          "pythonCommand": "python3",
+          "os": "linux",
+          "arch": "x64"
+        },
+        "durationsMs": [
+          655012
+        ],
+        "timeouts": [
+          false
+        ],
+        "validationError": "NONZERO_EXIT\n\n1 !== 0\n"
+      },
+      "quality": {
+        "status": "PASS",
+        "countStatus": "NOT_APPLICABLE_COMMAND_GATE",
+        "counts": null,
+        "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+        "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+        "runId": "local",
+        "runAttempt": "1",
+        "runtime": {
+          "node": "v24.21.0",
+          "npm": "11.19.0",
+          "python": "Python 3.12.3",
+          "pythonCommand": "python3",
+          "os": "linux",
+          "arch": "x64"
+        },
+        "durationsMs": [
+          277,
+          32287,
+          20653,
+          20617,
+          58054,
+          1823,
+          18
+        ],
+        "timeouts": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "validationError": null
+      },
+      "rebuild": {
+        "status": "FAIL",
+        "countStatus": "UNVERIFIED",
+        "counts": null,
+        "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+        "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+        "runId": "local",
+        "runAttempt": "1",
+        "runtime": {
+          "node": "v24.21.0",
+          "npm": "11.19.0",
+          "python": "Python 3.12.3",
+          "pythonCommand": "python3",
+          "os": "linux",
+          "arch": "x64"
+        },
+        "durationsMs": [
+          1926
+        ],
+        "timeouts": [
+          false
+        ],
+        "validationError": "NONZERO_EXIT\n\n1 !== 0\n"
+      },
+      "regression-0": {
+        "status": "FAIL",
+        "countStatus": "UNVERIFIED",
+        "counts": null,
+        "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+        "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+        "runId": "local",
+        "runAttempt": "1",
+        "runtime": {
+          "node": "v24.21.0",
+          "npm": "11.19.0",
+          "python": "Python 3.12.3",
+          "pythonCommand": "python3",
+          "os": "linux",
+          "arch": "x64"
+        },
+        "durationsMs": [
+          142287
+        ],
+        "timeouts": [
+          false
+        ],
+        "validationError": "NONZERO_EXIT\n\n1 !== 0\n"
+      },
+      "regression-1": {
+        "status": "PASS",
+        "countStatus": "VERIFIED",
+        "counts": {
+          "tests": 856,
+          "passed": 856,
+          "failed": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "topLevel": 856,
+          "suites": 0,
+          "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+        },
+        "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+        "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+        "runId": "local",
+        "runAttempt": "1",
+        "runtime": {
+          "node": "v24.21.0",
+          "npm": "11.19.0",
+          "python": "Python 3.12.3",
+          "pythonCommand": "python3",
+          "os": "linux",
+          "arch": "x64"
+        },
+        "durationsMs": [
+          24789
+        ],
+        "timeouts": [
+          false
+        ],
+        "validationError": null
+      },
+      "regression-2": {
+        "status": "FAIL",
+        "countStatus": "UNVERIFIED",
+        "counts": null,
+        "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+        "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+        "runId": "local",
+        "runAttempt": "1",
+        "runtime": {
+          "node": "v24.21.0",
+          "npm": "11.19.0",
+          "python": "Python 3.12.3",
+          "pythonCommand": "python3",
+          "os": "linux",
+          "arch": "x64"
+        },
+        "durationsMs": [
+          203605
+        ],
+        "timeouts": [
+          false
+        ],
+        "validationError": "NONZERO_EXIT\n\n1 !== 0\n"
+      },
+      "regression-3": {
+        "status": "PASS",
+        "countStatus": "VERIFIED",
+        "counts": {
+          "tests": 1180,
+          "passed": 1180,
+          "failed": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "topLevel": 1180,
+          "suites": 0,
+          "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+        },
+        "checkoutSha": "1bef6c8b634a24eacfa554a6612526679919d95c",
+        "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+        "runId": "local",
+        "runAttempt": "1",
+        "runtime": {
+          "node": "v24.21.0",
+          "npm": "11.19.0",
+          "python": "Python 3.12.3",
+          "pythonCommand": "python3",
+          "os": "linux",
+          "arch": "x64"
+        },
+        "durationsMs": [
+          72801
+        ],
+        "timeouts": [
+          false
+        ],
+        "validationError": null
+      }
+    },
+    "rawProof": "I:/Codex/task071-convergence/linux-final/proof/deterministic-recovery-proof.json",
+    "proofAvailable": false
+  },
+  "windowsValidation": {
+    "graphFirst": "FAIL_TIMEOUT_2400000_MS",
+    "graphSecond": "FAIL_TIMEOUT_2400000_MS",
+    "ordinary": {
+      "completedFiles": 155,
+      "tests": 3939,
+      "passed": 3934,
+      "failed": 5,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "isolatedAssets": "PASS_166_OF_166",
+    "receipts": "I:/Codex/task071-convergence/gates/serial-finished.json"
+  },
+  "crossPlatformProtectedInputs": {
+    "status": "IDENTICAL",
+    "head": "1bef6c8b634a24eacfa554a6612526679919d95c",
+    "inputDigest": "d53bd5a3c8913aed583153bd6f1dd483ccc495d9861f22cf9a206c3112378440",
+    "windowsReceipt": "I:/Codex/TravelAssist-task071-20261010/.artifacts/task-035/candidate/local/1/ordinary/d7db75cb-0dcb-4536-803c-3daeef1d238b/receipt.json",
+    "scope": "Original canonical protected-input digest; runtime/platform are separately recorded and are intentionally different"
+  },
+  "limitations": [
+    "Windows graph timeouts remain actual failures; Linux validation does not retroactively change them.",
+    "The controlled Linux run changes OS, filesystem and Node/npm environment together; it does not establish Node version alone as the cause.",
+    "The first Linux attempt lacked the python command required by original code. A task-private alias was added without changing source, generator, assertions or budgets; all failed attempts and partial outputs were preserved.",
+    "A local exact-head proof is not a GitHub run or current PR merge-result proof.",
+    "D2 acceptance of reviewed inventory/execution model and D3 frozen refresh are still Owner decisions, not inferred from technical results."
+  ]
+}
