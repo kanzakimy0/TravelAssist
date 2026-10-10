@@ -1,0 +1,1225 @@
+{
+  "schemaVersion": 1,
+  "mode": "CANDIDATE",
+  "event": "local",
+  "revisionKind": "BRANCH_EXACT_HEAD",
+  "checkoutSha": "7e3160ac78cb3b1dbc27b4d2194bc98ca72f5bdb",
+  "prHeadSha": null,
+  "baseSha": null,
+  "eventSha": "7e3160ac78cb3b1dbc27b4d2194bc98ca72f5bdb",
+  "expectedHead": null,
+  "trackedWorktreeClean": true,
+  "inputHashes": {
+    ".github/workflows/quality-gate.yml": "df2f134fc72c6547e079c421ad3f00ad73249a90c21143587173710c51520413",
+    ".github/workflows/release-rehearsal.yml": "7bb1284a96f1a85df94eb7f55ee998d0f0e2fe2c74845cdf4c2bd44b6d279224",
+    ".github/workflows/security.yml": "b864da6db6ff71a46b4c7e2b32fd51679d1b4ae96a280453a7e39a7fd4839b88",
+    ".nvmrc": "68ca3fba3b7e864770cb61aeb306d4bd4354b68ab4dd38450860c5d823e42a53",
+    "docs/qa/TASK-035/phase-2/core-fix/execution-model.json": "fcc5bd20339728dff19e1a494b87d68e62fbb58f12104e12364a4bb00a01c067",
+    "docs/qa/TASK-035/phase-2/core-fix/test-inventory.json": "1371ebc6ceb446a3ea6d4733d6a475ddb39df312eecea8e1f608db635eb46ab7",
+    "docs/qa/TASK-035/phase-2/execution-policy.json": "23b0a88f03addd1877377506335611c43a1e74c23a4b54b6f0c7e29f4ef65aa2",
+    "docs/qa/TASK-035/phase-2/test-inventory.json": "1003337a5dbc504b54b4cf626f30db1bb3fc98dfdd090ffc432806d6104a3751",
+    "docs/qa/TASK-071/test-integration-review.json": "3427a450a3ea0d82d31665dd803bff14cdb40d524b2f9d19e4485fe343edd55b",
+    "package-lock.json": "01a0858140481cb053f59ee276dba8a6845030d112217e195092d1450edb9819",
+    "package.json": "d2d08469cb8d7d23ac0615c763e66ae25e29dbe6f1d037b33e4b6a0560877588",
+    "tests/register-planner-ts.mjs": "d808a6306628e3f99849fdb451c96c69d43f774cd8a15bc870fbf36fe9fdc08c",
+    "tests/register-route-ts.mjs": "daa451225d60b9b475ca0185067c4cf94566f63e027976c1f63b1b475be50fbf",
+    "tools/qa/ci-revision.mjs": "0eade432e6f9e5bee4171d33c8a076244d67f7dd7c7a1c50040b0d3b0a3441fe",
+    "tools/qa/task-035-baseline.mjs": "9f4e9c324613f7a2131905652fcb839f1d30ef59d3f1071dae39ac18a7c7cc58",
+    "tools/qa/task-035-browser-smoke.mjs": "5b0d1016d3d7943a9ff35b96455cb4a95cbaf04f114fdbc90e9221a5c0b39aa5",
+    "tools/qa/task-035-inventory.mjs": "1a5fb9f8af7b0434411e058a5f0d765d4ddcbaf5daca311b7f57f933d427ef21",
+    "tools/qa/task-035-process.mjs": "0820b041eac4aab66a4ccb362ebc1235be4be01dee60b4cd92cd33bd4700055c",
+    "tools/qa/task-035-receipt.mjs": "323dfef93c9e9f3e1e1e967f29d8be01d1298a284c600ac810e208784d81c111",
+    "tools/qa/task-035-refresh-derived.mjs": "e35f2814cf23ddd1c58cb61233e55f1385283b400dbed4d8724da32b98a720f0",
+    "tools/qa/task-035-reporter.mjs": "b27b8028e05dd2d6a9b073471986f294447955f9f4f761c4d9cd237ce6f7f503",
+    "tools/qa/task-086-regression-lanes.mjs": "e234040d6e05dde5f73dc2b05d07b1f660a5405fedaaf4d3d1dc4fbd356461c4"
+  },
+  "protectedWorktreeClean": true,
+  "inputDigest": "495ecc95e976820d750c646482e20db9e0ddd0c572eb36ede7e2ede5e3bd5f79",
+  "inventoryHash": "1371ebc6ceb446a3ea6d4733d6a475ddb39df312eecea8e1f608db635eb46ab7",
+  "runId": "local",
+  "runAttempt": "1",
+  "job": "local",
+  "workflowUrl": null,
+  "lane": "ordinary",
+  "status": "FAIL",
+  "runtime": {
+    "node": "v24.18.0",
+    "npm": "11.16.0",
+    "python": "Python 3.14.6",
+    "pythonCommand": "python",
+    "os": "win32",
+    "arch": "x64"
+  },
+  "cwd": "I:\\Codex\\TravelAssist-task071-20261010",
+  "executions": [
+    {
+      "exitCode": 1,
+      "signal": null,
+      "timeout": true,
+      "error": null,
+      "timeoutMs": 1800000,
+      "startedAt": "2026-10-10T04:24:57.424Z",
+      "endedAt": "2026-10-10T04:54:57.763Z",
+      "argv": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "--test-concurrency=1",
+        "--test-reporter=tap",
+        "--test-reporter-destination=stdout",
+        "--test-reporter=./tools/qa/task-035-reporter.mjs",
+        "--test-reporter-destination=I:\\Codex\\TravelAssist-task071-20261010\\.artifacts\\task-035\\candidate\\local\\1\\ordinary\\38b447ab-df0d-4734-ac64-392153c56814\\events.jsonl",
+        "tests/browser-trip-save.test.mjs",
+        "tests/bulk-booking.test.mjs",
+        "tests/detail-card-actions.test.mjs",
+        "tests/detail-compact-board.test.mjs",
+        "tests/detail-overview-locations.test.mjs",
+        "tests/planner-artwork.test.mjs",
+        "tests/planner-audit-fixes.test.mjs",
+        "tests/planner-audit-regressions.test.mjs",
+        "tests/planner-concept-refinement.test.mjs",
+        "tests/planner-local-integration.test.mjs",
+        "tests/planner-meal-booking-refinement.test.mjs",
+        "tests/planner-quick-menu-design.test.mjs",
+        "tests/planner-range-enrichment.test.mjs",
+        "tests/planner-responsive-density.test.mjs",
+        "tests/planner-route-board.test.mjs",
+        "tests/planner-sight-timeline.test.mjs",
+        "tests/planner-status-stack.test.mjs",
+        "tests/planner-track-actions.test.mjs",
+        "tests/planner-working-plan.test.mjs",
+        "tests/poi-remaining-review.test.mjs",
+        "tests/pr-governance.test.mjs",
+        "tests/task-007-background.test.mjs",
+        "tests/task-007-calendar.test.mjs",
+        "tests/task-007-info-popover.test.mjs",
+        "tests/task-008-planner.test.mjs",
+        "tests/task-0081-map-booking.test.mjs",
+        "tests/task-0082-visuals.test.mjs",
+        "tests/task-0083-interactions.test.mjs",
+        "tests/task-010-b-global-logo-navigation.test.mjs",
+        "tests/task-010-navigation.test.mjs",
+        "tests/task-011-trip-detail-workspace.test.mjs",
+        "tests/task-012-planner-v05.test.mjs",
+        "tests/task-013-1-asset-variants.test.mjs",
+        "tests/task-013-2-core-generation-manifest.test.mjs",
+        "tests/task-013-3-1-japan-destination-closure.test.mjs",
+        "tests/task-013-3-japan-destination-resolution.test.mjs",
+        "tests/task-013-assets.test.mjs",
+        "tests/task-015-db-foundation.test.mjs",
+        "tests/task-016-user-profile.test.mjs",
+        "tests/task-018-authentication.test.mjs",
+        "tests/task-019-trip-plan.test.mjs",
+        "tests/task-020-security.test.mjs",
+        "tests/task-022-ekiworld-routing.test.mjs",
+        "tests/task-022-route-contract.test.mjs",
+        "tests/task-022-routing-boundary.test.mjs",
+        "tests/task-023-planner-route-integration.test.mjs",
+        "tests/task-024-main-shell.test.mjs",
+        "tests/task-025-2-concept-fidelity.test.mjs",
+        "tests/task-025-2-coral-palette.test.mjs",
+        "tests/task-025-2-v11.test.mjs",
+        "tests/task-025-environment-deployment.test.mjs",
+        "tests/task-035-runner.test.mjs",
+        "tests/task-035-test-baseline.test.mjs",
+        "tests/task-036-planning-contracts.test.mjs",
+        "tests/task-037-planning-contract-soak.test.mjs",
+        "tests/task-041-region-graph-pilot.test.mjs",
+        "tests/task-042-preference-schema.test.mjs",
+        "tests/task-043-master-code-registry.test.mjs",
+        "tests/task-044-companion-schema.test.mjs",
+        "tests/task-045-preference-api.test.mjs",
+        "tests/task-045-region-master-code-integration.test.mjs",
+        "tests/task-046-preference-contract.test.mjs",
+        "tests/task-047-companion-api.test.mjs",
+        "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+        "tests/task-048-trip-persistence-model.test.mjs",
+        "tests/task-049-trip-library-api.test.mjs",
+        "tests/task-050-a-poi-schema.test.mjs",
+        "tests/task-050-profile-api.test.mjs",
+        "tests/task-051-a-planner-store.test.mjs",
+        "tests/task-052-account-deletion.test.mjs",
+        "tests/task-053-preference-presets.test.mjs",
+        "tests/task-054-personal-center-migration.test.mjs",
+        "tests/task-055-private-boundaries.test.mjs",
+        "tests/task-055-test-runner.test.mjs",
+        "tests/task-060-profile-ui.test.mjs",
+        "tests/task-061-trip-library-live.test.mjs",
+        "tests/task-062-schema-union.test.mjs",
+        "tests/task-063-engine-apply.test.mjs",
+        "tests/task-064-runtime-rollback.test.mjs",
+        "tests/task-065-engine-certification.test.mjs",
+        "tests/task-067-main-system-state.test.mjs",
+        "tests/task-068-candidate-enrichment.test.mjs",
+        "tests/task-068-corpus-combination.test.mjs",
+        "tests/task-070-p0-evidence-review.test.mjs",
+        "tests/task-076-ai-runtime.test.mjs",
+        "tests/task-081-a-poi-detail-api.test.mjs",
+        "tests/task-082-a-poi-edge-graph.test.mjs",
+        "tests/task-082-personal-ai-history.test.mjs",
+        "tests/task-083-a-poi-runtime.test.mjs",
+        "tests/task-083-canonical-owner-correction.test.mjs",
+        "tests/task-084-a-canonical100-boundary.test.mjs",
+        "tests/task-084-a-real-pilot100.test.mjs",
+        "tests/task-084-a-recommendation-scoring.test.mjs",
+        "tests/task-084-v2-amendment.test.mjs",
+        "tests/task-086-aguni-capability.test.mjs",
+        "tests/task-086-airport-selector-preflight.test.mjs",
+        "tests/task-086-b-autonomous-remediation.test.mjs",
+        "tests/task-086-b-ci-revision.test.mjs",
+        "tests/task-086-b-derived-gtfs.test.mjs",
+        "tests/task-086-b-gtfs-sections.test.mjs",
+        "tests/task-086-b-mobility-backbone.test.mjs",
+        "tests/task-086-b-p11-succession.test.mjs",
+        "tests/task-086-b-pattern-corrections.test.mjs",
+        "tests/task-086-b-rebuild.test.mjs",
+        "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+        "tests/task-086-b-selected-gtfs.test.mjs",
+        "tests/task-086-b-sonic-corrections.test.mjs",
+        "tests/task-086-b-stage-closeout.test.mjs",
+        "tests/task-086-certification-engine-repair.test.mjs",
+        "tests/task-086-conditional-query-cache.test.mjs",
+        "tests/task-086-context-registry.test.mjs",
+        "tests/task-086-dynamic-od-evidence-order.test.mjs",
+        "tests/task-086-dynamic-od.test.mjs",
+        "tests/task-086-facility-registry.test.mjs",
+        "tests/task-086-final-closeout.test.mjs",
+        "tests/task-086-fixed-phone-reception.test.mjs",
+        "tests/task-086-gtfs-agency-subset.test.mjs",
+        "tests/task-086-hamayuso-qualified.test.mjs",
+        "tests/task-086-hateruma-air-passenger.test.mjs",
+        "tests/task-086-historical-facility-stop.test.mjs",
+        "tests/task-086-iwami-fixed-flight.test.mjs",
+        "tests/task-086-licensed-package-date-binding.test.mjs",
+        "tests/task-086-native-facility.test.mjs",
+        "tests/task-086-noto-dynamic-od.test.mjs",
+        "tests/task-086-od-production-pipeline.test.mjs",
+        "tests/task-086-od-registry.test.mjs",
+        "tests/task-086-od-seed-lifecycle.test.mjs",
+        "tests/task-086-okushiri-capability.test.mjs",
+        "tests/task-086-onboard-applicability.test.mjs",
+        "tests/task-086-onboard-request.test.mjs",
+        "tests/task-086-phase-header-preflight.test.mjs",
+        "tests/task-086-public-conditional-applicability.test.mjs",
+        "tests/task-086-publication-recovery.test.mjs",
+        "tests/task-086-qualified-hotel.test.mjs",
+        "tests/task-086-readmittable-closeout.test.mjs",
+        "tests/task-086-retained-cross-package-transfer.test.mjs",
+        "tests/task-086-rights-binding.test.mjs",
+        "tests/task-086-service-access-contract.test.mjs",
+        "tests/task-086-service-access-pipeline.test.mjs",
+        "tests/task-088-a-trusted-baseline.test.mjs",
+        "tests/trip-preparation.test.mjs",
+        "tests/trip-status-personal-center-followup.test.mjs",
+        "tests/wbs-4-17-trip-contract.test.mjs",
+        "tests/wbs-4-21-rule-feasibility.test.mjs",
+        "tests/wbs-5-10-trip-library.test.mjs",
+        "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+        "tests/wbs-5-3-auth-callback.test.mjs",
+        "tests/wbs-5-3-auth-user-flow.test.mjs",
+        "tests/wbs-5-5-preferences.test.mjs",
+        "tests/wbs-5-6-companions.test.mjs",
+        "tests/wbs-5-7-mobility-preference.test.mjs",
+        "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+        "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+        "tests/wbs-5.4-v2.test.mjs",
+        "tests/wbs-9-12-personal-center-qa.test.mjs"
+      ],
+      "spawnArgv": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "--test-concurrency=1",
+        "--test-reporter=tap",
+        "--test-reporter-destination=stdout",
+        "--test-reporter=./tools/qa/task-035-reporter.mjs",
+        "--test-reporter-destination=I:\\Codex\\TravelAssist-task071-20261010\\.artifacts\\task-035\\candidate\\local\\1\\ordinary\\38b447ab-df0d-4734-ac64-392153c56814\\events.jsonl",
+        "tests/browser-trip-save.test.mjs",
+        "tests/bulk-booking.test.mjs",
+        "tests/detail-card-actions.test.mjs",
+        "tests/detail-compact-board.test.mjs",
+        "tests/detail-overview-locations.test.mjs",
+        "tests/planner-artwork.test.mjs",
+        "tests/planner-audit-fixes.test.mjs",
+        "tests/planner-audit-regressions.test.mjs",
+        "tests/planner-concept-refinement.test.mjs",
+        "tests/planner-local-integration.test.mjs",
+        "tests/planner-meal-booking-refinement.test.mjs",
+        "tests/planner-quick-menu-design.test.mjs",
+        "tests/planner-range-enrichment.test.mjs",
+        "tests/planner-responsive-density.test.mjs",
+        "tests/planner-route-board.test.mjs",
+        "tests/planner-sight-timeline.test.mjs",
+        "tests/planner-status-stack.test.mjs",
+        "tests/planner-track-actions.test.mjs",
+        "tests/planner-working-plan.test.mjs",
+        "tests/poi-remaining-review.test.mjs",
+        "tests/pr-governance.test.mjs",
+        "tests/task-007-background.test.mjs",
+        "tests/task-007-calendar.test.mjs",
+        "tests/task-007-info-popover.test.mjs",
+        "tests/task-008-planner.test.mjs",
+        "tests/task-0081-map-booking.test.mjs",
+        "tests/task-0082-visuals.test.mjs",
+        "tests/task-0083-interactions.test.mjs",
+        "tests/task-010-b-global-logo-navigation.test.mjs",
+        "tests/task-010-navigation.test.mjs",
+        "tests/task-011-trip-detail-workspace.test.mjs",
+        "tests/task-012-planner-v05.test.mjs",
+        "tests/task-013-1-asset-variants.test.mjs",
+        "tests/task-013-2-core-generation-manifest.test.mjs",
+        "tests/task-013-3-1-japan-destination-closure.test.mjs",
+        "tests/task-013-3-japan-destination-resolution.test.mjs",
+        "tests/task-013-assets.test.mjs",
+        "tests/task-015-db-foundation.test.mjs",
+        "tests/task-016-user-profile.test.mjs",
+        "tests/task-018-authentication.test.mjs",
+        "tests/task-019-trip-plan.test.mjs",
+        "tests/task-020-security.test.mjs",
+        "tests/task-022-ekiworld-routing.test.mjs",
+        "tests/task-022-route-contract.test.mjs",
+        "tests/task-022-routing-boundary.test.mjs",
+        "tests/task-023-planner-route-integration.test.mjs",
+        "tests/task-024-main-shell.test.mjs",
+        "tests/task-025-2-concept-fidelity.test.mjs",
+        "tests/task-025-2-coral-palette.test.mjs",
+        "tests/task-025-2-v11.test.mjs",
+        "tests/task-025-environment-deployment.test.mjs",
+        "tests/task-035-runner.test.mjs",
+        "tests/task-035-test-baseline.test.mjs",
+        "tests/task-036-planning-contracts.test.mjs",
+        "tests/task-037-planning-contract-soak.test.mjs",
+        "tests/task-041-region-graph-pilot.test.mjs",
+        "tests/task-042-preference-schema.test.mjs",
+        "tests/task-043-master-code-registry.test.mjs",
+        "tests/task-044-companion-schema.test.mjs",
+        "tests/task-045-preference-api.test.mjs",
+        "tests/task-045-region-master-code-integration.test.mjs",
+        "tests/task-046-preference-contract.test.mjs",
+        "tests/task-047-companion-api.test.mjs",
+        "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+        "tests/task-048-trip-persistence-model.test.mjs",
+        "tests/task-049-trip-library-api.test.mjs",
+        "tests/task-050-a-poi-schema.test.mjs",
+        "tests/task-050-profile-api.test.mjs",
+        "tests/task-051-a-planner-store.test.mjs",
+        "tests/task-052-account-deletion.test.mjs",
+        "tests/task-053-preference-presets.test.mjs",
+        "tests/task-054-personal-center-migration.test.mjs",
+        "tests/task-055-private-boundaries.test.mjs",
+        "tests/task-055-test-runner.test.mjs",
+        "tests/task-060-profile-ui.test.mjs",
+        "tests/task-061-trip-library-live.test.mjs",
+        "tests/task-062-schema-union.test.mjs",
+        "tests/task-063-engine-apply.test.mjs",
+        "tests/task-064-runtime-rollback.test.mjs",
+        "tests/task-065-engine-certification.test.mjs",
+        "tests/task-067-main-system-state.test.mjs",
+        "tests/task-068-candidate-enrichment.test.mjs",
+        "tests/task-068-corpus-combination.test.mjs",
+        "tests/task-070-p0-evidence-review.test.mjs",
+        "tests/task-076-ai-runtime.test.mjs",
+        "tests/task-081-a-poi-detail-api.test.mjs",
+        "tests/task-082-a-poi-edge-graph.test.mjs",
+        "tests/task-082-personal-ai-history.test.mjs",
+        "tests/task-083-a-poi-runtime.test.mjs",
+        "tests/task-083-canonical-owner-correction.test.mjs",
+        "tests/task-084-a-canonical100-boundary.test.mjs",
+        "tests/task-084-a-real-pilot100.test.mjs",
+        "tests/task-084-a-recommendation-scoring.test.mjs",
+        "tests/task-084-v2-amendment.test.mjs",
+        "tests/task-086-aguni-capability.test.mjs",
+        "tests/task-086-airport-selector-preflight.test.mjs",
+        "tests/task-086-b-autonomous-remediation.test.mjs",
+        "tests/task-086-b-ci-revision.test.mjs",
+        "tests/task-086-b-derived-gtfs.test.mjs",
+        "tests/task-086-b-gtfs-sections.test.mjs",
+        "tests/task-086-b-mobility-backbone.test.mjs",
+        "tests/task-086-b-p11-succession.test.mjs",
+        "tests/task-086-b-pattern-corrections.test.mjs",
+        "tests/task-086-b-rebuild.test.mjs",
+        "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+        "tests/task-086-b-selected-gtfs.test.mjs",
+        "tests/task-086-b-sonic-corrections.test.mjs",
+        "tests/task-086-b-stage-closeout.test.mjs",
+        "tests/task-086-certification-engine-repair.test.mjs",
+        "tests/task-086-conditional-query-cache.test.mjs",
+        "tests/task-086-context-registry.test.mjs",
+        "tests/task-086-dynamic-od-evidence-order.test.mjs",
+        "tests/task-086-dynamic-od.test.mjs",
+        "tests/task-086-facility-registry.test.mjs",
+        "tests/task-086-final-closeout.test.mjs",
+        "tests/task-086-fixed-phone-reception.test.mjs",
+        "tests/task-086-gtfs-agency-subset.test.mjs",
+        "tests/task-086-hamayuso-qualified.test.mjs",
+        "tests/task-086-hateruma-air-passenger.test.mjs",
+        "tests/task-086-historical-facility-stop.test.mjs",
+        "tests/task-086-iwami-fixed-flight.test.mjs",
+        "tests/task-086-licensed-package-date-binding.test.mjs",
+        "tests/task-086-native-facility.test.mjs",
+        "tests/task-086-noto-dynamic-od.test.mjs",
+        "tests/task-086-od-production-pipeline.test.mjs",
+        "tests/task-086-od-registry.test.mjs",
+        "tests/task-086-od-seed-lifecycle.test.mjs",
+        "tests/task-086-okushiri-capability.test.mjs",
+        "tests/task-086-onboard-applicability.test.mjs",
+        "tests/task-086-onboard-request.test.mjs",
+        "tests/task-086-phase-header-preflight.test.mjs",
+        "tests/task-086-public-conditional-applicability.test.mjs",
+        "tests/task-086-publication-recovery.test.mjs",
+        "tests/task-086-qualified-hotel.test.mjs",
+        "tests/task-086-readmittable-closeout.test.mjs",
+        "tests/task-086-retained-cross-package-transfer.test.mjs",
+        "tests/task-086-rights-binding.test.mjs",
+        "tests/task-086-service-access-contract.test.mjs",
+        "tests/task-086-service-access-pipeline.test.mjs",
+        "tests/task-088-a-trusted-baseline.test.mjs",
+        "tests/trip-preparation.test.mjs",
+        "tests/trip-status-personal-center-followup.test.mjs",
+        "tests/wbs-4-17-trip-contract.test.mjs",
+        "tests/wbs-4-21-rule-feasibility.test.mjs",
+        "tests/wbs-5-10-trip-library.test.mjs",
+        "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+        "tests/wbs-5-3-auth-callback.test.mjs",
+        "tests/wbs-5-3-auth-user-flow.test.mjs",
+        "tests/wbs-5-5-preferences.test.mjs",
+        "tests/wbs-5-6-companions.test.mjs",
+        "tests/wbs-5-7-mobility-preference.test.mjs",
+        "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+        "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+        "tests/wbs-5.4-v2.test.mjs",
+        "tests/wbs-9-12-personal-center-qa.test.mjs"
+      ],
+      "npmCliSha256": null,
+      "cwd": "I:\\Codex\\TravelAssist-task071-20261010"
+    }
+  ],
+  "commands": [
+    [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--import",
+      "./tests/register-route-ts.mjs",
+      "--test",
+      "--test-concurrency=1",
+      "--test-reporter=tap",
+      "--test-reporter-destination=stdout",
+      "--test-reporter=./tools/qa/task-035-reporter.mjs",
+      "--test-reporter-destination=I:\\Codex\\TravelAssist-task071-20261010\\.artifacts\\task-035\\candidate\\local\\1\\ordinary\\38b447ab-df0d-4734-ac64-392153c56814\\events.jsonl",
+      "tests/browser-trip-save.test.mjs",
+      "tests/bulk-booking.test.mjs",
+      "tests/detail-card-actions.test.mjs",
+      "tests/detail-compact-board.test.mjs",
+      "tests/detail-overview-locations.test.mjs",
+      "tests/planner-artwork.test.mjs",
+      "tests/planner-audit-fixes.test.mjs",
+      "tests/planner-audit-regressions.test.mjs",
+      "tests/planner-concept-refinement.test.mjs",
+      "tests/planner-local-integration.test.mjs",
+      "tests/planner-meal-booking-refinement.test.mjs",
+      "tests/planner-quick-menu-design.test.mjs",
+      "tests/planner-range-enrichment.test.mjs",
+      "tests/planner-responsive-density.test.mjs",
+      "tests/planner-route-board.test.mjs",
+      "tests/planner-sight-timeline.test.mjs",
+      "tests/planner-status-stack.test.mjs",
+      "tests/planner-track-actions.test.mjs",
+      "tests/planner-working-plan.test.mjs",
+      "tests/poi-remaining-review.test.mjs",
+      "tests/pr-governance.test.mjs",
+      "tests/task-007-background.test.mjs",
+      "tests/task-007-calendar.test.mjs",
+      "tests/task-007-info-popover.test.mjs",
+      "tests/task-008-planner.test.mjs",
+      "tests/task-0081-map-booking.test.mjs",
+      "tests/task-0082-visuals.test.mjs",
+      "tests/task-0083-interactions.test.mjs",
+      "tests/task-010-b-global-logo-navigation.test.mjs",
+      "tests/task-010-navigation.test.mjs",
+      "tests/task-011-trip-detail-workspace.test.mjs",
+      "tests/task-012-planner-v05.test.mjs",
+      "tests/task-013-1-asset-variants.test.mjs",
+      "tests/task-013-2-core-generation-manifest.test.mjs",
+      "tests/task-013-3-1-japan-destination-closure.test.mjs",
+      "tests/task-013-3-japan-destination-resolution.test.mjs",
+      "tests/task-013-assets.test.mjs",
+      "tests/task-015-db-foundation.test.mjs",
+      "tests/task-016-user-profile.test.mjs",
+      "tests/task-018-authentication.test.mjs",
+      "tests/task-019-trip-plan.test.mjs",
+      "tests/task-020-security.test.mjs",
+      "tests/task-022-ekiworld-routing.test.mjs",
+      "tests/task-022-route-contract.test.mjs",
+      "tests/task-022-routing-boundary.test.mjs",
+      "tests/task-023-planner-route-integration.test.mjs",
+      "tests/task-024-main-shell.test.mjs",
+      "tests/task-025-2-concept-fidelity.test.mjs",
+      "tests/task-025-2-coral-palette.test.mjs",
+      "tests/task-025-2-v11.test.mjs",
+      "tests/task-025-environment-deployment.test.mjs",
+      "tests/task-035-runner.test.mjs",
+      "tests/task-035-test-baseline.test.mjs",
+      "tests/task-036-planning-contracts.test.mjs",
+      "tests/task-037-planning-contract-soak.test.mjs",
+      "tests/task-041-region-graph-pilot.test.mjs",
+      "tests/task-042-preference-schema.test.mjs",
+      "tests/task-043-master-code-registry.test.mjs",
+      "tests/task-044-companion-schema.test.mjs",
+      "tests/task-045-preference-api.test.mjs",
+      "tests/task-045-region-master-code-integration.test.mjs",
+      "tests/task-046-preference-contract.test.mjs",
+      "tests/task-047-companion-api.test.mjs",
+      "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+      "tests/task-048-trip-persistence-model.test.mjs",
+      "tests/task-049-trip-library-api.test.mjs",
+      "tests/task-050-a-poi-schema.test.mjs",
+      "tests/task-050-profile-api.test.mjs",
+      "tests/task-051-a-planner-store.test.mjs",
+      "tests/task-052-account-deletion.test.mjs",
+      "tests/task-053-preference-presets.test.mjs",
+      "tests/task-054-personal-center-migration.test.mjs",
+      "tests/task-055-private-boundaries.test.mjs",
+      "tests/task-055-test-runner.test.mjs",
+      "tests/task-060-profile-ui.test.mjs",
+      "tests/task-061-trip-library-live.test.mjs",
+      "tests/task-062-schema-union.test.mjs",
+      "tests/task-063-engine-apply.test.mjs",
+      "tests/task-064-runtime-rollback.test.mjs",
+      "tests/task-065-engine-certification.test.mjs",
+      "tests/task-067-main-system-state.test.mjs",
+      "tests/task-068-candidate-enrichment.test.mjs",
+      "tests/task-068-corpus-combination.test.mjs",
+      "tests/task-070-p0-evidence-review.test.mjs",
+      "tests/task-076-ai-runtime.test.mjs",
+      "tests/task-081-a-poi-detail-api.test.mjs",
+      "tests/task-082-a-poi-edge-graph.test.mjs",
+      "tests/task-082-personal-ai-history.test.mjs",
+      "tests/task-083-a-poi-runtime.test.mjs",
+      "tests/task-083-canonical-owner-correction.test.mjs",
+      "tests/task-084-a-canonical100-boundary.test.mjs",
+      "tests/task-084-a-real-pilot100.test.mjs",
+      "tests/task-084-a-recommendation-scoring.test.mjs",
+      "tests/task-084-v2-amendment.test.mjs",
+      "tests/task-086-aguni-capability.test.mjs",
+      "tests/task-086-airport-selector-preflight.test.mjs",
+      "tests/task-086-b-autonomous-remediation.test.mjs",
+      "tests/task-086-b-ci-revision.test.mjs",
+      "tests/task-086-b-derived-gtfs.test.mjs",
+      "tests/task-086-b-gtfs-sections.test.mjs",
+      "tests/task-086-b-mobility-backbone.test.mjs",
+      "tests/task-086-b-p11-succession.test.mjs",
+      "tests/task-086-b-pattern-corrections.test.mjs",
+      "tests/task-086-b-rebuild.test.mjs",
+      "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+      "tests/task-086-b-selected-gtfs.test.mjs",
+      "tests/task-086-b-sonic-corrections.test.mjs",
+      "tests/task-086-b-stage-closeout.test.mjs",
+      "tests/task-086-certification-engine-repair.test.mjs",
+      "tests/task-086-conditional-query-cache.test.mjs",
+      "tests/task-086-context-registry.test.mjs",
+      "tests/task-086-dynamic-od-evidence-order.test.mjs",
+      "tests/task-086-dynamic-od.test.mjs",
+      "tests/task-086-facility-registry.test.mjs",
+      "tests/task-086-final-closeout.test.mjs",
+      "tests/task-086-fixed-phone-reception.test.mjs",
+      "tests/task-086-gtfs-agency-subset.test.mjs",
+      "tests/task-086-hamayuso-qualified.test.mjs",
+      "tests/task-086-hateruma-air-passenger.test.mjs",
+      "tests/task-086-historical-facility-stop.test.mjs",
+      "tests/task-086-iwami-fixed-flight.test.mjs",
+      "tests/task-086-licensed-package-date-binding.test.mjs",
+      "tests/task-086-native-facility.test.mjs",
+      "tests/task-086-noto-dynamic-od.test.mjs",
+      "tests/task-086-od-production-pipeline.test.mjs",
+      "tests/task-086-od-registry.test.mjs",
+      "tests/task-086-od-seed-lifecycle.test.mjs",
+      "tests/task-086-okushiri-capability.test.mjs",
+      "tests/task-086-onboard-applicability.test.mjs",
+      "tests/task-086-onboard-request.test.mjs",
+      "tests/task-086-phase-header-preflight.test.mjs",
+      "tests/task-086-public-conditional-applicability.test.mjs",
+      "tests/task-086-publication-recovery.test.mjs",
+      "tests/task-086-qualified-hotel.test.mjs",
+      "tests/task-086-readmittable-closeout.test.mjs",
+      "tests/task-086-retained-cross-package-transfer.test.mjs",
+      "tests/task-086-rights-binding.test.mjs",
+      "tests/task-086-service-access-contract.test.mjs",
+      "tests/task-086-service-access-pipeline.test.mjs",
+      "tests/task-088-a-trusted-baseline.test.mjs",
+      "tests/trip-preparation.test.mjs",
+      "tests/trip-status-personal-center-followup.test.mjs",
+      "tests/wbs-4-17-trip-contract.test.mjs",
+      "tests/wbs-4-21-rule-feasibility.test.mjs",
+      "tests/wbs-5-10-trip-library.test.mjs",
+      "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+      "tests/wbs-5-3-auth-callback.test.mjs",
+      "tests/wbs-5-3-auth-user-flow.test.mjs",
+      "tests/wbs-5-5-preferences.test.mjs",
+      "tests/wbs-5-6-companions.test.mjs",
+      "tests/wbs-5-7-mobility-preference.test.mjs",
+      "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+      "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+      "tests/wbs-5.4-v2.test.mjs",
+      "tests/wbs-9-12-personal-center-qa.test.mjs"
+    ]
+  ],
+  "files": [
+    {
+      "path": "tests/browser-trip-save.test.mjs",
+      "sha256": "be9dee9bce09386a93a48dd2c9517fc5c4e130c4c787f0cc672dccd96dee9fc0"
+    },
+    {
+      "path": "tests/bulk-booking.test.mjs",
+      "sha256": "b75c8a8929f1213c7c3f3357ec1d1b6e4612fbe394e5f7defe3252049f8938cd"
+    },
+    {
+      "path": "tests/detail-card-actions.test.mjs",
+      "sha256": "1e11a07284601e5c95a5baed2099d3c6b3c7d3517b66ec16cbc4f015b4fa50d5"
+    },
+    {
+      "path": "tests/detail-compact-board.test.mjs",
+      "sha256": "37ac9e3088707fe785ec3f16ec8d94f3add2a753d7de8bb1262fded537c5a975"
+    },
+    {
+      "path": "tests/detail-overview-locations.test.mjs",
+      "sha256": "d2f67bd03d3fcbcb8a72510b9ce8845112bc699e7bf7b31939973cb49fa35106"
+    },
+    {
+      "path": "tests/planner-artwork.test.mjs",
+      "sha256": "e671a197bc71c22c02b933fb3d45b3b986805b4992e2961d869fa36adb970bb8"
+    },
+    {
+      "path": "tests/planner-audit-fixes.test.mjs",
+      "sha256": "f0bfe30691b79a101a8e2890e7eae0422fc734f5928eda199ceeb2b9a415a295"
+    },
+    {
+      "path": "tests/planner-audit-regressions.test.mjs",
+      "sha256": "2d40828403a0e16b8e8f338ba4ae2764ac03d083d913ef321ae6e6cc817337d1"
+    },
+    {
+      "path": "tests/planner-concept-refinement.test.mjs",
+      "sha256": "29439b1c480b33deffd91367b8ff6c26670293646fb9b6cf79d4c784b7a29128"
+    },
+    {
+      "path": "tests/planner-local-integration.test.mjs",
+      "sha256": "87f847404147d1abef30ecece99f1e4f6977640510dcc810bd83d8a7faa9ae58"
+    },
+    {
+      "path": "tests/planner-meal-booking-refinement.test.mjs",
+      "sha256": "d03baa22dc025fb777354b5f482835871b447516e47b002ca131723a304aea3d"
+    },
+    {
+      "path": "tests/planner-quick-menu-design.test.mjs",
+      "sha256": "a1428908d04a0c82380ab107ff1d984dd6e1bb1500d60fbbc1752569bc04fd08"
+    },
+    {
+      "path": "tests/planner-range-enrichment.test.mjs",
+      "sha256": "782196763e46dc550d4b64488150f8351e1da98b89d09dddebb7ae1bd33c3007"
+    },
+    {
+      "path": "tests/planner-responsive-density.test.mjs",
+      "sha256": "874c4a4712b6092ec63bc1dc014e015d6a588a21eb7cc193501cea079d1b0b56"
+    },
+    {
+      "path": "tests/planner-route-board.test.mjs",
+      "sha256": "1455ee59938b85e434dd95c692240accc7a64da4e48f242869ec6701415f7b4f"
+    },
+    {
+      "path": "tests/planner-sight-timeline.test.mjs",
+      "sha256": "4e87160a9842edd2414e7a6a464744d012b2efc833671780e477ed0f67e93a3e"
+    },
+    {
+      "path": "tests/planner-status-stack.test.mjs",
+      "sha256": "b3dc74b9911fc2932c0a784782bb3607f13f5ede0d84b2c4894b70a783203bda"
+    },
+    {
+      "path": "tests/planner-track-actions.test.mjs",
+      "sha256": "fbfef16cf23fdb50bb8b06e33970beb7199ede4e5d4c621c9605d92701b0f3b8"
+    },
+    {
+      "path": "tests/planner-working-plan.test.mjs",
+      "sha256": "2513d3160d70e8903030b17f6caa567d99d2f882c91f572d464d2fc0ffe4d541"
+    },
+    {
+      "path": "tests/poi-remaining-review.test.mjs",
+      "sha256": "c621dc65fa35f912c2c86a9268c66ab02c345840218812eb0137a097b97807ff"
+    },
+    {
+      "path": "tests/pr-governance.test.mjs",
+      "sha256": "11f9483195dcab0668722fed3a09e5d0084ae5fe5ff902e1a84d01957b163786"
+    },
+    {
+      "path": "tests/task-007-background.test.mjs",
+      "sha256": "9ec7e35cfe149f5a66e9a8b4647c9c76f636a188abc8332d462401609b0d80fd"
+    },
+    {
+      "path": "tests/task-007-calendar.test.mjs",
+      "sha256": "efbfd1034d37cbc42518d47530ef79e2bb7893c601e1ddab7a743ede28607760"
+    },
+    {
+      "path": "tests/task-007-info-popover.test.mjs",
+      "sha256": "2c6de938c3253f0148e33a8cf285e565f03767877dd08b2637844d609ffc3dcf"
+    },
+    {
+      "path": "tests/task-008-planner.test.mjs",
+      "sha256": "e50cd567355026f0819f5bdd589a2df9ed480593927c4cf4ed983d01a887c986"
+    },
+    {
+      "path": "tests/task-0081-map-booking.test.mjs",
+      "sha256": "2ce90f0e5ee52a82b6c3d2703afed4fd93d065d97c0423f398c7563a769aaa70"
+    },
+    {
+      "path": "tests/task-0082-visuals.test.mjs",
+      "sha256": "f49ca9f4d2badd34edb38c1b98ad5363e86fea6792dc9d7d942d81a814746daf"
+    },
+    {
+      "path": "tests/task-0083-interactions.test.mjs",
+      "sha256": "550ed456e9b616e97866f8e6a05bae165f281d21d4f5312d9e6091db03f83631"
+    },
+    {
+      "path": "tests/task-010-b-global-logo-navigation.test.mjs",
+      "sha256": "1fd04500dc289b7257435b4e1af988f0f74bfc8ffd4de4b221c972356007b478"
+    },
+    {
+      "path": "tests/task-010-navigation.test.mjs",
+      "sha256": "7d5a42852c3301aa815251d5cc3d234ac8391d59564317f106cf4efd9e485a43"
+    },
+    {
+      "path": "tests/task-011-trip-detail-workspace.test.mjs",
+      "sha256": "d9a8bc2384bbc7abeab276c7e9b7c4af5e7cc05e860e893de5d8355564fef905"
+    },
+    {
+      "path": "tests/task-012-planner-v05.test.mjs",
+      "sha256": "70c4ebbd386e5ab9b8173fdb34a981773da1fb59018bc4c5a99d92c33d7b69f8"
+    },
+    {
+      "path": "tests/task-013-1-asset-variants.test.mjs",
+      "sha256": "b2098d291d3a007da02c9ea9e14ede8d7eef5793ce711f937e72361c4794101b"
+    },
+    {
+      "path": "tests/task-013-2-core-generation-manifest.test.mjs",
+      "sha256": "7d2ea1b0b1af113cf72542472307e6583475bad2958d15078418a0156f132de3"
+    },
+    {
+      "path": "tests/task-013-3-1-japan-destination-closure.test.mjs",
+      "sha256": "5e3ade1c0d04d0d991dfa3eda1307657d45524164300bd2055d972a39804b44d"
+    },
+    {
+      "path": "tests/task-013-3-japan-destination-resolution.test.mjs",
+      "sha256": "f14603c85b1973ba917b1a2c6620cce8bad4da549623ac8df17132539052abfd"
+    },
+    {
+      "path": "tests/task-013-assets.test.mjs",
+      "sha256": "3739b7806aa2dbe099f2b42af9218e78f3779c976b14244fcb55dc55ceb4cf3f"
+    },
+    {
+      "path": "tests/task-015-db-foundation.test.mjs",
+      "sha256": "085cd1f45e905e1272d6444371bfaae72ca2f080c1ae2a713f9438ff4b4bbf7f"
+    },
+    {
+      "path": "tests/task-016-user-profile.test.mjs",
+      "sha256": "ca10d5e50f5b87d94f6c6c7df2f57cf2c50a0318b6a54b5cf3bcb72619db9ce1"
+    },
+    {
+      "path": "tests/task-018-authentication.test.mjs",
+      "sha256": "5e1fb48cec47503ec3d86f1341ec0c346e40bbda89cfd2e37306aeb768298fac"
+    },
+    {
+      "path": "tests/task-019-trip-plan.test.mjs",
+      "sha256": "3fb0dcce0f6858813591ab59839dc3680d000415b0210c72427eed5a6c571d6a"
+    },
+    {
+      "path": "tests/task-020-security.test.mjs",
+      "sha256": "94fa86afeb8012866abf6bf918f3f727f14fac8574a7183412bc360e9b03a53a"
+    },
+    {
+      "path": "tests/task-022-ekiworld-routing.test.mjs",
+      "sha256": "6b451ba75b6370349a0fcb0c9d6faaf41287848f0e4c1ad55f85131778e82b88"
+    },
+    {
+      "path": "tests/task-022-route-contract.test.mjs",
+      "sha256": "a3386294d959c3d1d7f240e0378860ce4b4f1252b80d7d9dcc8c54bebca70e92"
+    },
+    {
+      "path": "tests/task-022-routing-boundary.test.mjs",
+      "sha256": "9df7183d3f2629ba9ed74b294ffa5c41ba4519f018e095cc033442ba3716101a"
+    },
+    {
+      "path": "tests/task-023-planner-route-integration.test.mjs",
+      "sha256": "29feb3fb89113de480156e9803d4fe9d2597796459656d8acecb467080e437f5"
+    },
+    {
+      "path": "tests/task-024-main-shell.test.mjs",
+      "sha256": "17ff88348b4556cb911a4d8000a442becbfee74a877c6493ae0518324712f043"
+    },
+    {
+      "path": "tests/task-025-2-concept-fidelity.test.mjs",
+      "sha256": "551c3b8115e687ea3c487903446ce51b68136531d325e51c8d711a19f8367ed1"
+    },
+    {
+      "path": "tests/task-025-2-coral-palette.test.mjs",
+      "sha256": "c49997d0bc740be3850310ca3b4fdd436d4dea39d9b0af95ef0ea5e9310bc218"
+    },
+    {
+      "path": "tests/task-025-2-v11.test.mjs",
+      "sha256": "35300dbf1a5229a023888ee7f832d85a2c8e30b0417f8572dc4bd1eb6efe839f"
+    },
+    {
+      "path": "tests/task-025-environment-deployment.test.mjs",
+      "sha256": "c54f899efba9dc28d4612a2bb6348f2c6fd00e9e44e60f2544dde6bd7d64486f"
+    },
+    {
+      "path": "tests/task-035-runner.test.mjs",
+      "sha256": "195835d6e3a721a73bbf9184b2d9c9654b7aa5df84914e56e1b0be1e6ad358e3"
+    },
+    {
+      "path": "tests/task-035-test-baseline.test.mjs",
+      "sha256": "e45996a7995eb3a8be5ba9b14191a8f3e5e6e435fbbfea23d8143fe0093a49a5"
+    },
+    {
+      "path": "tests/task-036-planning-contracts.test.mjs",
+      "sha256": "771d63bdb9687c84bf943b2da809598d28fa455be727d8a24d31786f09c0f599"
+    },
+    {
+      "path": "tests/task-037-planning-contract-soak.test.mjs",
+      "sha256": "a706ad7eae5657cb14026424ac29eb7f49d21d28306d3bc0aba0f68b440df07c"
+    },
+    {
+      "path": "tests/task-041-region-graph-pilot.test.mjs",
+      "sha256": "f7a9cb43271ee1706e70502f5e1be87b3f8231fbb8128f32afe8b45b1c813638"
+    },
+    {
+      "path": "tests/task-042-preference-schema.test.mjs",
+      "sha256": "305df648e0862e9d19ddb33e3afbe03174bd8419b52b360cca7af9c8c242028c"
+    },
+    {
+      "path": "tests/task-043-master-code-registry.test.mjs",
+      "sha256": "bb7b84d336f616a3540d299afa9a350c5cc1f95d56a0d86d30e786b405a2750b"
+    },
+    {
+      "path": "tests/task-044-companion-schema.test.mjs",
+      "sha256": "0a67f6dce082c55b6ece0e7d8c1d0e23c2d4cd9a09f0e0475f3c211e0e756f07"
+    },
+    {
+      "path": "tests/task-045-preference-api.test.mjs",
+      "sha256": "d185f3fefc0dbf3dabca9f1c0ebc9057c3ccace418026a657db316927c425d99"
+    },
+    {
+      "path": "tests/task-045-region-master-code-integration.test.mjs",
+      "sha256": "e82c9435442ca742b0162b09659715f4e202d84daede23665f23538de8a1c09e"
+    },
+    {
+      "path": "tests/task-046-preference-contract.test.mjs",
+      "sha256": "02cc75f82c0b7a4212cf1d1588f79de5c47f0816ef1396b56a3fca12197ebbcd"
+    },
+    {
+      "path": "tests/task-047-companion-api.test.mjs",
+      "sha256": "091a4d33ef85dde3ee4979bee160d67e16f6f1c7f0a707b4ad74211d868289c1"
+    },
+    {
+      "path": "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+      "sha256": "2bd72d3d9b8eb36fb6569b38add2d658372e9287f6b880224305ef591e13fb9d"
+    },
+    {
+      "path": "tests/task-048-trip-persistence-model.test.mjs",
+      "sha256": "011bac3e72867232ba5498c9930efdd7a8f5c126a218cbde5ccce702df382fb8"
+    },
+    {
+      "path": "tests/task-049-trip-library-api.test.mjs",
+      "sha256": "6a5cf1573c845a606a49c26bc47866e3414179bbf14b4fd75b432b3a3cef13ba"
+    },
+    {
+      "path": "tests/task-050-a-poi-schema.test.mjs",
+      "sha256": "acb8c4eb9c0a0b7774ce16b5adbb8d86dababbb7d3b85ce65d3cc70343b5649b"
+    },
+    {
+      "path": "tests/task-050-profile-api.test.mjs",
+      "sha256": "6c7e3ebc62185533cd5c45aab5754e55f705710df67cdef041bc98efed7cb6a6"
+    },
+    {
+      "path": "tests/task-051-a-planner-store.test.mjs",
+      "sha256": "c24a59eff3b4373bbee8063f53b67ae18a6dda4712fb406de97c3ee913543b62"
+    },
+    {
+      "path": "tests/task-052-account-deletion.test.mjs",
+      "sha256": "d2fd7eeffe8386ee10846a04d0c2100e90e33792fbee5aef8ec658e1048c829b"
+    },
+    {
+      "path": "tests/task-053-preference-presets.test.mjs",
+      "sha256": "5b7f73070f38952b25af3f454203484e6acb66710a64c48863d1dfa79c399467"
+    },
+    {
+      "path": "tests/task-054-personal-center-migration.test.mjs",
+      "sha256": "9767d6bb55b7c1d3c8f87b044a0320c4be88c4fc89a0279d7557b0bd06769dd8"
+    },
+    {
+      "path": "tests/task-055-private-boundaries.test.mjs",
+      "sha256": "612c36cd607b567200b9533b6b5428f8e57c542350430a22e15b6ed9ac368c92"
+    },
+    {
+      "path": "tests/task-055-test-runner.test.mjs",
+      "sha256": "f2971b6d6aed88e5c096b227b6a7fc9512abb2ef6c68fa0d1800f8c025b00d5e"
+    },
+    {
+      "path": "tests/task-060-profile-ui.test.mjs",
+      "sha256": "980f433cd2aae2c5c26652ff3ddbde6d964bd5382bfbced5befb8ac5b9bb09b8"
+    },
+    {
+      "path": "tests/task-061-trip-library-live.test.mjs",
+      "sha256": "3ac762825c17e06d5f1cd6587326c1b6fd4eeef5836b174331a0a63a9de9f37a"
+    },
+    {
+      "path": "tests/task-062-schema-union.test.mjs",
+      "sha256": "b9f17e5e1115b27257f34703529d18fc801c0bc74c78857af3c3a41125a4ec55"
+    },
+    {
+      "path": "tests/task-063-engine-apply.test.mjs",
+      "sha256": "8554011c0ab91e0f67624d05dca04794c523c185c0482941dfde7e942ca19348"
+    },
+    {
+      "path": "tests/task-064-runtime-rollback.test.mjs",
+      "sha256": "0e96bc5cc1ee6fa7258b2dda71ec594f0c84807b08f304f05a5bbcf7b24daa29"
+    },
+    {
+      "path": "tests/task-065-engine-certification.test.mjs",
+      "sha256": "d0af4e366f421dcd366bc0e4bb599439a3e88bb8b264dd13eb57b63f3d5ff72c"
+    },
+    {
+      "path": "tests/task-067-main-system-state.test.mjs",
+      "sha256": "f101b86d73145b2035a756630d194048f6bff7692bfd7fa4763dda5f336ac7fc"
+    },
+    {
+      "path": "tests/task-068-candidate-enrichment.test.mjs",
+      "sha256": "c9616b8dbf1fadd95b51fde24449938cdd8921e6419434d5b065b693b2d93d30"
+    },
+    {
+      "path": "tests/task-068-corpus-combination.test.mjs",
+      "sha256": "9ed8e1ce921d25fb5a92371978303d5aee3aa865c3d3dd4bcb79e377e354b78a"
+    },
+    {
+      "path": "tests/task-070-p0-evidence-review.test.mjs",
+      "sha256": "02c6b1e1638ed7b42a3e38c6943564591736c6cf10b3b1e4181ea28bbadfaff2"
+    },
+    {
+      "path": "tests/task-076-ai-runtime.test.mjs",
+      "sha256": "57d6054962868b2b2008224c1c0884edb117fe6094d6a170822854878a7a029e"
+    },
+    {
+      "path": "tests/task-081-a-poi-detail-api.test.mjs",
+      "sha256": "f8a0ff91443c5bbbe42cf9a7c891ce8d1eb0c11ddb2d2a577d6932ca0548b2e5"
+    },
+    {
+      "path": "tests/task-082-a-poi-edge-graph.test.mjs",
+      "sha256": "2a54b6e399eab581107dd5810eccbbf211e4bc52d7acbf48b0b4a680f090649a"
+    },
+    {
+      "path": "tests/task-082-personal-ai-history.test.mjs",
+      "sha256": "c1cda8bef8910b077dab608293748ed43c5038d70d83ebd30d45c9e3578a85e3"
+    },
+    {
+      "path": "tests/task-083-a-poi-runtime.test.mjs",
+      "sha256": "ef3277e02ccb134c01aae4aa37ad127388e055187a8e86aa4c8c4a4f5864681d"
+    },
+    {
+      "path": "tests/task-083-canonical-owner-correction.test.mjs",
+      "sha256": "fc72b34f61c5b8245b9c684115d1ef07a1ea5b07720179980bb23e1a989c80b4"
+    },
+    {
+      "path": "tests/task-084-a-canonical100-boundary.test.mjs",
+      "sha256": "351917914f81927f117174d0906e0ae3a5b50caaf221add492e0bfb964700372"
+    },
+    {
+      "path": "tests/task-084-a-real-pilot100.test.mjs",
+      "sha256": "290ff002e94f05da451afabce281728a88a37295a44089fbd16515e4fc751109"
+    },
+    {
+      "path": "tests/task-084-a-recommendation-scoring.test.mjs",
+      "sha256": "db0820d498d44415c67526d8ed7c10e6338a817894ad9f0c74cd5a9e36d74f76"
+    },
+    {
+      "path": "tests/task-084-v2-amendment.test.mjs",
+      "sha256": "f20dd53761db9dd568c90916f21b8298cc51a160661ed4a3b6d94946cd438af3"
+    },
+    {
+      "path": "tests/task-086-aguni-capability.test.mjs",
+      "sha256": "230b6ce43917bc725b164f8a070da973dab2a659d4b2ad637fe0737c2517656c"
+    },
+    {
+      "path": "tests/task-086-airport-selector-preflight.test.mjs",
+      "sha256": "8eefc2a140484b5a2cd61879df4381f6e61e6c230c8281433830586ef49026a3"
+    },
+    {
+      "path": "tests/task-086-b-autonomous-remediation.test.mjs",
+      "sha256": "91bba8b5c9cf51d7fddb64124147e3b81fbd51a590945dd7671dec0952b92df9"
+    },
+    {
+      "path": "tests/task-086-b-ci-revision.test.mjs",
+      "sha256": "cbba89ea56de0c9ad575c86031721ac5cc4f41a4eeef0d03bfd8c916e23d4a6d"
+    },
+    {
+      "path": "tests/task-086-b-derived-gtfs.test.mjs",
+      "sha256": "9dd092ac8e687fd3ab8ca8176e7579e112bee87e5eb900a984d67d0998f8dc3f"
+    },
+    {
+      "path": "tests/task-086-b-gtfs-sections.test.mjs",
+      "sha256": "49b4d9d30bd28b3dafc583acac47336acdf094724e5742ef9f297816d0422e44"
+    },
+    {
+      "path": "tests/task-086-b-mobility-backbone.test.mjs",
+      "sha256": "e9434171b976399d66f47cfe65a30535d3f1e1ce934af39c49bb35545eef915d"
+    },
+    {
+      "path": "tests/task-086-b-p11-succession.test.mjs",
+      "sha256": "0c0db1239cec366e4b2757ed35cf534ed87505999175222f12b25dbef1198d5c"
+    },
+    {
+      "path": "tests/task-086-b-pattern-corrections.test.mjs",
+      "sha256": "d05f323cda10a3eb5f0217e2c142e550b9809aa65807833aefd84d99ad4d6e2c"
+    },
+    {
+      "path": "tests/task-086-b-rebuild.test.mjs",
+      "sha256": "45242f598c0b4063fb5fbb69e9a8df93ae75b3f0e5fcd55fbfbeb247d532e9c5"
+    },
+    {
+      "path": "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+      "sha256": "8cb2b53c89f5bf0b7f1df29d6b3349db43fb229b1aa30f738c357682d6a8a1d1"
+    },
+    {
+      "path": "tests/task-086-b-selected-gtfs.test.mjs",
+      "sha256": "2c844190441625f14e89ac8de6ae8e098cc855d51820cd424c0ad4a8fbc04a3b"
+    },
+    {
+      "path": "tests/task-086-b-sonic-corrections.test.mjs",
+      "sha256": "930f627f882d9490e9e873206d683e3d232dd2f744b4a3700f067bdc24681bc3"
+    },
+    {
+      "path": "tests/task-086-b-stage-closeout.test.mjs",
+      "sha256": "ae6bdab17a895d1f11a153e8d30ed7dd8c8bd95bb569b0b634646ea5b89cf790"
+    },
+    {
+      "path": "tests/task-086-certification-engine-repair.test.mjs",
+      "sha256": "03023d1f2bf88950734c97a04c2a81ff743e9bc61e7781e8db9b8e7a093abdcd"
+    },
+    {
+      "path": "tests/task-086-conditional-query-cache.test.mjs",
+      "sha256": "1533566c21b36a25188ebfe0ef9b0f4917460188ccaa6a770101c8e3fcf81e9f"
+    },
+    {
+      "path": "tests/task-086-context-registry.test.mjs",
+      "sha256": "eae6d650192f8777672704ff90ee4890e0979d35c3c9add92188a4470364dbcc"
+    },
+    {
+      "path": "tests/task-086-dynamic-od-evidence-order.test.mjs",
+      "sha256": "51a0848ac3393bfa819ed433653d199e0e9c7f5af54e521a4b6be1ec72166270"
+    },
+    {
+      "path": "tests/task-086-dynamic-od.test.mjs",
+      "sha256": "88d4bceda44d988ebd547ef376b515bc03c465891982eac83bef1287082e7f51"
+    },
+    {
+      "path": "tests/task-086-facility-registry.test.mjs",
+      "sha256": "1a1c0a894e6a9a759d7fb4820622d7ffa8b454f4eb024578ec54c8ed63817a6e"
+    },
+    {
+      "path": "tests/task-086-final-closeout.test.mjs",
+      "sha256": "5f438138d1447679390bddbc3da39a62bcfc31852a2c26efee60ebf86b631a5c"
+    },
+    {
+      "path": "tests/task-086-fixed-phone-reception.test.mjs",
+      "sha256": "c02dcd7b31563bad0a508dc380e6cd67cfa5bdd926ede19688bc53523f2823ea"
+    },
+    {
+      "path": "tests/task-086-gtfs-agency-subset.test.mjs",
+      "sha256": "1f42d09b4d54a9903c81f3862583ca9774332cbc09bd5f15f0a2c76bac10135a"
+    },
+    {
+      "path": "tests/task-086-hamayuso-qualified.test.mjs",
+      "sha256": "898db2449b804b705f7f6b8d73d960181d9ab0ab8719c8d62603b35ef8753ab8"
+    },
+    {
+      "path": "tests/task-086-hateruma-air-passenger.test.mjs",
+      "sha256": "c43fe379e4cec0e78857ec3ec46a22677ba8f03cfe6a383563986140c8bd29ef"
+    },
+    {
+      "path": "tests/task-086-historical-facility-stop.test.mjs",
+      "sha256": "29c8868a89111152e60ce006db467cdfe064a9c18ff88b5df8226fb55fe7fd6f"
+    },
+    {
+      "path": "tests/task-086-iwami-fixed-flight.test.mjs",
+      "sha256": "9e8bf82614484d4295db37163a0f5fc36bea99b3e04ee4b823462c2d77fb2b2d"
+    },
+    {
+      "path": "tests/task-086-licensed-package-date-binding.test.mjs",
+      "sha256": "682a9866e7e8614e33efb1fe61c630cac84b364a709b3204f2d0b7fa0335bff7"
+    },
+    {
+      "path": "tests/task-086-native-facility.test.mjs",
+      "sha256": "7f3f6f3b1d95c6015b5418e767711cc2841090e2961efcafff087ced6418547a"
+    },
+    {
+      "path": "tests/task-086-noto-dynamic-od.test.mjs",
+      "sha256": "338a30e6b7598d2bf6705d55950dd1c8d49399c8de2f6284ed40ff6ebbf95493"
+    },
+    {
+      "path": "tests/task-086-od-production-pipeline.test.mjs",
+      "sha256": "299cc90085db8721d431c4eff594485cbebdf922fa54770f7d5043c587525338"
+    },
+    {
+      "path": "tests/task-086-od-registry.test.mjs",
+      "sha256": "1a802b81f36620e30d48f8792d5183c78a347879fdf01eb62020a18081b46b21"
+    },
+    {
+      "path": "tests/task-086-od-seed-lifecycle.test.mjs",
+      "sha256": "f3d81e4b29d66e65ce04964cb7bac4e5499cbc0a8789a68619eaabb03587eaf7"
+    },
+    {
+      "path": "tests/task-086-okushiri-capability.test.mjs",
+      "sha256": "82eb8c4376d609666a238fbad4ee5445e9f16bcc81c5b3f9e10fab3590a3fb74"
+    },
+    {
+      "path": "tests/task-086-onboard-applicability.test.mjs",
+      "sha256": "e605c8cbe80a0a83ba3b99f73b5a9c037eb507c42493ae28d1db3ad1d2f849e1"
+    },
+    {
+      "path": "tests/task-086-onboard-request.test.mjs",
+      "sha256": "08853e98a23f0f7d4d7f5e9b48799b032be41349466920479f9410beefee8e2c"
+    },
+    {
+      "path": "tests/task-086-phase-header-preflight.test.mjs",
+      "sha256": "df4e6b8906987944bc5dc1b6900137305e74370cd76c603467159ff25d670b26"
+    },
+    {
+      "path": "tests/task-086-public-conditional-applicability.test.mjs",
+      "sha256": "5aae0b87e949cd973d7d0d4f80e082a229f28def925a3aff545adf94d6563c4a"
+    },
+    {
+      "path": "tests/task-086-publication-recovery.test.mjs",
+      "sha256": "53ee5742d7cc278fe7bd395ab9a7aeed0304fd7f465653447eaa13e28837cff6"
+    },
+    {
+      "path": "tests/task-086-qualified-hotel.test.mjs",
+      "sha256": "210151081f3bc2acf6e9ee32e4e0f1431a11fd56522a2e720216dcca9b503cff"
+    },
+    {
+      "path": "tests/task-086-readmittable-closeout.test.mjs",
+      "sha256": "8d8b8fbcf6d8d013c36f24c58e7b61a214da35087e69709c66d9eceadb993bd1"
+    },
+    {
+      "path": "tests/task-086-retained-cross-package-transfer.test.mjs",
+      "sha256": "ac9b050ca8df2cc08422b99ac5db8ac52e1b54898cb8c2af761b7451305b6790"
+    },
+    {
+      "path": "tests/task-086-rights-binding.test.mjs",
+      "sha256": "164e49e38f1fa2a825a6a076b32da3fd95a5854ed9f9b6035ce8a5678f296211"
+    },
+    {
+      "path": "tests/task-086-service-access-contract.test.mjs",
+      "sha256": "8aa63e960188052083888ddc51d09454653039141de0546a142332a6c6c9965b"
+    },
+    {
+      "path": "tests/task-086-service-access-pipeline.test.mjs",
+      "sha256": "c12f2a8c095e9c6592a54d983ea0f2344bf9af4f03bc053f389a5aed079ece24"
+    },
+    {
+      "path": "tests/task-088-a-trusted-baseline.test.mjs",
+      "sha256": "8cbd0b8623bfe191d1df8ac9fe2dcfaf72387e7715b482c75f2b72be93127f25"
+    },
+    {
+      "path": "tests/trip-preparation.test.mjs",
+      "sha256": "6344f9cf2f44ec328ca9c7e633429f3ad441d2e9c6cc2f38c04cbe514e53e310"
+    },
+    {
+      "path": "tests/trip-status-personal-center-followup.test.mjs",
+      "sha256": "cf290b9280f2f2026f100b8f9cbdbf1d3929e4cfe5778c1a61c66ff6a4b07f16"
+    },
+    {
+      "path": "tests/wbs-4-17-trip-contract.test.mjs",
+      "sha256": "c96bb5810ce079a0b5b0bfeb9db91c167856776847a28de11e9bcb2a97c87b79"
+    },
+    {
+      "path": "tests/wbs-4-21-rule-feasibility.test.mjs",
+      "sha256": "171a6efe615c871812714df713057bac783fb7a25b0d0bd723c17e5f2f946ec0"
+    },
+    {
+      "path": "tests/wbs-5-10-trip-library.test.mjs",
+      "sha256": "f7f07488484af4176926e86fc872a43a5b70ff4e44a2cafc9f7df14f2a844c63"
+    },
+    {
+      "path": "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+      "sha256": "a01e22c68b6c0f633d3727a27ea02ac760b031175f594791dcc9171b58e0ecd7"
+    },
+    {
+      "path": "tests/wbs-5-3-auth-callback.test.mjs",
+      "sha256": "e61aab45b5c65a328f56ed9401f3f41733a334ef70a6f3f427a75dc98cbfe6dc"
+    },
+    {
+      "path": "tests/wbs-5-3-auth-user-flow.test.mjs",
+      "sha256": "b996fe0cd2ea4696f684e3aac8c23035dee47d6a317377781458989ccf26afb0"
+    },
+    {
+      "path": "tests/wbs-5-5-preferences.test.mjs",
+      "sha256": "9b26d542ee77d25f54a2d038ddecb68a63a3193ed4e72dfa888a827e8a079b5e"
+    },
+    {
+      "path": "tests/wbs-5-6-companions.test.mjs",
+      "sha256": "3caf13b08cda118af35f0ec53447f436d75f8157f226f0c8278fba57108888b1"
+    },
+    {
+      "path": "tests/wbs-5-7-mobility-preference.test.mjs",
+      "sha256": "b321c88b7260ac76fbcf08fc12e1e588d68541fefdd2ccb1e96f5b0d6c804c13"
+    },
+    {
+      "path": "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+      "sha256": "e9ebe7891c88f6bfde2c6071c17c25900bdc1c1126419e9bd9c322699e78e4c5"
+    },
+    {
+      "path": "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+      "sha256": "8e549bc310845600c3d31b3ec79793df1722a8ff68eabab8836f5daf5bd92963"
+    },
+    {
+      "path": "tests/wbs-5.4-v2.test.mjs",
+      "sha256": "91f33a6c20dc22c31a5beb02b2819085aa8d167a28ec1e8a0dc97379fe11d2b2"
+    },
+    {
+      "path": "tests/wbs-9-12-personal-center-qa.test.mjs",
+      "sha256": "1c0b4477d7dff3e3e57b0c0c3df3f105d07fff27c5acf3d3fb331de6e7d142f8"
+    }
+  ],
+  "counts": null,
+  "countStatus": "UNVERIFIED",
+  "validationError": "NONZERO_EXIT\n\n1 !== 0\n",
+  "nativeReceiptSha256": null,
+  "startedAt": "2026-10-10T04:24:57.424Z",
+  "endedAt": "2026-10-10T04:54:57.765Z",
+  "log": "execution.log",
+  "logSha256": "0ee169f22df8ad88405fc040bb89d1766aacee7103195e81a6e4ecd01f192c47",
+  "eventsSha256": "8fbe06e110f57f72092ccf5b1206792d90d192bdd5c6721ad202cd85ca5937d5",
+  "notExecuted": [
+    {
+      "category": "Local DB/Auth, browser/real device",
+      "status": "NOT_RUN",
+      "reason": "Explicit opt-in; unchanged implementation, not a default completion gate"
+    },
+    {
+      "category": "Bundle/replay/TASK055/059 aggregate",
+      "status": "NOT_RUN",
+      "reason": "Dedicated build/runtime environment not requested"
+    },
+    {
+      "category": "Four TASK084 Python checks",
+      "status": "NOT_RUN",
+      "reason": "Classified optional/deferred; no automatic expansion of mandatory scope"
+    },
+    {
+      "category": "Live Provider/OAuth/SMS/cloud",
+      "status": "NOT_RUN",
+      "reason": "Production Provider calls prohibited"
+    },
+    {
+      "category": "Peripheral audit candidates",
+      "status": "NOT_RUN",
+      "reason": "Phase1 unknown ownership/transitive effects retained; no requirement to clear all peripheral candidates"
+    }
+  ]
+}

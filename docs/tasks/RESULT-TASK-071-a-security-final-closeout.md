@@ -1,3 +1,13 @@
+# RESULT — TASK-071-A current closeout
+
+**BLOCKED_TECHNICAL_AND_HOLD_OWNER — 2026-10-10.** A remains Canonical Owner; B's general execution authorization is active. Original Draft PR #231 is retained. The independent full clone has local candidate HEAD 7e3160ac78cb3b1dbc27b4d2194bc98ca72f5bdb, normally integrated with develop cfd51e42f96e43f84f406c6aab5aab6e408b713e; that source candidate is not published while D1 remains unresolved.
+
+Templates, synthetic tests, reviewed inventory and Security workflow compatibility are remediated locally. History scanning now completes with 47 findings; tracked scan retains 2 external-source findings. Canonical full Node regression is FAIL; observed No final summary; see failed canonical receipt and bounded process termination evidence. All actual gates, exact-head receipts and remaining D1–D3 decisions are recorded in [one-pass QA](../qa/TASK-071/one-pass-20261010/README.md) and its [Owner matrix](../qa/TASK-071/one-pass-20261010/OWNER-DISPOSITION-AND-REMEDIATION-MATRIX.md).
+
+WBS 9.10 remains blocked. No source exception, allowlist expansion, TASK-086 frozen refresh, second implementation PR, force push, history rewrite or automatic merge occurred. Hosted candidate exact-head/merge-result gates are not claimed; documentation-head CI is separately reported on #231. Earlier results below remain historical only.
+
+<details><summary>Historical results and prior blocked attempt (preserved)</summary>
+
 # RESULT — TASK-071-A
 
 ## Status
@@ -60,3 +70,5 @@ Coverage remains bounded: decoded scans exclude binary and oversized content, ig
 ## 2026-10-10 B authorized latest-develop attempt
 
 **BLOCKED_SECURITY_FINDINGS**. Owner A; B execution authorized by user relay recorded in Issue #404 comment 6093462830. Normal merge candidate against develop `cfd51e42f96e43f84f406c6aab5aab6e408b713e` remains uncommitted/unpushed. Six unresolved tracked findings prevent publication; validity was not externally tested. Security tests 31/31 and boundary passed; inventory failed; all unexecuted mandatory gates remain NOT_RUN. Previous PASS sections are historical only. See `docs/qa/TASK-071/latest-develop-20261010/README.md` and `execution-receipt.json`. No allowlist expansion, forced push, history rewrite, credential output, or merge occurred.
+
+</details>

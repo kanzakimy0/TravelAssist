@@ -1,0 +1,39 @@
+{
+  "canonical": {
+    "status": "FAIL",
+    "reason": "Original 1800000 ms process budget exhausted in tests/task-086-b-rebuild.test.mjs",
+    "selectedFiles": 155,
+    "completedFileSummaries": 103,
+    "finalCounts": "UNVERIFIED",
+    "requiredFileRemainsRequired": true
+  },
+  "supplemental": {
+    "status": "FAIL",
+    "files": 51,
+    "tests": 1123,
+    "passed": 1120,
+    "failed": 3,
+    "skipped": 0,
+    "todo": 0,
+    "cancelled": 0,
+    "notCanonicalPass": true
+  },
+  "failures": [
+    {
+      "path": "tests/task-086-certification-engine-repair.test.mjs",
+      "line": 369,
+      "reason": "loadEligibleGraph rejects Stale eligibility input; direct frozen/current binding mismatch"
+    },
+    {
+      "path": "tests/task-086-certification-engine-repair.test.mjs",
+      "line": 403,
+      "reason": "Published recertification-summary inputSha256 differs from currentBinding"
+    },
+    {
+      "path": "tests/task-086-readmittable-closeout.test.mjs",
+      "line": 167,
+      "reason": "Repeat scratch generation compared equal, then published artifact-tree hash comparison failed. Full semantic equivalence and authorized refresh not established."
+    }
+  ],
+  "ownerDependency": "D3 approval required for unchanged R035-05 frozen-derived refresh. Rebuild timeout remains an independent technical blocker; do not attribute it to Owner authorization."
+}

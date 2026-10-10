@@ -1,0 +1,60 @@
+{
+  "status": "HOLD_OWNER",
+  "decision": "D1",
+  "noCredentialValidation": true,
+  "noManualCredentialDecoding": true,
+  "noSourceEdits": true,
+  "noAllowlistEdits": true,
+  "sources": [
+    {
+      "path": "data/poi/full/reviews/task-071/TASK-071-A-0009.discovery-v2.jsonl",
+      "category": "jwt-token",
+      "downstream": [
+        {
+          "path": "data/poi/full/manifests/task-071/receipts/TASK-071-A-0009.json",
+          "sha256": "7e49ae91f04dc2608a03f801c739290fad2e6a11db655d005c8f1190cf886d2c"
+        },
+        {
+          "path": "data/poi/full/manifests/task-071/checkpoints/TASK-071-A-0009.discovery-v2.json",
+          "sha256": "eba69d3d09d063ac958b643ca94a6e54db54731aa27f90bdf9a5ae5181e3de58"
+        },
+        {
+          "path": "data/poi/full/reviews/task-071/evidence-remediation/TASK-071-A-0009.evidence-v2.jsonl",
+          "sha256": "07e3abd077f69ac61b0df002b711122dc982572962c490dbd7f12f9eb7ebb4c9"
+        }
+      ],
+      "fileSha256": "4692ca18fbc5f8b7eeaf026db4e818e82be19fde559be76f27ffc1a51c0b1be0",
+      "identicalToDevelop": true,
+      "lastCommit": "1a87b9da56662b166bff795ed84031cdfbd850f7",
+      "proposedAfterApproval": [
+        "Quarantine from production admission; preserve original evidence in restricted custody according to Owner disposition.",
+        "If Owner authorizes redaction: change only the matched field/segment in a separate audited copy; mark affected evidence invalid until original provenance/checkpoint hashes are recomputed and reviewed.",
+        "No online key validation. Credential owner determines rotation/incident handling if genuine.",
+        "Allowlist only if security Owner proves public/nonsecret and explicitly approves exact fingerprint, path, scope, reason and expiry."
+      ]
+    },
+    {
+      "path": "data/poi/full/task-073-b-identity-deep-null-targeted-43d/identity-remediation/sources/japan-travel-minobusan-kuonji.html",
+      "category": "gcp-key",
+      "downstream": [
+        {
+          "path": "data/poi/full/task-073-b-identity-deep-null-targeted-43d/identity-remediation/identity-canary-remediation-001.json",
+          "sha256": "55bc4cf6313a560ccfaf00629aacfaf12fe9104520ab0058725248e0e2aaabb6"
+        },
+        {
+          "path": "tools/poi/task-073-b-deep-null-targeted.mjs",
+          "sha256": "cd6fea61e2cba3cffcc22d8192a15d0fea48ce6ead38bbe682bd9e2a1d8a4025"
+        }
+      ],
+      "fileSha256": "abc7488f7dc8a7251a76c3d999c5fbf0aed6b64035b2cfd9616d30ff3ad85b3b",
+      "identicalToDevelop": true,
+      "lastCommit": "7bb2e26e4265ef7c8828f75ea9f2d6bfec611752",
+      "proposedAfterApproval": [
+        "Quarantine from production admission; preserve original evidence in restricted custody according to Owner disposition.",
+        "If Owner authorizes redaction: change only the matched field/segment in a separate audited copy; mark affected evidence invalid until original provenance/checkpoint hashes are recomputed and reviewed.",
+        "No online key validation. Credential owner determines rotation/incident handling if genuine.",
+        "Allowlist only if security Owner proves public/nonsecret and explicitly approves exact fingerprint, path, scope, reason and expiry."
+      ]
+    }
+  ]
+}
