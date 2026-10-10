@@ -1,0 +1,98 @@
+TAP version 13
+# (node:26616) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/Administrator/.codex/worktrees/wbs-8-7-phase1/TravelAssist/src/server/ai/context/preference.ts is not specified and it doesn't parse as CommonJS.
+# Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+# To eliminate this warning, add "type": "module" to \\\\?\\C:\\Users\\Administrator\\.codex\\worktrees\\wbs-8-7-phase1\\TravelAssist\\package.json.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: fake provider produces a normalized deterministic runtime response
+ok 1 - fake provider produces a normalized deterministic runtime response
+  ---
+  duration_ms: 7.5311
+  type: 'test'
+  ...
+# Subtest: prompt registry uses immutable versioned checksums and fails closed
+ok 2 - prompt registry uses immutable versioned checksums and fails closed
+  ---
+  duration_ms: 1.1641
+  type: 'test'
+  ...
+# Subtest: preference context distinguishes missing and preserves false and neutral
+ok 3 - preference context distinguishes missing and preserves false and neutral
+  ---
+  duration_ms: 0.3998
+  type: 'test'
+  ...
+# Subtest: runtime sends only structured preference context, never account or location data
+ok 4 - runtime sends only structured preference context, never account or location data
+  ---
+  duration_ms: 0.5178
+  type: 'test'
+  ...
+# Subtest: optional-user request stays anonymous without touching the authenticated reader
+ok 5 - optional-user request stays anonymous without touching the authenticated reader
+  ---
+  duration_ms: 6.0768
+  type: 'test'
+  ...
+# Subtest: missing OpenAI configuration fails safely before network execution
+ok 6 - missing OpenAI configuration fails safely before network execution
+  ---
+  duration_ms: 0.5169
+  type: 'test'
+  ...
+# Subtest: OpenAI timeout is normalized, retried once, and raw data is removed
+ok 7 - OpenAI timeout is normalized, retried once, and raw data is removed
+  ---
+  duration_ms: 0.5907
+  type: 'test'
+  ...
+# Subtest: OpenAI rate limit is normalized, retried once, and raw data is removed
+ok 8 - OpenAI rate limit is normalized, retried once, and raw data is removed
+  ---
+  duration_ms: 0.2461
+  type: 'test'
+  ...
+# Subtest: OpenAI unavailable is normalized, retried once, and raw data is removed
+ok 9 - OpenAI unavailable is normalized, retried once, and raw data is removed
+  ---
+  duration_ms: 0.224
+  type: 'test'
+  ...
+# Subtest: invalid provider response is rejected without raw object leakage
+ok 10 - invalid provider response is rejected without raw object leakage
+  ---
+  duration_ms: 0.4357
+  type: 'test'
+  ...
+# Subtest: OpenAI success normalizes text, safe request id, and usage
+ok 11 - OpenAI success normalizes text, safe request id, and usage
+  ---
+  duration_ms: 0.338
+  type: 'test'
+  ...
+# Subtest: unexpected provider throws are normalized without raw leakage
+ok 12 - unexpected provider throws are normalized without raw leakage
+  ---
+  duration_ms: 0.2575
+  type: 'test'
+  ...
+# Subtest: request envelope is exact and bounded
+ok 13 - request envelope is exact and bounded
+  ---
+  duration_ms: 0.5079
+  type: 'test'
+  ...
+# Subtest: server-only secret boundary has no public OpenAI variable
+ok 14 - server-only secret boundary has no public OpenAI variable
+  ---
+  duration_ms: 2.4334
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2102.7455
