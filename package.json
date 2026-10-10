@@ -30,6 +30,8 @@
     "test:poi-recommendation": "node --import ./tests/register-route-ts.mjs --test tests/task-084-a-recommendation-scoring.test.mjs tests/task-084-a-canonical100-boundary.test.mjs tests/task-084-a-real-pilot100.test.mjs",
     "qa:poi-recommendation": "node --import ./tests/register-route-ts.mjs tools/qa/task-084-recommendation-runtime.mjs --check",
     "qa:poi-recommendation:real-pilot": "node --import ./tests/register-route-ts.mjs tools/qa/task-084-real-pilot100.mjs --check",
+    "qa:poi-recommendation:calibration": "node --import ./tests/register-route-ts.mjs tools/qa/task-090-calibration.mjs --check",
+    "test:poi-recommendation:calibration": "node --import ./tests/register-route-ts.mjs --test tests/task-090-a-recommendation-calibration.test.mjs",
     "qa:poi-edge-pilot": "node --import ./tests/register-route-ts.mjs tools/qa/task-082-poi-edge-pilot.mjs --check",
     "qa:planning-soak": "node --import ./tests/register-route-ts.mjs tools/qa/planning-contract-fuzz.mjs",
     "qa:region-graph-pilot": "node --import ./tests/register-route-ts.mjs tools/qa/region-graph-pilot.mjs",
