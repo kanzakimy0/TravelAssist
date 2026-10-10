@@ -56,3 +56,7 @@ After the first hosted run, the legacy asset inventory was restored to the curre
 WBS 9.10 is synchronized to `待审查（#404 / TASK-071-A；Draft PR #231）`. The remaining required external step is the exact final-head GitHub Quality Gate after the authorized branch push; its result is added to PR #231 and Issue #404 before owner review.
 
 Coverage remains bounded: decoded scans exclude binary and oversized content, ignored private env files, external credential stores, dangling/reflog-only objects, unfetched refs, and external LFS payloads. This Task does not certify cloud Auth/DB runtime, credential validity or rotation, penetration testing, production deployment, CSP/rate limiting/security headers, or any WBS 9.9 work.
+
+## 2026-10-10 B authorized latest-develop attempt
+
+**BLOCKED_SECURITY_FINDINGS**. Owner A; B execution authorized by user relay recorded in Issue #404 comment 6093462830. Normal merge candidate against develop `cfd51e42f96e43f84f406c6aab5aab6e408b713e` remains uncommitted/unpushed. Six unresolved tracked findings prevent publication; validity was not externally tested. Security tests 31/31 and boundary passed; inventory failed; all unexecuted mandatory gates remain NOT_RUN. Previous PASS sections are historical only. See `docs/qa/TASK-071/latest-develop-20261010/README.md` and `execution-receipt.json`. No allowlist expansion, forced push, history rewrite, credential output, or merge occurred.

@@ -1,0 +1,195 @@
+{
+  "task": "TASK-071-A",
+  "canonicalOwner": "A",
+  "executor": "B",
+  "status": "BLOCKED_SECURITY_FINDINGS",
+  "authorization": {
+    "status": "CONFIRMED_BY_USER_RELAY",
+    "url": "https://github.com/kanzakimy0/TravelAssist/issues/404#issuecomment-6093462830",
+    "note": "B/user relayed A authorization; not an independently verified direct statement from A."
+  },
+  "observedAt": "2026-10-10T03:58:26.170Z",
+  "revisions": {
+    "head": "fa3fe589759408172c647d932d8ce477d3ae20d4",
+    "develop": "cfd51e42f96e43f84f406c6aab5aab6e408b713e",
+    "mergeHead": "cfd51e42f96e43f84f406c6aab5aab6e408b713e",
+    "candidate": "UNCOMMITTED_NORMAL_MERGE",
+    "prMergeResult": "NOT_CREATED_NOT_TESTED"
+  },
+  "gates": {
+    "npmCi": "PASS --no-audit --no-fund; 396 packages",
+    "tracked": "FINDINGS",
+    "history": "INCOMPLETE_TWO_SCANNER_ATTEMPTS",
+    "boundary": "PASS",
+    "securityTests": {
+      "status": "PASS",
+      "tests": 31,
+      "pass": 31,
+      "fail": 0,
+      "skip": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    "inventory": "FAIL REVIEW_HASH_DRIFT: tests/task-013-assets.test.mjs",
+    "fullNode": "NOT_RUN_SECURITY_BLOCKER",
+    "lint": "NOT_RUN_SECURITY_BLOCKER",
+    "typecheck": "NOT_RUN_SECURITY_BLOCKER",
+    "productionCanary": "NOT_RUN_SECURITY_BLOCKER",
+    "browserBundle": "NOT_RUN_SECURITY_BLOCKER",
+    "deployment": "NOT_RUN_SECURITY_BLOCKER",
+    "qualityGate": "NOT_RUN_NO_PUBLISHED_CANDIDATE",
+    "securityCI": "NOT_RUN_NO_PUBLISHED_CANDIDATE"
+  },
+  "tracked": {
+    "counts": {
+      "commits": 0,
+      "objects": 0,
+      "files": 12355,
+      "scanned": 10645,
+      "bytes": 984278170
+    },
+    "unresolved": 6,
+    "skipped": {
+      "binary": 1470,
+      "oversize": 240
+    }
+  },
+  "boundary": {
+    "counts": {
+      "commits": 0,
+      "objects": 0,
+      "files": 425,
+      "scanned": 425,
+      "bytes": 0
+    },
+    "clientEntries": 45,
+    "clientModules": 200,
+    "unresolved": 0
+  },
+  "findings": [
+    {
+      "path": ".env.example",
+      "category": "env-template-value",
+      "severity": "high",
+      "line": 55,
+      "fingerprint": "d4c999ae43633bd2036188d2bca68e1be8202b2cc1f3a1c42a728eaff7d2483d",
+      "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+      "allowed": false,
+      "workingFileSha256": "bebc9df2a5db407f6ee0c8413a071ce398ae51f089c01211dc4e7c8fd88c0d64",
+      "developFileSha256": "60702f9df80697480546fadcecbf63ace6697d24a9b5c7b2e7c84a5130a16aea",
+      "sameBytesAsDevelop": false,
+      "validity": "NOT_VERIFIED_NO_EXTERNAL_CREDENTIAL_CHECK"
+    },
+    {
+      "path": ".env.example",
+      "category": "env-template-value",
+      "severity": "high",
+      "line": 56,
+      "fingerprint": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+      "allowed": false,
+      "workingFileSha256": "bebc9df2a5db407f6ee0c8413a071ce398ae51f089c01211dc4e7c8fd88c0d64",
+      "developFileSha256": "60702f9df80697480546fadcecbf63ace6697d24a9b5c7b2e7c84a5130a16aea",
+      "sameBytesAsDevelop": false,
+      "validity": "NOT_VERIFIED_NO_EXTERNAL_CREDENTIAL_CHECK"
+    },
+    {
+      "path": "data/poi/full/reviews/task-071/TASK-071-A-0009.discovery-v2.jsonl",
+      "category": "jwt-token",
+      "severity": "critical",
+      "line": 84,
+      "fingerprint": "851eec6558a20f2445a3d49a5ea0d21088a9c7d23d2ff7e6950ee03f71dbcb8e",
+      "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+      "allowed": false,
+      "workingFileSha256": "4692ca18fbc5f8b7eeaf026db4e818e82be19fde559be76f27ffc1a51c0b1be0",
+      "developFileSha256": "4692ca18fbc5f8b7eeaf026db4e818e82be19fde559be76f27ffc1a51c0b1be0",
+      "sameBytesAsDevelop": true,
+      "validity": "NOT_VERIFIED_NO_EXTERNAL_CREDENTIAL_CHECK"
+    },
+    {
+      "path": "data/poi/full/task-073-b-identity-deep-null-targeted-43d/identity-remediation/sources/japan-travel-minobusan-kuonji.html",
+      "category": "gcp-key",
+      "severity": "high",
+      "line": 4278,
+      "fingerprint": "8323f4d7fa338d7c4cb0fa4991e3878233e440c919458ce9f0c01c25b483561f",
+      "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+      "allowed": false,
+      "workingFileSha256": "abc7488f7dc8a7251a76c3d999c5fbf0aed6b64035b2cfd9616d30ff3ad85b3b",
+      "developFileSha256": "abc7488f7dc8a7251a76c3d999c5fbf0aed6b64035b2cfd9616d30ff3ad85b3b",
+      "sameBytesAsDevelop": true,
+      "validity": "NOT_VERIFIED_NO_EXTERNAL_CREDENTIAL_CHECK"
+    },
+    {
+      "path": "tests/poi-remaining-review.test.py",
+      "category": "url-credentials",
+      "severity": "high",
+      "line": 162,
+      "fingerprint": "5e7e5c56577c979705c605711de7b11b1a6e7d6e3605db7e6e7b386daa54d1c0",
+      "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+      "allowed": false,
+      "workingFileSha256": "f527b3b9b0f09d916c4987c69cbdba9a698bb5230a06d92121e755655f2998f7",
+      "developFileSha256": "f527b3b9b0f09d916c4987c69cbdba9a698bb5230a06d92121e755655f2998f7",
+      "sameBytesAsDevelop": true,
+      "validity": "NOT_VERIFIED_NO_EXTERNAL_CREDENTIAL_CHECK"
+    },
+    {
+      "path": "tests/task-076-ai-runtime.test.mjs",
+      "category": "generic-credential",
+      "severity": "high",
+      "line": 24,
+      "fingerprint": "64af848afc4e507188b584e1bf9bdece3fe17bce49e77a86a6f97004fd5face5",
+      "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+      "allowed": false,
+      "workingFileSha256": "3af0314524b0286d8cd082b0e74243c699e69134d9c0452131e6790a5c25d8e0",
+      "developFileSha256": "3af0314524b0286d8cd082b0e74243c699e69134d9c0452131e6790a5c25d8e0",
+      "sameBytesAsDevelop": true,
+      "validity": "NOT_VERIFIED_NO_EXTERNAL_CREDENTIAL_CHECK"
+    }
+  ],
+  "limits": {
+    "binary": "EXCLUDED_NOT_CERTIFIED",
+    "oversize": "EXCLUDED_NOT_CERTIFIED",
+    "lfs": "EXTERNAL_PAYLOAD_NOT_FETCHED",
+    "credentialValidity": "NOT_RUN",
+    "rotation": "NOT_RUN",
+    "sourceChanges": "No collected-source or production data remediation performed",
+    "allowlist": "UNCHANGED"
+  },
+  "attempts": [
+    {
+      "stage": "normal merge in original Phase0 clone",
+      "result": "FAILED_WINDOWS_LONG_PATH",
+      "preserved": true
+    },
+    {
+      "stage": "normal merge in fresh longpaths-enabled t71 clone",
+      "result": "TWO_KNOWN_CONFLICTS_RESOLVED_NOT_COMMITTED"
+    },
+    {
+      "stage": "security tests sandbox",
+      "result": "30/31; temporary git init permission denied"
+    },
+    {
+      "stage": "security tests normal host permissions",
+      "result": "31/31 PASS"
+    },
+    {
+      "stage": "history initial shared clone",
+      "result": "INCOMPLETE missing partial-clone configuration; redacted error fingerprint 4849a3d34dc3bf893f0b74842adaecea22be1eb2fdecbd5a4ff6ec1bc7cc319a"
+    },
+    {
+      "stage": "history after partial-clone configuration",
+      "result": "INCOMPLETE same redacted scanner error fingerprint; no history PASS or counts available"
+    },
+    {
+      "stage": "metadata-only reachable/missing-object diagnostic",
+      "result": "CANCELLED_AFTER_NO_RESULT; never interpreted as zero missing objects"
+    }
+  ],
+  "publication": {
+    "type": "DOCUMENTATION_ONLY",
+    "parent": "fa3fe589759408172c647d932d8ce477d3ae20d4",
+    "implementationCandidatePublished": false,
+    "reason": "Unresolved security findings prevent publishing the merged source candidate"
+  }
+}

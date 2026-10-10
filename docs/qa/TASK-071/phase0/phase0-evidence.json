@@ -1,0 +1,197 @@
+{
+  "timestamp": "2026-10-10T03:45:38.164Z",
+  "status": "BLOCKED_OWNER_AUTHORIZATION",
+  "phase": "0_READ_ONLY",
+  "head": "fa3fe589759408172c647d932d8ce477d3ae20d4",
+  "develop": "cfd51e42f96e43f84f406c6aab5aab6e408b713e",
+  "amendment": "831b70f0a3a0cd00295d3345d67127be5e260f31",
+  "mergeBase": "a16ea611b8fb24cfe751615d54a3828f7ef564ca",
+  "divergence": "8\t504",
+  "statusBefore": "",
+  "statusAfter": "",
+  "sparseCheckout": true,
+  "partialClone": true,
+  "shallow": false,
+  "fetchedRefs": [
+    "refs/heads/codex/a-global-security-baseline fa3fe589759408172c647d932d8ce477d3ae20d4",
+    "refs/remotes/origin/codex/a-global-security-baseline fa3fe589759408172c647d932d8ce477d3ae20d4",
+    "refs/remotes/origin/develop cfd51e42f96e43f84f406c6aab5aab6e408b713e",
+    "refs/remotes/origin/docs/task-071a-b-security-closeout-20261010 831b70f0a3a0cd00295d3345d67127be5e260f31"
+  ],
+  "mergeTree": "6515acc01b547c2cb1351cb5fe55f230bb8fab25",
+  "mergeExitCode": 1,
+  "conflictFiles": ["docs/project/WBS-TravelAssist.md", "package.json"],
+  "conflictHunks": {
+    "docs/project/WBS-TravelAssist.md": [
+      {
+        "start": 1192,
+        "end": 1198,
+        "text": "<<<<<<< fa3fe589759408172c647d932d8ce477d3ae20d4\n| 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 待审查（#404 / TASK-071-A；Draft PR #231） |\n| 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 未开始 |\n=======\n| 9.10   | Secret 扫描 / 全局安全                  | A      | P1     | 2.8             | 待审查（#404 / TASK-071-A；PR #231；既有安全门通过，需 latest-develop 合并后完整重扫） |\n| 9.11   | 性能预算 / 错误监控                     | A      | P2     | 2.11            | 进行中（#405 / TASK-072-A；复用 PR #245，需 latest-develop Full Refresh） |\n>>>>>>> cfd51e42f96e43f84f406c6aab5aab6e408b713e"
+      }
+    ],
+    "package.json": [
+      {
+        "start": 101,
+        "end": 111,
+        "text": "<<<<<<< fa3fe589759408172c647d932d8ce477d3ae20d4\n    \"security:scan\": \"node tools/security/scan.mjs tracked\",\n    \"security:history\": \"node tools/security/scan.mjs history\",\n    \"security:boundary\": \"node tools/security/boundary.mjs\",\n    \"security:bundle\": \"node tools/security/scan.mjs bundle\",\n    \"security:build\": \"node tools/security/build.mjs\",\n    \"test:security\": \"node --test tests/task-020-security.test.mjs\"\n=======\n    \"test:baseline:inventory\": \"node tools/qa/task-035-inventory.mjs\",\n    \"test:baseline:lane\": \"node tools/qa/task-035-baseline.mjs\"\n>>>>>>> cfd51e42f96e43f84f406c6aab5aab6e408b713e"
+      }
+    ]
+  },
+  "changes": [
+    {
+      "status": "M",
+      "path": ".env.example"
+    },
+    {
+      "status": "A",
+      "path": ".github/workflows/security.yml"
+    },
+    {
+      "status": "M",
+      "path": ".gitignore"
+    },
+    {
+      "status": "M",
+      "path": "docs/project/WBS-TravelAssist.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/qa/TASK-071/README.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/qa/TASK-071/allowlist-review.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/qa/TASK-071/security-receipts.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/security/secret-scan-report.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/security/secret-scanning-baseline.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/tasks/RESULT-TASK-020-a-global-security-baseline.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/tasks/RESULT-TASK-027-a-security-baseline-acceptance-closeout.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/tasks/RESULT-TASK-071-a-security-final-closeout.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/tasks/TASK-020-a-global-security-baseline.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/tasks/TASK-027-a-security-baseline-acceptance-closeout.md"
+    },
+    {
+      "status": "M",
+      "path": "package.json"
+    },
+    {
+      "status": "M",
+      "path": "src/app/(main)/planner/page.tsx"
+    },
+    {
+      "status": "M",
+      "path": "tests/task-013-assets.test.mjs"
+    },
+    {
+      "status": "M",
+      "path": "tests/task-016-client-bundle.mjs"
+    },
+    {
+      "status": "A",
+      "path": "tests/task-020-security.test.mjs"
+    },
+    {
+      "status": "M",
+      "path": "tests/task-025-2-coral-palette.test.mjs"
+    },
+    {
+      "status": "M",
+      "path": "tools/assets/validate-asset-library.mjs"
+    },
+    {
+      "status": "A",
+      "path": "tools/security/allowlist.json"
+    },
+    {
+      "status": "A",
+      "path": "tools/security/boundary.mjs"
+    },
+    {
+      "status": "A",
+      "path": "tools/security/build.mjs"
+    },
+    {
+      "status": "A",
+      "path": "tools/security/rules.mjs"
+    },
+    {
+      "status": "A",
+      "path": "tools/security/scan.mjs"
+    }
+  ],
+  "testChanges": [
+    {
+      "path": "tests/task-013-assets.test.mjs",
+      "reviewed": "c9ed0a5cfcc8dbeb330fbe6e8d284f35c68972f68f12164a255b0100cfe434cd",
+      "candidate": "3739b7806aa2dbe099f2b42af9218e78f3779c976b14244fcb55dc55ceb4cf3f",
+      "develop": "c9ed0a5cfcc8dbeb330fbe6e8d284f35c68972f68f12164a255b0100cfe434cd"
+    },
+    {
+      "path": "tests/task-020-security.test.mjs",
+      "reviewed": null,
+      "candidate": "a91775124c7722764e4b90f362d342fb7ab9e86dbe6b2a5b7148a4dbe19396ce",
+      "develop": null
+    },
+    {
+      "path": "tests/task-025-2-coral-palette.test.mjs",
+      "reviewed": "e4de924e12f332370b24e8df33ac36ee1bd50b7aecdbdbc26f0116efb846c270",
+      "candidate": "c49997d0bc740be3850310ca3b4fdd436d4dea39d9b0af95ef0ea5e9310bc218",
+      "develop": "e4de924e12f332370b24e8df33ac36ee1bd50b7aecdbdbc26f0116efb846c270"
+    }
+  ],
+  "trackedFiles": {
+    "head": 2755,
+    "develop": 12334,
+    "hypotheticalTree": 12351
+  },
+  "topLevelNodeTests": {
+    "develop": 154,
+    "hypotheticalTree": 155
+  },
+  "packageHashes": {
+    "fa3fe589759408172c647d932d8ce477d3ae20d4": "ac7102e63d4e27f2aa242f154f652ad9203552bf4d3be34607faa35c718c588a",
+    "cfd51e42f96e43f84f406c6aab5aab6e408b713e": "cf33b865d403a142d09bd514ba507aef0a984807f25d477bbe6cb6b1261e85ec",
+    "inMemoryAdditiveHypothesis": "d5f35bfc4d33f03a3425449b14430a6d303464c37c2887c11d8c568e94618af9"
+  },
+  "frozenBinding": {
+    "evidenceType": "STATIC_SOURCE_AUDIT",
+    "source": "tools/transport/task-086-final-closeout.mjs::currentBinding",
+    "packageAndQualityWorkflowBound": true,
+    "runtimeValidation": "NOT_RUN_OWNER_AUTHORIZATION_REQUIRED"
+  },
+  "allowlistMetadata": {
+    "count": 102,
+    "byExpiry": {
+      "2026-12-09": 42,
+      "2026-12-10": 32,
+      "2026-12-20": 28
+    },
+    "expired": 0,
+    "wildcardPaths": 0
+  },
+  "executionGates": "NOT_RUN_OWNER_AUTHORIZATION_REQUIRED"
+}
