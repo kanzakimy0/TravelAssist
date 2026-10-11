@@ -1100,7 +1100,8 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR #432 已同步 #417 合并后的 develop 且通过本地 QA；等待 exact-head Quality Gate） |
 | 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
-| 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 待审查（#450 / TASK-084-A；PASS_RUNTIME；TASK-088 基线下 100×43 = 4,300 cell deterministic real-data smoke 已生成；单一冻结 QA 输入不构成推荐质量验收，PR #451 未合并） |
+| 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 已完成（#450 / TASK-084-A；PR #451 用户验收并 normal merge；Recommendation Scoring v1 Runtime + Canonical 100×43 deterministic Pilot 已通过；推荐行为质量校准转 7.9.1） |
+| 7.9.1 | 推荐匹配行为质量校准 / Canonical 100 POI Calibration | A | P0 | 7.9,7.4.3 | 未开始（#461 / TASK-090-A；逐 Preference/Context one-factor-at-a-time 校准，方向性/单调性/硬约束/排名敏感度） |
 | 7.10   | 缓存策略                      | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.11   | Provider 失败降级             | A      | P1     | 7.6-7.8  | 未开始 |
 | 7.12 | 当前预览Mapbox本地配置与真实底图复验 | A | P0 | 4.2,7.1 | 已完成（#211合并验收；UI/本地Mock范围，Token不上传） |
@@ -1127,6 +1128,17 @@ TASK-084-B execution checkpoint (2026-09-28):
 - 从 `origin/develop@511508c9a59c3b94c7d72cedbf5ff559da69ded8` 启动独立分支；国土交通省 N02 2025 铁路数据许可为 CC BY 4.0。110 个新干线 station component 已采用 TravelAssist 自有身份账本验收为 TransportNode，保留 200/batch 回执、校验和及显式未决清单。
 - 保留原有 110 个节点 ID 和 5 个 Hub ID；在已验收的 167 节点基础上新增 47 个全国主要铁路组件、19 个地方机场、5 个长崎主要巴士终端和 6 个旅游缆车站点，合计 244 个 NODE_ACCEPTED、21 个 Hub。实际批次为 200 + 44。Hub 显式关联 85 节点；原 94 个待审新干线组件逐项复核后，14 个列为独立网关、80 个保留 `HUB_REVIEW_REQUIRED`，均记录附近组件证据，且不自动改绑父 Hub。独立网关合计 79 个。机场历史参考点与当前身份分离，并独立复核 47 个机场层级。
 - N03/GSI 正式权利判定为内部 `APPROVAL_REQUIRED`，需要 GSI 对指定点在面内行政区派生操作的书面确认；这是 fail-closed Gate，不是法律结论。当前 0/244 行政区赋值与 0/47 行政区审计属于 `DEFERRED_ADMINISTRATIVE_ENRICHMENT`，不阻塞原始 TASK-084 全国规划骨架验收。更多 Bus、岛屿渡船、ropeway/shuttle 及地方旅游节点属于 `DEFERRED_PLANNER_EXPANSION`。按 [Final Closeout Amendment](../tasks/AMENDMENT-TASK-084-b-final-closeout.md)，084 骨架 PASS；PR #448 的最终 head `de3fa9dd7f11c391678b2fdbc792a3753267182d` 通过 exact-head Quality Gate [#36564684778](https://github.com/kanzakimy0/TravelAssist/actions/runs/36564684778)，以 normal merge `e3fdef378615f29eb41e6221d3fd46e2e87ac545` 合入 develop；Issue #441 Closed / Completed。085/086 保持未开始。详情见 [Result](../tasks/RESULT-TASK-084-b-japan-transport-node-master.md)、[QA](../qa/TASK-084-B/README.md) 与 [全国覆盖审计](../qa/TASK-084-B/national-coverage-audit.md)。
+
+TASK-090-A tracking (2026-09-29):
+
+- Issue #461；Owner A；WBS 7.9.1。
+- 前置已满足：TASK-084-A / PR #451 已验收并 normal merge 至 develop `c4f00b8d`；100 Canonical POIs、100/100 43维 trusted baseline、4,300 cell trace 与 Scoring Runtime 已可用。
+- 本 Task 不再验证“能否计算”，而是验证实际产品 Preference/Context 改变后，100 POI 的 score/rank 是否按预期、可解释、确定性地变化。
+- 使用 one-factor-at-a-time 与小型 pairwise perturbation；不做 8-persona benchmark，不手工 patch named POI。
+- 重点门槛：方向性、单调性、hard constraints、unrelated component isolation、deterministic replay、异常 ledger、config before/after。
+- Task：`docs/tasks/TASK-090-a-recommendation-match-quality-calibration.md`。
+- Codex：`docs/tasks/CODEX-TASK-090-a-recommendation-match-quality-calibration.md`。
+- Draft PR only；不自动 merge。
 
 TASK-082-A tracking (2026-09-27):
 
