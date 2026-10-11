@@ -1,0 +1,37 @@
+{
+  "lane": "assets",
+  "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+  "expectedHead": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+  "inventorySha256": "868ede8344998f05c8d6a3ef06df287caaddb19d6e070dc711baab1e1d237331",
+  "files": [
+    "tests/task-013-1-asset-variants.test.mjs",
+    "tests/task-013-2-core-generation-manifest.test.mjs",
+    "tests/task-013-3-1-japan-destination-closure.test.mjs",
+    "tests/task-013-3-japan-destination-resolution.test.mjs",
+    "tests/task-013-assets.test.mjs"
+  ],
+  "startedAt": "2026-10-11T04:12:11.200Z",
+  "endedAt": "2026-10-11T04:13:29.919Z",
+  "timeoutMs": 1500000,
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "status": "PASS",
+  "logSha256": "09731ae0874b452c5152a039cfc739c59e8704d863efb498ca5a8f038f93a10f",
+  "command": [
+    "/var/tmp/task071-isolated-20261010/runtime/node-v24.21.0-linux-x64/bin/node",
+    "--import",
+    "./tests/register-route-ts.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "--test-reporter=tap",
+    "--test-reporter-destination=stdout",
+    "--test-reporter=./tools/qa/task-035-reporter.mjs",
+    "--test-reporter-destination=/var/tmp/task071-final-20261011/final/.artifacts/task-035/candidate/local/1/assets/da8f3453-e2d8-4dcd-b0bd-8c6d8d100abc/events.jsonl",
+    "tests/task-013-1-asset-variants.test.mjs",
+    "tests/task-013-2-core-generation-manifest.test.mjs",
+    "tests/task-013-3-1-japan-destination-closure.test.mjs",
+    "tests/task-013-3-japan-destination-resolution.test.mjs",
+    "tests/task-013-assets.test.mjs"
+  ]
+}

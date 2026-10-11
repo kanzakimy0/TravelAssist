@@ -1,0 +1,29 @@
+{
+  "lane": "rebuild",
+  "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+  "expectedHead": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+  "inventorySha256": "868ede8344998f05c8d6a3ef06df287caaddb19d6e070dc711baab1e1d237331",
+  "files": [
+    "tests/task-086-b-rebuild.test.mjs"
+  ],
+  "startedAt": "2026-10-11T04:04:04.921Z",
+  "endedAt": "2026-10-11T04:04:08.726Z",
+  "timeoutMs": 900000,
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "status": "PASS",
+  "logSha256": "f23e704cb080dcc306e237aef7af4c28282ca63c962d84c85a9ea31b57d3d03a",
+  "command": [
+    "/var/tmp/task071-isolated-20261010/runtime/node-v24.21.0-linux-x64/bin/node",
+    "--import",
+    "./tests/register-route-ts.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "--test-reporter=tap",
+    "--test-reporter-destination=stdout",
+    "--test-reporter=./tools/qa/task-035-reporter.mjs",
+    "--test-reporter-destination=/var/tmp/task071-final-20261011/final/.artifacts/task-035/candidate/local/1/rebuild/e0bbbd70-0379-4d18-a883-91032fc3649a/events.jsonl",
+    "tests/task-086-b-rebuild.test.mjs"
+  ]
+}

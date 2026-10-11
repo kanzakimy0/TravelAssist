@@ -1,0 +1,42 @@
+{
+  "task": "TASK-025-A",
+  "status": "pass",
+  "scope": "local standalone deployment rehearsal",
+  "commitSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+  "appEnvironment": "development",
+  "targetId": "local",
+  "externalDeployment": "not-run",
+  "productionDeployment": "not-authorized",
+  "artifactAudit": {
+    "ok": true,
+    "fileCount": 1913
+  },
+  "checks": [
+    {
+      "name": "liveness",
+      "status": 200,
+      "cacheControl": "no-store, max-age=0"
+    },
+    {
+      "name": "readiness",
+      "status": 200,
+      "cacheControl": "no-store, max-age=0"
+    },
+    {
+      "name": "home",
+      "status": 200,
+      "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate"
+    },
+    {
+      "name": "planner",
+      "status": 200,
+      "cacheControl": "private, no-cache, no-store, max-age=0, must-revalidate"
+    },
+    {
+      "name": "production-route-guard",
+      "status": 503
+    }
+  ],
+  "previousRelease": null,
+  "rollbackControl": "no prior local artifact; rollback state logic covered by tests"
+}

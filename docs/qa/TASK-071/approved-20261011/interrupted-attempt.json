@@ -1,0 +1,375 @@
+{
+  "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+  "path": "I:/Codex/task071-approved-20261011",
+  "receipt": {
+    "status": "INTERRUPTED_FOR_CUSTODY_BINDING_CORRECTION",
+    "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+    "at": "2026-10-11T02:09:47.497051+00:00",
+    "processes": [
+      {
+        "pid": 534,
+        "pgid": 390
+      },
+      {
+        "pid": 3040,
+        "pgid": 3040
+      }
+    ],
+    "graphFirst": "INTERRUPTED_NOT_PASS",
+    "reason": "Restore immutable historical POI receipts and separate sanitized derivative binding before final input freeze",
+    "completedOutcomes": [
+      {
+        "stage": "inventory",
+        "status": "PASS",
+        "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+        "monotonicDurationMs": 79.76447,
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 600000,
+        "startedAt": "2026-10-11T01:55:24.723Z",
+        "endedAt": "2026-10-11T01:55:24.802Z",
+        "argv": [
+          "node",
+          "tools/qa/task-035-inventory.mjs",
+          "--check"
+        ],
+        "spawnArgv": [
+          "node",
+          "tools/qa/task-035-inventory.mjs",
+          "--check"
+        ],
+        "npmCliSha256": null,
+        "cwd": "/var/tmp/task071-approved-20261011/final"
+      },
+      {
+        "stage": "security-tests",
+        "status": "PASS",
+        "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+        "monotonicDurationMs": 1410.303351,
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 600000,
+        "startedAt": "2026-10-11T01:55:24.834Z",
+        "endedAt": "2026-10-11T01:55:26.244Z",
+        "argv": [
+          "npm",
+          "run",
+          "test:security"
+        ],
+        "spawnArgv": [
+          "npm",
+          "run",
+          "test:security"
+        ],
+        "npmCliSha256": null,
+        "cwd": "/var/tmp/task071-approved-20261011/final"
+      },
+      {
+        "stage": "tracked",
+        "status": "PASS",
+        "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+        "monotonicDurationMs": 13617.592219,
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 600000,
+        "startedAt": "2026-10-11T01:55:26.274Z",
+        "endedAt": "2026-10-11T01:55:41.109Z",
+        "argv": [
+          "npm",
+          "run",
+          "security:scan"
+        ],
+        "spawnArgv": [
+          "npm",
+          "run",
+          "security:scan"
+        ],
+        "npmCliSha256": null,
+        "cwd": "/var/tmp/task071-approved-20261011/final"
+      },
+      {
+        "stage": "history",
+        "status": "FAIL",
+        "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+        "monotonicDurationMs": 70737.703147,
+        "exitCode": 1,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 1200000,
+        "startedAt": "2026-10-11T01:55:41.142Z",
+        "endedAt": "2026-10-11T01:56:54.321Z",
+        "argv": [
+          "npm",
+          "run",
+          "security:history"
+        ],
+        "spawnArgv": [
+          "npm",
+          "run",
+          "security:history"
+        ],
+        "npmCliSha256": null,
+        "cwd": "/var/tmp/task071-approved-20261011/final"
+      },
+      {
+        "stage": "boundary",
+        "status": "PASS",
+        "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+        "monotonicDurationMs": 1124.946452,
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 600000,
+        "startedAt": "2026-10-11T01:56:54.354Z",
+        "endedAt": "2026-10-11T01:56:55.479Z",
+        "argv": [
+          "npm",
+          "run",
+          "security:boundary"
+        ],
+        "spawnArgv": [
+          "npm",
+          "run",
+          "security:boundary"
+        ],
+        "npmCliSha256": null,
+        "cwd": "/var/tmp/task071-approved-20261011/final"
+      },
+      {
+        "stage": "certification",
+        "status": "PASS",
+        "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+        "monotonicDurationMs": 86007.537014,
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 600000,
+        "startedAt": "2026-10-11T01:56:55.508Z",
+        "endedAt": "2026-10-11T01:58:24.289Z",
+        "argv": [
+          "node",
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-086-certification-engine-repair.test.mjs",
+          "tests/task-086-readmittable-closeout.test.mjs"
+        ],
+        "spawnArgv": [
+          "node",
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-086-certification-engine-repair.test.mjs",
+          "tests/task-086-readmittable-closeout.test.mjs"
+        ],
+        "npmCliSha256": null,
+        "cwd": "/var/tmp/task071-approved-20261011/final"
+      },
+      {
+        "stage": "quality",
+        "status": "PASS",
+        "canonicalId": "8fcdf537-8053-48bf-a311-4ab7222e4b42",
+        "monotonicDurationMs": 105559.658343,
+        "counts": null,
+        "executions": [
+          {
+            "startedAt": "2026-10-11T01:58:24.545Z",
+            "endedAt": "2026-10-11T01:58:24.786Z",
+            "exitCode": 0,
+            "timeout": false,
+            "timeoutMs": 1439999,
+            "signal": null
+          },
+          {
+            "startedAt": "2026-10-11T01:58:24.786Z",
+            "endedAt": "2026-10-11T01:58:55.824Z",
+            "exitCode": 0,
+            "timeout": false,
+            "timeoutMs": 1439758,
+            "signal": null
+          },
+          {
+            "startedAt": "2026-10-11T01:58:55.824Z",
+            "endedAt": "2026-10-11T01:59:17.513Z",
+            "exitCode": 0,
+            "timeout": false,
+            "timeoutMs": 1408720,
+            "signal": null
+          },
+          {
+            "startedAt": "2026-10-11T01:59:17.513Z",
+            "endedAt": "2026-10-11T01:59:31.360Z",
+            "exitCode": 0,
+            "timeout": false,
+            "timeoutMs": 1387031,
+            "signal": null
+          },
+          {
+            "startedAt": "2026-10-11T01:59:31.360Z",
+            "endedAt": "2026-10-11T02:00:14.266Z",
+            "exitCode": 0,
+            "timeout": false,
+            "timeoutMs": 1373184,
+            "signal": null
+          },
+          {
+            "startedAt": "2026-10-11T02:00:14.266Z",
+            "endedAt": "2026-10-11T02:00:15.753Z",
+            "exitCode": 0,
+            "timeout": false,
+            "timeoutMs": 1330278,
+            "signal": null
+          },
+          {
+            "startedAt": "2026-10-11T02:00:15.753Z",
+            "endedAt": "2026-10-11T02:00:15.767Z",
+            "exitCode": 0,
+            "timeout": false,
+            "timeoutMs": 1328791,
+            "signal": null
+          }
+        ],
+        "nativeReceiptSha256": null
+      },
+      {
+        "stage": "deploy-rehearsal",
+        "status": "PASS",
+        "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+        "monotonicDurationMs": 12622.755182,
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 600000,
+        "startedAt": "2026-10-11T02:00:15.985Z",
+        "endedAt": "2026-10-11T02:00:28.608Z",
+        "argv": [
+          "npm",
+          "run",
+          "deploy:rehearse:local"
+        ],
+        "spawnArgv": [
+          "npm",
+          "run",
+          "deploy:rehearse:local"
+        ],
+        "npmCliSha256": null,
+        "cwd": "/var/tmp/task071-approved-20261011/final"
+      },
+      {
+        "stage": "canary-build",
+        "status": "PASS",
+        "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+        "monotonicDurationMs": 16131.892756,
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 600000,
+        "startedAt": "2026-10-11T02:00:28.637Z",
+        "endedAt": "2026-10-11T02:00:46.545Z",
+        "argv": [
+          "npm",
+          "run",
+          "security:build"
+        ],
+        "spawnArgv": [
+          "npm",
+          "run",
+          "security:build"
+        ],
+        "npmCliSha256": null,
+        "cwd": "/var/tmp/task071-approved-20261011/final"
+      },
+      {
+        "stage": "bundle",
+        "status": "PASS",
+        "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+        "monotonicDurationMs": 323.907738,
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 600000,
+        "startedAt": "2026-10-11T02:00:46.593Z",
+        "endedAt": "2026-10-11T02:00:46.917Z",
+        "argv": [
+          "npm",
+          "run",
+          "security:bundle"
+        ],
+        "spawnArgv": [
+          "npm",
+          "run",
+          "security:bundle"
+        ],
+        "npmCliSha256": null,
+        "cwd": "/var/tmp/task071-approved-20261011/final"
+      },
+      {
+        "stage": "ai-bundle",
+        "status": "PASS",
+        "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+        "monotonicDurationMs": 220.466748,
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 600000,
+        "startedAt": "2026-10-11T02:00:46.953Z",
+        "endedAt": "2026-10-11T02:00:47.173Z",
+        "argv": [
+          "npm",
+          "run",
+          "test:ai-runtime:bundle"
+        ],
+        "spawnArgv": [
+          "npm",
+          "run",
+          "test:ai-runtime:bundle"
+        ],
+        "npmCliSha256": null,
+        "cwd": "/var/tmp/task071-approved-20261011/final"
+      },
+      {
+        "stage": "security-format",
+        "status": "PASS",
+        "head": "a53c1139ff0493303dc946b1ab815b41de07f1a4",
+        "monotonicDurationMs": 390.779339,
+        "exitCode": 0,
+        "signal": null,
+        "timeout": false,
+        "error": null,
+        "timeoutMs": 600000,
+        "startedAt": "2026-10-11T02:00:47.205Z",
+        "endedAt": "2026-10-11T02:00:47.596Z",
+        "argv": [
+          "node",
+          "node_modules/prettier/bin/prettier.cjs",
+          "--check",
+          "tools/security/*.{mjs,json}",
+          "tests/task-020-security.test.mjs"
+        ],
+        "spawnArgv": [
+          "node",
+          "node_modules/prettier/bin/prettier.cjs",
+          "--check",
+          "tools/security/*.{mjs,json}",
+          "tests/task-020-security.test.mjs"
+        ],
+        "npmCliSha256": null,
+        "cwd": "/var/tmp/task071-approved-20261011/final"
+      }
+    ]
+  },
+  "reusedAsCurrent": false
+}

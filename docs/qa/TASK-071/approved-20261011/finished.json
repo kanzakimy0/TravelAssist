@@ -1,0 +1,656 @@
+{
+  "id": "5268eccd-54e2-4c0a-a756-c9fb6c8deaf8",
+  "at": "2026-10-11T04:20:34.099Z",
+  "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+  "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+  "inputBindingUnchanged": true,
+  "sourceClean": true,
+  "outcomes": [
+    {
+      "stage": "inventory",
+      "status": "PASS",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 86.110866,
+      "exitCode": 0,
+      "signal": null,
+      "timeout": false,
+      "error": null,
+      "timeoutMs": 600000,
+      "startedAt": "2026-10-11T02:16:21.694Z",
+      "endedAt": "2026-10-11T02:16:21.779Z",
+      "argv": [
+        "node",
+        "tools/qa/task-035-inventory.mjs",
+        "--check"
+      ],
+      "spawnArgv": [
+        "node",
+        "tools/qa/task-035-inventory.mjs",
+        "--check"
+      ],
+      "npmCliSha256": null,
+      "cwd": "/var/tmp/task071-final-20261011/final"
+    },
+    {
+      "stage": "security-tests",
+      "status": "PASS",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 1444.682811,
+      "exitCode": 0,
+      "signal": null,
+      "timeout": false,
+      "error": null,
+      "timeoutMs": 600000,
+      "startedAt": "2026-10-11T02:16:21.811Z",
+      "endedAt": "2026-10-11T02:16:23.255Z",
+      "argv": [
+        "npm",
+        "run",
+        "test:security"
+      ],
+      "spawnArgv": [
+        "npm",
+        "run",
+        "test:security"
+      ],
+      "npmCliSha256": null,
+      "cwd": "/var/tmp/task071-final-20261011/final"
+    },
+    {
+      "stage": "tracked",
+      "status": "PASS",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 13513.8011,
+      "exitCode": 0,
+      "signal": null,
+      "timeout": false,
+      "error": null,
+      "timeoutMs": 600000,
+      "startedAt": "2026-10-11T02:16:23.287Z",
+      "endedAt": "2026-10-11T02:16:36.801Z",
+      "argv": [
+        "npm",
+        "run",
+        "security:scan"
+      ],
+      "spawnArgv": [
+        "npm",
+        "run",
+        "security:scan"
+      ],
+      "npmCliSha256": null,
+      "cwd": "/var/tmp/task071-final-20261011/final"
+    },
+    {
+      "stage": "history",
+      "status": "FAIL",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 71630.789351,
+      "exitCode": 1,
+      "signal": null,
+      "timeout": false,
+      "error": null,
+      "timeoutMs": 1200000,
+      "startedAt": "2026-10-11T02:16:36.835Z",
+      "endedAt": "2026-10-11T02:17:50.744Z",
+      "argv": [
+        "npm",
+        "run",
+        "security:history"
+      ],
+      "spawnArgv": [
+        "npm",
+        "run",
+        "security:history"
+      ],
+      "npmCliSha256": null,
+      "cwd": "/var/tmp/task071-final-20261011/final"
+    },
+    {
+      "stage": "boundary",
+      "status": "PASS",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 1133.449586,
+      "exitCode": 0,
+      "signal": null,
+      "timeout": false,
+      "error": null,
+      "timeoutMs": 600000,
+      "startedAt": "2026-10-11T02:17:50.782Z",
+      "endedAt": "2026-10-11T02:17:51.915Z",
+      "argv": [
+        "npm",
+        "run",
+        "security:boundary"
+      ],
+      "spawnArgv": [
+        "npm",
+        "run",
+        "security:boundary"
+      ],
+      "npmCliSha256": null,
+      "cwd": "/var/tmp/task071-final-20261011/final"
+    },
+    {
+      "stage": "certification",
+      "status": "PASS",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 88416.909095,
+      "exitCode": 0,
+      "signal": null,
+      "timeout": false,
+      "error": null,
+      "timeoutMs": 600000,
+      "startedAt": "2026-10-11T02:17:51.954Z",
+      "endedAt": "2026-10-11T02:19:23.631Z",
+      "argv": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "tests/task-086-certification-engine-repair.test.mjs",
+        "tests/task-086-readmittable-closeout.test.mjs"
+      ],
+      "spawnArgv": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "tests/task-086-certification-engine-repair.test.mjs",
+        "tests/task-086-readmittable-closeout.test.mjs"
+      ],
+      "npmCliSha256": null,
+      "cwd": "/var/tmp/task071-final-20261011/final"
+    },
+    {
+      "stage": "quality",
+      "status": "PASS",
+      "canonicalId": "30fac0d7-24de-49f1-96ea-81819cec5ac0",
+      "monotonicDurationMs": 98684.169399,
+      "counts": null,
+      "executions": [
+        {
+          "startedAt": "2026-10-11T02:19:23.915Z",
+          "endedAt": "2026-10-11T02:19:24.141Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1440000,
+          "signal": null
+        },
+        {
+          "startedAt": "2026-10-11T02:19:24.141Z",
+          "endedAt": "2026-10-11T02:19:51.647Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1439774,
+          "signal": null
+        },
+        {
+          "startedAt": "2026-10-11T02:19:51.647Z",
+          "endedAt": "2026-10-11T02:20:09.569Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1412268,
+          "signal": null
+        },
+        {
+          "startedAt": "2026-10-11T02:20:09.569Z",
+          "endedAt": "2026-10-11T02:20:23.415Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1394346,
+          "signal": null
+        },
+        {
+          "startedAt": "2026-10-11T02:20:23.415Z",
+          "endedAt": "2026-10-11T02:21:04.411Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1380500,
+          "signal": null
+        },
+        {
+          "startedAt": "2026-10-11T02:21:04.411Z",
+          "endedAt": "2026-10-11T02:21:05.961Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1339504,
+          "signal": null
+        },
+        {
+          "startedAt": "2026-10-11T02:21:05.961Z",
+          "endedAt": "2026-10-11T02:21:05.977Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1337954,
+          "signal": null
+        }
+      ],
+      "nativeReceiptSha256": null
+    },
+    {
+      "stage": "deploy-rehearsal",
+      "status": "PASS",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 14041.156304,
+      "exitCode": 0,
+      "signal": null,
+      "timeout": false,
+      "error": null,
+      "timeoutMs": 600000,
+      "startedAt": "2026-10-11T02:21:06.231Z",
+      "endedAt": "2026-10-11T02:21:21.624Z",
+      "argv": [
+        "npm",
+        "run",
+        "deploy:rehearse:local"
+      ],
+      "spawnArgv": [
+        "npm",
+        "run",
+        "deploy:rehearse:local"
+      ],
+      "npmCliSha256": null,
+      "cwd": "/var/tmp/task071-final-20261011/final"
+    },
+    {
+      "stage": "canary-build",
+      "status": "PASS",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 15890.708428,
+      "exitCode": 0,
+      "signal": null,
+      "timeout": false,
+      "error": null,
+      "timeoutMs": 600000,
+      "startedAt": "2026-10-11T02:21:21.657Z",
+      "endedAt": "2026-10-11T02:21:37.547Z",
+      "argv": [
+        "npm",
+        "run",
+        "security:build"
+      ],
+      "spawnArgv": [
+        "npm",
+        "run",
+        "security:build"
+      ],
+      "npmCliSha256": null,
+      "cwd": "/var/tmp/task071-final-20261011/final"
+    },
+    {
+      "stage": "bundle",
+      "status": "PASS",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 357.909586,
+      "exitCode": 0,
+      "signal": null,
+      "timeout": false,
+      "error": null,
+      "timeoutMs": 600000,
+      "startedAt": "2026-10-11T02:21:37.586Z",
+      "endedAt": "2026-10-11T02:21:37.944Z",
+      "argv": [
+        "npm",
+        "run",
+        "security:bundle"
+      ],
+      "spawnArgv": [
+        "npm",
+        "run",
+        "security:bundle"
+      ],
+      "npmCliSha256": null,
+      "cwd": "/var/tmp/task071-final-20261011/final"
+    },
+    {
+      "stage": "ai-bundle",
+      "status": "PASS",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 223.852667,
+      "exitCode": 0,
+      "signal": null,
+      "timeout": false,
+      "error": null,
+      "timeoutMs": 600000,
+      "startedAt": "2026-10-11T02:21:37.981Z",
+      "endedAt": "2026-10-11T02:21:38.204Z",
+      "argv": [
+        "npm",
+        "run",
+        "test:ai-runtime:bundle"
+      ],
+      "spawnArgv": [
+        "npm",
+        "run",
+        "test:ai-runtime:bundle"
+      ],
+      "npmCliSha256": null,
+      "cwd": "/var/tmp/task071-final-20261011/final"
+    },
+    {
+      "stage": "security-format",
+      "status": "PASS",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 430.132091,
+      "exitCode": 0,
+      "signal": null,
+      "timeout": false,
+      "error": null,
+      "timeoutMs": 600000,
+      "startedAt": "2026-10-11T02:21:38.241Z",
+      "endedAt": "2026-10-11T02:21:38.670Z",
+      "argv": [
+        "node",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "tools/security/*.{mjs,json}",
+        "tests/task-020-security.test.mjs"
+      ],
+      "spawnArgv": [
+        "node",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "tools/security/*.{mjs,json}",
+        "tests/task-020-security.test.mjs"
+      ],
+      "npmCliSha256": null,
+      "cwd": "/var/tmp/task071-final-20261011/final"
+    },
+    {
+      "stage": "graph-first",
+      "status": "PASS",
+      "canonicalId": "fa3f20df-3473-47b7-b15a-d3cf566149c1",
+      "monotonicDurationMs": 1972637.085896,
+      "counts": null,
+      "executions": [
+        {
+          "startedAt": "2026-10-11T02:21:38.917Z",
+          "endedAt": "2026-10-11T02:56:16.578Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 2400000,
+          "signal": null
+        }
+      ],
+      "nativeReceiptSha256": "b46c0af322965f46bff9f06516db9a1d8d193bff32780663c787b7a8ee0a609f"
+    },
+    {
+      "stage": "graph-second",
+      "status": "PASS",
+      "canonicalId": "4780e5be-c0a1-4ab7-ad93-4839a2726182",
+      "monotonicDurationMs": 1938780.453652,
+      "counts": null,
+      "executions": [
+        {
+          "startedAt": "2026-10-11T02:56:16.991Z",
+          "endedAt": "2026-10-11T03:30:34.780Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 2400000,
+          "signal": null
+        }
+      ],
+      "nativeReceiptSha256": "ef73b3e39690435a74943d62f4294d81abdb0ca8ac4dca223b59df6d8ef9625e"
+    },
+    {
+      "stage": "resume",
+      "status": "PASS",
+      "canonicalId": "ae61a07f-c752-470c-ae37-f0c3be53022c",
+      "monotonicDurationMs": 1869174.997171,
+      "counts": null,
+      "executions": [
+        {
+          "startedAt": "2026-10-11T03:30:35.217Z",
+          "endedAt": "2026-10-11T04:03:41.872Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 2400000,
+          "signal": null
+        }
+      ],
+      "nativeReceiptSha256": "054f4d8443fb7d48dceecfd3460f167102f5e73287f2950c99e3d71cb72d688e"
+    },
+    {
+      "stage": "extraction",
+      "status": "PASS",
+      "canonicalId": "6b3168f1-d28c-4bb7-9a99-d2ab66a5dbb4",
+      "monotonicDurationMs": 20549.974613,
+      "counts": null,
+      "executions": [
+        {
+          "startedAt": "2026-10-11T04:03:42.337Z",
+          "endedAt": "2026-10-11T04:04:04.480Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1200000,
+          "signal": null
+        }
+      ],
+      "nativeReceiptSha256": "875fd52a601a03ae8e09994ed20a1fa388d68298bf2b748e8ffb5e6a5280ce21"
+    },
+    {
+      "stage": "rebuild",
+      "status": "PASS",
+      "canonicalId": "e0bbbd70-0379-4d18-a883-91032fc3649a",
+      "monotonicDurationMs": 4243.474328,
+      "counts": {
+        "tests": 1,
+        "passed": 1,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 1,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "executions": [
+        {
+          "startedAt": "2026-10-11T04:04:04.874Z",
+          "endedAt": "2026-10-11T04:04:08.735Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 930000,
+          "signal": null
+        }
+      ],
+      "nativeReceiptSha256": null
+    },
+    {
+      "stage": "ordinary",
+      "status": "PASS",
+      "canonicalId": "e758cec1-6155-44f3-8da1-1d2dd80adc4a",
+      "monotonicDurationMs": 453376.722587,
+      "counts": {
+        "tests": 3939,
+        "passed": 3939,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 3899,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "executions": [
+        {
+          "startedAt": "2026-10-11T04:04:09.189Z",
+          "endedAt": "2026-10-11T04:12:10.469Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1800000,
+          "signal": null
+        }
+      ],
+      "nativeReceiptSha256": null
+    },
+    {
+      "stage": "assets",
+      "status": "PASS",
+      "canonicalId": "da8f3453-e2d8-4dcd-b0bd-8c6d8d100abc",
+      "monotonicDurationMs": 72687.086281,
+      "counts": {
+        "tests": 166,
+        "passed": 166,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 166,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "executions": [
+        {
+          "startedAt": "2026-10-11T04:12:11.124Z",
+          "endedAt": "2026-10-11T04:13:29.928Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1530000,
+          "signal": null
+        }
+      ],
+      "nativeReceiptSha256": null
+    },
+    {
+      "stage": "regression-0",
+      "status": "PASS",
+      "canonicalId": "9cbe6fd8-4f44-410a-89a3-ee3e8a78ba93",
+      "monotonicDurationMs": 142320.687452,
+      "counts": {
+        "tests": 1183,
+        "passed": 1183,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 1183,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "executions": [
+        {
+          "startedAt": "2026-10-11T04:13:30.397Z",
+          "endedAt": "2026-10-11T04:16:01.040Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1530000,
+          "signal": null
+        }
+      ],
+      "nativeReceiptSha256": null
+    },
+    {
+      "stage": "regression-1",
+      "status": "PASS",
+      "canonicalId": "a42cf334-5e8d-4de2-9743-07e3ce2417b8",
+      "monotonicDurationMs": 24415.305305,
+      "counts": {
+        "tests": 856,
+        "passed": 856,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 856,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "executions": [
+        {
+          "startedAt": "2026-10-11T04:16:01.564Z",
+          "endedAt": "2026-10-11T04:16:27.689Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1530000,
+          "signal": null
+        }
+      ],
+      "nativeReceiptSha256": null
+    },
+    {
+      "stage": "regression-2",
+      "status": "PASS",
+      "canonicalId": "aafb8f1d-4062-43bb-ac8a-e5f9a02185c5",
+      "monotonicDurationMs": 177230.607078,
+      "counts": {
+        "tests": 553,
+        "passed": 553,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 513,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "executions": [
+        {
+          "startedAt": "2026-10-11T04:16:28.196Z",
+          "endedAt": "2026-10-11T04:19:36.300Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1530000,
+          "signal": null
+        }
+      ],
+      "nativeReceiptSha256": null
+    },
+    {
+      "stage": "regression-3",
+      "status": "PASS",
+      "canonicalId": "6573e6c1-eef4-4504-9ab8-d2074d76f14d",
+      "monotonicDurationMs": 52707.01297,
+      "counts": {
+        "tests": 1180,
+        "passed": 1180,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "topLevel": 1180,
+        "suites": 0,
+        "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+      },
+      "executions": [
+        {
+          "startedAt": "2026-10-11T04:19:36.723Z",
+          "endedAt": "2026-10-11T04:20:33.463Z",
+          "exitCode": 0,
+          "timeout": false,
+          "timeoutMs": 1530000,
+          "signal": null
+        }
+      ],
+      "nativeReceiptSha256": null
+    },
+    {
+      "stage": "canonical-aggregate",
+      "status": "FAIL",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 139.418874,
+      "exitCode": 1,
+      "signal": null,
+      "timeout": false,
+      "error": null,
+      "timeoutMs": 600000,
+      "startedAt": "2026-10-11T04:20:33.681Z",
+      "endedAt": "2026-10-11T04:20:33.821Z",
+      "argv": [
+        "node",
+        "tools/qa/task-035-receipt.mjs",
+        ".artifacts/task-035/candidate/local/1"
+      ],
+      "spawnArgv": [
+        "node",
+        "tools/qa/task-035-receipt.mjs",
+        ".artifacts/task-035/candidate/local/1"
+      ],
+      "npmCliSha256": null,
+      "cwd": "/var/tmp/task071-final-20261011/final"
+    }
+  ],
+  "overall": "BLOCKED_HISTORY_UNRESOLVED_UNLESS_ACTUAL_SCANNER_PROVES_CLEAR",
+  "hosted": "NOT_RUN: approval prohibits source publication while credential risk remains"
+}

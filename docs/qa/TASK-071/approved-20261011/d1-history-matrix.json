@@ -1,0 +1,1104 @@
+{
+  "approval": "APPROVED_SCOPE",
+  "status": "BLOCKED_HISTORY_UNRESOLVED",
+  "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+  "scope": "history",
+  "counts": {
+    "commits": 1886,
+    "objects": 66982,
+    "files": 55357,
+    "scanned": 53362,
+    "bytes": 2670667366
+  },
+  "errors": [],
+  "occurrences": 47,
+  "groupCount": 14,
+  "groups": [
+    {
+      "path": ".env.example",
+      "category": "env-template-value",
+      "fingerprint": "d4c999ae43633bd2036188d2bca68e1be8202b2cc1f3a1c42a728eaff7d2483d",
+      "occurrences": [
+        {
+          "object": "b08d8d6c3d6ad4c57d59089dc82b551cf94f6354",
+          "commit": "514105d8f",
+          "line": 55,
+          "blobSha256": "60702f9df80697480546fadcecbf63ace6697d24a9b5c7b2e7c84a5130a16aea",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Security Owner review of exact historical exception, no exception added.",
+      "id": "D1-H01",
+      "classification": "BENIGN_CONFIGURATION_LITERAL",
+      "reason": "OPENAI_TIMEOUT_MS=15000 / OPENAI_MAX_RETRIES=1 bounded runtime policy, not an authentication field.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": ".env.example",
+          "category": "env-template-value",
+          "severity": "high",
+          "line": 55,
+          "fingerprint": "d4c999ae43633bd2036188d2bca68e1be8202b2cc1f3a1c42a728eaff7d2483d",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "b08d8d6c3d6ad4c57d59089dc82b551cf94f6354",
+          "commit": "514105d8f",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 1
+    },
+    {
+      "path": ".env.example",
+      "category": "env-template-value",
+      "fingerprint": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "occurrences": [
+        {
+          "object": "b08d8d6c3d6ad4c57d59089dc82b551cf94f6354",
+          "commit": "514105d8f",
+          "line": 56,
+          "blobSha256": "60702f9df80697480546fadcecbf63ace6697d24a9b5c7b2e7c84a5130a16aea",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Security Owner review of exact historical exception, no exception added.",
+      "id": "D1-H02",
+      "classification": "BENIGN_CONFIGURATION_LITERAL",
+      "reason": "OPENAI_TIMEOUT_MS=15000 / OPENAI_MAX_RETRIES=1 bounded runtime policy, not an authentication field.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": ".env.example",
+          "category": "env-template-value",
+          "severity": "high",
+          "line": 56,
+          "fingerprint": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "b08d8d6c3d6ad4c57d59089dc82b551cf94f6354",
+          "commit": "514105d8f",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 1
+    },
+    {
+      "path": "data/poi/full/reviews/task-071/TASK-071-A-0009.discovery-v2.jsonl",
+      "category": "jwt-token",
+      "fingerprint": "851eec6558a20f2445a3d49a5ea0d21088a9c7d23d2ff7e6950ee03f71dbcb8e",
+      "occurrences": [
+        {
+          "object": "08e2f79d6b35ac757309f08998c758bee2215f60",
+          "commit": "1a87b9da5",
+          "line": 84,
+          "blobSha256": "4692ca18fbc5f8b7eeaf026db4e818e82be19fde559be76f27ffc1a51c0b1be0",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Credential owner assess incident and revocation/rotation; Security Owner decide exact historical risk disposition or separately authorized incident action.",
+      "id": "D1-H03",
+      "classification": "SUSPECTED_EXTERNAL_CREDENTIAL",
+      "reason": "Credential-shaped URL in an unrelated discovery lead; current substring redacted, never decoded or requested.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": "data/poi/full/reviews/task-071/TASK-071-A-0009.discovery-v2.jsonl",
+          "category": "jwt-token",
+          "severity": "critical",
+          "line": 84,
+          "fingerprint": "851eec6558a20f2445a3d49a5ea0d21088a9c7d23d2ff7e6950ee03f71dbcb8e",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "08e2f79d6b35ac757309f08998c758bee2215f60",
+          "commit": "340e1bdad",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 1
+    },
+    {
+      "path": "data/poi/full/task-073-b-identity-deep-null-targeted-43d/identity-remediation/sources/japan-travel-minobusan-kuonji.html",
+      "category": "gcp-key",
+      "fingerprint": "8323f4d7fa338d7c4cb0fa4991e3878233e440c919458ce9f0c01c25b483561f",
+      "occurrences": [
+        {
+          "object": "bbc9582d666e7e60450e060168200e6194cabb18",
+          "commit": "7bb2e26e4",
+          "line": 4278,
+          "blobSha256": "abc7488f7dc8a7251a76c3d999c5fbf0aed6b64035b2cfd9616d30ff3ad85b3b",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Credential owner assess incident and revocation/rotation; Security Owner decide exact historical risk disposition or separately authorized incident action.",
+      "id": "D1-H04",
+      "classification": "SUSPECTED_EXTERNAL_CREDENTIAL",
+      "reason": "Credential-shaped Google Maps embed key in a retained third-party page; current substring redacted, never requested.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": "data/poi/full/task-073-b-identity-deep-null-targeted-43d/identity-remediation/sources/japan-travel-minobusan-kuonji.html",
+          "category": "gcp-key",
+          "severity": "high",
+          "line": 4278,
+          "fingerprint": "8323f4d7fa338d7c4cb0fa4991e3878233e440c919458ce9f0c01c25b483561f",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "bbc9582d666e7e60450e060168200e6194cabb18",
+          "commit": "340e1bdad",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 1
+    },
+    {
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "aws-access-id",
+      "fingerprint": "2a93ab5870ef59c9f587c7f8d62180c08215095af14a6f3c1dea1da9394b274c",
+      "occurrences": [
+        {
+          "object": "0480fa9a750d590b90197744f140e8e6a911f4a0",
+          "commit": "75c0a081f",
+          "line": 109,
+          "blobSha256": "2a3b41f517cd652ba328bce0a194492a68eb0dd8a79bfba60e84bf4f39d863e9",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "095bacf72681cb805065d326067f6007f66235ed",
+          "commit": "0d1037f2b",
+          "line": 109,
+          "blobSha256": "652298be9cd597037b44ba900db165c872cce12b45113a6769413ecdce866e4c",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "11c5af7a2c8fdbe9fc7a4f8368cb3671ea0535fc",
+          "commit": "c26cedcd7",
+          "line": 109,
+          "blobSha256": "fb2494ae0625343c90961a67935447a166d38411b200943f50fe16bdc1bb3fb3",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "184d853a2e9f4ba70af802d817294a8449edf66b",
+          "commit": "e8dc9da94",
+          "line": 109,
+          "blobSha256": "cde3f8c5446dc34000a53160eaf14eee39ddcca669e621f8c037eb0d747b06be",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "7f74d75ebd9ac38c1d555dce264c0e6455fc839c",
+          "commit": "431986ba9",
+          "line": 109,
+          "blobSha256": "cb88a7362bf49f08b1f46d163890b62994cd64cf40a2c68133019cbee1d5205d",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "82fd5072bfa9a2b8c1e4c5626eb80b3c395f227e",
+          "commit": "33caf01ff",
+          "line": 109,
+          "blobSha256": "e5afa073523c29e194a85b53c2527fc7fd725115a6a65d3c044225b9392238f7",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "line": 109,
+          "blobSha256": "48db0a9d97387997bc1b512f443c65bb5da99027b36a24de20aab3397eaae03e",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "c6210694d2206b5b9596ae6772c4a13a32a7032d",
+          "commit": "ac5e171f4",
+          "line": 109,
+          "blobSha256": "ef31e3a01b9783ba529b24793c7bb59bd79830682d69224c1e4a43331e90b765",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Credential owner assess incident and revocation/rotation; Security Owner decide exact historical risk disposition or separately authorized incident action.",
+      "id": "D1-H05",
+      "classification": "SUSPECTED_EXTERNAL_CREDENTIAL",
+      "reason": "Captured signed GTFS download redirect URL; signature/access-id presence verified offline, validity/expiry/revocation not inferred.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 109,
+          "fingerprint": "2a93ab5870ef59c9f587c7f8d62180c08215095af14a6f3c1dea1da9394b274c",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "0480fa9a750d590b90197744f140e8e6a911f4a0",
+          "commit": "75c0a081f",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 109,
+          "fingerprint": "2a93ab5870ef59c9f587c7f8d62180c08215095af14a6f3c1dea1da9394b274c",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "095bacf72681cb805065d326067f6007f66235ed",
+          "commit": "0d1037f2b",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 109,
+          "fingerprint": "2a93ab5870ef59c9f587c7f8d62180c08215095af14a6f3c1dea1da9394b274c",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "11c5af7a2c8fdbe9fc7a4f8368cb3671ea0535fc",
+          "commit": "c26cedcd7",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 109,
+          "fingerprint": "2a93ab5870ef59c9f587c7f8d62180c08215095af14a6f3c1dea1da9394b274c",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "184d853a2e9f4ba70af802d817294a8449edf66b",
+          "commit": "e8dc9da94",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 109,
+          "fingerprint": "2a93ab5870ef59c9f587c7f8d62180c08215095af14a6f3c1dea1da9394b274c",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "7f74d75ebd9ac38c1d555dce264c0e6455fc839c",
+          "commit": "431986ba9",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 109,
+          "fingerprint": "2a93ab5870ef59c9f587c7f8d62180c08215095af14a6f3c1dea1da9394b274c",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "82fd5072bfa9a2b8c1e4c5626eb80b3c395f227e",
+          "commit": "33caf01ff",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 109,
+          "fingerprint": "2a93ab5870ef59c9f587c7f8d62180c08215095af14a6f3c1dea1da9394b274c",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 109,
+          "fingerprint": "2a93ab5870ef59c9f587c7f8d62180c08215095af14a6f3c1dea1da9394b274c",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "c6210694d2206b5b9596ae6772c4a13a32a7032d",
+          "commit": "ac5e171f4",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 8
+    },
+    {
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "aws-access-id",
+      "fingerprint": "15c17790c299acd0faab9b0cc8ecc35be629f3f9bb764741fe81d16601870509",
+      "occurrences": [
+        {
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "line": 334,
+          "blobSha256": "48db0a9d97387997bc1b512f443c65bb5da99027b36a24de20aab3397eaae03e",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Credential owner assess incident and revocation/rotation; Security Owner decide exact historical risk disposition or separately authorized incident action.",
+      "id": "D1-H06",
+      "classification": "SUSPECTED_EXTERNAL_CREDENTIAL",
+      "reason": "Captured signed GTFS download redirect URL; signature/access-id presence verified offline, validity/expiry/revocation not inferred.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 334,
+          "fingerprint": "15c17790c299acd0faab9b0cc8ecc35be629f3f9bb764741fe81d16601870509",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 1
+    },
+    {
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "aws-access-id",
+      "fingerprint": "f299de938603a713d4960956e54210af9f5b39da26cffbaaaacfb088cc817859",
+      "occurrences": [
+        {
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "line": 340,
+          "blobSha256": "48db0a9d97387997bc1b512f443c65bb5da99027b36a24de20aab3397eaae03e",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Credential owner assess incident and revocation/rotation; Security Owner decide exact historical risk disposition or separately authorized incident action.",
+      "id": "D1-H07",
+      "classification": "SUSPECTED_EXTERNAL_CREDENTIAL",
+      "reason": "Captured signed GTFS download redirect URL; signature/access-id presence verified offline, validity/expiry/revocation not inferred.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 340,
+          "fingerprint": "f299de938603a713d4960956e54210af9f5b39da26cffbaaaacfb088cc817859",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 1
+    },
+    {
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "aws-access-id",
+      "fingerprint": "fa259226a181736bb32ef1e42371401307a7b1abea770be364d1a3e73e70e87f",
+      "occurrences": [
+        {
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "line": 340,
+          "blobSha256": "48db0a9d97387997bc1b512f443c65bb5da99027b36a24de20aab3397eaae03e",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Credential owner assess incident and revocation/rotation; Security Owner decide exact historical risk disposition or separately authorized incident action.",
+      "id": "D1-H08",
+      "classification": "SUSPECTED_EXTERNAL_CREDENTIAL",
+      "reason": "Captured signed GTFS download redirect URL; signature/access-id presence verified offline, validity/expiry/revocation not inferred.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 340,
+          "fingerprint": "fa259226a181736bb32ef1e42371401307a7b1abea770be364d1a3e73e70e87f",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 1
+    },
+    {
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "aws-access-id",
+      "fingerprint": "758667b6c01747f27f11cfb43ed71f6989522c5d56219435672c3520a7c50372",
+      "occurrences": [
+        {
+          "object": "0480fa9a750d590b90197744f140e8e6a911f4a0",
+          "commit": "75c0a081f",
+          "line": 96,
+          "blobSha256": "2a3b41f517cd652ba328bce0a194492a68eb0dd8a79bfba60e84bf4f39d863e9",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "095bacf72681cb805065d326067f6007f66235ed",
+          "commit": "0d1037f2b",
+          "line": 96,
+          "blobSha256": "652298be9cd597037b44ba900db165c872cce12b45113a6769413ecdce866e4c",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "11c5af7a2c8fdbe9fc7a4f8368cb3671ea0535fc",
+          "commit": "c26cedcd7",
+          "line": 96,
+          "blobSha256": "fb2494ae0625343c90961a67935447a166d38411b200943f50fe16bdc1bb3fb3",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "184d853a2e9f4ba70af802d817294a8449edf66b",
+          "commit": "e8dc9da94",
+          "line": 96,
+          "blobSha256": "cde3f8c5446dc34000a53160eaf14eee39ddcca669e621f8c037eb0d747b06be",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "7b6a78d8c7e4ed07b65fd18960febca3a8765542",
+          "commit": "549f44ef2",
+          "line": 96,
+          "blobSha256": "3d67dbaab3c9f888ebe52009f5da08aea2ab527c51dcbb9abee061d1897fcb57",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "7f74d75ebd9ac38c1d555dce264c0e6455fc839c",
+          "commit": "431986ba9",
+          "line": 96,
+          "blobSha256": "cb88a7362bf49f08b1f46d163890b62994cd64cf40a2c68133019cbee1d5205d",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "82fd5072bfa9a2b8c1e4c5626eb80b3c395f227e",
+          "commit": "33caf01ff",
+          "line": 96,
+          "blobSha256": "e5afa073523c29e194a85b53c2527fc7fd725115a6a65d3c044225b9392238f7",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "line": 96,
+          "blobSha256": "48db0a9d97387997bc1b512f443c65bb5da99027b36a24de20aab3397eaae03e",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "c6210694d2206b5b9596ae6772c4a13a32a7032d",
+          "commit": "ac5e171f4",
+          "line": 96,
+          "blobSha256": "ef31e3a01b9783ba529b24793c7bb59bd79830682d69224c1e4a43331e90b765",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Credential owner assess incident and revocation/rotation; Security Owner decide exact historical risk disposition or separately authorized incident action.",
+      "id": "D1-H09",
+      "classification": "SUSPECTED_EXTERNAL_CREDENTIAL",
+      "reason": "Captured signed GTFS download redirect URL; signature/access-id presence verified offline, validity/expiry/revocation not inferred.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 96,
+          "fingerprint": "758667b6c01747f27f11cfb43ed71f6989522c5d56219435672c3520a7c50372",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "0480fa9a750d590b90197744f140e8e6a911f4a0",
+          "commit": "75c0a081f",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 96,
+          "fingerprint": "758667b6c01747f27f11cfb43ed71f6989522c5d56219435672c3520a7c50372",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "095bacf72681cb805065d326067f6007f66235ed",
+          "commit": "0d1037f2b",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 96,
+          "fingerprint": "758667b6c01747f27f11cfb43ed71f6989522c5d56219435672c3520a7c50372",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "11c5af7a2c8fdbe9fc7a4f8368cb3671ea0535fc",
+          "commit": "c26cedcd7",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 96,
+          "fingerprint": "758667b6c01747f27f11cfb43ed71f6989522c5d56219435672c3520a7c50372",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "184d853a2e9f4ba70af802d817294a8449edf66b",
+          "commit": "e8dc9da94",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 96,
+          "fingerprint": "758667b6c01747f27f11cfb43ed71f6989522c5d56219435672c3520a7c50372",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "7b6a78d8c7e4ed07b65fd18960febca3a8765542",
+          "commit": "549f44ef2",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 96,
+          "fingerprint": "758667b6c01747f27f11cfb43ed71f6989522c5d56219435672c3520a7c50372",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "7f74d75ebd9ac38c1d555dce264c0e6455fc839c",
+          "commit": "431986ba9",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 96,
+          "fingerprint": "758667b6c01747f27f11cfb43ed71f6989522c5d56219435672c3520a7c50372",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "82fd5072bfa9a2b8c1e4c5626eb80b3c395f227e",
+          "commit": "33caf01ff",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 96,
+          "fingerprint": "758667b6c01747f27f11cfb43ed71f6989522c5d56219435672c3520a7c50372",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "aws-access-id",
+          "severity": "high",
+          "line": 96,
+          "fingerprint": "758667b6c01747f27f11cfb43ed71f6989522c5d56219435672c3520a7c50372",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "c6210694d2206b5b9596ae6772c4a13a32a7032d",
+          "commit": "ac5e171f4",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 9
+    },
+    {
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "azure-sas",
+      "fingerprint": "1cbdf4a83456130d6ce76f5159fe3784870e69d256ef6e7a39b11aefbc056a8b",
+      "occurrences": [
+        {
+          "object": "0480fa9a750d590b90197744f140e8e6a911f4a0",
+          "commit": "75c0a081f",
+          "line": 102,
+          "blobSha256": "2a3b41f517cd652ba328bce0a194492a68eb0dd8a79bfba60e84bf4f39d863e9",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "095bacf72681cb805065d326067f6007f66235ed",
+          "commit": "0d1037f2b",
+          "line": 102,
+          "blobSha256": "652298be9cd597037b44ba900db165c872cce12b45113a6769413ecdce866e4c",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "11c5af7a2c8fdbe9fc7a4f8368cb3671ea0535fc",
+          "commit": "c26cedcd7",
+          "line": 102,
+          "blobSha256": "fb2494ae0625343c90961a67935447a166d38411b200943f50fe16bdc1bb3fb3",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "184d853a2e9f4ba70af802d817294a8449edf66b",
+          "commit": "e8dc9da94",
+          "line": 102,
+          "blobSha256": "cde3f8c5446dc34000a53160eaf14eee39ddcca669e621f8c037eb0d747b06be",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "7f74d75ebd9ac38c1d555dce264c0e6455fc839c",
+          "commit": "431986ba9",
+          "line": 102,
+          "blobSha256": "cb88a7362bf49f08b1f46d163890b62994cd64cf40a2c68133019cbee1d5205d",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "82fd5072bfa9a2b8c1e4c5626eb80b3c395f227e",
+          "commit": "33caf01ff",
+          "line": 102,
+          "blobSha256": "e5afa073523c29e194a85b53c2527fc7fd725115a6a65d3c044225b9392238f7",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "line": 102,
+          "blobSha256": "48db0a9d97387997bc1b512f443c65bb5da99027b36a24de20aab3397eaae03e",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "c6210694d2206b5b9596ae6772c4a13a32a7032d",
+          "commit": "ac5e171f4",
+          "line": 102,
+          "blobSha256": "ef31e3a01b9783ba529b24793c7bb59bd79830682d69224c1e4a43331e90b765",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Credential owner assess incident and revocation/rotation; Security Owner decide exact historical risk disposition or separately authorized incident action.",
+      "id": "D1-H10",
+      "classification": "SUSPECTED_EXTERNAL_CREDENTIAL",
+      "reason": "Captured signed GTFS download redirect URL; signature/access-id presence verified offline, validity/expiry/revocation not inferred.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 102,
+          "fingerprint": "1cbdf4a83456130d6ce76f5159fe3784870e69d256ef6e7a39b11aefbc056a8b",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "0480fa9a750d590b90197744f140e8e6a911f4a0",
+          "commit": "75c0a081f",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 102,
+          "fingerprint": "1cbdf4a83456130d6ce76f5159fe3784870e69d256ef6e7a39b11aefbc056a8b",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "095bacf72681cb805065d326067f6007f66235ed",
+          "commit": "0d1037f2b",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 102,
+          "fingerprint": "1cbdf4a83456130d6ce76f5159fe3784870e69d256ef6e7a39b11aefbc056a8b",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "11c5af7a2c8fdbe9fc7a4f8368cb3671ea0535fc",
+          "commit": "c26cedcd7",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 102,
+          "fingerprint": "1cbdf4a83456130d6ce76f5159fe3784870e69d256ef6e7a39b11aefbc056a8b",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "184d853a2e9f4ba70af802d817294a8449edf66b",
+          "commit": "e8dc9da94",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 102,
+          "fingerprint": "1cbdf4a83456130d6ce76f5159fe3784870e69d256ef6e7a39b11aefbc056a8b",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "7f74d75ebd9ac38c1d555dce264c0e6455fc839c",
+          "commit": "431986ba9",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 102,
+          "fingerprint": "1cbdf4a83456130d6ce76f5159fe3784870e69d256ef6e7a39b11aefbc056a8b",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "82fd5072bfa9a2b8c1e4c5626eb80b3c395f227e",
+          "commit": "33caf01ff",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 102,
+          "fingerprint": "1cbdf4a83456130d6ce76f5159fe3784870e69d256ef6e7a39b11aefbc056a8b",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 102,
+          "fingerprint": "1cbdf4a83456130d6ce76f5159fe3784870e69d256ef6e7a39b11aefbc056a8b",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "c6210694d2206b5b9596ae6772c4a13a32a7032d",
+          "commit": "ac5e171f4",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 8
+    },
+    {
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "azure-sas",
+      "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+      "occurrences": [
+        {
+          "object": "0480fa9a750d590b90197744f140e8e6a911f4a0",
+          "commit": "75c0a081f",
+          "line": 62,
+          "blobSha256": "2a3b41f517cd652ba328bce0a194492a68eb0dd8a79bfba60e84bf4f39d863e9",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "095bacf72681cb805065d326067f6007f66235ed",
+          "commit": "0d1037f2b",
+          "line": 62,
+          "blobSha256": "652298be9cd597037b44ba900db165c872cce12b45113a6769413ecdce866e4c",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "11c5af7a2c8fdbe9fc7a4f8368cb3671ea0535fc",
+          "commit": "c26cedcd7",
+          "line": 62,
+          "blobSha256": "fb2494ae0625343c90961a67935447a166d38411b200943f50fe16bdc1bb3fb3",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "184d853a2e9f4ba70af802d817294a8449edf66b",
+          "commit": "e8dc9da94",
+          "line": 62,
+          "blobSha256": "cde3f8c5446dc34000a53160eaf14eee39ddcca669e621f8c037eb0d747b06be",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "4657cc54b08cdb0b350c074ae837b885cd43ab41",
+          "commit": "6cbba095f",
+          "line": 62,
+          "blobSha256": "5727d34b937433d8527841375371285807c67e0642ff2a80eed51209c413d87f",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "62ea6ed7a0709483e6d93d61d70d52468b00c5ad",
+          "commit": "dc859aea2",
+          "line": 62,
+          "blobSha256": "9a04cdbbe198087fc37ddb43b1007aa4d17c93fb1520260aca22ccd676c8d4eb",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "7b6a78d8c7e4ed07b65fd18960febca3a8765542",
+          "commit": "549f44ef2",
+          "line": 62,
+          "blobSha256": "3d67dbaab3c9f888ebe52009f5da08aea2ab527c51dcbb9abee061d1897fcb57",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "7f74d75ebd9ac38c1d555dce264c0e6455fc839c",
+          "commit": "431986ba9",
+          "line": 62,
+          "blobSha256": "cb88a7362bf49f08b1f46d163890b62994cd64cf40a2c68133019cbee1d5205d",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "82fd5072bfa9a2b8c1e4c5626eb80b3c395f227e",
+          "commit": "33caf01ff",
+          "line": 62,
+          "blobSha256": "e5afa073523c29e194a85b53c2527fc7fd725115a6a65d3c044225b9392238f7",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "line": 62,
+          "blobSha256": "48db0a9d97387997bc1b512f443c65bb5da99027b36a24de20aab3397eaae03e",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "c6210694d2206b5b9596ae6772c4a13a32a7032d",
+          "commit": "ac5e171f4",
+          "line": 62,
+          "blobSha256": "ef31e3a01b9783ba529b24793c7bb59bd79830682d69224c1e4a43331e90b765",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Credential owner assess incident and revocation/rotation; Security Owner decide exact historical risk disposition or separately authorized incident action.",
+      "id": "D1-H11",
+      "classification": "SUSPECTED_EXTERNAL_CREDENTIAL",
+      "reason": "Captured signed GTFS download redirect URL; signature/access-id presence verified offline, validity/expiry/revocation not inferred.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 62,
+          "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "0480fa9a750d590b90197744f140e8e6a911f4a0",
+          "commit": "75c0a081f",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 62,
+          "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "095bacf72681cb805065d326067f6007f66235ed",
+          "commit": "0d1037f2b",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 62,
+          "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "11c5af7a2c8fdbe9fc7a4f8368cb3671ea0535fc",
+          "commit": "c26cedcd7",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 62,
+          "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "184d853a2e9f4ba70af802d817294a8449edf66b",
+          "commit": "e8dc9da94",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 62,
+          "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "4657cc54b08cdb0b350c074ae837b885cd43ab41",
+          "commit": "6cbba095f",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 62,
+          "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "62ea6ed7a0709483e6d93d61d70d52468b00c5ad",
+          "commit": "dc859aea2",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 62,
+          "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "7b6a78d8c7e4ed07b65fd18960febca3a8765542",
+          "commit": "549f44ef2",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 62,
+          "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "7f74d75ebd9ac38c1d555dce264c0e6455fc839c",
+          "commit": "431986ba9",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 62,
+          "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "82fd5072bfa9a2b8c1e4c5626eb80b3c395f227e",
+          "commit": "33caf01ff",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 62,
+          "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "b7f7a58c4a45245ec4cb69c872402b984e6b5ae6",
+          "commit": "5f8533de9",
+          "allowed": false
+        },
+        {
+          "path": "data/transport/network/next-source-actions.jsonl",
+          "category": "azure-sas",
+          "severity": "high",
+          "line": 62,
+          "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "c6210694d2206b5b9596ae6772c4a13a32a7032d",
+          "commit": "ac5e171f4",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 11
+    },
+    {
+      "path": "tests/task-076-ai-runtime.test.mjs",
+      "category": "generic-credential",
+      "fingerprint": "64af848afc4e507188b584e1bf9bdece3fe17bce49e77a86a6f97004fd5face5",
+      "occurrences": [
+        {
+          "object": "d441ebe831a8b7377f172485ef4f63cc2b8a0137",
+          "commit": "a2f044b12",
+          "line": 24,
+          "blobSha256": "3af0314524b0286d8cd082b0e74243c699e69134d9c0452131e6790a5c25d8e0",
+          "fingerprintVerifiedOffline": true
+        },
+        {
+          "object": "fa3c699f2fe4b3491e184adbf8012d60d058e3f9",
+          "commit": "a2f044b12",
+          "line": 24,
+          "blobSha256": "a26590af161d3623d239deb88f4b448fe9588e65372c5e3f1e11f2219b064623",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Security Owner review of exact historical exception, no exception added.",
+      "id": "D1-H12",
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "reason": "Injected fake model/environment with mocked execution; test fixture usage verified offline.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": "tests/task-076-ai-runtime.test.mjs",
+          "category": "generic-credential",
+          "severity": "high",
+          "line": 24,
+          "fingerprint": "64af848afc4e507188b584e1bf9bdece3fe17bce49e77a86a6f97004fd5face5",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "d441ebe831a8b7377f172485ef4f63cc2b8a0137",
+          "commit": "a2f044b12",
+          "allowed": false
+        },
+        {
+          "path": "tests/task-076-ai-runtime.test.mjs",
+          "category": "generic-credential",
+          "severity": "high",
+          "line": 24,
+          "fingerprint": "64af848afc4e507188b584e1bf9bdece3fe17bce49e77a86a6f97004fd5face5",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "fa3c699f2fe4b3491e184adbf8012d60d058e3f9",
+          "commit": "a2f044b12",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 2
+    },
+    {
+      "path": "tests/task-077-ai-conversation.test.mjs",
+      "category": "generic-credential",
+      "fingerprint": "62af8704764faf8ea82fc61ce9c4c3908b6cb97d463a634e9e587d7c885db0ef",
+      "occurrences": [
+        {
+          "object": "92cc6910ebcf5fb1a303700ea3435c3db56a8621",
+          "commit": "a2f044b12",
+          "line": 207,
+          "blobSha256": "4b7f4920bfedc3e7f78ac75e4b95615f9d5fa668e66ea192ffd4e971824b2284",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Security Owner review of exact historical exception, no exception added.",
+      "id": "D1-H13",
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "reason": "Injected fake model/environment with mocked execution; test fixture usage verified offline.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": "tests/task-077-ai-conversation.test.mjs",
+          "category": "generic-credential",
+          "severity": "high",
+          "line": 207,
+          "fingerprint": "62af8704764faf8ea82fc61ce9c4c3908b6cb97d463a634e9e587d7c885db0ef",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "92cc6910ebcf5fb1a303700ea3435c3db56a8621",
+          "commit": "a2f044b12",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 1
+    },
+    {
+      "path": "tests/task-080-a-poi-search-api.test.mjs",
+      "category": "generic-credential",
+      "fingerprint": "43ed5c457b799abe72e15e5ce574960937404f72402c5c15837044c1fc1a3a4a",
+      "occurrences": [
+        {
+          "object": "8a68e9f8222ded8e763d410058933672b48eb09b",
+          "commit": "caa68a979",
+          "line": 345,
+          "blobSha256": "d3b7470fb6cc6c8d6412b73a00ef9fc48496241258144291e4f6c614470de4b9",
+          "fingerprintVerifiedOffline": true
+        }
+      ],
+      "disposition": "BLOCKED_HISTORY_UNRESOLVED",
+      "ownerDecision": "Security Owner review of exact historical exception, no exception added.",
+      "id": "D1-H14",
+      "classification": "SYNTHETIC_TEST_FIXTURE",
+      "reason": "Negative providerRaw payload used to assert a 500 fail-closed response.",
+      "approval": "D1_APPROVED_SCOPE",
+      "allowlistAdded": false,
+      "finalOccurrences": [
+        {
+          "path": "tests/task-080-a-poi-search-api.test.mjs",
+          "category": "generic-credential",
+          "severity": "high",
+          "line": 345,
+          "fingerprint": "43ed5c457b799abe72e15e5ce574960937404f72402c5c15837044c1fc1a3a4a",
+          "remediation": "Review locally without printing; remove exposure and rotate if genuine. Do not rewrite history without authorization.",
+          "object": "8a68e9f8222ded8e763d410058933672b48eb09b",
+          "commit": "caa68a979",
+          "allowed": false
+        }
+      ],
+      "finalOccurrenceCount": 1
+    }
+  ],
+  "allowlistChanged": false,
+  "historyRewritten": false
+}

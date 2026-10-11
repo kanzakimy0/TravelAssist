@@ -1,11 +1,14 @@
 # TASK-071-A / WBS 9.10 current QA
 
-**BLOCKED_TECHNICAL_AND_HOLD_OWNER**. A Canonical Owner; B authorized execution support. Original PR #231 remains Draft/Open and unmerged. Exact source candidate **1bef6c8b634a24eacfa554a6612526679919d95c** remains local.
+**BLOCKED_TECHNICAL_AND_HISTORY.** A Canonical Owner; B executor. D1–D3 APPROVED_SCOPE and executed within boundaries; no repeat authorization hold. Original PR #231 remains Draft/Open. Clean local source **d77a897e21bf4c959b7dc6a2773309227123efc8** is not published.
 
-- [Latest sequential execution and actual receipts](sequential-20261010/README.md)
-- [Current machine Gate matrix](sequential-20261010/gate-matrix.json)
-- [Current Owner decisions](sequential-20261010/OWNER-MATRIX.md)
-- [Latest RESULT](../../tasks/RESULT-TASK-071-a-security-final-closeout.md)
-- [Historical convergence evidence](convergence-20261010/README.md)
+- [Latest approved execution](approved-20261011/README.md)
+- [Machine Gate matrix](approved-20261011/gate-matrix.json)
+- [Single current Owner matrix](approved-20261011/OWNER-MATRIX.md)
+- [Per-group D1 historical disposition](approved-20261011/d1-history-matrix.json)
+- [RESULT](../../tasks/RESULT-TASK-071-a-security-final-closeout.md)
+- [Preserved prior sequential proofs](sequential-20261010/README.md)
 
-Current two source findings, 47 history occurrences / 14 groups and three frozen assertions remain under applicable Owner holds. Exact-head source and current PR merge-result hosted gates are not certified. Historical records remain evidence of their own SHA/run/attempt only.
+Current local tracked sources PASS; historical 47 scanner-deduplicated findings / 14 groups remain unresolved. Exact-source and current PR merge-result hosted gates are not certified. Historical records retain the actual approvals/results known at their own date and SHA.
+
+Additional actual technical blockers: canonical-aggregate=FAIL. See exact receipts; none is counted PASS.

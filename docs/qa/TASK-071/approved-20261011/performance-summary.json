@@ -1,0 +1,1478 @@
+{
+  "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+  "status": "OBSERVATIONAL_PERFORMANCE_EVIDENCE",
+  "topology": "Graph first, second and resume executed sequentially with unchanged 2400000ms canonical job budgets; no concurrent graph jobs in this orchestration.",
+  "method": "Host direct processor-time counters and Win32_Processor.LoadPercentage are distinct observed metrics. They disagreed; neither is used alone to claim exclusive host access or prove the unique cause of prior timeouts. RSS is the maximum single observed process, not a sum of shared parent/child memory. Samples can miss short-lived processes. Native/canonical receipts determine PASS, not performance summaries.",
+  "stages": [
+    {
+      "stage": "inventory",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 86.110866,
+      "status": "PASS",
+      "hostDirectProcessorPercent": null,
+      "win32LoadPercentageSeparateMetric": null,
+      "hostFreePhysicalMiB": null,
+      "largestObservedProcessRssMiB": 54.0625,
+      "firstSampleUtc": "2026-10-11T02:16:21.679Z",
+      "lastSampleUtc": "2026-10-11T02:16:21.679Z",
+      "processCpuPercentOneCore100": [],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "security-tests",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 1444.682811,
+      "status": "PASS",
+      "hostDirectProcessorPercent": null,
+      "win32LoadPercentageSeparateMetric": null,
+      "hostFreePhysicalMiB": null,
+      "largestObservedProcessRssMiB": 54.1875,
+      "firstSampleUtc": "2026-10-11T02:16:21.800Z",
+      "lastSampleUtc": "2026-10-11T02:16:21.800Z",
+      "processCpuPercentOneCore100": [],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "tracked",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 13513.8011,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 1,
+        "min": 13,
+        "median": 13,
+        "p95": 13,
+        "max": 13
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 1,
+        "min": 25,
+        "median": 25,
+        "p95": 25,
+        "max": 25
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 1,
+        "min": 11852.82421875,
+        "median": 11852.82421875,
+        "p95": 11852.82421875,
+        "max": 11852.82421875
+      },
+      "largestObservedProcessRssMiB": 176.3671875,
+      "firstSampleUtc": "2026-10-11T02:16:23.276Z",
+      "lastSampleUtc": "2026-10-11T02:16:36.667Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 1,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 1,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "history",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 71630.789351,
+      "status": "FAIL",
+      "hostDirectProcessorPercent": {
+        "samples": 2,
+        "min": 17,
+        "median": 18,
+        "p95": 18,
+        "max": 18
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 2,
+        "min": 16,
+        "median": 52,
+        "p95": 52,
+        "max": 52
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 2,
+        "min": 11488.125,
+        "median": 11516.05078125,
+        "p95": 11516.05078125,
+        "max": 11516.05078125
+      },
+      "largestObservedProcessRssMiB": 712.0390625,
+      "firstSampleUtc": "2026-10-11T02:16:36.822Z",
+      "lastSampleUtc": "2026-10-11T02:17:38.964Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 4,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 4,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 650,
+          "startTicks": 29222,
+          "command": "npm run securit",
+          "distribution": {
+            "samples": 3,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 661,
+          "startTicks": 29233,
+          "command": "sh",
+          "distribution": {
+            "samples": 3,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 662,
+          "startTicks": 29233,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 3,
+            "min": 90.24544689375674,
+            "median": 103.42842183569604,
+            "p95": 109.84166275724606,
+            "max": 109.84166275724606
+          }
+        },
+        {
+          "pid": 673,
+          "startTicks": 29350,
+          "command": "git",
+          "distribution": {
+            "samples": 3,
+            "min": 17.66251360919168,
+            "median": 17.92925199132232,
+            "p95": 18.393198728512957,
+            "max": 18.393198728512957
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "boundary",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 1133.449586,
+      "status": "PASS",
+      "hostDirectProcessorPercent": null,
+      "win32LoadPercentageSeparateMetric": null,
+      "hostFreePhysicalMiB": null,
+      "largestObservedProcessRssMiB": 54.3125,
+      "firstSampleUtc": "2026-10-11T02:17:50.770Z",
+      "lastSampleUtc": "2026-10-11T02:17:50.770Z",
+      "processCpuPercentOneCore100": [],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "certification",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 88416.909095,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 3,
+        "min": 22,
+        "median": 23,
+        "p95": 23,
+        "max": 23
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 3,
+        "min": 32,
+        "median": 60,
+        "p95": 71,
+        "max": 71
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 3,
+        "min": 10995.1484375,
+        "median": 11146.06640625,
+        "p95": 11424.75,
+        "max": 11424.75
+      },
+      "largestObservedProcessRssMiB": 584.515625,
+      "firstSampleUtc": "2026-10-11T02:17:51.942Z",
+      "lastSampleUtc": "2026-10-11T02:19:12.243Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 6,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 6,
+            "min": 0,
+            "median": 0,
+            "p95": 0.06665746836708364,
+            "max": 0.06665746836708364
+          }
+        },
+        {
+          "pid": 793,
+          "startTicks": 36506,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 5,
+            "min": 0,
+            "median": 0,
+            "p95": 0.06664539396341854,
+            "max": 0.06664539396341854
+          }
+        },
+        {
+          "pid": 800,
+          "startTicks": 36510,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 5,
+            "min": 96.16930348921294,
+            "median": 105.59048295378723,
+            "p95": 106.95107411885316,
+            "max": 106.95107411885316
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "quality",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 98684.169399,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 3,
+        "min": 27,
+        "median": 28,
+        "p95": 39,
+        "max": 39
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 3,
+        "min": 49,
+        "median": 77,
+        "p95": 91,
+        "max": 91
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 3,
+        "min": 6201.734375,
+        "median": 10886.8984375,
+        "p95": 11014.48828125,
+        "max": 11014.48828125
+      },
+      "largestObservedProcessRssMiB": 2586.4609375,
+      "firstSampleUtc": "2026-10-11T02:19:23.649Z",
+      "lastSampleUtc": "2026-10-11T02:21:01.067Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 7,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 7,
+            "min": 0,
+            "median": 0.06663905326002056,
+            "p95": 2.5020437840398104,
+            "max": 2.5020437840398104
+          }
+        },
+        {
+          "pid": 945,
+          "startTicks": 45398,
+          "command": "npm run lint",
+          "distribution": {
+            "samples": 1,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 956,
+          "startTicks": 45408,
+          "command": "sh",
+          "distribution": {
+            "samples": 1,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 957,
+          "startTicks": 45408,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 1,
+            "min": 184.73398543198633,
+            "median": 184.73398543198633,
+            "p95": 184.73398543198633,
+            "max": 184.73398543198633
+          }
+        },
+        {
+          "pid": 1038,
+          "startTicks": 51076,
+          "command": "npm run deploy:",
+          "distribution": {
+            "samples": 2,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 1049,
+          "startTicks": 51087,
+          "command": "sh",
+          "distribution": {
+            "samples": 2,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 1050,
+          "startTicks": 51087,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 2,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 1058,
+          "startTicks": 51098,
+          "command": "next-build (v16",
+          "distribution": {
+            "samples": 2,
+            "min": 10.40013596652423,
+            "median": 456.2200877818763,
+            "p95": 456.2200877818763,
+            "max": 456.2200877818763
+          }
+        },
+        {
+          "pid": 1089,
+          "startTicks": 51290,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 2,
+            "min": 0,
+            "median": 76.92547944188856,
+            "p95": 76.92547944188856,
+            "max": 76.92547944188856
+          }
+        },
+        {
+          "pid": 1100,
+          "startTicks": 51311,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 2,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "deploy-rehearsal",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 14041.156304,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 1,
+        "min": 25,
+        "median": 25,
+        "p95": 25,
+        "max": 25
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 1,
+        "min": 53,
+        "median": 53,
+        "p95": 53,
+        "max": 53
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 1,
+        "min": 9011.1953125,
+        "median": 9011.1953125,
+        "p95": 9011.1953125,
+        "max": 9011.1953125
+      },
+      "largestObservedProcessRssMiB": 214.703125,
+      "firstSampleUtc": "2026-10-11T02:21:06.218Z",
+      "lastSampleUtc": "2026-10-11T02:21:17.420Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 1,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 1,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "canary-build",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 15890.708428,
+      "status": "PASS",
+      "hostDirectProcessorPercent": null,
+      "win32LoadPercentageSeparateMetric": null,
+      "hostFreePhysicalMiB": null,
+      "largestObservedProcessRssMiB": 2796.8125,
+      "firstSampleUtc": "2026-10-11T02:21:21.644Z",
+      "lastSampleUtc": "2026-10-11T02:21:32.422Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 1,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 1,
+            "min": 0.18557212848615084,
+            "median": 0.18557212848615084,
+            "p95": 0.18557212848615084,
+            "max": 0.18557212848615084
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "bundle",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 357.909586,
+      "status": "PASS",
+      "hostDirectProcessorPercent": null,
+      "win32LoadPercentageSeparateMetric": null,
+      "hostFreePhysicalMiB": null,
+      "largestObservedProcessRssMiB": 66.72265625,
+      "firstSampleUtc": "2026-10-11T02:21:37.576Z",
+      "lastSampleUtc": "2026-10-11T02:21:37.576Z",
+      "processCpuPercentOneCore100": [],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "ai-bundle",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 223.852667,
+      "status": "PASS",
+      "hostDirectProcessorPercent": null,
+      "win32LoadPercentageSeparateMetric": null,
+      "hostFreePhysicalMiB": null,
+      "largestObservedProcessRssMiB": 66.72265625,
+      "firstSampleUtc": "2026-10-11T02:21:37.967Z",
+      "lastSampleUtc": "2026-10-11T02:21:37.967Z",
+      "processCpuPercentOneCore100": [],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "security-format",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 430.132091,
+      "status": "PASS",
+      "hostDirectProcessorPercent": null,
+      "win32LoadPercentageSeparateMetric": null,
+      "hostFreePhysicalMiB": null,
+      "largestObservedProcessRssMiB": 66.72265625,
+      "firstSampleUtc": "2026-10-11T02:21:38.227Z",
+      "lastSampleUtc": "2026-10-11T02:21:38.227Z",
+      "processCpuPercentOneCore100": [],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "graph-first",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 1972637.085896,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 67,
+        "min": 5,
+        "median": 19,
+        "p95": 38,
+        "max": 40
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 67,
+        "min": 9,
+        "median": 40,
+        "p95": 63,
+        "max": 74
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 67,
+        "min": 6905.203125,
+        "median": 10102.375,
+        "p95": 10900.04296875,
+        "max": 11326.78515625
+      },
+      "largestObservedProcessRssMiB": 1895.765625,
+      "firstSampleUtc": "2026-10-11T02:21:38.691Z",
+      "lastSampleUtc": "2026-10-11T02:56:03.179Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 131,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 131,
+            "min": 0,
+            "median": 0,
+            "p95": 0.06666302950511166,
+            "max": 0.5722208330143665
+          }
+        },
+        {
+          "pid": 2735,
+          "startTicks": 58360,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 130,
+            "min": 78.71279873839848,
+            "median": 112.86708598294004,
+            "p95": 118.2979657116592,
+            "max": 121.49944359073213
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "graph-second",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 1938780.453652,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 65,
+        "min": 7,
+        "median": 14,
+        "p95": 29,
+        "max": 32
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 66,
+        "min": 11,
+        "median": 45,
+        "p95": 69,
+        "max": 83
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 66,
+        "min": 10273.8828125,
+        "median": 10860.109375,
+        "p95": 11748.0234375,
+        "max": 11900.37890625
+      },
+      "largestObservedProcessRssMiB": 2088.37890625,
+      "firstSampleUtc": "2026-10-11T02:56:16.764Z",
+      "lastSampleUtc": "2026-10-11T03:30:30.876Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 130,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 130,
+            "min": 0,
+            "median": 0,
+            "p95": 0.06666137955711395,
+            "max": 4.237316614789705
+          }
+        },
+        {
+          "pid": 3036,
+          "startTicks": 255631,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 129,
+            "min": 78.25563723889857,
+            "median": 113.46961073405748,
+            "p95": 119.38624637013666,
+            "max": 121.5828925494154
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "resume",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 1869174.997171,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 64,
+        "min": 8,
+        "median": 17,
+        "p95": 34,
+        "max": 46
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 64,
+        "min": 12,
+        "median": 40,
+        "p95": 68,
+        "max": 74
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 64,
+        "min": 9933.015625,
+        "median": 10511.375,
+        "p95": 10999.7265625,
+        "max": 11205.53125
+      },
+      "largestObservedProcessRssMiB": 1883.78125,
+      "firstSampleUtc": "2026-10-11T03:30:34.970Z",
+      "lastSampleUtc": "2026-10-11T04:03:31.777Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 124,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 124,
+            "min": 0,
+            "median": 0,
+            "p95": 0.06665310307568212,
+            "max": 0.7735211636882895
+          }
+        },
+        {
+          "pid": 3287,
+          "startTicks": 449518,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 123,
+            "min": 77.70799213025519,
+            "median": 112.3795423661557,
+            "p95": 119.45570653165822,
+            "max": 124.89143506439318
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "extraction",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 20549.974613,
+      "status": "PASS",
+      "hostDirectProcessorPercent": null,
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 1,
+        "min": 53,
+        "median": 53,
+        "p95": 53,
+        "max": 53
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 1,
+        "min": 10342.73046875,
+        "median": 10342.73046875,
+        "p95": 10342.73046875,
+        "max": 10342.73046875
+      },
+      "largestObservedProcessRssMiB": 135.94921875,
+      "firstSampleUtc": "2026-10-11T04:03:42.072Z",
+      "lastSampleUtc": "2026-10-11T04:04:03.751Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 2,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 2,
+            "min": 0.06660493207371998,
+            "median": 1.0620302953037302,
+            "p95": 1.0620302953037302,
+            "max": 1.0620302953037302
+          }
+        },
+        {
+          "pid": 3566,
+          "startTicks": 636444,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 1,
+            "min": 1.7317282339167197,
+            "median": 1.7317282339167197,
+            "p95": 1.7317282339167197,
+            "max": 1.7317282339167197
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "rebuild",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 4243.474328,
+      "status": "PASS",
+      "hostDirectProcessorPercent": null,
+      "win32LoadPercentageSeparateMetric": null,
+      "hostFreePhysicalMiB": null,
+      "largestObservedProcessRssMiB": 69.0234375,
+      "firstSampleUtc": "2026-10-11T04:04:04.651Z",
+      "lastSampleUtc": "2026-10-11T04:04:04.651Z",
+      "processCpuPercentOneCore100": [],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "ordinary",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 453376.722587,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 16,
+        "min": 5,
+        "median": 38,
+        "p95": 61,
+        "max": 61
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 15,
+        "min": 31,
+        "median": 51,
+        "p95": 90,
+        "max": 90
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 15,
+        "min": 8390.8671875,
+        "median": 10445.9140625,
+        "p95": 11990.87890625,
+        "max": 11990.87890625
+      },
+      "largestObservedProcessRssMiB": 2959.61328125,
+      "firstSampleUtc": "2026-10-11T04:04:08.963Z",
+      "lastSampleUtc": "2026-10-11T04:12:02.304Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 30,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 30,
+            "min": 0,
+            "median": 0.06663011935768774,
+            "p95": 0.5999983315246397,
+            "max": 0.8169286424497583
+          }
+        },
+        {
+          "pid": 4011,
+          "startTicks": 638934,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 29,
+            "min": 0,
+            "median": 0.19988594019198377,
+            "p95": 2.5333262886595898,
+            "max": 2.599958197178784
+          }
+        },
+        {
+          "pid": 4267,
+          "startTicks": 641367,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 1,
+            "min": 8.9337614909998,
+            "median": 8.9337614909998,
+            "p95": 8.9337614909998,
+            "max": 8.9337614909998
+          }
+        },
+        {
+          "pid": 5966,
+          "startTicks": 650345,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 3,
+            "min": 107.81680457155416,
+            "median": 108.37448243601087,
+            "p95": 108.99704376037973,
+            "max": 108.99704376037973
+          }
+        },
+        {
+          "pid": 5994,
+          "startTicks": 656976,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 2,
+            "min": 115.50799315532458,
+            "median": 117.25805587373105,
+            "p95": 117.25805587373105,
+            "max": 117.25805587373105
+          }
+        },
+        {
+          "pid": 6140,
+          "startTicks": 663266,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 2,
+            "min": 5.732654025296643,
+            "median": 8.991205029818198,
+            "p95": 8.991205029818198,
+            "max": 8.991205029818198
+          }
+        },
+        {
+          "pid": 6742,
+          "startTicks": 671552,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 7,
+            "min": 104.70576959590754,
+            "median": 109.35342917656197,
+            "p95": 140.7894422027942,
+            "max": 140.7894422027942
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "assets",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 72687.086281,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 2,
+        "min": 29,
+        "median": 52,
+        "p95": 52,
+        "max": 52
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 3,
+        "min": 53,
+        "median": 73,
+        "p95": 90,
+        "max": 90
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 3,
+        "min": 8791.23828125,
+        "median": 9414.18359375,
+        "p95": 9705.98046875,
+        "max": 9705.98046875
+      },
+      "largestObservedProcessRssMiB": 447.75390625,
+      "firstSampleUtc": "2026-10-11T04:12:10.793Z",
+      "lastSampleUtc": "2026-10-11T04:13:21.741Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 5,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 5,
+            "min": 0,
+            "median": 0,
+            "p95": 1.2277350036479806,
+            "max": 1.2277350036479806
+          }
+        },
+        {
+          "pid": 7099,
+          "startTicks": 684289,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 4,
+            "min": 0,
+            "median": 0.06660588366029283,
+            "p95": 0.06665939375351555,
+            "max": 0.06665939375351555
+          }
+        },
+        {
+          "pid": 7106,
+          "startTicks": 684297,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 4,
+            "min": 0.13320565708747345,
+            "median": 0.2666375750140622,
+            "p95": 0.33302941830146415,
+            "max": 0.33302941830146415
+          }
+        },
+        {
+          "pid": 7112,
+          "startTicks": 684304,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 1,
+            "min": 36.766447780481634,
+            "median": 36.766447780481634,
+            "p95": 36.766447780481634,
+            "max": 36.766447780481634
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "regression-0",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 142320.687452,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 5,
+        "min": 29,
+        "median": 41,
+        "p95": 52,
+        "max": 52
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 5,
+        "min": 40,
+        "median": 67,
+        "p95": 77,
+        "max": 77
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 5,
+        "min": 9354.546875,
+        "median": 9518.82421875,
+        "p95": 9875.44140625,
+        "max": 9875.44140625
+      },
+      "largestObservedProcessRssMiB": 650.42578125,
+      "firstSampleUtc": "2026-10-11T04:13:30.150Z",
+      "lastSampleUtc": "2026-10-11T04:15:47.789Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 9,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 9,
+            "min": 0,
+            "median": 0,
+            "p95": 0.9102335181926738,
+            "max": 0.9102335181926738
+          }
+        },
+        {
+          "pid": 7826,
+          "startTicks": 691559,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 8,
+            "min": 0,
+            "median": 0,
+            "p95": 0.3330813109344875,
+            "max": 0.3330813109344875
+          }
+        },
+        {
+          "pid": 7833,
+          "startTicks": 691564,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 8,
+            "min": 0,
+            "median": 0,
+            "p95": 2.9977317984103875,
+            "max": 2.9977317984103875
+          }
+        },
+        {
+          "pid": 8233,
+          "startTicks": 694057,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 6,
+            "min": 105.57319034104162,
+            "median": 110.80416313638793,
+            "p95": 113.04332489950215,
+            "max": 113.04332489950215
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "regression-1",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 24415.305305,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 1,
+        "min": 51,
+        "median": 51,
+        "p95": 51,
+        "max": 51
+      },
+      "win32LoadPercentageSeparateMetric": null,
+      "hostFreePhysicalMiB": null,
+      "largestObservedProcessRssMiB": 73.01953125,
+      "firstSampleUtc": "2026-10-11T04:16:01.297Z",
+      "lastSampleUtc": "2026-10-11T04:16:17.804Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 2,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 2,
+            "min": 0,
+            "median": 4.020372220412895,
+            "p95": 4.020372220412895,
+            "max": 4.020372220412895
+          }
+        },
+        {
+          "pid": 8480,
+          "startTicks": 705800,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 1,
+            "min": 0.1998103553694393,
+            "median": 0.1998103553694393,
+            "p95": 0.1998103553694393,
+            "max": 0.1998103553694393
+          }
+        },
+        {
+          "pid": 8487,
+          "startTicks": 705806,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 1,
+            "min": 3.130362234121216,
+            "median": 3.130362234121216,
+            "p95": 3.130362234121216,
+            "max": 3.130362234121216
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "regression-2",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 177230.607078,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 6,
+        "min": 8,
+        "median": 43,
+        "p95": 60,
+        "max": 60
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 6,
+        "min": 49,
+        "median": 54,
+        "p95": 79,
+        "max": 79
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 6,
+        "min": 8366.8984375,
+        "median": 9332.9140625,
+        "p95": 12737.76171875,
+        "max": 12737.76171875
+      },
+      "largestObservedProcessRssMiB": 2920.80859375,
+      "firstSampleUtc": "2026-10-11T04:16:27.939Z",
+      "lastSampleUtc": "2026-10-11T04:19:31.329Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 12,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 12,
+            "min": 0,
+            "median": 0,
+            "p95": 0.7133591560264375,
+            "max": 0.7133591560264375
+          }
+        },
+        {
+          "pid": 9069,
+          "startTicks": 708249,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 11,
+            "min": 0,
+            "median": 0,
+            "p95": 0.06663792130644922,
+            "max": 0.06663792130644922
+          }
+        },
+        {
+          "pid": 9076,
+          "startTicks": 708255,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 11,
+            "min": 0,
+            "median": 0,
+            "p95": 1.0662067409031875,
+            "max": 1.0662067409031875
+          }
+        },
+        {
+          "pid": 9828,
+          "startTicks": 709525,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 4,
+            "min": 108.31096162478168,
+            "median": 108.96015487552724,
+            "p95": 109.11285272839626,
+            "max": 109.11285272839626
+          }
+        },
+        {
+          "pid": 9839,
+          "startTicks": 716604,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 1,
+            "min": 117.55547968456072,
+            "median": 117.55547968456072,
+            "p95": 117.55547968456072,
+            "max": 117.55547968456072
+          }
+        },
+        {
+          "pid": 9867,
+          "startTicks": 720954,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 1,
+            "min": 5.9280894426330475,
+            "median": 5.9280894426330475,
+            "p95": 5.9280894426330475,
+            "max": 5.9280894426330475
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "regression-3",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 52707.01297,
+      "status": "PASS",
+      "hostDirectProcessorPercent": {
+        "samples": 2,
+        "min": 7,
+        "median": 31,
+        "p95": 31,
+        "max": 31
+      },
+      "win32LoadPercentageSeparateMetric": {
+        "samples": 2,
+        "min": 15,
+        "median": 49,
+        "p95": 49,
+        "max": 49
+      },
+      "hostFreePhysicalMiB": {
+        "samples": 2,
+        "min": 13051.87109375,
+        "median": 13261.0859375,
+        "p95": 13261.0859375,
+        "max": 13261.0859375
+      },
+      "largestObservedProcessRssMiB": 374.49609375,
+      "firstSampleUtc": "2026-10-11T04:19:36.508Z",
+      "lastSampleUtc": "2026-10-11T04:20:18.549Z",
+      "processCpuPercentOneCore100": [
+        {
+          "pid": 294,
+          "startTicks": 23697,
+          "command": "bash",
+          "distribution": {
+            "samples": 3,
+            "min": 0,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        {
+          "pid": 480,
+          "startTicks": 27680,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 3,
+            "min": 0,
+            "median": 0.06662777689057303,
+            "p95": 0.4072557558620728,
+            "max": 0.4072557558620728
+          }
+        },
+        {
+          "pid": 10341,
+          "startTicks": 725976,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 2,
+            "min": 0,
+            "median": 0.1998833306717191,
+            "p95": 0.1998833306717191,
+            "max": 0.1998833306717191
+          }
+        },
+        {
+          "pid": 10348,
+          "startTicks": 725980,
+          "command": "MainThread",
+          "distribution": {
+            "samples": 2,
+            "min": 0.7328674380702201,
+            "median": 1.998833306717191,
+            "p95": 1.998833306717191,
+            "max": 1.998833306717191
+          }
+        }
+      ],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    },
+    {
+      "stage": "canonical-aggregate",
+      "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "monotonicDurationMs": 139.418874,
+      "status": "FAIL",
+      "hostDirectProcessorPercent": null,
+      "win32LoadPercentageSeparateMetric": null,
+      "hostFreePhysicalMiB": null,
+      "largestObservedProcessRssMiB": 73.9609375,
+      "firstSampleUtc": "2026-10-11T04:20:33.670Z",
+      "lastSampleUtc": "2026-10-11T04:20:33.670Z",
+      "processCpuPercentOneCore100": [],
+      "cpuMethod": "Per-process user+system tick deltas over monotonic sample intervals; no parent/child totals or child ticks added. One logical CPU is 100 percent."
+    }
+  ],
+  "tickFrequency": 100,
+  "tickSource": "Read-only wsl -d TravelAssist-Ubuntu -- getconf CLK_TCK returned 100 during this execution."
+}

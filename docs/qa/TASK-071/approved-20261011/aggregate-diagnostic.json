@@ -1,0 +1,272 @@
+{
+  "head": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+  "status": "CANONICAL_AGGREGATE_FAIL_REPRODUCED",
+  "actualGate": "FAIL",
+  "reason": "Native local identity is null/null while canonical context is local/1. Per-lane baseline explicitly normalizes these local defaults; aggregate verifyArtifacts compares raw values. No proof/receipt/algorithm/statement changed.",
+  "files": {
+    "tools/qa/task-035-baseline.mjs": "9f4e9c324613f7a2131905652fcb839f1d30ef59d3f1071dae39ac18a7c7cc58",
+    "tools/qa/task-035-receipt.mjs": "323dfef93c9e9f3e1e1e967f29d8be01d1298a284c600ac810e208784d81c111",
+    "tools/transport/task-086-validation-lanes.mjs": "5de15b26bfdafdd377c257117a0c7ab645a3949b45026ce0aed62d90e930657d"
+  },
+  "rows": [
+    {
+      "lane": "assets",
+      "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+      "receiptSha256": "46b8994ee29a51553f4ab98b9f9179132557e6b27dddf7696519d63808f596a7",
+      "canonicalIdentity": {
+        "runId": "local",
+        "runAttempt": "1"
+      },
+      "shape": {
+        "status": "PASS"
+      },
+      "artifacts": {
+        "status": "PASS"
+      },
+      "counts": {
+        "status": "PASS"
+      }
+    },
+    {
+      "lane": "extraction",
+      "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+      "receiptSha256": "f0fbaa4f8fd7d018216f28ca92c5337d12ed07ecb2bb471a9cf5dbdd985e055b",
+      "canonicalIdentity": {
+        "runId": "local",
+        "runAttempt": "1"
+      },
+      "shape": {
+        "status": "PASS"
+      },
+      "artifacts": {
+        "status": "FAIL",
+        "name": "AssertionError",
+        "message": "NATIVE_BINDING_MISMATCH\n\nnull !== 'local'\n",
+        "code": "ERR_ASSERTION",
+        "actual": null,
+        "expected": "local"
+      },
+      "nativeIdentity": {
+        "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+        "runId": null,
+        "runAttempt": null
+      },
+      "nativeBytesUnchanged": true
+    },
+    {
+      "lane": "graph-first",
+      "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+      "receiptSha256": "dd5c684add43bf2f5841c284e81eae4eedfa0a824badfbfdb5c86fe1972a6409",
+      "canonicalIdentity": {
+        "runId": "local",
+        "runAttempt": "1"
+      },
+      "shape": {
+        "status": "PASS"
+      },
+      "artifacts": {
+        "status": "FAIL",
+        "name": "AssertionError",
+        "message": "NATIVE_BINDING_MISMATCH\n\nnull !== 'local'\n",
+        "code": "ERR_ASSERTION",
+        "actual": null,
+        "expected": "local"
+      },
+      "nativeIdentity": {
+        "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+        "runId": null,
+        "runAttempt": null
+      },
+      "nativeBytesUnchanged": true
+    },
+    {
+      "lane": "graph-second",
+      "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+      "receiptSha256": "590cf95930a56f565ea2fb62f30d2c930d22917677d2934234771e16c0e643bd",
+      "canonicalIdentity": {
+        "runId": "local",
+        "runAttempt": "1"
+      },
+      "shape": {
+        "status": "PASS"
+      },
+      "artifacts": {
+        "status": "FAIL",
+        "name": "AssertionError",
+        "message": "NATIVE_BINDING_MISMATCH\n\nnull !== 'local'\n",
+        "code": "ERR_ASSERTION",
+        "actual": null,
+        "expected": "local"
+      },
+      "nativeIdentity": {
+        "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+        "runId": null,
+        "runAttempt": null
+      },
+      "nativeBytesUnchanged": true
+    },
+    {
+      "lane": "ordinary",
+      "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+      "receiptSha256": "fe9403824b6ab75405eb2a31e00aec03c8d747a5631e425d249a8b2614122be5",
+      "canonicalIdentity": {
+        "runId": "local",
+        "runAttempt": "1"
+      },
+      "shape": {
+        "status": "PASS"
+      },
+      "artifacts": {
+        "status": "PASS"
+      },
+      "counts": {
+        "status": "PASS"
+      }
+    },
+    {
+      "lane": "quality",
+      "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+      "receiptSha256": "c83305ec3f1a37a51ae3c3ba4b9bc1af7e37c504ed2f875f4568cb8e920f4d21",
+      "canonicalIdentity": {
+        "runId": "local",
+        "runAttempt": "1"
+      },
+      "shape": {
+        "status": "PASS"
+      },
+      "artifacts": {
+        "status": "PASS"
+      }
+    },
+    {
+      "lane": "rebuild",
+      "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+      "receiptSha256": "c38d424f923a5dc9e77ffb6ea9fcabb5a42002b6142dc6095cca2a71cb0e977b",
+      "canonicalIdentity": {
+        "runId": "local",
+        "runAttempt": "1"
+      },
+      "shape": {
+        "status": "PASS"
+      },
+      "artifacts": {
+        "status": "PASS"
+      },
+      "counts": {
+        "status": "PASS"
+      }
+    },
+    {
+      "lane": "regression-0",
+      "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+      "receiptSha256": "c5cef70e438100fe0136b7cbeb7c1872aad4ce888a244c12bd300b63458566c6",
+      "canonicalIdentity": {
+        "runId": "local",
+        "runAttempt": "1"
+      },
+      "shape": {
+        "status": "PASS"
+      },
+      "artifacts": {
+        "status": "PASS"
+      },
+      "counts": {
+        "status": "PASS"
+      }
+    },
+    {
+      "lane": "regression-1",
+      "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+      "receiptSha256": "8e9b6c9bc6cd2277f5dbb2305bcb5e8684db02f75f79173659bf1b4dacf9a285",
+      "canonicalIdentity": {
+        "runId": "local",
+        "runAttempt": "1"
+      },
+      "shape": {
+        "status": "PASS"
+      },
+      "artifacts": {
+        "status": "PASS"
+      },
+      "counts": {
+        "status": "PASS"
+      }
+    },
+    {
+      "lane": "regression-2",
+      "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+      "receiptSha256": "40ed50faf5ca2a50f29a05391fbd59e15659303b59051109d10c544508304b8d",
+      "canonicalIdentity": {
+        "runId": "local",
+        "runAttempt": "1"
+      },
+      "shape": {
+        "status": "PASS"
+      },
+      "artifacts": {
+        "status": "PASS"
+      },
+      "counts": {
+        "status": "PASS"
+      }
+    },
+    {
+      "lane": "regression-3",
+      "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+      "receiptSha256": "ba7c9f729b3c7d25e49325fb7043e29f12a8b0dfb5d183ec0b450d0439c168aa",
+      "canonicalIdentity": {
+        "runId": "local",
+        "runAttempt": "1"
+      },
+      "shape": {
+        "status": "PASS"
+      },
+      "artifacts": {
+        "status": "PASS"
+      },
+      "counts": {
+        "status": "PASS"
+      }
+    },
+    {
+      "lane": "resume",
+      "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+      "inputDigest": "81a19fcc36e1f1af4d4bdb9f424c853e584796e0f51571c5167d9bc54a8f2299",
+      "receiptSha256": "2695ffbbe71dcf73ab78e8d4fa07ffbbaf8ad0723777df7f15d728689638b3a4",
+      "canonicalIdentity": {
+        "runId": "local",
+        "runAttempt": "1"
+      },
+      "shape": {
+        "status": "PASS"
+      },
+      "artifacts": {
+        "status": "FAIL",
+        "name": "AssertionError",
+        "message": "NATIVE_BINDING_MISMATCH\n\nnull !== 'local'\n",
+        "code": "ERR_ASSERTION",
+        "actual": null,
+        "expected": "local"
+      },
+      "nativeIdentity": {
+        "checkoutSha": "d77a897e21bf4c959b7dc6a2773309227123efc8",
+        "runId": null,
+        "runAttempt": null
+      },
+      "nativeBytesUnchanged": true
+    }
+  ],
+  "repairBoundary": "A source-level compatibility repair would require reviewing the canonical identity contract and re-freezing affected inputs. Existing native receipts cannot be edited or rebound to manufacture PASS. This diagnostic is not a replacement Gate.",
+  "sourceClean": true
+}
