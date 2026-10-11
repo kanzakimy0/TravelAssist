@@ -1,5 +1,14 @@
 # TASK-071-A / WBS 9.10 — Historical Findings 最终处置决策包
 
+## 2026-10-11 收口补充：逐组审核包已经生成（尚未生效）
+
+- **可审核的 12 组 / 45 次**：[精确历史例外机器提案](history-exact-exception-review-proposal-2026-10-11.json)。其中 H01/H02/H12–H14 为 5 组/6 次非凭据或合成测试命中；H05–H11 为 7 组/39 次运输 `finalUrl` 的过期签名 URL 类别。JSON 均标记 `applied=false`；原 `tools/security/allowlist.json` **未更改**。
+- **需要单独处置的 2 组 / 2 次**：H03（POI 发现 URL 中的 JWT-like 查询参数）、H04（外部网页 Google Maps 客户端脚本的 API key 参数）。没有凭据/来源 Owner 的权限与事故评估，不得视为安全。
+- [11 个历史 Git blob 的只读结构实证](HISTORY-URL-STRUCTURAL-REVIEW-2026-10-11.md)显示运输签名 URL 自述到期为 2026-10-01—02；**链接期限已过不证明曾无泄露、仍无残余风险或已有安全签核**。
+- **最后的收口门**：由有权 Security Owner 对上面每个精确组作决定，必要时由凭据 Owner 完成受控评估；Codex 只应用获批准的历史限定项。History 真实 PASS、源码 Exact-HEAD 与 PR merge-result Hosted Security/Quality 全部 PASS 后才能提交原 #231 最终人工合并验收。不得关闭扫描器、改写历史、强推或冒称审批。
+- 已向仓库负责人 `kanzakimy0` 发起现有文档 [PR #472](https://github.com/kanzakimy0/TravelAssist/pull/472) 的正式 Review Request，不再只依赖 Issue 评论通知。
+
+
 > 审查基线：2026-10-11（Asia/Tokyo）  
 > 状态：**SECURITY_OWNER_DECISION_REQUIRED / 尚未批准历史例外**  
 > Canonical Owner：A；B：经用户确认授权执行。  
