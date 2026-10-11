@@ -1,0 +1,179 @@
+{
+  "schema": "TravelAssist-TASK-071-A-history-exact-review-v1",
+  "type": "PROPOSAL_ONLY_NOT_EFFECTIVE",
+  "generatedAt": "2026-10-11",
+  "canonicalOwner": "A",
+  "executor": "B",
+  "sourceHead": "cfac88dfcb482cc0c96b6abdd702fd7a22a926aa",
+  "sourceIssue": "https://github.com/kanzakimy0/TravelAssist/issues/404",
+  "originalScannerAllowlistUnchanged": true,
+  "securityOwnerApprovalRecorded": false,
+  "currentUnresolvedHistoryOccurrences": 47,
+  "currentUnresolvedHistoryGroups": 14,
+  "prospectiveExceptionGroups": 12,
+  "remainingExternalOwnerGroups": [
+    "D1-H03",
+    "D1-H04"
+  ],
+  "riskAcceptanceNotes": "All entries require actual authorized per-group review; signed URL declared expiry does not prove credential revocation. No entries are active.",
+  "entries": [
+    {
+      "group": "D1-H01",
+      "path": ".env.example",
+      "category": "env-template-value",
+      "fingerprint": "d4c999ae43633bd2036188d2bca68e1be8202b2cc1f3a1c42a728eaff7d2483d",
+      "scope": "history",
+      "reason": "OPENAI_TIMEOUT_MS=15000 / OPENAI_MAX_RETRIES=1 bounded runtime policy, not an authentication field.",
+      "expires": "2026-11-10",
+      "occurrences": 1,
+      "review": "BENIGN_REVIEWED_PENDING_EXPLICIT_ACCEPTANCE",
+      "applied": false
+    },
+    {
+      "group": "D1-H02",
+      "path": ".env.example",
+      "category": "env-template-value",
+      "fingerprint": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+      "scope": "history",
+      "reason": "OPENAI_TIMEOUT_MS=15000 / OPENAI_MAX_RETRIES=1 bounded runtime policy, not an authentication field.",
+      "expires": "2026-11-10",
+      "occurrences": 1,
+      "review": "BENIGN_REVIEWED_PENDING_EXPLICIT_ACCEPTANCE",
+      "applied": false
+    },
+    {
+      "group": "D1-H12",
+      "path": "tests/task-076-ai-runtime.test.mjs",
+      "category": "generic-credential",
+      "fingerprint": "64af848afc4e507188b584e1bf9bdece3fe17bce49e77a86a6f97004fd5face5",
+      "scope": "history",
+      "reason": "Injected fake model/environment with mocked execution; test fixture usage verified offline.",
+      "expires": "2026-11-10",
+      "occurrences": 2,
+      "review": "BENIGN_REVIEWED_PENDING_EXPLICIT_ACCEPTANCE",
+      "applied": false
+    },
+    {
+      "group": "D1-H13",
+      "path": "tests/task-077-ai-conversation.test.mjs",
+      "category": "generic-credential",
+      "fingerprint": "62af8704764faf8ea82fc61ce9c4c3908b6cb97d463a634e9e587d7c885db0ef",
+      "scope": "history",
+      "reason": "Injected fake model/environment with mocked execution; test fixture usage verified offline.",
+      "expires": "2026-11-10",
+      "occurrences": 1,
+      "review": "BENIGN_REVIEWED_PENDING_EXPLICIT_ACCEPTANCE",
+      "applied": false
+    },
+    {
+      "group": "D1-H14",
+      "path": "tests/task-080-a-poi-search-api.test.mjs",
+      "category": "generic-credential",
+      "fingerprint": "43ed5c457b799abe72e15e5ce574960937404f72402c5c15837044c1fc1a3a4a",
+      "scope": "history",
+      "reason": "Negative providerRaw payload used to assert a 500 fail-closed response.",
+      "expires": "2026-11-10",
+      "occurrences": 1,
+      "review": "BENIGN_REVIEWED_PENDING_EXPLICIT_ACCEPTANCE",
+      "applied": false
+    },
+    {
+      "group": "D1-H05",
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "aws-access-id",
+      "fingerprint": "2a93ab5870ef59c9f587c7f8d62180c08215095af14a6f3c1dea1da9394b274c",
+      "scope": "history",
+      "reason": "Historical external capture finalUrl contains time-bounded AWS/Azure signed-URL parameters; expiry metadata was observed on 11 retained Git blobs as 2026-10-01 through 2026-10-02. Requires credential/source-owner risk assessment and Security Owner per-group approval; this reason is NOT proof of revocation or safety.",
+      "expires": "2026-11-10",
+      "occurrences": 8,
+      "review": "EXPIRED_LINK_METADATA_ONLY_OWNER_RISK_ACCEPTANCE_REQUIRED",
+      "applied": false
+    },
+    {
+      "group": "D1-H06",
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "aws-access-id",
+      "fingerprint": "15c17790c299acd0faab9b0cc8ecc35be629f3f9bb764741fe81d16601870509",
+      "scope": "history",
+      "reason": "Historical external capture finalUrl contains time-bounded AWS/Azure signed-URL parameters; expiry metadata was observed on 11 retained Git blobs as 2026-10-01 through 2026-10-02. Requires credential/source-owner risk assessment and Security Owner per-group approval; this reason is NOT proof of revocation or safety.",
+      "expires": "2026-11-10",
+      "occurrences": 1,
+      "review": "EXPIRED_LINK_METADATA_ONLY_OWNER_RISK_ACCEPTANCE_REQUIRED",
+      "applied": false
+    },
+    {
+      "group": "D1-H07",
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "aws-access-id",
+      "fingerprint": "f299de938603a713d4960956e54210af9f5b39da26cffbaaaacfb088cc817859",
+      "scope": "history",
+      "reason": "Historical external capture finalUrl contains time-bounded AWS/Azure signed-URL parameters; expiry metadata was observed on 11 retained Git blobs as 2026-10-01 through 2026-10-02. Requires credential/source-owner risk assessment and Security Owner per-group approval; this reason is NOT proof of revocation or safety.",
+      "expires": "2026-11-10",
+      "occurrences": 1,
+      "review": "EXPIRED_LINK_METADATA_ONLY_OWNER_RISK_ACCEPTANCE_REQUIRED",
+      "applied": false
+    },
+    {
+      "group": "D1-H08",
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "aws-access-id",
+      "fingerprint": "fa259226a181736bb32ef1e42371401307a7b1abea770be364d1a3e73e70e87f",
+      "scope": "history",
+      "reason": "Historical external capture finalUrl contains time-bounded AWS/Azure signed-URL parameters; expiry metadata was observed on 11 retained Git blobs as 2026-10-01 through 2026-10-02. Requires credential/source-owner risk assessment and Security Owner per-group approval; this reason is NOT proof of revocation or safety.",
+      "expires": "2026-11-10",
+      "occurrences": 1,
+      "review": "EXPIRED_LINK_METADATA_ONLY_OWNER_RISK_ACCEPTANCE_REQUIRED",
+      "applied": false
+    },
+    {
+      "group": "D1-H09",
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "aws-access-id",
+      "fingerprint": "758667b6c01747f27f11cfb43ed71f6989522c5d56219435672c3520a7c50372",
+      "scope": "history",
+      "reason": "Historical external capture finalUrl contains time-bounded AWS/Azure signed-URL parameters; expiry metadata was observed on 11 retained Git blobs as 2026-10-01 through 2026-10-02. Requires credential/source-owner risk assessment and Security Owner per-group approval; this reason is NOT proof of revocation or safety.",
+      "expires": "2026-11-10",
+      "occurrences": 9,
+      "review": "EXPIRED_LINK_METADATA_ONLY_OWNER_RISK_ACCEPTANCE_REQUIRED",
+      "applied": false
+    },
+    {
+      "group": "D1-H10",
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "azure-sas",
+      "fingerprint": "1cbdf4a83456130d6ce76f5159fe3784870e69d256ef6e7a39b11aefbc056a8b",
+      "scope": "history",
+      "reason": "Historical external capture finalUrl contains time-bounded AWS/Azure signed-URL parameters; expiry metadata was observed on 11 retained Git blobs as 2026-10-01 through 2026-10-02. Requires credential/source-owner risk assessment and Security Owner per-group approval; this reason is NOT proof of revocation or safety.",
+      "expires": "2026-11-10",
+      "occurrences": 8,
+      "review": "EXPIRED_LINK_METADATA_ONLY_OWNER_RISK_ACCEPTANCE_REQUIRED",
+      "applied": false
+    },
+    {
+      "group": "D1-H11",
+      "path": "data/transport/network/next-source-actions.jsonl",
+      "category": "azure-sas",
+      "fingerprint": "6bf24abd4011d6a9de9deacc2590621c9c90b0ed75c6b6cdac9f48131591522e",
+      "scope": "history",
+      "reason": "Historical external capture finalUrl contains time-bounded AWS/Azure signed-URL parameters; expiry metadata was observed on 11 retained Git blobs as 2026-10-01 through 2026-10-02. Requires credential/source-owner risk assessment and Security Owner per-group approval; this reason is NOT proof of revocation or safety.",
+      "expires": "2026-11-10",
+      "occurrences": 11,
+      "review": "EXPIRED_LINK_METADATA_ONLY_OWNER_RISK_ACCEPTANCE_REQUIRED",
+      "applied": false
+    }
+  ],
+  "applyOnlyAfter": [
+    "valid Security Owner acceptance for each fingerprint/path/category/history/expiry",
+    "credential/source owner assessment and historical-risk sign-off for D1-H05..D1-H11",
+    "verified no residual active exposure and no non-reviewed findings",
+    "scan/tamper/negative regression and exact-head CI"
+  ],
+  "neverAllowed": [
+    "blanket exceptions",
+    "auto approval",
+    "git history rewrite",
+    "scanner weakening",
+    "credential disclosure",
+    "auto merge"
+  ]
+}
