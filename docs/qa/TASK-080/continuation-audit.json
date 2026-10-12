@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "task": "TASK-080-A",
+  "date": "2026-10-12",
+  "canonicalOwner": "A",
+  "implementationSupport": "B (explicit delegation)",
+  "originalHead": "8bea0f74e710553952cc29a0483a39ce1b32a549",
+  "develop": "cfd51e42f96e43f84f406c6aab5aab6e408b713e",
+  "acceptedSchemaHead": "4417c9b64995abc52e756d611f9815aa55229367",
+  "schemaMerge": "0950d67a29a44820b7c311dbc4a4e4d8c620913d",
+  "runtimeMerge": "3fab703d13694fd1205679c96fb8d1d2e8549fbc",
+  "ownerCorrectionMerge": "5123966f62dbe9587a3bbe38e877ccf3ea959b80",
+  "candidate": {
+    "path": "data/poi/full/manifests/current-candidate-review.v1.json",
+    "sha256": "5b95257ee62c83f14183b729bb2179ace2e98733a11361f0b442d79380457d66",
+    "scope": "CANDIDATE_ONLY_NO_CANONICAL_IMPORT",
+    "runtimeImportAuthorized": false
+  },
+  "runtime": {
+    "path": "src/shared/data/canonical-poi-pilot100.runtime-manifest.v1.json",
+    "sha256": "b4f714078d2780324f9e98fbaf58001177040dbc30d9693e7bfef1019d6643df",
+    "scope": "CANONICAL_POI_PILOT_100",
+    "runtimeImportAuthorized": true,
+    "candidateCorpusAuthorized": false,
+    "datasetRevision": "task-083-a-pilot100-owner-adjudication-v2",
+    "datasetPath": "src/shared/data/canonical-poi-pilot100.v1.json",
+    "datasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af",
+    "recordCount": 100
+  },
+  "protectedModuleDiff": {
+    "against": "origin/develop",
+    "paths": [
+      "src/shared/contracts/poi",
+      "src/server/poi-runtime",
+      "src/server/poi-details",
+      "src/app/api/pois/[poiRef]",
+      "src/shared/recommendation-scoring",
+      "data",
+      "supabase",
+      "package.json",
+      "package-lock.json",
+      ".github/workflows",
+      "tools/qa",
+      "tools/transport",
+      "src/shared/data",
+      "src/shared/contracts/planning"
+    ],
+    "changedFiles": []
+  },
+  "testMetadataAuthorization": "User explicitly authorized only TASK-080 test admission and derived inventory metadata on 2026-10-12; runner/CI/business modules unchanged",
+  "focused": {
+    "tests": 94,
+    "passed": 94,
+    "failed": 0,
+    "searchTests": 16
+  },
+  "runtimeSearch": {
+    "identityChecks": 100,
+    "visible": 98,
+    "permanentlyClosedExcluded": 2,
+    "allPagesUniqueAndComplete": true,
+    "repeatDeterministic": true
+  },
+  "fullNode": {
+    "local": {
+      "status": "TIMEOUT_NOT_PASS",
+      "timeoutMs": 1800000,
+      "commit": "a55195d3a89f169a48bad101dfef9b22bd597f53",
+      "stage": "existing TASK-086 deterministic graph rebuild",
+      "receipt": "logs/local-full-timeout-receipt.json.gz"
+    },
+    "hosted": "Full existing split-mode Quality Gate required; final SHA/run bound in PR #433 receipt"
+  },
+  "quality": {
+    "lint": {
+      "status": "PASS",
+      "errors": 0,
+      "existingWarnings": 69
+    },
+    "typecheck": "PASS",
+    "deployFormat": "PASS",
+    "deploymentContract": "PASS",
+    "productionBuild": "PASS",
+    "artifactAudit": {
+      "status": "PASS",
+      "fileCount": 1921
+    },
+    "httpSmoke": "PASS"
+  },
+  "exactHeadGate": "Authoritative final SHA/run/counts are retained in Draft PR #433 after verify-exact-head.mjs checks the successful final workflow_dispatch and complete aggregate.",
+  "localValidationCommit": "a55195d3a89f169a48bad101dfef9b22bd597f53",
+  "logs": [
+    {
+      "name": "focused",
+      "path": "docs/qa/TASK-080/logs/focused.log.gz",
+      "uncompressedSha256": "177a29164f936b072f650f51009bc1869499db45b735a96dec09a2fd60b1e91c"
+    },
+    {
+      "name": "lint",
+      "path": "docs/qa/TASK-080/logs/lint.log.gz",
+      "uncompressedSha256": "35b8717866a292dad6482819eadea475b34631c48b6dbceb5f8c4b35fa7834ec"
+    },
+    {
+      "name": "typecheck",
+      "path": "docs/qa/TASK-080/logs/typecheck.log.gz",
+      "uncompressedSha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
+    },
+    {
+      "name": "format",
+      "path": "docs/qa/TASK-080/logs/format.log.gz",
+      "uncompressedSha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
+    },
+    {
+      "name": "build",
+      "path": "docs/qa/TASK-080/logs/build.log.gz",
+      "uncompressedSha256": "8160e9cfca1d8fb7afded3b625bd545f784545dc51314e2ee49a0ee802dfd095"
+    },
+    {
+      "name": "artifact",
+      "path": "docs/qa/TASK-080/logs/artifact.log.gz",
+      "uncompressedSha256": "b6a1300ebe03ec35c0edd357d088dacb5b279da944767199454409a32b7748a2"
+    }
+  ],
+  "diffAllowlist": {
+    "status": "PASS",
+    "prefixes": [
+      "src/server/poi-search/",
+      "src/shared/contracts/poi-search/",
+      "src/app/api/pois/search/",
+      "docs/qa/TASK-080/"
+    ],
+    "files": [
+      "tests/task-080-a-poi-search-api.test.mjs",
+      "docs/tasks/RESULT-TASK-080-a-poi-search-api.md",
+      "docs/project/WBS-TravelAssist.md",
+      "docs/qa/TASK-035/phase-2/execution-policy.json",
+      "docs/qa/TASK-035/phase-2/core-fix/test-inventory.json"
+    ]
+  },
+  "hostedImplementationChecks": {
+    "head": "a55195d3a89f169a48bad101dfef9b22bd597f53",
+    "runId": 38205207415,
+    "regressionShards": "5/5 PASS",
+    "quality": "PASS",
+    "rawSourceReproduction": "PASS",
+    "completeGate": "Intermediate run, not final-head acceptance"
+  }
+}

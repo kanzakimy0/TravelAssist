@@ -1,39 +1,47 @@
-# TASK-080-A — Canonical POI Search API QA
+# TASK-080-A continuation QA
 
-Date: 2026-09-27. Scope: WBS 7.6 only. Implementation branch: `codex/a-task-080-poi-search-api`. Base `origin/develop`: `85f5c62361d93f897423e92232547863d46ab0d1`; consumed PR #417 schema head: `875caf9e9130514fa99da95ce11d63fca2bf3b1d` (no publication-head drift). Schema merge commit: `2ce8f71db7d8d70e7f6e8ea16b0b5bc3ba83a72a`.
+Date: 2026-10-12. Canonical Owner A; B explicitly authorized to implement. Original branch and Draft PR #433 reused. Implementation commit: `a55195d3a89f169a48bad101dfef9b22bd597f53`; latest develop: `cfd51e42f96e43f84f406c6aab5aab6e408b713e`.
 
-## Acceptance evidence
+## Prerequisites and safety
 
-| Check | Result |
-|---|---|
-| TASK-080 focused API/contract tests | 9/9 pass; Japanese/English/alias, precedence, filters, lifecycle, cursor, nulls, safety and unavailable repository |
-| TASK-050 / PR #417 canonical POI regression | 24/24 pass |
-| Shared Planning contract regression | 21/21 pass |
-| Full Node regression | 2,743/2,743 pass with workspace Python on PATH |
-| `npm run lint` | pass; 0 errors, 9 pre-existing warnings in unrelated POI tooling |
-| `npm run typecheck` | pass |
-| `npm run format:check:deploy` | pass |
-| `npm run deploy:validate:local` | pass; local target, no database/provider configuration |
-| `npm run build` | pass; `/api/pois/search` appears as dynamic server route |
-| `npm run deploy:build:local` and `deploy:verify-artifact` | pass; 1,883 files, no forbidden content |
+[Machine audit](continuation-audit.json) records accepted schema/runtime/owner-correction commits, manifest hashes and protected-module diff. PR #417 and Pilot-100 admission PR #444 are merged; owner correction #465 is consumed. Candidate corpus remains unauthorized. Search runtime reuses the existing Pilot-100 repository, whose `findCandidates` intentionally returns records without the restricted scoring layer. No full-corpus scan/import is introduced.
 
-The first full Node run had one environment-only failure: the Windows `python` command resolved to a broken alias. The same test passed with the bundled workspace Python on PATH; the subsequent full run passed 2,743/2,743. An earlier sandbox-only run could not write unrelated deterministic QA outputs and was repeated with isolated-worktree write permission. Neither failure required product-code changes.
+Original 2026-09-27 nine-test implementation was reused. Its earlier 2,743-test/Quality Gate receipts are historical; they are not current-head evidence. Current Next route documentation was read from installed `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/route.md` before changes.
 
-## Boundary proof
+## Checks
 
-- The current candidate manifest still declares `scope = CANDIDATE_ONLY_NO_CANONICAL_IMPORT` and `runtimeImportAuthorized = false`. `tools/poi/read-current-candidates.mjs` asserts both. Search server/route imports do not reference that tool or `data/poi/full/**`.
-- Default HTTP handler has no canonical repository configured and returns stable `repository_unavailable` (503). Tests inject only strict PR #417 Canonical fixtures. No runtime 10,369-POI import, provider call, DB write, user preference weighting, 43D scoring, recommendation reason, cache, detail endpoint or Planner mutation exists.
-- Each repository record passes `parseCanonicalPoiV1` before filtering or projection. Unknown/invalid canonical fields fail closed; safe search cards explicitly omit Provider IDs/raw payload, provenance, feature vector, facts and recommendation fields.
-- Cursor binds normalized query/filters/limit to a dataset revision and stable lexical sort key. A changed query or revision fails with 400 instead of silently continuing a different result set.
+| Check                                                                                         | Current result                                                                                                |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| TASK-080                                                                                      | 16/16 PASS                                                                                                    |
+| Canonical / Planning / soak / runtime / owner correction / trusted baseline / detail + search | 94/94 PASS                                                                                                    |
+| Pilot identity/name HTTP-handler smoke                                                        | 100/100 checked; 98 visible, 2 permanently closed excluded                                                    |
+| Real-data pagination                                                                          | All 98 exactly once; repeat and reversed input order identical                                                |
+| Test inventory                                                                                | PASS; 155 direct + 4 indirect                                                                                 |
+| Full `npm test`                                                                               | Local timeout at unchanged 30-minute limit; hosted complete split-mode Gate required                          |
+| lint / typecheck / deployment formatting                                                      | PASS; lint 0 errors / 69 existing warnings                                                                    |
+| production build / standalone artifact / HTTP smoke                                           | PASS; 1,921 files; [production HTTP smoke](http-smoke.json)                                                   |
+| exact-head hosted Quality Gate                                                                | Authoritative final SHA/run/aggregate receipt: [PR #433](https://github.com/kanzakimy0/TravelAssist/pull/433) |
 
-## Remaining gates
+Focused command:
 
-PR #417 remains Open/Draft and unmerged as checked on 2026-09-27; TASK-080 must remain Draft and must not merge until 7.4 is merged, this branch is synced to the resulting latest `develop`, and exact-head Quality Gate passes. There is no accepted production canonical POI repository; the public route correctly stays unavailable until one is separately authorized.
+```text
+node --import ./tests/register-route-ts.mjs --test tests/task-080-a-poi-search-api.test.mjs tests/task-050-a-poi-schema.test.mjs tests/task-036-planning-contracts.test.mjs tests/task-037-planning-contract-soak.test.mjs tests/task-083-a-poi-runtime.test.mjs tests/task-083-canonical-owner-correction.test.mjs tests/task-088-a-trusted-baseline.test.mjs tests/task-081-a-poi-detail-api.test.mjs
+```
 
+New boundary cases include controls/overlong filters/duplicate inputs, a 300-character canonical name expanded by NFKC, deterministic locale/name selection, stale/malformed/missing-anchor cursor, invalid repository envelopes, duplicate identities and hidden invalid records. Existing null/unknown, identity separation, lexical order and no-leak assertions remain.
 
-## Latest develop refresh
+## Explicit test metadata authorization
 
-- Refreshed onto `develop@4c7048c4c388068daa0aa49172f6333ac7e262dc` after the original exact-head gate.
-- Develop delta since the original TASK-080 base contains TASK-082 Personal AI History, one POI review workbook and a Master WBS edit; no runtime/search source overlap was found.
-- The sole overlapping file was the Master WBS; resolution preserves latest develop records and TASK-080 7.6 = 待审查 while leaving 7.4 at its current prerequisite state.
-- Refreshed exact-head CI is required because the prior Quality Gate covered `caa68a97994736a5e8534756d100d50293df5b87`, not the synchronized head.
+During execution, the user approved: “授权仅更新测试准入及派生清单元数据”. Only TASK-080's offline entry was added to TASK-035 execution-policy; its derived current inventory was regenerated by the existing generator. Existing entries/profile rules, runner, workflow, package and frozen transport certification inputs remain unchanged. Lane membership changes are the current round-robin generator's deterministic consequence of adding one required file.
+
+The initial `npm test` invocation correctly refused uncommitted protected source before running any test. Implementation was committed normally and the official clean-head run restarted. This was a preflight guard, not a test failure or bypass.
+
+## Review limits
+
+WBS 7.6 cannot become completed before separate acceptance/merge. Current scope is Pilot-100 only, no nationwide production index, UI integration or visitor-eligibility verdict. No 7.7/7.9 implementation change. Draft PR #433 and Issue #430 stay open; no auto-merge.
+
+Local full-run receipt records `timeout=true`, `timeoutMs=1800000`, counts=null at existing TASK-086 graph rebuild. This is NOT a full PASS. The existing `task086FinalCloseout=true` workflow mode runs every regression lane, two clean graphs, raw extraction, resume, rebuild/ordinary verification and quality with 12 bound receipts. It changes no runner, workflow, timeout rule or business assertion. Final published-head evidence is recorded in PR #433 and can be audited with `verify-exact-head.mjs`.
+
+All five hosted regression shards, raw-source reproduction and quality passed on implementation head `a55195d3a89f169a48bad101dfef9b22bd597f53` in intermediate run 38205207415. This partial/intermediate result is not final acceptance. The published documentation head requires its own complete workflow_dispatch with `task086FinalCloseout=true` and `expectedHead` equal to that exact SHA. The final PR receipt retains the run URL, actual checkout, all 12 required jobs/lanes, zero-skipped full counts and aggregate hash.
+
+The WBS review marker is conditional on that final complete receipt. `verify-exact-head.mjs RUN_DIRECTORY HEAD RECEIPT` checks the GitHub run/jobs snapshots, hosted aggregate, current test inventory and input hashes from a clean final checkout. No commit embeds its own future SHA; the permanent PR body records final evidence without creating another untested documentation head.
