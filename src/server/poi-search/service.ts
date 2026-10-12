@@ -17,7 +17,7 @@ type CursorPayload = {
   version: 1;
   queryHash: string;
   datasetRevision: string;
-  after: SortKey;
+  after: Pick<SortKey, "rank" | "poiRef">;
 };
 type Match = {
   rank: number;
@@ -113,10 +113,19 @@ function matchName(poi: CanonicalPoiV1, normalizedQuery: string): Match | null {
 
 function displayName(poi: CanonicalPoiV1, locale: string | null) {
   if (locale) {
-    const exact = poi.names.localized.find((name) => name.locale === locale);
+    const kindOrder = { official: 0, common: 1, translated: 2 };
+    const names = [...poi.names.localized].sort(
+      (a, b) =>
+        kindOrder[a.kind] - kindOrder[b.kind] ||
+        compareText(a.locale, b.locale) ||
+        compareText(a.value, b.value),
+    );
+    const exact = names.find(
+      (name) => name.locale.toLowerCase() === locale.toLowerCase(),
+    );
     if (exact) return exact;
     const language = locale.split("-")[0];
-    const languageMatch = poi.names.localized.find(
+    const languageMatch = names.find(
       (name) => name.locale.split("-")[0] === language,
     );
     if (languageMatch) return languageMatch;
@@ -180,12 +189,10 @@ function decodeCursor(value: string): CursorPayload | null {
       return null;
     const after = payload.after as Record<string, unknown>;
     if (
-      Object.keys(after).sort().join(",") !== "poiRef,primary,rank" ||
+      Object.keys(after).sort().join(",") !== "poiRef,rank" ||
       !Number.isInteger(after.rank) ||
       (after.rank as number) < 0 ||
       (after.rank as number) > 5 ||
-      typeof after.primary !== "string" ||
-      after.primary.length > 300 ||
       typeof after.poiRef !== "string" ||
       !/^poi:[a-z0-9][a-z0-9._-]{2,127}$/.test(after.poiRef)
     )
@@ -292,9 +299,18 @@ export async function searchCanonicalPois(
     });
   }
   ranked.sort((a, b) => compareKeys(a.key, b.key));
-  const remaining = cursor
-    ? ranked.filter((row) => compareKeys(row.key, cursor.after) > 0)
-    : ranked;
+  // The canonical name can expand under NFKC beyond the cursor bound. Resolve
+  // the compact identity/rank against this exact query and dataset instead.
+  const afterIndex = cursor
+    ? ranked.findIndex(
+        (row) =>
+          row.key.poiRef === cursor.after.poiRef &&
+          row.key.rank === cursor.after.rank,
+      )
+    : -1;
+  if (cursor && afterIndex === -1)
+    return error("invalid_request", "The search cursor is invalid.");
+  const remaining = ranked.slice(afterIndex + 1);
   const selected = remaining.slice(0, query.limit);
   const last = selected.at(-1);
   const nextCursor =
@@ -303,7 +319,7 @@ export async function searchCanonicalPois(
           version: 1,
           queryHash: fingerprint(query),
           datasetRevision: found.datasetRevision,
-          after: last.key,
+          after: { rank: last.key.rank, poiRef: last.key.poiRef },
         })
       : null;
   if (nextCursor && nextCursor.length > 2048)

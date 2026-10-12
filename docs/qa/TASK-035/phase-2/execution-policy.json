@@ -1809,6 +1809,27 @@
       "writeReview": "No direct file mutation call (imported helper/profile constraints apply)"
     },
     {
+      "path": "tests/task-080-a-poi-search-api.test.mjs",
+      "sha256": "dded587d187e4b7c66ef2ba59ceb21662e9a3470666795725761ab37d13543ad",
+      "profile": "offline",
+      "owner": "A (Canonical owner); B authorized implementation/QA",
+      "historicalDomainOwner": "A",
+      "evidence": [
+        "tests/task-080-a-poi-search-api.test.mjs",
+        "docs/qa/TASK-080/README.md"
+      ],
+      "environmentVariableNames": [],
+      "executionDependencies": [
+        "./register-route-ts.mjs",
+        "../src/shared/contracts/poi/fixtures.ts",
+        "../src/shared/contracts/poi-search/query.ts",
+        "../src/server/poi-search/http.ts",
+        "../src/server/poi-runtime/repository.ts"
+      ],
+      "subprocessReview": "No subprocess; offline injected HTTP handlers and authorized Pilot-100 repository only",
+      "writeReview": "Read-only fixtures, manifest and source audit; no file, database or provider mutation"
+    },
+    {
       "path": "tests/task-081-a-poi-detail-api.test.mjs",
       "sha256": "f8a0ff91443c5bbbe42cf9a7c891ce8d1eb0c11ddb2d2a577d6932ca0548b2e5",
       "profile": "offline",

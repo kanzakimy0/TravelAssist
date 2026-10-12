@@ -5,6 +5,7 @@ import { parsePoiSearchQuery } from "../../shared/contracts/poi-search/query";
 import type { PoiSearchResultV1 } from "../../shared/contracts/poi-search/types";
 import type { CanonicalPoiSearchRepository } from "./repository";
 import { searchCanonicalPois } from "./service";
+import { runtimePoiSearchRepository } from "./runtime-repository";
 
 const SEARCH_HEADERS = {
   "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
@@ -63,4 +64,6 @@ export function createPoiSearchHandler(
   };
 }
 
-export const handlePoiSearch = createPoiSearchHandler();
+export const handlePoiSearch = createPoiSearchHandler({
+  repository: runtimePoiSearchRepository,
+});

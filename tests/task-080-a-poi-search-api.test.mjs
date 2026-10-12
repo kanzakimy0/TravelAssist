@@ -15,7 +15,7 @@ const {
 } = await import("../src/shared/contracts/poi/fixtures.ts");
 const { parsePoiSearchQuery } =
   await import("../src/shared/contracts/poi-search/query.ts");
-const { createPoiSearchHandler } =
+const { createPoiSearchHandler, handlePoiSearch } =
   await import("../src/server/poi-search/http.ts");
 
 const clone = (value) => structuredClone(value);
@@ -365,10 +365,241 @@ test("candidate-only corpus remains excluded from runtime search imports", () =>
     "src/server/poi-search/repository.ts",
     "src/server/poi-search/service.ts",
     "src/server/poi-search/http.ts",
+    "src/server/poi-search/runtime-repository.ts",
+    "src/server/poi-runtime/repository.ts",
     "src/app/api/pois/search/route.ts",
   ])
     assert.doesNotMatch(
       readFileSync(source, "utf8"),
       /data\/poi\/full|read-current-candidates/,
     );
+});
+
+test("bounded filters, controls, duplicate filters and request size fail before repository access", async () => {
+  let calls = 0;
+  const handle = createPoiSearchHandler({
+    repository: {
+      async findCandidates() {
+        calls++;
+        throw new Error("must not be reached");
+      },
+    },
+  });
+  for (const query of [
+    `prefecture=${"x".repeat(81)}`,
+    `municipality=${"x".repeat(121)}`,
+    `regionRef=${"x".repeat(181)}`,
+    `q=x&locale=${"a".repeat(36)}`,
+    "prefecture=Tokyo&prefecture=Osaka",
+    "q=x&limit=1&limit=2",
+    "q=x%00",
+    "q=x%E2%80%8B",
+    "q=x&cursor=",
+    `q=${"x".repeat(4096)}`,
+  ]) {
+    const result = await fetchSearch(handle, query);
+    assert.equal(result.status, 400, query);
+    assert.match(result.headers.get("cache-control"), /no-store/);
+  }
+  assert.equal(calls, 0);
+});
+
+test("display name is stable across canonical array order and locale casing", async () => {
+  const poi = clone(urbanAttractionPoiFixture);
+  poi.names.localized.push({ locale: "en", kind: "common", value: "Station" });
+  poi.names.localized.push({
+    locale: "en-US",
+    kind: "official",
+    value: "Tokyo Station US",
+  });
+  const reversed = clone(poi);
+  reversed.names.localized.reverse();
+  for (const locale of ["ja", "en", "en-US", "en-us", "en-GB"]) {
+    const query = `q=東京駅&locale=${locale}`;
+    const a = await fetchSearch(handler([poi]), query);
+    const b = await fetchSearch(handler([reversed]), query);
+    assert.equal(a.status, 200);
+    assert.deepEqual(a.body, b.body);
+    if (locale === "en-us")
+      assert.equal(a.body.data.items[0].displayName.locale, "en-US");
+  }
+});
+
+test("NFKC-expanded canonical names produce usable bounded cursors", async () => {
+  const records = ["a", "b", "c"].map((suffix) =>
+    variant(
+      urbanAttractionPoiFixture,
+      `poi:expanded-${suffix}`,
+      "㍿".repeat(300),
+    ),
+  );
+  const handle = handler(records);
+  let cursor = null;
+  const ids = [];
+  do {
+    const result = await fetchSearch(
+      handle,
+      `prefecture=Tokyo&limit=1${cursor ? `&cursor=${cursor}` : ""}`,
+    );
+    assert.equal(result.status, 200);
+    ids.push(...result.body.data.items.map((item) => item.poiRef));
+    cursor = result.body.data.nextCursor;
+    assert.ok(cursor === null || cursor.length <= 2048);
+    assert.ok(ids.length <= 3, "pagination must terminate");
+  } while (cursor);
+  assert.deepEqual(
+    ids,
+    records.map((poi) => poi.internalId),
+  );
+});
+
+test("cursor rejects invalid payloads, missing anchors, rank and query changes", async () => {
+  const handle = handler([
+    urbanAttractionPoiFixture,
+    temporarilyClosedPoiFixture,
+  ]);
+  const first = await fetchSearch(handle, "prefecture=Tokyo&limit=1");
+  const cursor = first.body.data.nextCursor;
+  const payload = JSON.parse(Buffer.from(cursor, "base64url").toString("utf8"));
+  const invalid = [
+    { ...payload, extra: true },
+    { ...payload, version: 2 },
+    { ...payload, after: { ...payload.after, poiRef: "poi:not-in-results" } },
+    { ...payload, after: { ...payload.after, poiRef: "candidate:example" } },
+    { ...payload, after: { ...payload.after, rank: 0 } },
+    { ...payload, after: { ...payload.after, rank: 6 } },
+  ];
+  for (const value of invalid) {
+    const bad = Buffer.from(JSON.stringify(value)).toString("base64url");
+    assert.equal(
+      (await fetchSearch(handle, `prefecture=Tokyo&limit=1&cursor=${bad}`))
+        .status,
+      400,
+    );
+  }
+  for (const query of [
+    "prefecture=Tokyo&limit=2",
+    "prefecture=Tokyo&limit=1&locale=en",
+  ]) {
+    assert.equal(
+      (await fetchSearch(handle, `${query}&cursor=${cursor}`)).status,
+      400,
+    );
+  }
+});
+
+test("repository envelopes, duplicate identities and invalid hidden records fail closed", async () => {
+  for (const result of [
+    null,
+    { datasetRevision: "", records: [] },
+    { datasetRevision: "bad\nrevision", records: [] },
+    { datasetRevision: "valid", records: null },
+    {
+      datasetRevision: "valid",
+      records: [urbanAttractionPoiFixture, urbanAttractionPoiFixture],
+    },
+    {
+      datasetRevision: "valid",
+      records: [{ ...permanentlyClosedPoiFixture, providerRaw: "secret" }],
+    },
+  ]) {
+    const handle = createPoiSearchHandler({
+      repository: {
+        async findCandidates() {
+          return result;
+        },
+      },
+    });
+    const response = await fetchSearch(handle, "q=東京駅");
+    assert.equal(response.status, 500);
+    assert.equal(response.body.error.code, "canonical_validation_failed");
+    assert.doesNotMatch(JSON.stringify(response.body), /secret|bad\nrevision/);
+  }
+});
+
+test("runtime handler uses only separately admitted Pilot-100 with current owner lifecycle", async () => {
+  const dataset = JSON.parse(
+    readFileSync("src/shared/data/canonical-poi-pilot100.v1.json", "utf8"),
+  );
+  const manifest = JSON.parse(
+    readFileSync(
+      "src/shared/data/canonical-poi-pilot100.runtime-manifest.v1.json",
+      "utf8",
+    ),
+  );
+  assert.equal(manifest.authorizingTask, "TASK-083-A");
+  assert.equal(manifest.runtimeImportAuthorized, true);
+  assert.equal(manifest.candidateCorpusAuthorized, false);
+  assert.equal(dataset.records.length, 100);
+  const admitted = new Set(manifest.internalIds);
+  let visibleCount = 0;
+  for (const poi of dataset.records) {
+    const query = new URLSearchParams({
+      q: poi.names.localized[0].value,
+      limit: "50",
+    });
+    const result = await fetchSearch(handlePoiSearch, query.toString());
+    assert.equal(result.status, 200, poi.internalId);
+    const card = result.body.data.items.find(
+      (item) => item.poiRef === poi.internalId,
+    );
+    if (["active", "temporarily_closed"].includes(poi.lifecycle.status)) {
+      visibleCount++;
+      assert.ok(card, poi.internalId);
+      assert.equal(card.masterCode, poi.masterCode);
+      assert.equal(card.lifecycleStatus, poi.lifecycle.status);
+    } else assert.equal(card, undefined, poi.internalId);
+    assert.ok(
+      result.body.data.items.every((item) => admitted.has(item.poiRef)),
+    );
+    assert.doesNotMatch(
+      JSON.stringify(result.body),
+      /candidateKey|providerRaw|sourceRefs|externalIds|features|facts|recommendationScore/,
+    );
+    assert.match(result.headers.get("cache-control"), /no-store/);
+  }
+  assert.equal(visibleCount, 98);
+});
+
+test("real Pilot-100 pagination is complete, deterministic and independent of repository order", async () => {
+  const { canonicalPoiRuntimeRepository } =
+    await import("../src/server/poi-runtime/repository.ts");
+  const snapshot = await canonicalPoiRuntimeRepository.findCandidates(null);
+  const expected = snapshot.records.filter((poi) =>
+    ["active", "temporarily_closed"].includes(poi.lifecycle.status),
+  );
+  const classes = [
+    ...new Set(expected.map((poi) => poi.classification.primary)),
+  ];
+  const collected = [];
+  for (const classification of classes) {
+    const collect = async (handle) => {
+      const ids = [];
+      let cursor = null;
+      do {
+        const params = new URLSearchParams({ classification, limit: "3" });
+        if (cursor) params.set("cursor", cursor);
+        const result = await fetchSearch(handle, params.toString());
+        assert.equal(result.status, 200);
+        ids.push(...result.body.data.items.map((item) => item.poiRef));
+        cursor = result.body.data.nextCursor;
+        assert.ok(ids.length <= 100);
+      } while (cursor);
+      return ids;
+    };
+    const ids = await collect(handlePoiSearch);
+    assert.deepEqual(await collect(handlePoiSearch), ids);
+    assert.deepEqual(
+      await collect(
+        handler([...snapshot.records].reverse(), snapshot.datasetRevision),
+      ),
+      ids,
+    );
+    collected.push(...ids);
+  }
+  assert.equal(new Set(collected).size, expected.length);
+  assert.deepEqual(
+    collected.sort(),
+    expected.map((poi) => poi.internalId).sort(),
+  );
 });
