@@ -1,5 +1,13 @@
 # TravelAssist 可记录 WBS（Master）
 
+## TASK-080-A / WBS 7.6 授权接手与审查交付（2026-10-12）
+
+- Canonical Owner **A**；A 已明确授权 **B** 代为实施；沿用 Issue #430、原分支 `codex/a-task-080-poi-search-api` 与 [Draft PR #433](https://github.com/kanzakimy0/TravelAssist/pull/433)。
+- 当前 **A / 待审查（最终 HEAD 完整 Quality Gate 通过后生效）**：复用已有搜索架构，正常同步 `develop@cfd51e42f96e43f84f406c6aab5aab6e408b713e`；#417 Schema、#444 Pilot-100 及 #465 Owner correction 前置均已合入。
+- 只读 `GET /api/pois/search` 接现有已授权 Pilot-100；修复 NFKC 展开游标及 locale/name 顺序边界。候选数据仍 `runtimeImportAuthorized=false`，未导入其他 POI；7.7/7.9 与其他业务模块未改。
+- 聚焦 94/94（搜索16/16）与100身份检查通过；98条可搜索、2条永久关闭排除；最终全仓 / exact-head 回执绑定于 #433；本地普通全仓曾在既有 TASK-086 重建处按原30分钟上限超时，不记 PASS。用户另行授权仅登记 TASK-080 测试及派生清单元数据。
+- [Result](../tasks/RESULT-TASK-080-a-poi-search-api.md) / [QA](../qa/TASK-080/README.md)。保持 Draft/Open；最终 HEAD 的12类完整 Gate 回执通过前仍属验证中，人工验收前不记已完成，禁止自动合并或关闭 Issue。
+
 ## TASK-035-A / WBS 9.1 R035-05 派生报告刷新追踪（2026-10-07）
 
 - Canonical Owner A，B执行；#265 / Draft PR #272 / 原实现分支不变。
@@ -1097,7 +1105,7 @@ Engine是确定性行程变更执行层，不是AI Orchestrator或Provider。复
 | 7.4.1  | Real 100 POI Canonical Admission + Runtime Import Gate | A | P0 | 7.4,7.7 | 已完成（#438 / PR #444 已经人工验收并合入 develop；100 ADMIT + Pilot-only runtime） |
 | 7.4.3  | Trusted Feature43 Baseline Runtime Adoption for Pilot-100 | A | P0 | 7.4.1 | 待审查（#455 / Draft PR #458；100/100 Canonical POI、4,300/4,300 内部基线单元已接入；#451 评分服务跨分支 100/100 兼容，待人工验收与合并） |
 | 7.5    | Route Schema                  | A      | P0     | 7.3      | 已完成（TASK-022-A + TASK-023-A 合并复验/hardening） |
-| 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 未开始 |
+| 7.6    | 地点搜索 API                  | A      | P0     | 7.2,7.4  | 待审查（#430 / TASK-080-A；A Owner、B授权实施；Draft PR #433；以最终HEAD完整Quality Gate通过为生效条件，未人工验收） |
 | 7.7    | POI 详情 API                  | A      | P1     | 7.4      | 待审查（#431 / TASK-081-A；Draft PR #432 已同步 #417 合并后的 develop 且通过本地 QA；等待 exact-head Quality Gate） |
 | 7.8    | 路线计算 API                  | A      | P0     | 7.3,7.5  | 进行中（TASK-023-A 开发期子集已合入；Production Gate 未关闭） |
 | 7.9    | 推荐打分 v1                   | A      | P0     | 5.14,7.4 | 待审查（#450 / TASK-084-A；PASS_RUNTIME；TASK-088 基线下 100×43 = 4,300 cell deterministic real-data smoke 已生成；单一冻结 QA 输入不构成推荐质量验收，PR #451 未合并） |
