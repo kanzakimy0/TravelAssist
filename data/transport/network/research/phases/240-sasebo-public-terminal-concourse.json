@@ -1,0 +1,118 @@
+{
+  "phaseId": "240-sasebo-public-terminal-concourse",
+  "strategy": [
+    "ORIGINAL_TWO_SASEBO_DIRECTION_ROOTS",
+    "CURRENT_WHOLE_PUBLIC_TERMINAL_COMPONENT_NO_NUMBER_CONFLATION",
+    "KEEP_NATIVE_IDS_AND_PICKUP_DROPOFF_RESTRICTIONS",
+    "ONE_NECESSARY_DIRECTED_WALK"
+  ],
+  "completedActionIds": [
+    "transfer:sasebo:reviewed-public-terminal-concourse-candidate:public-entrance-lobby",
+    "transfer:sasebo:reviewed-public-terminal-concourse-candidate:current-terminal-component",
+    "transfer:sasebo:reviewed-public-terminal-concourse-candidate:current-bidirectional-nagasaki-service",
+    "transfer:sasebo:reviewed-public-terminal-concourse-candidate:current-building-owner-access"
+  ],
+  "facts": [
+    {
+      "factId": "sasebo-distinct-arrival-to-departure-public-terminal-concourse",
+      "kind": "transfer",
+      "sourceActionId": "transfer:sasebo:reviewed-public-terminal-concourse-candidate:public-entrance-lobby",
+      "sourceUrl": "https://www.nagasaki-tabinet.com/barrierfree/100937",
+      "observedResponseSha256": "e838509e62b3ede805fe88c475cb26bef7ede5b764c0d76b25639ef4d73e076a",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:sasebo:reviewed-public-terminal-concourse-candidate:public-entrance-lobby",
+          "url": "https://www.nagasaki-tabinet.com/storage/tourism_attraction_topic_images/2820/responsive_images/zWCUCqgKnKVJeq7eFYlSzBzFeSuyJ5LqOKLEHxuH__1652_1239.jpeg",
+          "observedResponseSha256": "ddd8a23ff044b7393313da3572719d853b7339744982c889229084ad4d898702"
+        },
+        {
+          "sourceActionId": "transfer:sasebo:reviewed-public-terminal-concourse-candidate:public-entrance-lobby",
+          "url": "https://www.nagasaki-tabinet.com/storage/tourism_attraction_topic_images/2821/responsive_images/XxmkOSHvTJtCaOHteBVAa6k2JWWDj3wRHm74GrWT__1652_1239.jpeg",
+          "observedResponseSha256": "39d018ae65c44f39d403a75bd880e4ed2e588ee80a8d975fc612896c1625508d"
+        },
+        {
+          "sourceActionId": "transfer:sasebo:reviewed-public-terminal-concourse-candidate:public-entrance-lobby",
+          "url": "https://www.nagasaki-tabinet.com/storage/tourism_attraction_topic_images/2823/responsive_images/wVXPkNBEdYQJbpZhSq4Dd6QOPl7NMMwgOnDSPphC__1652_1239.jpeg",
+          "observedResponseSha256": "142778430b041da965b1cd7365e0e0e82e508f1defe36188b7e3da2be4cac6e9"
+        },
+        {
+          "sourceActionId": "transfer:sasebo:reviewed-public-terminal-concourse-candidate:current-terminal-component",
+          "url": "https://www.bus.saihigroup.co.jp/main-bus-stop/2168.html",
+          "observedResponseSha256": "216f88441c15f9ff25855ac9baf89b04b0a18d0fb9f47122ba02319df2a64612"
+        },
+        {
+          "sourceActionId": "transfer:sasebo:reviewed-public-terminal-concourse-candidate:current-terminal-component",
+          "url": "https://www.bus.saihigroup.co.jp/cms/wp-content/uploads/2013/11/sasebo-busstop202504.png",
+          "observedResponseSha256": "7c69c4d97591359e0925acc58de686e6747101c6bc919ef271c28381d1a53949"
+        },
+        {
+          "sourceActionId": "transfer:sasebo:reviewed-public-terminal-concourse-candidate:current-bidirectional-nagasaki-service",
+          "url": "https://www.bus.saihigroup.co.jp/highway-bus/1326.html",
+          "observedResponseSha256": "8979a4aae01a8b10f367d3390342c1bc6a76f44b2b7984c86be48980d12afeeb"
+        },
+        {
+          "sourceActionId": "transfer:sasebo:reviewed-public-terminal-concourse-candidate:current-bidirectional-nagasaki-service",
+          "url": "https://www.bus.saihigroup.co.jp/cms/wp-content/uploads/2013/11/2025佐世保～長崎高速バスチラシ表-結合済み.pdf",
+          "observedResponseSha256": "35aa8c007866a717706de6296964b4e06b70b3f6e5ab59a759a8d51536948962"
+        },
+        {
+          "sourceActionId": "transfer:sasebo:reviewed-public-terminal-concourse-candidate:current-building-owner-access",
+          "url": "https://www.resol-hotel.jp/sasebo/access/",
+          "observedResponseSha256": "bb659ecf6ea27c682c3e78fa04a80e89878488ff153babc634b3d6816e3c2a80"
+        },
+        {
+          "sourceActionId": "gtfs:nagasaki:retained-licensed-dataset",
+          "url": "https://data.bodik.jp/dataset/420000_nagasakikeneibus/resource/97f91f64-2124-4bf1-b3e3-422de17fc080/download",
+          "observedResponseSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc"
+        }
+      ],
+      "components": [
+        {
+          "name": "佐世保バスセンター",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:10",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "887095_01",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "b79ce9039108f999be910ea85cbb39b41808830ef51ad22f24cfd4cf6caca47e",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact native887095_01 is the alighting-only current Nagasaki-to-Sasebo service call at the named Sasebo Bus Center. Current joint-carrier route and linked directional table identify this terminal, whose whole public1F component is independently bound by current operator map and owner. No specific internal bay number assigned."
+          }
+        },
+        {
+          "name": "佐世保バスセンター",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:10",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "887095_05",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "f6ac1987cf6c82d098eec137ce9eba62806fa82edb0f2245ce0bb463d0aaf94f",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact native887095_05 is boarding-only for current Sasebo-to-Nagasaki service at the named terminal. Current operator overview marker1 identifies the whole terminal, not native suffix05 or a numbered bay; common public1F passenger lobby/access reviewed independently."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXACT_JOINT_CARRIER_DIRECTIONAL_GTFS_AND_CURRENT_WHOLE_TERMINAL_COMPONENT_PLUS_OFFICIAL_PUBLIC_ENTRANCE_CONCOURSE",
+      "hubScopeComplete": false,
+      "locator": "Exact retained directional GTFS calls remain distinct. Current joint-carrier route page and its linked2025-09 leaflet identify both Nagasaki-direction departure and independent arrival at Sasebo Bus Center. Current operator202504 overview marker1 denotes the entire named bus terminal inside Hotel Resol1F, not an internal bay number. Owner current access independently confirms that1F terminal. Official prefecture/tourism-federation access guide explicitly gives public national-road entrance through doors to the common1F passenger lobby/ticket area; labelled photographs show that public lobby communicating with bus-platform doors. Use only coarse arrival-component to departure-component passenger circulation within this terminal/common public frontage. No exact bay assignment, GTFS suffix-number correspondence, outside marker6 equivalence, coordinate join, private hotel passage, road-crossing count, travel time or accessibility claim. Photographs captureDateUNKNOWN and old route signs are excluded from service claims.",
+      "captureDate": "UNKNOWN"
+    }
+  ],
+  "notes": [
+    "No new nodes, rides or same-name identity merges. No route outside the terminal is invented.",
+    "Historical planning-stage city map and2022 fine bay numbering are excluded from current numbered-platform assignment.",
+    "This is source-based coarse passenger circulation within a publicly identified terminal; exact physical bay and door remain unassigned. No map/photo is redistributed."
+  ]
+}

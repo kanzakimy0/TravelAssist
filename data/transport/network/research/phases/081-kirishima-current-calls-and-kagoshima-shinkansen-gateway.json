@@ -1,0 +1,250 @@
+{
+  "phaseId": "081-kirishima-current-calls-and-kagoshima-shinkansen-gateway",
+  "strategy": [
+    "CURRENT_JR_ACTUAL_DAILY_KIRISHIMA_CALLS",
+    "EXACT_OPERATOR_LINE_IDENTITIES_FOR_HOMONYMS",
+    "REVIEWED_SHINKANSEN_TRANSFER_CONNECTS_MIYAZAKI_AIRPORT_BRANCH"
+  ],
+  "completedActionIds": [
+    "rail:jr-kyushu:kirishima-current-calls-and-kagoshima-transfer"
+  ],
+  "facts": [
+    {
+      "factId": "kirishima-current-actual-6005M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-kyushu:kirishima-current-calls-and-kagoshima-transfer",
+      "sourceUrl": "https://www.jrkyushu-timetable.jp/jr-k_time/2610/0004/00047401.html?c=28903&ym=202610&d=01",
+      "observedResponseSha256": "dede2d8bd4ed1317d2d26c451332defcf989552252c735de424b8f79c73d3c4f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-kyushu:kirishima-current-calls-and-kagoshima-transfer",
+          "url": "https://www.jrkyushu-timetable.jp/cgi-bin/jr-k_time/tt_dep.cgi?c=28903",
+          "observedResponseSha256": "09e23a61fd39c09280e34cf97dbaaf5a409f1d417bd3fdb0db5d18b32bb4bca2"
+        }
+      ],
+      "locator": "Official 2026-10-01 actual daily scheduled Kirishima 6005M train detail, complete ten-call sequence independently reviewed for this direction. Retain only calls and service identity, not timetable clocks or calendar artwork. Current-day disruptions are outside this scheduled static topology claim. S12 independently resolves each physical rail component; Kokubu is the Kyushu Nippo-line station, not the Shikoku homonym.",
+      "operator": "九州旅客鉄道",
+      "line": "日豊本線・鹿児島本線（きりしま）",
+      "mode": "conventional_rail",
+      "serviceClass": "特急きりしま",
+      "direction": "southbound",
+      "sourceTrainNumber": "6005M",
+      "callingStations": [
+        "宮崎",
+        "南宮崎",
+        "都城",
+        "西都城",
+        "霧島神宮",
+        "国分",
+        "隼人",
+        "加治木",
+        "鹿児島",
+        "鹿児島中央"
+      ],
+      "callingComponents": [
+        {
+          "name": "宮崎",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "南宮崎",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "都城",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西都城",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "霧島神宮",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "国分",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "隼人",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "加治木",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鹿児島",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鹿児島中央",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_DAILY_KIRISHIMA_TRAIN_COMPLETE_CALL_SEQUENCE",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_SERVICE_DATE_2026_10_01_NOT_REALTIME"
+    },
+    {
+      "factId": "kirishima-current-actual-6006M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-kyushu:kirishima-current-calls-and-kagoshima-transfer",
+      "sourceUrl": "https://www.jrkyushu-timetable.jp/jr-k_time/2610/0006/00065101.html?c=29007&ym=202610&d=01",
+      "observedResponseSha256": "bc750fd791acdce90cec2b1009e5804caf83bc6ae71cb1702a3b1e11bf318c64",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-kyushu:kirishima-current-calls-and-kagoshima-transfer",
+          "url": "https://www.jrkyushu-timetable.jp/cgi-bin/jr-k_time/tt_dep.cgi?c=29007",
+          "observedResponseSha256": "0f999193840851a00c0f17e3b4df5fb65e56dd9d41524506c27ff381f76c23fc"
+        }
+      ],
+      "locator": "Official 2026-10-01 actual daily scheduled Kirishima 6006M train detail, complete ten-call sequence independently reviewed for this direction. Retain only calls and service identity, not timetable clocks or calendar artwork. Current-day disruptions are outside this scheduled static topology claim. S12 independently resolves each physical rail component; Kokubu is the Kyushu Nippo-line station, not the Shikoku homonym.",
+      "operator": "九州旅客鉄道",
+      "line": "日豊本線・鹿児島本線（きりしま）",
+      "mode": "conventional_rail",
+      "serviceClass": "特急きりしま",
+      "direction": "northbound",
+      "sourceTrainNumber": "6006M",
+      "callingStations": [
+        "鹿児島中央",
+        "鹿児島",
+        "加治木",
+        "隼人",
+        "国分",
+        "霧島神宮",
+        "西都城",
+        "都城",
+        "南宮崎",
+        "宮崎"
+      ],
+      "callingComponents": [
+        {
+          "name": "鹿児島中央",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鹿児島",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "加治木",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "隼人",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "国分",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "霧島神宮",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西都城",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "都城",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "南宮崎",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宮崎",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_DAILY_KIRISHIMA_TRAIN_COMPLETE_CALL_SEQUENCE",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_SERVICE_DATE_2026_10_01_NOT_REALTIME"
+    },
+    {
+      "factId": "kagoshima-chuo-current-shinkansen-transfer-concourse",
+      "kind": "transfer",
+      "sourceActionId": "rail:jr-kyushu:kirishima-current-calls-and-kagoshima-transfer",
+      "sourceUrl": "https://www.jrkyushu.co.jp/railway/station/__icsFiles/afieldfile/2023/03/14/kagoshimacyuuoueki_kounaizu.pdf",
+      "observedResponseSha256": "014ec76434d2dc572790efdeb7c9396f18b5ad167006138b37f42ce45da1cd5a",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-kyushu:kirishima-current-calls-and-kagoshima-transfer",
+          "url": "https://www.jrkyushu.co.jp/railway/station/1191491_1601.html",
+          "observedResponseSha256": "44dcd11a0e1c3097d78196f3f89b8d3e4357b32d04fd26e5cc664916f4ffdd1d"
+        }
+      ],
+      "locator": "The official station page currently links this March 2023 diagram. Page 1 explicitly marks the Shinkansen transfer gate joining the concourse for Shinkansen platforms 11-14 and conventional platforms 1-6. Bind only the S12 Kyushu Shinkansen and Kagoshima-line components; no transfer time, fare or accessibility guarantee. KOTSUSHIMBUNSHA artwork is not persisted.",
+      "components": [
+        {
+          "name": "鹿児島中央",
+          "operator": "九州旅客鉄道",
+          "line": "九州新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "鹿児島中央",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENTLY_LINKED_OFFICIAL_SHINKANSEN_TRANSFER_GATE",
+      "hubScopeComplete": false
+    }
+  ]
+}

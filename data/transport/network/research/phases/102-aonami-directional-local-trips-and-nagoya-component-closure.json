@@ -1,0 +1,282 @@
+{
+  "phaseId": "102-aonami-directional-local-trips-and-nagoya-component-closure",
+  "strategy": [
+    "AONAMI_ACTUAL_DIRECTIONAL_FULL_ROUTE_TRIP_REVIEW",
+    "NAGOYA_PUBLIC_CONCOURSE_COMPONENT_JOIN"
+  ],
+  "completedActionIds": [
+    "private:aonami:current-directional-local-trains-and-jr-gateway",
+    "hub:jr-central:nagoya-current-aonami-gateway"
+  ],
+  "facts": [
+    {
+      "factId": "aonami-current-first-weekday-full-route-nagoyabound",
+      "kind": "service",
+      "sourceActionId": "private:aonami:current-directional-local-trains-and-jr-gateway",
+      "sourceUrl": "https://www.aonamiline.co.jp/sys/wp-content/uploads/timetable_weekup2026.pdf",
+      "observedResponseSha256": "4a1ed6b20fc489f675d66d3fa5e0560e414ffadb52cfb5dc5c73f770234e2a5e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:aonami:current-directional-local-trains-and-jr-gateway",
+          "url": "https://www.aonamiline.co.jp/aonamitimetable",
+          "observedResponseSha256": "e68f3318e6bd9fbe8166f9d11465b2a57d9b3cd907a82cd55506c49c1d2f857b"
+        },
+        {
+          "sourceActionId": "private:aonami:current-directional-local-trains-and-jr-gateway",
+          "url": "https://www.aonamiline.co.jp/train",
+          "observedResponseSha256": "dcb094b8c58791d9b175445a58cac1652043cfd727bcae19dc16dc4de4750da1"
+        }
+      ],
+      "locator": "Current-linked 2026 weekday PDF, sole page, first table first actual trip column. All eleven station rows have actual call values; independently viewed in each directional PDF. No reversal assumption, all-day frequency claim, raw table or numeric timetable values. These are bounded static all-stop patterns, not a complete timetable.",
+      "line": "西名古屋港線",
+      "operator": "名古屋臨海高速鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "nagoyabound",
+      "callingStations": [
+        "金城ふ頭",
+        "野跡",
+        "稲永",
+        "荒子川公園",
+        "港北",
+        "中島",
+        "南荒子",
+        "荒子",
+        "小本",
+        "ささしまライブ",
+        "名古屋"
+      ],
+      "callingComponents": [
+        {
+          "name": "金城ふ頭",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "野跡",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "稲永",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "荒子川公園",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "港北",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中島",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南荒子",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "荒子",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小本",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "ささしまライブ",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "名古屋",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_DIRECTIONAL_PDF_ACTUAL_FIRST_FULL_ROUTE_TRIP_COLUMN",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "aonami-current-first-weekday-full-route-kinjofutobound",
+      "kind": "service",
+      "sourceActionId": "private:aonami:current-directional-local-trains-and-jr-gateway",
+      "sourceUrl": "https://www.aonamiline.co.jp/sys/wp-content/uploads/timetable_weekdown2026.pdf",
+      "observedResponseSha256": "ef29c406b996f1eef990be42e81c5ba7ae3d109fb246f289d78bfa4e99f4accb",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:aonami:current-directional-local-trains-and-jr-gateway",
+          "url": "https://www.aonamiline.co.jp/aonamitimetable",
+          "observedResponseSha256": "e68f3318e6bd9fbe8166f9d11465b2a57d9b3cd907a82cd55506c49c1d2f857b"
+        },
+        {
+          "sourceActionId": "private:aonami:current-directional-local-trains-and-jr-gateway",
+          "url": "https://www.aonamiline.co.jp/train",
+          "observedResponseSha256": "dcb094b8c58791d9b175445a58cac1652043cfd727bcae19dc16dc4de4750da1"
+        }
+      ],
+      "locator": "Current-linked 2026 weekday PDF, sole page, first table first actual trip column. All eleven station rows have actual call values; independently viewed in each directional PDF. No reversal assumption, all-day frequency claim, raw table or numeric timetable values. These are bounded static all-stop patterns, not a complete timetable.",
+      "line": "西名古屋港線",
+      "operator": "名古屋臨海高速鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "kinjofutobound",
+      "callingStations": [
+        "名古屋",
+        "ささしまライブ",
+        "小本",
+        "荒子",
+        "南荒子",
+        "中島",
+        "港北",
+        "荒子川公園",
+        "稲永",
+        "野跡",
+        "金城ふ頭"
+      ],
+      "callingComponents": [
+        {
+          "name": "名古屋",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "ささしまライブ",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小本",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "荒子",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南荒子",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中島",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "港北",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "荒子川公園",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "稲永",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "野跡",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "金城ふ頭",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_DIRECTIONAL_PDF_ACTUAL_FIRST_FULL_ROUTE_TRIP_COLUMN",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-aonami-jr-reviewed-public-concourse-route",
+      "kind": "transfer",
+      "sourceActionId": "private:aonami:current-directional-local-trains-and-jr-gateway",
+      "sourceUrl": "https://www.aonamiline.co.jp/sys/wp-content/uploads/norikae_jr.pdf",
+      "observedResponseSha256": "a32aaee3f07aed8e3097c67523df32d21161dee69418ec09baf0e58d782e8f04",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "private:aonami:current-directional-local-trains-and-jr-gateway",
+          "url": "https://www.aonamiline.co.jp/train/an01-nagoya/an01-route",
+          "observedResponseSha256": "fb4d54ac5ece9fc15956004a3ff7fb8bd2f577f9e44b11f4ff249a07cd4270a6"
+        },
+        {
+          "sourceActionId": "hub:jr-central:nagoya-current-aonami-gateway",
+          "url": "https://railway.jr-central.co.jp/station-guide/shinkansen/nagoya/map.html",
+          "observedResponseSha256": "c698662c5c0ba487b56c740b6fb66dba2c4a966e703194752cde8a91a1282554"
+        },
+        {
+          "sourceActionId": "hub:jr-central:nagoya-current-aonami-gateway",
+          "url": "https://railway.jr-central.co.jp/station-guide/shinkansen/nagoya/_img/nagoya_250408.gif",
+          "observedResponseSha256": "6eb9a29dca939ef34689b041c100e7a4b463c6959e20024960c89148ba2601fa"
+        }
+      ],
+      "locator": "Current Aonami JR-conventional interchange PDF and current JR Nagoya diagram both visually reviewed. Aonami map explicitly draws the public route from JR central or north gates through the central concourse to the Aonami public ticket gate (route B), and separately shows the direct connecting gate A. Bind public concourse component relation, not a guaranteed open connecting gate: Taikodori south/connecting gate has 06:00-23:00 annotation. No raw artwork, walking time, ticket-free access or all-hours guarantee retained.",
+      "components": [
+        {
+          "name": "名古屋",
+          "operator": "名古屋臨海高速鉄道",
+          "line": "西名古屋港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "名古屋",
+          "operator": "東海旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "TWO_CURRENT_OPERATOR_MAPS_EXPLICIT_PUBLIC_INTERCHANGE",
+      "hubScopeComplete": false
+    }
+  ]
+}

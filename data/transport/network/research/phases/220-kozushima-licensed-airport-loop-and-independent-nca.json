@@ -1,0 +1,281 @@
+{
+  "phaseId": "220-kozushima-licensed-airport-loop-and-independent-nca",
+  "strategy": [
+    "ORIGINAL_AIRPORT_SAME_ID_ADMISSION",
+    "LICENSED_EXACT_NATIVE_GTFS",
+    "TWO_INDEPENDENT_COMPLETE_DIRECTED_TRIPS",
+    "CURRENT_MUNICIPAL_AIRPORT_PASSENGER_INTERFACE",
+    "INDEPENDENT_NCA_DIRECTIONS",
+    "EXISTING_CHOFU_NATIONAL_ANCHOR"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "kozushima-airport-loop-package.json",
+      "packageSha256": "246090a4ff7e1265da155800ef8cbce0a74ae989202ce2842d3941996b290cbd",
+      "sourceActionId": "bus:kozushima:licensed-current-airport-loop",
+      "reviewedServiceDate": "20261002"
+    }
+  ],
+  "completedActionIds": [
+    "government:c28:airport-identities",
+    "bus:kozushima:licensed-current-airport-loop",
+    "airport:kozushima:current-nca-independent-chofu-directions",
+    "airport:kozushima:municipal-government-coarse-public-bus-interface"
+  ],
+  "facts": [
+    {
+      "factId": "kozushima-nca-independent-direction-0",
+      "kind": "service",
+      "sourceActionId": "airport:kozushima:current-nca-independent-chofu-directions",
+      "sourceUrl": "https://central-air.co.jp/.assets/2026-10%E7%A5%9E%E6%B4%A5%E5%B3%B6%E3%83%BBKozushima.pdf",
+      "observedResponseSha256": "ae7b51748530c960042079fcd292372e7dd702daabfe7e67fd9b756f518a4475",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kozushima:current-nca-independent-chofu-directions",
+          "url": "https://central-air.co.jp/schedule-fee.html",
+          "observedResponseSha256": "6b9dc9e67c4072c112e05eceff7ac3c198b2b70b9f71b803ce57265df6d06806"
+        },
+        {
+          "sourceActionId": "airport:kozushima:current-nca-independent-chofu-directions",
+          "url": "https://central-air.co.jp/guide-access.html",
+          "observedResponseSha256": "8fe83ddd0e871d0b182aa170cf84e896f80edf3fcb376e6a7dba018a4faad0f9"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+          "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+        },
+        {
+          "sourceActionId": "airport:kozushima:municipal-government-coarse-public-bus-interface",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/kozushima/kozushima_service",
+          "observedResponseSha256": "7977c82b9e8b755b7b4ba29a8df4c921a716284e6a84044ee8e4ab10f7895bdb"
+        }
+      ],
+      "operator": "新中央航空株式会社",
+      "line": "調布・神津島国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "RJTF-RJAZ",
+      "serviceState": "active",
+      "serviceStateScope": "Carrier current October2026 own timetable uses A pattern on each listed date including October2. Two independently printed carrier directions301 and302 support minimum static airport relation. No clocks, flight availability or reservation confirmation persisted.",
+      "callingStations": [
+        "調布飛行場",
+        "神津島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "調布飛行場",
+          "operator": "airport-facility:cf03_00029",
+          "line": "airport:cf03_00029",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00029",
+            "requirementId": "review:official-airport:調布",
+            "expectedRequirementName": "調布",
+            "method": "REVIEWED_EXACT_CURRENT_OFFICIAL_AIRFIELD_NAME",
+            "officialNameEvidence": {
+              "officialName": "調布飛行場",
+              "requirementName": "調布",
+              "publicName": "調布飛行場",
+              "equivalenceKind": "EXACT_PRIMARY_CURRENT_FORMAL_NAME",
+              "locator": "Tokyo port bureau current Chofu airfield access/facility pages explicitly name the passenger facility 調布飛行場; original required name調布 plus exact飛行場 suffix. No invented 空港 public alias.",
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+              "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+            },
+            "currentPassengerAccessReview": "Current government access names Odakyu調40 from Keio Chofu north bay14, airfield bus stop zero-minute terminal access. Root-reviewed facility diagram places bus pole on public terminal/front-carpark access outside airfield. C28 remains airport reference point only."
+          }
+        },
+        {
+          "name": "神津島空港",
+          "operator": "airport-facility:cf03_00031",
+          "line": "airport:cf03_00031",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00031",
+            "requirementId": "review:official-airport:神津島",
+            "expectedRequirementName": "神津島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Independent Tokyo government airport service page and NCA October2026 own timetable establish original passenger airport. Current municipality dedicated airport bus timetable and native licensed airport record establish whole-airport public passenger bus interface. No exact curb, walking geometry or accessibility claim."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Carrier October2026 Kozushima page1 patternA independently lists301 調布→神津島; exact original C28 airport suffix identity, existing HOLD requirement unchanged."
+    },
+    {
+      "factId": "kozushima-nca-independent-direction-1",
+      "kind": "service",
+      "sourceActionId": "airport:kozushima:current-nca-independent-chofu-directions",
+      "sourceUrl": "https://central-air.co.jp/.assets/2026-10%E7%A5%9E%E6%B4%A5%E5%B3%B6%E3%83%BBKozushima.pdf",
+      "observedResponseSha256": "ae7b51748530c960042079fcd292372e7dd702daabfe7e67fd9b756f518a4475",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kozushima:current-nca-independent-chofu-directions",
+          "url": "https://central-air.co.jp/schedule-fee.html",
+          "observedResponseSha256": "6b9dc9e67c4072c112e05eceff7ac3c198b2b70b9f71b803ce57265df6d06806"
+        },
+        {
+          "sourceActionId": "airport:kozushima:current-nca-independent-chofu-directions",
+          "url": "https://central-air.co.jp/guide-access.html",
+          "observedResponseSha256": "8fe83ddd0e871d0b182aa170cf84e896f80edf3fcb376e6a7dba018a4faad0f9"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+          "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+        },
+        {
+          "sourceActionId": "airport:kozushima:municipal-government-coarse-public-bus-interface",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/kozushima/kozushima_service",
+          "observedResponseSha256": "7977c82b9e8b755b7b4ba29a8df4c921a716284e6a84044ee8e4ab10f7895bdb"
+        }
+      ],
+      "operator": "新中央航空株式会社",
+      "line": "調布・神津島国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "RJAZ-RJTF",
+      "serviceState": "active",
+      "serviceStateScope": "Carrier current October2026 own timetable uses A pattern on each listed date including October2. Two independently printed carrier directions301 and302 support minimum static airport relation. No clocks, flight availability or reservation confirmation persisted.",
+      "callingStations": [
+        "神津島空港",
+        "調布飛行場"
+      ],
+      "callingComponents": [
+        {
+          "name": "神津島空港",
+          "operator": "airport-facility:cf03_00031",
+          "line": "airport:cf03_00031",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00031",
+            "requirementId": "review:official-airport:神津島",
+            "expectedRequirementName": "神津島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Independent Tokyo government airport service page and NCA October2026 own timetable establish original passenger airport. Current municipality dedicated airport bus timetable and native licensed airport record establish whole-airport public passenger bus interface. No exact curb, walking geometry or accessibility claim."
+          }
+        },
+        {
+          "name": "調布飛行場",
+          "operator": "airport-facility:cf03_00029",
+          "line": "airport:cf03_00029",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00029",
+            "requirementId": "review:official-airport:調布",
+            "expectedRequirementName": "調布",
+            "method": "REVIEWED_EXACT_CURRENT_OFFICIAL_AIRFIELD_NAME",
+            "officialNameEvidence": {
+              "officialName": "調布飛行場",
+              "requirementName": "調布",
+              "publicName": "調布飛行場",
+              "equivalenceKind": "EXACT_PRIMARY_CURRENT_FORMAL_NAME",
+              "locator": "Tokyo port bureau current Chofu airfield access/facility pages explicitly name the passenger facility 調布飛行場; original required name調布 plus exact飛行場 suffix. No invented 空港 public alias.",
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+              "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+            },
+            "currentPassengerAccessReview": "Current government access names Odakyu調40 from Keio Chofu north bay14, airfield bus stop zero-minute terminal access. Root-reviewed facility diagram places bus pole on public terminal/front-carpark access outside airfield. C28 remains airport reference point only."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Carrier October2026 Kozushima page1 patternA independently lists302 神津島→調布; exact existing official Chofu airfield identity reused."
+    },
+    {
+      "factId": "kozushima-public-airport-native-bus-gateway",
+      "kind": "transfer",
+      "sourceActionId": "airport:kozushima:municipal-government-coarse-public-bus-interface",
+      "sourceUrl": "https://www.vill.kouzushima.tokyo.jp/images/transport/bus-20260928.jpg?v=0909",
+      "observedResponseSha256": "eecc9248e48578267edee2a3bf41d8662c4bb70340da609483138f74b4df488e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kozushima:municipal-government-coarse-public-bus-interface",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/kozushima/kozushima_service",
+          "observedResponseSha256": "7977c82b9e8b755b7b4ba29a8df4c921a716284e6a84044ee8e4ab10f7895bdb"
+        },
+        {
+          "sourceActionId": "airport:kozushima:municipal-government-coarse-public-bus-interface",
+          "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/islands/kozushima-access.html",
+          "observedResponseSha256": "5b9be767eaeed7bef46098d4f4bb97d6ac710bce6bbe7a6be72cb2d977aa1502"
+        },
+        {
+          "sourceActionId": "airport:kozushima:municipal-government-coarse-public-bus-interface",
+          "url": "https://www.vill.kouzushima.tokyo.jp/transport/",
+          "observedResponseSha256": "1fd176c9f0d692f6b979361e10111f3dd2ed2801bc9e13395eb09e02f4acdfcc"
+        },
+        {
+          "sourceActionId": "airport:kozushima:municipal-government-coarse-public-bus-interface",
+          "url": "https://www.vill.kouzushima.tokyo.jp/reiki/reiki_honbun/g159RG00000022.html",
+          "observedResponseSha256": "e200336de9242a6f292649252e86c5618ff7b40b198fa06d83bcca4affa3d1ce"
+        }
+      ],
+      "components": [
+        {
+          "name": "神津島空港",
+          "operator": "airport-facility:cf03_00031",
+          "line": "airport:cf03_00031",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00031",
+            "requirementId": "review:official-airport:神津島",
+            "expectedRequirementName": "神津島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Independent Tokyo government airport service page and NCA October2026 own timetable establish original passenger airport. Current municipality dedicated airport bus timetable and native licensed airport record establish whole-airport public passenger bus interface. No exact curb, walking geometry or accessibility claim."
+          }
+        },
+        {
+          "name": "空港",
+          "operator": "神津島村",
+          "line": "gtfs:kozushimavillage:airport-loop-20261002:route:1",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:kozushimavillage:airport-loop-20261002",
+            "stopId": "3_0",
+            "sourceArchiveSha256": "84a29423238cdc1513a7d20c82520add0fa1047b8f828381bd8d13cb0ee0789a",
+            "recordSha256": "678114212479d689a9029fc86a91a1f8efeb48b34b6f80484564be5a6b8ed987",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current municipality dedicated airport bus timetable explicitly calls空港 in the ordinary airport/Takowan section; municipal regulation independently names神津島空港; same municipality licensed current GTFS has unique exact空港3_0. Tokyo government identifies public passenger airport and public terminal approach. This is solely whole-airport ↔ dedicated public airport-bus representative gateway, with both passenger directions; no curb, pole precision, geometry, time, step-free or nearest-coordinate inference."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_PUBLIC_PASSENGER_GATEWAY_AT_FACILITY_SCALE",
+      "hubScopeComplete": false,
+      "locator": "Current municipality dedicated airport bus timetable explicitly calls空港 in the ordinary airport/Takowan section; municipal regulation independently names神津島空港; same municipality licensed current GTFS has unique exact空港3_0. Tokyo government identifies public passenger airport and public terminal approach. This is solely whole-airport ↔ dedicated public airport-bus representative gateway, with both passenger directions; no curb, pole precision, geometry, time, step-free or nearest-coordinate inference."
+    }
+  ],
+  "scope": "Original Kozushima airport HOLD upgrade;11 licensed native bus stops forming actual two-trip directed cycle;11 bus rides,2 independent NCA flights,2 coarse public airport walking edges. No port/ferry service, reverse fabricated route, extra trip, clock or curb geometry."
+}

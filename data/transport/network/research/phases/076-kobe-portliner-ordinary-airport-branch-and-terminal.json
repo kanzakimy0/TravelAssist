@@ -1,0 +1,256 @@
+{
+  "phaseId": "076-kobe-portliner-ordinary-airport-branch-and-terminal",
+  "strategy": [
+    "CURRENT_FIXED_GUIDEWAY_ORDINARY_RULE",
+    "INDEPENDENT_C28_AIRPORT_IDENTITY",
+    "EXPLICIT_TERMINAL_PUBLIC_PASSAGE",
+    "rail"
+  ],
+  "completedActionIds": [
+    "rail:kobe-portliner:ordinary-airport-branch-and-terminal"
+  ],
+  "facts": [
+    {
+      "factId": "kobe-portliner-ordinary-airport-branch-airport-bound",
+      "kind": "service",
+      "sourceActionId": "rail:kobe-portliner:ordinary-airport-branch-and-terminal",
+      "sourceUrl": "https://www.knt-liner.co.jp/station/",
+      "observedResponseSha256": "4b333643bdbb70e36f622ca81227eaf6560ba953ac7a0466606da185e5d47d4c",
+      "locator": "Current P01-P09 airport branch station diagram and directional station timetables, which continue to identify the 2016-03-28 revision. The official revision notice page 1 explicitly converts every rapid train to ordinary. Bind only the nine-station ordinary airport branch; exclude PL07-PL09 loop, short workings, temporary trains, old station aliases, travel times and timetable clocks. Both directions are independently published at the current terminal timetable URLs.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.knt-liner.co.jp/stationp01/",
+          "observedResponseSha256": "73bb59d2e971381ebef7bd7c1d86c9d10aa018af59e5c88b11dd4b503f2c8390"
+        },
+        {
+          "url": "https://www.knt-liner.co.jp/stationp09/",
+          "observedResponseSha256": "e82c204f9be58cecc3c98f178e9a6746ec9654789c434d48a8b9dc729a15fdd5"
+        },
+        {
+          "url": "https://www.knt-liner.co.jp/wp/wp-content/uploads/2016/03/6368853bcfccf1b2e4c19641e561998d.pdf",
+          "observedResponseSha256": "68155ae22976e350fdcf2fb1711b247abebfe1ffd84b9429efb1121b2550702d"
+        }
+      ],
+      "operator": "神戸新交通",
+      "line": "ポートアイランド線",
+      "mode": "fixed_guideway",
+      "serviceClass": "普通（神戸空港発着）",
+      "direction": "airport-bound",
+      "callingStations": [
+        "三宮",
+        "貿易センター",
+        "ポートターミナル",
+        "中公園",
+        "みなとじま",
+        "市民広場",
+        "医療センター",
+        "計算科学センター",
+        "神戸空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "三宮",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "貿易センター",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "ポートターミナル",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "中公園",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "みなとじま",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "市民広場",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "医療センター",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "計算科学センター",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "神戸空港",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "CURRENT_DIRECTIONAL_TIMETABLE_AND_EXPLICIT_ALL_ORDINARY_RULE_WITH_NUMBERED_BRANCH_CALLS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "kobe-portliner-ordinary-airport-branch-sannomiya-bound",
+      "kind": "service",
+      "sourceActionId": "rail:kobe-portliner:ordinary-airport-branch-and-terminal",
+      "sourceUrl": "https://www.knt-liner.co.jp/station/",
+      "observedResponseSha256": "4b333643bdbb70e36f622ca81227eaf6560ba953ac7a0466606da185e5d47d4c",
+      "locator": "Current P01-P09 airport branch station diagram and directional station timetables, which continue to identify the 2016-03-28 revision. The official revision notice page 1 explicitly converts every rapid train to ordinary. Bind only the nine-station ordinary airport branch; exclude PL07-PL09 loop, short workings, temporary trains, old station aliases, travel times and timetable clocks. Both directions are independently published at the current terminal timetable URLs.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.knt-liner.co.jp/stationp01/",
+          "observedResponseSha256": "73bb59d2e971381ebef7bd7c1d86c9d10aa018af59e5c88b11dd4b503f2c8390"
+        },
+        {
+          "url": "https://www.knt-liner.co.jp/stationp09/",
+          "observedResponseSha256": "e82c204f9be58cecc3c98f178e9a6746ec9654789c434d48a8b9dc729a15fdd5"
+        },
+        {
+          "url": "https://www.knt-liner.co.jp/wp/wp-content/uploads/2016/03/6368853bcfccf1b2e4c19641e561998d.pdf",
+          "observedResponseSha256": "68155ae22976e350fdcf2fb1711b247abebfe1ffd84b9429efb1121b2550702d"
+        }
+      ],
+      "operator": "神戸新交通",
+      "line": "ポートアイランド線",
+      "mode": "fixed_guideway",
+      "serviceClass": "普通（神戸空港発着）",
+      "direction": "sannomiya-bound",
+      "callingStations": [
+        "神戸空港",
+        "計算科学センター",
+        "医療センター",
+        "市民広場",
+        "みなとじま",
+        "中公園",
+        "ポートターミナル",
+        "貿易センター",
+        "三宮"
+      ],
+      "callingComponents": [
+        {
+          "name": "神戸空港",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "計算科学センター",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "医療センター",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "市民広場",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "みなとじま",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "中公園",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "ポートターミナル",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "貿易センター",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "三宮",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "CURRENT_DIRECTIONAL_TIMETABLE_AND_EXPLICIT_ALL_ORDINARY_RULE_WITH_NUMBERED_BRANCH_CALLS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "kobe-airport-current-terminal-public-concourse",
+      "kind": "transfer",
+      "sourceActionId": "rail:kobe-portliner:ordinary-airport-branch-and-terminal",
+      "sourceUrl": "https://www.knt-liner.co.jp/xn05/wp-content/themes/jp.co.knt-liner/img/station/p09/floormap.png",
+      "observedResponseSha256": "a4295ddd7b8a147dd2590cf123b981d0d88d9f27986a1698ef8e536d04b68c71",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.knt-liner.co.jp/station/p09/",
+          "observedResponseSha256": "7c4a4c389fe8fd0ddc54d0826c448473ae44857ce2372a43c4d2e5494d0e2499"
+        }
+      ],
+      "locator": "Current P09 station floor diagram explicitly connects the 2F public gate concourse to Kobe Airport Terminal 1 and the signed route to Terminal 2. Bind one whole C28 airport facility to the independent fixed-guideway station; no terminal-coordinate precision, walking time or step-free route guarantee is asserted.",
+      "components": [
+        {
+          "name": "神戸空港",
+          "operator": "airport-facility:cf03_00097",
+          "line": "airport:cf03_00097",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00097",
+            "requirementId": "review:transport-node:e17c8349-3dd0-597e-a269-29b6930f414c",
+            "expectedRequirementName": "神戸",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current P09 station floor diagram explicitly connects the 2F public gate concourse to Kobe Airport Terminal 1 and the signed route to Terminal 2. Bind one whole C28 airport facility to the independent fixed-guideway station; no terminal-coordinate precision, walking time or step-free route guarantee is asserted."
+          }
+        },
+        {
+          "name": "神戸空港",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_TERMINAL_PASSAGE_AND_INDEPENDENT_COMPONENTS",
+      "hubScopeComplete": false
+    }
+  ]
+}

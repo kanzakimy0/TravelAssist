@@ -1,0 +1,998 @@
+{
+  "scope": "Six completed packages204-209; each receipt retains actual cache/source methods and measured counters. Earlier accumulated research is not relabeled as current new HTTP. Missing counters remain unavailable.",
+  "packages": [
+    {
+      "iteration": 204,
+      "closedRootIds": [
+        "root:airport:review:official-airport:多良間"
+      ],
+      "receiptPath": ".cache/task-086/tarama-next/interface-contract-private/report.json",
+      "receiptSha256": "a528d048f060cd581033099d09d7168237207228d74003d493ccbd5e9df00089",
+      "receipt": {
+        "status": "COARSE_AIRPORT_TO_NATIVE_BUS_RELATION_SUPPORTED_EXACT_FRONTAGE_UNPROVEN",
+        "rootCauseId": "root:airport:review:official-airport:多良間",
+        "scope": "Read-only contract/source assessment. No canonical writes or shared generation.",
+        "serviceDate": "20261003",
+        "recommendation": {
+          "supportsCoarsePublicRelation": true,
+          "proposedEndpoints": {
+            "airportRequirementId": "review:official-airport:多良間",
+            "nativeBusSourceId": "gtfs:tarama-village-current",
+            "nativeStopId": "S1759",
+            "nativeStopName": "多良間空港"
+          },
+          "directions": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "basis": "The municipality’s current airport-access page and airport-specific FAQ place the village paid bus in the public airport-to-village access context and direct passengers to its bus boarding place. The municipality’s dated 2025–2030 public transport plan independently maps the village bus from Tarama Airport through the village office and Dream Patio, and says bus operation is coordinated with aircraft/ferry arrivals/departures. The current licensed GTFS archive supplies the exact native stop identity S1759 and actual opposite-direction airport-town-hall trips. This is an explicit service relation across official sources, not a coordinate join or a same-name-only join.",
+          "doesNotSupport": "No exact terminal door, curb, marked bay, path geometry, walk duration, accessibility, or numbered stand is established. The 2016 frontage photos show doors and roadway but do not visibly identify a scheduled-bus stand. Keep any precise terminal-frontage/walk assertion out of scope.",
+          "contractInterpretation": "The existing AIRPORT_FACILITY_GATEWAY_EXPLICIT_TERMINAL_ACCESS_ONLY semantic can support an airport-wide passenger-access relation when current airport-specific access text and an official island service plan explicitly link public bus service with the airport, while the licensed native feed binds the bus endpoint. Treat this only as coarse airport-to-native-stop public access; it does not upgrade the C28 reference point into a terminal/curb point."
+        },
+        "evidence": [
+          {
+            "kind": "official_current_airport_access",
+            "url": "https://www.vill.tarama.okinawa.jp/about/access/hikouki/",
+            "responseSha256": "4c3f6204e658f9f2bef5c00c77d5f77109099c43a508da8ec638a550db5f436b",
+            "observedAt": "2026-10-03T06:37:34.408992+00:00",
+            "fact": "Airport-to-village options include the current paid village bus."
+          },
+          {
+            "kind": "official_airport_specific_faq",
+            "url": "https://www.vill.tarama.okinawa.jp/faq/faq005/",
+            "responseSha256": "5138965186349ccacf78de02ff35a111b2a6f2d0434542ab90be0ebd633ab493",
+            "observedAt": "2026-10-03T06:37:34.002214+00:00",
+            "fact": "In answer to airport-to-village transport, the village states the paid bus currently runs and directs passengers to its bus boarding place."
+          },
+          {
+            "kind": "official_current_bus_service_page",
+            "url": "https://www.vill.tarama.okinawa.jp/kurashi/yushou_bus/",
+            "responseSha256": "2fea6ba180435401ac4f9377ebd2e9f48a673a64cd91a75470b32cd04193fb1c",
+            "observedAt": "2026-10-03T06:37:33.027878+00:00",
+            "fact": "Current municipal page publishes the village paid-bus timetable."
+          },
+          {
+            "kind": "official_current_bus_timetable",
+            "url": "https://www.vill.tarama.okinawa.jp/common/uploads/3d933674fb86bdef28863a1d0ee4fd16.pdf",
+            "responseSha256": "3c64fc554615f3af04ce3c1ab1571f221c7b044b26fc0a5d9f24a91f4551f773",
+            "observedAt": "2026-10-03T06:37:33.457306+00:00",
+            "fact": "Official sheet shows opposite directions between airport and village/port stops. Image retained only for private visual review."
+          },
+          {
+            "kind": "new_official_current_period_public_transport_plan",
+            "title": "多良間村地域公共交通計画, 令和7年4月 (R7–R12)",
+            "url": "https://www.vill.tarama.okinawa.jp/common/uploads/c92996217010f9c2404cb56936a5158c.pdf",
+            "responseSha256": "693e5e4385cfe05affaa2e1fba5cbf766e668c02451bf1b011be4107459b6269",
+            "status": 200,
+            "bytes": 5129319,
+            "retrievedInMemoryOnly": true,
+            "fact": "Section 1-4-11 (PDF pp.18–19) identifies the village bus route as Airport–Village Office–Dream Patio–port and states it is operated to coordinate with flight/ferry arrivals and departures. It is a route-system plan, not a curb/bay plan."
+          },
+          {
+            "kind": "licensed_native_gtfs_archive",
+            "url": "https://api3.ottop.org/download/gtfs/ooXuXei4op7y/4000020473758",
+            "responseSha256": "51511cab51a97b6411a871a7038dc08c6c42616f49fae3d51a6666773c4fecff",
+            "license": "CC BY 4.0 (OTTOP catalog and Aug 2024 terms)",
+            "feedValid": [
+              "20260712",
+              "20261130"
+            ],
+            "selectedNativeStopId": "S1759",
+            "archivePath": ".cache/task-086/tarama-next/ottop-current.zip",
+            "packageSha256": "04a91c2ddddbcf3fb0ebd8cc4157354c0913f51a730571267d7a26909b4e191a",
+            "fact": "Exact native stop S1759 is served by two actual opposite-direction airport-town-hall patterns on service date 20261003."
+          },
+          {
+            "kind": "older_licensed_frontage_photo_1",
+            "url": "https://commons.wikimedia.org/wiki/File:Tarama_tarama_airport_1.jpg",
+            "photoSha256": "df78f4a2f104498cea6ca177ba905813e3c91ef788a81b8e4a53d0cfb5005ab1",
+            "license": "CC BY-SA 4.0",
+            "capturedAt": "2016-09-20",
+            "fact": "Airport front and public roadway visible; no marked or named bus stand identifiable."
+          },
+          {
+            "kind": "older_licensed_frontage_photo_2",
+            "url": "https://commons.wikimedia.org/wiki/File:Tarama_tarama_airport_2.jpg",
+            "photoSha256": "a48ce3f5065c320000f13f242b5aa9aec5217976e1aff58ab5ba9bf534f0bc12",
+            "license": "CC BY-SA 4.0",
+            "capturedAt": "2016-09-20",
+            "fact": "Airport front and a generic van visible; no scheduled-bus identity or marked bus stand identifiable."
+          }
+        ],
+        "sourceRights": "Only nonexpressive topology/service facts are recorded from the new official plan. The response bytes were hashed in memory and not retained. The preexisting OTTOP CC BY 4.0 grant covers the native GTFS archive; official-site open-data terms were not assumed to license the whole website.",
+        "counts": {
+          "thisTurnDirectNativeHttpRequests": 1,
+          "directNativeHttpSuccesses": 1,
+          "directNativeHttpFailures": 0,
+          "webSearchQueries": 2,
+          "webSearchBatches": 1,
+          "webOpenCalls": 2,
+          "webBackendHttpCount": "unavailable",
+          "additionalOldCachedSourcesFetched": 0,
+          "newGtfsDownloads": 0,
+          "canonicalWrites": 0,
+          "sharedGeneration": 0
+        },
+        "preexistingLedgerCounts": {
+          "nativeHttpRequests": 8,
+          "nativeSuccesses": 8,
+          "webSearchQueries": 12,
+          "webOpenCalls": 8,
+          "webClicks": 4
+        },
+        "createdFiles": [
+          "report.json"
+        ],
+        "cumulativeReportedCountsSinceLedger": {
+          "nativeHttpRequests": 9,
+          "nativeSuccesses": 9,
+          "webSearchQueries": 14,
+          "webOpenCalls": 10,
+          "webClicks": 4
+        }
+      }
+    },
+    {
+      "iteration": 205,
+      "closedRootIds": [
+        "root:airport:review:official-airport:天草"
+      ],
+      "receiptPath": ".cache/task-086/amakusa-next/independent-chain-review205.json",
+      "receiptSha256": "f747a45e9479e363e9079996617dbdb65efa97c2a93edfe1f8a18d8bee9e9f38",
+      "receipt": {
+        "status": "PRIVATE_PRODUCTION_PREFLIGHT_PASS_ROOT_REVIEW_REQUIRED",
+        "registered": false,
+        "newHttpRequests": 0,
+        "newSearchQueries": 0,
+        "canonicalWrites": 0,
+        "sharedGeneratorsRun": 0,
+        "counts": {
+          "busRide": 2,
+          "flight": 2,
+          "publicFoot": 2,
+          "newP11Components": 2,
+          "originalAirportHoldUpgrade": 1
+        },
+        "identityReview": {
+          "P11Airport": "P11-22_43:bs3880",
+          "P11Neighbor": "P11-22_43:bs3878",
+          "excludedSameName": "P11-22_43:bs3491 is unrelated 麻生交通 甲佐～氷川線; never used",
+          "fullStopName": "堀切（天草）",
+          "printedStopName": "堀切",
+          "currentStopNameReview": "Explicit same-route historical/current continuity; raw printed parent names preserved and current licensed feed full names corroborate. No automatic substring/coordinate alias. Unchanged P11 operator 産交バス（株）, current legal suffix normalization 産交バス株式会社, carrier actual page 産交バス.",
+          "C28": "cf03_00044 天草飛行場",
+          "airportMethod": "Existing REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX exact original-base method with current government public name 天草空港; not new exact-current-formal-name or explicit-alias method; no assertion current page literally prints 天草飛行場."
+        },
+        "semantics": [
+          "Each bus direction is selected independently from its actual first complete twelve-call PDF column. Selected zero-based10..11 inbound and0..1 outbound; source parent spelling preserved.",
+          "Pickup-only origin and dropoff-only destination retained for both bus sections and flight pairs.",
+          "No same-day clock-matching guarantee or minimum-connection-time claim; scope is static directed topology, boarding constraints retained.",
+          "Coarse public gateway established by official airport-manager passenger access plus carrier actual shared shuttle; floorplan is not claimed to label a bus bay.",
+          "AMX101/102 are actual 天草エアライン services. October2026 notice cancels these on Oct1/2, not selected Oct3. No real-time operation promise.",
+          "Existing nationally connected exact Fukuoka airport anchor reused without new terminal or airline interchange."
+        ],
+        "rights": [
+          "Operator PDF minimum independent topology facts only under reviewed source-specific rights; rawPDF/clocks/fare/artwork not redistributed.",
+          "Reused exact existing Sanko terms hash13d3a8036a0b811056ef6faf47620913bafcb46c084d2dac163c7de951d28442; no fresh terms request.",
+          "AMX disclaimer and current pages show no explicit independent-fact analysis prohibition; no raw license inferred.",
+          "Public access facts minimum nonexpressive scope; no rawmap, tracing or prose re-publication."
+        ],
+        "cacheChecks": [
+          {
+            "file": ".cache/task-086/amakusa-next/amakusa-bus-current-index.html",
+            "sha256": "3b1cea9bb43105499d057724e40bb72600293ed28f2e8d5584cce90d5f4d8e53",
+            "url": "https://www.sankobus.jp/bus/shuttle_amakusa/jikoku/"
+          },
+          {
+            "file": ".cache/task-086/amakusa-next/amakusa-bus-main.html",
+            "sha256": "855c67f5d96d9db77d54c57356c36f53f63169a07c332bd89f8af08b556d1b65",
+            "url": "https://www.sankobus.jp/bus/shuttle_amakusa/"
+          },
+          {
+            "file": ".cache/task-086/amakusa-next/amakusa-bus-stops.html",
+            "sha256": "be13f31e3adc6466d1b02c5cfcdd99a99a1e7378eeff2bd739f4997f15644bdd",
+            "url": "https://www.sankobus.jp/bus/shuttle_amakusa/rosen/"
+          },
+          {
+            "file": ".cache/task-086/amakusa-next/amx-current-index.html",
+            "sha256": "6360bd65e17e67d8f9e1d18bcf4035d65412dc73d427738a23a51bf6d682635c",
+            "url": "https://www.amx.co.jp/"
+          },
+          {
+            "file": ".cache/task-086/amakusa-next/amx-flight-schedule.html",
+            "sha256": "7bbc2de42e1d4063c574e317dbc8df63f003a38868d206d4c1327042ae4f52e8",
+            "url": "https://www.amx.co.jp/time/"
+          },
+          {
+            "file": ".cache/task-086/amakusa-next/amx-current-fukuoka-table.html",
+            "sha256": "5e4aa6b8cd0b2b6a9b94a38f4f9f58a7a97ad0853c479390f6050a3162ad1e61",
+            "url": "https://www.amx.co.jp/img/time/time_fuk_2021_04.jpg"
+          },
+          {
+            "file": ".cache/task-086/amakusa-next/amx-october-cancellations.html",
+            "sha256": "356c183d3356750816d97b30f9d1ff4944afdca2994ed5eac8b192668e3c0632",
+            "url": "https://www.amx.co.jp/news/n_20260825_903.html"
+          },
+          {
+            "file": ".cache/task-086/amakusa-next/amx-site-terms.html",
+            "sha256": "5a96b61b202558bb1e4d8249d163a2b722cdf66b8c42bebecadf1a0faf850585",
+            "url": "https://www.amx.co.jp/menseki/"
+          },
+          {
+            "file": ".cache/task-086/amakusa-next/amakusa-official-access.html",
+            "sha256": "5550129005e5c80378a630ca876c2c9bd5f450fc6e5b63d2d97a1b1636bc5218",
+            "url": "https://www.pref.kumamoto.jp/soshiki/113/58941.html"
+          },
+          {
+            "file": ".cache/task-086/amakusa-next/amakusa-official-terminal.html",
+            "sha256": "8a276fd7700649af26392cf5260e6bbf43acb2eabe815b6aa8c7dece152aca7f",
+            "url": "https://www.pref.kumamoto.jp/soshiki/113/60454.html"
+          }
+        ],
+        "candidateFiles": [
+          {
+            "path": ".cache/task-086/amakusa-next/phase205-private.json",
+            "sha256": "68fd6ebdd70aa8a0ced18f2f7fe2c28d7573f6c8bf0e5cd96564933a0dfa1dd7"
+          },
+          {
+            "path": ".cache/task-086/amakusa-next/actions205-private.jsonl",
+            "sha256": "ef0ace1755f5ea74222391848a922e9c3ef7c5ba870648d06f8bd32856ca3445"
+          },
+          {
+            "path": ".cache/task-086/amakusa-next/production-preflight205.json",
+            "sha256": "3f9fd6cee15e9bdb32bc0edc0b6a656a3d158bdba602350719c58aad620e32e9"
+          },
+          {
+            "path": ".cache/task-086/amakusa-next/p11-selection205-private.json",
+            "sha256": "fc88cd0eb498817a059d7ef1fb76800bbb38365bd961e3493eada75b078476b1"
+          },
+          {
+            "path": ".cache/task-086/amakusa-next/p11-identities205-private.jsonl",
+            "sha256": "eab5dbe788c5653eeecdd639212da1330665f4828a63ce2f7211a94ef6037879"
+          },
+          {
+            "path": ".cache/task-086/amakusa-next/c28-identities205-private.jsonl",
+            "sha256": "9a662a2c81aee794831ce82db1edc8a5570e0874b10a1f217827231fd1d8affc"
+          },
+          {
+            "path": ".cache/task-086/amakusa-next/native-gtfs-name-corroboration205.json",
+            "sha256": "b2e34ae5f4e7e534a97ec34edcd52fd39b17b05fa0e20d4044d5f7a348f77192"
+          },
+          {
+            "path": ".cache/task-086/amakusa-next/prepare205-private.mjs",
+            "sha256": "5bd9cefdaf6b14e327258d2a4c188ea196c43edb09a2cb4852849356984c61a3"
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 206,
+      "closedRootIds": [
+        "root:airport:review:official-airport:但馬"
+      ],
+      "receiptPath": ".cache/task-086/tajima-next/independent-review206.json",
+      "receiptSha256": "2e82afefa2b3209d47932049d591f275df72962edbe11d461f13c59c2ff4ca93",
+      "receipt": {
+        "schemaVersion": 1,
+        "reviewId": "independent-review206-tajima-airport-bus-and-flights",
+        "recordedAt": "2026-10-03T09:39:06Z",
+        "rootCauseId": "root:airport:review:official-airport:但馬",
+        "decision": "COARSE_AIRPORT_GATEWAY_TO_EXACT_P11_BUT_STATION_SUPPORTED",
+        "scope": "Cached semantic and rights review only; no HTTP, no canonical writes.",
+        "busInterface": {
+          "decision": "SUPPORTED_COARSE_WHOLE_AIRPORT_GATEWAY",
+          "airportPrimaryUrl": "https://www.tajima-airport.jp/access/",
+          "airportObservedResponseSha256": "ac6e07935735abfe48ca984042eb1f0a8bbf9f7809247538d37e376596ee9998",
+          "airportAccessClaim": "Official airport access page has a dedicated バスでお越しの方 section and names routes コウノトリ但馬空港-JR豊岡駅間 and コウノトリ但馬空港-JR城崎温泉駅間; it links the bus timetable and identifies 全但バス as the contact/operator.",
+          "nativeStopCandidate": {
+            "featureId": "bs422",
+            "name": "但馬空港",
+            "operator": "全但バス（株）",
+            "route": "但馬空港線（空港リムジンバス）",
+            "sourceFile": ".cache/task-086/tajima-next/p11-candidates206.json"
+          },
+          "currentTimetable": {
+            "url": "https://www.zentanbus.co.jp/wp-content/uploads/2026/03/t-10_tjh_20260401.png",
+            "observedResponseSha256": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257",
+            "observedAt": "2026-10-03T04:53:36.524623+00:00",
+            "printedRouteTitle": "[27] 但馬空港線（空港リムジンバス） 城崎温泉駅⇔豊岡駅⇔コウノトリ但馬空港[TJH]",
+            "finding": "Both directions include airport and 上佐野 as consecutive airport-side calls: airport-bound 上佐野→airport; airport-departing airport→上佐野. [27] is the route number. The current diagram says only selected stops are shown, so it is not a complete calling sequence."
+          },
+          "allStopCorroboration": {
+            "url": "https://www.zentanbus.co.jp/wp-content/uploads/2025/02/f-10_tjh_20250301.png",
+            "observedResponseSha256": "a2cf12bec6628e3e0f39fbebd229576e1da7cf59e38655c40159212c20c1f346",
+            "observedAt": "2026-10-03T04:55:22.958775+00:00",
+            "finding": "All-stop regular fare table places 上佐野 immediately adjacent to 但馬空港 at the end of line 024. Use only to corroborate stop adjacency, not current service/calendar or clock times."
+          },
+          "continuity": "The official airport route descriptions, matching operator and route identity, explicit airport endpoint label/TJH, and all-stop adjacent-call corroboration support a coarse public whole-airport gateway relation to the exact P11 native bus stop. P11 identity comes from feature bs422; do not derive a stop from proximity or fuzzy place-name matching. Keep native stop and airport facility distinct. The candidate uses only the explicitly shown final adjacent pair in each current direction, corroborated by the separate all-stop 2025 fare order. No complete current parent call sequence or GTFS parent hash is claimed or retained; do not expand to other calls. Do not interpret [27] as stop count.",
+          "claimLimits": [
+            "No exact doorway, curb, stop pole, bay, path, accessible route, distance, or navigation claim.",
+            "No coordinates or shared place name used as interchange proof.",
+            "Formal C28 airport requirement/name remains for root verification."
+          ]
+        },
+        "flight": {
+          "decision": "TWO_CURRENT_DIRECTIONS_AND_ACTUAL_OPERATOR_SUPPORTED",
+          "airportScheduleUrl": "https://www.tajima-airport.jp/airplane_ride/",
+          "scheduleObservedResponseSha256": "58cf594eb7e6ffc632c1214775fd21aac59a28a2924460677f6be4282bc0f282",
+          "scheduleObservedAt": "2026-10-03T04:53:36.200939+00:00",
+          "validity": "2026-10-01 through 2026-10-24",
+          "directions": [
+            {
+              "flight": "JAL2323",
+              "direction": "Itami→Tajima"
+            },
+            {
+              "flight": "JAL2324",
+              "direction": "Tajima→Itami"
+            }
+          ],
+          "actualOperatorUrl": "https://web.pref.hyogo.lg.jp/ks06/tj05_7_000000006.html",
+          "actualOperatorObservedResponseSha256": "08ff634c9ce9ac9ebcf87d70a865ac7a3e18d87bc94cbcf66235239bd1d772eb",
+          "actualOperatorObservedAt": "2026-10-03T09:17:44.715891+00:00",
+          "operator": "日本エアコミューター株式会社",
+          "operatorEvidence": "Hyogo prefecture page updated 2026-03-17 explicitly states the daily two-flight Itami↔Kounotori Tajima route and names Japan Air Commuter as operator. Treat airport schedule codes as identifiers; use the prefectural statement as actual-operator evidence, not an inference from JAL code share.",
+          "claimLimits": [
+            "Scheduled static service, not realtime operation or availability.",
+            "Preserve separately directed airport calls; do not conflate connecting itinerary segments with an unverified codeshare."
+          ]
+        },
+        "rights": {
+          "websiteFacts": "Airport and bus operator pages are primary factual sources. Their page and image contents are copyrighted; retain only minimal nonexpressive topology facts and source fingerprints, without republishing page/image content.",
+          "gtfs": "Exact native P11 identities require the existing P11-22 source descriptor and attribution. The candidate topology facts come from the current operator schedule, all-stop fare order, airport access page, and current prefectural airline statement; no GTFS evidence or reuse is claimed.",
+          "fareImage": "Use only stop-adjacency result and source fingerprint; do not persist fares, times, or image/table content in the candidate.",
+          "newHttpRequests": 0,
+          "canonicalWrites": 0,
+          "sourceHashes": {
+            "airportAccess": "ac6e07935735abfe48ca984042eb1f0a8bbf9f7809247538d37e376596ee9998",
+            "currentBus": "e02d318038da36fcefb5f1bbafe11800dace5c79968b9c3c71052f08b7a0c257",
+            "allStopFare": "a2cf12bec6628e3e0f39fbebd229576e1da7cf59e38655c40159212c20c1f346",
+            "airportSchedule": "58cf594eb7e6ffc632c1214775fd21aac59a28a2924460677f6be4282bc0f282",
+            "prefActualOperator": "08ff634c9ce9ac9ebcf87d70a865ac7a3e18d87bc94cbcf66235239bd1d772eb"
+          }
+        }
+      }
+    },
+    {
+      "iteration": 207,
+      "closedRootIds": [
+        "root:airport:review:official-airport:徳之島"
+      ],
+      "receiptPath": ".cache/task-086/tokunoshima-next/phase207-tokunoshima-handoff.json",
+      "receiptSha256": "40ff6b779094d82e2915dfbc9eab24926398ab7fb2b4de56089cb32e6b9053da",
+      "receipt": {
+        "status": "PASS_PRIVATE_ACTUAL_PRODUCTION_FUNCTION_PREFLIGHT",
+        "phaseId": "207-tokunoshima-ordinary-native-airport-asama-and-coarse-public-gateway",
+        "rootCauseId": "root:airport:review:official-airport:徳之島",
+        "phaseCanonicalSha256": "0d50355d595f6e291f3797617e55c9beaa9160c2866ee5e63f4faa67f5c64e21",
+        "artifacts": [
+          {
+            "path": ".cache/task-086/tokunoshima-next/phase207-tokunoshima-private.json",
+            "sha256": "739b306bb0fa65f3bbc88652eae31e92096212c342fa9c48f017c7836b26c37b"
+          },
+          {
+            "path": ".cache/task-086/tokunoshima-next/actions207-tokunoshima-private.jsonl",
+            "sha256": "dfeffc4da24328fc4e940abac4d5cdc2bf4fe7cec399fbf26c5b098b313e2633"
+          },
+          {
+            "path": ".cache/task-086/tokunoshima-next/p11-selection207-private.json",
+            "sha256": "80a3e6716210b7e7a25f5faadf3741d10ce7217aeba9c65d6514d13c46229997"
+          },
+          {
+            "path": ".cache/task-086/tokunoshima-next/p11-identities207-private.jsonl",
+            "sha256": "9cf38ddf41281b7dd4efc66c42bce4c85e0be94a754e0dbff4f623464fb5adc4"
+          },
+          {
+            "path": ".cache/task-086/tokunoshima-next/phase207-tokunoshima-production-preflight.json",
+            "sha256": "954f9372ed06c072ae0f4cf1d97ece904dfc725a83c87dd90afda9d08684057c"
+          },
+          {
+            "path": ".cache/task-086/tokunoshima-next/prepare-validate207-private.mjs",
+            "sha256": "3d55e740aa31a58b3ee251cea2fd4fbe733a36f96ef13cd57e950381f70f5306"
+          },
+          {
+            "path": ".cache/task-086/tokunoshima-next/interface-contract-private/report.json",
+            "sha256": "39aa8eb429f04b4c130f82bb3b782762ad04e7a95a2cfcef77cfd3fba65439f1"
+          }
+        ],
+        "counts": {
+          "newP11Nodes": 2,
+          "existingAirportAdmissionUpgrades": 0,
+          "existingAirportReused": 1,
+          "patterns": 2,
+          "busRideEdges": 2,
+          "coarsePublicAccessEdges": 2,
+          "newFlightEdges": 0,
+          "edges": 4
+        },
+        "p11MergeInstruction": "Merge these two exact selections and extracted records by native stopRecordId/prefecture+gmlFeatureId. Preserve all other canonical selections/records; reject unequal existing record with same ID. Never replace full shared inventory with private two-record subset.",
+        "p11NativeIds": [
+          "P11-22_46:bs91",
+          "P11-22_46:bs93"
+        ],
+        "newNodes": [
+          {
+            "nodeId": "transport-node:086:757b0b5dd6c31cf6b9ac766d8f62736a",
+            "name": "空港",
+            "identityRecordSha256": "42ef05cb26a0f2d84622d6561c0067d1a1101b14edff73d7e396f1b143bdf037"
+          },
+          {
+            "nodeId": "transport-node:086:8fe58e0dee2b0414ec6ef1bd72f905da",
+            "name": "浅間",
+            "identityRecordSha256": "72ef24b313b2be9928fcf918323b9dfba0dc33fcd856821d04d28b0974c5a405"
+          }
+        ],
+        "scope": "2 independently evidenced adjacent ordinary service segments and2 coarse public airport access relations; not a whole route import or demand-service expansion.",
+        "reviewCorrection": "Micro door/curb/pole evidence is not required for this coarse facility contract. Current2026 prefectural airport-specific public-bus instruction supplies passenger-interface semantics, and current-published2020 tables/map supply exact ordinary service endpoints/directions. No precise pedestrian or accessibility claim.",
+        "rights": "Source-specific minimal factual extraction only; no raw reuse/open license. Prefecture prior exact copyright review reused with terms observation, not a blanket website approval. P11 permission does not cover operator/preference pages.",
+        "nationalDependency": "Existing admitted Tokunoshima airport both directions to current anchor actually validated in203 graph; existing flight edges reused without new flight research.",
+        "candidatePreflight": true,
+        "canonicalReplay": false,
+        "canonicalWrites": 0,
+        "sharedGeneration": 0,
+        "newHttpRequests": 0,
+        "globalGateClosed": false,
+        "parentNextAction": "Review/register exact inputs, merge P11 deterministically, serial replay207 at appropriate phase order, verify prior preservation and exact original root outcomes, then full regression. Recheck dependencies if canonical graph changes."
+      }
+    },
+    {
+      "iteration": 208,
+      "closedRootIds": [
+        "root:airport:review:official-airport:紋別"
+      ],
+      "receiptPath": ".cache/task-086/monbetsu-next/research-ledger.json",
+      "receiptSha256": "4a1531affdd3877a7b8a71e019552e253153854cd278e9e3a66a3c70a5361cfb",
+      "receipt": {
+        "schemaVersion": 1,
+        "updatedAt": "2026-10-03T09:55:52.086529+00:00",
+        "rootCauseId": "root:airport:review:official-airport:紋別",
+        "status": "PRIVATE_ORDINARY_CHAIN_ACTUAL_PRODUCTION_PASS_PENDING_ROOT_REVIEW_AND_REPLAY",
+        "nativeHttpRequests": 10,
+        "successes": 9,
+        "failures": 1,
+        "webSearchQueries": 4,
+        "webOpens": 4,
+        "webClicks": 5,
+        "cachePreflight": "Original node/source indexes reviewed; ANA-wide rights review was found after native map request had started. Download completed; file removed uninspected; no ANA fact/map admitted. Fetch helper now blocks known site-wide acquisition restrictions before network.",
+        "sourceVersions": {
+          "airportBus": "20260519-20261130",
+          "municipalCurrent": "20261001 update / current20260329-20261024",
+          "airportFlight": "20251026-20261024 current ANA375/376 independently published by airport"
+        },
+        "findings": [
+          "Two independent current city-bus directions,9listedstops each; smallest candidate would use actually adjacent airport and Motomombetsu if exact P11 operator identity admitted.",
+          "Airport-own floorplan explicitly shows public departure/arrival entrances but no public city-bus stop label; not enough for transfer fact.",
+          "Engaru shuttle is separate reservation-required service; older tourism page also limits to flight users, so do not treat unrestricted or reuse for city-bus restrictions.",
+          "Tourism broad reuse prohibition discovered, no native acquisition performed.",
+          "ANA airport map excluded under retained commercial-acquisition restriction; no topology admission."
+        ],
+        "nextAction": "Parent independent source review and exact 3-record P11 merge/registration; serial replay plus preservation/full gate. No canonical closure inferred from private preflight.",
+        "retryCondition": "New independent source/interface evidence or actual policy/version change, no repeated same queries",
+        "admittedFacts": 0,
+        "tokens": null,
+        "billing": null,
+        "followups": [
+          {
+            "recordedAt": "2026-10-03T09:39:58.581919+00:00",
+            "webSearchQueries": 7,
+            "nativeHttpRequests": 1,
+            "nativeSuccesses": 1,
+            "newSource": "pref-current-operating-carrier208.metadata.json",
+            "finding": "Current-published airport management government page explicitly labels operating company ANA 全日本空輸株式会社; page revision2024-11-22, not falsely2026 new. Existing2026 municipality and current airport direction tables corroborate static service. Public airport access has bus-specific section and actual city-airport endpoint tables; coarse facility interface can be reviewed, no exact curb claim. Need exact current free-bus operator binding before selecting northern P11 records. Ordinary Hokumon Yuumon route is distinct alternative; old2025 PDF is discovery only pending2026 revision.",
+            "p11Discovery": "p11-candidates208.json",
+            "nextAction": "Agent tottori_contract_repair independently review coarsegateway + current operator and minimum two-direction adjacent service; private208 only until all pass. No ANA/tourism restricted material acquisition.",
+            "admittedFacts": 0,
+            "canonicalWrites": 0
+          },
+          {
+            "attemptId": "208-current-hokumon-ordinary-alternative-private",
+            "recordedAt": "2026-10-03T09:55:52.086529+00:00",
+            "thisAgentNativeHttpRequests": 2,
+            "nativeSuccesses": 2,
+            "nativeFailures": 0,
+            "webSearchQueries": 0,
+            "webOpens": 1,
+            "webClicks": 5,
+            "webScreenshots": 2,
+            "thisValidationRunHttpRequests": 0,
+            "localImportFailureBeforeNetwork": 1,
+            "note": "Initial system Python lacked pypdf and stopped before any HTTP. Subsequent bundled runtime succeeded. Parent separate 1 native request and 7 search queries are already recorded in prior ledger followup. Web backend HTTP count is not observable.",
+            "sourceVersions": {
+              "ordinaryHokumon": "2026-04-01",
+              "flightAirport": "2025-10-26 through 2026-10-24",
+              "municipality": "2026-10-01",
+              "prefCarrier": "still-published revision2024-11-22"
+            },
+            "finding": "Current ordinary paid route independently supports 3-stop directed loop, coarse public airport interface and explicit ANA operating carrier. Free-shuttle operator remains unresolved but is not used. Exact actual production preflight passed seven edges and every changed member in both national directions.",
+            "report": "independent-chain-review208.json",
+            "canonicalWrites": 0,
+            "admittedCanonicalFacts": 0,
+            "privateCandidateFacts": 5
+          }
+        ],
+        "cumulativeExplicitNativeHttp": {
+          "requests": 13,
+          "successes": 12,
+          "failures": 1,
+          "calculation": "legacy10/9/1 + parent1/1/0 + this attempt2/2/0; top-level legacy counters retained for provenance"
+        }
+      }
+    },
+    {
+      "iteration": 209,
+      "closedRootIds": [
+        "root:direction:component:06e9e32c2539e5b85c30",
+        "root:direction:component:7b35afe9270d76b32958"
+      ],
+      "receiptPath": ".cache/task-086/nagasaki-public-path-next/research-cycle209-ledger.json",
+      "receiptSha256": "6406b0626665415253dbf78e2f2f7f31dd31b01ffdfaa648d5f2d7d7a3796419",
+      "receipt": {
+        "status": "PRIVATE_RESEARCH_CYCLE_COMPLETED_ONE_EXECUTABLE_CANDIDATE",
+        "originalRoots": [
+          {
+            "rootCauseId": "root:direction:component:06e9e32c2539e5b85c30",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:bdfd9da3586bb15fc78c9d63d61cca16",
+                "name": "新地中華街",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:881740_05"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:0eec614b8788f64d5865",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:83f307eaa58741d32d69f841c09b9869",
+                "name": "小地獄入口",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:888180_05"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:16a062275f80ed78de4f",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:7680b63182dbc1669fd45fd4fc59d3c2",
+                "name": "日宇駅前",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:887070_01"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:1df548bb4e218199d61c",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:a0046ebb8fc0381caeb38bf10df1e8cf",
+                "name": "山の上",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:888125_01"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:2bc8a56898a9b4562ce4",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:b11e47ab076a22ce00fc4cb9a5f91dcc",
+                "name": "雲仙お山の情報館",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:888185_01"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:2c4972bea167f5eb11e9",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:7c1e88ef5a216a3e3ac7218d17dda723",
+                "name": "桜馬場",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:886085_04"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:4516374f05cda3a3809f",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:ce68badab5030cc34af1554308e588d6",
+                "name": "武部町",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:886930_01"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:514a9f9a62f4a7141eed",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:958deacda7ed19277c1edb99f3cfff3f",
+                "name": "一本柱鳥居前",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:888170_01"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:5d42c52843362adeeefc",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:cdd320d7d8be5c62b963de504df64bfa",
+                "name": "佐世保バスセンター",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:887095_05"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:66248fdc74557aa870e1",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:8d35e8b1e1e22da8e6745da348db3987",
+                "name": "山の上",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:888125_05"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:662a9755abeab5d52770",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:0f7944798902ee3658e9fab61195b1cc",
+                "name": "雲仙",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:888190_01"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:7b35afe9270d76b32958",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:7fa91044cd1de51838d69d40aabe0be8",
+                "name": "新地中華街",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:881740_01"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:80754831e83c494feb89",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:b53a5c48cd146d70a87db71780468d61",
+                "name": "一本柱鳥居前",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:888170_05"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:8b3872e6b881562cd0d6",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:94a712a5af3f2fd76a78fccdcbff81fe",
+                "name": "小地獄入口",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:888180_01"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:91378025a59875422ee5",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:e2bd3102922a3800bb34aaa8319597ed",
+                "name": "雲仙",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:888190_05"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:afb2cb0bf36f8d4a6a36",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:ceec22293911f9aeabe7a2de618b6608",
+                "name": "日宇駅前",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:887070_05"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:b4f5008fcefdf116ba82",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:0ba390f72b176174f26009393af2c902",
+                "name": "長崎駅前",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:881010_01"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:bcb8e18cee0bb3319142",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:2dc4625cf7c6dbe51c5591e1343cc4c8",
+                "name": "武部町",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:886930_05"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:cdb5939683ed546563ce",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:0fc0279d92a5b43366b4f5a6a9d566e0",
+                "name": "波佐見有田インター",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:887550_05"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:cddcc8716667f5755c61",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:9181b8dcd5186eeb1a58d1400039d5f5",
+                "name": "雲仙お山の情報館",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:888185_05"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:faf3533cb63b374599af",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:5d4f27d3144da4b3328e4378dbb709af",
+                "name": "消防学校前",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:886345_05"
+              }
+            ]
+          },
+          {
+            "rootCauseId": "root:direction:component:fdf6f950ce1043cbc77b",
+            "nodes": [
+              {
+                "nodeId": "transport-node:086:1664e21222f60ac9b2649e21bcf1be27",
+                "name": "佐世保バスセンター",
+                "identityAnchor": "gtfs:nagasaki-bus:stop:887095_01"
+              }
+            ]
+          }
+        ],
+        "metrics": {
+          "newSearchQueries": 16,
+          "nativeHttpRequests": 14,
+          "nativeHttp200": 14,
+          "nativeHttpFailures": 0,
+          "nativeResponseBytes": 50586818,
+          "repeatedNativeDownloads": 0,
+          "initialPythonMissingPypdfBeforeNetworkFailures": 1,
+          "firstNativeObservedAt": "2026-10-03T09:31:52.205061+00:00",
+          "lastNativeObservedAt": "2026-10-03T09:44:11.052812+00:00",
+          "timeMeaning": "observation span only, not claimed active research duration",
+          "webToolPreviewRequestCount": null,
+          "webToolPreviewResultNotes": "Earlier web previews were not separately instrumented; do not invent a combined HTTP count. The16 recorded search queries and14 native byte-acquisition requests are exact. No bypass of blocked sources.",
+          "canonicalWrites": 0,
+          "sharedGeneratorsRun": 0
+        },
+        "queries": [
+          "site.keneibus.jp 雲仙 のりば 案内 雲仙営業所",
+          "site.unzen.org バス ターミナル 県営 乗り場 雲仙",
+          "雲仙 バス のりば おりば 県営 島鉄 案内図",
+          "site.shimatetsu.co.jp 雲仙 バス停 乗り場 地図",
+          "雲仙 バス停 のりば 長崎行き 向かい 観光協会",
+          "site.unzenonsen.unzen.org マップ ダウンロード",
+          "雲仙バス停 横断歩道 県営 バスターミナル",
+          "site.city.unzen.nagasaki.jp 雲仙 バス停 歩道",
+          "site.keneibus.jp 雲仙 \"のりば\" \"降\"",
+          "雲仙 バス \"乗り換え\" \"向かい\"",
+          "雲仙 バス \"のりば\" \"営業所\" 県営",
+          "雲仙 バス停 \"横断\"",
+          "site.keneibus.jp \"新地中華街\" \"のりば\"",
+          "site.nagasaki-bus.co.jp \"新地中華街\" \"降車\" \"空港\"",
+          "新地中華街 空港 バス 乗り場 降り場 ターミナルホテル 横断歩道 公式",
+          "site.n-terminalhotel.com アクセス 空港 バス"
+        ],
+        "sources": [
+          {
+            "key": "unzen-keneibus-current",
+            "url": "https://www.keneibus.jp/local/express/unzen",
+            "observedAt": "2026-10-03T09:31:52.205061+00:00",
+            "status": 200,
+            "contentSha256": "dac1f2a1c0afabe2a063572d4cd1a6777cb01de0d7886a385894a1f945761184",
+            "bytes": 49119,
+            "rawPayloadRetained": false,
+            "privateReviewCacheRetained": true,
+            "requestCount": 1,
+            "elapsedSeconds": 0.17300929996417835,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/unzen-keneibus-current.metadata.json"
+          },
+          {
+            "key": "unzen-tourism-current",
+            "url": "https://unzenonsen.unzen.org/",
+            "observedAt": "2026-10-03T09:31:53.762930+00:00",
+            "status": 200,
+            "contentSha256": "9589907726e8510a6679d2539e70417ca0f2cd15f3da8e20e207284a08cc4978",
+            "bytes": 489645,
+            "rawPayloadRetained": false,
+            "privateReviewCacheRetained": true,
+            "requestCount": 1,
+            "elapsedSeconds": 1.5575545000028796,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/unzen-tourism-current.metadata.json"
+          },
+          {
+            "key": "keneibus-terms-current",
+            "url": "https://www.keneibus.jp/terms",
+            "observedAt": "2026-10-03T09:31:53.839110+00:00",
+            "status": 200,
+            "contentSha256": "bf78608b7f54e8fd17c045bb4b89a581d1376aca082e1e48e92cbc36e754599b",
+            "bytes": 49866,
+            "rawPayloadRetained": false,
+            "privateReviewCacheRetained": true,
+            "requestCount": 1,
+            "elapsedSeconds": 0.07549429999198765,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/keneibus-terms-current.metadata.json"
+          },
+          {
+            "key": "unzen-tourism-walking-map",
+            "url": "https://unzenonsen.unzen.org/wp-content/uploads/2023/09/FindUNZEN_MAP%E7%B8%A6.pdf",
+            "observedAt": "2026-10-03T09:32:47.043496+00:00",
+            "status": 200,
+            "contentSha256": "c0d4eb875173422573a3758351142d1ce17908bf0b4b8334bae21b3743f99678",
+            "bytes": 20258084,
+            "rawPayloadRetained": false,
+            "pages": 1,
+            "extractedTextLength": 0,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/unzen-tourism-walking-map.metadata.json",
+            "requestCount": 1
+          },
+          {
+            "key": "unzen-tourism-policy",
+            "url": "https://unzenonsen.unzen.org/spolicy/",
+            "observedAt": "2026-10-03T09:32:52.965080+00:00",
+            "status": 200,
+            "contentSha256": "7d5d3cddb8c80217912cfb48481a1df3180329f69b87fe5c865d6bce5777f849",
+            "bytes": 210983,
+            "rawPayloadRetained": true,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/unzen-tourism-policy.metadata.json",
+            "requestCount": 1
+          },
+          {
+            "key": "unzen-operator-journey-map",
+            "url": "https://www.keneibus.jp/fs/2/1/7/0/4/_/__-______________v3.pdf",
+            "observedAt": "2026-10-03T09:32:56.787058+00:00",
+            "status": 200,
+            "contentSha256": "95bbcf15a62f3c9449b83e7de72fff4e36354841d17fddbc81eecee0487dc8a0",
+            "bytes": 28735062,
+            "rawPayloadRetained": false,
+            "pages": 1,
+            "extractedTextLength": 1801,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/unzen-operator-journey-map.metadata.json",
+            "requestCount": 1
+          },
+          {
+            "key": "unzen-operator-walk-course",
+            "url": "https://www.shimatetsu.co.jp/upload/user/upload_files/66_1_121.pdf",
+            "observedAt": "2026-10-03T09:35:25.152132+00:00",
+            "status": 200,
+            "contentSha256": "9df6a0606a7c993faea060d9e14f26f57f974e8492cdf90549a7202570e03ed3",
+            "bytes": 276694,
+            "rawPayloadRetained": false,
+            "pages": 1,
+            "extractedTextLength": 0,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/unzen-operator-walk-course.metadata.json",
+            "requestCount": 1
+          },
+          {
+            "key": "shinchi-keneibus-current",
+            "url": "https://www.keneibus.jp/limousine/nagasaki",
+            "observedAt": "2026-10-03T09:37:45.604521+00:00",
+            "status": 200,
+            "contentSha256": "e38c2cd220be8f3ee8b1702f4506104ce9bfd735b620b7b4dd68565dc1dadd5c",
+            "bytes": 76434,
+            "rawPayloadRetained": true,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/shinchi-keneibus-current.metadata.json",
+            "requestCount": 1
+          },
+          {
+            "key": "shinchi-cooperator-current",
+            "url": "https://www.nagasaki-bus.co.jp/airportliner/",
+            "observedAt": "2026-10-03T09:42:27.623977+00:00",
+            "status": 200,
+            "contentSha256": "1fdb1fa0a8288282bab9c62f9110848e7d18388fae446a923abb5186ece9bb39",
+            "bytes": 112880,
+            "rawPayloadRetained": true,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/shinchi-cooperator-current.metadata.json",
+            "requestCount": 1
+          },
+          {
+            "key": "shinchi-terminal-hotel-feature",
+            "url": "https://nbth.co.jp/feature/?id=hotel",
+            "observedAt": "2026-10-03T09:43:31.381438+00:00",
+            "status": 200,
+            "contentSha256": "93f99a363c4b3c134612e4b33d58e6e774db13555b8606f59dd010f1e69bc25d",
+            "bytes": 40431,
+            "rawPayloadRetained": true,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/shinchi-terminal-hotel-feature.metadata.json",
+            "requestCount": 1
+          },
+          {
+            "key": "shinchi-jalcity-access",
+            "url": "https://www.nagasaki.jalcity.co.jp/access/",
+            "observedAt": "2026-10-03T09:43:31.577441+00:00",
+            "status": 200,
+            "contentSha256": "7b21e09bc872497f7db3aec512d7126c0832d041e88e1d885efee5a0a40d8a4f",
+            "bytes": 30874,
+            "rawPayloadRetained": true,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/shinchi-jalcity-access.metadata.json",
+            "requestCount": 1
+          },
+          {
+            "key": "shinchi-jalcity-walk-map",
+            "url": "https://www.nagasaki.jalcity.co.jp/common/pdf/20210601.pdf",
+            "observedAt": "2026-10-03T09:44:10.497800+00:00",
+            "status": 200,
+            "contentSha256": "1f0067d61dc3a6ef7c6adc0e0afc022be4366dd80b309e813ece5e388f809835",
+            "bytes": 129968,
+            "rawPayloadRetained": false,
+            "pages": 1,
+            "extractedTextLength": 449,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/shinchi-jalcity-walk-map.metadata.json",
+            "requestCount": 1
+          },
+          {
+            "key": "shinchi-jalcity-rules",
+            "url": "https://www.nagasaki.jalcity.co.jp/rules/",
+            "observedAt": "2026-10-03T09:44:10.893807+00:00",
+            "status": 200,
+            "contentSha256": "0ca6998dd55b12492383126b7e31899e78ac56b1567ce942f757e28e6d7d1605",
+            "bytes": 68321,
+            "rawPayloadRetained": true,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/shinchi-jalcity-rules.metadata.json",
+            "requestCount": 1
+          },
+          {
+            "key": "shinchi-terminal-hotel-terms",
+            "url": "https://nbth.co.jp/terms/",
+            "observedAt": "2026-10-03T09:44:11.052812+00:00",
+            "status": 200,
+            "contentSha256": "4d4ae0cb7d021f282e93734ea20e839ed9eddae927240d6f96bb76c764c8cb9c",
+            "bytes": 58457,
+            "rawPayloadRetained": true,
+            "metadataFile": ".cache/task-086/nagasaki-public-path-next/shinchi-terminal-hotel-terms.metadata.json",
+            "requestCount": 1
+          }
+        ],
+        "methods": [
+          {
+            "method": "Unzen current operator plus current tourism walking map exact terminal connection",
+            "result": "NOT_PROVEN_KEEP_OPEN",
+            "potentialOriginalRoots": 10,
+            "missingProof": "Exact countybus arrival888190_01 versus departure888190_05 identification on an authoritative public pedestrian relation; the current tourism map shows two poles but does not attribute each to direction/operator. Operator route map proves route only. Old Shimatetsu5.5km walk begins/ends at a coarse Unzen stop and does not distinguish these two countybus native points.",
+            "retryCondition": "New actual operator terminal pole-role guide or official public interchange statement explicitly connecting these directional countybus points; do not refetch unchanged existing maps.",
+            "forbiddenInference": "No proximity, absent-crosswalk inference, automatic4xpair or same-stop-name merge."
+          },
+          {
+            "method": "Reuse Sasebo current2025 stop map and historical2022 platform guide",
+            "result": "NOT_PROVEN_KEEP_OPEN",
+            "missingProof": "Current location/role of native887095_01 actual arriving countybus, not a guessed generic dropoff marker; historical arrival bay6 and outer dropoff markers do not independently resolve current exact point.",
+            "retryCondition": "Current operator arrival-platform diagram/text tied to exact Nagasaki highway service; no repeat old maps."
+          },
+          {
+            "method": "Shinchi producer point roles plus current hotel own public pedestrian guide",
+            "result": "PRIVATE209_STRICT_PREFLIGHT_PASS",
+            "closesOriginalRootsIfImportedAndReplayed": 2,
+            "newNodes": 0,
+            "newEdges": 1,
+            "retryCondition": "No further acquisition needed for root review; rerun isolated preflight against post207 snapshot before canonical import."
+          }
+        ],
+        "outOfScopeSourcesAvoided": [
+          "Navitime auto-collection-restricted transfer service",
+          "Google Maps point coordinates as public passage proof"
+        ],
+        "preparationErrorCorrected": "Private diagnostic initially used patternId rather than servicePatternId, yielding null IDs. Corrected private prepare209 and reran strict preflight. This did not affect the edge generation or path validation and no canonical file was touched."
+      }
+    }
+  ],
+  "tokenCount": null,
+  "billedCost": null,
+  "modelCacheHitCount": null
+}

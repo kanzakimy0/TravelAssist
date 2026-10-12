@@ -1,0 +1,554 @@
+{
+  "phaseId": "176-okadama-current-hokto-bus-to-existing-jr-sapporo",
+  "strategy": [
+    "ORIGINAL_AIRPORT_HOLD_REVIEW",
+    "C28_FORMAL_FIELD_TO_CURRENT_PUBLIC_AIRPORT_ALIAS",
+    "EXACT_P11_HOKTO_REPRESENTATIVE_STOP_IDENTITIES",
+    "INDEPENDENT_OUTBOUND_AND_INBOUND_THREE_CALL_SERVICE_FACTS",
+    "CURRENT_PUBLIC_AIRPORT_FRONTAGE_INTERFACE",
+    "CURRENT_SAPPORO_STATION_FRONTAGE_TO_EXISTING_NATIONAL_JR_ANCHOR"
+  ],
+  "serviceDate": "2026-10-02",
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "government:c28:airport-identities",
+    "airport:okadama:sapporo-public-terminal-and-access-review",
+    "bus:hokto:okadama-current-three-stop-directional-service",
+    "station:jrh:sapporo-public-south-frontage-map-review",
+    "government:mlit:sapporo-airfield-public-name-fact-review"
+  ],
+  "facts": [
+    {
+      "factId": "okadama-hokto-city-to-airport-2026-10-02",
+      "kind": "service",
+      "operator": "北都交通株式会社",
+      "line": "丘珠空港線",
+      "mode": "airport_bus",
+      "direction": "sapporo-to-okadama",
+      "serviceClass": "airport_limo",
+      "serviceState": "active",
+      "serviceStateScope": "Only the frozen 2026-10-02 service date within the published 2026-09-01 through 2026-10-24 timetable; no indefinite service guarantee.",
+      "purpose": "airport",
+      "locator": "Operator 2026-09-01 timetable, city-to-airport direction column, ordered stops 札幌駅前→地下鉄栄町駅→丘珠空港; 2026 diversion map marks Sakaemachi as boarding-only.",
+      "sourceActionId": "bus:hokto:okadama-current-three-stop-directional-service",
+      "sourceUrl": "https://www.hokto.co.jp/okadama-sapporo/",
+      "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068",
+      "serviceDate": "2026-10-02",
+      "reviewedAirportPublicNames": [
+        "丘珠空港"
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:hokto:okadama-current-three-stop-directional-service",
+          "url": "https://www.hokto.co.jp/okadama-sapporo/",
+          "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+        },
+        {
+          "sourceActionId": "bus:hokto:okadama-current-three-stop-directional-service",
+          "url": "https://www.hokto.co.jp/wp-content/uploads/2026/07/%E3%80%90%E6%9C%AD%E5%B9%8C%E9%83%BD%E5%BF%83%E2%87%94%E4%B8%98%E7%8F%A0%E7%A9%BA%E6%B8%AF%E7%B7%9A%E3%80%91%E8%BF%82%E5%9B%9E%E8%B7%AF%E8%A8%AD%E5%AE%9A_%E9%81%8B%E8%A1%8C%E7%B3%BB%E7%B5%B1%E5%9B%B3_%E8%BF%82%E5%9B%9E%E8%B7%AF%E6%A0%84%E7%94%BA_page-0001-1-1024x724.jpg",
+          "observedResponseSha256": "eaccf58ea55c311ceacbed7199b01f7fe5ea9be710ae94f320630bbc26063005"
+        },
+        {
+          "sourceActionId": "airport:okadama:sapporo-public-terminal-and-access-review",
+          "url": "https://okadama-airport.co.jp/access/info/",
+          "observedResponseSha256": "9228ca23682f76a8c54ed03141fd1c0732e82ecdbc8779c48e26c092aea2fff3"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        },
+        {
+          "sourceActionId": "government:mlit:sapporo-airfield-public-name-fact-review",
+          "url": "https://www.cab.mlit.go.jp/tcab/airport/list/",
+          "observedResponseSha256": "2ea91bb2965d448f297b3fb7ac0211cc2005abf2cff22c2038d335bf209f967d"
+        }
+      ],
+      "callingStations": [
+        "札幌駅前",
+        "地下鉄栄町駅",
+        "丘珠空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "札幌駅前",
+          "operator": "北都交通（株）",
+          "line": "p11-stop:P11-22_01:bs7407",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs7407",
+            "recordSha256": "278c95eb4b4104b90401b97c668249e799960446510038d0b16dbf27a45ac799",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current Hokto October timetable names 札幌駅前; airport stop guide identifies its station-front endpoint as 札幌駅南口 / 伊藤加藤ビル前, boarding/alighting allowed. JR Hokkaido current first-floor map labels the south station-front plaza and public station entrances. P11 point remains a 2022 road-stop representative; no curb geometry is inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北都交通（株）",
+              "currentOperatorName": "北都交通株式会社",
+              "currentStopName": "札幌駅前",
+              "historicalRoute": "丘珠空港⇔札幌駅・栄町駅",
+              "url": "https://www.hokto.co.jp/okadama-sapporo/",
+              "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+            }
+          }
+        },
+        {
+          "name": "地下鉄栄町駅",
+          "operator": "北都交通（株）",
+          "line": "p11-stop:P11-22_01:bs6487",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs6487",
+            "recordSha256": "255ef7f40ef19f88f822e7711774a7664000c48b37e3d30ca55045b6ed6a149b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current Hokto 2026 map names two separately drawn 地下鉄栄町駅 stops, outbound 乗車専用 and inbound 降車専用. The airport access notice places the current alighting-only position at public Exit 4. One P11 2022 representative identity supports name/operator/route only; it is not split into current curb IDs or used as exact location.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北都交通（株）",
+              "currentOperatorName": "北都交通株式会社",
+              "currentStopName": "地下鉄栄町駅",
+              "historicalRoute": "丘珠空港⇔札幌駅・栄町駅",
+              "url": "https://www.hokto.co.jp/okadama-sapporo/",
+              "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+            }
+          }
+        },
+        {
+          "name": "丘珠空港",
+          "operator": "北都交通（株）",
+          "line": "p11-stop:P11-22_01:bs6541",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs6541",
+            "recordSha256": "66cb1f17a06cc13d348c82ee88a17091310c62564a95a0d1f10b9ce83b3bee98",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current Hokto route and airport access/terminal pages name the airport endpoint. The first-floor diagram shows public arrival lobby/exit and airport bus information/frontage. P11 point is only a 2022 same-operator road-stop representative, not a terminal coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北都交通（株）",
+              "currentOperatorName": "北都交通株式会社",
+              "currentStopName": "丘珠空港",
+              "historicalRoute": "丘珠空港⇔札幌駅・栄町駅",
+              "url": "https://www.hokto.co.jp/okadama-sapporo/",
+              "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1",
+          "rule": "current stop is boarding-only; no alighting at Sakaemachi on this direction"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "scheduleScope": "Fixed outbound table revised 2026-09-01 and valid through 2026-10-24; 2026-10-02 is Friday and inside this publication interval. Ten displayed city departures. Individual times intentionally omitted from this minimal topology fact.",
+      "routeLabel": "札幌都心 ⇔ 丘珠空港; outbound city-to-airport table column",
+      "sourceAttribution": "北都交通株式会社, current airport liner page and 2026-09-01 timetable; minimum directed stop facts only."
+    },
+    {
+      "factId": "okadama-hokto-airport-to-city-2026-10-02",
+      "kind": "service",
+      "operator": "北都交通株式会社",
+      "line": "丘珠空港線",
+      "mode": "airport_bus",
+      "direction": "okadama-to-sapporo",
+      "serviceClass": "airport_limo",
+      "serviceState": "active",
+      "serviceStateScope": "Only the frozen 2026-10-02 service date within the published 2026-09-01 through 2026-10-24 timetable; return operation is flight-linked and not guaranteed at a fixed time.",
+      "purpose": "airport",
+      "locator": "Independent operator 2026-09-01 timetable, airport-to-city direction column, ordered stops 丘珠空港→地下鉄栄町駅→札幌駅前; intermediate boarding prohibited and Sakaemachi alighting-only.",
+      "sourceActionId": "bus:hokto:okadama-current-three-stop-directional-service",
+      "sourceUrl": "https://www.hokto.co.jp/okadama-sapporo/",
+      "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068",
+      "serviceDate": "2026-10-02",
+      "reviewedAirportPublicNames": [
+        "丘珠空港"
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:hokto:okadama-current-three-stop-directional-service",
+          "url": "https://www.hokto.co.jp/okadama-sapporo/",
+          "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+        },
+        {
+          "sourceActionId": "bus:hokto:okadama-current-three-stop-directional-service",
+          "url": "https://www.hokto.co.jp/wp-content/uploads/2026/07/%E3%80%90%E6%9C%AD%E5%B9%8C%E9%83%BD%E5%BF%83%E2%87%94%E4%B8%98%E7%8F%A0%E7%A9%BA%E6%B8%AF%E7%B7%9A%E3%80%91%E8%BF%82%E5%9B%9E%E8%B7%AF%E8%A8%AD%E5%AE%9A_%E9%81%8B%E8%A1%8C%E7%B3%BB%E7%B5%B1%E5%9B%B3_%E8%BF%82%E5%9B%9E%E8%B7%AF%E6%A0%84%E7%94%BA_page-0001-1-1024x724.jpg",
+          "observedResponseSha256": "eaccf58ea55c311ceacbed7199b01f7fe5ea9be710ae94f320630bbc26063005"
+        },
+        {
+          "sourceActionId": "airport:okadama:sapporo-public-terminal-and-access-review",
+          "url": "https://okadama-airport.co.jp/access/info/",
+          "observedResponseSha256": "9228ca23682f76a8c54ed03141fd1c0732e82ecdbc8779c48e26c092aea2fff3"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        },
+        {
+          "sourceActionId": "government:mlit:sapporo-airfield-public-name-fact-review",
+          "url": "https://www.cab.mlit.go.jp/tcab/airport/list/",
+          "observedResponseSha256": "2ea91bb2965d448f297b3fb7ac0211cc2005abf2cff22c2038d335bf209f967d"
+        }
+      ],
+      "callingStations": [
+        "丘珠空港",
+        "地下鉄栄町駅",
+        "札幌駅前"
+      ],
+      "callingComponents": [
+        {
+          "name": "丘珠空港",
+          "operator": "北都交通（株）",
+          "line": "p11-stop:P11-22_01:bs6541",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs6541",
+            "recordSha256": "66cb1f17a06cc13d348c82ee88a17091310c62564a95a0d1f10b9ce83b3bee98",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current Hokto route and airport access/terminal pages name the airport endpoint. The first-floor diagram shows public arrival lobby/exit and airport bus information/frontage. P11 point is only a 2022 same-operator road-stop representative, not a terminal coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北都交通（株）",
+              "currentOperatorName": "北都交通株式会社",
+              "currentStopName": "丘珠空港",
+              "historicalRoute": "丘珠空港⇔札幌駅・栄町駅",
+              "url": "https://www.hokto.co.jp/okadama-sapporo/",
+              "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+            }
+          }
+        },
+        {
+          "name": "地下鉄栄町駅",
+          "operator": "北都交通（株）",
+          "line": "p11-stop:P11-22_01:bs6487",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs6487",
+            "recordSha256": "255ef7f40ef19f88f822e7711774a7664000c48b37e3d30ca55045b6ed6a149b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current Hokto 2026 map names two separately drawn 地下鉄栄町駅 stops, outbound 乗車専用 and inbound 降車専用. The airport access notice places the current alighting-only position at public Exit 4. One P11 2022 representative identity supports name/operator/route only; it is not split into current curb IDs or used as exact location.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北都交通（株）",
+              "currentOperatorName": "北都交通株式会社",
+              "currentStopName": "地下鉄栄町駅",
+              "historicalRoute": "丘珠空港⇔札幌駅・栄町駅",
+              "url": "https://www.hokto.co.jp/okadama-sapporo/",
+              "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+            }
+          }
+        },
+        {
+          "name": "札幌駅前",
+          "operator": "北都交通（株）",
+          "line": "p11-stop:P11-22_01:bs7407",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs7407",
+            "recordSha256": "278c95eb4b4104b90401b97c668249e799960446510038d0b16dbf27a45ac799",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current Hokto October timetable names 札幌駅前; airport stop guide identifies its station-front endpoint as 札幌駅南口 / 伊藤加藤ビル前, boarding/alighting allowed. JR Hokkaido current first-floor map labels the south station-front plaza and public station entrances. P11 point remains a 2022 road-stop representative; no curb geometry is inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北都交通（株）",
+              "currentOperatorName": "北都交通株式会社",
+              "currentStopName": "札幌駅前",
+              "historicalRoute": "丘珠空港⇔札幌駅・栄町駅",
+              "url": "https://www.hokto.co.jp/okadama-sapporo/",
+              "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0",
+          "rule": "current stop is alighting-only; the operator page also prohibits boarding at intermediate stops on airport-to-city service"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "scheduleScope": "Independent airport-to-city timetable section revised 2026-09-01 and valid through 2026-10-24; 2026-10-02 falls inside the interval. Operation is flight-linked; departure is about 5–30 minutes after scheduled arrival and may change/cancel/short-turn. Exact flight pairing or fixed clock is not asserted.",
+      "routeLabel": "丘珠空港 → 地下鉄栄町駅 → JR札幌駅; independent airport-to-city schedule column",
+      "sourceAttribution": "北都交通株式会社, current airport liner page and 2026-09-01 timetable; minimum directed stop facts only."
+    },
+    {
+      "factId": "okadama-public-terminal-frontage-to-airport-liner-stop",
+      "kind": "transfer",
+      "sourceActionId": "airport:okadama:sapporo-public-terminal-and-access-review",
+      "sourceUrl": "https://okadama-airport.co.jp/terminal/img/floor_map_1f_260331.png",
+      "observedResponseSha256": "3f592c7a324b7a6299f63454c55932082a65c29ebd21f628712965083fbaecbf",
+      "serviceDate": "2026-10-02",
+      "reviewedAirportPublicNames": [
+        "丘珠空港"
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:okadama:sapporo-public-terminal-and-access-review",
+          "url": "https://okadama-airport.co.jp/terminal/img/floor_map_1f_260331.png",
+          "observedResponseSha256": "3f592c7a324b7a6299f63454c55932082a65c29ebd21f628712965083fbaecbf"
+        },
+        {
+          "sourceActionId": "airport:okadama:sapporo-public-terminal-and-access-review",
+          "url": "https://okadama-airport.co.jp/terminal/1f/",
+          "observedResponseSha256": "0151535f4f554da10928b465b3618bfe650fa47b66f09456497ec352d44d56bc"
+        },
+        {
+          "sourceActionId": "airport:okadama:sapporo-public-terminal-and-access-review",
+          "url": "https://okadama-airport.co.jp/access/",
+          "observedResponseSha256": "a96a8f958689ab99b5eed26a4fbcd95064e3d56e285bbf0414d5a8ae3a682851"
+        },
+        {
+          "sourceActionId": "airport:okadama:sapporo-public-terminal-and-access-review",
+          "url": "https://okadama-airport.co.jp/access/info/",
+          "observedResponseSha256": "9228ca23682f76a8c54ed03141fd1c0732e82ecdbc8779c48e26c092aea2fff3"
+        },
+        {
+          "sourceActionId": "bus:hokto:okadama-current-three-stop-directional-service",
+          "url": "https://www.hokto.co.jp/okadama-sapporo/",
+          "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+        },
+        {
+          "sourceActionId": "bus:hokto:okadama-current-three-stop-directional-service",
+          "url": "https://www.hokto.co.jp/wp-content/uploads/2026/07/%E3%80%90%E6%9C%AD%E5%B9%8C%E9%83%BD%E5%BF%83%E2%87%94%E4%B8%98%E7%8F%A0%E7%A9%BA%E6%B8%AF%E7%B7%9A%E3%80%91%E8%BF%82%E5%9B%9E%E8%B7%AF%E8%A8%AD%E5%AE%9A_%E9%81%8B%E8%A1%8C%E7%B3%BB%E7%B5%B1%E5%9B%B3_%E8%BF%82%E5%9B%9E%E8%B7%AF%E6%A0%84%E7%94%BA_page-0001-1-1024x724.jpg",
+          "observedResponseSha256": "eaccf58ea55c311ceacbed7199b01f7fe5ea9be710ae94f320630bbc26063005"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        },
+        {
+          "sourceActionId": "government:c28:airport-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/C28/C28-21/C28-21_GML.zip",
+          "observedResponseSha256": "07d69353a34558d7ebd21d4b5f62b685d4f9b9d0e55c6eed6ce05aefcc6b7b35"
+        },
+        {
+          "sourceActionId": "government:mlit:sapporo-airfield-public-name-fact-review",
+          "url": "https://www.cab.mlit.go.jp/tcab/airport/list/",
+          "observedResponseSha256": "2ea91bb2965d448f297b3fb7ac0211cc2005abf2cff22c2038d335bf209f967d"
+        }
+      ],
+      "components": [
+        {
+          "name": "札幌飛行場",
+          "operator": "airport-facility:cf03_00017",
+          "line": "airport:cf03_00017",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00017",
+            "requirementId": "review:official-airport:札幌",
+            "expectedRequirementName": "札幌",
+            "method": "REVIEWED_EXPLICIT_AIRFIELD_PUBLIC_NAME_ALIAS",
+            "officialNameEvidence": {
+              "officialName": "札幌飛行場",
+              "requirementName": "札幌",
+              "publicName": "丘珠空港",
+              "equivalenceKind": "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME",
+              "locator": "Cached MLIT airport listing links 札幌飛行場（丘珠空港） and pairs 札幌 with 丘珠; see prior alias review line 167/405 and row 817.",
+              "url": "https://www.cab.mlit.go.jp/tcab/airport/list/",
+              "observedResponseSha256": "2ea91bb2965d448f297b3fb7ac0211cc2005abf2cff22c2038d335bf209f967d"
+            },
+            "currentPassengerAccessReview": "Current airport-owned terminal/access pages identify passenger arrival frontage, current airport-liner terminal endpoint and named stops. This C28 reference point remains airport-level only; it is not used as the terminal or curb location."
+          }
+        },
+        {
+          "name": "丘珠空港",
+          "operator": "北都交通（株）",
+          "line": "p11-stop:P11-22_01:bs6541",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs6541",
+            "recordSha256": "66cb1f17a06cc13d348c82ee88a17091310c62564a95a0d1f10b9ce83b3bee98",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current Hokto route and airport access/terminal pages name the airport endpoint. The first-floor diagram shows public arrival lobby/exit and airport bus information/frontage. P11 point is only a 2022 same-operator road-stop representative, not a terminal coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北都交通（株）",
+              "currentOperatorName": "北都交通株式会社",
+              "currentStopName": "丘珠空港",
+              "historicalRoute": "丘珠空港⇔札幌駅・栄町駅",
+              "url": "https://www.hokto.co.jp/okadama-sapporo/",
+              "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_AIRPORT_PUBLIC_ARRIVAL_FRONTAGE_AND_NAMED_LINER_ENDPOINT",
+      "hubScopeComplete": false,
+      "locator": "Airport operator first-floor plan identifies the public arrival lobby/exit and bus information/frontage; airport access/stop pages and current operator route identify the named airport-liner endpoint. This is a coarse public frontage interface only: no bay number, exact curb-to-door path, coordinates, distance or accessible-path claim."
+    },
+    {
+      "factId": "okadama-sapporo-frontage-bus-stop-to-existing-jr-sapporo",
+      "kind": "transfer",
+      "sourceActionId": "station:jrh:sapporo-public-south-frontage-map-review",
+      "sourceUrl": "https://www.jrhokkaido.co.jp/construction/images/const-02.jpg",
+      "observedResponseSha256": "76b4c04dc912eb525cfa95dd89bb57258ca1e57a6d2a427dddf78dc7e5c0874c",
+      "serviceDate": "2026-10-02",
+      "reviewedAirportPublicNames": [
+        "丘珠空港"
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "station:jrh:sapporo-public-south-frontage-map-review",
+          "url": "https://www.jrhokkaido.co.jp/construction/images/const-02.jpg",
+          "observedResponseSha256": "76b4c04dc912eb525cfa95dd89bb57258ca1e57a6d2a427dddf78dc7e5c0874c"
+        },
+        {
+          "sourceActionId": "station:jrh:sapporo-public-south-frontage-map-review",
+          "url": "https://www.jrhokkaido.co.jp/construction/",
+          "observedResponseSha256": "f8738b185119c7018e0ca83f4ab0f47a53541f38567059700511f3befd48afe7"
+        },
+        {
+          "sourceActionId": "station:jrh:sapporo-public-south-frontage-map-review",
+          "url": "https://www.jrhokkaido.co.jp/other/goriyou.html",
+          "observedResponseSha256": "bfd21ef60162bcbc26ba6a375b9cd159b899163873f4c3a65154ced7f8decdb8"
+        },
+        {
+          "sourceActionId": "airport:okadama:sapporo-public-terminal-and-access-review",
+          "url": "https://okadama-airport.co.jp/access/info/",
+          "observedResponseSha256": "9228ca23682f76a8c54ed03141fd1c0732e82ecdbc8779c48e26c092aea2fff3"
+        },
+        {
+          "sourceActionId": "bus:hokto:okadama-current-three-stop-directional-service",
+          "url": "https://www.hokto.co.jp/okadama-sapporo/",
+          "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+        },
+        {
+          "sourceActionId": "bus:hokto:okadama-current-three-stop-directional-service",
+          "url": "https://www.hokto.co.jp/wp-content/uploads/2026/07/%E3%80%90%E6%9C%AD%E5%B9%8C%E9%83%BD%E5%BF%83%E2%87%94%E4%B8%98%E7%8F%A0%E7%A9%BA%E6%B8%AF%E7%B7%9A%E3%80%91%E8%BF%82%E5%9B%9E%E8%B7%AF%E8%A8%AD%E5%AE%9A_%E9%81%8B%E8%A1%8C%E7%B3%BB%E7%B5%B1%E5%9B%B3_%E8%BF%82%E5%9B%9E%E8%B7%AF%E6%A0%84%E7%94%BA_page-0001-1-1024x724.jpg",
+          "observedResponseSha256": "eaccf58ea55c311ceacbed7199b01f7fe5ea9be710ae94f320630bbc26063005"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        }
+      ],
+      "components": [
+        {
+          "name": "札幌駅前",
+          "operator": "北都交通（株）",
+          "line": "p11-stop:P11-22_01:bs7407",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs7407",
+            "recordSha256": "278c95eb4b4104b90401b97c668249e799960446510038d0b16dbf27a45ac799",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current Hokto October timetable names 札幌駅前; airport stop guide identifies its station-front endpoint as 札幌駅南口 / 伊藤加藤ビル前, boarding/alighting allowed. JR Hokkaido current first-floor map labels the south station-front plaza and public station entrances. P11 point remains a 2022 road-stop representative; no curb geometry is inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "北都交通（株）",
+              "currentOperatorName": "北都交通株式会社",
+              "currentStopName": "札幌駅前",
+              "historicalRoute": "丘珠空港⇔札幌駅・栄町駅",
+              "url": "https://www.hokto.co.jp/okadama-sapporo/",
+              "observedResponseSha256": "b674ce008269958cff24563351f61783619bad15ca20387b86f56cc91b280068"
+            }
+          }
+        },
+        {
+          "name": "札幌",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "NAMED_SOUTH_STATION_FRONT_BUS_ENDPOINT_TO_CURRENT_JR_PUBLIC_ENTRANCE_MAP",
+      "hubScopeComplete": false,
+      "locator": "Airport operator’s cached stopguide (https://okadama-airport.co.jp/access/info/) names 札幌駅南口 / 伊藤加藤ビル前, gives 札幌市中央区北4条西4丁目, and says boarding/alighting are shared; its cached HTML contains a Google Maps iframe but no text proving a JR entrance, crossing, or route. JR Hokkaido’s current official 1F public diagram (https://www.jrhokkaido.co.jp/construction/images/const-02.jpg) separately labels 南口駅前広場 and public station entrances/routes. Together these support only the named station-front/public-plaza interface at coarse level. Reuse the exact existing JR Sapporo national component; no coordinate join, measured footpath, exact curb-to-door route, platform or accessibility claim."
+    }
+  ],
+  "metrics": {
+    "facts": 4,
+    "directedEdges": 8,
+    "busDirectedEdges": 4,
+    "publicTransferDirectedEdges": 4,
+    "newP11IdentityRecords": 3,
+    "canonicalWrites": 0,
+    "sharedGeneratorRuns": 0,
+    "newHttpRequests": 0,
+    "newWebSearchQueries": 0,
+    "sourceAllowedEvidenceReferences": 12,
+    "sourceAllowedPassed": 12,
+    "serviceSchemaChecks": [
+      {
+        "factId": "okadama-hokto-city-to-airport-2026-10-02",
+        "factCallingRestrictions": "PASS",
+        "busStopCandidateCalls": 3,
+        "generatePattern": "PASS",
+        "generatedDirectedEdges": 2,
+        "requiredTopLevelFields": true
+      },
+      {
+        "factId": "okadama-hokto-airport-to-city-2026-10-02",
+        "factCallingRestrictions": "PASS",
+        "busStopCandidateCalls": 3,
+        "generatePattern": "PASS",
+        "generatedDirectedEdges": 2,
+        "requiredTopLevelFields": true
+      }
+    ]
+  },
+  "reviewNotes": [
+    "The only new service calls in this phase are the three bus stops in each direction. No Sakaemachi metro transfer edge or rail segment is added.",
+    "P11 contributes exact 2022 same-operator representative road-stop IDs, not current curb/platform geometry. P11 point coordinates are preserved only as source identity attributes with the mandatory representative scope.",
+    "Current outbound and inbound Sakaemachi curb restrictions are represented as separate service call positions using the same one historic P11 component; the phase does not fabricate two native IDs or an inter-curb/metro transfer.",
+    "Airport component retains C28 formal name 札幌飛行場 and previously reviewed public alias 丘珠空港; reference point is not terminal/curb.",
+    "JR Sapporo selector reuses the existing admitted national component name/operator/函館線; no new JR node is proposed.",
+    "All web sources are factual references only; canonical payload carries minimal facts, no raw page/image/timetable content."
+  ]
+}

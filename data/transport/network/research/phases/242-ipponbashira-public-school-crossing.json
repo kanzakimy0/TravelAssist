@@ -1,0 +1,97 @@
+{
+  "phaseId": "242-ipponbashira-public-school-crossing",
+  "strategy": [
+    "ORIGINAL_TWO_IPPONBASHIRA_DIRECTION_ROOTS",
+    "PUBLIC_ROADSIDE_VIA_EXPLICIT_SCHOOL_ZEBRA",
+    "KEEP_NATIVE_IDENTITIES_AND_RESTRICTIONS",
+    "ONE_NECESSARY_DIRECTED_WALK"
+  ],
+  "completedActionIds": [
+    "transfer:ipponbashira:school-crossing-candidate:gsi-continuous-roadside-school-crossing",
+    "transfer:ipponbashira:school-crossing-candidate:current-exact-directional-stop",
+    "transfer:ipponbashira:school-crossing-candidate:official-school-crossing-passenger-access"
+  ],
+  "facts": [
+    {
+      "factId": "ipponbashira-west-to-east-via-public-school-zebra",
+      "kind": "transfer",
+      "sourceActionId": "transfer:ipponbashira:school-crossing-candidate:gsi-continuous-roadside-school-crossing",
+      "sourceUrl": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/225920/105827.jpg",
+      "observedResponseSha256": "a1403e59e3105a05a47f2143e57e8304cac0c3274d2a2fda5769534b03b8c171",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:ipponbashira:school-crossing-candidate:gsi-continuous-roadside-school-crossing",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/225921/105826.jpg",
+          "observedResponseSha256": "a7f33a15866eaa238a6f6f03dfd77665342f2c8928210b89bd7e3749d702d59a"
+        },
+        {
+          "sourceActionId": "transfer:ipponbashira:school-crossing-candidate:gsi-continuous-roadside-school-crossing",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/225921/105827.jpg",
+          "observedResponseSha256": "a5aaa33264bcd38f46c41cafe4652cecfa2c228fe08d2fe7980c0a16235ad5b6"
+        },
+        {
+          "sourceActionId": "transfer:ipponbashira:school-crossing-candidate:current-exact-directional-stop",
+          "url": "https://www.keneibus.jp/fs/2/1/9/3/4/_/_074_____________________.pdf",
+          "observedResponseSha256": "4a1d05ef5a2e7c5b741b3fbf8fdb1906d84c6b3f8d4ca8a4508fc4d658f35079"
+        },
+        {
+          "sourceActionId": "transfer:ipponbashira:school-crossing-candidate:official-school-crossing-passenger-access",
+          "url": "https://www.unzen-portal.jp/projects/report/guide2021/",
+          "observedResponseSha256": "8fa8c2c95363dd027cee62b24fdc58f1aafa27eae5c8434c445de00164145e46"
+        },
+        {
+          "sourceActionId": "gtfs:nagasaki:retained-licensed-dataset",
+          "url": "https://data.bodik.jp/dataset/420000_nagasakikeneibus/resource/97f91f64-2124-4bf1-b3e3-422de17fc080/download",
+          "observedResponseSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc"
+        }
+      ],
+      "components": [
+        {
+          "name": "一本柱鳥居前",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:50",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "888170_01",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "dc2f21e3ae1b5cca16d7aff143c5d8d5d5559d612eb45ea649768a4727750085",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact licensed route50 native888170_01 with current operator8170-1 Unzen/downbound role. Independently retained west/northbound roadside component; public margin leads southwest to officially described school-front zebra visible in licensed GSI. No native suffix alone, OSM snap or exact pole claim."
+          }
+        },
+        {
+          "name": "一本柱鳥居前",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:50",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "888170_05",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "3c87a12d81591224cc6055aef0d31ef2c9863332733e9d2aa40166643e38226d",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact licensed route50 native888170_05 with current operator8170-5 Nagasaki/upbound role. Independently retained east/southbound roadside component; public margin leads southwest to the same independently described/visible school-front zebra. No coordinate-distance connection, exact pole or signal assumption."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXACT_CURRENT_OPERATOR_DIRECTIONAL_GTFS_PLUS_OFFICIAL_SCHOOL_CROSSING_TEXT_AND_CONTIGUOUS_LICENSED_GSI_PUBLIC_ROADSIDE",
+      "hubScopeComplete": false,
+      "locator": "Current operator2026-04 stop sheet independently identifies8170-1 Unzen/downbound and8170-5 Nagasaki/upbound. Match retained licensed native888170_01 and888170_05 through exact original identity, source archive and actual route50 calls; platform_code stays empty and no OSM stop-area/name collapse. Current native points locate independent west/northbound and east/southbound national-road passenger components; they are not centimetre-accurate pole observations. Official BASE access prose independently identifies both bus directions and the former Unzen school-front zebra crossing, explicitly noting removal of its signal. Licensed GSI tiles225921/105826,225921/105827,225920/105827 form a continuous road corridor: west public roadside southwest from01 to the marked crossing beside the former school pool, across the zebra, then east public roadside northeast to05. Road margins remain outside private building interiors, school grounds and forest paths. Only coarse pedestrian continuity is asserted, not segregated sidewalks, exact width, accessibility, crossing signal, distance, opening hours or guaranteed safety. Aerial capture dates UNKNOWN; historical prose is corroboration, not asserted current photography. Existing OSM stop-area lacks a pedestrian way and is not used as invented footway or endpoint snap.",
+      "captureDate": "UNKNOWN"
+    }
+  ],
+  "notes": [
+    "One coarse directed walking relationship via actual southwest school crossing; no invented immediate crossing between opposite stops.",
+    "No new nodes or bus services; public-road route does not enter school/private premises.",
+    "Historical portal and unknown-date aerial image limitations preserved. Refused promotional image excluded and not retried."
+  ]
+}

@@ -1,0 +1,614 @@
+{
+  "phaseId": "145-astram-current-directional-trains-national-anchor-and-three-hubs",
+  "strategy": [
+    "INDEPENDENT_ACTUAL_FULL_LINE_DIRECTIONAL_TRAINS",
+    "CONTIGUOUS_JR_CURRENT_TRAINS_TO_NATIONAL_ANCHOR",
+    "CURRENT_JR_PASSAGES_AND_RECIPROCAL_OPERATOR_INTERCHANGES",
+    "EXCLUDE_PLACEHOLDER_DIAGRAMS"
+  ],
+  "completedActionIds": [
+    "rail:astram:current-independent-full-line-trains-and-three-interchanges",
+    "rail:jr-west:current-shin-hakushima-national-anchor-sections",
+    "hub:jr-west:current-shin-hakushima-and-omachi-astram-public-passages",
+    "hub:hiroden:current-hondori-reciprocal-declared-astram-interchange"
+  ],
+  "facts": [
+    {
+      "factId": "astram-current-weekday-down-first-full-line-train",
+      "kind": "service",
+      "sourceActionId": "rail:astram:current-independent-full-line-trains-and-three-interchanges",
+      "sourceUrl": "https://www.astramline.co.jp/Portals/0/pdf/timetable/20260314_daiya.heijitu.kudari.pdf",
+      "observedResponseSha256": "c7aefe0d6f8c18eb31f9fdb42dcc1e93fb02f3972489fcd18c1951139ffcfd4e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:astram:current-independent-full-line-trains-and-three-interchanges",
+          "url": "https://www.astramline.co.jp/station/timetable.html",
+          "observedResponseSha256": "e0e6dcf448657c5e7dd1b42284738ffa0ff7125fd9fa6b135a4cb595a000effa"
+        },
+        {
+          "sourceActionId": "rail:astram:current-independent-full-line-trains-and-three-interchanges",
+          "url": "https://www.astramline.co.jp/station/route.html",
+          "observedResponseSha256": "017538a05f01f6a697a795f04d33e111af17479a36c3b9a4de70ce19fdadb24e"
+        }
+      ],
+      "locator": "Individually viewed current March 14 2026 weekday down full table page 1, actual train column 1. Every one of the 22 passenger calls is explicit. Up column 1 is a shorter Chorakuji-origin train and is not extended or inherited; selected up column 2 starts at Koiki-koen-mae. Independently read down and up orders; no automatic reverse. Exact S12 operator/line identities only. Source table does not display a train number; the page/column is a reviewed selection locator, not an invented operator train code. No clock values or timetable artwork retained.",
+      "line": "広島新交通1号線",
+      "operator": "広島高速交通",
+      "mode": "fixed_guideway",
+      "serviceClass": "各駅停車",
+      "direction": "down",
+      "callingStations": [
+        "本通",
+        "県庁前",
+        "城北",
+        "新白島",
+        "白島",
+        "牛田",
+        "不動院前",
+        "祇園新橋北",
+        "西原",
+        "中筋",
+        "古市",
+        "大町",
+        "毘沙門台",
+        "安東",
+        "上安",
+        "高取",
+        "長楽寺",
+        "伴",
+        "大原",
+        "伴中央",
+        "大塚",
+        "広域公園前"
+      ],
+      "callingComponents": [
+        {
+          "name": "本通",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "県庁前",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "城北",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "新白島",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "白島",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "牛田",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "不動院前",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "祇園新橋北",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "西原",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "中筋",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "古市",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "大町",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "毘沙門台",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "安東",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "上安",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "高取",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "長楽寺",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "伴",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "大原",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "伴中央",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "大塚",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "広域公園前",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "CURRENT_DIRECTIONAL_ACTUAL_TRAIN_COLUMN_ALL_EXPLICIT_CALLS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_MARCH_2026_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "astram-current-weekday-up-first-full-line-train",
+      "kind": "service",
+      "sourceActionId": "rail:astram:current-independent-full-line-trains-and-three-interchanges",
+      "sourceUrl": "https://www.astramline.co.jp/Portals/0/pdf/timetable/20260314_daiya.heijitu.nobori.pdf",
+      "observedResponseSha256": "963a01322da79fafd3ffe56c324f66f397fc4db98c2e705ba4d7aecd4205c3f4",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:astram:current-independent-full-line-trains-and-three-interchanges",
+          "url": "https://www.astramline.co.jp/station/timetable.html",
+          "observedResponseSha256": "e0e6dcf448657c5e7dd1b42284738ffa0ff7125fd9fa6b135a4cb595a000effa"
+        },
+        {
+          "sourceActionId": "rail:astram:current-independent-full-line-trains-and-three-interchanges",
+          "url": "https://www.astramline.co.jp/station/route.html",
+          "observedResponseSha256": "017538a05f01f6a697a795f04d33e111af17479a36c3b9a4de70ce19fdadb24e"
+        }
+      ],
+      "locator": "Individually viewed current March 14 2026 weekday up full table page 1, actual train column 2. Every one of the 22 passenger calls is explicit. Up column 1 is a shorter Chorakuji-origin train and is not extended or inherited; selected up column 2 starts at Koiki-koen-mae. Independently read down and up orders; no automatic reverse. Exact S12 operator/line identities only. Source table does not display a train number; the page/column is a reviewed selection locator, not an invented operator train code. No clock values or timetable artwork retained.",
+      "line": "広島新交通1号線",
+      "operator": "広島高速交通",
+      "mode": "fixed_guideway",
+      "serviceClass": "各駅停車",
+      "direction": "up",
+      "callingStations": [
+        "広域公園前",
+        "大塚",
+        "伴中央",
+        "大原",
+        "伴",
+        "長楽寺",
+        "高取",
+        "上安",
+        "安東",
+        "毘沙門台",
+        "大町",
+        "古市",
+        "中筋",
+        "西原",
+        "祇園新橋北",
+        "不動院前",
+        "牛田",
+        "白島",
+        "新白島",
+        "城北",
+        "県庁前",
+        "本通"
+      ],
+      "callingComponents": [
+        {
+          "name": "広域公園前",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "大塚",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "伴中央",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "大原",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "伴",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "長楽寺",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "高取",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "上安",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "安東",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "毘沙門台",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "大町",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "古市",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "中筋",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "西原",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "祇園新橋北",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "不動院前",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "牛田",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "白島",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "新白島",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "城北",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "県庁前",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "本通",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "CURRENT_DIRECTIONAL_ACTUAL_TRAIN_COLUMN_ALL_EXPLICIT_CALLS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_MARCH_2026_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "sanyo-1501M-current-hiroshima-shin-hakushima-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:independent-adjacent-hiroshima-shin-hakushima-static-directions",
+      "sourceUrl": "https://dive-hiroshima.com/information/faq-004/",
+      "observedResponseSha256": "d56154d8334d279d74900e695e71749c8b3c440d5aa70ffb57f3c9674adfa03b",
+      "locator": "Independent minimum static two-call passenger relation only. Westbound: current Hiroshima City/Hiroshima Tourism Association FAQ004 explicitly instructs passengers to ride JR Hiroshima to JR Shin-Hakushima before transferring. Eastbound: independently cached native JR Shin-Hakushima station platform direction guide explicitly offers Sanyo-line Hiroshima/Mihara-bound boarding. Current JR cnh station map establishes the exact adjacent pair without another passenger station. Direction existence is supplied by separate published passenger guides, not inferred from physical line order or reversal. Pattern/fact IDs remain stable identifiers only; no 1501M/302M, operating date, all-stop rule for other Sanyo segments, frequency or clock is claimed. No prose, map artwork or timetable payload is reproduced.",
+      "line": "山陽線・広島新白島区間",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "static_adjacent_passenger_service",
+      "direction": "westbound",
+      "callingStations": [
+        "広島",
+        "新白島"
+      ],
+      "callingComponents": [
+        {
+          "name": "広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新白島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_OFFICIAL_DIRECTIONAL_PASSENGER_GUIDES_AND_EXACT_ADJACENCY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PASSENGER_RELATION_NO_TRAIN_DATE_OR_FREQUENCY_CLAIM",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:independent-adjacent-hiroshima-shin-hakushima-static-directions",
+          "url": "https://eki.jr-odekake.net/premises?id=0800670",
+          "observedResponseSha256": "7e9e64799017960bb3f8c89db03bbb298368470461dbfe9d43f5fa97ae95a1d1"
+        },
+        {
+          "sourceActionId": "rail:jr-west:independent-adjacent-hiroshima-shin-hakushima-static-directions",
+          "url": "https://www.jr-odekake.net/station/pdf/cnh.pdf",
+          "observedResponseSha256": "0c1a51fdfc263b07555fdd126d8035f981c02d0d5ee2ef2940ed18e768287fe3"
+        }
+      ]
+    },
+    {
+      "factId": "sanyo-302M-current-hiroshima-shin-hakushima-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:independent-adjacent-hiroshima-shin-hakushima-static-directions",
+      "sourceUrl": "https://eki.jr-odekake.net/premises?id=0800670",
+      "observedResponseSha256": "7e9e64799017960bb3f8c89db03bbb298368470461dbfe9d43f5fa97ae95a1d1",
+      "locator": "Independent minimum static two-call passenger relation only. Westbound: current Hiroshima City/Hiroshima Tourism Association FAQ004 explicitly instructs passengers to ride JR Hiroshima to JR Shin-Hakushima before transferring. Eastbound: independently cached native JR Shin-Hakushima station platform direction guide explicitly offers Sanyo-line Hiroshima/Mihara-bound boarding. Current JR cnh station map establishes the exact adjacent pair without another passenger station. Direction existence is supplied by separate published passenger guides, not inferred from physical line order or reversal. Pattern/fact IDs remain stable identifiers only; no 1501M/302M, operating date, all-stop rule for other Sanyo segments, frequency or clock is claimed. No prose, map artwork or timetable payload is reproduced.",
+      "line": "山陽線・広島新白島区間",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "static_adjacent_passenger_service",
+      "direction": "eastbound",
+      "callingStations": [
+        "新白島",
+        "広島"
+      ],
+      "callingComponents": [
+        {
+          "name": "新白島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_OFFICIAL_DIRECTIONAL_PASSENGER_GUIDES_AND_EXACT_ADJACENCY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PASSENGER_RELATION_NO_TRAIN_DATE_OR_FREQUENCY_CLAIM",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:independent-adjacent-hiroshima-shin-hakushima-static-directions",
+          "url": "https://dive-hiroshima.com/information/faq-004/",
+          "observedResponseSha256": "d56154d8334d279d74900e695e71749c8b3c440d5aa70ffb57f3c9674adfa03b"
+        },
+        {
+          "sourceActionId": "rail:jr-west:independent-adjacent-hiroshima-shin-hakushima-static-directions",
+          "url": "https://www.jr-odekake.net/station/pdf/cnh.pdf",
+          "observedResponseSha256": "0c1a51fdfc263b07555fdd126d8035f981c02d0d5ee2ef2940ed18e768287fe3"
+        }
+      ]
+    },
+    {
+      "factId": "astram-current-0800670-jr-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-west:current-shin-hakushima-and-omachi-astram-public-passages",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0800670_9fa60bd0-bae6-47bd-b3c5-d31750b39e1c.pdf",
+      "observedResponseSha256": "682d9bf146beebc895b34b726d3c8bb04da581625917dde6ec3cafa426b4ba25",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-west:current-shin-hakushima-and-omachi-astram-public-passages",
+          "url": "https://eki.jr-odekake.net/premises?id=0800670",
+          "observedResponseSha256": "7e9e64799017960bb3f8c89db03bbb298368470461dbfe9d43f5fa97ae95a1d1"
+        },
+        {
+          "sourceActionId": "rail:astram:current-independent-full-line-trains-and-three-interchanges",
+          "url": "https://www.astramline.co.jp/station/info.html?name=%E6%96%B0%E7%99%BD%E5%B3%B6",
+          "observedResponseSha256": "4ddcc86d1d752b35edb4c716b81e0e28f4c5c11eae1a363b83a7269b54b5056d"
+        }
+      ],
+      "locator": "Individually viewed current-linked JR diagram and matching current Astram declared JR interchange. Both JR platform gates connect through ground-level public passage toward Astram Shin-Hakushima; north/south passage is explicitly beneath the station. Exact separate operators/lines; no placeholder station-plan image, fare, walking-time or accessibility promise.",
+      "components": [
+        {
+          "name": "新白島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新白島",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_PUBLIC_PASSAGE_AND_RECIPROCAL_OPERATOR_INTERCHANGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "astram-current-0801732-jr-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-west:current-shin-hakushima-and-omachi-astram-public-passages",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0801732_858ce7f1-67e8-4e09-a38c-7e94445ce239.pdf",
+      "observedResponseSha256": "f97e9886183efb45af97a1259547769e37334748e4dd61a3bc4226e5c0556001",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-west:current-shin-hakushima-and-omachi-astram-public-passages",
+          "url": "https://eki.jr-odekake.net/premises?id=0801732",
+          "observedResponseSha256": "56ddebc565e5802ae9c85b778f66991a62ab8c09110bde22f5af208d46b6dac4"
+        },
+        {
+          "sourceActionId": "rail:astram:current-independent-full-line-trains-and-three-interchanges",
+          "url": "https://www.astramline.co.jp/station/info.html?name=%E5%A4%A7%E7%94%BA",
+          "observedResponseSha256": "89b0dcb4f8c5a6d9c834825cc4ac2ee1629718b66d829add6625fa2d33dd5314"
+        }
+      ],
+      "locator": "Individually viewed current-linked JR diagram and matching current Astram declared JR interchange. JR Omachi gate connects through ordinary public ground concourse and explicit Astram direction, independently confirmed by current counterparty station page. Exact separate operators/lines; no placeholder station-plan image, fare, walking-time or accessibility promise.",
+      "components": [
+        {
+          "name": "大町",
+          "operator": "西日本旅客鉄道",
+          "line": "可部線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大町",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_PUBLIC_PASSAGE_AND_RECIPROCAL_OPERATOR_INTERCHANGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hondori-current-reciprocal-astram-hiroden-interchange",
+      "kind": "transfer",
+      "sourceActionId": "rail:astram:current-independent-full-line-trains-and-three-interchanges",
+      "sourceUrl": "https://www.astramline.co.jp/station/info.html?name=%E6%9C%AC%E9%80%9A",
+      "observedResponseSha256": "883433c64d7992603d92664c5bcee1519e12f7a7653eeb95fd541870a21ad08f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:hiroden:current-hondori-reciprocal-declared-astram-interchange",
+          "url": "https://www.hiroden.co.jp/train/route-guide/stop-guide/u01.html",
+          "observedResponseSha256": "af81a508c3a39c6903bc54841562a2615906ac7a9078941516d60a12cf5ab2d3"
+        }
+      ],
+      "locator": "Both current operators independently and explicitly declare the exact other facility as passenger interchange: Astram Hondori station to Hiroden Hondori tram stop, and Hiroden Hondori stop guide to Astram Hondori rail station. Bind coarse existing public passenger interchange with exact separate licensed components. The optional Astram diagram is a placeholder and is not evidence. No invented detailed path, shared paid area, through operation, walking-time, fare or accessibility claim.",
+      "components": [
+        {
+          "name": "本通",
+          "operator": "広島高速交通",
+          "line": "広島新交通1号線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "本通",
+          "operator": "広島電鉄",
+          "line": "宇品線",
+          "mode": "tram"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "RECIPROCAL_CURRENT_OFFICIAL_EXACT_PASSENGER_INTERCHANGE_DECLARATIONS",
+      "hubScopeComplete": false
+    }
+  ]
+}

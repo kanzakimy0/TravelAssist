@@ -1,0 +1,96 @@
+{
+  "phaseId": "134-mishima-three-current-rail-component-transfer-gates",
+  "strategy": [
+    "FINAL_T1_HUB_COMPONENT_PRIORITY",
+    "ACTUAL_CURRENT_TERMS_RECONCILIATION",
+    "EXPLICIT_OPERATOR_GATE_FACTS_WITHOUT_RESTRICTED_RAW_REUSE"
+  ],
+  "completedActionIds": [
+    "hub:jr-central:mishima-current-three-component-gates",
+    "hub:tokyu-hotels:mishima-independent-route-reference-review"
+  ],
+  "facts": [
+    {
+      "factId": "mishima-jr-shinkansen-conventional-current-reviewed-gate-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-central:mishima-current-three-component-gates",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/shinkansen/mishima/_img/mishima_231026.gif",
+      "observedResponseSha256": "02ef160bdaba77ff84f5c58268ef13851567d092033b6ca825de876fe1671043",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-central:mishima-current-three-component-gates",
+          "url": "https://railway.jr-central.co.jp/station-guide/shinkansen/mishima/map.html",
+          "observedResponseSha256": "ae6877b8c0b744a078cc1e0299073121a444c68a5086b2dd46c65f3f060934e6"
+        }
+      ],
+      "locator": "Current station-linked diagram shows both Shinkansen faces 5/6 joining Shinkansen transfer gate and under-track passage with access to conventional platform groups 1/2 and 3/4. Exact train classes/stopping patterns and ticket privileges are not inferred. Official diagram individually viewed and hash-matched; coarse bidirectional physical passenger relation only, no fares, walking times, accessibility or operating-hours claim.",
+      "components": [
+        {
+          "name": "三島",
+          "operator": "東海旅客鉄道",
+          "line": "東海道新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "三島",
+          "operator": "東海旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_LABELED_TRANSFER_GATES_WITH_SEPARATE_COMPONENT_IDENTITIES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "mishima-jr-izuhakone-current-reviewed-gate-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-central:mishima-current-three-component-gates",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/shinkansen/mishima/_img/mishima_231026.gif",
+      "observedResponseSha256": "02ef160bdaba77ff84f5c58268ef13851567d092033b6ca825de876fe1671043",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-central:mishima-current-three-component-gates",
+          "url": "https://railway.jr-central.co.jp/station-guide/shinkansen/mishima/map.html",
+          "observedResponseSha256": "ae6877b8c0b744a078cc1e0299073121a444c68a5086b2dd46c65f3f060934e6"
+        }
+      ],
+      "locator": "Current JR operator diagram explicitly labels Izuhakone transfer gate between conventional under-track passage/south concourse and separately drawn Izuhakone platforms 7/8/9. Use actual labeled passenger gate, not mere station proximity or the unbuilt municipal north-south free-passage proposal. Official diagram individually viewed and hash-matched; coarse bidirectional physical passenger relation only, no fares, walking times, accessibility or operating-hours claim.",
+      "components": [
+        {
+          "name": "三島",
+          "operator": "東海旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三島",
+          "operator": "伊豆箱根鉄道",
+          "line": "駿豆線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_LABELED_TRANSFER_GATES_WITH_SEPARATE_COMPONENT_IDENTITIES",
+      "hubScopeComplete": false
+    }
+  ]
+}

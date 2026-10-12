@@ -1,0 +1,129 @@
+{
+  "version": "task-084-personas-v1",
+  "fixtureOnly": true,
+  "note": "Canonical PreferenceV1 fixtures only; no synthetic POI is represented as real pilot data.",
+  "personas": [
+    {
+      "id": "first_visit_classic",
+      "preference": {
+        "schemaVersion": "1.0",
+        "values": {
+          "interests.preferences": {
+            "history_culture": "like",
+            "photography": "like"
+          },
+          "style.discovery": 1,
+          "mobility.walkingTolerance": "standard",
+          "dining.queueTolerance": "medium"
+        }
+      },
+      "context": { "contextVersion": "persona-first-visit-classic-v1" }
+    },
+    {
+      "id": "nature_photo_low_crowd",
+      "preference": {
+        "schemaVersion": "1.0",
+        "values": {
+          "interests.preferences": {
+            "nature_scenery": "like",
+            "photography": "like"
+          },
+          "mobility.walkingTolerance": "standard"
+        }
+      },
+      "context": {
+        "contextVersion": "persona-nature-photo-low-crowd-v1",
+        "crowdTolerance": 1
+      }
+    },
+    {
+      "id": "low_walking_relaxed",
+      "preference": {
+        "schemaVersion": "1.0",
+        "values": {
+          "mobility.walkingTolerance": "veryLow",
+          "interests.preferences": { "onsen_wellness": "like" },
+          "style.pace": 1
+        }
+      },
+      "context": {
+        "contextVersion": "persona-low-walking-relaxed-v1",
+        "needsRestStrength": 1
+      }
+    },
+    {
+      "id": "hidden_local_explorer",
+      "preference": {
+        "schemaVersion": "1.0",
+        "values": {
+          "interests.preferences": {
+            "rural_towns": "like",
+            "traditional_experience": "like"
+          },
+          "style.discovery": 5,
+          "mobility.walkingTolerance": "high"
+        }
+      },
+      "context": { "contextVersion": "persona-hidden-local-explorer-v1" }
+    },
+    {
+      "id": "art_culture",
+      "preference": {
+        "schemaVersion": "1.0",
+        "values": {
+          "interests.preferences": {
+            "art_museums": "like",
+            "history_culture": "like"
+          },
+          "style.depth": 5
+        }
+      },
+      "context": { "contextVersion": "persona-art-culture-v1" }
+    },
+    {
+      "id": "family_day",
+      "preference": {
+        "schemaVersion": "1.0",
+        "values": {
+          "interests.preferences": { "family_activity": "like" },
+          "mobility.walkingTolerance": "standard"
+        }
+      },
+      "context": {
+        "contextVersion": "persona-family-day-v1",
+        "party": { "family": 1, "stroller": 0.7 }
+      }
+    },
+    {
+      "id": "onsen_recovery",
+      "preference": {
+        "schemaVersion": "1.0",
+        "values": {
+          "interests.preferences": { "onsen_wellness": "like" },
+          "style.pace": 1
+        }
+      },
+      "context": {
+        "contextVersion": "persona-onsen-recovery-v1",
+        "needsRestStrength": 1
+      }
+    },
+    {
+      "id": "night_urban_photo",
+      "preference": {
+        "schemaVersion": "1.0",
+        "values": {
+          "interests.preferences": {
+            "night_experience": "like",
+            "photography": "like",
+            "urban_exploration": "like"
+          }
+        }
+      },
+      "context": {
+        "contextVersion": "persona-night-urban-photo-v1",
+        "timeSlot": "night"
+      }
+    }
+  ]
+}

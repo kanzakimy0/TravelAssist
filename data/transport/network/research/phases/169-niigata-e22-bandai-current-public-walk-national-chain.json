@@ -1,0 +1,1156 @@
+{
+  "phaseId": "169-niigata-e22-bandai-current-public-walk-national-chain",
+  "strategy": [
+    "ORIGINAL_CORE_AIRPORT",
+    "NATIVE_P11_LOCAL_OPERATOR_COMPONENTS",
+    "INDEPENDENT_ACTUAL19_CALL_COLUMNS",
+    "EXPLICIT_PUBLIC_WALK_NOT_PROXIMITY",
+    "CURRENT_STATION_CONSTRUCTION_PASSAGES",
+    "NO_RELOCATED_TERMINAL_IDENTITY_OR_HIGHWAY_DEPENDENCY"
+  ],
+  "completedActionIds": [
+    "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+    "public:bandai-city:explicit-jr-niigata-pedestrian-access",
+    "public:niigata-city:current-bandai-station-construction-passages",
+    "public:niigata-prefecture:terminal-arrivals-frontage-continuity"
+  ],
+  "facts": [
+    {
+      "factId": "niigata-e22-bandai-airport-bound",
+      "kind": "service",
+      "sourceActionId": "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+      "sourceUrl": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/route/files/weekday/e2_w.pdf",
+      "observedResponseSha256": "608cc5b8ce18d40d3acc05b2364c9e2c3c82c605fbe1825723e10b50a77604f1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+          "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+          "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+        },
+        {
+          "sourceActionId": "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+          "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/access/airport/index.html",
+          "observedResponseSha256": "2b9d7eac798981363bd7ddd86c8fd4e312fd1e426a41cc4f33985ace204595f4"
+        },
+        {
+          "sourceActionId": "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+          "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/files/bandaicity.pdf",
+          "observedResponseSha256": "223cc7988dc23a5d6bebcde9003170aced3df6386a9d4b1e9c8c2d198f145530"
+        }
+      ],
+      "callingStations": [
+        "万代シテイ",
+        "新潟日報メディアシップ",
+        "宮浦中学前",
+        "万国橋",
+        "中央埠頭",
+        "北埠頭",
+        "紡績口",
+        "末広橋",
+        "北葉町",
+        "秋葉一丁目",
+        "山ノ下中学前",
+        "宝町",
+        "浜谷町",
+        "物見山",
+        "桑名病院入口",
+        "中道山",
+        "河渡新町",
+        "空港入口",
+        "新潟空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "万代シテイ",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs1147",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs1147",
+            "recordSha256": "fad5f00b63680016d8205b3fe36abab730fb2e9f1258aed5a9ebfc1827a53861",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "万代シテイ",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "新潟日報メディアシップ",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs1134",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs1134",
+            "recordSha256": "10a733d450d20dc2f9ab8c9178233a51fdad5dcad6c153684adc033b9cfcc76d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "新潟日報メディアシップ",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "宮浦中学前",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs1075",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs1075",
+            "recordSha256": "bf872ec62007dcbdff7ffeffef4ca406fdc783d1e586b28c5a2a3cad29df9696",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "宮浦中学前",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "万国橋",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs1020",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs1020",
+            "recordSha256": "65b1ef5313126eb0f59a2e4719199b98729b08b1244cbfabb7fb39c295137eb1",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "万国橋",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "中央埠頭",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs981",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs981",
+            "recordSha256": "8ecd9ab1fb79d02ab6bf77f2659e11ed397a845eea9fa43f1e29f715bc45f801",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "中央埠頭",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "北埠頭",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs953",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs953",
+            "recordSha256": "4edf5afd26065708ff1fcfae6fd0087b8a06402db595219aae9e9623fa5b210b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "北埠頭",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "紡績口",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs934",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs934",
+            "recordSha256": "fed4094c20646599975511a73ba805f7c9943246361136e6eecd9c0c429f83aa",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "紡績口",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "末広橋",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs884",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs884",
+            "recordSha256": "9b2b241a11b9b4cf046b3044cf82af8438d7095030a322dc9d83d67f02297d0d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "末広橋",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "北葉町",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs872",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs872",
+            "recordSha256": "49750d3a78128e296044a7081369eccf3ab4988b90d011eac810b7ac09093957",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "北葉町",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "秋葉一丁目",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs846",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs846",
+            "recordSha256": "9dda759e0b949f608fe2c04913d7500df47e226c214329cc5e3736e34658428a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "秋葉一丁目",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "山ノ下中学前",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs828",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs828",
+            "recordSha256": "2cf378e1234a53f24a9edd44b6dd7b20a595330328d23e6b36be4f16c1378e0b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "山ノ下中学前",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "宝町",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs804",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs804",
+            "recordSha256": "1707cad5eaeb838ed689d3e46f628ebb478eea5bc45a325ad19a6b8bae39425a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "宝町",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "浜谷町",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs784",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs784",
+            "recordSha256": "6bf9094d8f39ed3a9041b078613cc9650465c75ef025ca4b0487effbb3e245e1",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "浜谷町",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "物見山",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs771",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs771",
+            "recordSha256": "faec84502243cfa31e1851cb0a9ca19061fecad01eed7bfcfe539a10a698da58",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "物見山",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "桑名病院入口",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs753",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs753",
+            "recordSha256": "951642d96a46118d31c73ab1fafa4c9a0305e1ff5b76bfa51b58151a36415574",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "桑名病院入口",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "中道山",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs755",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs755",
+            "recordSha256": "187b7c246045ed736e1243738df5c02ce22371aaea19dea7d8e5611031bc8858",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "中道山",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "河渡新町",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs763",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs763",
+            "recordSha256": "7d46ef59de3555f290796cf03d926f4fd4e4c8cf8b5f0223114fe1549828e692",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "河渡新町",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "空港入口",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs751",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs751",
+            "recordSha256": "10b40ad615b6ebdb5f0e37242aebc5528eb30f13f57308f850d9d63e306cf190",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "空港入口",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "新潟空港",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs642",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs642",
+            "recordSha256": "50ba9abcac9f3369b747c9b4ac31bec9bdd5cbac70cee15597deb1bceb9f461e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "新潟空港",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        }
+      ],
+      "mode": "local_bus",
+      "purpose": "airport",
+      "line": "E22空港・松浜線・万代シテイ新潟空港区間",
+      "operator": "新潟交通株式会社",
+      "direction": "airport-bound",
+      "serviceClass": "各停路線バス",
+      "reviewMethod": "VISUALLY_REVIEWED_INDEPENDENT_E22_WEEKDAY_COLUMNS_CONTIGUOUS19_CALL_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "MARCH29_2026_WEEKDAY_TABLE_ELIGIBLE_OCTOBER2_NOT_REALTIME",
+      "locator": "Page0sixthcolumn firstactualE22; retainBandai-airportcontiguous19calls. Station/Bentenoutsideboundaryexcluded;E21branch8arrowrows excluded. No exclusivepickup/dropoffrule published forlocalE22; no fabricatedrestriction/clocks/frequency."
+    },
+    {
+      "factId": "niigata-e22-bandai-bandai-bound",
+      "kind": "service",
+      "sourceActionId": "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+      "sourceUrl": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/route/files/weekday/e2_w.pdf",
+      "observedResponseSha256": "608cc5b8ce18d40d3acc05b2364c9e2c3c82c605fbe1825723e10b50a77604f1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+          "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+          "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+        },
+        {
+          "sourceActionId": "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+          "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/access/airport/index.html",
+          "observedResponseSha256": "2b9d7eac798981363bd7ddd86c8fd4e312fd1e426a41cc4f33985ace204595f4"
+        },
+        {
+          "sourceActionId": "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+          "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/files/bandaicity.pdf",
+          "observedResponseSha256": "223cc7988dc23a5d6bebcde9003170aced3df6386a9d4b1e9c8c2d198f145530"
+        }
+      ],
+      "callingStations": [
+        "新潟空港",
+        "空港入口",
+        "河渡新町",
+        "中道山",
+        "桑名病院入口",
+        "物見山",
+        "浜谷町",
+        "宝町",
+        "山ノ下中学前",
+        "秋葉一丁目",
+        "北葉町",
+        "末広橋",
+        "紡績口",
+        "北埠頭",
+        "中央埠頭",
+        "万国橋",
+        "宮浦中学前",
+        "新潟日報メディアシップ",
+        "万代シテイ"
+      ],
+      "callingComponents": [
+        {
+          "name": "新潟空港",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs642",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs642",
+            "recordSha256": "50ba9abcac9f3369b747c9b4ac31bec9bdd5cbac70cee15597deb1bceb9f461e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "新潟空港",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "空港入口",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs751",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs751",
+            "recordSha256": "10b40ad615b6ebdb5f0e37242aebc5528eb30f13f57308f850d9d63e306cf190",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "空港入口",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "河渡新町",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs763",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs763",
+            "recordSha256": "7d46ef59de3555f290796cf03d926f4fd4e4c8cf8b5f0223114fe1549828e692",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "河渡新町",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "中道山",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs755",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs755",
+            "recordSha256": "187b7c246045ed736e1243738df5c02ce22371aaea19dea7d8e5611031bc8858",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "中道山",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "桑名病院入口",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs753",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs753",
+            "recordSha256": "951642d96a46118d31c73ab1fafa4c9a0305e1ff5b76bfa51b58151a36415574",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "桑名病院入口",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "物見山",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs771",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs771",
+            "recordSha256": "faec84502243cfa31e1851cb0a9ca19061fecad01eed7bfcfe539a10a698da58",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "物見山",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "浜谷町",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs784",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs784",
+            "recordSha256": "6bf9094d8f39ed3a9041b078613cc9650465c75ef025ca4b0487effbb3e245e1",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "浜谷町",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "宝町",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs804",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs804",
+            "recordSha256": "1707cad5eaeb838ed689d3e46f628ebb478eea5bc45a325ad19a6b8bae39425a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "宝町",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "山ノ下中学前",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs828",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs828",
+            "recordSha256": "2cf378e1234a53f24a9edd44b6dd7b20a595330328d23e6b36be4f16c1378e0b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "山ノ下中学前",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "秋葉一丁目",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs846",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs846",
+            "recordSha256": "9dda759e0b949f608fe2c04913d7500df47e226c214329cc5e3736e34658428a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "秋葉一丁目",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "北葉町",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs872",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs872",
+            "recordSha256": "49750d3a78128e296044a7081369eccf3ab4988b90d011eac810b7ac09093957",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "北葉町",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "末広橋",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs884",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs884",
+            "recordSha256": "9b2b241a11b9b4cf046b3044cf82af8438d7095030a322dc9d83d67f02297d0d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "末広橋",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "紡績口",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs934",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs934",
+            "recordSha256": "fed4094c20646599975511a73ba805f7c9943246361136e6eecd9c0c429f83aa",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "紡績口",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "北埠頭",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs953",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs953",
+            "recordSha256": "4edf5afd26065708ff1fcfae6fd0087b8a06402db595219aae9e9623fa5b210b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "北埠頭",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "中央埠頭",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs981",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs981",
+            "recordSha256": "8ecd9ab1fb79d02ab6bf77f2659e11ed397a845eea9fa43f1e29f715bc45f801",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "中央埠頭",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "万国橋",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs1020",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs1020",
+            "recordSha256": "65b1ef5313126eb0f59a2e4719199b98729b08b1244cbfabb7fb39c295137eb1",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "万国橋",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "宮浦中学前",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs1075",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs1075",
+            "recordSha256": "bf872ec62007dcbdff7ffeffef4ca406fdc783d1e586b28c5a2a3cad29df9696",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "宮浦中学前",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "新潟日報メディアシップ",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs1134",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs1134",
+            "recordSha256": "10a733d450d20dc2f9ab8c9178233a51fdad5dcad6c153684adc033b9cfcc76d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "新潟日報メディアシップ",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "万代シテイ",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs1147",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs1147",
+            "recordSha256": "fad5f00b63680016d8205b3fe36abab730fb2e9f1258aed5a9ebfc1827a53861",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "万代シテイ",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        }
+      ],
+      "mode": "local_bus",
+      "purpose": "airport",
+      "line": "E22空港・松浜線・万代シテイ新潟空港区間",
+      "operator": "新潟交通株式会社",
+      "direction": "bandai-bound",
+      "serviceClass": "各停路線バス",
+      "reviewMethod": "VISUALLY_REVIEWED_INDEPENDENT_E22_WEEKDAY_COLUMNS_CONTIGUOUS19_CALL_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "MARCH29_2026_WEEKDAY_TABLE_ELIGIBLE_OCTOBER2_NOT_REALTIME",
+      "locator": "Page5twentysixthcolumn firstactualE22airportorigin; retain19calls throughBandai, outsidefollowingstationcalls excluded. Independentpublishedcolumn, notreversedoutbound; E21brancharrowrows excluded. No clocks or realtimeguarantee."
+    },
+    {
+      "factId": "niigata-airport-public-terminal-local-e22",
+      "kind": "transfer",
+      "sourceActionId": "public:niigata-prefecture:terminal-arrivals-frontage-continuity",
+      "sourceUrl": "https://www.pref.niigata.lg.jp/uploaded/attachment/181380.pdf",
+      "observedResponseSha256": "2c412f75005857f9ee305e09305c0660aac929f8e3b41e3ead0274903767cfa9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "public:niigata-city:current-bandai-station-construction-passages",
+          "url": "https://www.city.niigata.lg.jp/kurashi/doro/airport/access/kuukouhenoakusesu.html",
+          "observedResponseSha256": "b4f270ce7abb3a3d0a53663607bcb60f61871123c056d93aeff0d95a2bb959f0"
+        },
+        {
+          "sourceActionId": "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+          "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/timetable/access/airport/index.html",
+          "observedResponseSha256": "2b9d7eac798981363bd7ddd86c8fd4e312fd1e426a41cc4f33985ace204595f4"
+        },
+        {
+          "sourceActionId": "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+          "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+          "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+        }
+      ],
+      "components": [
+        {
+          "name": "新潟空港",
+          "operator": "airport-facility:cf03_00039",
+          "line": "airport:cf03_00039",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00039",
+            "requirementId": "review:transport-node:e4b4b76b-478a-56ae-b982-e4ddaf7d05af",
+            "expectedRequirementName": "新潟",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Independentprefecture2019installedarrivalhall/terminalfrontroadbus-signage reviewed; continuity supportedbyP11-2022,current2026carrierandcityactiveairportaccess. Coarsepublicexit/frontagerelation only, no oldbaynumber,currentprecisegeometry,airsideorproximity-derivedaccess."
+          }
+        },
+        {
+          "name": "新潟空港",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs642",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs642",
+            "recordSha256": "50ba9abcac9f3369b747c9b4ac31bec9bdd5cbac70cee15597deb1bceb9f461e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "新潟空港",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "INDEPENDENT_PUBLIC_FRONTAGE_CURRENT_SERVICE_AND_PHYSICAL_CONTINUITY_REVIEW",
+      "hubScopeComplete": false,
+      "locator": "Prefecture2019ownreportpage8 actualinstalledarrivalhall/terminalroadbus-signage andphotos; reviewedcoarsecontinuity withP11-2022sameairportstop,current2026carrierexplicitlocal+limousine same-stop service andcityAugust2026activeaccess. Restrictedairportwebsiteflyer notused. Nounchangedbaygeometry,freeairsideaccess orcoordinates-basedwalk."
+    },
+    {
+      "factId": "niigata-bandai-local-public-walk-jr-current-passages",
+      "kind": "transfer",
+      "sourceActionId": "public:bandai-city:explicit-jr-niigata-pedestrian-access",
+      "sourceUrl": "https://bandaicity.com/access/",
+      "observedResponseSha256": "8dbfe60d36f884276c7fb9b09ddf92c1c672a3e77509b482902db72f8f6504c6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+          "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/busstop/main/files/bandaicity.pdf",
+          "observedResponseSha256": "223cc7988dc23a5d6bebcde9003170aced3df6386a9d4b1e9c8c2d198f145530"
+        },
+        {
+          "sourceActionId": "bus:niigata-kotsu:e22-bandai-airport-independent-local-calls",
+          "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+          "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+        },
+        {
+          "sourceActionId": "public:niigata-city:current-bandai-station-construction-passages",
+          "url": "https://www.city.niigata.lg.jp/kurashi/doro/ekisyu/ekisyu-osirase/hirobaseibisintyoku.html",
+          "observedResponseSha256": "94d39d1a49983bca45bfeb7e4407f407164d9419660c672cb8b00f08a0dbb551"
+        },
+        {
+          "sourceActionId": "public:niigata-city:current-bandai-station-construction-passages",
+          "url": "https://www.city.niigata.lg.jp/kurashi/doro/ekisyu/ekisyu-osirase/hirobaseibisintyoku.files/20260918_annaizu.pdf",
+          "observedResponseSha256": "79e6acfa11da5d34d47248ce988c5a62f8d6466499447132c8905a652858dd72"
+        }
+      ],
+      "components": [
+        {
+          "name": "万代シテイ",
+          "operator": "新潟交通（株）",
+          "line": "p11-stop:P11-22_15:bs1147",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_15:bs1147",
+            "recordSha256": "fad5f00b63680016d8205b3fe36abab730fb2e9f1258aed5a9ebfc1827a53861",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "ExactsameoperatorcurrentlocalE22stop andhistoricairportMatsuhamaroute; source-nativeP11same-road/name/operatorcombineddirectioncomponent, notplatformcoordinateorGTFSmerge. Bandai differentactualBC4boarding/street23arrival withpubliccrossings separatelyreviewed. Otheroperator/highway/stationrelocationrelationships notadmitted.",
+            "currentOperatorEvidence": {
+              "recordOperator": "新潟交通（株）",
+              "currentOperatorName": "新潟交通株式会社",
+              "currentStopName": "万代シテイ",
+              "historicalRoute": "空港・松浜線",
+              "url": "https://www.niigata-kotsu.co.jp/~noriai/route-bus/map/route/e2_map.pdf",
+              "observedResponseSha256": "c8f1686944fcc72375f68b9a555d322dd1f77026bf93b59d5fed7d06f702eeec"
+            }
+          }
+        },
+        {
+          "name": "新潟",
+          "operator": "東日本旅客鉄道",
+          "line": "信越線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_FACILITY_PEDESTRIAN_ACCESS_LOCAL_STOP_CROSSINGS_AND_CURRENT_PUBLIC_STATION_PATHS",
+      "hubScopeComplete": false,
+      "locator": "Bandaiownprimaryguide explicitlyprovideswalkingrelationtoJRBandaiExit. Currentoperatorlocalmap BC4airportbound/street23arrival andpubliccrossings; September18 municipalpublicpathmap reachesJRpublicgateapproach aroundconstruction. Bidirectionalordinarypublicpedestrianrelationreviewed; no10min/distance/accessibilityguarantee, straightlineinference, highwayP36oroldSouthExitplatformidentity."
+    }
+  ]
+}

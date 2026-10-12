@@ -1,0 +1,677 @@
+{
+  "phaseId": "170-iwakuni-airport-east-exit-actual-sanyo-national-chain",
+  "strategy": [
+    "ORIGINAL_AIRPORT_COMPLETE_CHAIN",
+    "EXACT_P11_EAST_EXIT_AND_NATIVE_LABELS",
+    "ACTUAL_INDEPENDENT_OCTOBER2_TRAINS",
+    "PUBLIC_PASSAGES_NOT_PROXIMITY",
+    "REUSED_EXISTING_C28_NAME_PROOF"
+  ],
+  "completedActionIds": [
+    "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+    "rail:jr-west:iwakuni-hiroshima-actual-october2-chain"
+  ],
+  "facts": [
+    {
+      "factId": "iwakuni-airport-local-airport-bound",
+      "kind": "service",
+      "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+      "sourceUrl": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+      "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+          "url": "https://www.iwakuni-airport.jp/access/access-bus/",
+          "observedResponseSha256": "ddcc152a49aef0e525b761e51cd17787baa6dde3e09f1bd47378c89cde173874"
+        },
+        {
+          "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+          "url": "https://www.iwakuni-airport.jp/timetable/2026-3-29-2026-10-24/",
+          "observedResponseSha256": "6a0d59ab2b54cb71f2ee2cb08eea6c6ebd41693ee8f1180a34442303f38fc55c"
+        },
+        {
+          "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+          "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+          "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+        }
+      ],
+      "callingStations": [
+        "岩国駅東口",
+        "シンフォニア",
+        "岩国錦帯橋空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "岩国駅東口",
+          "operator": "いわくにバス（株）",
+          "line": "p11-stop:P11-22_35:bs1438",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs1438",
+            "recordSha256": "36e7844f59b1de61ced6f213bd518f841af52e81d898950d9ffb14c3d87b727e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native localtable label/currentoperator and airportline historicP11 component. Literalシンフォニア, no expandedalias. EastExitnotWestExit. Native combined same-road/name/operator directioncomponent, notGTFSplatformcollapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "いわくにバス（株）",
+              "currentOperatorName": "いわくにバス株式会社",
+              "currentStopName": "岩国駅東口",
+              "historicalRoute": "岩国空港線",
+              "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+              "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+            }
+          }
+        },
+        {
+          "name": "シンフォニア",
+          "operator": "いわくにバス（株）",
+          "line": "p11-stop:P11-22_35:bs1522",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs1522",
+            "recordSha256": "41c0abd1b481e0e7d7c75e7fba08ac4150966189911b75c8f145f3805118161d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native localtable label/currentoperator and airportline historicP11 component. Literalシンフォニア, no expandedalias. EastExitnotWestExit. Native combined same-road/name/operator directioncomponent, notGTFSplatformcollapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "いわくにバス（株）",
+              "currentOperatorName": "いわくにバス株式会社",
+              "currentStopName": "シンフォニア",
+              "historicalRoute": "岩国空港線",
+              "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+              "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+            }
+          }
+        },
+        {
+          "name": "岩国錦帯橋空港",
+          "operator": "いわくにバス（株）",
+          "line": "p11-stop:P11-22_35:bs1673",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs1673",
+            "recordSha256": "b91db80613a6bb7547885ef3b132657fa6664e614e902bdc9150e77d6e688c54",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native localtable label/currentoperator and airportline historicP11 component. Literalシンフォニア, no expandedalias. EastExitnotWestExit. Native combined same-road/name/operator directioncomponent, notGTFSplatformcollapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "いわくにバス（株）",
+              "currentOperatorName": "いわくにバス株式会社",
+              "currentStopName": "岩国錦帯橋空港",
+              "historicalRoute": "岩国空港線",
+              "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+              "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+            }
+          }
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "岩国錦帯橋空港・岩国駅東口アクセスバス",
+      "operator": "いわくにバス株式会社",
+      "direction": "airport-bound",
+      "serviceClass": "空港アクセスバス",
+      "reviewMethod": "INDEPENDENT_NATIVE_CURRENT_LOCAL_BUS_ROWS_ACTUAL_THREE_CALLS",
+      "serviceState": "active",
+      "serviceStateScope": "MARCH29_OCTOBER24_2026_SEASONAL_SERVICE_INCLUDES_FROZEN_OCTOBER2_NOT_REALTIME",
+      "locator": "Page1 upperleft localbus first actual row separately eachdirection. シンフォニア literalcolumn. Aircraftarrivalcolumn excluded, blacknormalvalues applyOctober2; July-Septbluealternates excluded. Flightmatchedoperation maycancel/delay. No clocks, guaranteedrailconnection or inventedlocalpickuprestrictions."
+    },
+    {
+      "factId": "iwakuni-airport-local-station-bound",
+      "kind": "service",
+      "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+      "sourceUrl": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+      "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+          "url": "https://www.iwakuni-airport.jp/access/access-bus/",
+          "observedResponseSha256": "ddcc152a49aef0e525b761e51cd17787baa6dde3e09f1bd47378c89cde173874"
+        },
+        {
+          "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+          "url": "https://www.iwakuni-airport.jp/timetable/2026-3-29-2026-10-24/",
+          "observedResponseSha256": "6a0d59ab2b54cb71f2ee2cb08eea6c6ebd41693ee8f1180a34442303f38fc55c"
+        },
+        {
+          "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+          "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+          "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+        }
+      ],
+      "callingStations": [
+        "岩国錦帯橋空港",
+        "シンフォニア",
+        "岩国駅東口"
+      ],
+      "callingComponents": [
+        {
+          "name": "岩国錦帯橋空港",
+          "operator": "いわくにバス（株）",
+          "line": "p11-stop:P11-22_35:bs1673",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs1673",
+            "recordSha256": "b91db80613a6bb7547885ef3b132657fa6664e614e902bdc9150e77d6e688c54",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native localtable label/currentoperator and airportline historicP11 component. Literalシンフォニア, no expandedalias. EastExitnotWestExit. Native combined same-road/name/operator directioncomponent, notGTFSplatformcollapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "いわくにバス（株）",
+              "currentOperatorName": "いわくにバス株式会社",
+              "currentStopName": "岩国錦帯橋空港",
+              "historicalRoute": "岩国空港線",
+              "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+              "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+            }
+          }
+        },
+        {
+          "name": "シンフォニア",
+          "operator": "いわくにバス（株）",
+          "line": "p11-stop:P11-22_35:bs1522",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs1522",
+            "recordSha256": "41c0abd1b481e0e7d7c75e7fba08ac4150966189911b75c8f145f3805118161d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native localtable label/currentoperator and airportline historicP11 component. Literalシンフォニア, no expandedalias. EastExitnotWestExit. Native combined same-road/name/operator directioncomponent, notGTFSplatformcollapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "いわくにバス（株）",
+              "currentOperatorName": "いわくにバス株式会社",
+              "currentStopName": "シンフォニア",
+              "historicalRoute": "岩国空港線",
+              "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+              "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+            }
+          }
+        },
+        {
+          "name": "岩国駅東口",
+          "operator": "いわくにバス（株）",
+          "line": "p11-stop:P11-22_35:bs1438",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs1438",
+            "recordSha256": "36e7844f59b1de61ced6f213bd518f841af52e81d898950d9ffb14c3d87b727e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native localtable label/currentoperator and airportline historicP11 component. Literalシンフォニア, no expandedalias. EastExitnotWestExit. Native combined same-road/name/operator directioncomponent, notGTFSplatformcollapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "いわくにバス（株）",
+              "currentOperatorName": "いわくにバス株式会社",
+              "currentStopName": "岩国駅東口",
+              "historicalRoute": "岩国空港線",
+              "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+              "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+            }
+          }
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "岩国錦帯橋空港・岩国駅東口アクセスバス",
+      "operator": "いわくにバス株式会社",
+      "direction": "station-bound",
+      "serviceClass": "空港アクセスバス",
+      "reviewMethod": "INDEPENDENT_NATIVE_CURRENT_LOCAL_BUS_ROWS_ACTUAL_THREE_CALLS",
+      "serviceState": "active",
+      "serviceStateScope": "MARCH29_OCTOBER24_2026_SEASONAL_SERVICE_INCLUDES_FROZEN_OCTOBER2_NOT_REALTIME",
+      "locator": "Page1 upperleft localbus first actual row separately eachdirection. シンフォニア literalcolumn. Aircraftarrivalcolumn excluded, blacknormalvalues applyOctober2; July-Septbluealternates excluded. Flightmatchedoperation maycancel/delay. No clocks, guaranteedrailconnection or inventedlocalpickuprestrictions."
+    },
+    {
+      "factId": "iwakuni-hiroshima-510M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:iwakuni-hiroshima-actual-october2-chain",
+      "sourceUrl": "https://timetable.jr-odekake.net/train-timetable/169461?date=20261002",
+      "observedResponseSha256": "9354ef05864e95becd5cb419732ccc4eb03553f9629cab88f9cba21d04325e19",
+      "callingStations": [
+        "岩国",
+        "和木",
+        "大竹",
+        "玖波",
+        "大野浦",
+        "前空",
+        "宮島口",
+        "阿品",
+        "宮内串戸",
+        "廿日市",
+        "五日市",
+        "新井口",
+        "西広島",
+        "横川",
+        "新白島",
+        "広島"
+      ],
+      "callingComponents": [
+        {
+          "name": "岩国",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和木",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大竹",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "玖波",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大野浦",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "前空",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宮島口",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "阿品",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宮内串戸",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "廿日市",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "五日市",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新井口",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "横川",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新白島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "line": "山陽本線・岩国広島区間",
+      "operator": "西日本旅客鉄道",
+      "direction": "岩国→広島",
+      "serviceClass": "普通",
+      "serviceNumber": "510M",
+      "reviewMethod": "INDEPENDENT_DATED_ACTUAL_TRAIN_COMPLETE_CONTIGUOUS_S12_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER2_2026_FRIDAY_ELIGIBLE_PUBLISHED_WEEKDAY_SERVICE_NOT_REALTIME",
+      "locator": "510M actual October2 source; all16 actual calls in selected continuous section. CompleteIwakuni-Hiroshima trip. NativeS12山陽線 identities; no trainreverse, clocks/frequency or busconnectionpromise."
+    },
+    {
+      "factId": "iwakuni-hiroshima-307M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:jnto-independent-hiroshima-iwakuni-static-local-westbound",
+      "sourceUrl": "https://www.japan.travel/en/destinations/chugoku/yamaguchi/iwakuni/",
+      "observedResponseSha256": "881348945ccfb95701c051a1f21581a6ee44b8ca31afbe28be1ac277eb291b0a",
+      "callingStations": [
+        "広島",
+        "新白島",
+        "横川",
+        "西広島",
+        "新井口",
+        "五日市",
+        "廿日市",
+        "宮内串戸",
+        "阿品",
+        "宮島口",
+        "前空",
+        "大野浦",
+        "玖波",
+        "大竹",
+        "和木",
+        "岩国"
+      ],
+      "callingComponents": [
+        {
+          "name": "広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新白島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "横川",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新井口",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "五日市",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "廿日市",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宮内串戸",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "阿品",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宮島口",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "前空",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大野浦",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "玖波",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大竹",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和木",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "岩国",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "line": "山陽本線・岩国広島区間",
+      "operator": "西日本旅客鉄道",
+      "direction": "広島→岩国",
+      "serviceClass": "static_local_all_stop",
+      "reviewMethod": "INDEPENDENT_GOVERNMENT_DIRECTIONAL_LOCAL_GUIDE_EXPLICIT_LOCAL_DEFINITION_AND_OPERATOR_STATION_ORDER",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_PASSENGER_RELATION_NO_TRAIN_DATE_OR_FREQUENCY_CLAIM",
+      "locator": "Bounded independent combination: JNTO current Iwakuni destination recommends a Sanyo Main Line local train from Hiroshima to Iwakuni. Its current rail guide explicitly separates local all-station service from rapid service. Current operator cnh map supplies exact R01-R16 station order, not service existence. This supports only this westbound static local stopping pattern; does not assert all Japanese ordinary trains stop everywhere, reverse service, 307M, October2 operation, clocks or frequency. Every original native component remains distinct. Raw JNTO response bytes were hashed in memory and discarded; no prose, image, map or timetable is redistributed.",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:jnto-independent-hiroshima-iwakuni-static-local-westbound",
+          "url": "https://faq.japan-travel.jnto.go.jp/en/guide/traveling-by-rail/",
+          "observedResponseSha256": "8838c0438b8940ebacc8942a03598ce620ccaa501b16904d0a85e68b20491790"
+        },
+        {
+          "sourceActionId": "rail:jr-west:jnto-independent-hiroshima-iwakuni-static-local-westbound",
+          "url": "https://www.jr-odekake.net/station/pdf/cnh.pdf",
+          "observedResponseSha256": "0c1a51fdfc263b07555fdd126d8035f981c02d0d5ee2ef2940ed18e768287fe3"
+        }
+      ]
+    },
+    {
+      "factId": "iwakuni-airport-public-exit-local-bus-frontage",
+      "kind": "transfer",
+      "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+      "sourceUrl": "https://www.iwakuni-airport.jp/floormap/",
+      "observedResponseSha256": "c8dc9d2c24ae9a84c94e9825e9f203b15c64883722868dbbae9abcf8b8de1bac",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+          "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/floormap-terminal1f.png",
+          "observedResponseSha256": "b728801357422a6ddf97789aed70b122df1f89b5dfd0053b6b1bfedd3836784d"
+        },
+        {
+          "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+          "url": "https://www.iwakuni-airport.jp/access/access-bus/",
+          "observedResponseSha256": "ddcc152a49aef0e525b761e51cd17787baa6dde3e09f1bd47378c89cde173874"
+        },
+        {
+          "sourceActionId": "airport:mlit:hyakuri-iwakuni-explicit-public-name-review",
+          "url": "https://www.mlit.go.jp/koku/content/001725445.pdf",
+          "observedResponseSha256": "5e34a879a270f8dfc78218f2f4e47bae60d73db26619a9613970222c179ea414"
+        },
+        {
+          "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+          "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+          "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+        }
+      ],
+      "components": [
+        {
+          "name": "岩国飛行場",
+          "operator": "airport-facility:cf03_00101",
+          "line": "airport:cf03_00101",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00101",
+            "requirementId": "review:official-airport:岩国",
+            "expectedRequirementName": "岩国",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "岩国飛行場",
+              "requirementName": "岩国",
+              "publicName": "岩国錦帯橋空港",
+              "equivalenceKind": "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME",
+              "locator": "MLIT-published Iwakuni airport council report PDF p3, opening sentence, explicitly labels formal name and public nickname.",
+              "url": "https://www.mlit.go.jp/koku/content/001725445.pdf",
+              "observedResponseSha256": "5e34a879a270f8dfc78218f2f4e47bae60d73db26619a9613970222c179ea414"
+            },
+            "currentPassengerAccessReview": "Current October 2026 independent Naha Airport schedule explicitly identifies Iwakuni Kintaikyo IWK. Formal name is separately bound to exact C28 airport reference. Whole-airport identity only; no military-area access, passenger terminal-door, surface transfer or live availability inference."
+          }
+        },
+        {
+          "name": "岩国錦帯橋空港",
+          "operator": "いわくにバス（株）",
+          "line": "p11-stop:P11-22_35:bs1673",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs1673",
+            "recordSha256": "b91db80613a6bb7547885ef3b132657fa6664e614e902bdc9150e77d6e688c54",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native localtable label/currentoperator and airportline historicP11 component. Literalシンフォニア, no expandedalias. EastExitnotWestExit. Native combined same-road/name/operator directioncomponent, notGTFSplatformcollapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "いわくにバス（株）",
+              "currentOperatorName": "いわくにバス株式会社",
+              "currentStopName": "岩国錦帯橋空港",
+              "historicalRoute": "岩国空港線",
+              "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+              "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_PUBLIC_LOBBY_DOORS_TO_LABELLED_BUS_CURB_VISUAL_REVIEW",
+      "hubScopeComplete": false,
+      "locator": "Officialterminal1F publiclobby doors→buscurb frontage; landside only. No cargo/airside gate, geometry orproximity-derivedwalk. Existingphase116C28 formal/publicname identity proof reused unchanged.",
+      "reviewedAirportPublicNames": [
+        "那覇空港",
+        "岩国錦帯橋空港"
+      ]
+    },
+    {
+      "factId": "iwakuni-east-bus-stop-public-passage-jr-gate",
+      "kind": "transfer",
+      "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+      "sourceUrl": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/accessmap-bus.png",
+      "observedResponseSha256": "17e543d3cd5b6058a366aba7d8ba35551cb6b2679a48ebc414335bf56e7e53a6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:iwakuni-hiroshima-actual-october2-chain",
+          "url": "https://eki.jr-odekake.net/premises?id=0800622",
+          "observedResponseSha256": "7d526c179911a0cf959d25380d6e7d1333e5ee7b952d04b59d9c7d1f5af72bef"
+        },
+        {
+          "sourceActionId": "rail:jr-west:iwakuni-hiroshima-actual-october2-chain",
+          "url": "https://eki.jr-odekake.net/premises/0800622_d4d4269c-b49d-48c5-a817-3d087f20c045.pdf",
+          "observedResponseSha256": "fbe5e4ae84838c1e4ac8ccdb548ea6ea9ec8094a6d66f2b42ba2b75c5e23332f"
+        },
+        {
+          "sourceActionId": "bus:iwakuni:actual-airport-local-calls-and-public-frontages",
+          "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+          "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+        }
+      ],
+      "components": [
+        {
+          "name": "岩国駅東口",
+          "operator": "いわくにバス（株）",
+          "line": "p11-stop:P11-22_35:bs1438",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_35:bs1438",
+            "recordSha256": "36e7844f59b1de61ced6f213bd518f841af52e81d898950d9ffb14c3d87b727e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native localtable label/currentoperator and airportline historicP11 component. Literalシンフォニア, no expandedalias. EastExitnotWestExit. Native combined same-road/name/operator directioncomponent, notGTFSplatformcollapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "いわくにバス（株）",
+              "currentOperatorName": "いわくにバス株式会社",
+              "currentStopName": "岩国駅東口",
+              "historicalRoute": "岩国空港線",
+              "url": "https://www.iwakuni-airport.jp/cms/wp-content/themes/iwakuni-airport/images/download/timetable_20260329.pdf",
+              "observedResponseSha256": "a8143753e6d5afa9b9a9cff3073d9b40e1f073615aadc3361a9e0690ee263c65"
+            }
+          }
+        },
+        {
+          "name": "岩国",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_EAST_EXIT_BUS_AREA_AND_CURRENT_JR_FREE_PASSAGE_GATE_APPROACH",
+      "hubScopeComplete": false,
+      "locator": "Airportownbusmap labels EastExitpublicbusarea; JRJune1stationmap EastExit→2F自由通路→centralgateapproach. Ordinarypublicpassage bothdirections, noWeststopmerge, freefaregateclaim, precisegeometry/time oruniversalaccessibility."
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "phaseId": "118-three-current-nagoya-osaka-public-hub-connections",
+  "strategy": [
+    "CURRENT_MUNICIPAL_GUIDEWAY_TRANSFER_TEXT",
+    "INDEPENDENT_OPERATOR_PUBLIC_PASSAGE_CORRESPONDENCE",
+    "PRESERVE_DISTINCT_COMPONENT_IDENTITIES"
+  ],
+  "completedActionIds": [
+    "hub:nagoya:yada-sunadabashi-public-guideway-approaches",
+    "hub:osaka:nishiumeda-kitashinchi-explicit-public-connection",
+    "hub:jr-west:kitashinchi-west-public-passage-correspondence"
+  ],
+  "facts": [
+    {
+      "factId": "nagoya-yada-metro-guideway-public-deck",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya:yada-sunadabashi-public-guideway-approaches",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/reader/trp0001306.htm",
+      "observedResponseSha256": "3f127c564df81f3c26c17507b52aa4d7e745552fe87e5997e043fe2cd1d1a9b2",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya:yada-sunadabashi-public-guideway-approaches",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/reader/trp0001301.htm",
+          "observedResponseSha256": "aa2f49606ab6a9430f2f00ab7ec38a83b8a18745a823d0223b51ae2f8f1563ae"
+        },
+        {
+          "sourceActionId": "hub:nagoya:yada-sunadabashi-public-guideway-approaches",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/reader/trp0001304.htm",
+          "observedResponseSha256": "0aad5b600b9bf388e42ce93203aac16e8327d010c355e5a59d902c4773b1c0ed"
+        }
+      ],
+      "locator": "Current municipal accessible route explicitly joins Metro east gate, exit 1 or second-floor elevator access, and public pedestrian deck toward Yutorito Nagoya Dome-mae Yada. Keep only the gate/connection relationship; no full route prose, distances or live accessibility claim.",
+      "components": [
+        {
+          "name": "ナゴヤドーム前矢田",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "ナゴヤドーム前矢田",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_EXPLICIT_PUBLIC_PASSAGE_AND_DISTINCT_COMPONENT_IDENTITY",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "nagoya-sunadabashi-metro-guideway-public-approach",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya:yada-sunadabashi-public-guideway-approaches",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/reader/trp0001193.htm",
+      "observedResponseSha256": "b93b6a97691bc7efddcb0e3842362258d97034a27e11b029f39b5f357fe66d93",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya:yada-sunadabashi-public-guideway-approaches",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/reader/trp0001002.htm",
+          "observedResponseSha256": "d7c49f4bb6a94418d620915ab913d45a83858b75908ab29738e6568a004b2341"
+        }
+      ],
+      "locator": "Current municipal accessible route explicitly directs Metro gate passengers along the exit 2 approach to the elevator serving ground level and transfer to Yutorito. Preserve distinct operator components and minimum public connection only; no copied turn-by-turn prose or accessibility availability guarantee.",
+      "components": [
+        {
+          "name": "砂田橋",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "砂田橋",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_EXPLICIT_PUBLIC_PASSAGE_AND_DISTINCT_COMPONENT_IDENTITY",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-nishiumeda-kitashinchi-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:nishiumeda-kitashinchi-explicit-public-connection",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/Y/y11/map.php",
+      "observedResponseSha256": "d287afc39ec336013d50e85ada710851e4a35f18293fd694ca8eb511d68fbdad",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka:nishiumeda-kitashinchi-explicit-public-connection",
+          "url": "https://subway.osakametro.co.jp/station_guide/Y/y11/",
+          "observedResponseSha256": "2b8944916ecb28ce022e58e250167850f8bc2754b8d9805e30ff4fe874dcf5d4"
+        },
+        {
+          "sourceActionId": "hub:jr-west:kitashinchi-west-public-passage-correspondence",
+          "url": "https://eki.jr-odekake.net/premises/0612303_2d5b4e40-3014-4d03-889f-27268c71acf8.pdf",
+          "observedResponseSha256": "b3c6db24805bfd79ec885ccea323adef4699d6bf77347c77821b0728ff333c88"
+        },
+        {
+          "sourceActionId": "hub:jr-west:kitashinchi-west-public-passage-correspondence",
+          "url": "https://eki.jr-odekake.net/premises?id=0612303",
+          "observedResponseSha256": "eec3f1769b03b8b84d694711ff7021927b59834805be364c598096ee827f5e0c"
+        }
+      ],
+      "locator": "Osaka Metro current exit 7-B explicitly names the JR Tozai Kitashinchi connection. Independently viewed JR October 2 2026 diagram shows B2 platforms to B1 west gate and the public Nishiumeda connection. Public unpaid passage joins separate components; escalator maintenance notice precludes a live accessibility guarantee.",
+      "components": [
+        {
+          "name": "西梅田",
+          "operator": "大阪市高速電気軌道",
+          "line": "3号線(四つ橋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "北新地",
+          "operator": "西日本旅客鉄道",
+          "line": "JR東西線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_EXPLICIT_PUBLIC_PASSAGE_AND_DISTINCT_COMPONENT_IDENTITY",
+      "hubScopeComplete": false
+    }
+  ]
+}

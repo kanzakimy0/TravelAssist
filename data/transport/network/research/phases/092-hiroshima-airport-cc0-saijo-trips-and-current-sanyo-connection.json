@@ -1,0 +1,475 @@
+{
+  "phaseId": "092-hiroshima-airport-cc0-saijo-trips-and-current-sanyo-connection",
+  "strategy": [
+    "DATASET_SPECIFIC_CC0_ACTIVE_AIRPORT_TRIPS",
+    "CURRENT_ACTUAL_SANYO_RAIL_PREREQUISITE",
+    "EXPLICIT_JOINT_OPERATOR_PUBLIC_GATEWAYS"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "geiyo-saijo-airport.json",
+      "packageSha256": "f6cff76ff871daed99b54ac09307f6cf14aad46710ca3b689962dc270e457fcb",
+      "sourceActionId": "bus:geiyo:cc0-current-saijo-airport-trips"
+    }
+  ],
+  "completedActionIds": [
+    "rail:jr-west:current-saijo-airport-prerequisite",
+    "bus:geiyo:cc0-current-saijo-airport-trips",
+    "hub:saijo:current-joint-operator-public-terminal-passages",
+    "airport:hiroshima:current-saijo-terminal-public-passages"
+  ],
+  "facts": [
+    {
+      "factId": "sanyo-302M-hiroshima-saijo-current-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+      "sourceUrl": "https://www.hiroshima-u.ac.jp/en/access/higashihiroshima",
+      "observedResponseSha256": "92c1acd76c6bc37182634fe5ab628813b7cd743600e1cdd40c9a22da43229aae",
+      "callingStations": [
+        "広島",
+        "天神川",
+        "向洋",
+        "海田市",
+        "安芸中野",
+        "中野東",
+        "瀬野",
+        "八本松",
+        "寺家",
+        "西条"
+      ],
+      "callingComponents": [
+        {
+          "name": "広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "天神川",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "向洋",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "海田市",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "安芸中野",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "中野東",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "瀬野",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "八本松",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "寺家",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西条",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "line": "山陽線・広島西条区間",
+      "operator": "西日本旅客鉄道",
+      "direction": "outbound",
+      "serviceClass": "static_local_all_stop",
+      "reviewMethod": "INDEPENDENT_UNIVERSITY_EXPLICIT_DIRECTIONAL_LOCAL_RELATION_GOVERNMENT_LOCAL_DEFINITION_AND_OPERATOR_STATION_ORDER",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_PASSENGER_RELATION_NO_TRAIN_DATE_OR_FREQUENCY_CLAIM",
+      "locator": "Bounded static composite: current central Hiroshima University access explicitly recommends a local train Hiroshima to Saijo. Its own RISE native table explicitly marks Hiroshima city <–> Higashi Hiroshima city and identifies JR local train Hiroshima Station–Saijo Station, supporting each direction rather than mechanically reversing. JNTO separately defines local as all-station and rapid as distinct; JR cnh current map provides exact G01–G10 order only. RISE has undated stale Green Phoenix bus content, explicitly contradicted by updated central guidance; that bus content and all clocks/fares are excluded. Current railway existence is corroborated by central guide, but no particular train, October service day or frequency is claimed. Ten original components/restrictions remain unchanged. No restricted timetable processing.",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+          "url": "https://rise.hiroshima-u.ac.jp/en/about/access/",
+          "observedResponseSha256": "f3630a0d3fa3feff414d422dfdc76dbf3ad600d8cce815c4c346a43cef2825cf"
+        },
+        {
+          "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+          "url": "https://faq.japan-travel.jnto.go.jp/en/guide/traveling-by-rail/",
+          "observedResponseSha256": "8838c0438b8940ebacc8942a03598ce620ccaa501b16904d0a85e68b20491790"
+        },
+        {
+          "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+          "url": "https://www.jr-odekake.net/station/pdf/cnh.pdf",
+          "observedResponseSha256": "0c1a51fdfc263b07555fdd126d8035f981c02d0d5ee2ef2940ed18e768287fe3"
+        }
+      ]
+    },
+    {
+      "factId": "sanyo-1501M-hiroshima-saijo-current-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+      "sourceUrl": "https://rise.hiroshima-u.ac.jp/en/about/access/",
+      "observedResponseSha256": "f3630a0d3fa3feff414d422dfdc76dbf3ad600d8cce815c4c346a43cef2825cf",
+      "callingStations": [
+        "西条",
+        "寺家",
+        "八本松",
+        "瀬野",
+        "中野東",
+        "安芸中野",
+        "海田市",
+        "向洋",
+        "天神川",
+        "広島"
+      ],
+      "callingComponents": [
+        {
+          "name": "西条",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "寺家",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "八本松",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "瀬野",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "中野東",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "安芸中野",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "海田市",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "向洋",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "天神川",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "line": "山陽線・広島西条区間",
+      "operator": "西日本旅客鉄道",
+      "direction": "inbound",
+      "serviceClass": "static_local_all_stop",
+      "reviewMethod": "INDEPENDENT_UNIVERSITY_EXPLICIT_DIRECTIONAL_LOCAL_RELATION_GOVERNMENT_LOCAL_DEFINITION_AND_OPERATOR_STATION_ORDER",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_PASSENGER_RELATION_NO_TRAIN_DATE_OR_FREQUENCY_CLAIM",
+      "locator": "Bounded static composite: current central Hiroshima University access explicitly recommends a local train Hiroshima to Saijo. Its own RISE native table explicitly marks Hiroshima city <–> Higashi Hiroshima city and identifies JR local train Hiroshima Station–Saijo Station, supporting each direction rather than mechanically reversing. JNTO separately defines local as all-station and rapid as distinct; JR cnh current map provides exact G01–G10 order only. RISE has undated stale Green Phoenix bus content, explicitly contradicted by updated central guidance; that bus content and all clocks/fares are excluded. Current railway existence is corroborated by central guide, but no particular train, October service day or frequency is claimed. Ten original components/restrictions remain unchanged. No restricted timetable processing.",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+          "url": "https://www.hiroshima-u.ac.jp/en/access/higashihiroshima",
+          "observedResponseSha256": "92c1acd76c6bc37182634fe5ab628813b7cd743600e1cdd40c9a22da43229aae"
+        },
+        {
+          "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+          "url": "https://faq.japan-travel.jnto.go.jp/en/guide/traveling-by-rail/",
+          "observedResponseSha256": "8838c0438b8940ebacc8942a03598ce620ccaa501b16904d0a85e68b20491790"
+        },
+        {
+          "sourceActionId": "rail:jr-west:independent-university-saijo-static-local-directions",
+          "url": "https://www.jr-odekake.net/station/pdf/cnh.pdf",
+          "observedResponseSha256": "0c1a51fdfc263b07555fdd126d8035f981c02d0d5ee2ef2940ed18e768287fe3"
+        }
+      ]
+    },
+    {
+      "factId": "saijo-jr-public-north-gateway-2065_8",
+      "kind": "transfer",
+      "sourceActionId": "hub:saijo:current-joint-operator-public-terminal-passages",
+      "sourceUrl": "https://chugoku-jrbus.co.jp/airport/pdf/2026329saijo_limousine_time.pdf",
+      "observedResponseSha256": "804a34b76258fa308f2849ffc10df75f2932125c1fd4615d467b457604856cdc",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:saijo:current-joint-operator-public-terminal-passages",
+          "url": "https://chugoku-jrbus.co.jp/airport/",
+          "observedResponseSha256": "b45c00bc044a8d6b9e1df3beda200dcebcbc43c24c24e4fef45b8636c92f7baf"
+        },
+        {
+          "sourceActionId": "hub:saijo:current-joint-operator-public-terminal-passages",
+          "url": "https://www.geiyo.co.jp/airport_bus.html",
+          "observedResponseSha256": "4dd266c8959c33f791245cb7a96db9531a659828e78190ddefbfb2c9b8fe00a9"
+        }
+      ],
+      "locator": "Current-linked joint-operator March 29 2026 Saijo Airport Limousine diagram explicitly shows north boarding/alighting frontages, public stairs/lifts, the JR ticket gate and north–south station passage. The current Geiyo airport page independently identifies the same route. Bind exact S12 JR West Saijo / Sanyo station 007965 to licensed GTFS stop 2065 8 via the depicted public passenger connection. Distinct departure/arrival identities and blank platform metadata remain unchanged. No suffix-to-bay inference, distance-only transfer, walking time, accessibility guarantee or raw diagram redistribution.",
+      "components": [
+        {
+          "name": "西条",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西条駅北口",
+          "operator": "芸陽バス",
+          "line": "gtfs:geiyo-saijo-airport:route:1635820604",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:geiyo-saijo-airport",
+            "stopId": "2065 8",
+            "sourceArchiveSha256": "85778d27f8588cbe77a7bc70ba22258c2884bdd2380ab26965803b5012065fcc",
+            "recordSha256": "3b065a464caffd1795f55332399f5c9bd2e7a8d8fc0e98738e54458540d4a24c",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current-linked joint-operator March 29 2026 Saijo Airport Limousine diagram explicitly shows north boarding/alighting frontages, public stairs/lifts, the JR ticket gate and north–south station passage. The current Geiyo airport page independently identifies the same route. Bind exact S12 JR West Saijo / Sanyo station 007965 to licensed GTFS stop 2065 8 via the depicted public passenger connection. Distinct departure/arrival identities and blank platform metadata remain unchanged. No suffix-to-bay inference, distance-only transfer, walking time, accessibility guarantee or raw diagram redistribution."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_STATION_PASSAGE_AND_LICENSED_ENDPOINT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "saijo-jr-public-north-gateway-2065_2",
+      "kind": "transfer",
+      "sourceActionId": "hub:saijo:current-joint-operator-public-terminal-passages",
+      "sourceUrl": "https://chugoku-jrbus.co.jp/airport/pdf/2026329saijo_limousine_time.pdf",
+      "observedResponseSha256": "804a34b76258fa308f2849ffc10df75f2932125c1fd4615d467b457604856cdc",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:saijo:current-joint-operator-public-terminal-passages",
+          "url": "https://chugoku-jrbus.co.jp/airport/",
+          "observedResponseSha256": "b45c00bc044a8d6b9e1df3beda200dcebcbc43c24c24e4fef45b8636c92f7baf"
+        },
+        {
+          "sourceActionId": "hub:saijo:current-joint-operator-public-terminal-passages",
+          "url": "https://www.geiyo.co.jp/airport_bus.html",
+          "observedResponseSha256": "4dd266c8959c33f791245cb7a96db9531a659828e78190ddefbfb2c9b8fe00a9"
+        }
+      ],
+      "locator": "Current-linked joint-operator March 29 2026 Saijo Airport Limousine diagram explicitly shows north boarding/alighting frontages, public stairs/lifts, the JR ticket gate and north–south station passage. The current Geiyo airport page independently identifies the same route. Bind exact S12 JR West Saijo / Sanyo station 007965 to licensed GTFS stop 2065 2 via the depicted public passenger connection. Distinct departure/arrival identities and blank platform metadata remain unchanged. No suffix-to-bay inference, distance-only transfer, walking time, accessibility guarantee or raw diagram redistribution.",
+      "components": [
+        {
+          "name": "西条",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西条駅北口",
+          "operator": "芸陽バス",
+          "line": "gtfs:geiyo-saijo-airport:route:1635820604",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:geiyo-saijo-airport",
+            "stopId": "2065 2",
+            "sourceArchiveSha256": "85778d27f8588cbe77a7bc70ba22258c2884bdd2380ab26965803b5012065fcc",
+            "recordSha256": "5abff934d063042de1c63be1b7e8c2ae8de519d9eaf3792bef60030a2f550471",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current-linked joint-operator March 29 2026 Saijo Airport Limousine diagram explicitly shows north boarding/alighting frontages, public stairs/lifts, the JR ticket gate and north–south station passage. The current Geiyo airport page independently identifies the same route. Bind exact S12 JR West Saijo / Sanyo station 007965 to licensed GTFS stop 2065 2 via the depicted public passenger connection. Distinct departure/arrival identities and blank platform metadata remain unchanged. No suffix-to-bay inference, distance-only transfer, walking time, accessibility guarantee or raw diagram redistribution."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_STATION_PASSAGE_AND_LICENSED_ENDPOINT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hiroshima-airport-saijo-public-terminal-2445_4",
+      "kind": "transfer",
+      "sourceActionId": "airport:hiroshima:current-saijo-terminal-public-passages",
+      "sourceUrl": "https://www.hij.airport.jp/assets/img/access/noriba/img_map_jp.jpg?20260127",
+      "observedResponseSha256": "896a58335687be637948628b3c9346ab013ed137cc2e3d147743429183099025",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:hiroshima:current-saijo-terminal-public-passages",
+          "url": "https://www.hij.airport.jp/access/noriba.html",
+          "observedResponseSha256": "bd08318977b7bd37b6584f8e9495627a035fa2ceb9dfc6fe8d3667c214cbf4c8"
+        },
+        {
+          "sourceActionId": "hub:saijo:current-joint-operator-public-terminal-passages",
+          "url": "https://chugoku-jrbus.co.jp/airport/pdf/2026329saijo_limousine_time.pdf",
+          "observedResponseSha256": "804a34b76258fa308f2849ffc10df75f2932125c1fd4615d467b457604856cdc"
+        }
+      ],
+      "locator": "Current airport diagram explicitly depicts public domestic arrival-lobby exits and bus frontage including bay 4. The current March 29 2026 joint-operator diagram separately depicts the arrival frontage across the public terminal forecourt and its passenger access to the terminal. Bind exact licensed 2445 4 to the independently identified whole C28 Hiroshima Airport passenger facility, preserving platform 4 or blank as published. No claim that arrival uses departure bay 4; no proximity-only transfer, suffix-derived platform, walking time or accessibility guarantee.",
+      "components": [
+        {
+          "name": "広島空港",
+          "operator": "airport-facility:cf03_00079",
+          "line": "airport:cf03_00079",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00079",
+            "requirementId": "review:transport-node:83bafe38-0a4d-54b8-9c80-c2914352f134",
+            "expectedRequirementName": "広島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport diagram explicitly depicts public domestic arrival-lobby exits and bus frontage including bay 4. The current March 29 2026 joint-operator diagram separately depicts the arrival frontage across the public terminal forecourt and its passenger access to the terminal. Bind exact licensed 2445 4 to the independently identified whole C28 Hiroshima Airport passenger facility, preserving platform 4 or blank as published. No claim that arrival uses departure bay 4; no proximity-only transfer, suffix-derived platform, walking time or accessibility guarantee."
+          }
+        },
+        {
+          "name": "広島空港",
+          "operator": "芸陽バス",
+          "line": "gtfs:geiyo-saijo-airport:route:1635820604",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:geiyo-saijo-airport",
+            "stopId": "2445 4",
+            "sourceArchiveSha256": "85778d27f8588cbe77a7bc70ba22258c2884bdd2380ab26965803b5012065fcc",
+            "recordSha256": "19c13f231b6c7d13ece31ee05ae180c4820be289c9f4e7585306906437591dcb",
+            "expectedPlatformCode": "4",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current airport diagram explicitly depicts public domestic arrival-lobby exits and bus frontage including bay 4. The current March 29 2026 joint-operator diagram separately depicts the arrival frontage across the public terminal forecourt and its passenger access to the terminal. Bind exact licensed 2445 4 to the independently identified whole C28 Hiroshima Airport passenger facility, preserving platform 4 or blank as published. No claim that arrival uses departure bay 4; no proximity-only transfer, suffix-derived platform, walking time or accessibility guarantee."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_AIRPORT_TERMINAL_PASSAGES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hiroshima-airport-saijo-public-terminal-2445_0",
+      "kind": "transfer",
+      "sourceActionId": "airport:hiroshima:current-saijo-terminal-public-passages",
+      "sourceUrl": "https://www.hij.airport.jp/assets/img/access/noriba/img_map_jp.jpg?20260127",
+      "observedResponseSha256": "896a58335687be637948628b3c9346ab013ed137cc2e3d147743429183099025",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:hiroshima:current-saijo-terminal-public-passages",
+          "url": "https://www.hij.airport.jp/access/noriba.html",
+          "observedResponseSha256": "bd08318977b7bd37b6584f8e9495627a035fa2ceb9dfc6fe8d3667c214cbf4c8"
+        },
+        {
+          "sourceActionId": "hub:saijo:current-joint-operator-public-terminal-passages",
+          "url": "https://chugoku-jrbus.co.jp/airport/pdf/2026329saijo_limousine_time.pdf",
+          "observedResponseSha256": "804a34b76258fa308f2849ffc10df75f2932125c1fd4615d467b457604856cdc"
+        }
+      ],
+      "locator": "Current airport diagram explicitly depicts public domestic arrival-lobby exits and bus frontage including bay 4. The current March 29 2026 joint-operator diagram separately depicts the arrival frontage across the public terminal forecourt and its passenger access to the terminal. Bind exact licensed 2445 0 to the independently identified whole C28 Hiroshima Airport passenger facility, preserving platform 4 or blank as published. No claim that arrival uses departure bay 4; no proximity-only transfer, suffix-derived platform, walking time or accessibility guarantee.",
+      "components": [
+        {
+          "name": "広島空港",
+          "operator": "airport-facility:cf03_00079",
+          "line": "airport:cf03_00079",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00079",
+            "requirementId": "review:transport-node:83bafe38-0a4d-54b8-9c80-c2914352f134",
+            "expectedRequirementName": "広島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport diagram explicitly depicts public domestic arrival-lobby exits and bus frontage including bay 4. The current March 29 2026 joint-operator diagram separately depicts the arrival frontage across the public terminal forecourt and its passenger access to the terminal. Bind exact licensed 2445 0 to the independently identified whole C28 Hiroshima Airport passenger facility, preserving platform 4 or blank as published. No claim that arrival uses departure bay 4; no proximity-only transfer, suffix-derived platform, walking time or accessibility guarantee."
+          }
+        },
+        {
+          "name": "広島空港",
+          "operator": "芸陽バス",
+          "line": "gtfs:geiyo-saijo-airport:route:1635820604",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:geiyo-saijo-airport",
+            "stopId": "2445 0",
+            "sourceArchiveSha256": "85778d27f8588cbe77a7bc70ba22258c2884bdd2380ab26965803b5012065fcc",
+            "recordSha256": "c1e37d243fcf96e3baff7bf04f22a5da28c243640f55f0c7eb9fe4b0860d438c",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current airport diagram explicitly depicts public domestic arrival-lobby exits and bus frontage including bay 4. The current March 29 2026 joint-operator diagram separately depicts the arrival frontage across the public terminal forecourt and its passenger access to the terminal. Bind exact licensed 2445 0 to the independently identified whole C28 Hiroshima Airport passenger facility, preserving platform 4 or blank as published. No claim that arrival uses departure bay 4; no proximity-only transfer, suffix-derived platform, walking time or accessibility guarantee."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_AIRPORT_TERMINAL_PASSAGES",
+      "hubScopeComplete": false
+    }
+  ]
+}

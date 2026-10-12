@@ -1,0 +1,50 @@
+{
+  "source": {
+    "sourceId": "transport-source:086:5268e4ede7a0c7de7084e0138d756d21",
+    "url": "https://www.pricia.co.jp/staffblog/hotel/25137/",
+    "contentSha256": "359e228c78da6d116c1b795b57e3425d681bbce495bcf542c0854ee7fd0bdc67",
+    "observedAt": "2026-10-03T08:59:35.483467+00:00",
+    "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+    "rawPayloadRetained": false,
+    "derivedDataAllowed": true,
+    "redistributionAllowed": true,
+    "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+    "rightsReview": {
+      "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+      "termsUrl": "https://www.pricia.co.jp/staffblog/hotel/25137/",
+      "reason": "Operator-authored minimum direction/endpoint/qualification facts, not raw website/map/timetable reproduction. No explicit fact-processing ban found in reviewed cache."
+    },
+    "evidenceContentSha256": "d631711d193aebde5b6e68f8e6eefedbba375349ee1df2b3cefc1af4736a5439"
+  },
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:d4a3a2f1c440c53effd4fc9788250db1",
+      "sourceId": "transport-source:086:5268e4ede7a0c7de7084e0138d756d21",
+      "sourceSha256": "359e228c78da6d116c1b795b57e3425d681bbce495bcf542c0854ee7fd0bdc67",
+      "record": {
+        "kind": "REVIEWED_PRIVATE_HOTEL_SHUTTLE_ENDPOINT",
+        "hotelName": "プリシアリゾートヨロン",
+        "address": "鹿児島県大島郡与論町立長358-1",
+        "pickupScope": "HOTEL_FRONT_FACILITY_NOT_OSM_POINT",
+        "sourceUrl": "https://www.pricia.co.jp/staffblog/hotel/25137/",
+        "factId": "pricia-current-hotel-endpoint",
+        "sourceActionId": "yoron:qualified:pricia-shuttle",
+        "observedResponseSha256": "d631711d193aebde5b6e68f8e6eefedbba375349ee1df2b3cefc1af4736a5439",
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "yoron:qualified:pricia-access",
+            "url": "https://www.pricia.co.jp/access/",
+            "observedResponseSha256": "c4ecb6d645e2cd250ff5c6c4558cf0ee63a88b27815d3b4469783b61ad23a1b8",
+            "role": "CURRENT_EXACT_HOTEL_ADDRESS"
+          }
+        ],
+        "locator": "Hotel-authored shuttle directions: airport arrival exterior staff; hotel departure reception/front. Whole hotel pickup facility, not curb geometry."
+      },
+      "recordSha256": "359e228c78da6d116c1b795b57e3425d681bbce495bcf542c0854ee7fd0bdc67",
+      "locator": "Hotel-authored shuttle directions: airport arrival exterior staff; hotel departure reception/front. Whole hotel pickup facility, not curb geometry."
+    }
+  ],
+  "candidates": [],
+  "patterns": [],
+  "transfers": []
+}

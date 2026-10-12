@@ -1,0 +1,285 @@
+{
+  "phaseId": "136-nakashibetsu-operator-licensed-airport-trips-and-ana-bridge",
+  "strategy": [
+    "PRIMARY_OPERATOR_UNRESTRICTED_GTFS_GRANT_WITH_EXACT_TERMS_BINDING",
+    "INDEPENDENT_ACTUAL_33_CALL_TRIPS_AND_DISTINCT_AIRPORT_STOPS",
+    "CURRENT_PUBLIC_AIRPORT_FRONTAGE",
+    "INDEPENDENT_ANA_DIRECTED_FLIGHT_PAIR"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "nemuro-nakashibetsu-airport.json",
+      "packageSha256": "eaa0c05b065f47a121b57d81386efb97d7663fd91c19bd34808dcfefb7db2ce7",
+      "sourceActionId": "bus:nemuro-kotsu:unrestricted-current-nakashibetsu-airport-trips"
+    }
+  ],
+  "completedActionIds": [
+    "bus:nemuro-kotsu:unrestricted-current-nakashibetsu-airport-trips",
+    "airport:nakashibetsu:current-public-arrival-and-boarding-frontage",
+    "flight:ana:current-haneda-nakashibetsu-directed-pair"
+  ],
+  "facts": [
+    {
+      "factId": "nakashibetsu-current-public-frontage-i-149_01",
+      "kind": "transfer",
+      "sourceActionId": "airport:nakashibetsu:current-public-arrival-and-boarding-frontage",
+      "sourceUrl": "https://www.nakashibetsu-airport.jp/img/floor_img01_202312.png",
+      "observedResponseSha256": "5ead585b3ac4facb07412f40720589d52627408b1e2f4f8bd16e1cf8074796a3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:nakashibetsu:current-public-arrival-and-boarding-frontage",
+          "url": "https://www.nakashibetsu-airport.jp/floor.php",
+          "observedResponseSha256": "ee3712137636cf28abfb2153056c72192c97745ab24fd9e576ca7f718d303621"
+        },
+        {
+          "sourceActionId": "airport:nakashibetsu:current-public-arrival-and-boarding-frontage",
+          "url": "https://www.nakashibetsu-airport.jp/access.php",
+          "observedResponseSha256": "b83a126de9168c5205036d63c5edf60ef079667adad133e3b2453229e8c48562"
+        },
+        {
+          "sourceActionId": "bus:nemuro-kotsu:unrestricted-current-nakashibetsu-airport-trips",
+          "url": "https://www.nemurokotsu.com/timetable/",
+          "observedResponseSha256": "82e5a8c3ecc72831bc8a6f5cb4b1dd991f93e394e4ba33ef315e387a429e3b7b"
+        }
+      ],
+      "locator": "Current airport-linked first-floor diagram shows the public arrival/central/check-in lobby and passenger doors adjoining continuous exterior frontage. The western frontage is explicitly alighting-only and the eastern frontage is bus boarding. Exact licensed Nemuro airport stop i-149_01 is the inbound trip terminus on the western frontage; i-149_02 is the outbound trip origin on the eastern frontage. Independently reviewed trip roles, airport access operator listing and labeled public diagram bind each exact stop to the whole C28 airport. Keep the stop identities separate and preserve blank platform codes; no distance-only interchange, assumed bay number, precise door location, airside link or accessibility promise.",
+      "components": [
+        {
+          "name": "中標津空港",
+          "operator": "airport-facility:cf03_00011",
+          "line": "airport:cf03_00011",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00011",
+            "requirementId": "review:transport-node:9f23c804-7fb9-508d-ace2-a1b4824cf3ab",
+            "expectedRequirementName": "中標津",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport-linked first-floor diagram shows the public arrival/central/check-in lobby and passenger doors adjoining continuous exterior frontage. The western frontage is explicitly alighting-only and the eastern frontage is bus boarding. Exact licensed Nemuro airport stop i-149_01 is the inbound trip terminus on the western frontage; i-149_02 is the outbound trip origin on the eastern frontage. Independently reviewed trip roles, airport access operator listing and labeled public diagram bind each exact stop to the whole C28 airport. Keep the stop identities separate and preserve blank platform codes; no distance-only interchange, assumed bay number, precise door location, airside link or accessibility promise."
+          }
+        },
+        {
+          "name": "中標津空港",
+          "operator": "根室交通株式会社",
+          "line": "gtfs:nemuro-nakashibetsu-airport:route:中標津空港線_I",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nemuro-nakashibetsu-airport",
+            "stopId": "i-149_01",
+            "sourceArchiveSha256": "30d7735c15b5b033b95d99123758fc57e20e54fa98363558c2cc45884790ce29",
+            "recordSha256": "005da8de15266c99d8efb9fb42507467e023f4088b1d5d938c095a8bbb85297f",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current airport-linked first-floor diagram shows the public arrival/central/check-in lobby and passenger doors adjoining continuous exterior frontage. The western frontage is explicitly alighting-only and the eastern frontage is bus boarding. Exact licensed Nemuro airport stop i-149_01 is the inbound trip terminus on the western frontage; i-149_02 is the outbound trip origin on the eastern frontage. Independently reviewed trip roles, airport access operator listing and labeled public diagram bind each exact stop to the whole C28 airport. Keep the stop identities separate and preserve blank platform codes; no distance-only interchange, assumed bay number, precise door location, airside link or accessibility promise."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PUBLIC_TERMINAL_FRONTAGE_AND_EXACT_DIRECTIONAL_GTFS_STOPS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "nakashibetsu-current-public-frontage-i-149_02",
+      "kind": "transfer",
+      "sourceActionId": "airport:nakashibetsu:current-public-arrival-and-boarding-frontage",
+      "sourceUrl": "https://www.nakashibetsu-airport.jp/img/floor_img01_202312.png",
+      "observedResponseSha256": "5ead585b3ac4facb07412f40720589d52627408b1e2f4f8bd16e1cf8074796a3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:nakashibetsu:current-public-arrival-and-boarding-frontage",
+          "url": "https://www.nakashibetsu-airport.jp/floor.php",
+          "observedResponseSha256": "ee3712137636cf28abfb2153056c72192c97745ab24fd9e576ca7f718d303621"
+        },
+        {
+          "sourceActionId": "airport:nakashibetsu:current-public-arrival-and-boarding-frontage",
+          "url": "https://www.nakashibetsu-airport.jp/access.php",
+          "observedResponseSha256": "b83a126de9168c5205036d63c5edf60ef079667adad133e3b2453229e8c48562"
+        },
+        {
+          "sourceActionId": "bus:nemuro-kotsu:unrestricted-current-nakashibetsu-airport-trips",
+          "url": "https://www.nemurokotsu.com/timetable/",
+          "observedResponseSha256": "82e5a8c3ecc72831bc8a6f5cb4b1dd991f93e394e4ba33ef315e387a429e3b7b"
+        }
+      ],
+      "locator": "Current airport-linked first-floor diagram shows the public arrival/central/check-in lobby and passenger doors adjoining continuous exterior frontage. The western frontage is explicitly alighting-only and the eastern frontage is bus boarding. Exact licensed Nemuro airport stop i-149_01 is the inbound trip terminus on the western frontage; i-149_02 is the outbound trip origin on the eastern frontage. Independently reviewed trip roles, airport access operator listing and labeled public diagram bind each exact stop to the whole C28 airport. Keep the stop identities separate and preserve blank platform codes; no distance-only interchange, assumed bay number, precise door location, airside link or accessibility promise.",
+      "components": [
+        {
+          "name": "中標津空港",
+          "operator": "airport-facility:cf03_00011",
+          "line": "airport:cf03_00011",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00011",
+            "requirementId": "review:transport-node:9f23c804-7fb9-508d-ace2-a1b4824cf3ab",
+            "expectedRequirementName": "中標津",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport-linked first-floor diagram shows the public arrival/central/check-in lobby and passenger doors adjoining continuous exterior frontage. The western frontage is explicitly alighting-only and the eastern frontage is bus boarding. Exact licensed Nemuro airport stop i-149_01 is the inbound trip terminus on the western frontage; i-149_02 is the outbound trip origin on the eastern frontage. Independently reviewed trip roles, airport access operator listing and labeled public diagram bind each exact stop to the whole C28 airport. Keep the stop identities separate and preserve blank platform codes; no distance-only interchange, assumed bay number, precise door location, airside link or accessibility promise."
+          }
+        },
+        {
+          "name": "中標津空港",
+          "operator": "根室交通株式会社",
+          "line": "gtfs:nemuro-nakashibetsu-airport:route:中標津空港線_I",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nemuro-nakashibetsu-airport",
+            "stopId": "i-149_02",
+            "sourceArchiveSha256": "30d7735c15b5b033b95d99123758fc57e20e54fa98363558c2cc45884790ce29",
+            "recordSha256": "4f8f7c6db5199685805c845ad632fee41c9ccff46f75bf8f974c0e24bbdade4c",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current airport-linked first-floor diagram shows the public arrival/central/check-in lobby and passenger doors adjoining continuous exterior frontage. The western frontage is explicitly alighting-only and the eastern frontage is bus boarding. Exact licensed Nemuro airport stop i-149_01 is the inbound trip terminus on the western frontage; i-149_02 is the outbound trip origin on the eastern frontage. Independently reviewed trip roles, airport access operator listing and labeled public diagram bind each exact stop to the whole C28 airport. Keep the stop identities separate and preserve blank platform codes; no distance-only interchange, assumed bay number, precise door location, airside link or accessibility promise."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PUBLIC_TERMINAL_FRONTAGE_AND_EXACT_DIRECTIONAL_GTFS_STOPS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "ana-haneda-nakashibetsu-current-nh377",
+      "kind": "service",
+      "sourceActionId": "flight:ana:current-haneda-nakashibetsu-directed-pair",
+      "sourceUrl": "https://www.nakashibetsu-airport.jp/schedule.php",
+      "observedResponseSha256": "f51dd360f8df9ab5e70366d99dd2e17e7595148d110ecb0d209ce6c8ee3d0adf",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:ana:current-haneda-nakashibetsu-directed-pair",
+          "url": "https://www.nemurokotsu.com/manage/wp-content/uploads/2026/03/6b4cd17032dd8077c440733dd48fb95b.pdf",
+          "observedResponseSha256": "cff6537f299a707fdf5b33c0bf74414b042fc42509784704780613db2b58d0c9"
+        },
+        {
+          "sourceActionId": "airport:nakashibetsu:current-public-arrival-and-boarding-frontage",
+          "url": "https://www.nakashibetsu-airport.jp/access.php",
+          "observedResponseSha256": "b83a126de9168c5205036d63c5edf60ef079667adad133e3b2453229e8c48562"
+        }
+      ],
+      "locator": "Airport current public schedule independently lists ANA377 inbound from Haneda and ANA378 outbound to Haneda, with ANA carrier image alt text. Current primary Nemuro airport-bus PDF effective March 29 2026 separately prints NH0377 inbound / NH378 outbound flight connections. This fact is the individually observed NH377 direction only. Existing Tokyo International/Haneda C28 identity binding is preserved. Retain minimal actual carrier, flight code and directed endpoints; no clocks, live availability, whole table, automatic reversal or period inferred from an old hidden HTML comment.",
+      "line": "羽田・中標津国内線",
+      "operator": "全日本空輸",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NH377",
+      "direction": "東京国際空港→中標津空港",
+      "callingStations": [
+        "東京国際空港",
+        "中標津空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Naha Airport October 2026 regular passenger flight schedule identifies HND / Haneda Airport. Explicit reviewed facility correspondence to Tokyo International Airport (Haneda); existing separately reviewed phase-48 Keikyu terminal access is preserved. This flight fact does not create or infer an internal terminal transfer."
+          }
+        },
+        {
+          "name": "中標津空港",
+          "operator": "airport-facility:cf03_00011",
+          "line": "airport:cf03_00011",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00011",
+            "requirementId": "review:transport-node:9f23c804-7fb9-508d-ace2-a1b4824cf3ab",
+            "expectedRequirementName": "中標津",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport-linked first-floor diagram shows the public arrival/central/check-in lobby and passenger doors adjoining continuous exterior frontage. The western frontage is explicitly alighting-only and the eastern frontage is bus boarding. Exact licensed Nemuro airport stop i-149_01 is the inbound trip terminus on the western frontage; i-149_02 is the outbound trip origin on the eastern frontage. Independently reviewed trip roles, airport access operator listing and labeled public diagram bind each exact stop to the whole C28 airport. Keep the stop identities separate and preserve blank platform codes; no distance-only interchange, assumed bay number, precise door location, airside link or accessibility promise."
+          }
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_AIRPORT_DIRECTIONAL_FLIGHT_ROWS_AND_OPERATOR_CORROBORATION",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PRIMARY_PUBLISHED_STATIC_SERVICE_OBSERVED_2026_10_02_NOT_REALTIME"
+    },
+    {
+      "factId": "ana-haneda-nakashibetsu-current-nh378",
+      "kind": "service",
+      "sourceActionId": "flight:ana:current-haneda-nakashibetsu-directed-pair",
+      "sourceUrl": "https://www.nakashibetsu-airport.jp/schedule.php",
+      "observedResponseSha256": "f51dd360f8df9ab5e70366d99dd2e17e7595148d110ecb0d209ce6c8ee3d0adf",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:ana:current-haneda-nakashibetsu-directed-pair",
+          "url": "https://www.nemurokotsu.com/manage/wp-content/uploads/2026/03/6b4cd17032dd8077c440733dd48fb95b.pdf",
+          "observedResponseSha256": "cff6537f299a707fdf5b33c0bf74414b042fc42509784704780613db2b58d0c9"
+        },
+        {
+          "sourceActionId": "airport:nakashibetsu:current-public-arrival-and-boarding-frontage",
+          "url": "https://www.nakashibetsu-airport.jp/access.php",
+          "observedResponseSha256": "b83a126de9168c5205036d63c5edf60ef079667adad133e3b2453229e8c48562"
+        }
+      ],
+      "locator": "Airport current public schedule independently lists ANA377 inbound from Haneda and ANA378 outbound to Haneda, with ANA carrier image alt text. Current primary Nemuro airport-bus PDF effective March 29 2026 separately prints NH0377 inbound / NH378 outbound flight connections. This fact is the individually observed NH378 direction only. Existing Tokyo International/Haneda C28 identity binding is preserved. Retain minimal actual carrier, flight code and directed endpoints; no clocks, live availability, whole table, automatic reversal or period inferred from an old hidden HTML comment.",
+      "line": "羽田・中標津国内線",
+      "operator": "全日本空輸",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NH378",
+      "direction": "中標津空港→東京国際空港",
+      "callingStations": [
+        "中標津空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "中標津空港",
+          "operator": "airport-facility:cf03_00011",
+          "line": "airport:cf03_00011",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00011",
+            "requirementId": "review:transport-node:9f23c804-7fb9-508d-ace2-a1b4824cf3ab",
+            "expectedRequirementName": "中標津",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport-linked first-floor diagram shows the public arrival/central/check-in lobby and passenger doors adjoining continuous exterior frontage. The western frontage is explicitly alighting-only and the eastern frontage is bus boarding. Exact licensed Nemuro airport stop i-149_01 is the inbound trip terminus on the western frontage; i-149_02 is the outbound trip origin on the eastern frontage. Independently reviewed trip roles, airport access operator listing and labeled public diagram bind each exact stop to the whole C28 airport. Keep the stop identities separate and preserve blank platform codes; no distance-only interchange, assumed bay number, precise door location, airside link or accessibility promise."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Naha Airport October 2026 regular passenger flight schedule identifies HND / Haneda Airport. Explicit reviewed facility correspondence to Tokyo International Airport (Haneda); existing separately reviewed phase-48 Keikyu terminal access is preserved. This flight fact does not create or infer an internal terminal transfer."
+          }
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_AIRPORT_DIRECTIONAL_FLIGHT_ROWS_AND_OPERATOR_CORROBORATION",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PRIMARY_PUBLISHED_STATIC_SERVICE_OBSERVED_2026_10_02_NOT_REALTIME"
+    }
+  ]
+}

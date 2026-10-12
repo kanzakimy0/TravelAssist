@@ -1,0 +1,86 @@
+{
+  "phaseId": "180-kumejima-ottop-licensed-airport-pair-and-public-passage",
+  "strategy": [
+    "CC_BY_4_0_CURRENT_NATIVE_KUMEJIMA_GTFS",
+    "TWO_INDEPENDENT_COMPLETE_35_CALL_TRIPS",
+    "EXACT_EXISTING_AIRPORT_FLIGHT_ATTACHMENT",
+    "EXPLICIT_PUBLIC_TERMINAL_PASSAGE"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "kumejima-airport-pair-package180.json",
+      "packageSha256": "998bb6a6b21f2aff78dfa7a55d066dbf8ef2f1cbf193023f50b575545809040b",
+      "sourceActionId": "bus:kumejima:ottop-ccby-current-airport-pair",
+      "reviewedServiceDate": "20261002"
+    }
+  ],
+  "completedActionIds": [
+    "bus:kumejima:ottop-ccby-current-airport-pair",
+    "airport:kumejima:public-terminal-S4937-passage"
+  ],
+  "facts": [
+    {
+      "factId": "kumejima-terminal-S4937-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "airport:kumejima:public-terminal-S4937-passage",
+      "sourceUrl": "https://kumejima-airport.co.jp/access/",
+      "observedResponseSha256": "6bfabe6c7811575f918185afc5454e053822acb2526ab8d154e25a868d4d42d5",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kumejima:public-terminal-S4937-passage",
+          "url": "https://kumejima-airport.co.jp/terminal/",
+          "observedResponseSha256": "8b7134a81a7e4b5fc5b485e8a99f554061a505572cfb0413bd26c572fa8261a0"
+        },
+        {
+          "sourceActionId": "airport:kumejima:public-terminal-S4937-passage",
+          "url": "https://kumejima-airport.co.jp/wp-content/uploads/2016/02/1F_kumejima.jpg",
+          "observedResponseSha256": "9d4deea0365447959687d5e3000a0dcb4f4e57afb396ad3fdf12ac4c6b2fbe80"
+        }
+      ],
+      "components": [
+        {
+          "name": "久米島空港",
+          "operator": "airport-facility:cf03_00061",
+          "line": "airport:cf03_00061",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00061",
+            "requirementId": "review:official-airport:久米島",
+            "expectedRequirementName": "久米島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport access page explicitly identifies the town bus stop outside the terminal to the left in front of the departure lobby. Independently visually reviewed current-linked 1F plan shows continuous public arrival and departure lobbies with exterior exits. Retain one coarse public passenger passage in each direction between whole C28 airport facility and exact licensed native stop S4937, with blank platform preserved; no proximity join, timed transfer, bay number or accessibility guarantee. The separate summer-only quick-bus announcement does not establish current service; the selected current GTFS airport trips independently establish operation on 2026-10-02."
+          }
+        },
+        {
+          "name": "久米島空港",
+          "operator": "久米島町",
+          "line": "gtfs:kumejima-ottop-airport:route:860",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:kumejima-ottop-airport",
+            "stopId": "S4937",
+            "sourceArchiveSha256": "185f23383d5b0ca2a9072c15929119b0a2e656ca0647e7060324c3cf68985835",
+            "recordSha256": "048f9ac4ac126c8fed269e2bbd221a71e0f06bfc710152e65d60f78bd901d891",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current airport access page explicitly identifies the town bus stop outside the terminal to the left in front of the departure lobby. Independently visually reviewed current-linked 1F plan shows continuous public arrival and departure lobbies with exterior exits. Retain one coarse public passenger passage in each direction between whole C28 airport facility and exact licensed native stop S4937, with blank platform preserved; no proximity join, timed transfer, bay number or accessibility guarantee. The separate summer-only quick-bus announcement does not establish current service; the selected current GTFS airport trips independently establish operation on 2026-10-02."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_AIRPORT_TERMINAL_PASSAGE",
+      "hubScopeComplete": false,
+      "locator": "Current airport access page explicitly identifies the town bus stop outside the terminal to the left in front of the departure lobby. Independently visually reviewed current-linked 1F plan shows continuous public arrival and departure lobbies with exterior exits. Retain one coarse public passenger passage in each direction between whole C28 airport facility and exact licensed native stop S4937, with blank platform preserved; no proximity join, timed transfer, bay number or accessibility guarantee. The separate summer-only quick-bus announcement does not establish current service; the selected current GTFS airport trips independently establish operation on 2026-10-02."
+    }
+  ]
+}

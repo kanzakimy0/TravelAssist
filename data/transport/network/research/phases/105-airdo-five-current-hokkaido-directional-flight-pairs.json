@@ -1,0 +1,593 @@
+{
+  "phaseId": "105-airdo-five-current-hokkaido-directional-flight-pairs",
+  "strategy": [
+    "CURRENT_OPERATOR_MINIMUM_DIRECTED_FLIGHT_FACTS",
+    "INDEPENDENT_C28_WHOLE_AIRPORT_IDENTITIES",
+    "SURFACE_GATES_REMAIN_OPEN_WITHOUT_PHYSICAL_PROOF"
+  ],
+  "completedActionIds": [
+    "flight:airdo:five-current-hokkaido-directional-pairs"
+  ],
+  "facts": [
+    {
+      "factId": "airdo-current-旭川-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+      "sourceUrl": "https://www.airdo.jp/plan/timetable/",
+      "observedResponseSha256": "a47e09fb7f5ad689a703f887e8810b725ba78e33531146f1fb4469061db1d654",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/departure/airport/",
+          "observedResponseSha256": "5f989e454da00eb0563e6419e5dbb776963ed184c114ad386cfd5eac4054b59b"
+        }
+      ],
+      "locator": "Operator table valid 2026-03-29 through 2026-10-24; separately reviewed actual flight 81 for this direction. Current October 2 is within the publication period; selected footnotes change some other-date times, not this route. Only carrier and ordered airport pair are retained, without timetable clocks or inferred return flights. Tokyo/Haneda is the existing Tokyo International C28 facility.",
+      "line": "東京国際・旭川国内線",
+      "operator": "AIRDO",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "ADO81",
+      "direction": "東京国際空港→旭川空港",
+      "callingStations": [
+        "東京国際空港",
+        "旭川空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        },
+        {
+          "name": "旭川空港",
+          "operator": "airport-facility:cf03_00015",
+          "line": "airport:cf03_00015",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00015",
+            "requirementId": "review:transport-node:58140a28-f4d8-5524-8e01-ee6d07e35304",
+            "expectedRequirementName": "旭川",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_SEPARATELY_REVIEWED_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "airdo-current-旭川-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+      "sourceUrl": "https://www.airdo.jp/plan/timetable/",
+      "observedResponseSha256": "a47e09fb7f5ad689a703f887e8810b725ba78e33531146f1fb4469061db1d654",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/departure/airport/",
+          "observedResponseSha256": "5f989e454da00eb0563e6419e5dbb776963ed184c114ad386cfd5eac4054b59b"
+        }
+      ],
+      "locator": "Operator table valid 2026-03-29 through 2026-10-24; separately reviewed actual flight 82 for this direction. Current October 2 is within the publication period; selected footnotes change some other-date times, not this route. Only carrier and ordered airport pair are retained, without timetable clocks or inferred return flights. Tokyo/Haneda is the existing Tokyo International C28 facility.",
+      "line": "東京国際・旭川国内線",
+      "operator": "AIRDO",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "ADO82",
+      "direction": "旭川空港→東京国際空港",
+      "callingStations": [
+        "旭川空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "旭川空港",
+          "operator": "airport-facility:cf03_00015",
+          "line": "airport:cf03_00015",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00015",
+            "requirementId": "review:transport-node:58140a28-f4d8-5524-8e01-ee6d07e35304",
+            "expectedRequirementName": "旭川",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_SEPARATELY_REVIEWED_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "airdo-current-函館-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+      "sourceUrl": "https://www.airdo.jp/plan/timetable/",
+      "observedResponseSha256": "a47e09fb7f5ad689a703f887e8810b725ba78e33531146f1fb4469061db1d654",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/departure/airport/",
+          "observedResponseSha256": "5f989e454da00eb0563e6419e5dbb776963ed184c114ad386cfd5eac4054b59b"
+        }
+      ],
+      "locator": "Operator table valid 2026-03-29 through 2026-10-24; separately reviewed actual flight 57 for this direction. Current October 2 is within the publication period; selected footnotes change some other-date times, not this route. Only carrier and ordered airport pair are retained, without timetable clocks or inferred return flights. Tokyo/Haneda is the existing Tokyo International C28 facility.",
+      "line": "東京国際・函館国内線",
+      "operator": "AIRDO",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "ADO57",
+      "direction": "東京国際空港→函館空港",
+      "callingStations": [
+        "東京国際空港",
+        "函館空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        },
+        {
+          "name": "函館空港",
+          "operator": "airport-facility:cf03_00018",
+          "line": "airport:cf03_00018",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00018",
+            "requirementId": "review:transport-node:2482a5e0-59df-5592-974f-4cbde73bbf05",
+            "expectedRequirementName": "函館",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_SEPARATELY_REVIEWED_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "airdo-current-函館-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+      "sourceUrl": "https://www.airdo.jp/plan/timetable/",
+      "observedResponseSha256": "a47e09fb7f5ad689a703f887e8810b725ba78e33531146f1fb4469061db1d654",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/departure/airport/",
+          "observedResponseSha256": "5f989e454da00eb0563e6419e5dbb776963ed184c114ad386cfd5eac4054b59b"
+        }
+      ],
+      "locator": "Operator table valid 2026-03-29 through 2026-10-24; separately reviewed actual flight 58 for this direction. Current October 2 is within the publication period; selected footnotes change some other-date times, not this route. Only carrier and ordered airport pair are retained, without timetable clocks or inferred return flights. Tokyo/Haneda is the existing Tokyo International C28 facility.",
+      "line": "東京国際・函館国内線",
+      "operator": "AIRDO",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "ADO58",
+      "direction": "函館空港→東京国際空港",
+      "callingStations": [
+        "函館空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "函館空港",
+          "operator": "airport-facility:cf03_00018",
+          "line": "airport:cf03_00018",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00018",
+            "requirementId": "review:transport-node:2482a5e0-59df-5592-974f-4cbde73bbf05",
+            "expectedRequirementName": "函館",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_SEPARATELY_REVIEWED_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "airdo-current-女満別-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+      "sourceUrl": "https://www.airdo.jp/plan/timetable/",
+      "observedResponseSha256": "a47e09fb7f5ad689a703f887e8810b725ba78e33531146f1fb4469061db1d654",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/departure/airport/",
+          "observedResponseSha256": "5f989e454da00eb0563e6419e5dbb776963ed184c114ad386cfd5eac4054b59b"
+        }
+      ],
+      "locator": "Operator table valid 2026-03-29 through 2026-10-24; separately reviewed actual flight 77 for this direction. Current October 2 is within the publication period; selected footnotes change some other-date times, not this route. Only carrier and ordered airport pair are retained, without timetable clocks or inferred return flights. Tokyo/Haneda is the existing Tokyo International C28 facility.",
+      "line": "東京国際・女満別国内線",
+      "operator": "AIRDO",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "ADO77",
+      "direction": "東京国際空港→女満別空港",
+      "callingStations": [
+        "東京国際空港",
+        "女満別空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        },
+        {
+          "name": "女満別空港",
+          "operator": "airport-facility:cf03_00013",
+          "line": "airport:cf03_00013",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00013",
+            "requirementId": "review:transport-node:eaecd1fe-280d-59c0-b4f2-b60319ca2374",
+            "expectedRequirementName": "女満別",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_SEPARATELY_REVIEWED_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "airdo-current-女満別-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+      "sourceUrl": "https://www.airdo.jp/plan/timetable/",
+      "observedResponseSha256": "a47e09fb7f5ad689a703f887e8810b725ba78e33531146f1fb4469061db1d654",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/departure/airport/",
+          "observedResponseSha256": "5f989e454da00eb0563e6419e5dbb776963ed184c114ad386cfd5eac4054b59b"
+        }
+      ],
+      "locator": "Operator table valid 2026-03-29 through 2026-10-24; separately reviewed actual flight 78 for this direction. Current October 2 is within the publication period; selected footnotes change some other-date times, not this route. Only carrier and ordered airport pair are retained, without timetable clocks or inferred return flights. Tokyo/Haneda is the existing Tokyo International C28 facility.",
+      "line": "東京国際・女満別国内線",
+      "operator": "AIRDO",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "ADO78",
+      "direction": "女満別空港→東京国際空港",
+      "callingStations": [
+        "女満別空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "女満別空港",
+          "operator": "airport-facility:cf03_00013",
+          "line": "airport:cf03_00013",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00013",
+            "requirementId": "review:transport-node:eaecd1fe-280d-59c0-b4f2-b60319ca2374",
+            "expectedRequirementName": "女満別",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_SEPARATELY_REVIEWED_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "airdo-current-釧路-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+      "sourceUrl": "https://www.airdo.jp/plan/timetable/",
+      "observedResponseSha256": "a47e09fb7f5ad689a703f887e8810b725ba78e33531146f1fb4469061db1d654",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/departure/airport/",
+          "observedResponseSha256": "5f989e454da00eb0563e6419e5dbb776963ed184c114ad386cfd5eac4054b59b"
+        }
+      ],
+      "locator": "Operator table valid 2026-03-29 through 2026-10-24; separately reviewed actual flight 71 for this direction. Current October 2 is within the publication period; selected footnotes change some other-date times, not this route. Only carrier and ordered airport pair are retained, without timetable clocks or inferred return flights. Tokyo/Haneda is the existing Tokyo International C28 facility.",
+      "line": "東京国際・釧路国内線",
+      "operator": "AIRDO",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "ADO71",
+      "direction": "東京国際空港→釧路空港",
+      "callingStations": [
+        "東京国際空港",
+        "釧路空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        },
+        {
+          "name": "釧路空港",
+          "operator": "airport-facility:cf03_00010",
+          "line": "airport:cf03_00010",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00010",
+            "requirementId": "review:transport-node:e6eae785-7458-5845-994d-1a67b949b0e5",
+            "expectedRequirementName": "釧路",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_SEPARATELY_REVIEWED_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "airdo-current-釧路-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+      "sourceUrl": "https://www.airdo.jp/plan/timetable/",
+      "observedResponseSha256": "a47e09fb7f5ad689a703f887e8810b725ba78e33531146f1fb4469061db1d654",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/departure/airport/",
+          "observedResponseSha256": "5f989e454da00eb0563e6419e5dbb776963ed184c114ad386cfd5eac4054b59b"
+        }
+      ],
+      "locator": "Operator table valid 2026-03-29 through 2026-10-24; separately reviewed actual flight 72 for this direction. Current October 2 is within the publication period; selected footnotes change some other-date times, not this route. Only carrier and ordered airport pair are retained, without timetable clocks or inferred return flights. Tokyo/Haneda is the existing Tokyo International C28 facility.",
+      "line": "東京国際・釧路国内線",
+      "operator": "AIRDO",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "ADO72",
+      "direction": "釧路空港→東京国際空港",
+      "callingStations": [
+        "釧路空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "釧路空港",
+          "operator": "airport-facility:cf03_00010",
+          "line": "airport:cf03_00010",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00010",
+            "requirementId": "review:transport-node:e6eae785-7458-5845-994d-1a67b949b0e5",
+            "expectedRequirementName": "釧路",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_SEPARATELY_REVIEWED_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "airdo-current-帯広-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+      "sourceUrl": "https://www.airdo.jp/plan/timetable/",
+      "observedResponseSha256": "a47e09fb7f5ad689a703f887e8810b725ba78e33531146f1fb4469061db1d654",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/departure/airport/",
+          "observedResponseSha256": "5f989e454da00eb0563e6419e5dbb776963ed184c114ad386cfd5eac4054b59b"
+        }
+      ],
+      "locator": "Operator table valid 2026-03-29 through 2026-10-24; separately reviewed actual flight 61 for this direction. Current October 2 is within the publication period; selected footnotes change some other-date times, not this route. Only carrier and ordered airport pair are retained, without timetable clocks or inferred return flights. Tokyo/Haneda is the existing Tokyo International C28 facility.",
+      "line": "東京国際・帯広国内線",
+      "operator": "AIRDO",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "ADO61",
+      "direction": "東京国際空港→帯広空港",
+      "callingStations": [
+        "東京国際空港",
+        "帯広空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        },
+        {
+          "name": "帯広空港",
+          "operator": "airport-facility:cf03_00009",
+          "line": "airport:cf03_00009",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00009",
+            "requirementId": "review:transport-node:69798f02-fe68-5045-b796-c5623216284e",
+            "expectedRequirementName": "帯広",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_SEPARATELY_REVIEWED_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "airdo-current-帯広-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+      "sourceUrl": "https://www.airdo.jp/plan/timetable/",
+      "observedResponseSha256": "a47e09fb7f5ad689a703f887e8810b725ba78e33531146f1fb4469061db1d654",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/departure/airport/",
+          "observedResponseSha256": "5f989e454da00eb0563e6419e5dbb776963ed184c114ad386cfd5eac4054b59b"
+        }
+      ],
+      "locator": "Operator table valid 2026-03-29 through 2026-10-24; separately reviewed actual flight 62 for this direction. Current October 2 is within the publication period; selected footnotes change some other-date times, not this route. Only carrier and ordered airport pair are retained, without timetable clocks or inferred return flights. Tokyo/Haneda is the existing Tokyo International C28 facility.",
+      "line": "東京国際・帯広国内線",
+      "operator": "AIRDO",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "ADO62",
+      "direction": "帯広空港→東京国際空港",
+      "callingStations": [
+        "帯広空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "帯広空港",
+          "operator": "airport-facility:cf03_00009",
+          "line": "airport:cf03_00009",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00009",
+            "requirementId": "review:transport-node:69798f02-fe68-5045-b796-c5623216284e",
+            "expectedRequirementName": "帯広",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_SEPARATELY_REVIEWED_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_SUMMER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    }
+  ]
+}

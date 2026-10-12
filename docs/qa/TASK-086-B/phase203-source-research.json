@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "rootCauseId": "root:airport:review:official-airport:南紀白浜",
+  "status": "PRIVATE_COMPLETE_CHAIN_PRODUCTION_AND_INDEPENDENT_REVIEW_PASS",
+  "recordedAt": "2026-10-03T08:40:15.338247+00:00",
+  "nativeHttpRequests": 2,
+  "nativeSuccesses": 2,
+  "webSearchQueries": 5,
+  "webOpenCalls": 2,
+  "webFindCalls": 1,
+  "cachedSourceReuse": [
+    "airport public arrivals exit and separately identified native1_01/1_02 interfaces",
+    "CC BY4 Meiko currentGTFS and registry",
+    "C28cf03_00038 and existing admitted Haneda cf03_00030",
+    "airport copyright terms and prefecture public data terms"
+  ],
+  "sources": [
+    {
+      "url": "https://shirahama-airport.jp/",
+      "observedAt": "2026-10-03T08:38:47.578919+00:00",
+      "status": 200,
+      "contentSha256": "b20da0010306f29906219af90bb2839de967835fa9d35cb3e8c295a451f4a1ba",
+      "bytes": 39923,
+      "rawPayloadRetained": true,
+      "sanitizedCacheSha256": "b20da0010306f29906219af90bb2839de967835fa9d35cb3e8c295a451f4a1ba",
+      "redactions": 0
+    },
+    {
+      "url": "https://www.pref.wakayama.lg.jp/prefg/080100/kendo/kendo_d/fil/2026gaiyou_all.pdf",
+      "observedAt": "2026-10-03T08:38:48.774945+00:00",
+      "status": 200,
+      "contentSha256": "d786a444d7fc651e0d7aa61b4709147b2f89f2fb3b4159ad83e0c5158a6af72e",
+      "bytes": 7595723,
+      "rawPayloadRetained": false,
+      "pages": 23,
+      "selectedPages": [
+        7
+      ]
+    }
+  ],
+  "findings": [
+    "Airport own currently dated 20260901–20261024 table publishes JAL213 HND→SHM and JAL212 SHM→HND separately. October changes apply other rows214/218; no reversed one-way inference.",
+    "2026 prefecture infrastructure overview PDFp7 explicitly lists SHM⇔HND three roundtrips by 日本航空 B737-800. Independently confirms current route operating company; do not rely on JAL marketing code or outdated J-AIR2017 reports.",
+    "This is prefecture administrative airport-service summary, not a copied JR/Kotsu ordered rail timetable. Minimal endpoint/operator/direction facts only; no raw PDF/image/prose/clock table published.",
+    "Existing lawful airport physical-frontage proof and coarse C28 airport identity are reused. Need strict minimal actual bus cycle so every added native station has passenger-valid paths both ways to airport and therefore existing national Haneda anchor.",
+    "No restricted JR West timetable reused, no JAL403 repeated, no ANA acquisition. Old held railroad/privatehighway candidates remain preserved and unimported."
+  ],
+  "canonicalChanges": 0,
+  "closedRoots": 0,
+  "nextAction": "Combine independentJAL213/212 flight facts with strict cached Meiko minimalcycle and exact airportpublic transfers in private production preflight; verify all new requirements and batchsize before registration203.",
+  "retryCondition": "No repeat query/download for these unchanged sources; next uses cached native data and dependency preflight.",
+  "tokenCount": null,
+  "modelCacheHitCount": null,
+  "billedCost": null,
+  "rawRetentionScope": "Metadata rawPayloadRetained describes private research cache only. Canonical source action rawPayloadRetained:false means no protected airport HTML/PDF/image is redistributed in tracked data; CC BY4 native bus ZIP is explicitly retained separately under its grant.",
+  "privatePreflight": "phase203-production-preflight.json",
+  "independentReview": "independent-review203.json",
+  "preflightRepairs": [
+    "Private module import corrected to existing model export",
+    "Native1_02 selector updated from obsolete route21C to selected route28",
+    "GTFS reuse selector omits mode per existing contract; native package mode unchanged"
+  ]
+}

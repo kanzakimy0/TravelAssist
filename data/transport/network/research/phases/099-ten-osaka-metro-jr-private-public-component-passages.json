@@ -1,0 +1,492 @@
+{
+  "phaseId": "099-ten-osaka-metro-jr-private-public-component-passages",
+  "strategy": [
+    "TEN_INDIVIDUALLY_VIEWED_CURRENT_METRO_MAPS",
+    "NAMED_PUBLIC_COMPONENT_PASSAGES_NOT_SAME_NAME_OR_DISTANCE",
+    "CONSTRUCTION_GATE_AND_SEPARATE_PLATFORM_SEMANTICS_PRESERVED"
+  ],
+  "completedActionIds": [
+    "hub:osaka:ten-current-metro-public-passages",
+    "hub:osaka:hanshin-noda-and-shiomibashi-public-passages",
+    "hub:osaka:minamikata-public-gate-semantics",
+    "hub:osaka:temma-current-metro-interchange-reference"
+  ],
+  "facts": [
+    {
+      "factId": "n12-current-reviewed-component-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/N12_%E3%83%89%E3%83%BC%E3%83%A0%E5%89%8D%E5%8D%83%E4%BB%A3%E5%B4%8E_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "db263f3090bbefa284cbdef0bbfaebc301448d8d0558c6a6d3875eeb8b08b7c3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+          "url": "https://subway.osakametro.co.jp/station_guide/N/n12/",
+          "observedResponseSha256": "0c5e8221d1746f06770da6fad29c1adce7a319e7da9cf180d9ca1ade286ddaa2"
+        }
+      ],
+      "locator": "Metro public concourse by exit 1 explicitly branches toward Hanshin railway; retain the named outside-gate passage only. Current linked exact diagram visually reviewed. Minimum physical relation only, no raw artwork, distance-based inference, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "ドーム前千代崎",
+          "operator": "大阪市高速電気軌道",
+          "line": "7号線(長堀鶴見緑地線)",
+          "mode": "metro"
+        },
+        {
+          "name": "ドーム前",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_OPERATOR_COMPONENT_PASSAGE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "t21-current-reviewed-component-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/T21_%E5%8D%97%E6%A3%AE%E7%94%BA_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "8064e9fbefc494253982f81e1c1b94ff46d54024f26d1cb1de259101743a4b1e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+          "url": "https://subway.osakametro.co.jp/station_guide/T/t21/",
+          "observedResponseSha256": "eff88889480137bdcf75a8df32739628aa57d4670b136a913ad02c61b76ebfaf"
+        }
+      ],
+      "locator": "East public gate opens to an explicitly marked JR Tozai Osaka-tenmangu concourse. Consolidated Metro Tanimachi/Sakaisuji component remains intact. Current linked exact diagram visually reviewed. Minimum physical relation only, no raw artwork, distance-based inference, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "南森町",
+          "operator": "大阪市高速電気軌道",
+          "line": "2号線(谷町線)",
+          "mode": "metro"
+        },
+        {
+          "name": "大阪天満宮",
+          "operator": "西日本旅客鉄道",
+          "line": "JR東西線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_OPERATOR_COMPONENT_PASSAGE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "m19-current-reviewed-component-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/M19_%E5%BF%83%E6%96%8E%E6%A9%8B_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "d2461a081aa289aa354fc57418a81f42f229cf607259ed5361d3ce76b7a3e7ee",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+          "url": "https://subway.osakametro.co.jp/station_guide/M/m19/",
+          "observedResponseSha256": "c90870f5cfb5b0eed89de137c7a673145ef4aed47e743330411a25394e28fa34"
+        }
+      ],
+      "locator": "The combined diagram explicitly draws the internal connection between Yotsubashi north concourse and Nagahori Tsurumi-ryokuchi Shinsaibashi platform/concourse, with continuation to Midosuji. The September 12 2026 closed Shinsaibashi exit 7 is outside this selected transfer route. Current linked exact diagram visually reviewed. Minimum physical relation only, no raw artwork, distance-based inference, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "心斎橋",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "四ツ橋",
+          "operator": "大阪市高速電気軌道",
+          "line": "3号線(四つ橋線)",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_OPERATOR_COMPONENT_PASSAGE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "s17-current-reviewed-component-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/S17_%E6%97%A5%E6%9C%AC%E6%A9%8B_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "4a14a1a0d9f55aed6963cee51571680834ff1c2bb6514a23856ff436d7f09aff",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+          "url": "https://subway.osakametro.co.jp/station_guide/S/s17/",
+          "observedResponseSha256": "aa49b1452ad138e4e468abe4c7f80ccd787979618224274c96383cf8e8a5c1c3"
+        }
+      ],
+      "locator": "East public gate passage explicitly joins the Kintetsu concourse. Select east gate, not the separately annotated limited-hours middle gate. This is independent Metro physical evidence, not a reuse of Kintetsu restricted service data. Current linked exact diagram visually reviewed. Minimum physical relation only, no raw artwork, distance-based inference, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "日本橋",
+          "operator": "大阪市高速電気軌道",
+          "line": "5号線(千日前線)",
+          "mode": "metro"
+        },
+        {
+          "name": "近鉄日本橋",
+          "operator": "近畿日本鉄道",
+          "line": "難波線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_OPERATOR_COMPONENT_PASSAGE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "t25-current-reviewed-component-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/T25_%E8%B0%B7%E7%94%BA%E4%B9%9D%E4%B8%81%E7%9B%AE_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "fdb06d6cd10e0049be7f05d39eddb99e015f9aedda68891a34b229f1db2f59ea",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+          "url": "https://subway.osakametro.co.jp/station_guide/T/t25/",
+          "observedResponseSha256": "45da707c6c3775083a6468eb59d36320cd2583668b3a14b6a2cfceab91278bb3"
+        }
+      ],
+      "locator": "East public passage explicitly reaches the Kintetsu Osaka-uehommachi west entrance. Exit 4 construction and future October 22 exit 1 closure do not form this selected underground connection. No Kintetsu schedule/content reuse. Current linked exact diagram visually reviewed. Minimum physical relation only, no raw artwork, distance-based inference, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "谷町九丁目",
+          "operator": "大阪市高速電気軌道",
+          "line": "2号線(谷町線)",
+          "mode": "metro"
+        },
+        {
+          "name": "大阪上本町",
+          "operator": "近畿日本鉄道",
+          "line": "難波線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_OPERATOR_COMPONENT_PASSAGE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "s11-current-reviewed-component-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/S11_%E9%87%8E%E7%94%B0%E9%98%AA%E7%A5%9E_%E6%A7%8B%E5%86%85%E5%9B%B3_1.pdf",
+      "observedResponseSha256": "ef287e1cfe2a32d2e7bcb49ba65512366a00f2889293b771c7afbc9978f6e746",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+          "url": "https://subway.osakametro.co.jp/station_guide/S/s11/",
+          "observedResponseSha256": "63e638832a227c4d6faacf14c34603b7b62dbadc19de643d957ea6887e01a64c"
+        }
+      ],
+      "locator": "West public gate and concourse slope explicitly lead into JR Tozai Ebie station. The common name Noda is not used to bind JR Noda on the Osaka Loop Line. Current linked exact diagram visually reviewed. Minimum physical relation only, no raw artwork, distance-based inference, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "野田阪神",
+          "operator": "大阪市高速電気軌道",
+          "line": "5号線(千日前線)",
+          "mode": "metro"
+        },
+        {
+          "name": "海老江",
+          "operator": "西日本旅客鉄道",
+          "line": "JR東西線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_OPERATOR_COMPONENT_PASSAGE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "s12-current-reviewed-component-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/S12_%E7%8E%89%E5%B7%9D_%E6%A7%8B%E5%86%85%E5%9B%B3_1.pdf",
+      "observedResponseSha256": "56363585a78164028be92298e3a8d99920f5193140c94c6666d0d20b73fbf0ca",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+          "url": "https://subway.osakametro.co.jp/station_guide/S/s12/",
+          "observedResponseSha256": "979bd5d6efd30ace7029cb92d16638918700603111ea8121917ed2dbcfb0372b"
+        }
+      ],
+      "locator": "Northwest public gate approach at exit 4 is explicitly signed JR Noda. Bind only the Osaka Loop Line component, not Hanshin Noda at another facility. Current linked exact diagram visually reviewed. Minimum physical relation only, no raw artwork, distance-based inference, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "玉川",
+          "operator": "大阪市高速電気軌道",
+          "line": "5号線(千日前線)",
+          "mode": "metro"
+        },
+        {
+          "name": "野田",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_OPERATOR_COMPONENT_PASSAGE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "k12-current-reviewed-component-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/K12_%E6%89%87%E7%94%BA_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "e701aeb7cd35d86c46a6f03bb9922fabf7889da632af7628bee3f1a20e0133a5",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+          "url": "https://subway.osakametro.co.jp/station_guide/K/k12/",
+          "observedResponseSha256": "b4b01ba2778a63fa3f31bfb3572b2db8b43455a3268f139e9dbc2d87f943ae77"
+        },
+        {
+          "sourceActionId": "hub:osaka:temma-current-metro-interchange-reference",
+          "url": "https://eki.jr-odekake.net/transfer?id=0610513",
+          "observedResponseSha256": "9b16c8a7156149207a8359636aa4d5379b32ecef65799ee55c49deed41b9318d"
+        }
+      ],
+      "locator": "North public gate and exit 1 are explicitly signed JR Loop Line Temma. Current JR Temma connection page independently lists Osaka Metro; this is the named public street-level interchange, with no shared paid concourse inferred. Current linked exact diagram visually reviewed. Minimum physical relation only, no raw artwork, distance-based inference, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "扇町",
+          "operator": "大阪市高速電気軌道",
+          "line": "6号線(堺筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "天満",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_OPERATOR_COMPONENT_PASSAGE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "m14-current-reviewed-component-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/M14_%E8%A5%BF%E4%B8%AD%E5%B3%B6%E5%8D%97%E6%96%B9_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "4f0749df2317332b23ec3fe558487623578f74f2783f27c135d1b38df38536a9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+          "url": "https://subway.osakametro.co.jp/station_guide/M/m14/",
+          "observedResponseSha256": "c4b967c1d313965c0461131301ef7b24396f49fa87e02df695f33b0391d9ec7f"
+        },
+        {
+          "sourceActionId": "hub:osaka:minamikata-public-gate-semantics",
+          "url": "https://www.hankyu.co.jp/station/minamikata.html",
+          "observedResponseSha256": "93eaad2c4a52a4ee706d4a4e525cdc9e8c59e9ffbdce58400e7b3a369ec11cb1"
+        },
+        {
+          "sourceActionId": "hub:osaka:minamikata-public-gate-semantics",
+          "url": "https://www.hankyu.co.jp/station/map/img/minamikata.svg",
+          "observedResponseSha256": "d86c727e9150efc0c0af1bd2d23cebda6bbe56dd003e2c8facf7bf7726b0ff95"
+        }
+      ],
+      "locator": "Metro south public gate/exit 2 explicitly signs Hankyu Minamikata. Hankyu current diagram and alternative text separately require direction-specific public gates and prohibit internal platform crossing. Model the public interchange only, not an internal free platform connection. Current linked exact diagram visually reviewed. Minimum physical relation only, no raw artwork, distance-based inference, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "西中島南方",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "南方",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_EXPLICIT_OPERATOR_COMPONENT_PASSAGE_DIAGRAM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "noda-hanshin-current-public-component-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:hanshin-noda-and-shiomibashi-public-passages",
+      "sourceUrl": "https://www.hanshin.co.jp/uploads/guidemap/noda.pdf",
+      "observedResponseSha256": "0319db58d2c8549b55bd3829444896d5bbeb759ded3219054355ac70a31dc11f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka:hanshin-noda-and-shiomibashi-public-passages",
+          "url": "https://www.hanshin.co.jp/station/noda.html",
+          "observedResponseSha256": "ed09a1c49d08a1a1889954a7ad8f1d267276aae188574298791c8818b9ef2ed7"
+        },
+        {
+          "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+          "url": "https://subway.osakametro.co.jp/station_guide/station/S11_%E9%87%8E%E7%94%B0%E9%98%AA%E7%A5%9E_%E6%A7%8B%E5%86%85%E5%9B%B3_1.pdf",
+          "observedResponseSha256": "ef287e1cfe2a32d2e7bcb49ba65512366a00f2889293b771c7afbc9978f6e746"
+        }
+      ],
+      "locator": "September 2 2026 Hanshin Noda diagram explicitly signs public stairs toward subway Sennichimae Nodahanshin and JR Ebie. Metro map separately names Hanshin at exits 1 and 4. Exterior elevator renewal September 2-October 30 is flagged; this fact does not assert step-free availability. Individually viewed exact operator diagrams; no artwork, clock, inferred paid-area continuity or accessibility guarantee.",
+      "components": [
+        {
+          "name": "野田",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "野田阪神",
+          "operator": "大阪市高速電気軌道",
+          "line": "5号線(千日前線)",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_HANSHIN_PUBLIC_GATEWAY_WITH_METRO_CORROBORATION",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "sakuragawa-hanshin-current-public-component-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:hanshin-noda-and-shiomibashi-public-passages",
+      "sourceUrl": "https://www.hanshin.co.jp/uploads/guidemap/sakuragawa.pdf",
+      "observedResponseSha256": "ba363eb2f23c79041dac32f7a120d8939e1d5ead5a6cdd144a3c39a50b3f79a6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka:hanshin-noda-and-shiomibashi-public-passages",
+          "url": "https://www.hanshin.co.jp/station/sakuragawa.html",
+          "observedResponseSha256": "b368c9b273b40c4500753f96e00658e7bbeaf68d64d24b095cdd73b071558d96"
+        },
+        {
+          "sourceActionId": "hub:osaka:ten-current-metro-public-passages",
+          "url": "https://subway.osakametro.co.jp/station_guide/station/S15_%E6%A1%9C%E5%B7%9D_%E6%A7%8B%E5%86%85%E5%9B%B3_1.pdf",
+          "observedResponseSha256": "0285339e57e20042dcecabc6bc3d6c481341e6499e47befaf0b6295327f8148d"
+        }
+      ],
+      "locator": "February 1 2026 Hanshin Sakuragawa diagram explicitly identifies public exit 1 for Nankai Shiomibashi. Existing Metro-Hanshin passage is retained without duplicate edge. This reviewed public exit adds only the missing Hanshin-Nankai component pair, not a same-name or proximity link. Individually viewed exact operator diagrams; no artwork, clock, inferred paid-area continuity or accessibility guarantee.",
+      "components": [
+        {
+          "name": "桜川",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "汐見橋",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_HANSHIN_PUBLIC_GATEWAY_WITH_METRO_CORROBORATION",
+      "hubScopeComplete": false
+    }
+  ]
+}

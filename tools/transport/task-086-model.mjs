@@ -1,0 +1,2587 @@
+import { createODCapabilityApplicability } from "./task-086-od-capability-applicability.mjs";
+import { createHamayusoFacility } from "./task-086-hamayuso-facility.mjs";
+import { abrSourcesBound } from "./task-086-abr-private-hotel.mjs";
+import { createHamayusoAccess } from "./task-086-hamayuso-access.mjs";
+import { createAirPassengerShuttle } from "./task-086-air-passenger-shuttle.mjs";
+import { createQualifiedAirportApplicability } from "./task-086-qualified-airport-applicability.mjs";
+import { createOnboardRequest } from "./task-086-onboard-request.mjs";
+import { createOfficialFacilityBus } from "./task-086-official-facility-bus.mjs";
+import { createPriciaFacility } from "./task-086-pricia-facility.mjs";
+import { createPublicConditionalApplicability } from "./task-086-public-conditional-applicability.mjs";
+import { createDynamicOD } from "./task-086-dynamic-od.mjs";
+import { createServiceAccessContract } from "./task-086-service-access-contract.mjs";
+import { createHash } from "node:crypto";
+
+export const DEFICITS = [
+  "DISCONNECTED_T0",
+  "DISCONNECTED_T1",
+  "CORRIDOR_UNREACHABLE",
+  "MISSING_INTERMEDIATE_NODE",
+  "SERVICE_PATTERN_GAP",
+  "HUB_TRANSFER_GAP",
+  "AIRPORT_SURFACE_GAP",
+  "ISLAND_FERRY_GAP",
+  "HIGHWAY_BUS_GAP",
+  "TOURISM_SPECIAL_MODE_GAP",
+  "NODE_IDENTITY_GAP",
+  "SOURCE_LICENSE_GAP",
+  "DYNAMIC_METRIC_ONLY_GAP",
+];
+export const RAIL_NODE_KIND_BY_MODE = Object.freeze({
+  shinkansen: "shinkansen_station",
+  conventional_rail: "rail_station",
+  metro: "metro_station",
+  private_rail: "private_rail_station",
+  fixed_guideway: "other_tourism_transport",
+  tram: "other_tourism_transport",
+});
+export const METRICS = [
+  "durationTypicalMin",
+  "durationP90Min",
+  "fareTypicalYen",
+  "frequencyTypicalMin",
+  "firstDeparture",
+  "lastDeparture",
+  "calendar",
+  "reservation",
+  "seasonal",
+  "transferTimeMin",
+  "accessibility",
+];
+export function publicStructuralResult(status) {
+  if (status === "STRUCTURALLY_CONNECTED_WITH_REVIEWED_OD_CAPABILITY")
+    return "PASS_WITH_REVIEWED_OD_CAPABILITY";
+  if (status === "STRUCTURALLY_CONNECTED_WITH_REVIEWED_QUALIFICATION")
+    return "PASS_WITH_REVIEWED_QUALIFICATION";
+  if (status === "OPEN") return "FAIL";
+  if (status === "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS")
+    return "PASS_WITH_PUBLIC_RESERVATION_CONDITIONS";
+  if (status === "STRUCTURALLY_CONNECTED_WITH_PUBLIC_SERVICE_ACCESS_CONDITIONS")
+    return "PASS_WITH_PUBLIC_SERVICE_ACCESS_CONDITIONS";
+  throw new Error("UNKNOWN_PUBLIC_STRUCTURAL_STATUS");
+}
+export const DEFAULT_PARAMETERS = Object.freeze({
+  maxNewNodesPerIteration: 100,
+  maxNewEdgesPerIteration: 200,
+  servicePatternExpansionDepth: 1,
+  routeChunkSize: 200,
+  hubTransferReviewDepth: 1,
+  modeExpansionPriority: [
+    "shinkansen",
+    "rail",
+    "metro",
+    "private_rail",
+    "airport_bus",
+    "ferry",
+    "highway_bus",
+    "local_bus",
+    "flight",
+    "ropeway",
+    "cable_car",
+  ],
+  regionalSearchScope: "national",
+});
+export const canonical = (value) =>
+  JSON.stringify(value, function (_key, item) {
+    return item && typeof item === "object" && !Array.isArray(item)
+      ? Object.fromEntries(
+          Object.entries(item).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)),
+        )
+      : item;
+  });
+export const hash = (value) =>
+  createHash("sha256")
+    .update(
+      typeof value === "string" || Buffer.isBuffer(value)
+        ? value
+        : canonical(value),
+    )
+    .digest("hex");
+const priciaFacility = createPriciaFacility({
+  hash,
+  canonical,
+  invariant,
+  verifyEvidence,
+});
+const officialFacilityBus = createOfficialFacilityBus({
+  canonical,
+  hash,
+  verifyEvidence,
+});
+const hamayusoFacility = createHamayusoFacility({
+  hash,
+  canonical,
+  invariant,
+  verifyEvidence,
+  abrSourcesBound,
+});
+const serviceAccess = createServiceAccessContract({
+  hamayusoAccessFactory: createHamayusoAccess,
+  validateHamayusoNode: (node, v) => hamayusoFacility.bound(node, v),
+  validateQualifiedHotelNode: (node, v) => priciaFacility.bound(node, v),
+  onboardRequestFactory: createOnboardRequest,
+  airPassengerShuttleFactory: createAirPassengerShuttle,
+  generatePassengerFlight: (p, v) =>
+    generatePattern(
+      p,
+      v.nodes,
+      v.sources,
+      v.evidence,
+      "2026-10-01T00:00:00Z",
+      v,
+    ),
+  validateOnboardNode: (node, v) => {
+    const reviewed = admitNodes([node], v.sources, v.evidence, [], v)[0];
+    return (
+      reviewed.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+      reviewed.identitySignature === node.identitySignature
+    );
+  },
+  canonical,
+  hash,
+  invariant,
+  verifyEvidence,
+  validateFlightDependency: validateFixedFlightDependency,
+});
+function validateFixedFlightDependency(c, groundPattern, v) {
+  const b = c.flightService,
+    d = c.flightDispatch,
+    p = v?.patternById?.get(b.servicePatternId),
+    raw = v?.evidence?.get(b.sourceFactRef)?.record;
+  invariant(
+    v?.nodes instanceof Map &&
+      v.sources instanceof Map &&
+      v.evidence instanceof Map &&
+      p,
+    "ACCESS_FLIGHT_REGISTRY_REQUIRED",
+  );
+  invariant(
+    p.mode === "flight" &&
+      p.serviceState === "active" &&
+      p.strictFactBinding === true &&
+      !p.accessContract &&
+      p.sourceFactRef === b.sourceFactRef &&
+      raw?.kind === "service" &&
+      raw.serviceState === "active" &&
+      raw.mode === "flight" &&
+      raw.operator === p.operatorRef &&
+      raw.reviewedFlightCode === b.flightCode &&
+      raw.reviewedServiceDate === b.reviewedServiceDate &&
+      verifyEvidence(
+        [b.sourceFactRef, ...p.evidenceRefs],
+        v.sources,
+        v.evidence,
+      ),
+    "ACCESS_ACTUAL_FLIGHT_SOURCE_BINDING",
+  );
+  invariant(
+    p.callingNodes?.length === 2 &&
+      p.callingNodes.every(
+        (c) =>
+          v.nodes.get(c.nodeId)?.nodeKind === "airport" &&
+          v.nodes.get(c.nodeId)?.mode === "flight",
+      ) &&
+      groundPattern.callingNodes?.length >= 2 &&
+      (d.relation === "ARRIVAL"
+        ? p.callingNodes[1].nodeId === d.airportNodeId &&
+          groundPattern.callingNodes[0].nodeId === d.airportNodeId
+        : p.callingNodes[0].nodeId === d.airportNodeId &&
+          groundPattern.callingNodes.at(-1).nodeId === d.airportNodeId),
+    "ACCESS_FLIGHT_DIRECTION_MISMATCH",
+  );
+  const generated = generatePattern(
+    p,
+    v.nodes,
+    v.sources,
+    v.evidence,
+    "2026-10-01T00:00:00Z",
+  );
+  invariant(
+    generated.length === 1 &&
+      generated[0].boardAllowed &&
+      generated[0].alightAllowed,
+    "ACCESS_FLIGHT_ACTUAL_BOARDING",
+  );
+}
+export const allowsServiceAccess = (edge, context) =>
+  dynamicOD.isOD(edge, context?.odValidationContext)
+    ? dynamicOD.allows(edge, context)
+    : serviceAccess.allowsEdge(edge, context);
+export const id = (kind, anchor) =>
+  `transport-${kind}:086:${hash(anchor).slice(0, 32)}`;
+export const dynamicOD = createDynamicOD({
+  canonical,
+  hash,
+  id,
+  invariant,
+  verifyEvidence,
+  metricFields,
+  generatePattern,
+});
+export const generateDynamicOD = dynamicOD.generate;
+export const compare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
+export function invariant(condition, message) {
+  if (!condition) throw new Error(message);
+}
+export function unique(rows, key, label) {
+  invariant(new Set(rows.map(key)).size === rows.length, `DUPLICATE_${label}`);
+}
+// Repeated references may share an ID only when the complete records agree.
+export function exactRecordMap(rows, key, label) {
+  const result = new Map();
+  for (const row of rows) {
+    invariant(
+      row && typeof row[key] === "string" && row[key],
+      `INVALID_${label}_ID`,
+    );
+    invariant(
+      !result.has(row[key]) ||
+        canonical(result.get(row[key])) === canonical(row),
+      `CONFLICTING_${label}_ID:${row[key]}`,
+    );
+    result.set(row[key], row);
+  }
+  return result;
+}
+export const SOURCE_RIGHTS = [
+  "RAW_PERSISTENCE_ALLOWED",
+  "DERIVED_STATIC_FACTS_ALLOWED",
+  "TOPOLOGY_FACT_ONLY_ALLOWED",
+  "REFERENCE_ONLY_DISCOVERY",
+  "LICENSE_BLOCKED",
+];
+export function factCallingRestrictions(fact) {
+  const rows =
+    fact.callingRestrictions ??
+    fact.callingStations.map(() => ({ pickupType: "0", dropOffType: "0" }));
+  invariant(
+    Array.isArray(rows) &&
+      rows.length === fact.callingStations.length &&
+      rows.every(
+        (r) =>
+          r &&
+          ["0", "1"].includes(r.pickupType) &&
+          (["0", "1"].includes(r.dropOffType) ||
+            (r.dropOffType === "3" &&
+              fact.accessContract?.kind === "PUBLIC_BUS_ONBOARD_REQUEST")),
+      ),
+    "INVALID_FACT_BOARDING_RESTRICTIONS",
+  );
+  return rows.map(({ pickupType, dropOffType }) => ({
+    pickupType,
+    dropOffType,
+  }));
+}
+// A through train may cross an operator boundary between passenger calls.
+// Keep both operators on that interval without inventing a passenger stop.
+export function factThroughOperators(fact) {
+  if (!fact.segmentOperatorRefs && !fact.throughServiceReview) return null;
+  const review = fact.throughServiceReview;
+  const components = fact.callingComponents;
+  invariant(
+    Array.isArray(components) &&
+      components.length === fact.callingStations.length &&
+      components.every((c) => typeof c.operator === "string" && c.operator),
+    "THROUGH_COMPONENT_OPERATORS_REQUIRED",
+  );
+  const expected = components
+    .slice(0, -1)
+    .map((from, i) => [
+      ...new Set([from.operator, components[i + 1].operator]),
+    ]);
+  const operators = [...new Set(components.map((c) => c.operator))];
+  const proof = review?.evidence;
+  invariant(
+    operators.length > 1 &&
+      canonical(fact.segmentOperatorRefs) === canonical(expected) &&
+      review?.kind === "EXPLICIT_CURRENT_THROUGH_TRAIN" &&
+      review.passengerInterchangeRequired === false &&
+      typeof review.serviceIdentifier === "string" &&
+      !!review.serviceIdentifier &&
+      review.serviceIdentifier === fact.reviewedTrainCode &&
+      canonical(review.operatorRefs) === canonical(operators) &&
+      review.boundaryScope === "BETWEEN_CONSECUTIVE_PASSENGER_CALLS" &&
+      typeof proof?.url === "string" &&
+      /^[a-f0-9]{64}$/.test(proof.observedResponseSha256 ?? "") &&
+      fact.corroboratingEvidence?.some(
+        (e) =>
+          e.url === proof.url &&
+          e.observedResponseSha256 === proof.observedResponseSha256 &&
+          e.sourceActionId === proof.sourceActionId,
+      ),
+    "THROUGH_OPERATOR_FACT_NOT_BOUND",
+  );
+  return {
+    segmentOperatorRefs: expected,
+    segmentOperators: expected.map((operators) => operators.join("・")),
+    throughServiceReview: review,
+  };
+}
+export function sourceAllowed(source) {
+  const decision =
+    source?.rightsClass ??
+    (source?.persistenceAllowed === true ? "RAW_PERSISTENCE_ALLOWED" : null);
+  const minimumFacts = [
+    "DERIVED_STATIC_FACTS_ALLOWED",
+    "TOPOLOGY_FACT_ONLY_ALLOWED",
+  ].includes(decision);
+  return (
+    (decision === "RAW_PERSISTENCE_ALLOWED" ||
+      (minimumFacts &&
+        source?.rawPayloadRetained === false &&
+        source?.rightsReview?.scope ===
+          "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS" &&
+        source?.rightsReview?.termsUrl &&
+        source?.rightsReview?.reason)) &&
+    source?.derivedDataAllowed === true &&
+    source?.redistributionAllowed === true &&
+    /^[a-f0-9]{64}$/.test(source?.contentSha256 ?? "") &&
+    !!source?.url &&
+    !!source?.observedAt &&
+    !!source?.rightsDecision
+  );
+}
+export function verifyEvidence(refs, sources, evidence) {
+  return (
+    refs?.length > 0 &&
+    refs.every((ref) => {
+      const row = evidence.get(ref);
+      const source = sources.get(row?.sourceId);
+      return (
+        row &&
+        sourceAllowed(source) &&
+        row.sourceSha256 === source.contentSha256 &&
+        !!row.locator &&
+        row.record &&
+        hash(row.record) === row.recordSha256
+      );
+    })
+  );
+}
+// A current operator/line may differ from archival S12 only through a reviewed,
+// dated merger or dual-primary legal-form correction. Station codes stay exact;
+// neither path permits a fuzzy name alias or rewriting the archival record.
+export function reviewedRailTransition(selector, fact, observedAt) {
+  const review = selector.operatorTransitionReview;
+  if (!review) return null;
+  const matches = (fact.operatorTransitions ?? []).filter(
+    (t) => t.transitionId === review.transitionId,
+  );
+  invariant(matches.length === 1, "RAIL_TRANSITION_NOT_UNIQUE");
+  const transition = matches[0];
+  invariant(
+    [
+      "OFFICIAL_MERGER_SAME_PHYSICAL_STATIONS",
+      "OFFICIAL_ARCHIVE_OPERATOR_LEGAL_FORM_CORRECTION",
+    ].includes(transition.method) &&
+      transition.fromOperator &&
+      transition.fromLine &&
+      transition.toOperator === selector.operator &&
+      transition.toLine === selector.line &&
+      /^\d{6}$/.test(review.stationCode ?? "") &&
+      /^\d{4}-\d{2}-\d{2}$/.test(transition.effectiveDate ?? "") &&
+      Number.isFinite(Date.parse(transition.effectiveDate)) &&
+      Number.isFinite(Date.parse(observedAt)) &&
+      Date.parse(transition.effectiveDate) <= Date.parse(observedAt) &&
+      transition.fromOperator !== transition.toOperator &&
+      transition.evidence?.sourceActionId &&
+      transition.evidence?.url &&
+      /^[a-f0-9]{64}$/.test(
+        transition.evidence?.observedResponseSha256 ?? "",
+      ) &&
+      (fact.corroboratingEvidence ?? []).some(
+        (r) => canonical(r) === canonical(transition.evidence),
+      ),
+    "RAIL_TRANSITION_REVIEW_REQUIRED",
+  );
+  if (transition.method === "OFFICIAL_ARCHIVE_OPERATOR_LEGAL_FORM_CORRECTION") {
+    const authority = transition.authorityEvidence;
+    const operatorUrl = URL.parse(transition.evidence.url);
+    const authorityUrl = URL.parse(authority?.url ?? "");
+    invariant(
+      transition.scope === "S12_LEGAL_FORM_PREFIX_ONLY_SAME_PHYSICAL_STATION" &&
+        transition.effectiveDateScope ===
+          "CURRENT_LEGAL_FORM_EFFECTIVE_DATE_NOT_OPERATOR_MERGER" &&
+        /^一般社団法人.+$/.test(transition.fromOperator) &&
+        transition.toOperator ===
+          transition.fromOperator.replace(/^一般社団法人/, "一般財団法人") &&
+        transition.fromLine === transition.toLine &&
+        /^\d{13}$/.test(transition.corporateNumber ?? "") &&
+        authority?.sourceActionId &&
+        authority.sourceActionId !== transition.evidence.sourceActionId &&
+        /^[a-f0-9]{64}$/.test(authority.observedResponseSha256 ?? "") &&
+        operatorUrl?.protocol === "https:" &&
+        authorityUrl?.protocol === "https:" &&
+        operatorUrl.hostname !== authorityUrl.hostname &&
+        (fact.corroboratingEvidence ?? []).some(
+          (r) => canonical(r) === canonical(authority),
+        ),
+      "RAIL_TRANSITION_LEGAL_FORM_DUAL_PRIMARY_REVIEW_REQUIRED",
+    );
+  }
+  return { ...transition, stationCode: review.stationCode };
+}
+function railTransitionBound(node, sources, evidence) {
+  if (!node.identityTransition) return false;
+  return (
+    node.evidenceRefs?.some((ref) => {
+      if (!verifyEvidence([ref], sources, evidence)) return false;
+      const row = evidence.get(ref),
+        fact = row.record;
+      return (fact.callingComponents ?? fact.components ?? []).some(
+        (selector) => {
+          try {
+            const t = reviewedRailTransition(
+              selector,
+              fact,
+              sources.get(row.sourceId)?.observedAt,
+            );
+            return (
+              t &&
+              canonical(t) === canonical(node.identityTransition) &&
+              selector.name === node.canonicalNameJa &&
+              selector.mode === node.mode &&
+              t.stationCode === node.identityRecord.stationCode &&
+              t.fromOperator === node.identityRecord.operator &&
+              t.fromLine === node.identityRecord.line &&
+              node.operatorRefs.length === 1 &&
+              node.operatorRefs[0] === t.toOperator &&
+              node.lineRefs.length === 1 &&
+              node.lineRefs[0] === t.toLine
+            );
+          } catch {
+            return false;
+          }
+        },
+      );
+    }) ?? false
+  );
+}
+// Reuse only an already admitted, exact licensed GTFS boarding point. This
+// does not collapse parent stations or infer access from matching names.
+export function reviewedGtfsComponent(selector, nodes, sources, evidence) {
+  const review = selector.gtfsIdentity;
+  invariant(
+    review &&
+      review.method === "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE" &&
+      review.currentPassengerAccessReview &&
+      selector.mode === undefined,
+    "GTFS_COMPONENT_REVIEW_REQUIRED",
+  );
+  const source = sources.get(review.sourceId);
+  const anchor = `${review.sourceId}:stop:${review.stopId}`;
+  const node = nodes.get(id("node", anchor));
+  invariant(
+    sourceAllowed(source) &&
+      source.persistenceAllowed === true &&
+      source.retainedArchive &&
+      source.contentSha256 === review.sourceArchiveSha256 &&
+      source.agencies?.some((a) => a.agency_name === selector.operator),
+    "GTFS_COMPONENT_SOURCE_MISMATCH",
+  );
+  invariant(
+    node &&
+      node.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+      node.origin === "TASK_086_INDEPENDENT_GTFS" &&
+      node.identityAnchor === anchor &&
+      ["bus_stop", "ferry_port"].includes(node.nodeKind) &&
+      node.nodeKind === selector.nodeKind &&
+      node.canonicalNameJa === selector.name &&
+      node.operatorRefs.includes(selector.operator) &&
+      node.lineRefs.includes(selector.line) &&
+      selector.line.startsWith(review.sourceId + ":route:") &&
+      node.identityRecord.stop_id === review.stopId &&
+      node.identityRecord.stop_name === selector.name &&
+      node.identityRecord.platform_code === review.expectedPlatformCode &&
+      hash(node.identityRecord) === review.recordSha256 &&
+      node.latitude === Number(node.identityRecord.stop_lat) &&
+      node.longitude === Number(node.identityRecord.stop_lon) &&
+      node.evidenceRefs.some((ref) => {
+        const row = evidence.get(ref);
+        return (
+          verifyEvidence([ref], sources, evidence) &&
+          row.sourceId === review.sourceId &&
+          row.locator === "stops.txt:" + review.stopId &&
+          row.recordSha256 === review.recordSha256 &&
+          canonical(row.record) === canonical(node.identityRecord)
+        );
+      }),
+    "GTFS_COMPONENT_IDENTITY_MISMATCH",
+  );
+  return node;
+}
+// Derived GTFS identities have a separate evidence contract. Do not let the
+// generic station-name matcher turn a malformed selector into an interchange.
+export function tokachiDerivedGtfsMode(source) {
+  const patterns = {
+    "gtfs:tokachi-airport":
+      /^https:\/\/www\.tokachibus\.jp\/download\/\d{8}GTFS-airport\.zip$/,
+    "gtfs:tokachi-city":
+      /^https:\/\/www\.tokachibus\.jp\/download\/\d{8}GTFS-dia\.zip$/,
+  };
+  if (!patterns[source?.sourceId]?.test(source.url)) return null;
+  return source.sourceId === "gtfs:tokachi-airport"
+    ? "airport_bus"
+    : "local_bus";
+}
+
+export function reviewedDerivedGtfsComponent(
+  selector,
+  nodes,
+  sources,
+  evidence,
+) {
+  const r = selector.derivedGtfsIdentity;
+  const source = sources.get(r?.sourceId);
+  const anchor = `${r?.sourceId}:stop:${r?.stopId}`;
+  const node = nodes.get(id("node", anchor));
+  invariant(
+    r?.method === "EXACT_REVIEWED_DERIVED_GTFS_STOP_AND_CURRENT_INTERCHANGE" &&
+      r.currentPassengerAccessReview &&
+      selector.mode === undefined &&
+      selector.nodeKind === "bus_stop" &&
+      sourceAllowed(source) &&
+      tokachiDerivedGtfsMode(source) !== null &&
+      source.rightsClass === "DERIVED_STATIC_FACTS_ALLOWED" &&
+      source.rightsDecision === "PASS_OPERATOR_ROUTE_GUIDANCE_STATIC_FACTS" &&
+      source.rightsReview?.termsUrl ===
+        "https://www.tokachibus.jp/rosenbus/opendata/" &&
+      source.rightsReview?.usage === "ROUTE_GUIDANCE" &&
+      source.derivedRedistributionScope ===
+        "ROUTE_GUIDANCE_MINIMAL_STATIC_FACTS" &&
+      [
+        "rawPayloadRetained",
+        "persistenceAllowed",
+        "rawPersistenceAllowed",
+        "rawRedistributionAllowed",
+        "rawByteReproductionAvailable",
+      ].every((k) => source[k] === false) &&
+      !source.retainedArchive &&
+      source.rebuildBasis === "REVIEWED_DERIVED_STATIC_INPUT" &&
+      /^\d{8}$/.test(r.serviceDate ?? "") &&
+      source.validFrom <= r.serviceDate &&
+      r.serviceDate <= source.validTo &&
+      source.rightsReview.validFrom <= r.serviceDate &&
+      r.serviceDate <= source.rightsReview.validTo,
+    "DERIVED_GTFS_COMPONENT_REVIEW_REQUIRED",
+  );
+  invariant(
+    node?.nodeId === id("node", anchor) &&
+      node.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+      node.origin === "TASK_086_INDEPENDENT_GTFS" &&
+      node.nodeKind === "bus_stop" &&
+      node.identityAnchor === anchor &&
+      node.canonicalNameJa === selector.name &&
+      node.operatorRefs.includes(selector.operator) &&
+      source.agency?.agency_name === selector.operator &&
+      selector.line.startsWith(r.sourceId + ":route:") &&
+      node.lineRefs.includes(selector.line) &&
+      node.identityRecord.stop_id === r.stopId &&
+      node.identityRecord.stop_name === selector.name &&
+      node.identityRecord.platform_code === r.expectedPlatformCode &&
+      hash(node.identityRecord) === r.recordSha256 &&
+      node.latitude === Number(node.identityRecord.stop_lat) &&
+      node.longitude === Number(node.identityRecord.stop_lon) &&
+      node.independentReview?.method === "EXACT_REVIEWED_DERIVED_GTFS_STOP" &&
+      node.independentReview.recordSha256 === r.recordSha256 &&
+      /^[a-f0-9]{64}$/.test(r.derivedInputSha256 ?? "") &&
+      node.independentReview.derivedInputSha256 === r.derivedInputSha256 &&
+      r.sourceArchiveSha256 === source.contentSha256 &&
+      r.derivedProjectionSha256 === source.derivedProjectionSha256 &&
+      node.independentReview.derivedProjectionSha256 ===
+        r.derivedProjectionSha256 &&
+      node.evidenceRefs.some((ref) => {
+        const e = evidence.get(ref);
+        return (
+          verifyEvidence([ref], sources, evidence) &&
+          e.sourceId === r.sourceId &&
+          e.locator === "derived-static:stops.txt:" + r.stopId &&
+          e.derivedInputSha256 === r.derivedInputSha256 &&
+          e.derivedProjectionSha256 === r.derivedProjectionSha256 &&
+          e.evidenceKind === "REVIEWED_DERIVED_STATIC_INPUT" &&
+          canonical(e.record) === canonical(node.identityRecord)
+        );
+      }),
+    "DERIVED_GTFS_COMPONENT_IDENTITY_MISMATCH",
+  );
+  return node;
+}
+export function admitNodes(
+  candidates,
+  sources,
+  evidence,
+  prior = [],
+  identityContext = {},
+) {
+  unique(candidates, (n) => n.identityAnchor, "NODE_ANCHOR");
+  const previous = new Map(prior.map((n) => [n.nodeId, n]));
+  return candidates
+    .map((node) => {
+      const nodeId = id("node", node.identityAnchor);
+      const identitySignature = hash([
+        node.identityAnchor,
+        node.canonicalNameJa,
+        node.nodeKind,
+        node.operatorRefs,
+      ]);
+      const reasons = [];
+      if (
+        node.origin === "TASK_086_INDEPENDENT_GTFS" &&
+        (Number(node.identityRecord.stop_lat) !== node.latitude ||
+          Number(node.identityRecord.stop_lon) !== node.longitude ||
+          node.identityRecord.stop_name !== node.canonicalNameJa ||
+          !node.identityAnchor.endsWith(":stop:" + node.identityRecord.stop_id))
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin === "TASK_086_INDEPENDENT_S12_AND_OFFICIAL_SERVICE" &&
+        (node.nodeKind !== RAIL_NODE_KIND_BY_MODE[node.mode] ||
+          node.canonicalNameJa !== node.identityRecord.stationName ||
+          node.latitude !== node.identityRecord.latitude ||
+          node.longitude !== node.identityRecord.longitude ||
+          (node.identityTransition
+            ? !railTransitionBound(node, sources, evidence)
+            : node.operatorRefs.length !== 1 ||
+              node.operatorRefs[0] !== node.identityRecord.operator ||
+              !node.lineRefs.includes(node.identityRecord.line)))
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+
+      if (
+        node.origin === "TASK_086_INDEPENDENT_C28_AND_CURRENT_ACCESS" &&
+        (node.canonicalNameJa !== node.identityRecord.airportName ||
+          node.latitude !== node.identityRecord.latitude ||
+          node.longitude !== node.identityRecord.longitude ||
+          node.nodeKind !== "airport" ||
+          node.mode !== "flight" ||
+          node.operatorRefs.length !== 1 ||
+          node.operatorRefs[0] !==
+            "airport-facility:" + node.identityRecord.referencePointId ||
+          node.lineRefs.length !== 1 ||
+          node.lineRefs[0] !==
+            "airport:" + node.identityRecord.referencePointId)
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin ===
+          "TASK_086_INDEPENDENT_P36_AND_CURRENT_TERMINAL_ACCESS" &&
+        (node.canonicalNameJa !== node.identityRecord.stopName ||
+          node.latitude !== node.identityRecord.latitude ||
+          node.longitude !== node.identityRecord.longitude ||
+          node.nodeKind !== "bus_terminal" ||
+          node.mode !== "highway_bus" ||
+          node.operatorRefs.length !== 1 ||
+          node.operatorRefs[0] !== node.identityRecord.operator ||
+          node.lineRefs.length !== 1 ||
+          node.lineRefs[0] !== "p36-stop:" + node.identityRecord.stopRecordId)
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin === "TASK_086_INDEPENDENT_P11_AND_CURRENT_SERVICE" &&
+        (node.identityAnchor !== "p11:22:" + node.identityRecord.stopRecordId ||
+          node.canonicalNameJa !== node.identityRecord.stopName ||
+          node.latitude !== node.identityRecord.latitude ||
+          node.longitude !== node.identityRecord.longitude ||
+          node.nodeKind !== "bus_stop" ||
+          !["airport_bus", "local_bus"].includes(node.mode) ||
+          node.mode !== node.independentReview?.mode ||
+          node.operatorRefs.length !== 1 ||
+          node.operatorRefs[0] !== node.identityRecord.operator ||
+          node.lineRefs.length !== 1 ||
+          node.lineRefs[0] !== "p11-stop:" + node.identityRecord.stopRecordId)
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin === "TASK_086_INDEPENDENT_P36_AND_CURRENT_STOP_SERVICE" &&
+        (node.identityAnchor !== "p36:23:" + node.identityRecord.stopRecordId ||
+          node.canonicalNameJa !== node.identityRecord.stopName ||
+          node.latitude !== node.identityRecord.latitude ||
+          node.longitude !== node.identityRecord.longitude ||
+          node.nodeKind !== "bus_stop" ||
+          !["airport_bus", "highway_bus"].includes(node.mode) ||
+          node.mode !== node.independentReview?.mode ||
+          node.operatorRefs.length !== 1 ||
+          node.operatorRefs[0] !== node.identityRecord.operator ||
+          node.lineRefs.length !== 1 ||
+          node.lineRefs[0] !== "p36-stop:" + node.identityRecord.stopRecordId ||
+          node.independentReview?.method !==
+            "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE" ||
+          node.independentReview?.sourceArchiveSha256 !==
+            "50d92052dd15ccf29fa86bee74b18ce7c95fcb9cb93678395842e67658f26de4" ||
+          node.independentReview?.currentOperatorEvidence?.recordOperator !==
+            node.identityRecord.operator ||
+          node.independentReview?.currentOperatorEvidence?.currentStopName !==
+            node.identityRecord.stopName ||
+          node.independentReview?.coordinateScope !==
+            node.identityRecord.coordinateScope ||
+          node.independentReview?.coordinateScope !==
+            "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION" ||
+          !node.evidenceRefs.some((ref) =>
+            evidence
+              .get(ref)
+              ?.record?.corroboratingEvidence?.some(
+                (e) =>
+                  e.url ===
+                    node.independentReview?.currentOperatorEvidence?.url &&
+                  e.observedResponseSha256 ===
+                    node.independentReview?.currentOperatorEvidence
+                      ?.observedResponseSha256,
+              ),
+          ))
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        [
+          "TASK_086_INDEPENDENT_P05_AND_PUBLIC_OD",
+          "TASK_086_INDEPENDENT_P04_AND_PUBLIC_OD",
+          "TASK_086_INDEPENDENT_P05_AND_PUBLIC_FIXED_SERVICE",
+        ].includes(node.origin) &&
+        !dynamicOD.facilityBound(node, {
+          sources,
+          evidence,
+          nativeFacilityByAnchor: identityContext.nativeFacilityByAnchor,
+        })
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        (node.origin === "TASK_086_OFFICIAL_PUBLIC_FACILITY_AND_BUS" ||
+          (node.nodeKind === "public_pickup_facility" &&
+            node.mode === "local_bus")) &&
+        (node.origin !== "TASK_086_OFFICIAL_PUBLIC_FACILITY_AND_BUS" ||
+          !officialFacilityBus.facilityBound(node, {
+            sources,
+            evidence,
+            nativeFacilityByAnchor: identityContext.nativeFacilityByAnchor,
+          }))
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin === "TASK_086_OFFICIAL_PRIVATE_HOTEL_AND_OSM" &&
+        !priciaFacility.bound(node, {
+          sources,
+          evidence,
+          nativeFacilityByAnchor: identityContext.nativeFacilityByAnchor,
+        })
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (
+        node.origin === "TASK_086_INDEPENDENT_ABR_PRIVATE_HOTEL" &&
+        !hamayusoFacility.bound(node, {
+          sources,
+          evidence,
+          nativeFacilityByAnchor: identityContext.nativeFacilityByAnchor,
+        })
+      )
+        reasons.push("IDENTITY_SOURCE_BINDING_MISMATCH");
+      if (node.origin === "TASK_084_V1" || node.rejectedV1Identity)
+        reasons.push("REJECTED_V1");
+      if (
+        !node.independentReview ||
+        node.independentReview.decision !== "ADMIT_TASK_086_TOPOLOGY" ||
+        node.independentReview.recordSha256 !== hash(node.identityRecord)
+      )
+        reasons.push("INDEPENDENT_REVIEW_REQUIRED");
+      if (
+        !node.identityAnchor ||
+        !node.canonicalNameJa ||
+        !node.nodeKind ||
+        !node.operatorRefs?.length ||
+        !node.lineRefs?.length
+      )
+        reasons.push("IDENTITY_FIELDS_MISSING");
+      if (
+        !Number.isFinite(node.latitude) ||
+        !Number.isFinite(node.longitude) ||
+        node.latitude < -90 ||
+        node.latitude > 90 ||
+        node.longitude < -180 ||
+        node.longitude > 180
+      )
+        reasons.push("INVALID_COORDINATES");
+      if (
+        !verifyEvidence(node.evidenceRefs, sources, evidence) ||
+        !node.evidenceRefs?.some(
+          (ref) =>
+            evidence.get(ref)?.recordSha256 === hash(node.identityRecord),
+        )
+      )
+        reasons.push("SOURCE_LICENSE_OR_PROVENANCE");
+      if (!node.hubSemantics || (node.parentHubId && !node.hubEvidenceRef))
+        reasons.push("HUB_SEMANTICS_MISSING");
+      if (
+        previous.has(nodeId) &&
+        previous.get(nodeId).identitySignature !== identitySignature
+      )
+        reasons.push("IDENTITY_REBIND");
+      return {
+        ...node,
+        nodeId,
+        identitySignature,
+        decision: reasons.length
+          ? reasons.some((r) =>
+              [
+                "REJECTED_V1",
+                "IDENTITY_REBIND",
+                "INVALID_COORDINATES",
+              ].includes(r),
+            )
+            ? "REJECT"
+            : "HOLD"
+          : "ADMIT_TASK_086_TOPOLOGY",
+        reasons,
+      };
+    })
+    .sort((a, b) => compare(a.nodeId, b.nodeId));
+}
+export function metricFields(values, sources) {
+  return Object.fromEntries(
+    METRICS.map((field) => {
+      const item = values?.[field];
+      if (item?.value !== null && item?.value !== undefined) {
+        const source = sources.get(item.sourceId);
+        invariant(
+          sourceAllowed(source) &&
+            (!source.rightsClass ||
+              source.metricPersistenceAllowed === true ||
+              source.rightsClass === "RAW_PERSISTENCE_ALLOWED") &&
+            item.sourceSha256 === source.contentSha256 &&
+            item.observedAt &&
+            item.validFrom &&
+            item.validTo &&
+            item.freshnessClass &&
+            item.rightsDecision === source.rightsDecision,
+          `METRIC_PROVENANCE:${field}`,
+        );
+        if (
+          [
+            "durationTypicalMin",
+            "durationP90Min",
+            "fareTypicalYen",
+            "frequencyTypicalMin",
+            "transferTimeMin",
+          ].includes(field)
+        )
+          invariant(
+            Number.isFinite(item.value) && item.value >= 0,
+            `INVALID_METRIC:${field}`,
+          );
+        return [field, { status: "resolved", ...item }];
+      }
+      return [
+        field,
+        {
+          status: "unresolved",
+          value: null,
+          reason: "NO_LICENSED_FIELD_OBSERVATION",
+        },
+      ];
+    }),
+  );
+}
+// Artifact generation time is not the service calendar date. Only an explicit
+// independently reviewed date may override the legacy generation-day default.
+export function gtfsServiceDateBound(review, serviceDate, generatedAt) {
+  const expected = Object.hasOwn(review, "reviewedServiceDate")
+    ? review.reviewedServiceDate
+    : generatedAt.slice(0, 10).replaceAll("-", "");
+  if (
+    typeof expected !== "string" ||
+    !/^\d{8}$/.test(expected) ||
+    serviceDate !== expected
+  )
+    return false;
+  const date = new Date(
+    `${expected.slice(0, 4)}-${expected.slice(4, 6)}-${expected.slice(6, 8)}T00:00:00Z`,
+  );
+  return (
+    Number.isFinite(date.getTime()) &&
+    date.toISOString().slice(0, 10).replaceAll("-", "") === expected
+  );
+}
+
+// A section keeps its full native parent as separate evidence. Calendar and
+// direction belong to that parent, including a fallback direction without ID.
+function gtfsSectionBound(row, pattern, sources, evidence, generatedAt) {
+  const section = row.record.section;
+  if (!section || canonical(section) !== canonical(pattern.gtfsSection))
+    return false;
+  const parent = evidence.get(section.parentEvidenceRef);
+  if (
+    !parent ||
+    !verifyEvidence([section.parentEvidenceRef], sources, evidence) ||
+    parent.sourceId !== row.sourceId ||
+    parent.sourceSha256 !== row.sourceSha256 ||
+    parent.record.section
+  )
+    return false;
+  const { trip, calls, calendar, exceptions, serviceDate } = parent.record;
+  if (
+    !trip ||
+    !Array.isArray(calls) ||
+    calls.length < 2 ||
+    hash(calls) !== section.fullParentCallsSha256 ||
+    !["trip", "calendar", "exceptions", "serviceDate"].every(
+      (k) => canonical(parent.record[k]) === canonical(row.record[k]),
+    ) ||
+    !gtfsServiceDateBound(pattern, serviceDate, generatedAt) ||
+    !calls.every(
+      (c, i) =>
+        c.trip_id === trip.trip_id &&
+        Number.isInteger(Number(c.stop_sequence)) &&
+        Number(c.stop_sequence) >= 0 &&
+        (i === 0 ||
+          Number(c.stop_sequence) > Number(calls[i - 1].stop_sequence)),
+    )
+  )
+    return false;
+  const from = calls.findIndex(
+    (c) => Number(c.stop_sequence) === section.fromStopSequence,
+  );
+  const to = calls.findIndex(
+    (c) => Number(c.stop_sequence) === section.toStopSequence,
+  );
+  const direction =
+    trip.direction_id || `ordered:${calls[0].stop_id}>${calls.at(-1).stop_id}`;
+  const source = sources.get(row.sourceId);
+  if (
+    !Number.isInteger(section.fromStopSequence) ||
+    !Number.isInteger(section.toStopSequence) ||
+    from < 0 ||
+    to <= from ||
+    canonical(calls.slice(from, to + 1)) !== canonical(row.record.calls) ||
+    section.expectedDirectionId !== direction ||
+    pattern.direction !== direction ||
+    serviceDate < source.validFrom ||
+    serviceDate > source.validTo ||
+    !Array.isArray(exceptions) ||
+    exceptions.length > 1 ||
+    !exceptions.every(
+      (e) =>
+        e.service_id === trip.service_id &&
+        e.date === serviceDate &&
+        ["1", "2"].includes(e.exception_type),
+    )
+  )
+    return false;
+  const date = new Date(
+    `${serviceDate.slice(0, 4)}-${serviceDate.slice(4, 6)}-${serviceDate.slice(6, 8)}T00:00:00Z`,
+  );
+  const weekday = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ][date.getUTCDay()];
+  const active = exceptions.length
+    ? exceptions[0].exception_type === "1"
+    : calendar &&
+      calendar.service_id === trip.service_id &&
+      calendar.start_date <= serviceDate &&
+      serviceDate <= calendar.end_date &&
+      calendar[weekday] === "1";
+  return (
+    !!active &&
+    row.record.calls.every((c) =>
+      [c.pickup_type || "0", c.drop_off_type || "0"].every((v) =>
+        ["0", "1"].includes(v),
+      ),
+    )
+  );
+}
+export function generatePattern(
+  pattern,
+  nodes,
+  sources,
+  evidence,
+  generatedAt,
+  validationContext,
+) {
+  invariant(
+    pattern.direction !== null &&
+      pattern.direction !== undefined &&
+      pattern.direction !== "unknown",
+    "PATTERN_DIRECTION_UNRESOLVED",
+  );
+  invariant(
+    pattern.lineRef &&
+      pattern.operatorRef &&
+      pattern.serviceClass &&
+      pattern.servicePatternId,
+    "PATTERN_IDENTITY_MISSING",
+  );
+  invariant(
+    verifyEvidence(pattern.evidenceRefs, sources, evidence),
+    "PATTERN_EVIDENCE_INVALID",
+  );
+  const accessContract = serviceAccess.bindPattern(
+    pattern,
+    sources,
+    evidence,
+    validationContext,
+  );
+  invariant(
+    Array.isArray(pattern.callingNodes) && pattern.callingNodes.length >= 2,
+    "PATTERN_SEQUENCE_INVALID",
+  );
+  invariant(
+    pattern.sequenceEvidence === "GTFS_TRIP_STOP_SEQUENCE" ||
+      pattern.sequenceEvidence === "REVIEWED_GTFS_STATIC_SEQUENCE" ||
+      pattern.sequenceEvidence === "OFFICIAL_CALLING_SEQUENCE",
+    "PHYSICAL_ADJACENCY_NOT_SERVICE_PATTERN",
+  );
+  invariant(
+    ["active", "seasonal", "inactive", "suspended"].includes(
+      pattern.serviceState,
+    ),
+    "SERVICE_STATE_MISSING",
+  );
+  if (["inactive", "suspended"].includes(pattern.serviceState)) return [];
+  if (
+    ["GTFS_TRIP_STOP_SEQUENCE", "REVIEWED_GTFS_STATIC_SEQUENCE"].includes(
+      pattern.sequenceEvidence,
+    )
+  ) {
+    const rows = pattern.evidenceRefs.map((ref) => evidence.get(ref));
+    if (pattern.sequenceEvidence === "GTFS_TRIP_STOP_SEQUENCE")
+      invariant(
+        rows.every(
+          (row) =>
+            row.evidenceKind !== "REVIEWED_DERIVED_STATIC_INPUT" &&
+            sources.get(row.sourceId)?.rebuildBasis !==
+              "REVIEWED_DERIVED_STATIC_INPUT",
+        ),
+        "DERIVED_GTFS_CANNOT_CLAIM_RAW_SEQUENCE",
+      );
+    if (pattern.sequenceEvidence === "REVIEWED_GTFS_STATIC_SEQUENCE")
+      invariant(
+        rows.every((row) => {
+          const source = sources.get(row.sourceId);
+          return (
+            source.rightsClass === "DERIVED_STATIC_FACTS_ALLOWED" &&
+            source.rawPayloadRetained === false &&
+            source.rawRedistributionAllowed === false &&
+            source.rawByteReproductionAvailable === false &&
+            source.rebuildBasis === "REVIEWED_DERIVED_STATIC_INPUT" &&
+            !source.retainedArchive &&
+            row.evidenceKind === "REVIEWED_DERIVED_STATIC_INPUT" &&
+            /^[a-f0-9]{64}$/.test(pattern.derivedInputSha256 ?? "") &&
+            row.derivedInputSha256 === pattern.derivedInputSha256 &&
+            row.derivedProjectionSha256 === source.derivedProjectionSha256 &&
+            pattern.derivedProjectionSha256 ===
+              source.derivedProjectionSha256 &&
+            row.record.section &&
+            evidence.get(row.record.section.parentEvidenceRef)
+              ?.derivedInputSha256 === pattern.derivedInputSha256
+          );
+        }),
+        "DERIVED_GTFS_PATTERN_PROVENANCE",
+      );
+    invariant(
+      rows.every((row) => {
+        const { trip, calls } = row.record;
+        if (
+          Object.hasOwn(pattern, "reviewedServiceDate") &&
+          !gtfsServiceDateBound(pattern, row.record.serviceDate, generatedAt)
+        )
+          return false;
+        if (
+          !trip ||
+          !Array.isArray(calls) ||
+          calls.length !== pattern.callingNodes.length
+        )
+          return false;
+        if (row.record.section || pattern.gtfsSection) {
+          if (!gtfsSectionBound(row, pattern, sources, evidence, generatedAt))
+            return false;
+        }
+        const direction = row.record.section
+          ? row.record.section.expectedDirectionId
+          : trip.direction_id ||
+            `ordered:${calls[0].stop_id}>${calls.at(-1).stop_id}`;
+        return (
+          pattern.lineRef === `${row.sourceId}:route:${trip.route_id}` &&
+          pattern.direction === direction &&
+          calls.every((call, index) => {
+            const admittedCall = pattern.callingNodes[index];
+            return (
+              admittedCall.nodeId ===
+                id("node", `${row.sourceId}:stop:${call.stop_id}`) &&
+              admittedCall.sequence === Number(call.stop_sequence) &&
+              admittedCall.pickupType === (call.pickup_type || "0") &&
+              admittedCall.dropOffType === (call.drop_off_type || "0")
+            );
+          })
+        );
+      }) &&
+        canonical([...pattern.sourceTripIds].sort(compare)) ===
+          canonical(rows.map((row) => row.record.trip.trip_id).sort(compare)),
+      "GTFS_PATTERN_SOURCE_BINDING_MISMATCH",
+    );
+  }
+  if (
+    pattern.sequenceEvidence === "OFFICIAL_CALLING_SEQUENCE" &&
+    (pattern.strictFactBinding ||
+      pattern.evidenceRefs.some((ref) =>
+        ["DERIVED_STATIC_FACTS_ALLOWED", "TOPOLOGY_FACT_ONLY_ALLOWED"].includes(
+          sources.get(evidence.get(ref).sourceId)?.rightsClass,
+        ),
+      ))
+  ) {
+    invariant(
+      pattern.evidenceRefs.every((ref) => {
+        const record = evidence.get(ref).record;
+        const fact = evidence.get(record.sourceFactRef)?.record;
+        const through = fact ? factThroughOperators(fact) : null;
+        return (
+          canonical(pattern.segmentOperators) ===
+            canonical(
+              through?.segmentOperators ??
+                Array((fact?.callingStations?.length ?? 1) - 1).fill(
+                  fact?.operator,
+                ),
+            ) &&
+          canonical(pattern.segmentOperatorRefs ?? null) ===
+            canonical(through?.segmentOperatorRefs ?? null) &&
+          canonical(record.segmentOperatorRefs ?? null) ===
+            canonical(through?.segmentOperatorRefs ?? null) &&
+          canonical(pattern.throughServiceReview ?? null) ===
+            canonical(through?.throughServiceReview ?? null) &&
+          canonical(record.throughServiceReview ?? null) ===
+            canonical(through?.throughServiceReview ?? null) &&
+          (!through ||
+            (canonical(record.segmentOperators) ===
+              canonical(through.segmentOperators) &&
+              canonical(pattern.throughServiceEvidenceRefs) ===
+                canonical([record.sourceFactRef]))) &&
+          canonical(record.callingNodes) === canonical(pattern.callingNodes) &&
+          record.lineRef === pattern.lineRef &&
+          record.operatorRef === pattern.operatorRef &&
+          record.mode === pattern.mode &&
+          record.serviceClass === pattern.serviceClass &&
+          record.direction === pattern.direction &&
+          verifyEvidence([record.sourceFactRef], sources, evidence) &&
+          evidence.get(record.sourceFactRef).record.kind === "service" &&
+          (!pattern.mode.includes("bus") ||
+            (pattern.purpose === record.purpose &&
+              pattern.purpose ===
+                evidence.get(record.sourceFactRef).record.purpose)) &&
+          canonical(
+            factCallingRestrictions(evidence.get(record.sourceFactRef).record),
+          ) ===
+            canonical(
+              pattern.callingNodes.map(({ pickupType, dropOffType }) => ({
+                pickupType,
+                dropOffType,
+              })),
+            ) &&
+          evidence
+            .get(record.sourceFactRef)
+            .record.callingStations.every((sourceName, i) => {
+              const fact = evidence.get(record.sourceFactRef).record;
+              const selector = fact.callingComponents?.[i] ?? {
+                name: sourceName,
+                operator: fact.operator,
+                line: fact.line,
+                mode: fact.mode,
+              };
+              const node = nodes.get(pattern.callingNodes[i]?.nodeId);
+              if (
+                !node ||
+                node.canonicalNameJa !== selector.name ||
+                !node.operatorRefs.includes(selector.operator) ||
+                !node.lineRefs.includes(selector.line) ||
+                node.mode !== selector.mode
+              )
+                return false;
+              if (sourceName === selector.name) return true;
+              if (
+                [
+                  "PUBLIC_BUS_ONBOARD_REQUEST",
+                  "AIR_PASSENGER_PUBLIC_SHUTTLE",
+                ].includes(fact.accessContract?.kind) &&
+                officialFacilityBus.selectorBound(
+                  selector,
+                  sourceName,
+                  node,
+                  fact,
+                  sources,
+                  evidence,
+                )
+              )
+                return true;
+              const review = selector.nameVariantReview;
+              return (
+                [
+                  "JAPANESE_SMALL_KE",
+                  "JAPANESE_DIGIT_WIDTH",
+                  "JAPANESE_PAREN_WIDTH",
+                ].includes(review?.kind) &&
+                review.sourceName === sourceName &&
+                node.evidenceRefs?.some((identityRef) => {
+                  const identity = evidence.get(identityRef)?.record;
+                  return (
+                    verifyEvidence([identityRef], sources, evidence) &&
+                    identity?.stationCode === review.stationCode &&
+                    identity.stationName === selector.name &&
+                    identity.operator === selector.operator &&
+                    identity.line === selector.line
+                  );
+                }) &&
+                (review.kind === "JAPANESE_SMALL_KE"
+                  ? sourceName.replaceAll("ヶ", "ケ") ===
+                    selector.name.replaceAll("ヶ", "ケ")
+                  : review.kind === "JAPANESE_PAREN_WIDTH"
+                    ? sourceName.replaceAll("（", "(").replaceAll("）", ")") ===
+                      selector.name.replaceAll("（", "(").replaceAll("）", ")")
+                    : sourceName.replace(/[０-９]/g, (digit) =>
+                        String.fromCharCode(digit.charCodeAt(0) - 0xfee0),
+                      ) ===
+                      selector.name.replace(/[０-９]/g, (digit) =>
+                        String.fromCharCode(digit.charCodeAt(0) - 0xfee0),
+                      ))
+              );
+            }) &&
+          evidence.get(record.sourceFactRef).record.callingStations.length ===
+            pattern.callingNodes.length
+        );
+      }),
+      "OFFICIAL_PATTERN_SOURCE_BINDING_MISMATCH",
+    );
+  }
+  invariant(
+    pattern.segmentOperators?.length === pattern.callingNodes.length - 1,
+    "OPERATOR_BOUNDARY_MISSING",
+  );
+  invariant(
+    pattern.callingNodes.every(
+      (n) => nodes.get(n.nodeId)?.decision === "ADMIT_TASK_086_TOPOLOGY",
+    ),
+    "ENDPOINT_NOT_ADMITTED",
+  );
+  if (pattern.mode.includes("bus"))
+    invariant(
+      ["airport", "highway", "tourism", "required_gateway"].includes(
+        pattern.purpose,
+      ),
+      "BUS_EXPANSION_NOT_BOUNDED",
+    );
+  if (new Set(pattern.segmentOperators).size > 1)
+    invariant(
+      pattern.throughServiceEvidenceRefs?.length &&
+        verifyEvidence(pattern.throughServiceEvidenceRefs, sources, evidence),
+      "THROUGH_SERVICE_EVIDENCE_MISSING",
+    );
+  return pattern.callingNodes.slice(0, -1).map((from, index) => {
+    const to = pattern.callingNodes[index + 1];
+    invariant(
+      from.nodeId !== to.nodeId && from.sequence < to.sequence,
+      "INVALID_ORDERED_SEQUENCE",
+    );
+    return {
+      edgeId: id("edge", [
+        pattern.servicePatternId,
+        index,
+        from.nodeId,
+        to.nodeId,
+      ]),
+      from: { kind: "transport", id: from.nodeId },
+      to: { kind: "transport", id: to.nodeId },
+      fromTransportNodeId: from.nodeId,
+      toTransportNodeId: to.nodeId,
+      layer: "transport_network",
+      directed: true,
+      topologyStatus: "CONFIRMED",
+      edgeKind: "service_segment",
+      mode: pattern.mode,
+      operatorRef: pattern.segmentOperators[index],
+      ...(pattern.segmentOperatorRefs
+        ? {
+            operatorRefs: pattern.segmentOperatorRefs[index],
+            ...(pattern.segmentOperatorRefs[index].length > 1
+              ? {
+                  operatorBoundaryScope: "BETWEEN_CONSECUTIVE_PASSENGER_CALLS",
+                }
+              : {}),
+          }
+        : {}),
+      lineRef: pattern.lineRef,
+      servicePatternRef: pattern.servicePatternId,
+      segmentIndex: index,
+      serviceClass: pattern.serviceClass,
+      direction: pattern.direction,
+      boardAllowed: from.pickupType !== "1",
+      alightAllowed: to.dropOffType !== "1",
+      ...serviceAccess.edgeFields(accessContract),
+      topologyEvidenceRefs: accessContract
+        ? [
+            ...new Set([
+              ...pattern.evidenceRefs,
+              ...accessContract.sourceEvidenceRefs,
+            ]),
+          ]
+        : pattern.evidenceRefs,
+      sourceRefs: pattern.sourceRefs,
+      confidence: 1,
+      metrics: metricFields(pattern.metrics, sources),
+      generatedAt,
+    };
+  });
+}
+export function generateTransfer(
+  transfer,
+  nodes,
+  sources,
+  evidence,
+  generatedAt,
+) {
+  invariant(
+    transfer.evidenceKind === "OFFICIAL_INTERCHANGE" ||
+      transfer.evidenceKind === "GTFS_TRANSFER",
+    "SAME_NAME_NOT_INTERCHANGE",
+  );
+  invariant(
+    verifyEvidence(transfer.evidenceRefs, sources, evidence),
+    "TRANSFER_EVIDENCE_INVALID",
+  );
+  if (transfer.evidenceKind === "GTFS_TRANSFER")
+    invariant(
+      transfer.evidenceRefs.every((ref) => {
+        const row = evidence.get(ref),
+          record = row.record;
+        return (
+          transfer.from ===
+            id("node", `${row.sourceId}:stop:${record.from_stop_id}`) &&
+          transfer.to ===
+            id("node", `${row.sourceId}:stop:${record.to_stop_id}`) &&
+          ["0", "1", "2", ""].includes(record.transfer_type ?? "") &&
+          !["from_route_id", "to_route_id", "from_trip_id", "to_trip_id"].some(
+            (key) => record[key],
+          )
+        );
+      }),
+      "GTFS_TRANSFER_SOURCE_BINDING_MISMATCH",
+    );
+  if (
+    transfer.evidenceKind === "OFFICIAL_INTERCHANGE" &&
+    (transfer.strictFactBinding ||
+      transfer.evidenceRefs.some((ref) =>
+        ["DERIVED_STATIC_FACTS_ALLOWED", "TOPOLOGY_FACT_ONLY_ALLOWED"].includes(
+          sources.get(evidence.get(ref).sourceId)?.rightsClass,
+        ),
+      ))
+  ) {
+    invariant(
+      transfer.evidenceRefs.every((ref) => {
+        const record = evidence.get(ref).record;
+        if (
+          record.from !== transfer.from ||
+          record.to !== transfer.to ||
+          record.hubRef !== transfer.hubRef ||
+          !verifyEvidence([record.sourceFactRef], sources, evidence)
+        )
+          return false;
+        const fact = evidence.get(record.sourceFactRef).record;
+        return (
+          fact.kind === "transfer" &&
+          fact.directions.some(([a, b]) => {
+            const match = (selector, nodeId) => {
+              if (selector.derivedGtfsIdentity) {
+                try {
+                  return (
+                    reviewedDerivedGtfsComponent(
+                      selector,
+                      nodes,
+                      sources,
+                      evidence,
+                    ).nodeId === nodeId
+                  );
+                } catch {
+                  return false;
+                }
+              }
+              if (selector.gtfsIdentity) {
+                try {
+                  return (
+                    reviewedGtfsComponent(selector, nodes, sources, evidence)
+                      .nodeId === nodeId
+                  );
+                } catch {
+                  return false;
+                }
+              }
+              const node = nodes.get(nodeId);
+              return (
+                node &&
+                node.canonicalNameJa === selector.name &&
+                node.operatorRefs.includes(selector.operator) &&
+                node.lineRefs.includes(selector.line) &&
+                node.mode === selector.mode
+              );
+            };
+            return (
+              match(fact.components[a], transfer.from) &&
+              match(fact.components[b], transfer.to)
+            );
+          })
+        );
+      }),
+      "OFFICIAL_TRANSFER_SOURCE_BINDING_MISMATCH",
+    );
+  }
+  invariant(
+    nodes.get(transfer.from)?.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+      nodes.get(transfer.to)?.decision === "ADMIT_TASK_086_TOPOLOGY",
+    "ENDPOINT_NOT_ADMITTED",
+  );
+  invariant(
+    transfer.from !== transfer.to && transfer.directed === true,
+    "TRANSFER_DIRECTION_INVALID",
+  );
+  return {
+    edgeId: id("edge", [
+      "transfer",
+      transfer.from,
+      transfer.to,
+      transfer.hubRef,
+    ]),
+    from: { kind: "transport", id: transfer.from },
+    to: { kind: "transport", id: transfer.to },
+    fromTransportNodeId: transfer.from,
+    toTransportNodeId: transfer.to,
+    layer: "transport_network",
+    directed: true,
+    topologyStatus: "CONFIRMED",
+    edgeKind: "hub_transfer",
+    mode: "transfer",
+    hubRef: transfer.hubRef,
+    topologyEvidenceRefs: transfer.evidenceRefs,
+    sourceRefs: transfer.sourceRefs,
+    confidence: 1,
+    metrics: metricFields(transfer.metrics, sources),
+    generatedAt,
+  };
+}
+export function generateDirect(
+  shortcut,
+  pattern,
+  serviceEdges,
+  sources,
+  generatedAt,
+) {
+  invariant(
+    shortcut.evidenceKind === "REAL_THROUGH_SERVICE" &&
+      shortcut.plannerValue &&
+      shortcut.servicePatternRef === pattern.servicePatternId,
+    "DIRECT_SERVICE_UNPROVEN",
+  );
+  const first = pattern.callingNodes.findIndex(
+    (n) => n.nodeId === shortcut.from,
+  );
+  const last = pattern.callingNodes.findIndex(
+    (n, i) => i > first && n.nodeId === shortcut.to,
+  );
+  invariant(
+    first >= 0 &&
+      last > first &&
+      serviceEdges.filter(
+        (e) =>
+          e.servicePatternRef === pattern.servicePatternId &&
+          e.segmentIndex >= first &&
+          e.segmentIndex < last,
+      ).length ===
+        last - first,
+    "DIRECT_SERVICE_UNDERLYING_GAP",
+  );
+  return {
+    ...serviceEdges.find(
+      (e) =>
+        e.servicePatternRef === pattern.servicePatternId &&
+        e.segmentIndex === first,
+    ),
+    edgeId: id("edge", ["direct", pattern.servicePatternId, first, last]),
+    edgeKind: "direct_service",
+    boardAllowed: pattern.callingNodes[first].pickupType !== "1",
+    alightAllowed: pattern.callingNodes[last].dropOffType !== "1",
+    from: { kind: "transport", id: shortcut.from },
+    to: { kind: "transport", id: shortcut.to },
+    fromTransportNodeId: shortcut.from,
+    toTransportNodeId: shortcut.to,
+    metrics: metricFields(shortcut.metrics, sources),
+    generatedAt,
+  };
+}
+export function validateEdges(edges, validationContext) {
+  unique(edges, (e) => e.edgeId, "EDGE_ID");
+  unique(
+    edges,
+    (e) =>
+      canonical([
+        e.edgeKind,
+        e.servicePatternRef ?? e.hubRef,
+        e.segmentIndex ?? null,
+        e.fromTransportNodeId,
+        e.toTransportNodeId,
+      ]),
+    "SAME_SERVICE_EDGE",
+  );
+  invariant(
+    edges.every((e) => e.directed === true && e.topologyEvidenceRefs?.length),
+    "EDGE_PROVENANCE_OR_DIRECTION",
+  );
+  if (validationContext?.dynamicODValidationScope !== "PARTIAL_BATCH")
+    for (const od of validationContext?.dynamicODById?.values() ?? [])
+      invariant(
+        edges.some((e) => e.edgeId === id("edge", ["dynamic-od", od.odId])),
+        "OD_REGISTERED_EDGE_MISSING",
+      );
+  for (const edge of edges) {
+    if (dynamicOD.isOD(edge, validationContext)) {
+      dynamicOD.bindEdge(edge, validationContext);
+      continue;
+    }
+    if (validationContext) {
+      const { sources, evidence, patternById } = validationContext;
+      invariant(
+        sources instanceof Map &&
+          evidence instanceof Map &&
+          patternById instanceof Map,
+        "EDGE_VALIDATION_CONTEXT_INCOMPLETE",
+      );
+      invariant(
+        edge.edgeKind !== "service_segment" ||
+          patternById.has(edge.servicePatternRef),
+        "EDGE_PATTERN_REGISTRY_INCOMPLETE",
+      );
+      serviceAccess.bindEdge(
+        edge,
+        sources,
+        evidence,
+        patternById.get(edge.servicePatternRef),
+        validationContext,
+      );
+    } else {
+      invariant(
+        !Object.hasOwn(edge, "accessContract") &&
+          edge.accessContractSha256 === undefined &&
+          edge.conditionalTopology === undefined &&
+          !serviceAccess.requiresReservation(edge),
+        "EDGE_ACCESS_VALIDATION_CONTEXT_REQUIRED",
+      );
+    }
+  }
+}
+export function growInventory(previous, proposed, removals = []) {
+  unique(proposed, (n) => n.requirementId, "REQUIREMENT");
+  const next = new Map(proposed.map((n) => [n.requirementId, n]));
+  for (const old of previous) {
+    const replacement = next.get(old.requirementId);
+    if (replacement)
+      invariant(
+        replacement.nodeId === old.nodeId && replacement.tier === old.tier,
+        "INVENTORY_REBIND_OR_TIER_CHANGE",
+      );
+  }
+  for (const old of previous)
+    if (!next.has(old.requirementId)) {
+      const removal = removals.find(
+        (r) => r.requirementId === old.requirementId,
+      );
+      invariant(
+        removal &&
+          ["REJECTED", "DEPRECATED"].includes(removal.decision) &&
+          /^[a-f0-9]{64}$/.test(removal.evidenceSha256 ?? "") &&
+          removal.evidencePath,
+        "INVENTORY_SHRINK_FORBIDDEN",
+      );
+    }
+  return [...next.values()].sort((a, b) =>
+    compare(a.requirementId, b.requirementId),
+  );
+}
+// Reachability retains the onboard service state: pickup/drop-off restrictions never
+// create a spurious interchange at an intermediate stop. No all-pairs edge generation.
+function passengerAdjacency(edges) {
+  const adjacency = new Map();
+  for (const edge of edges) {
+    if (!adjacency.has(edge.fromTransportNodeId))
+      adjacency.set(edge.fromTransportNodeId, []);
+    adjacency.get(edge.fromTransportNodeId).push(edge);
+  }
+  for (const values of adjacency.values())
+    values.sort((a, b) => compare(a.edgeId, b.edgeId));
+  return adjacency;
+}
+function queryPassengerAdjacency(adjacency, from, to, eligible) {
+  if (!from || !to) return null;
+  const queue = [
+    { node: from, pattern: null, index: null, canAlight: true, path: [] },
+  ];
+  const seen = new Set();
+  for (let i = 0; i < queue.length; i++) {
+    const state = queue[i];
+    const key = canonical([
+      state.node,
+      state.pattern,
+      state.index,
+      state.canAlight,
+    ]);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    if (state.node === to && state.canAlight) return state.path;
+    for (const edge of adjacency.get(state.node) ?? []) {
+      if (!eligible(edge)) continue;
+      const continuing =
+        edge.edgeKind === "service_segment" &&
+        state.pattern === edge.servicePatternRef &&
+        state.index + 1 === edge.segmentIndex;
+      if (!continuing && (!state.canAlight || edge.boardAllowed === false))
+        continue;
+      queue.push({
+        node: edge.toTransportNodeId,
+        pattern: edge.servicePatternRef ?? null,
+        index: edge.segmentIndex ?? null,
+        canAlight: edge.alightAllowed !== false,
+        path: [...state.path, edge.edgeId],
+      });
+    }
+  }
+  return null;
+}
+export function queryGraph(edges, from, to, accessContext) {
+  if (!from || !to) return null;
+  return queryPassengerAdjacency(passengerAdjacency(edges), from, to, (edge) =>
+    allowsServiceAccess(edge, accessContext),
+  );
+}
+// Internal synchronous assessment scope only: callers cannot inject eligibility caches
+// through accessContext. Every new assessment constructs new maps over its exact inputs.
+function prepareConditionalQueries(edges, ground, accessContext) {
+  const eligibility = new WeakMap(),
+    allowed = (edge) => {
+      if (!eligibility.has(edge))
+        eligibility.set(edge, allowsServiceAccess(edge, accessContext));
+      return eligibility.get(edge);
+    },
+    graphs = [passengerAdjacency(edges), passengerAdjacency(ground)],
+    paths = [new Map(), new Map()];
+  return {
+    allows: allowed,
+    query(from, to, groundOnly = false) {
+      const index = groundOnly ? 1 : 0,
+        key = canonical([from, to]),
+        memo = paths[index];
+      if (!memo.has(key))
+        memo.set(
+          key,
+          queryPassengerAdjacency(graphs[index], from, to, allowed),
+        );
+      const value = memo.get(key);
+      return value === null ? null : [...value];
+    },
+  };
+}
+// Traverse once per anchor direction, retaining the same onboard restrictions.
+export function reachablePaths(edges, from, accessContext) {
+  return reachablePassengerPaths(edges, from, accessContext, false);
+}
+function reachablePassengerPaths(
+  edges,
+  from,
+  accessContext,
+  eligibilityAlreadyVerified,
+) {
+  const adjacency = new Map();
+  for (const e of edges) {
+    if (!adjacency.has(e.fromTransportNodeId))
+      adjacency.set(e.fromTransportNodeId, []);
+    adjacency.get(e.fromTransportNodeId).push(e);
+  }
+  for (const items of adjacency.values())
+    items.sort((a, b) => compare(a.edgeId, b.edgeId));
+  const queue = [
+      { node: from, pattern: null, index: null, canAlight: true, path: [] },
+    ],
+    seen = new Set(),
+    paths = new Map();
+  for (let i = 0; i < queue.length; i++) {
+    const state = queue[i],
+      key = canonical([
+        state.node,
+        state.pattern,
+        state.index,
+        state.canAlight,
+      ]);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    if (state.canAlight && !paths.has(state.node))
+      paths.set(state.node, state.path);
+    for (const e of adjacency.get(state.node) ?? []) {
+      if (!eligibilityAlreadyVerified && !allowsServiceAccess(e, accessContext))
+        continue;
+      const continuing =
+        e.edgeKind === "service_segment" &&
+        state.pattern === e.servicePatternRef &&
+        state.index + 1 === e.segmentIndex;
+      if (!continuing && (!state.canAlight || e.boardAllowed === false))
+        continue;
+      queue.push({
+        node: e.toTransportNodeId,
+        pattern: e.servicePatternRef ?? null,
+        index: e.segmentIndex ?? null,
+        canAlight: e.alightAllowed !== false,
+        path: [...state.path, e.edgeId],
+      });
+    }
+  }
+  return paths;
+}
+export function anchorQueries(edges, anchor, accessContext) {
+  edges = edges.filter((e) => allowsServiceAccess(e, accessContext));
+  // Direct shortcuts have different start/end segment indexes; use the general
+  // forward query for those graphs until their reverse state is represented.
+  const forward = reachablePaths(edges, anchor, accessContext);
+  const backward = edges.some((e) => e.edgeKind === "direct_service")
+    ? null
+    : reachablePassengerPaths(
+        edges.map((e) => ({
+          ...e,
+          fromTransportNodeId: e.toTransportNodeId,
+          toTransportNodeId: e.fromTransportNodeId,
+          boardAllowed: e.alightAllowed,
+          alightAllowed: e.boardAllowed,
+          segmentIndex:
+            e.segmentIndex === undefined ? undefined : -e.segmentIndex,
+        })),
+        anchor,
+        accessContext,
+        true,
+      );
+  return (from, to) =>
+    !from || !to
+      ? null
+      : from === anchor
+        ? (forward.get(to) ?? null)
+        : to === anchor && backward
+          ? backward.has(from)
+            ? [...backward.get(from)].reverse()
+            : null
+          : from === to
+            ? []
+            : backward?.has(from) && forward.has(to)
+              ? [...backward.get(from)].reverse().concat(forward.get(to))
+              : queryGraph(edges, from, to, accessContext);
+}
+// Resolve only previously absent query endpoints from independently admitted rail
+// components. This creates a QA query, never an edge or an identity admission.
+export function resolveCorridorEndpoints(corridor, nodes) {
+  const names = String(corridor.corridorId).split(":");
+  const result = { ...corridor };
+  for (const [index, key] of [
+    [0, "from"],
+    [1, "to"],
+  ]) {
+    if (result[key] !== null && result[key] !== undefined) continue;
+    const matches = nodes.filter(
+      (n) =>
+        n.decision === "ADMIT_TASK_086_TOPOLOGY" &&
+        n.canonicalNameJa === names[index] &&
+        ["conventional_rail", "private_rail"].includes(n.mode),
+    );
+    if (matches.length === 1) result[key] = matches[0].nodeId;
+  }
+  return result;
+}
+export function auditGraph({
+  nodes,
+  patterns,
+  transfers,
+  edges,
+  inventory,
+  corridors = [],
+  anchorNodeId,
+  discoveryGaps = [],
+  validationContext,
+  conditionalAccessContexts = [],
+}) {
+  const query = anchorQueries(edges, anchorNodeId);
+  const airportSurfaceViews = [];
+  if (validationContext) validateEdges(edges, validationContext);
+  const defaultSurfaceIndex = buildSurfaceIndex(nodes, edges);
+  const conditionalSurfaceIndexes = new Map(
+    conditionalAccessContexts.map((c) => [
+      c,
+      buildSurfaceIndex(nodes, edges, c),
+    ]),
+  );
+  const deficits = discoveryGaps.map((d) => ({ ...d }));
+  const byId = new Map(nodes.map((n) => [n.nodeId, n]));
+  const connected = [],
+    disconnected = [];
+  const tier = {
+    T0: { required: 0, connected: 0 },
+    T1: { required: 0, connected: 0 },
+    other: { required: 0, connected: 0 },
+  };
+  for (const requirement of inventory) {
+    const group = tier[requirement.tier] ?? tier.other;
+    group.required++;
+    const node = byId.get(requirement.nodeId);
+    const accepted = node?.decision === "ADMIT_TASK_086_TOPOLOGY";
+    const reachable =
+      accepted &&
+      anchorNodeId &&
+      query(anchorNodeId, node.nodeId) !== null &&
+      query(node.nodeId, anchorNodeId) !== null;
+    if (reachable) {
+      group.connected++;
+      connected.push(requirement.requirementId);
+    } else {
+      disconnected.push(requirement.requirementId);
+      deficits.push({
+        deficitId: `connect:${requirement.requirementId}`,
+        class:
+          requirement.tier === "T0"
+            ? "DISCONNECTED_T0"
+            : requirement.tier === "T1"
+              ? "DISCONNECTED_T1"
+              : "MISSING_INTERMEDIATE_NODE",
+        requirementId: requirement.requirementId,
+        nodeId: requirement.nodeId,
+        reason: accepted
+          ? "NO_BIDIRECTIONAL_NATIONAL_PATH"
+          : "NODE_ADMISSION_REQUIRED",
+      });
+    }
+    const modeDeficit = {
+      airport: "AIRPORT_SURFACE_GAP",
+      ferry_port: "ISLAND_FERRY_GAP",
+      bus_terminal: "HIGHWAY_BUS_GAP",
+    }[requirement.kind];
+    const defaultSurfaceWitness =
+      requirement.kind === "airport"
+        ? validatedSurfaceServiceRoundTrip(
+            nodes,
+            edges,
+            requirement.nodeId,
+            undefined,
+            defaultSurfaceIndex,
+          )
+        : null;
+    const conditionalSurfaceWitnesses =
+      requirement.kind === "airport"
+        ? conditionalAccessContexts
+            .filter((c) => c.publicStructureOnly === true)
+            .map((context) => {
+              invariant(
+                context?.publicStructureOnly === true,
+                "AIRPORT_PUBLIC_CONTEXT_REQUIRED",
+              );
+              invariant(
+                validationContext,
+                "AIRPORT_CONDITIONAL_VALIDATION_CONTEXT_REQUIRED",
+              );
+              return validatedSurfaceServiceRoundTrip(
+                nodes,
+                edges,
+                requirement.nodeId,
+                context,
+                conditionalSurfaceIndexes.get(context),
+              );
+            })
+            .filter(Boolean)
+        : [];
+    if (requirement.kind === "airport")
+      airportSurfaceViews.push({
+        requirementId: requirement.requirementId,
+        defaultUnconditional: defaultSurfaceWitness,
+        evidencedPublicConditionalStructure: conditionalSurfaceWitnesses,
+        defaultCheckId: `mode:${requirement.requirementId}`,
+        defaultCheckUnchanged: true,
+      });
+    const airportSurfaceConnected =
+      requirement.kind !== "airport" || defaultSurfaceWitness !== null;
+    if (modeDeficit && (!reachable || !airportSurfaceConnected))
+      deficits.push({
+        deficitId: `mode:${requirement.requirementId}`,
+        class: modeDeficit,
+        requirementId: requirement.requirementId,
+        reason: !reachable
+          ? "REQUIRED_GATEWAY_NOT_CONNECTED_TO_NATIONAL_BACKBONE"
+          : "AIRPORT_BIDIRECTIONAL_SURFACE_CONNECTION_REQUIRED",
+      });
+    if (!accepted)
+      deficits.push({
+        deficitId: `identity:${requirement.requirementId}`,
+        class: "NODE_IDENTITY_GAP",
+        requirementId: requirement.requirementId,
+        reason: "NO_INDEPENDENT_NODE_ADMISSION",
+      });
+  }
+  const generatedCorridors = inventory
+    .filter((r) => r.nodeId !== anchorNodeId)
+    .map((r) => ({
+      corridorId: `inventory:${r.requirementId}`,
+      from: anchorNodeId,
+      to: r.nodeId,
+      origin: "REQUIRED_INVENTORY",
+    }));
+  const results = [...corridors, ...generatedCorridors].map((c) => {
+    const forward = query(c.from, c.to),
+      reverse = query(c.to, c.from);
+    const pass = forward !== null && reverse !== null;
+    if (!pass)
+      deficits.push({
+        deficitId: `corridor:${c.corridorId}`,
+        class: "CORRIDOR_UNREACHABLE",
+        corridorId: c.corridorId,
+      });
+    return {
+      ...c,
+      status: pass ? "PASS" : "FAIL",
+      forwardEdgeIds: forward,
+      reverseEdgeIds: reverse,
+    };
+  });
+  for (const pattern of patterns)
+    if (
+      !["inactive", "suspended"].includes(pattern.serviceState) &&
+      edges.filter(
+        (e) =>
+          e.servicePatternRef === pattern.servicePatternId &&
+          e.edgeKind === "service_segment",
+      ).length !==
+        pattern.callingNodes.length - 1
+    )
+      deficits.push({
+        deficitId: `pattern:${pattern.servicePatternId}`,
+        class: "SERVICE_PATTERN_GAP",
+        servicePatternId: pattern.servicePatternId,
+      });
+  const transferResults = transfers.map((t) => ({
+    transferId: t.transferId,
+    pass: edges.some(
+      (e) =>
+        e.edgeKind === "hub_transfer" &&
+        e.fromTransportNodeId === t.from &&
+        e.toTransportNodeId === t.to,
+    ),
+  }));
+  for (const t of transferResults.filter((r) => !r.pass))
+    deficits.push({
+      deficitId: `transfer:${t.transferId}`,
+      class: "HUB_TRANSFER_GAP",
+      transferId: t.transferId,
+    });
+  const metrics = Object.fromEntries(
+    METRICS.map((field) => [
+      field,
+      {
+        resolved: edges.filter((e) => e.metrics[field].status === "resolved")
+          .length,
+        total: edges.length,
+      },
+    ]),
+  );
+  const metricOnly = edges.flatMap((e) =>
+    METRICS.filter((f) => e.metrics[f].status === "unresolved").map(
+      (field) => ({
+        deficitId: `metric:${e.edgeId}:${field}`,
+        class: "DYNAMIC_METRIC_ONLY_GAP",
+        edgeId: e.edgeId,
+        field,
+        reason: e.metrics[field].reason,
+      }),
+    ),
+  );
+  // Preserve the default diagnostics and every original check ID. Only independently
+  // revalidated PUBLIC structural witnesses satisfy the corresponding business check.
+  const defaultDiagnostics = conditionalAccessContexts.length
+    ? {
+        deficits: structuredClone(deficits),
+        tier: structuredClone(tier),
+        connected: [...connected],
+        disconnected: [...disconnected],
+        corridors: structuredClone(results),
+      }
+    : null;
+  const conditionalApplicability = conditionalAccessContexts.length
+    ? reviewedConditionalApplicability({
+        nodes,
+        edges,
+        inventory,
+        anchorNodeId,
+        deficits,
+        corridors: results,
+        contexts: conditionalAccessContexts,
+        validationContext,
+      })
+    : null;
+  if (conditionalApplicability) {
+    const qualified = new Map(
+      conditionalApplicability.assessments
+        .filter((a) =>
+          [
+            "STRUCTURALLY_CONNECTED_WITH_PUBLIC_RESERVATION_CONDITIONS",
+            "STRUCTURALLY_CONNECTED_WITH_PUBLIC_SERVICE_ACCESS_CONDITIONS",
+            "STRUCTURALLY_CONNECTED_WITH_REVIEWED_QUALIFICATION",
+            "STRUCTURALLY_CONNECTED_WITH_REVIEWED_OD_CAPABILITY",
+          ].includes(a.status),
+        )
+        .map((a) => [a.checkId, a]),
+    );
+    for (let i = deficits.length - 1; i >= 0; i--)
+      if (qualified.has(deficits[i].deficitId)) deficits.splice(i, 1);
+    for (const requirement of inventory)
+      if (qualified.has(`connect:${requirement.requirementId}`)) {
+        const position = disconnected.indexOf(requirement.requirementId);
+        if (position >= 0) {
+          disconnected.splice(position, 1);
+          connected.push(requirement.requirementId);
+          (tier[requirement.tier] ?? tier.other).connected++;
+        }
+      }
+    for (const corridor of results) {
+      const q = qualified.get(`corridor:${corridor.corridorId}`);
+      if (q) {
+        corridor.status = "PASS";
+        corridor.connectivity = q.status;
+        corridor.defaultDiagnostic = "FAIL";
+        corridor.forwardEdgeIds = q.nationalOrCorridorWitness.forward.edgeIds;
+        corridor.reverseEdgeIds = q.nationalOrCorridorWitness.reverse.edgeIds;
+        corridor.forwardAccessContext =
+          q.nationalOrCorridorWitness.forward.accessContext;
+        corridor.reverseAccessContext =
+          q.nationalOrCorridorWitness.reverse.accessContext;
+        corridor.validationBindingSha256 =
+          conditionalApplicability.validationBindingSha256;
+      }
+    }
+  }
+  const counts = Object.fromEntries(
+    DEFICITS.map((key) => [
+      key,
+      key === "DYNAMIC_METRIC_ONLY_GAP"
+        ? metricOnly.length
+        : deficits.filter((d) => d.class === key).length,
+    ]),
+  );
+  unique(deficits, (d) => d.deficitId, "DEFICIT");
+  return {
+    deficits,
+    counts,
+    tier,
+    connected,
+    disconnected,
+    corridors: results,
+    transferResults,
+    airportSurfaceViews,
+    ...(conditionalApplicability
+      ? {
+          conditionalApplicability,
+          defaultDiagnostics,
+          structuralChecks: conditionalApplicability.assessments.map((a) => ({
+            checkId: a.checkId,
+            status: publicStructuralResult(a.status),
+            defaultDiagnostic: "FAIL",
+            witnessBindingSha256:
+              conditionalApplicability.validationBindingSha256,
+          })),
+        }
+      : {}),
+    metrics,
+    metricOnly,
+    hardDeficitCount: deficits.length,
+    anchorNodeId: anchorNodeId ?? null,
+  };
+}
+const priority = {
+  DISCONNECTED_T0: 0,
+  DISCONNECTED_T1: 1,
+  MISSING_INTERMEDIATE_NODE: 2,
+  SERVICE_PATTERN_GAP: 2,
+  HUB_TRANSFER_GAP: 3,
+  AIRPORT_SURFACE_GAP: 4,
+  ISLAND_FERRY_GAP: 4,
+  HIGHWAY_BUS_GAP: 4,
+  TOURISM_SPECIAL_MODE_GAP: 5,
+  CORRIDOR_UNREACHABLE: 1,
+  NODE_IDENTITY_GAP: 2,
+  SOURCE_LICENSE_GAP: 2,
+  DYNAMIC_METRIC_ONLY_GAP: 7,
+};
+export function selectAction(audit, actions, history) {
+  const classes = new Set(audit.deficits.map((d) => d.class));
+  const tried = new Set(history.map((h) => h.actionId));
+  const failedStrategies = new Set(
+    history
+      .filter((h) => h.actualImprovement.hardDeficitsReduced <= 0)
+      .map((h) => h.strategyFingerprint),
+  );
+  return (
+    actions
+      .filter(
+        (a) =>
+          !tried.has(a.actionId) &&
+          a.triggerClasses.some((c) => classes.has(c)) &&
+          !failedStrategies.has(a.strategyFingerprint),
+      )
+      .sort(
+        (a, b) =>
+          Math.min(
+            ...a.triggerClasses
+              .filter((c) => classes.has(c))
+              .map((c) => priority[c]),
+          ) -
+            Math.min(
+              ...b.triggerClasses
+                .filter((c) => classes.has(c))
+                .map((c) => priority[c]),
+            ) ||
+          b.requiredImpact - a.requiredImpact ||
+          b.corridorImpact - a.corridorImpact ||
+          b.authority - a.authority ||
+          b.identityCertainty - a.identityCertainty ||
+          b.licenseUsability - a.licenseUsability ||
+          compare(a.actionId, b.actionId),
+      )[0] ?? null
+  );
+}
+export function adaptParameters(previous, action, audit) {
+  const next = { ...previous, ...action.parameterChanges };
+  invariant(
+    Number.isInteger(next.routeChunkSize) &&
+      next.routeChunkSize > 0 &&
+      next.routeChunkSize <= 200,
+    "BATCH_HARD_CAP",
+  );
+  invariant(
+    Object.keys(action.parameterChanges ?? {}).every((k) =>
+      Object.hasOwn(DEFAULT_PARAMETERS, k),
+    ),
+    "ACCEPTANCE_THRESHOLD_MUTATION_FORBIDDEN",
+  );
+  const trigger = audit.deficits
+    .filter((d) => action.triggerClasses.includes(d.class))
+    .map((d) => d.deficitId);
+  const changes = Object.keys(action.parameterChanges ?? {})
+    .sort()
+    .filter((k) => canonical(previous[k]) !== canonical(next[k]))
+    .map((parameter) => ({
+      parameter,
+      previousValue: previous[parameter],
+      newValue: next[parameter],
+      triggerDeficitIds: trigger,
+      expectedImprovement: action.expectedImprovement,
+    }));
+  return { next, changes };
+}
+export function validateFixpoint(proof, deficit, readEvidence, context = {}) {
+  if (
+    !proof ||
+    proof.schemaVersion !== 1 ||
+    !context.inputVersion ||
+    proof.inputVersion !== context.inputVersion ||
+    proof.deficitSha256 !== hash(deficit) ||
+    !Number.isFinite(Date.parse(context.asOf)) ||
+    !Number.isFinite(Date.parse(proof.reviewedAt)) ||
+    !Number.isFinite(Date.parse(proof.validUntil)) ||
+    Date.parse(proof.reviewedAt) > Date.parse(context.asOf) ||
+    Date.parse(proof.validUntil) < Date.parse(context.asOf) ||
+    proof.type !== "SOURCE_LICENSE_IDENTITY_FIXPOINT_PROOF" ||
+    proof.deficitId !== deficit.deficitId ||
+    !proof.externalBlocker ||
+    !proof.invalidateWhen ||
+    !proof.repeatSearchReason ||
+    proof.ordinaryWorkRemaining !== false ||
+    !Array.isArray(proof.searches)
+  )
+    return false;
+  const { proofSha256, ...body } = proof;
+  if (hash(body) !== proofSha256) return false;
+  const categories = [
+    "official_operator",
+    "government_open_data",
+    "licensed_static",
+    "mode_specific",
+    "identity",
+    "alternative_connection",
+  ];
+  try {
+    return categories.every((category) =>
+      proof.searches.some(
+        (s) =>
+          s.category === category &&
+          s.outcome &&
+          s.evidencePath &&
+          hash(readEvidence(s.evidencePath)) === s.evidenceSha256,
+      ),
+    );
+  } catch {
+    return false;
+  }
+}
+export function acceptance(
+  audit,
+  proofs,
+  readEvidence,
+  integrity,
+  actions = [],
+  proofContext = {},
+) {
+  const validExceptions = audit.deficits.filter((d) =>
+    proofs.some((p) => validateFixpoint(p, d, readEvidence, proofContext)),
+  );
+  const unproved = audit.deficits.length - validExceptions.length;
+  const integrityPass =
+    Object.keys(integrity).length > 0 &&
+    Object.values(integrity).every((v) => v === "PASS");
+  const nationalCorridors = (audit.corridors ?? []).filter(
+    (c) => c.origin === "TASK_MANDATORY_QUERY_ONLY",
+  );
+  const nationalCore =
+    audit.tier.T0.connected > 0 &&
+    audit.tier.T1.connected > 0 &&
+    nationalCorridors.length > 0 &&
+    nationalCorridors.every((c) => c.status === "PASS");
+  const openActions = actions.filter(
+    (a) => !["INGESTED", "SUPERSEDED_BY_ALTERNATIVE"].includes(a.state),
+  );
+  const provenClosedAction = (a) => {
+    const event = a.events?.at(-1);
+    return (
+      ["EXTERNAL_APPROVAL_REQUIRED", "NO_SOURCE_FOUND"].includes(a.state) &&
+      event &&
+      (a.state !== "EXTERNAL_APPROVAL_REQUIRED" || event.approvalAuthority) &&
+      (a.affectedDeficits ?? []).length > 0 &&
+      a.affectedDeficits.every((id) =>
+        audit.deficits.some(
+          (d) =>
+            d.deficitId === id &&
+            proofs.some(
+              (p) =>
+                (
+                  event.fixpointProofSha256s ?? [event.fixpointProofSha256]
+                ).includes(p.proofSha256) &&
+                (a.state === "EXTERNAL_APPROVAL_REQUIRED"
+                  ? p.approvalAuthority === event.approvalAuthority &&
+                    p.resolution === "EXTERNAL_APPROVAL_REQUIRED"
+                  : p.resolution === "AUDITED_FIXPOINT_EXCEPTION") &&
+                validateFixpoint(p, d, readEvidence, proofContext),
+            ),
+        ),
+      )
+    );
+  };
+  const ordinaryDiscoveryRemaining =
+    unproved > 0 || openActions.some((a) => !provenClosedAction(a));
+  const converged =
+    integrityPass && nationalCore && !ordinaryDiscoveryRemaining;
+  return {
+    status: !converged
+      ? "IN_PROGRESS_AUTO_REMEDIATION"
+      : openActions.some(
+            (a) =>
+              a.state === "EXTERNAL_APPROVAL_REQUIRED" && provenClosedAction(a),
+          )
+        ? "BLOCKED_EXTERNAL_APPROVAL_REQUIRED"
+        : validExceptions.length
+          ? "READY_FOR_USER_ACCEPTANCE_WITH_AUDITED_FIXPOINT_EXCEPTIONS"
+          : "PASS / READY_FOR_REVIEW",
+    globalTopologyDiscoveryFixpoint: converged ? "PROVEN" : "NOT_PROVEN",
+    integrity,
+    nationalCoreConnected: nationalCore,
+    unresolvedTopologyCount: audit.deficits.length,
+    unprovedDeficitCount: unproved,
+    validatedExceptionCount: validExceptions.length,
+    ordinaryDiscoveryRemaining,
+    terminal: converged,
+    openSourceActionCount: openActions.length,
+    auditedClosedActionIds: openActions
+      .filter(provenClosedAction)
+      .map((a) => a.actionId),
+    runtimeImportAuthorized: false,
+  };
+}
+
+export function assertTerminalResult(gate, actions = []) {
+  invariant(
+    gate.terminal === true &&
+      gate.ordinaryDiscoveryRemaining === false &&
+      gate.globalTopologyDiscoveryFixpoint === "PROVEN" &&
+      !actions.some(
+        (a) =>
+          [
+            "PENDING_RESEARCH",
+            "RESEARCHING",
+            "SOURCE_FOUND",
+            "RIGHTS_REVIEWED",
+            "NO_SOURCE_FOUND",
+          ].includes(a.state) &&
+          !(
+            a.state === "NO_SOURCE_FOUND" &&
+            gate.auditedClosedActionIds?.includes(a.actionId)
+          ),
+      ),
+    "TERMINAL_RESULT_FORBIDDEN_ORDINARY_REMEDIATION_REMAINS",
+  );
+  return true;
+}
+
+// Both public interfaces and real surface rides must exist in each direction.
+// Conditional evidence is a separate structural view; it never deletes a default check.
+export function surfaceServiceRoundTrip(
+  nodes,
+  edges,
+  airportNodeId,
+  accessContext,
+  validationContext,
+) {
+  if (accessContext && accessContext.publicStructureOnly !== true) return null;
+  if (validationContext) validateEdges(edges, validationContext);
+  else if (accessContext)
+    throw Error("AIRPORT_CONDITIONAL_VALIDATION_CONTEXT_REQUIRED");
+  return validatedSurfaceServiceRoundTrip(
+    nodes,
+    edges,
+    airportNodeId,
+    accessContext,
+  );
+}
+function buildSurfaceIndex(nodes, edges, accessContext) {
+  const admitted = new Set(
+    nodes
+      .filter((n) => n.decision === "ADMIT_TASK_086_TOPOLOGY")
+      .map((n) => n.nodeId),
+  );
+  const modes = new Set([
+    "shinkansen",
+    "conventional_rail",
+    "private_rail",
+    "metro",
+    "fixed_guideway",
+    "tram",
+    "bus",
+    "local_bus",
+    "airport_bus",
+    "highway_bus",
+    "demand_shared_taxi",
+  ]);
+  // Legacy licensed bus stops may omit mode. An explicit non-surface mode
+  // always takes precedence; ports and generic facilities cannot be witnesses.
+  const byId = new Map(nodes.map((node) => [node.nodeId, node]));
+  const isSurfaceNode = (node) =>
+    modes.has(node?.mode ?? (node?.nodeKind === "bus_stop" ? "bus" : null));
+  const isRide = (e) =>
+    ["service_segment", "dynamic_od_ride"].includes(e.edgeKind) &&
+    modes.has(e.mode);
+  // Actual segments are required; shortcuts never stand in for the ride witness.
+  const filtered = edges.filter(
+    (e) =>
+      admitted.has(e.fromTransportNodeId) &&
+      admitted.has(e.toTransportNodeId) &&
+      e.mode !== "flight" &&
+      e.mode !== "ferry" &&
+      e.edgeKind !== "direct_service" &&
+      allowsServiceAccess(e, accessContext),
+  );
+  const forward = new Map(),
+    reverse = new Map(),
+    byEdge = new Map(),
+    candidates = new Set();
+  for (const e of filtered) {
+    byEdge.set(e.edgeId, e);
+    if (!forward.has(e.fromTransportNodeId))
+      forward.set(e.fromTransportNodeId, []);
+    if (!reverse.has(e.toTransportNodeId)) reverse.set(e.toTransportNodeId, []);
+    forward.get(e.fromTransportNodeId).push(e);
+    reverse.get(e.toTransportNodeId).push({
+      ...e,
+      fromTransportNodeId: e.toTransportNodeId,
+      toTransportNodeId: e.fromTransportNodeId,
+      boardAllowed: e.alightAllowed,
+      alightAllowed: e.boardAllowed,
+      segmentIndex: e.segmentIndex === undefined ? undefined : -e.segmentIndex,
+    });
+    if (isRide(e)) {
+      if (isSurfaceNode(byId.get(e.fromTransportNodeId)))
+        candidates.add(e.fromTransportNodeId);
+      if (isSurfaceNode(byId.get(e.toTransportNodeId)))
+        candidates.add(e.toTransportNodeId);
+    }
+  }
+  for (const m of [forward, reverse])
+    for (const values of m.values())
+      values.sort((a, b) => compare(a.edgeId, b.edgeId));
+  return { admitted, isRide, forward, reverse, byEdge, candidates };
+}
+function validatedSurfaceServiceRoundTrip(
+  nodes,
+  edges,
+  airportNodeId,
+  accessContext,
+  sharedIndex,
+) {
+  const index = sharedIndex ?? buildSurfaceIndex(nodes, edges, accessContext);
+  if (!index.admitted.has(airportNodeId)) return null;
+  const initial = () => ({
+    node: airportNodeId,
+    pattern: null,
+    index: null,
+    canAlight: true,
+    hasRide: false,
+    hasPublicConditionalRide: false,
+    previous: null,
+    edgeId: null,
+  });
+  const sides = [
+    {
+      adj: index.forward,
+      queue: [initial()],
+      next: 0,
+      seen: new Set(),
+      reached: new Map(),
+    },
+    {
+      adj: index.reverse,
+      queue: [initial()],
+      next: 0,
+      seen: new Set(),
+      reached: new Map(),
+    },
+  ];
+  const pathOf = (state) => {
+    const result = [];
+    while (state.previous) {
+      result.push(state.edgeId);
+      state = state.previous;
+    }
+    return result.reverse();
+  };
+  function witness(other) {
+    const forward = pathOf(sides[0].reached.get(other)),
+      reverse = pathOf(sides[1].reached.get(other)).reverse();
+    const out = forward.map((id) => index.byEdge.get(id)),
+      back = reverse.map((id) => index.byEdge.get(id)),
+      conditional = [...out, ...back].filter((e) => e.accessContract);
+    if (conditional.some((e) => e.accessContract.audience !== "PUBLIC"))
+      return null;
+    return {
+      kind: accessContext
+        ? "EVIDENCED_PUBLIC_CONDITIONAL_SURFACE_ROUND_TRIP"
+        : "UNCONDITIONAL_SURFACE_SERVICE_ROUND_TRIP",
+      airportNodeId,
+      otherNodeId: other,
+      forwardEdgeIds: forward,
+      reverseEdgeIds: reverse,
+      surfaceRideEdgeIds: [...out, ...back]
+        .filter(index.isRide)
+        .map((e) => e.edgeId),
+      conditions: [
+        ...new Map(
+          conditional.map((e) => [
+            e.accessContractSha256,
+            {
+              sha256: e.accessContractSha256,
+              contract: e.accessContract,
+              sourceEvidenceRefs: e.accessContract.sourceEvidenceRefs,
+            },
+          ]),
+        ).values(),
+      ],
+      contextSha256: accessContext ? hash(accessContext) : null,
+      bookingConfirmed: false,
+      capacityGuaranteed: false,
+      unconditional: !accessContext,
+      globalGateClosed: false,
+    };
+  }
+  // Finite passenger-state search, interleaved by direction. Stop at the first
+  // common alightable ride endpoint. No distance cutoff or inferred reverse edge.
+  while (sides.some((side) => side.next < side.queue.length))
+    for (let direction = 0; direction < 2; direction++) {
+      const side = sides[direction];
+      if (side.next >= side.queue.length) continue;
+      const state = side.queue[side.next++],
+        key = canonical([
+          state.node,
+          state.pattern,
+          state.index,
+          state.canAlight,
+          state.hasRide,
+          state.hasPublicConditionalRide,
+        ]);
+      if (side.seen.has(key)) continue;
+      side.seen.add(key);
+      if (
+        state.node !== airportNodeId &&
+        state.canAlight &&
+        state.hasRide &&
+        (!accessContext || state.hasPublicConditionalRide) &&
+        index.candidates.has(state.node)
+      ) {
+        if (!side.reached.has(state.node)) side.reached.set(state.node, state);
+        if (sides[1 - direction].reached.has(state.node)) {
+          const result = witness(state.node);
+          if (result) return result;
+        }
+      }
+      for (const e of side.adj.get(state.node) ?? []) {
+        const continuing =
+          e.edgeKind === "service_segment" &&
+          state.pattern === e.servicePatternRef &&
+          state.index + 1 === e.segmentIndex;
+        if (!continuing && (!state.canAlight || e.boardAllowed === false))
+          continue;
+        side.queue.push({
+          node: e.toTransportNodeId,
+          pattern: e.servicePatternRef ?? null,
+          index: e.segmentIndex ?? null,
+          canAlight: e.alightAllowed !== false,
+          hasRide: state.hasRide || index.isRide(e),
+          hasPublicConditionalRide:
+            state.hasPublicConditionalRide ||
+            (index.isRide(e) && e.accessContract?.audience === "PUBLIC"),
+          previous: state,
+          edgeId: e.edgeId,
+        });
+      }
+    }
+  return null;
+}
+
+export const publicConditionalApplicability =
+  createPublicConditionalApplicability({
+    canonical,
+    hash,
+    invariant,
+    validateEdges,
+    admitNodes,
+    queryGraph,
+    allowsServiceAccess,
+    prepareConditionalQueries,
+  });
+
+const qualifiedConditionalApplicability = createQualifiedAirportApplicability({
+  hash,
+  canonical,
+  admitNodes,
+  validateEdges,
+  queryGraph,
+  allowsServiceAccess,
+  publicAssess: publicConditionalApplicability,
+});
+
+export const reviewedConditionalApplicability = createODCapabilityApplicability(
+  {
+    hash,
+    canonical,
+    admitNodes,
+    validateEdges,
+    queryGraph,
+    allowsServiceAccess,
+    priorAssess: qualifiedConditionalApplicability,
+  },
+);

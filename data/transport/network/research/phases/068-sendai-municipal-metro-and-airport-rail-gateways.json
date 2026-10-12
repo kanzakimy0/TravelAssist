@@ -1,0 +1,356 @@
+{
+  "phaseId": "068-sendai-municipal-metro-and-airport-rail-gateways",
+  "strategy": [
+    "CURRENT_MUNICIPAL_INTERCHANGE_GUIDE",
+    "EXPLICIT_AIRPORT_ORDINARY_CALLS_AND_OPERATOR_BOUNDARY",
+    "T1_AIRPORT_PUBLIC_PASSAGE",
+    "rail"
+  ],
+  "completedActionIds": [
+    "hub:sendai:current-municipal-subway-guide",
+    "rail:sendai-airport:explicit-ordinary-stopping-rule",
+    "airport:sendai:explicit-terminal-rail-passage"
+  ],
+  "facts": [
+    {
+      "factId": "sendai-jr-subway-current-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:sendai:current-municipal-subway-guide",
+      "sourceUrl": "https://www.city.sendai.jp/kokyo/kurashi/machi/kotsu/annai/documents/noritsugi_r8_small.pdf",
+      "observedResponseSha256": "b7087122a2b4e1804633ae18d606211125ca8f2664960b1471a59ee7b2c13a00",
+      "locator": "Current September 2026 municipal guide, printed interchange navigation section 1 and detail C/D: JR conventional central/underground south entrance joins the public central underground passage to subway east gate. Both subway lines share paid concourse; bind the existing municipal operator component. Avoid closed north-5 exit, stopped central-2 elevator and shop-hours-only S-PAL routes. No accessibility or travel-time guarantee retained.",
+      "components": [
+        {
+          "name": "仙台",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "仙台",
+          "operator": "仙台市",
+          "line": "南北線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PASSENGER_CONNECTION_AND_INDEPENDENT_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "sendai-airport-ordinary-東北線-airport-bound",
+      "kind": "service",
+      "sourceActionId": "rail:sendai-airport:explicit-ordinary-stopping-rule",
+      "sourceUrl": "https://www.senat.co.jp/question/",
+      "observedResponseSha256": "b7360f3a46049f918d2f2c6e86bb2db0dfeeb2b0e15c546431aa8525b05c9b7a",
+      "locator": "Current operator FAQ explicitly lists all eight ordinary calls and no-change-of-train operation between Sendai and the airport. This fact retains only the physical operator segment bounded at Natori; both directions are independently confirmed by the current Natori directional page. No rapid-service union, schedule clocks or whole timetable retained.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.senat.co.jp/timetable/natori/",
+          "observedResponseSha256": "98ff265414bda11ac6df835d76e4967265c497d01763869cea2f2541de1d8b91"
+        }
+      ],
+      "line": "東北線",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通（仙台空港アクセス線・物理路線区間）",
+      "direction": "airport-bound",
+      "callingStations": [
+        "仙台",
+        "長町",
+        "太子堂",
+        "南仙台",
+        "名取"
+      ],
+      "callingComponents": [
+        {
+          "name": "仙台",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "長町",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "太子堂",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "南仙台",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "名取",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_ORDINARY_CALL_LIST_AND_BIDIRECTIONAL_OPERATION_SPLIT_AT_OPERATOR_BOUNDARY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "sendai-airport-ordinary-東北線-sendai-bound",
+      "kind": "service",
+      "sourceActionId": "rail:sendai-airport:explicit-ordinary-stopping-rule",
+      "sourceUrl": "https://www.senat.co.jp/question/",
+      "observedResponseSha256": "b7360f3a46049f918d2f2c6e86bb2db0dfeeb2b0e15c546431aa8525b05c9b7a",
+      "locator": "Current operator FAQ explicitly lists all eight ordinary calls and no-change-of-train operation between Sendai and the airport. This fact retains only the physical operator segment bounded at Natori; both directions are independently confirmed by the current Natori directional page. No rapid-service union, schedule clocks or whole timetable retained.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.senat.co.jp/timetable/natori/",
+          "observedResponseSha256": "98ff265414bda11ac6df835d76e4967265c497d01763869cea2f2541de1d8b91"
+        }
+      ],
+      "line": "東北線",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通（仙台空港アクセス線・物理路線区間）",
+      "direction": "sendai-bound",
+      "callingStations": [
+        "名取",
+        "南仙台",
+        "太子堂",
+        "長町",
+        "仙台"
+      ],
+      "callingComponents": [
+        {
+          "name": "名取",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "南仙台",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "太子堂",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "長町",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "仙台",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_ORDINARY_CALL_LIST_AND_BIDIRECTIONAL_OPERATION_SPLIT_AT_OPERATOR_BOUNDARY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "sendai-airport-ordinary-仙台空港線-airport-bound",
+      "kind": "service",
+      "sourceActionId": "rail:sendai-airport:explicit-ordinary-stopping-rule",
+      "sourceUrl": "https://www.senat.co.jp/question/",
+      "observedResponseSha256": "b7360f3a46049f918d2f2c6e86bb2db0dfeeb2b0e15c546431aa8525b05c9b7a",
+      "locator": "Current operator FAQ explicitly lists all eight ordinary calls and no-change-of-train operation between Sendai and the airport. This fact retains only the physical operator segment bounded at Natori; both directions are independently confirmed by the current Natori directional page. No rapid-service union, schedule clocks or whole timetable retained.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.senat.co.jp/timetable/natori/",
+          "observedResponseSha256": "98ff265414bda11ac6df835d76e4967265c497d01763869cea2f2541de1d8b91"
+        }
+      ],
+      "line": "仙台空港線",
+      "operator": "仙台空港鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通（仙台空港アクセス線・物理路線区間）",
+      "direction": "airport-bound",
+      "callingStations": [
+        "名取",
+        "杜せきのした",
+        "美田園",
+        "仙台空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "名取",
+          "operator": "仙台空港鉄道",
+          "line": "仙台空港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "杜せきのした",
+          "operator": "仙台空港鉄道",
+          "line": "仙台空港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "美田園",
+          "operator": "仙台空港鉄道",
+          "line": "仙台空港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "仙台空港",
+          "operator": "仙台空港鉄道",
+          "line": "仙台空港線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_ORDINARY_CALL_LIST_AND_BIDIRECTIONAL_OPERATION_SPLIT_AT_OPERATOR_BOUNDARY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "sendai-airport-ordinary-仙台空港線-sendai-bound",
+      "kind": "service",
+      "sourceActionId": "rail:sendai-airport:explicit-ordinary-stopping-rule",
+      "sourceUrl": "https://www.senat.co.jp/question/",
+      "observedResponseSha256": "b7360f3a46049f918d2f2c6e86bb2db0dfeeb2b0e15c546431aa8525b05c9b7a",
+      "locator": "Current operator FAQ explicitly lists all eight ordinary calls and no-change-of-train operation between Sendai and the airport. This fact retains only the physical operator segment bounded at Natori; both directions are independently confirmed by the current Natori directional page. No rapid-service union, schedule clocks or whole timetable retained.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.senat.co.jp/timetable/natori/",
+          "observedResponseSha256": "98ff265414bda11ac6df835d76e4967265c497d01763869cea2f2541de1d8b91"
+        }
+      ],
+      "line": "仙台空港線",
+      "operator": "仙台空港鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通（仙台空港アクセス線・物理路線区間）",
+      "direction": "sendai-bound",
+      "callingStations": [
+        "仙台空港",
+        "美田園",
+        "杜せきのした",
+        "名取"
+      ],
+      "callingComponents": [
+        {
+          "name": "仙台空港",
+          "operator": "仙台空港鉄道",
+          "line": "仙台空港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "美田園",
+          "operator": "仙台空港鉄道",
+          "line": "仙台空港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "杜せきのした",
+          "operator": "仙台空港鉄道",
+          "line": "仙台空港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "名取",
+          "operator": "仙台空港鉄道",
+          "line": "仙台空港線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "EXPLICIT_ORDINARY_CALL_LIST_AND_BIDIRECTIONAL_OPERATION_SPLIT_AT_OPERATOR_BOUNDARY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_STOPPING_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "natori-explicit-jr-sat-through-boundary",
+      "kind": "transfer",
+      "sourceActionId": "rail:sendai-airport:explicit-ordinary-stopping-rule",
+      "sourceUrl": "https://www.senat.co.jp/question/",
+      "observedResponseSha256": "b7360f3a46049f918d2f2c6e86bb2db0dfeeb2b0e15c546431aa8525b05c9b7a",
+      "locator": "Current official FAQ explicitly states Sendai-Airport to Sendai operation is through Natori with no train change. Connect independently identified JR and SAT physical components only at this explicit passenger-service boundary; this structural boundary edge does not imply passengers must alight or traverse a street.",
+      "components": [
+        {
+          "name": "名取",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "名取",
+          "operator": "仙台空港鉄道",
+          "line": "仙台空港線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PASSENGER_CONNECTION_AND_INDEPENDENT_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "sendai-airport-explicit-2f-rail-passage",
+      "kind": "transfer",
+      "sourceActionId": "airport:sendai:explicit-terminal-rail-passage",
+      "sourceUrl": "https://www.sendai-airport.co.jp/faq/access.html",
+      "observedResponseSha256": "dffa645abe423de800cb48c712bc3f769423084d2f5bc3ba28a513ab80aeaf73",
+      "locator": "Current airport FAQ explicitly joins the 2F domestic departure lobby to Sendai-Airport railway station through the direct public connecting passage. C28 coordinate represents the whole airport facility, not a precise terminal navigation point. No published walking time retained.",
+      "components": [
+        {
+          "name": "仙台空港",
+          "operator": "airport-facility:cf03_00027",
+          "line": "airport:cf03_00027",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00027",
+            "requirementId": "review:transport-node:60e3a602-ac0f-52f6-a4b7-4c7323a5815f",
+            "expectedRequirementName": "仙台",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport FAQ explicitly joins the 2F domestic departure lobby to Sendai-Airport railway station through the direct public connecting passage. C28 coordinate represents the whole airport facility, not a precise terminal navigation point. No published walking time retained."
+          }
+        },
+        {
+          "name": "仙台空港",
+          "operator": "仙台空港鉄道",
+          "line": "仙台空港線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PASSENGER_CONNECTION_AND_INDEPENDENT_COMPONENTS",
+      "hubScopeComplete": false
+    }
+  ]
+}

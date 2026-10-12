@@ -1,0 +1,448 @@
+{
+  "phaseId": "194-oki-independent-airport-bus-sections-jac-and-public-terminal-chain",
+  "strategy": [
+    "ORIGINAL_AIRPORT_IDENTITY_UPGRADE_WITHOUT_REPLACEMENT",
+    "EXACT_NATIVE_P11_ADJACENT_CALLS",
+    "INDEPENDENT_FLIGHT_DIRECTIONS",
+    "EXPLICIT_PUBLIC_FRONTAGE",
+    "SOURCE_CONFLICT_RESOLVED_WITH_DATED_PRIMARY_TABLE"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "government:c28:airport-identities",
+    "bus:oki:operator-explicit-independent-airport-portplaza-directions",
+    "airport:oki:current-izumo-jac-and-public-frontage"
+  ],
+  "facts": [
+    {
+      "factId": "oki-airport-adjacent-direction-0",
+      "kind": "service",
+      "sourceActionId": "bus:oki:operator-explicit-independent-airport-portplaza-directions",
+      "sourceUrl": "https://oki.ichibata.co.jp/airport.html",
+      "observedResponseSha256": "bcee2139e20979cfa302f8544cb598c2055a74d34a32e76d568f24f88ad2abd9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:oki:operator-explicit-independent-airport-portplaza-directions",
+          "url": "https://oki.ichibata.co.jp/airport.html",
+          "observedResponseSha256": "bcee2139e20979cfa302f8544cb598c2055a74d34a32e76d568f24f88ad2abd9"
+        },
+        {
+          "sourceActionId": "airport:oki:current-izumo-jac-and-public-frontage",
+          "url": "https://www.oki-airport.jp/access",
+          "observedResponseSha256": "dffc02f7324fd772ff492087927b8bc0e4ff61a3f0fe06e420817b609ecde388"
+        }
+      ],
+      "operator": "隠岐一畑交通（株）",
+      "line": "隠岐空港連絡バス",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "portplaza-to-airport",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current operator published airport-linked service. Airport departure follows flight arrival and passenger baggage completion; port-plaza direction separately departure-linked. Traffic or arrival changes may alter operation. Static relation only, no live dispatch or guaranteed timed transfer.",
+      "callingStations": [
+        "隠岐ポートプラザ前",
+        "隠岐空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "隠岐ポートプラザ前",
+          "operator": "隠岐一畑交通（株）",
+          "line": "p11-stop:P11-22_32:bs4423",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_32:bs4423",
+            "recordSha256": "877801943675918678f86f3455a5c4b5b84136385931ab3d129adbe61a1c42bc",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native P11 stop and operator on隠岐空港連絡バス. Current own operator guide names隠岐空港 and隠岐ポートプラザ前 in explicit adjacent bidirectional route and separate departure rules. Different P11ポートプラザ on local routes is not merged. No exact pole/door or coordinates inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "隠岐一畑交通（株）",
+              "currentOperatorName": "隠岐一畑交通（株）",
+              "currentStopName": "隠岐ポートプラザ前",
+              "historicalRoute": "隠岐空港連絡バス",
+              "url": "https://oki.ichibata.co.jp/airport.html",
+              "observedResponseSha256": "bcee2139e20979cfa302f8544cb598c2055a74d34a32e76d568f24f88ad2abd9"
+            }
+          }
+        },
+        {
+          "name": "隠岐空港",
+          "operator": "隠岐一畑交通（株）",
+          "line": "p11-stop:P11-22_32:bs4438",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_32:bs4438",
+            "recordSha256": "3cf856952f315189e5a9603d0857a334782be0246d44554c85bbf6ec150bd379",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native P11 stop and operator on隠岐空港連絡バス. Current own operator guide names隠岐空港 and隠岐ポートプラザ前 in explicit adjacent bidirectional route and separate departure rules. Different P11ポートプラザ on local routes is not merged. No exact pole/door or coordinates inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "隠岐一畑交通（株）",
+              "currentOperatorName": "隠岐一畑交通（株）",
+              "currentStopName": "隠岐空港",
+              "historicalRoute": "隠岐空港連絡バス",
+              "url": "https://oki.ichibata.co.jp/airport.html",
+              "observedResponseSha256": "bcee2139e20979cfa302f8544cb598c2055a74d34a32e76d568f24f88ad2abd9"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Operator guide separately labels隠岐ポートプラザ発便 and describes departure before flight; explicit two-headed ordered route links隠岐ポートプラザ前 to隠岐空港. Not inferred from airport-departure service alone.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clocks/fares/runtime guarantee."
+    },
+    {
+      "factId": "oki-airport-adjacent-direction-1",
+      "kind": "service",
+      "sourceActionId": "bus:oki:operator-explicit-independent-airport-portplaza-directions",
+      "sourceUrl": "https://oki.ichibata.co.jp/airport.html",
+      "observedResponseSha256": "bcee2139e20979cfa302f8544cb598c2055a74d34a32e76d568f24f88ad2abd9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:oki:operator-explicit-independent-airport-portplaza-directions",
+          "url": "https://oki.ichibata.co.jp/airport.html",
+          "observedResponseSha256": "bcee2139e20979cfa302f8544cb598c2055a74d34a32e76d568f24f88ad2abd9"
+        },
+        {
+          "sourceActionId": "airport:oki:current-izumo-jac-and-public-frontage",
+          "url": "https://www.oki-airport.jp/access",
+          "observedResponseSha256": "dffc02f7324fd772ff492087927b8bc0e4ff61a3f0fe06e420817b609ecde388"
+        }
+      ],
+      "operator": "隠岐一畑交通（株）",
+      "line": "隠岐空港連絡バス",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "airport-to-portplaza",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current operator published airport-linked service. Airport departure follows flight arrival and passenger baggage completion; port-plaza direction separately departure-linked. Traffic or arrival changes may alter operation. Static relation only, no live dispatch or guaranteed timed transfer.",
+      "callingStations": [
+        "隠岐空港",
+        "隠岐ポートプラザ前"
+      ],
+      "callingComponents": [
+        {
+          "name": "隠岐空港",
+          "operator": "隠岐一畑交通（株）",
+          "line": "p11-stop:P11-22_32:bs4438",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_32:bs4438",
+            "recordSha256": "3cf856952f315189e5a9603d0857a334782be0246d44554c85bbf6ec150bd379",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native P11 stop and operator on隠岐空港連絡バス. Current own operator guide names隠岐空港 and隠岐ポートプラザ前 in explicit adjacent bidirectional route and separate departure rules. Different P11ポートプラザ on local routes is not merged. No exact pole/door or coordinates inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "隠岐一畑交通（株）",
+              "currentOperatorName": "隠岐一畑交通（株）",
+              "currentStopName": "隠岐空港",
+              "historicalRoute": "隠岐空港連絡バス",
+              "url": "https://oki.ichibata.co.jp/airport.html",
+              "observedResponseSha256": "bcee2139e20979cfa302f8544cb598c2055a74d34a32e76d568f24f88ad2abd9"
+            }
+          }
+        },
+        {
+          "name": "隠岐ポートプラザ前",
+          "operator": "隠岐一畑交通（株）",
+          "line": "p11-stop:P11-22_32:bs4423",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_32:bs4423",
+            "recordSha256": "877801943675918678f86f3455a5c4b5b84136385931ab3d129adbe61a1c42bc",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native P11 stop and operator on隠岐空港連絡バス. Current own operator guide names隠岐空港 and隠岐ポートプラザ前 in explicit adjacent bidirectional route and separate departure rules. Different P11ポートプラザ on local routes is not merged. No exact pole/door or coordinates inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "隠岐一畑交通（株）",
+              "currentOperatorName": "隠岐一畑交通（株）",
+              "currentStopName": "隠岐ポートプラザ前",
+              "historicalRoute": "隠岐空港連絡バス",
+              "url": "https://oki.ichibata.co.jp/airport.html",
+              "observedResponseSha256": "bcee2139e20979cfa302f8544cb598c2055a74d34a32e76d568f24f88ad2abd9"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Operator guide separately labels隠岐空港発便 and describes gathering passengers after flight/baggage arrival; explicit route links隠岐空港 to adjacent隠岐ポートプラザ前.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clocks/fares/runtime guarantee."
+    },
+    {
+      "factId": "oki-jac-independent-direction-0",
+      "kind": "service",
+      "sourceActionId": "airport:oki:current-izumo-jac-and-public-frontage",
+      "sourceUrl": "https://www.izumo-airport.co.jp/flight/flight-time",
+      "observedResponseSha256": "e8ce9201ff6e50841e8aaaa6bf39ff50b44b5f440236e3cbf349630f4d6871fc",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:oki:current-izumo-jac-and-public-frontage",
+          "url": "https://www.izumo-airport.co.jp/flight/flight-time",
+          "observedResponseSha256": "e8ce9201ff6e50841e8aaaa6bf39ff50b44b5f440236e3cbf349630f4d6871fc"
+        },
+        {
+          "sourceActionId": "airport:oki:current-izumo-jac-and-public-frontage",
+          "url": "https://www.oki-airport.jp/flight",
+          "observedResponseSha256": "4ed1f37e1c61e51b50aeaa6ada43ae54d0d84d089a10f8052c14caa29624f8fd"
+        }
+      ],
+      "operator": "JAC",
+      "line": "出雲・隠岐国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "IZO-OKI",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_2026_OCTOBER_01_TO_24_STATIC_RELATION_NOT_REALTIME",
+      "callingStations": [
+        "出雲空港",
+        "隠岐空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "出雲空港",
+          "operator": "airport-facility:cf03_00078",
+          "line": "airport:cf03_00078",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00078",
+            "requirementId": "review:official-airport:出雲",
+            "expectedRequirementName": "出雲",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Reuse admitted C28出雲空港 and existing actual national paths. Izumo Airport own October2026 table witnesses separate隠岐 directions with JAC-operated note. No new terminal/platform claim."
+          }
+        },
+        {
+          "name": "隠岐空港",
+          "operator": "airport-facility:cf03_00004",
+          "line": "airport:cf03_00004",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00004",
+            "requirementId": "review:transport-node:ac448d92-cf2b-57d7-b48b-7350b6129461",
+            "expectedRequirementName": "隠岐",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Municipal airport council public-terminal floor guide identifies arrival exit, landside corridor and bus boarding frontage. Exact C28 formal隠岐空港 whole-facility identity; marketed隠岐世界ジオパーク空港 is the same council facility. Izumo own dated October2026 table independently witnesses both JAC directions. No precise terminal or curb coordinate."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "隠岐",
+          "canonicalAirportName": "隠岐空港",
+          "referencePointId": "cf03_00004"
+        },
+        {
+          "sourceName": "出雲",
+          "canonicalAirportName": "出雲空港",
+          "referencePointId": "cf03_00078"
+        }
+      ],
+      "locator": "Izumo Airport current October1-24 table separate出雲→隠岐 heading JAL3433,JAC運航. Oki council JAC route corroboration only; duplicated arrival flight number on Oki page not relied upon."
+    },
+    {
+      "factId": "oki-jac-independent-direction-1",
+      "kind": "service",
+      "sourceActionId": "airport:oki:current-izumo-jac-and-public-frontage",
+      "sourceUrl": "https://www.izumo-airport.co.jp/flight/flight-time",
+      "observedResponseSha256": "e8ce9201ff6e50841e8aaaa6bf39ff50b44b5f440236e3cbf349630f4d6871fc",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:oki:current-izumo-jac-and-public-frontage",
+          "url": "https://www.izumo-airport.co.jp/flight/flight-time",
+          "observedResponseSha256": "e8ce9201ff6e50841e8aaaa6bf39ff50b44b5f440236e3cbf349630f4d6871fc"
+        },
+        {
+          "sourceActionId": "airport:oki:current-izumo-jac-and-public-frontage",
+          "url": "https://www.oki-airport.jp/flight",
+          "observedResponseSha256": "4ed1f37e1c61e51b50aeaa6ada43ae54d0d84d089a10f8052c14caa29624f8fd"
+        }
+      ],
+      "operator": "JAC",
+      "line": "出雲・隠岐国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "OKI-IZO",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_2026_OCTOBER_01_TO_24_STATIC_RELATION_NOT_REALTIME",
+      "callingStations": [
+        "隠岐空港",
+        "出雲空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "隠岐空港",
+          "operator": "airport-facility:cf03_00004",
+          "line": "airport:cf03_00004",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00004",
+            "requirementId": "review:transport-node:ac448d92-cf2b-57d7-b48b-7350b6129461",
+            "expectedRequirementName": "隠岐",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Municipal airport council public-terminal floor guide identifies arrival exit, landside corridor and bus boarding frontage. Exact C28 formal隠岐空港 whole-facility identity; marketed隠岐世界ジオパーク空港 is the same council facility. Izumo own dated October2026 table independently witnesses both JAC directions. No precise terminal or curb coordinate."
+          }
+        },
+        {
+          "name": "出雲空港",
+          "operator": "airport-facility:cf03_00078",
+          "line": "airport:cf03_00078",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00078",
+            "requirementId": "review:official-airport:出雲",
+            "expectedRequirementName": "出雲",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Reuse admitted C28出雲空港 and existing actual national paths. Izumo Airport own October2026 table witnesses separate隠岐 directions with JAC-operated note. No new terminal/platform claim."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "隠岐",
+          "canonicalAirportName": "隠岐空港",
+          "referencePointId": "cf03_00004"
+        },
+        {
+          "sourceName": "出雲",
+          "canonicalAirportName": "出雲空港",
+          "referencePointId": "cf03_00078"
+        }
+      ],
+      "locator": "Izumo Airport current October1-24 table separate隠岐→出雲 heading JAL3434,JAC運航. Physical carrier JAC; no additional JAL marketing edge."
+    },
+    {
+      "factId": "oki-terminal-arrival-exit-public-frontage-bus",
+      "kind": "transfer",
+      "sourceActionId": "airport:oki:current-izumo-jac-and-public-frontage",
+      "sourceUrl": "https://www.oki-airport.jp/guide",
+      "observedResponseSha256": "dc12eff4070fb80495903eff4f9d52427dc9eeb9c9ecbab673ab2892b1327d31",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:oki:current-izumo-jac-and-public-frontage",
+          "url": "https://www.oki-airport.jp/oki_air_port_theme/img/guide/floor_map.jpg",
+          "observedResponseSha256": "16ba5921e15dea4b3095aa8b630962b5171d0d1241012b49a2d237061ac7f271"
+        },
+        {
+          "sourceActionId": "airport:oki:current-izumo-jac-and-public-frontage",
+          "url": "https://www.oki-airport.jp/oki_air_port_theme/img/guide/facility07.jpg",
+          "observedResponseSha256": "bc5dd9b7363201484d7c95c952cb9768490ee1030d28852c92a29a0d2d9eda13"
+        },
+        {
+          "sourceActionId": "airport:oki:current-izumo-jac-and-public-frontage",
+          "url": "https://www.oki-airport.jp/access",
+          "observedResponseSha256": "dffc02f7324fd772ff492087927b8bc0e4ff61a3f0fe06e420817b609ecde388"
+        },
+        {
+          "sourceActionId": "bus:oki:operator-explicit-independent-airport-portplaza-directions",
+          "url": "https://oki.ichibata.co.jp/airport.html",
+          "observedResponseSha256": "bcee2139e20979cfa302f8544cb598c2055a74d34a32e76d568f24f88ad2abd9"
+        }
+      ],
+      "components": [
+        {
+          "name": "隠岐空港",
+          "operator": "airport-facility:cf03_00004",
+          "line": "airport:cf03_00004",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00004",
+            "requirementId": "review:transport-node:ac448d92-cf2b-57d7-b48b-7350b6129461",
+            "expectedRequirementName": "隠岐",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Municipal airport council public-terminal floor guide identifies arrival exit, landside corridor and bus boarding frontage. Exact C28 formal隠岐空港 whole-facility identity; marketed隠岐世界ジオパーク空港 is the same council facility. Izumo own dated October2026 table independently witnesses both JAC directions. No precise terminal or curb coordinate."
+          }
+        },
+        {
+          "name": "隠岐空港",
+          "operator": "隠岐一畑交通（株）",
+          "line": "p11-stop:P11-22_32:bs4438",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_32:bs4438",
+            "recordSha256": "3cf856952f315189e5a9603d0857a334782be0246d44554c85bbf6ec150bd379",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native P11 stop and operator on隠岐空港連絡バス. Current own operator guide names隠岐空港 and隠岐ポートプラザ前 in explicit adjacent bidirectional route and separate departure rules. Different P11ポートプラザ on local routes is not merged. No exact pole/door or coordinates inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "隠岐一畑交通（株）",
+              "currentOperatorName": "隠岐一畑交通（株）",
+              "currentStopName": "隠岐空港",
+              "historicalRoute": "隠岐空港連絡バス",
+              "url": "https://oki.ichibata.co.jp/airport.html",
+              "observedResponseSha256": "bcee2139e20979cfa302f8544cb598c2055a74d34a32e76d568f24f88ad2abd9"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "reviewMethod": "OFFICIAL_TERMINAL_MAP_PUBLIC_FRONTAGE_AND_NAMED_BUS_PHOTO",
+      "locator": "Council airport floor guide shows arrival exit into landside public lobby, public door onto frontage and continuous marked approach toバスのりば on same front pavement. Labelled airport bus photograph independently shows boarding sign beside terminal covered pedestrian frontage. Whole-airport representative stop connection only, no road crossing inference, exact curb/door/navigation coordinate, duration or accessibility guarantee."
+    }
+  ],
+  "scope": "Original Oki airport chain only; two necessary P11 representatives, original HOLD airport same-ID upgrade, six edges. Pending192193 native identities retained but no unrelated routes/ports expanded."
+}

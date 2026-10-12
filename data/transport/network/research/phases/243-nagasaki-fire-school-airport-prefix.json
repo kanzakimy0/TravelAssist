@@ -1,0 +1,96 @@
+{
+  "phaseId": "243-nagasaki-fire-school-airport-prefix",
+  "strategy": [
+    "ORIGINAL_FIRE_SCHOOL_DIRECTION_ROOT",
+    "SAME_LICENSED_ARCHIVE_EXACT_ACTIVE_ADJACENT_PREFIX",
+    "PUBLIC_TERMINAL_PLATFORM3_INDEPENDENT_MINIMUM_FACT_REVIEW",
+    "ALL_NEW_NODES_BIDIRECTIONAL_NATIONAL"
+  ],
+  "completedActionIds": [
+    "bus:nagasaki:licensed-fire-school-airport-prefix",
+    "airport:nagasaki:current-public-terminal-platform3-review"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "nagasaki-fire-school-airport-prefix-package.json",
+      "packageSha256": "8f4948aa482449b74038f287aaba9cae9ce2d60c86fe3c0bf52b89c49f0de92b",
+      "sourceActionId": "bus:nagasaki:licensed-fire-school-airport-prefix",
+      "reviewedServiceDate": "20261002"
+    }
+  ],
+  "facts": [
+    {
+      "factId": "nagasaki-airport-public-terminal-platform3-fire-school-prefix",
+      "kind": "transfer",
+      "sourceActionId": "airport:nagasaki:current-public-terminal-platform3-review",
+      "sourceUrl": "https://nagasaki-airport.jp/access/bus/images/img02.jpg",
+      "observedResponseSha256": "a868cc78e69231882870875af5de2c9beddece9294b22fd6ef15c91759eba43c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:nagasaki:current-public-terminal-platform3-review",
+          "url": "https://nagasaki-airport.jp/shop/floor/1f/",
+          "observedResponseSha256": "c06f60bf5c4ef2126c188dad8733ddee092b750fcf0ec3a5a58809a6a26e193c"
+        },
+        {
+          "sourceActionId": "airport:nagasaki:current-public-terminal-platform3-review",
+          "url": "https://nagasaki-airport.jp/access/bus/",
+          "observedResponseSha256": "e876a78eee197939e911e640f379f26dee14a98b48b482d8715fafd0ef854430"
+        },
+        {
+          "sourceActionId": "bus:nagasaki:licensed-fire-school-airport-prefix",
+          "url": "https://data.bodik.jp/dataset/420000_nagasakikeneibus/resource/97f91f64-2124-4bf1-b3e3-422de17fc080/download",
+          "observedResponseSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc"
+        }
+      ],
+      "components": [
+        {
+          "name": "長崎空港",
+          "operator": "airport-facility:cf03_00001",
+          "line": "airport:cf03_00001",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00001",
+            "requirementId": "review:transport-node:948a4f5d-b386-5d98-84ab-af69c9818a84",
+            "expectedRequirementName": "長崎",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Owner airport1F bus/terminal diagram explicitly shows public passenger exits opening onto the common external frontage and3番のりば 大村・諫早・島原方面. Independently licensed current native stop886625_03 has platform_code3 and is the first actual route80 大村～諫早線 call of active20261002 trip242125_1_001_0. Preserve native boarding0/alighting1. This reviewed public terminal/frontage link permits pedestrian entry/exit at the boarding component without claiming buses alight there. Keep whole C28 airport identity and exact GTFS stop separate; no coordinate-nearest join, inherited4/5-only review, precise curb, walking duration, accessibility guarantee or current-disruption assertion."
+          }
+        },
+        {
+          "name": "長崎空港",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:80",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "886625_03",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "69694a0a6617bf01dca1183a8d6f6d41c65bd96578ed4e4b52f0bbf92f2f62b9",
+            "expectedPlatformCode": "3",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Owner airport1F bus/terminal diagram explicitly shows public passenger exits opening onto the common external frontage and3番のりば 大村・諫早・島原方面. Independently licensed current native stop886625_03 has platform_code3 and is the first actual route80 大村～諫早線 call of active20261002 trip242125_1_001_0. Preserve native boarding0/alighting1. This reviewed public terminal/frontage link permits pedestrian entry/exit at the boarding component without claiming buses alight there. Keep whole C28 airport identity and exact GTFS stop separate; no coordinate-nearest join, inherited4/5-only review, precise curb, walking duration, accessibility guarantee or current-disruption assertion."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OWNER_PUBLIC_TERMINAL_FRONTAGE_PLATFORM3_AND_EXACT_LICENSED_ROUTE80_PREFIX",
+      "hubScopeComplete": false,
+      "locator": "Owner airport1F bus/terminal diagram explicitly shows public passenger exits opening onto the common external frontage and3番のりば 大村・諫早・島原方面. Independently licensed current native stop886625_03 has platform_code3 and is the first actual route80 大村～諫早線 call of active20261002 trip242125_1_001_0. Preserve native boarding0/alighting1. This reviewed public terminal/frontage link permits pedestrian entry/exit at the boarding component without claiming buses alight there. Keep whole C28 airport identity and exact GTFS stop separate; no coordinate-nearest join, inherited4/5-only review, precise curb, walking duration, accessibility guarantee or current-disruption assertion."
+    }
+  ],
+  "notes": [
+    "Consecutive first3 calls of34-call real parent; complete parent provenance preserved, section end permits alighting and boarding.",
+    "Two newnative points only: airport bay3 and Sansupa. Existing消防学校 point reused exactly, no same-name join.",
+    "Published225 source descriptor and all prior edges/patterns preserved; no new HTTP or shared generation."
+  ]
+}

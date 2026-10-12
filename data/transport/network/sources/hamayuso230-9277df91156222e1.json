@@ -1,0 +1,69 @@
+{
+  "source": {
+    "sourceId": "transport-source:086:ff32100df024d01abf995ec56ea29664",
+    "url": "https://hamayuso.com/content3.html",
+    "contentSha256": "3fb4293e370a2ebfffb7f0df43b632309d6a0e99dad16402aa8e271ceed0501c",
+    "evidenceContentSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+    "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+    "observedAt": "2026-10-03T20:16:05.146Z",
+    "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+    "rawPayloadRetained": false,
+    "derivedDataAllowed": true,
+    "redistributionAllowed": true,
+    "metricPersistenceAllowed": false,
+    "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+    "rightsReview": {
+      "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+      "termsUrl": "https://hamayuso.com/content3.html",
+      "reason": "Hotel-authored public access and exact address; only minimal independent name/address/arrival pickup facts. Current lodging page confirms live operation but room booking deadline is not shuttle lead. No raw HTML/artwork/clocks redistribution."
+    }
+  },
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:ff32100df024d01abf995ec56ea29664",
+      "sourceId": "transport-source:086:ff32100df024d01abf995ec56ea29664",
+      "sourceSha256": "3fb4293e370a2ebfffb7f0df43b632309d6a0e99dad16402aa8e271ceed0501c",
+      "record": {
+        "kind": "REVIEWED_SERVICE_ACCESS_CONDITION",
+        "conditionId": "hamayuso230-HOTEL_TO_AIRPORT-owner",
+        "sourceActionId": "northdaito:qualified:hamayuso-owner",
+        "sourceUrl": "https://hamayuso.com/content3.html",
+        "observedResponseSha256": "ec5942672592c7d4e178676d71de45f079636aef8041707cd385909fbf3ba91b",
+        "accessTerms": {
+          "schemaVersion": 1,
+          "kind": "QUALIFIED_PACKAGE_HOTEL_SHUTTLE",
+          "profile": "HAMAYUSO_CONFIRMED_PRODUCT_GUEST_V1",
+          "audience": "ELIGIBILITY_RESTRICTED",
+          "eligibilityKeys": [
+            "hamayuso:lodging-guest",
+            "nansei:confirmed-kitadaito-product-participant"
+          ],
+          "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+          "productUrl": "https://south-west.co.jp/tour/okinawa_kitadaitou/",
+          "requiredConditions": {
+            "actualHotelGuest": true,
+            "confirmedExactTourProduct": true,
+            "arrivalFlightInformationReportedToHotel": true,
+            "bookingRuleScope": "PRODUCT_BOOKING_TERMS_NOT_A_SHUTTLE_NUMERIC_CUTOFF",
+            "serviceChargePublication": "HOTEL_DESCRIBES_FREE",
+            "unconditionalPublicAccess": false
+          },
+          "unknowns": {
+            "legalMotorCarrier": null,
+            "shuttleBookingLeadMinutes": null,
+            "exactTimetable": null,
+            "capacity": null,
+            "dispatchGuarantee": null
+          },
+          "direction": "HOTEL_TO_AIRPORT"
+        },
+        "corroboratingEvidence": []
+      },
+      "recordSha256": "3fb4293e370a2ebfffb7f0df43b632309d6a0e99dad16402aa8e271ceed0501c",
+      "locator": "Hotel pickup: report arriving flight; free airport transfer. Owner exact hotel identity."
+    }
+  ],
+  "candidates": [],
+  "patterns": [],
+  "transfers": []
+}

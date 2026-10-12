@@ -1,0 +1,80 @@
+{
+  "phaseId": "123-toei-licensed-tram-liner-and-three-hub-connections",
+  "strategy": [
+    "REUSE_LICENSED_GTFS_ACTUAL_DIRECTIONAL_TRIPS",
+    "CURRENT_PUBLIC_PASSAGES_AND_EXPLICIT_EXIT_DESTINATIONS",
+    "tram",
+    "fixed_guideway"
+  ],
+  "completedActionIds": [
+    "rail:toei:ccby-gtfs-train"
+  ],
+  "sourceActionId": "rail:toei:ccby-gtfs-train",
+  "sourceUrl": "https://api-public.odpt.org/api/v4/files/Toei/data/Toei-Train-GTFS.zip",
+  "archiveSha256": "dd5757062317dcf18b8eeaf8bf83f6624ecd3c9fc4fe99918981e5ec2b42d8c4",
+  "serviceDate": "20261001",
+  "agencyId": "toei",
+  "trips": [
+    {
+      "factId": "toei-gtfs-500551B0",
+      "sourceTripId": "500551B0",
+      "routeId": "5",
+      "direction": "0",
+      "line": "日暮里・舎人ライナー",
+      "publishedLineName": "日暮里・舎人ライナー",
+      "operator": "東京都",
+      "mode": "fixed_guideway",
+      "reviewedEndpointsAndCount": [
+        "日暮里",
+        "見沼代親水公園",
+        13
+      ]
+    },
+    {
+      "factId": "toei-gtfs-510550A0",
+      "sourceTripId": "510550A0",
+      "routeId": "5",
+      "direction": "1",
+      "line": "日暮里・舎人ライナー",
+      "publishedLineName": "日暮里・舎人ライナー",
+      "operator": "東京都",
+      "mode": "fixed_guideway",
+      "reviewedEndpointsAndCount": [
+        "見沼代親水公園",
+        "日暮里",
+        13
+      ]
+    },
+    {
+      "factId": "toei-gtfs-60010700",
+      "sourceTripId": "60010700",
+      "routeId": "6",
+      "direction": "0",
+      "line": "荒川線",
+      "publishedLineName": "東京さくらトラム（都電荒川線）",
+      "operator": "東京都",
+      "mode": "tram",
+      "reviewedEndpointsAndCount": [
+        "三ノ輪橋",
+        "早稲田",
+        30
+      ]
+    },
+    {
+      "factId": "toei-gtfs-61014000",
+      "sourceTripId": "61014000",
+      "routeId": "6",
+      "direction": "1",
+      "line": "荒川線",
+      "publishedLineName": "東京さくらトラム（都電荒川線）",
+      "operator": "東京都",
+      "mode": "tram",
+      "reviewedEndpointsAndCount": [
+        "早稲田",
+        "三ノ輪橋",
+        30
+      ]
+    }
+  ],
+  "scopeNote": "Independent directional trips retain every actual call and boarding restriction; no reversal or service outside the published route is inferred."
+}

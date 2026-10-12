@@ -72,7 +72,8 @@ test("all 50 pilot Master Codes come from the merged canonical registry", () => 
 
 test("every assigned masterCode must resolve to the canonical registry", () => {
   const report = masterCodeResolutionReport();
-  assert.equal(report.registryEntryCount, 51);
+  // POI allocations may be appended without changing the 50 Region bindings.
+  assert.ok(report.registryEntryCount >= 51);
   assert.equal(report.activeRegionEntryCount, 50);
   assert.equal(report.assignedCount, 50);
   assert.equal(report.activeResolvedCount, 50);

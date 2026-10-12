@@ -1,0 +1,512 @@
+{
+  "phaseId": "135-hakodate-current-five-call-airport-trips-and-public-gateways",
+  "strategy": [
+    "CURRENT_PRIMARY_OPERATOR_STATIC_TRIPS_WITH_LICENSED_P11_IDENTITIES",
+    "INDEPENDENT_DIRECTIONAL_AIRPORT_PASSENGER_RESTRICTIONS",
+    "PUBLIC_JR_AND_AIRPORT_GATEWAYS",
+    "RESTRICTED_PLATFORM_AND_AMBIGUOUS_FEED_ALTERNATIVES_REVIEWED"
+  ],
+  "completedActionIds": [
+    "bus:hakodate-teisan:current-five-call-airport-trips",
+    "airport:hakodate:current-arrival-exit-public-bus-frontage",
+    "hub:jr-hokkaido:hakodate-current-concourse-airport-bus",
+    "bus:akan:direct-open-feed-internal-restrictions-review",
+    "bus:hoda:hakodate-purpose-form-and-primary-alternative-review"
+  ],
+  "facts": [
+    {
+      "factId": "hakodate-teisan-october-five-call-airport-to-jr",
+      "kind": "service",
+      "sourceActionId": "bus:hakodate-teisan:current-five-call-airport-trips",
+      "sourceUrl": "https://www.hakotaxi.co.jp/shuttlebus/261001air_st.pdf",
+      "observedResponseSha256": "0f141930bce39ee467981cbdd0393cc125f19264f98c0f6de8c471fe21b6324c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:hakodate-teisan:current-five-call-airport-trips",
+          "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+          "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+        }
+      ],
+      "locator": "Current operator-linked October 1-24 2026 PDF individually viewed. Upper directional table, actual row 1 ending at JR Hakodate; no later Bay Area or Horai extension is attached to this trip. Both actual rows separately reviewed, five stops each. Airport-origin table expressly labels intermediate clocks as arrival times; reverse table has pickup calls before airport. Retain conservative airport-origin dropoff-only and airport-bound pickup-only permissions, complete ordered calls and operator identity. No clocks/fares/PDF artwork, future extension, automatic reverse or timetable payload persisted.",
+      "line": "函館空港～函館駅前",
+      "operator": "函館タクシー株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "空港連絡バス",
+      "direction": "函館空港→湯の川温泉→競輪場前→大森町→JR函館駅前",
+      "callingStations": [
+        "函館空港",
+        "湯の川温泉",
+        "競輪場前",
+        "大森町",
+        "JR函館駅前"
+      ],
+      "callingComponents": [
+        {
+          "name": "函館空港",
+          "operator": "函館タクシー（株）",
+          "line": "p11-stop:P11-22_01:bs14100",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs14100",
+            "recordSha256": "d788112d32c8df1790042b84dec59ef484b01bfb5ca39928ad067e8947ff7193",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Hakodate Taxi road-stop identity matches the current October airport service at this same named stop. Primary company page explicitly identifies Hakodate Taxi as operator of the Teisan-branded airport bus; do not substitute the colocated Hakodate Bus operator. P11 represents same-operator road-stop directions, not individual platform coordinates. Current directional passenger calls are independently established by the selected October 2026 table, never inferred from archival route labels.",
+            "currentOperatorEvidence": {
+              "recordOperator": "函館タクシー（株）",
+              "currentOperatorName": "函館タクシー株式会社",
+              "currentStopName": "函館空港",
+              "historicalRoute": "函館空港～函館駅前",
+              "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+              "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+            }
+          }
+        },
+        {
+          "name": "湯の川温泉",
+          "operator": "函館タクシー（株）",
+          "line": "p11-stop:P11-22_01:bs14122",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs14122",
+            "recordSha256": "0196efe368c8bc3ddbba92723a9f3d04cd7bcf3c96522ca303ac21885b56b427",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Hakodate Taxi road-stop identity matches the current October airport service at this same named stop. Primary company page explicitly identifies Hakodate Taxi as operator of the Teisan-branded airport bus; do not substitute the colocated Hakodate Bus operator. P11 represents same-operator road-stop directions, not individual platform coordinates. Current directional passenger calls are independently established by the selected October 2026 table, never inferred from archival route labels.",
+            "currentOperatorEvidence": {
+              "recordOperator": "函館タクシー（株）",
+              "currentOperatorName": "函館タクシー株式会社",
+              "currentStopName": "湯の川温泉",
+              "historicalRoute": "函館空港～函館駅前",
+              "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+              "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+            }
+          }
+        },
+        {
+          "name": "競輪場前",
+          "operator": "函館タクシー（株）",
+          "line": "p11-stop:P11-22_01:bs14124",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs14124",
+            "recordSha256": "d40b59fddbf38cd3504017c78c8278b63ad91f292e3580c8fd3686f2040f5ef4",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Hakodate Taxi road-stop identity matches the current October airport service at this same named stop. Primary company page explicitly identifies Hakodate Taxi as operator of the Teisan-branded airport bus; do not substitute the colocated Hakodate Bus operator. P11 represents same-operator road-stop directions, not individual platform coordinates. Current directional passenger calls are independently established by the selected October 2026 table, never inferred from archival route labels.",
+            "currentOperatorEvidence": {
+              "recordOperator": "函館タクシー（株）",
+              "currentOperatorName": "函館タクシー株式会社",
+              "currentStopName": "競輪場前",
+              "historicalRoute": "函館空港～函館駅前",
+              "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+              "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+            }
+          }
+        },
+        {
+          "name": "大森町",
+          "operator": "函館タクシー（株）",
+          "line": "p11-stop:P11-22_01:bs14159",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs14159",
+            "recordSha256": "4019071fd8681df64b17b81d2adab70be5bbeaeeed595d955dba458158cd9144",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Hakodate Taxi road-stop identity matches the current October airport service at this same named stop. Primary company page explicitly identifies Hakodate Taxi as operator of the Teisan-branded airport bus; do not substitute the colocated Hakodate Bus operator. P11 represents same-operator road-stop directions, not individual platform coordinates. Current directional passenger calls are independently established by the selected October 2026 table, never inferred from archival route labels.",
+            "currentOperatorEvidence": {
+              "recordOperator": "函館タクシー（株）",
+              "currentOperatorName": "函館タクシー株式会社",
+              "currentStopName": "大森町",
+              "historicalRoute": "函館空港～函館駅前",
+              "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+              "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+            }
+          }
+        },
+        {
+          "name": "JR函館駅前",
+          "operator": "函館タクシー（株）",
+          "line": "p11-stop:P11-22_01:bs14136",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs14136",
+            "recordSha256": "311f204daf35d1dd46eaca0ee70adf5839b0c6aeffd24e84b6470cd88d765213",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Hakodate Taxi road-stop identity matches the current October airport service at this same named stop. Primary company page explicitly identifies Hakodate Taxi as operator of the Teisan-branded airport bus; do not substitute the colocated Hakodate Bus operator. P11 represents same-operator road-stop directions, not individual platform coordinates. Current directional passenger calls are independently established by the selected October 2026 table, never inferred from archival route labels.",
+            "currentOperatorEvidence": {
+              "recordOperator": "函館タクシー（株）",
+              "currentOperatorName": "函館タクシー株式会社",
+              "currentStopName": "JR函館駅前",
+              "historicalRoute": "函館空港～函館駅前",
+              "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+              "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECTIONAL_FIVE_CALL_AIRPORT_TRIPS",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_1_TO_24_2026_CURRENT_PUBLISHED_TRIPS_NOT_REALTIME"
+    },
+    {
+      "factId": "hakodate-teisan-october-five-call-jr-to-airport",
+      "kind": "service",
+      "sourceActionId": "bus:hakodate-teisan:current-five-call-airport-trips",
+      "sourceUrl": "https://www.hakotaxi.co.jp/shuttlebus/261001air_st.pdf",
+      "observedResponseSha256": "0f141930bce39ee467981cbdd0393cc125f19264f98c0f6de8c471fe21b6324c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:hakodate-teisan:current-five-call-airport-trips",
+          "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+          "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+        }
+      ],
+      "locator": "Current operator-linked October 1-24 2026 PDF individually viewed. Lower directional table, actual row 1 beginning at JR Hakodate; no earlier Bay Area or Horai origin is attached to this trip. Both actual rows separately reviewed, five stops each. Airport-origin table expressly labels intermediate clocks as arrival times; reverse table has pickup calls before airport. Retain conservative airport-origin dropoff-only and airport-bound pickup-only permissions, complete ordered calls and operator identity. No clocks/fares/PDF artwork, future extension, automatic reverse or timetable payload persisted.",
+      "line": "函館空港～函館駅前",
+      "operator": "函館タクシー株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "空港連絡バス",
+      "direction": "JR函館駅前→大森町→競輪場前→湯の川温泉→函館空港",
+      "callingStations": [
+        "JR函館駅前",
+        "大森町",
+        "競輪場前",
+        "湯の川温泉",
+        "函館空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "JR函館駅前",
+          "operator": "函館タクシー（株）",
+          "line": "p11-stop:P11-22_01:bs14136",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs14136",
+            "recordSha256": "311f204daf35d1dd46eaca0ee70adf5839b0c6aeffd24e84b6470cd88d765213",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Hakodate Taxi road-stop identity matches the current October airport service at this same named stop. Primary company page explicitly identifies Hakodate Taxi as operator of the Teisan-branded airport bus; do not substitute the colocated Hakodate Bus operator. P11 represents same-operator road-stop directions, not individual platform coordinates. Current directional passenger calls are independently established by the selected October 2026 table, never inferred from archival route labels.",
+            "currentOperatorEvidence": {
+              "recordOperator": "函館タクシー（株）",
+              "currentOperatorName": "函館タクシー株式会社",
+              "currentStopName": "JR函館駅前",
+              "historicalRoute": "函館空港～函館駅前",
+              "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+              "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+            }
+          }
+        },
+        {
+          "name": "大森町",
+          "operator": "函館タクシー（株）",
+          "line": "p11-stop:P11-22_01:bs14159",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs14159",
+            "recordSha256": "4019071fd8681df64b17b81d2adab70be5bbeaeeed595d955dba458158cd9144",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Hakodate Taxi road-stop identity matches the current October airport service at this same named stop. Primary company page explicitly identifies Hakodate Taxi as operator of the Teisan-branded airport bus; do not substitute the colocated Hakodate Bus operator. P11 represents same-operator road-stop directions, not individual platform coordinates. Current directional passenger calls are independently established by the selected October 2026 table, never inferred from archival route labels.",
+            "currentOperatorEvidence": {
+              "recordOperator": "函館タクシー（株）",
+              "currentOperatorName": "函館タクシー株式会社",
+              "currentStopName": "大森町",
+              "historicalRoute": "函館空港～函館駅前",
+              "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+              "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+            }
+          }
+        },
+        {
+          "name": "競輪場前",
+          "operator": "函館タクシー（株）",
+          "line": "p11-stop:P11-22_01:bs14124",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs14124",
+            "recordSha256": "d40b59fddbf38cd3504017c78c8278b63ad91f292e3580c8fd3686f2040f5ef4",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Hakodate Taxi road-stop identity matches the current October airport service at this same named stop. Primary company page explicitly identifies Hakodate Taxi as operator of the Teisan-branded airport bus; do not substitute the colocated Hakodate Bus operator. P11 represents same-operator road-stop directions, not individual platform coordinates. Current directional passenger calls are independently established by the selected October 2026 table, never inferred from archival route labels.",
+            "currentOperatorEvidence": {
+              "recordOperator": "函館タクシー（株）",
+              "currentOperatorName": "函館タクシー株式会社",
+              "currentStopName": "競輪場前",
+              "historicalRoute": "函館空港～函館駅前",
+              "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+              "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+            }
+          }
+        },
+        {
+          "name": "湯の川温泉",
+          "operator": "函館タクシー（株）",
+          "line": "p11-stop:P11-22_01:bs14122",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs14122",
+            "recordSha256": "0196efe368c8bc3ddbba92723a9f3d04cd7bcf3c96522ca303ac21885b56b427",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Hakodate Taxi road-stop identity matches the current October airport service at this same named stop. Primary company page explicitly identifies Hakodate Taxi as operator of the Teisan-branded airport bus; do not substitute the colocated Hakodate Bus operator. P11 represents same-operator road-stop directions, not individual platform coordinates. Current directional passenger calls are independently established by the selected October 2026 table, never inferred from archival route labels.",
+            "currentOperatorEvidence": {
+              "recordOperator": "函館タクシー（株）",
+              "currentOperatorName": "函館タクシー株式会社",
+              "currentStopName": "湯の川温泉",
+              "historicalRoute": "函館空港～函館駅前",
+              "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+              "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+            }
+          }
+        },
+        {
+          "name": "函館空港",
+          "operator": "函館タクシー（株）",
+          "line": "p11-stop:P11-22_01:bs14100",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs14100",
+            "recordSha256": "d788112d32c8df1790042b84dec59ef484b01bfb5ca39928ad067e8947ff7193",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Hakodate Taxi road-stop identity matches the current October airport service at this same named stop. Primary company page explicitly identifies Hakodate Taxi as operator of the Teisan-branded airport bus; do not substitute the colocated Hakodate Bus operator. P11 represents same-operator road-stop directions, not individual platform coordinates. Current directional passenger calls are independently established by the selected October 2026 table, never inferred from archival route labels.",
+            "currentOperatorEvidence": {
+              "recordOperator": "函館タクシー（株）",
+              "currentOperatorName": "函館タクシー株式会社",
+              "currentStopName": "函館空港",
+              "historicalRoute": "函館空港～函館駅前",
+              "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+              "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECTIONAL_FIVE_CALL_AIRPORT_TRIPS",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_1_TO_24_2026_CURRENT_PUBLISHED_TRIPS_NOT_REALTIME"
+    },
+    {
+      "factId": "hakodate-airport-teisan-current-public-arrival-frontage",
+      "kind": "transfer",
+      "sourceActionId": "airport:hakodate:current-arrival-exit-public-bus-frontage",
+      "sourceUrl": "https://www.hokkaido-airports.com/ja/hakodate/access/bus/",
+      "observedResponseSha256": "c94485bb4d498b11867f1b6aa71cb90afef28acc62d085d1b6fe341e6f29296d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:hakodate-teisan:current-five-call-airport-trips",
+          "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+          "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+        },
+        {
+          "sourceActionId": "bus:hakodate-teisan:current-five-call-airport-trips",
+          "url": "https://www.hakotaxi.co.jp/shuttlebus/261001air_st.pdf",
+          "observedResponseSha256": "0f141930bce39ee467981cbdd0393cc125f19264f98c0f6de8c471fe21b6324c"
+        },
+        {
+          "sourceActionId": "bus:hakodate-teisan:current-five-call-airport-trips",
+          "url": "https://www.hakotaxi.co.jp/shuttlebus/img/busstop.jpg",
+          "observedResponseSha256": "5633ba801e1de4c22faceeb85bdd371719321e91d2c7d568ca1c477c0466b657"
+        }
+      ],
+      "locator": "Current airport bus-access page explicitly describes the bus terminal immediately outside the arrival-lobby exit. Independently viewed carrier photograph places Teisan stand 3 on the continuous public pedestrian frontage beside terminal doors, and October service table labels the same arrival-side stand. Bind only whole C28 airport to exact P11 Hakodate Taxi airport road-stop representative; no exact bay coordinates, times, accessible-path guarantee or restricted-airside shortcut.",
+      "components": [
+        {
+          "name": "函館空港",
+          "operator": "airport-facility:cf03_00018",
+          "line": "airport:cf03_00018",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00018",
+            "requirementId": "review:transport-node:2482a5e0-59df-5592-974f-4cbde73bbf05",
+            "expectedRequirementName": "函館",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport primary bus-access page explicitly locates the public bus terminal immediately beyond the arrival-lobby exit. Independently viewed carrier photo shows its terminal-front bus stop and continuous public pedestrian frontage; current carrier table explicitly identifies arrival-side stand 3 for this service. Bind the whole C28 airport to exact P11 carrier road-stop component, not to a precise bay coordinate or a different bus operator."
+          }
+        },
+        {
+          "name": "函館空港",
+          "operator": "函館タクシー（株）",
+          "line": "p11-stop:P11-22_01:bs14100",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs14100",
+            "recordSha256": "d788112d32c8df1790042b84dec59ef484b01bfb5ca39928ad067e8947ff7193",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Hakodate Taxi road-stop identity matches the current October airport service at this same named stop. Primary company page explicitly identifies Hakodate Taxi as operator of the Teisan-branded airport bus; do not substitute the colocated Hakodate Bus operator. P11 represents same-operator road-stop directions, not individual platform coordinates. Current directional passenger calls are independently established by the selected October 2026 table, never inferred from archival route labels.",
+            "currentOperatorEvidence": {
+              "recordOperator": "函館タクシー（株）",
+              "currentOperatorName": "函館タクシー株式会社",
+              "currentStopName": "函館空港",
+              "historicalRoute": "函館空港～函館駅前",
+              "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+              "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PUBLIC_ARRIVAL_EXIT_AND_CARRIER_TERMINAL_FRONTAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hakodate-jr-central-public-concourse-teisan-station-front",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-hokkaido:hakodate-current-concourse-airport-bus",
+      "sourceUrl": "https://www.jrhokkaido.co.jp/network/station/images/104.jpg",
+      "observedResponseSha256": "0bb2060aa02086f1df5caa009121be27b9dcdcd74afee87fbbc12b7019b0e4b4",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-hokkaido:hakodate-current-concourse-airport-bus",
+          "url": "https://www.jrhokkaido.co.jp/network/station/station.html?id=104",
+          "observedResponseSha256": "235bb295c769927cd29e580883bb49812e4240796c97cc0219d2bf381b058755"
+        },
+        {
+          "sourceActionId": "hub:jr-hokkaido:hakodate-current-concourse-airport-bus",
+          "url": "https://www.jrhokkaido.co.jp/network/station/csv/station.csv",
+          "observedResponseSha256": "b054d3f45391496c2c723899928e50cb3d3dd241efdcbd7bdaa2d900377355d7"
+        },
+        {
+          "sourceActionId": "bus:hakodate-teisan:current-five-call-airport-trips",
+          "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+          "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+        },
+        {
+          "sourceActionId": "bus:hakodate-teisan:current-five-call-airport-trips",
+          "url": "https://www.hakotaxi.co.jp/shuttlebus/261001air_st.pdf",
+          "observedResponseSha256": "0f141930bce39ee467981cbdd0393cc125f19264f98c0f6de8c471fe21b6324c"
+        },
+        {
+          "sourceActionId": "bus:hakodate-teisan:current-five-call-airport-trips",
+          "url": "https://www.hakotaxi.co.jp/shuttlebus/img/busstop_eki.jpg",
+          "observedResponseSha256": "17205dd7be6fd764694ea1cb0f706f49f4fee56b53eae791859c66d9b3ab12a7"
+        }
+      ],
+      "locator": "Current JR station-104 CSV dates the linked map January 2026. Individually viewed terminal-platform concourse and ticket gate lead directly to central public exit; current carrier station-front photo visibly shows that station building and public forecourt pedestrian access beside signed stand 11. October actual-trip table independently assigns JR station-front airport boarding to stand 11. Bind admitted exact JR Hakodate-line component to exact P11 Hakodate Taxi road-stop identity. No station-name merge, distance-only inference, platform coordinate or accessibility claim.",
+      "components": [
+        {
+          "name": "函館",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "JR函館駅前",
+          "operator": "函館タクシー（株）",
+          "line": "p11-stop:P11-22_01:bs14136",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_01:bs14136",
+            "recordSha256": "311f204daf35d1dd46eaca0ee70adf5839b0c6aeffd24e84b6470cd88d765213",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 Hakodate Taxi road-stop identity matches the current October airport service at this same named stop. Primary company page explicitly identifies Hakodate Taxi as operator of the Teisan-branded airport bus; do not substitute the colocated Hakodate Bus operator. P11 represents same-operator road-stop directions, not individual platform coordinates. Current directional passenger calls are independently established by the selected October 2026 table, never inferred from archival route labels.",
+            "currentOperatorEvidence": {
+              "recordOperator": "函館タクシー（株）",
+              "currentOperatorName": "函館タクシー株式会社",
+              "currentStopName": "JR函館駅前",
+              "historicalRoute": "函館空港～函館駅前",
+              "url": "https://www.hakotaxi.co.jp/shuttlebus/",
+              "observedResponseSha256": "f2620e77c51a972d7474aecc19b34819191a1cb5045f36ef07162834e56a2b7b"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_TICKET_GATE_PUBLIC_EXIT_AND_CARRIER_FORECOURT_EVIDENCE",
+      "hubScopeComplete": false
+    }
+  ]
+}

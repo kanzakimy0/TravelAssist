@@ -1,0 +1,258 @@
+{
+  "phaseId": "080-kumamoto-airport-licensed-trips-and-current-gateways",
+  "strategy": [
+    "LICENSED_CURRENT_BUS_GTFS_SELECTED_ACTUAL_TRIPS",
+    "PRESERVE_PROVIDER_PLATFORM_METADATA_WITHOUT_MAP_NUMBER_INFERENCE",
+    "CURRENT_RAIL_AND_AIRPORT_PUBLIC_PASSAGES"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "sankobus-airport.json",
+      "packageSha256": "a75e5f236c62276415ca2257b1b3d979a1b4fee5d9f22e52549448373f49e83a",
+      "sourceActionId": "bus:sankobus:licensed-current-airport-trips"
+    }
+  ],
+  "completedActionIds": [
+    "bus:sankobus:licensed-current-airport-trips",
+    "hub:kumamoto:current-jr-forecourt-gtfs-platforms",
+    "airport:kumamoto:current-limousine-terminal-passages"
+  ],
+  "facts": [
+    {
+      "factId": "kumamoto-jr-public-forecourt-to-gtfs-100339_7",
+      "kind": "transfer",
+      "sourceActionId": "hub:kumamoto:current-jr-forecourt-gtfs-platforms",
+      "sourceUrl": "https://www.sankobus.jp/busportal/wp-content/uploads/noriba_kuma-sta.pdf",
+      "observedResponseSha256": "0188d3b7a54df49ec065cb30b67732d6d07b0db12174a1ba14bf89eb697d2a11",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:kumamoto:current-jr-forecourt-gtfs-platforms",
+          "url": "https://www.sankobus.jp/bus/ap-limousine/rosen/",
+          "observedResponseSha256": "6d1f084a5ddb2325c2e17df705e7038603df2d4da9b2979fa4505aa222e146dd"
+        },
+        {
+          "sourceActionId": "hub:kumamoto:current-jr-forecourt-gtfs-platforms",
+          "url": "https://www.sankobus.jp/bus/ap-limousine/",
+          "observedResponseSha256": "bf3b21b7e1e97866030349a80357b3d55560e8772348c3f3a8872dead7501206"
+        }
+      ],
+      "locator": "The station diagram currently linked by Sanko identifies the JR Kumamoto Shirakawa entrance and continuous public forecourt paths serving bus platforms 7 and 3. The selected current GTFS airport trip starts at 100339_7 and its reverse terminates at 100339_3; platform 3 is preserved exactly, not replaced with the separate through-service alighting platform 8. This fact establishes the public passage, not a claim that all airport arrivals use platform 3. Bind each exact stop independently to the JR conventional component already linked to Shinkansen. No walking time or accessibility is inferred.",
+      "components": [
+        {
+          "name": "熊本",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "熊本駅前",
+          "operator": "九州産交バス",
+          "line": "gtfs:sankobus-airport:route:721_721070_1_20261001",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:sankobus-airport",
+            "stopId": "100339_7",
+            "sourceArchiveSha256": "78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c",
+            "recordSha256": "2796486263bbd4613c41f558570aa86a3b4cfa73b4272b93376eb1bea9447ca7",
+            "expectedPlatformCode": "7",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The station diagram currently linked by Sanko identifies the JR Kumamoto Shirakawa entrance and continuous public forecourt paths serving bus platforms 7 and 3. The selected current GTFS airport trip starts at 100339_7 and its reverse terminates at 100339_3; platform 3 is preserved exactly, not replaced with the separate through-service alighting platform 8. This fact establishes the public passage, not a claim that all airport arrivals use platform 3. Bind each exact stop independently to the JR conventional component already linked to Shinkansen. No walking time or accessibility is inferred."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_FORECOURT_AND_EXACT_GTFS_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kumamoto-jr-public-forecourt-to-gtfs-100339_3",
+      "kind": "transfer",
+      "sourceActionId": "hub:kumamoto:current-jr-forecourt-gtfs-platforms",
+      "sourceUrl": "https://www.sankobus.jp/busportal/wp-content/uploads/noriba_kuma-sta.pdf",
+      "observedResponseSha256": "0188d3b7a54df49ec065cb30b67732d6d07b0db12174a1ba14bf89eb697d2a11",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:kumamoto:current-jr-forecourt-gtfs-platforms",
+          "url": "https://www.sankobus.jp/bus/ap-limousine/rosen/",
+          "observedResponseSha256": "6d1f084a5ddb2325c2e17df705e7038603df2d4da9b2979fa4505aa222e146dd"
+        },
+        {
+          "sourceActionId": "hub:kumamoto:current-jr-forecourt-gtfs-platforms",
+          "url": "https://www.sankobus.jp/bus/ap-limousine/",
+          "observedResponseSha256": "bf3b21b7e1e97866030349a80357b3d55560e8772348c3f3a8872dead7501206"
+        }
+      ],
+      "locator": "The station diagram currently linked by Sanko identifies the JR Kumamoto Shirakawa entrance and continuous public forecourt paths serving bus platforms 7 and 3. The selected current GTFS airport trip starts at 100339_7 and its reverse terminates at 100339_3; platform 3 is preserved exactly, not replaced with the separate through-service alighting platform 8. This fact establishes the public passage, not a claim that all airport arrivals use platform 3. Bind each exact stop independently to the JR conventional component already linked to Shinkansen. No walking time or accessibility is inferred.",
+      "components": [
+        {
+          "name": "熊本",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "熊本駅前",
+          "operator": "九州産交バス",
+          "line": "gtfs:sankobus-airport:route:721_721071_1_20261001",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:sankobus-airport",
+            "stopId": "100339_3",
+            "sourceArchiveSha256": "78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c",
+            "recordSha256": "f3973f6c3bc8fb35662b20a7cf196092e2e9b59d4bae165c94925fbe2124c6cb",
+            "expectedPlatformCode": "3",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The station diagram currently linked by Sanko identifies the JR Kumamoto Shirakawa entrance and continuous public forecourt paths serving bus platforms 7 and 3. The selected current GTFS airport trip starts at 100339_7 and its reverse terminates at 100339_3; platform 3 is preserved exactly, not replaced with the separate through-service alighting platform 8. This fact establishes the public passage, not a claim that all airport arrivals use platform 3. Bind each exact stop independently to the JR conventional component already linked to Shinkansen. No walking time or accessibility is inferred."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_FORECOURT_AND_EXACT_GTFS_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kumamoto-airport-public-terminal-to-gtfs-102112_1",
+      "kind": "transfer",
+      "sourceActionId": "airport:kumamoto:current-limousine-terminal-passages",
+      "sourceUrl": "https://www.sankobus.jp/busportal/wp-content/uploads/noriba_kuma-ap.pdf",
+      "observedResponseSha256": "51beff9ab210b0a3ef88fca678bdc74aeaae024972bec296a9927712b81fbb3e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kumamoto:current-limousine-terminal-passages",
+          "url": "https://www.kumamoto-airport.co.jp/access/",
+          "observedResponseSha256": "997595d06268673d5c95f1725bfb37552c2472e2150e41d56f84e5ae1c1ea03d"
+        },
+        {
+          "sourceActionId": "airport:kumamoto:current-limousine-terminal-passages",
+          "url": "https://www.sankobus.jp/bus/ap-limousine/rosen/",
+          "observedResponseSha256": "6d1f084a5ddb2325c2e17df705e7038603df2d4da9b2979fa4505aa222e146dd"
+        }
+      ],
+      "locator": "The operator airport diagram currently linked from the operating limousine route explicitly places the limousine alighting area and departure platform 4 along the passenger-terminal public frontage. The airport current access page confirms this service at platform 4. Bind the selected current licensed trip arrival endpoint 102112_1 and departure endpoint 102112_4 separately to the independently identified whole-airport C28 facility. Raw GTFS platform_code 1 is retained as provider metadata; it is not asserted to be public map bay 1 (which the diagram labels for disabled passengers), and the raw coordinate is not treated as a terminal entrance or precise alighting curb. The link is supported by the exact operator/service airport endpoint and explicit terminal public passage, not coordinate proximity or ID suffix. Preserve all pickup/drop-off restrictions.",
+      "components": [
+        {
+          "name": "熊本空港",
+          "operator": "airport-facility:cf03_00049",
+          "line": "airport:cf03_00049",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00049",
+            "requirementId": "review:transport-node:4a6c26c4-92b7-552b-b523-c36de73a274c",
+            "expectedRequirementName": "熊本",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "The operator airport diagram currently linked from the operating limousine route explicitly places the limousine alighting area and departure platform 4 along the passenger-terminal public frontage. The airport current access page confirms this service at platform 4. Bind the selected current licensed trip arrival endpoint 102112_1 and departure endpoint 102112_4 separately to the independently identified whole-airport C28 facility. Raw GTFS platform_code 1 is retained as provider metadata; it is not asserted to be public map bay 1 (which the diagram labels for disabled passengers), and the raw coordinate is not treated as a terminal entrance or precise alighting curb. The link is supported by the exact operator/service airport endpoint and explicit terminal public passage, not coordinate proximity or ID suffix. Preserve all pickup/drop-off restrictions."
+          }
+        },
+        {
+          "name": "阿蘇くまもと空港",
+          "operator": "九州産交バス",
+          "line": "gtfs:sankobus-airport:route:721_721070_1_20261001",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:sankobus-airport",
+            "stopId": "102112_1",
+            "sourceArchiveSha256": "78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c",
+            "recordSha256": "3b81ccd51bb81e52c5de8fd5343b8785333233df6f53c0d82087b3d91140fcba",
+            "expectedPlatformCode": "1",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The operator airport diagram currently linked from the operating limousine route explicitly places the limousine alighting area and departure platform 4 along the passenger-terminal public frontage. The airport current access page confirms this service at platform 4. Bind the selected current licensed trip arrival endpoint 102112_1 and departure endpoint 102112_4 separately to the independently identified whole-airport C28 facility. Raw GTFS platform_code 1 is retained as provider metadata; it is not asserted to be public map bay 1 (which the diagram labels for disabled passengers), and the raw coordinate is not treated as a terminal entrance or precise alighting curb. The link is supported by the exact operator/service airport endpoint and explicit terminal public passage, not coordinate proximity or ID suffix. Preserve all pickup/drop-off restrictions."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_AIRPORT_ENDPOINT_AND_PUBLIC_TERMINAL_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kumamoto-airport-public-terminal-to-gtfs-102112_4",
+      "kind": "transfer",
+      "sourceActionId": "airport:kumamoto:current-limousine-terminal-passages",
+      "sourceUrl": "https://www.sankobus.jp/busportal/wp-content/uploads/noriba_kuma-ap.pdf",
+      "observedResponseSha256": "51beff9ab210b0a3ef88fca678bdc74aeaae024972bec296a9927712b81fbb3e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kumamoto:current-limousine-terminal-passages",
+          "url": "https://www.kumamoto-airport.co.jp/access/",
+          "observedResponseSha256": "997595d06268673d5c95f1725bfb37552c2472e2150e41d56f84e5ae1c1ea03d"
+        },
+        {
+          "sourceActionId": "airport:kumamoto:current-limousine-terminal-passages",
+          "url": "https://www.sankobus.jp/bus/ap-limousine/rosen/",
+          "observedResponseSha256": "6d1f084a5ddb2325c2e17df705e7038603df2d4da9b2979fa4505aa222e146dd"
+        }
+      ],
+      "locator": "The operator airport diagram currently linked from the operating limousine route explicitly places the limousine alighting area and departure platform 4 along the passenger-terminal public frontage. The airport current access page confirms this service at platform 4. Bind the selected current licensed trip arrival endpoint 102112_1 and departure endpoint 102112_4 separately to the independently identified whole-airport C28 facility. Raw GTFS platform_code 1 is retained as provider metadata; it is not asserted to be public map bay 1 (which the diagram labels for disabled passengers), and the raw coordinate is not treated as a terminal entrance or precise alighting curb. The link is supported by the exact operator/service airport endpoint and explicit terminal public passage, not coordinate proximity or ID suffix. Preserve all pickup/drop-off restrictions.",
+      "components": [
+        {
+          "name": "熊本空港",
+          "operator": "airport-facility:cf03_00049",
+          "line": "airport:cf03_00049",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00049",
+            "requirementId": "review:transport-node:4a6c26c4-92b7-552b-b523-c36de73a274c",
+            "expectedRequirementName": "熊本",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "The operator airport diagram currently linked from the operating limousine route explicitly places the limousine alighting area and departure platform 4 along the passenger-terminal public frontage. The airport current access page confirms this service at platform 4. Bind the selected current licensed trip arrival endpoint 102112_1 and departure endpoint 102112_4 separately to the independently identified whole-airport C28 facility. Raw GTFS platform_code 1 is retained as provider metadata; it is not asserted to be public map bay 1 (which the diagram labels for disabled passengers), and the raw coordinate is not treated as a terminal entrance or precise alighting curb. The link is supported by the exact operator/service airport endpoint and explicit terminal public passage, not coordinate proximity or ID suffix. Preserve all pickup/drop-off restrictions."
+          }
+        },
+        {
+          "name": "阿蘇くまもと空港",
+          "operator": "九州産交バス",
+          "line": "gtfs:sankobus-airport:route:721_721071_1_20261001",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:sankobus-airport",
+            "stopId": "102112_4",
+            "sourceArchiveSha256": "78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c",
+            "recordSha256": "4570008023fd4927ded04163335451bbfae77b9977787af34c8f515cac4d1066",
+            "expectedPlatformCode": "4",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The operator airport diagram currently linked from the operating limousine route explicitly places the limousine alighting area and departure platform 4 along the passenger-terminal public frontage. The airport current access page confirms this service at platform 4. Bind the selected current licensed trip arrival endpoint 102112_1 and departure endpoint 102112_4 separately to the independently identified whole-airport C28 facility. Raw GTFS platform_code 1 is retained as provider metadata; it is not asserted to be public map bay 1 (which the diagram labels for disabled passengers), and the raw coordinate is not treated as a terminal entrance or precise alighting curb. The link is supported by the exact operator/service airport endpoint and explicit terminal public passage, not coordinate proximity or ID suffix. Preserve all pickup/drop-off restrictions."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_AIRPORT_ENDPOINT_AND_PUBLIC_TERMINAL_PASSAGE",
+      "hubScopeComplete": false
+    }
+  ]
+}

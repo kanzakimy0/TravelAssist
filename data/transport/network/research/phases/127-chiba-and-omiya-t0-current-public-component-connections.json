@@ -1,0 +1,255 @@
+{
+  "phaseId": "127-chiba-and-omiya-t0-current-public-component-connections",
+  "strategy": [
+    "T0_MULTI_OPERATOR_COMPONENT_PRIORITY",
+    "BILATERAL_CURRENT_PUBLIC_CONCOURSE_REVIEW",
+    "NO_RETAIL_OR_LIMITED_GATE_SHORTCUT"
+  ],
+  "completedActionIds": [
+    "hub:jr-east:chiba-and-omiya-current-public-concourses",
+    "hub:chiba-monorail:current-jr-connecting-passage",
+    "hub:new-shuttle:omiya-current-public-jr-tobu-connections",
+    "hub:keisei:chiba-current-west-gate-jr-approach"
+  ],
+  "facts": [
+    {
+      "factId": "chiba-jr-monorail-current-reviewed-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:chiba-monorail:current-jr-connecting-passage",
+      "sourceUrl": "https://chiba-monorail.co.jp/img/kounaizu2021/003_chiba-station.png",
+      "observedResponseSha256": "46e0f6475fe74dc3ac961d8e4f697f8dabd7a62a7ce84167468ed8c4f9467821",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:chiba-monorail:current-jr-connecting-passage",
+          "url": "https://chiba-monorail.co.jp/index.php/info-timetable/station-info/chiba-station/",
+          "observedResponseSha256": "3cd7b506cfd720a5fe9bc59406f40317e6fb29ae1b373cfc3fe90934aa3a5fc3"
+        },
+        {
+          "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/989.html",
+          "observedResponseSha256": "3e9d3011461a9343a1f5537661e13b119e516a0433ebc50364175e96c1ddf882"
+        },
+        {
+          "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/0989_2f.png",
+          "observedResponseSha256": "bce20bb3645094b80f6aba3386f90af01f2d930cf6271dd5004b3da156080c24"
+        },
+        {
+          "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/0989_3f.png",
+          "observedResponseSha256": "8de19399cfd3e4541a67865124f06222cc3f5dcc46b48c85801c99e623050062"
+        }
+      ],
+      "locator": "Current-linked monorail diagram shows both platform islands joined to the central gate and public connecting passage explicitly labeled JR Chiba. July 2025 JR floors show Sobu platform stairs to 3F central gate and matching public monorail/Keisei connecting stairs. Preserve separate railway components; no inference of train service or common paid area. All cited map images individually viewed and fingerprints matched. Retain only the coarse bidirectional passenger relation without walking-time, fare, all-hours or accessible-route claims.",
+      "components": [
+        {
+          "name": "千葉",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "千葉",
+          "operator": "千葉都市モノレール",
+          "line": "1号線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_PUBLIC_PASSAGES_AND_EXACT_LICENSED_IDENTITIES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "chiba-jr-keisei-current-reviewed-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:keisei:chiba-current-west-gate-jr-approach",
+      "sourceUrl": "https://www.keisei.co.jp/keisei/tetudou/stationmap/pdf/jp/435.pdf",
+      "observedResponseSha256": "62763268c95ee38e98e75e566adbd67236a5b9ae71287608184d2bc2f7fb09ed",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:keisei:chiba-current-west-gate-jr-approach",
+          "url": "https://www.keisei.co.jp/keisei/tetudou/accessj/keisei-chiba.php",
+          "observedResponseSha256": "f0a90c6a6550352768c19e6e1ea7369001401e571549324480bdeed29cde4d55"
+        },
+        {
+          "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/989.html",
+          "observedResponseSha256": "3e9d3011461a9343a1f5537661e13b119e516a0433ebc50364175e96c1ddf882"
+        },
+        {
+          "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/0989_1f.png",
+          "observedResponseSha256": "28b38af86b9668eb965523ebfa560891e7e7be7590fd371f3cd078f2e5dbb8e4"
+        },
+        {
+          "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/0989_2f.png",
+          "observedResponseSha256": "bce20bb3645094b80f6aba3386f90af01f2d930cf6271dd5004b3da156080c24"
+        },
+        {
+          "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/0989_3f.png",
+          "observedResponseSha256": "8de19399cfd3e4541a67865124f06222cc3f5dcc46b48c85801c99e623050062"
+        }
+      ],
+      "locator": "April 2025 current Keisei diagram shows both platform sides joining 1F west gate explicitly directed to JR Chiba. July 2025 JR diagrams show Sobu stairs to 3F concourse, public south route and 1F south exit explicitly directed to Keisei Chiba. Do not use the limited-hour Keisei monorail/east gates or retail interiors. All cited map images individually viewed and fingerprints matched. Retain only the coarse bidirectional passenger relation without walking-time, fare, all-hours or accessible-route claims.",
+      "components": [
+        {
+          "name": "千葉",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "京成千葉",
+          "operator": "京成電鉄",
+          "line": "千葉線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_PUBLIC_PASSAGES_AND_EXACT_LICENSED_IDENTITIES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "omiya-jr-newshuttle-current-reviewed-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:new-shuttle:omiya-current-public-jr-tobu-connections",
+      "sourceUrl": "https://www.new-shuttle.jp/station/files/images/bfa6ef05a3626fc18fd054b4972f699193a5d616.png",
+      "observedResponseSha256": "e491a2c44fa111ab789caf54c4e682b6d7b9953cf6582be72050bac20c0bb08f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:new-shuttle:omiya-current-public-jr-tobu-connections",
+          "url": "https://www.new-shuttle.jp/station/omiya/",
+          "observedResponseSha256": "b5cbe77eb19cdfcdbe1bfb17993cc84936c86c461f431bb7b7dd6333c798ad0e"
+        },
+        {
+          "sourceActionId": "hub:new-shuttle:omiya-current-public-jr-tobu-connections",
+          "url": "https://www.new-shuttle.jp/station/",
+          "observedResponseSha256": "b8b6e4b14c6d4330a1fa539e03506f9348698f8c8d58b9a7fa9a531feb9cc172"
+        },
+        {
+          "sourceActionId": "hub:new-shuttle:omiya-current-public-jr-tobu-connections",
+          "url": "https://www.new-shuttle.jp/station/files/images/p_transfermap_omiya.png",
+          "observedResponseSha256": "03d5a3d95ca7f6ceaf487a1bdf8f84ae31bbd24492dc68b97135378f029fa8fb"
+        },
+        {
+          "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/350.html",
+          "observedResponseSha256": "c2d7980bd8b9818891872837776b98414c00991375a7b585f496c438855d1b99"
+        },
+        {
+          "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/0350_1f.png",
+          "observedResponseSha256": "75cbf2203891ae5bf91cafb937675fe0d79cf4d5af43f65044301456d62f3ce3"
+        },
+        {
+          "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/0350_2f.png",
+          "observedResponseSha256": "54f84417b4af2cec9174dddc9662021de3527ac9044de4ecd9b033b508d522e1"
+        }
+      ],
+      "locator": "Current New Shuttle station diagram explicitly joins its platform to gate and JR Omiya exit. Operator current-linked whole-station interchange diagram connects that gate to the JR public east-west passage; February 2025 JR 2F diagram independently labels the northwestern public Tetsuhaku-dori continuation to New Shuttle and joins Tohoku platforms via central gates. No route through retail-only gates. All cited map images individually viewed and fingerprints matched. Retain only the coarse bidirectional passenger relation without walking-time, fare, all-hours or accessible-route claims.",
+      "components": [
+        {
+          "name": "大宮",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大宮",
+          "operator": "埼玉新都市交通",
+          "line": "伊奈線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_PUBLIC_PASSAGES_AND_EXACT_LICENSED_IDENTITIES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "omiya-jr-tobu-current-reviewed-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/0350_2f.png",
+      "observedResponseSha256": "54f84417b4af2cec9174dddc9662021de3527ac9044de4ecd9b033b508d522e1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/350.html",
+          "observedResponseSha256": "c2d7980bd8b9818891872837776b98414c00991375a7b585f496c438855d1b99"
+        },
+        {
+          "sourceActionId": "hub:jr-east:chiba-and-omiya-current-public-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/0350_1f.png",
+          "observedResponseSha256": "75cbf2203891ae5bf91cafb937675fe0d79cf4d5af43f65044301456d62f3ce3"
+        },
+        {
+          "sourceActionId": "hub:new-shuttle:omiya-current-public-jr-tobu-connections",
+          "url": "https://www.new-shuttle.jp/station/",
+          "observedResponseSha256": "b8b6e4b14c6d4330a1fa539e03506f9348698f8c8d58b9a7fa9a531feb9cc172"
+        },
+        {
+          "sourceActionId": "hub:new-shuttle:omiya-current-public-jr-tobu-connections",
+          "url": "https://www.new-shuttle.jp/station/files/images/p_transfermap_omiya.png",
+          "observedResponseSha256": "03d5a3d95ca7f6ceaf487a1bdf8f84ae31bbd24492dc68b97135378f029fa8fb"
+        }
+      ],
+      "locator": "February 2025 current-linked JR 2F diagram explicitly joins the central public east-west concourse to the Tobu connecting passage at its eastern/northern side; Tohoku platforms join the central gates by stairs. Independently current-linked New Shuttle interchange diagram shows the same outside-ticket route ending at the Tobu gate. Exact Omiya/Noda operator identity comes from licensed S12; exclude same-named Hankyu Omiya and any coordinate-only bridge. All cited map images individually viewed and fingerprints matched. Retain only the coarse bidirectional passenger relation without walking-time, fare, all-hours or accessible-route claims.",
+      "components": [
+        {
+          "name": "大宮",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大宮",
+          "operator": "東武鉄道",
+          "line": "野田線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_PUBLIC_PASSAGES_AND_EXACT_LICENSED_IDENTITIES",
+      "hubScopeComplete": false
+    }
+  ]
+}

@@ -1,0 +1,607 @@
+{
+  "phaseId": "171-nagoya-airfield-aoi-asymmetric-calls-and-public-national-chain",
+  "strategy": [
+    "ORIGINAL_AIRPORT",
+    "REUSED_CURRENT_SOURCE_CACHE",
+    "EXACT_NATIVE_P11_IDENTITIES",
+    "EXPLICIT_SAKAE_ALIGHT_ONLY_WITH_PUBLIC_METRO_EXIT",
+    "EXISTING_NAGOYA_NATIONAL_ANCHOR"
+  ],
+  "completedActionIds": [
+    "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+    "public:nagoya-airport:terminal-lobby-to-aoi-bay2",
+    "public:midland-square:nagoya-jr-public-crossings-aoi-stop",
+    "public:nagoya-metro:sakae-exit10-public-square-aoi-alighting"
+  ],
+  "facts": [
+    {
+      "factId": "nagoya-airfield-aoi-nagoya-bound",
+      "kind": "service",
+      "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+      "sourceUrl": "https://aoi-komaki.jp/wp-content/uploads/2026/03/jikoku20260421.pdf",
+      "observedResponseSha256": "9d6f6660a8b40022f4041c555e92ec245ffe262db243d7ec65ad8eb8d7181d27",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/",
+          "observedResponseSha256": "d4a6b6f369d4e6491c2cdbfa284abee890158bbb2ed78d220c1955c9067d19f5"
+        },
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/archives/107",
+          "observedResponseSha256": "7f132cfe77d5419b508f6b23ed307baae2ab0d366c86c70d6fdf7421d1d4b4a5"
+        },
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/archives/112",
+          "observedResponseSha256": "8b3688d84abb94e8dede0006a10ecb6d5ede51efffe2316bd13448690ad7ca76"
+        },
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/wp-content/uploads/2026/03/jikoku20260421.pdf",
+          "observedResponseSha256": "9d6f6660a8b40022f4041c555e92ec245ffe262db243d7ec65ad8eb8d7181d27"
+        },
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/archives/127",
+          "observedResponseSha256": "df8445846b67e2852a6ece7e2f1e78f1bbbfef50d7327922767548570243ccff"
+        },
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/archives/93",
+          "observedResponseSha256": "2778cb98c8038bf456af2f6720cc7ea221a734d20f111d936a52a9b7fa6516c9"
+        }
+      ],
+      "callingStations": [
+        "名古屋空港",
+        "あいち航空ミュージアム（エアポートウォーク北）",
+        "三菱重工南",
+        "豊山幸田",
+        "名古屋栄",
+        "名古屋駅前"
+      ],
+      "callingComponents": [
+        {
+          "name": "名古屋空港",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs1296",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs1296",
+            "recordSha256": "ac42127c7fa9d928e11cc617746d89ed4247188061547ca5cc28dde02f31382c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "名古屋空港",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/archives/107",
+              "observedResponseSha256": "7f132cfe77d5419b508f6b23ed307baae2ab0d366c86c70d6fdf7421d1d4b4a5"
+            }
+          }
+        },
+        {
+          "name": "あいち航空ミュージアム（エアポートウォーク北）",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs1417",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs1417",
+            "recordSha256": "185f9c33d38fdaf7d0a6f6d9923c3ab317a7fc22e47ca42e1b75500a9f29696e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "あいち航空ミュージアム（エアポートウォーク北）",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/archives/112",
+              "observedResponseSha256": "8b3688d84abb94e8dede0006a10ecb6d5ede51efffe2316bd13448690ad7ca76"
+            }
+          }
+        },
+        {
+          "name": "三菱重工南",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs1351",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs1351",
+            "recordSha256": "f0c741378e594539254f56f4efca4dbe4591ff91038ebd8aa93535d95f098a64",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "三菱重工南",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/wp-content/uploads/2026/03/jikoku20260421.pdf",
+              "observedResponseSha256": "9d6f6660a8b40022f4041c555e92ec245ffe262db243d7ec65ad8eb8d7181d27"
+            }
+          }
+        },
+        {
+          "name": "豊山幸田",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs1415",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs1415",
+            "recordSha256": "8fb1d54bc1ec0ef32e0308c2f24f08211ae50e195024599ca4082f326e02148c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "豊山幸田",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/wp-content/uploads/2026/03/jikoku20260421.pdf",
+              "observedResponseSha256": "9d6f6660a8b40022f4041c555e92ec245ffe262db243d7ec65ad8eb8d7181d27"
+            }
+          }
+        },
+        {
+          "name": "名古屋栄",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs3046",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs3046",
+            "recordSha256": "b158ee957279de6a52a77fc692d461e172d17957aa36d4cc037bcef043cd824a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "名古屋栄",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/archives/127",
+              "observedResponseSha256": "df8445846b67e2852a6ece7e2f1e78f1bbbfef50d7327922767548570243ccff"
+            }
+          }
+        },
+        {
+          "name": "名古屋駅前",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs3053",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs3053",
+            "recordSha256": "2056e64b288078b9bc9c4beaa1c55713cfb8a62c36c2dccb6bedbe87d767a457",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "名古屋駅前",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/archives/93",
+              "observedResponseSha256": "2778cb98c8038bf456af2f6720cc7ea221a734d20f111d936a52a9b7fa6516c9"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "名古屋駅前・県営名古屋空港線",
+      "operator": "あおい交通株式会社",
+      "direction": "nagoya-bound",
+      "serviceClass": "空港直行バス",
+      "reviewMethod": "INDEPENDENT_ACTUAL_CURRENT_ASYMMETRIC_ROWS_EXPLICIT_SAKAE_ALIGHT_ONLY",
+      "serviceState": "active",
+      "serviceStateScope": "APRIL21_2026_REVISION_CURRENT_FOR_FROZEN_OCTOBER2_NOT_REALTIME",
+      "locator": "OfficialPDFpage1 firstactual row separately eachdirection. Sixcityboundcalls; fourcallairportboundcontiguoussection excludeslatermuseumafterairportchainendpoint. Sourceownfullstopguidesresolveabbreviatedtablelabels. Sakaeonlyin citybound andexplicit降車専用,pickup1; noreverse/pickupinvented. No clocks, fare, capacityguarantee, frequency orreal-timeclaim."
+    },
+    {
+      "factId": "nagoya-airfield-aoi-airport-bound",
+      "kind": "service",
+      "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+      "sourceUrl": "https://aoi-komaki.jp/wp-content/uploads/2026/03/jikoku20260421.pdf",
+      "observedResponseSha256": "9d6f6660a8b40022f4041c555e92ec245ffe262db243d7ec65ad8eb8d7181d27",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/",
+          "observedResponseSha256": "d4a6b6f369d4e6491c2cdbfa284abee890158bbb2ed78d220c1955c9067d19f5"
+        },
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/archives/93",
+          "observedResponseSha256": "2778cb98c8038bf456af2f6720cc7ea221a734d20f111d936a52a9b7fa6516c9"
+        },
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/wp-content/uploads/2026/03/jikoku20260421.pdf",
+          "observedResponseSha256": "9d6f6660a8b40022f4041c555e92ec245ffe262db243d7ec65ad8eb8d7181d27"
+        },
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/archives/107",
+          "observedResponseSha256": "7f132cfe77d5419b508f6b23ed307baae2ab0d366c86c70d6fdf7421d1d4b4a5"
+        }
+      ],
+      "callingStations": [
+        "名古屋駅前",
+        "豊山幸田",
+        "三菱重工南",
+        "名古屋空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "名古屋駅前",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs3053",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs3053",
+            "recordSha256": "2056e64b288078b9bc9c4beaa1c55713cfb8a62c36c2dccb6bedbe87d767a457",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "名古屋駅前",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/archives/93",
+              "observedResponseSha256": "2778cb98c8038bf456af2f6720cc7ea221a734d20f111d936a52a9b7fa6516c9"
+            }
+          }
+        },
+        {
+          "name": "豊山幸田",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs1415",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs1415",
+            "recordSha256": "8fb1d54bc1ec0ef32e0308c2f24f08211ae50e195024599ca4082f326e02148c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "豊山幸田",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/wp-content/uploads/2026/03/jikoku20260421.pdf",
+              "observedResponseSha256": "9d6f6660a8b40022f4041c555e92ec245ffe262db243d7ec65ad8eb8d7181d27"
+            }
+          }
+        },
+        {
+          "name": "三菱重工南",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs1351",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs1351",
+            "recordSha256": "f0c741378e594539254f56f4efca4dbe4591ff91038ebd8aa93535d95f098a64",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "三菱重工南",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/wp-content/uploads/2026/03/jikoku20260421.pdf",
+              "observedResponseSha256": "9d6f6660a8b40022f4041c555e92ec245ffe262db243d7ec65ad8eb8d7181d27"
+            }
+          }
+        },
+        {
+          "name": "名古屋空港",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs1296",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs1296",
+            "recordSha256": "ac42127c7fa9d928e11cc617746d89ed4247188061547ca5cc28dde02f31382c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "名古屋空港",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/archives/107",
+              "observedResponseSha256": "7f132cfe77d5419b508f6b23ed307baae2ab0d366c86c70d6fdf7421d1d4b4a5"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "名古屋駅前・県営名古屋空港線",
+      "operator": "あおい交通株式会社",
+      "direction": "airport-bound",
+      "serviceClass": "空港直行バス",
+      "reviewMethod": "INDEPENDENT_ACTUAL_CURRENT_ASYMMETRIC_ROWS_EXPLICIT_SAKAE_ALIGHT_ONLY",
+      "serviceState": "active",
+      "serviceStateScope": "APRIL21_2026_REVISION_CURRENT_FOR_FROZEN_OCTOBER2_NOT_REALTIME",
+      "locator": "OfficialPDFpage1 firstactual row separately eachdirection. Sixcityboundcalls; fourcallairportboundcontiguoussection excludeslatermuseumafterairportchainendpoint. Sourceownfullstopguidesresolveabbreviatedtablelabels. Sakaeonlyin citybound andexplicit降車専用,pickup1; noreverse/pickupinvented. No clocks, fare, capacityguarantee, frequency orreal-timeclaim."
+    },
+    {
+      "factId": "nagoya-airfield-public-terminal-exit-aoi-bay2",
+      "kind": "transfer",
+      "sourceActionId": "public:nagoya-airport:terminal-lobby-to-aoi-bay2",
+      "sourceUrl": "https://nagoya-airport.jp/facilities/index.html",
+      "observedResponseSha256": "6987948b84f9a70af35f366b8c4c19c3e76c094adce4f0cd5c4f132720020273",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "public:nagoya-airport:terminal-lobby-to-aoi-bay2",
+          "url": "https://nagoya-airport.jp/files/floormap.png",
+          "observedResponseSha256": "67809e7867f763e434466ee4a5566a256457b254f255658f2f71a369895a7e12"
+        },
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/archives/107",
+          "observedResponseSha256": "7f132cfe77d5419b508f6b23ed307baae2ab0d366c86c70d6fdf7421d1d4b4a5"
+        },
+        {
+          "sourceActionId": "airport:nagoya:prefectural-formal-airfield-name-review",
+          "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+          "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+        }
+      ],
+      "components": [
+        {
+          "name": "名古屋飛行場",
+          "operator": "airport-facility:cf03_00036",
+          "line": "airport:cf03_00036",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00036",
+            "requirementId": "review:official-airport:名古屋",
+            "expectedRequirementName": "名古屋",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "名古屋飛行場",
+              "requirementName": "名古屋",
+              "publicName": "名古屋(小牧)空港",
+              "url": "https://www.pref.aichi.jp/soshiki/kouku/0000087433.html",
+              "observedResponseSha256": "4fc27ecea2c90d6f43d8d79bcfcc953cae88e79fa93813f90089ba123601f859"
+            },
+            "currentPassengerAccessReview": "Current prefectural airport ordinance index explicitly identifies Nagoya airfield and current passenger terminal; independently reviewed FDA Komaki airport guide confirms the same operating passenger facility. Exact C28 airfield identity remains distinct from Chubu International Airport; no broad alias or surface edge."
+          }
+        },
+        {
+          "name": "名古屋空港",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs1296",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs1296",
+            "recordSha256": "ac42127c7fa9d928e11cc617746d89ed4247188061547ca5cc28dde02f31382c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "名古屋空港",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/archives/107",
+              "observedResponseSha256": "7f132cfe77d5419b508f6b23ed307baae2ab0d366c86c70d6fdf7421d1d4b4a5"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_PUBLIC_LOBBY_DOORS_FRONTAGE_AND_EXPLICIT_OPERATOR_BAY",
+      "hubScopeComplete": false,
+      "locator": "Visuallyreviewednative1Ffloorplan publiclobbydoors tofrontagebays; aoiownbay2guide. Publiclandsideonlywithinpublishedterminalopening6-22, firstreviewedrunswithinopening; no airside, unreviewednightaccess, precisegeometry orproximitywalk."
+    },
+    {
+      "factId": "nagoya-midland-aoi-stop-jr-sakuradori-public-crossings",
+      "kind": "transfer",
+      "sourceActionId": "public:midland-square:nagoya-jr-public-crossings-aoi-stop",
+      "sourceUrl": "https://www.midland-square.com/access/",
+      "observedResponseSha256": "eede41ef209d8ce489aea2fa5fa5fa69f77c577a44ee4b68fb9047de84a6d1cb",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "public:midland-square:nagoya-jr-public-crossings-aoi-stop",
+          "url": "https://www.midland-square.com/images/access/map-image01.png?260310",
+          "observedResponseSha256": "2b88a2bfb8159ede08a80ff4b7b9c8f65eca4f6199846ae23f6fc92dd526ab0e"
+        },
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/archives/93",
+          "observedResponseSha256": "2778cb98c8038bf456af2f6720cc7ea221a734d20f111d936a52a9b7fa6516c9"
+        }
+      ],
+      "components": [
+        {
+          "name": "名古屋駅前",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs3053",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs3053",
+            "recordSha256": "2056e64b288078b9bc9c4beaa1c55713cfb8a62c36c2dccb6bedbe87d767a457",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "名古屋駅前",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/archives/93",
+              "observedResponseSha256": "2778cb98c8038bf456af2f6720cc7ea221a734d20f111d936a52a9b7fa6516c9"
+            }
+          }
+        },
+        {
+          "name": "名古屋",
+          "operator": "東海旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "FACILITY_EXPLICIT_JR_ACCESS_AND_SURFACE_CROSSWALK_MAP_WITH_AOI_STOP",
+      "hubScopeComplete": false,
+      "locator": "Ownfacilityguide namesJR桜通口 walkingaccess andaoiMidlandfrontbusstop; ownmapB1aoistopandpubliccrosswalks acrossstationforecourtstreet. Surfacestreetroute, notassumedindoorcommercialopening. No5minute/crossingdistance/accessibilitypromise orfreepaidareamerge."
+    },
+    {
+      "factId": "nagoya-sakae-aoi-alighting-stop-public-fountain-square-metro",
+      "kind": "transfer",
+      "sourceActionId": "public:nagoya-metro:sakae-exit10-public-square-aoi-alighting",
+      "sourceUrl": "https://map.kotsu.city.nagoya.jp/rp/reader/trp0000713.htm",
+      "observedResponseSha256": "f8fb12d6ac60996c1eeca2f92fb3b3356f85577f6ee3c504b89ab07a662742fe",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/archives/127",
+          "observedResponseSha256": "df8445846b67e2852a6ece7e2f1e78f1bbbfef50d7327922767548570243ccff"
+        },
+        {
+          "sourceActionId": "bus:aoi:nagoya-airfield-actual-asymmetric-local-calls",
+          "url": "https://aoi-komaki.jp/",
+          "observedResponseSha256": "d4a6b6f369d4e6491c2cdbfa284abee890158bbb2ed78d220c1955c9067d19f5"
+        }
+      ],
+      "components": [
+        {
+          "name": "名古屋栄",
+          "operator": "あおい交通（株）",
+          "line": "p11-stop:P11-22_23:bs3046",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_23:bs3046",
+            "recordSha256": "b158ee957279de6a52a77fc692d461e172d17957aa36d4cc037bcef043cd824a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exactsamecurrentoperatorstopguide/nativeP11 label, tableabbreviation interpretedusingownstopguide. P11same-road/name/operatorcombineddirections, notrealplatformcoordinates orGTFSmerge. 名古屋栄 alightingonly; publicmetroconnectionseparate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "あおい交通（株）",
+              "currentOperatorName": "あおい交通株式会社",
+              "currentStopName": "名古屋栄",
+              "historicalRoute": "県営名古屋空港直行バス",
+              "url": "https://aoi-komaki.jp/archives/127",
+              "observedResponseSha256": "df8445846b67e2852a6ece7e2f1e78f1bbbfef50d7327922767548570243ccff"
+            }
+          }
+        },
+        {
+          "name": "栄",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_PUBLIC_GATE_EXIT10_FOUNTAIN_SQUARE_AND_OPERATOR_STOP_LOCATION",
+      "hubScopeComplete": false,
+      "locator": "Bureaupublicguide 中改札→exit10 within希望の広場; aoiownguide locatesbuscurbnorthofsamefountain andphoto showsordinarypublicpavement. Sharedpublicplazapassagerelation, notcoordinatecloseness. Sakaeisdropoffonly preservedinservice; physicalaccessdoesnotpermitboarding. No geometry/time/allhours oruniversallystepfreeclaim."
+    }
+  ]
+}

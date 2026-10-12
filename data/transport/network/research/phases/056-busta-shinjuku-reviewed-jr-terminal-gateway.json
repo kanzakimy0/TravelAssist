@@ -1,0 +1,76 @@
+{
+  "phaseId": "056-busta-shinjuku-reviewed-jr-terminal-gateway",
+  "strategy": [
+    "P36_EXACT_OPERATOR_SPECIFIC_TERMINAL_IDENTITY",
+    "CURRENT_JR_AND_TERMINAL_OPERATOR_ACCESS",
+    "highway_bus",
+    "transfer"
+  ],
+  "completedActionIds": [
+    "government:p36:highway-stop-identities",
+    "hub:busta-shinjuku:current-jr-access",
+    "bus:jr-kanto:busta-current-component"
+  ],
+  "facts": [
+    {
+      "factId": "busta-shinjuku-jr-terminal-passage",
+      "kind": "transfer",
+      "sourceActionId": "bus:jr-kanto:busta-current-component",
+      "sourceUrl": "https://www.jrbuskanto.co.jp/jwp/bus_stop/shinjuku_basta",
+      "observedResponseSha256": "a674c4cd5d45d8ca9ce40a32707cc840172bb34e1bb00da09e8441e28a88b870",
+      "locator": "Current JR Bus Kanto guide identifies Busta Shinjuku boarding/alighting and the JR Shinjuku new-south gate terminal passage. Terminal operator independently confirms the gate connection and an alternate south-gate route. Current notices identify stopped northwest elevator and Miraina-side down escalator but explicitly provide other escalator/elevator routes. Retain bidirectional passenger access only, no unavailable-device, duration or wheelchair-access claim.",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:busta-shinjuku:current-jr-access",
+          "url": "https://shinjuku-busterminal.co.jp/access/",
+          "observedResponseSha256": "95afd7ff356a985643fda53eba08816abb822ba6402c38a08eb8601f2a00c087"
+        },
+        {
+          "sourceActionId": "hub:busta-shinjuku:current-jr-access",
+          "url": "https://shinjuku-busterminal.co.jp/news/1229",
+          "observedResponseSha256": "6e90a630572d181a1e0db88950decda4148fa4b4c9dad453cac6611b47629778"
+        },
+        {
+          "sourceActionId": "hub:busta-shinjuku:current-jr-access",
+          "url": "https://shinjuku-busterminal.co.jp/news/1164",
+          "observedResponseSha256": "31b6909c52d502d18c3f0da28e9cad90b72424f6bfbcd3cfae9fed832b4c07ba"
+        }
+      ],
+      "components": [
+        {
+          "name": "バスタ新宿",
+          "operator": "ジェイアールバス関東（株）",
+          "line": "p36-stop:P36-23_13:kbs288",
+          "mode": "highway_bus",
+          "terminalIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_13:kbs288",
+            "requirementId": "review:navitime:02301-1404524",
+            "expectedRequirementName": "バスタ新宿",
+            "method": "EXACT_P36_OPERATOR_COMPONENT_AND_CURRENT_TERMINAL_ACCESS",
+            "currentOperatorReview": "JR Bus Kanto current official stop guide explicitly identifies its Busta Shinjuku 4F boarding and 3F/4F alighting; exact P36 operator-specific component, not all terminal operators.",
+            "currentPassengerAccessReview": "Current JR Bus Kanto guide identifies Busta Shinjuku boarding/alighting and the JR Shinjuku new-south gate terminal passage. Terminal operator independently confirms the gate connection and an alternate south-gate route. Current notices identify stopped northwest elevator and Miraina-side down escalator but explicitly provide other escalator/elevator routes. Retain bidirectional passenger access only, no unavailable-device, duration or wheelchair-access claim."
+          }
+        },
+        {
+          "name": "新宿",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "P36_EXACT_OPERATOR_IDENTITY_AND_CURRENT_OFFICIAL_TERMINAL_GATE_PASSAGE",
+      "hubScopeComplete": false
+    }
+  ]
+}

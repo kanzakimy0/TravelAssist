@@ -1,0 +1,86 @@
+{
+  "phaseId": "161-shimojishima-current-public-terminal-to-existing-licensed-airport-bus",
+  "strategy": [
+    "CURRENT_OPERATOR_SPECIFIC_AIRPORT_PUBLIC_ACCESS",
+    "EXISTING_EXACT_LICENSED_GTFS_STOP_IDENTITY",
+    "NO_DUPLICATE_SERVICE_OR_CROSS_OPERATOR_MERGE"
+  ],
+  "completedActionIds": [
+    "airport:shimojishima:current-public-terminal-to-existing-licensed-kyoei-stop"
+  ],
+  "facts": [
+    {
+      "factId": "shimojishima-current-public-arrival-checkin-frontage-to-existing-kyoei-stop",
+      "kind": "transfer",
+      "sourceActionId": "airport:shimojishima:current-public-terminal-to-existing-licensed-kyoei-stop",
+      "sourceUrl": "https://shimojishima.jp/wp-content/themes/samco2025/images/service/map/bus_st_map.jpg",
+      "observedResponseSha256": "e84dd407351e56b0efe5cde76c70661b259f4be8cb5ade9c9ea1cdd82187a516",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:shimojishima:current-public-terminal-to-existing-licensed-kyoei-stop",
+          "url": "https://shimojishima.jp/service/travel_bus/",
+          "observedResponseSha256": "12b0a63a70c137b804d32acd0460065e15be15a5b17ff3a887e903e12af994bc"
+        },
+        {
+          "sourceActionId": "airport:shimojishima:current-public-terminal-to-existing-licensed-kyoei-stop",
+          "url": "https://shimojishima.jp/wp-content/themes/samco2025/images/service/bus_st.jpg",
+          "observedResponseSha256": "5f3e5c6cbe34950278d944905ac09b2ef5d592868e6d4bfb4d9eea4850848e39"
+        },
+        {
+          "sourceActionId": "airport:shimojishima:current-public-terminal-to-existing-licensed-kyoei-stop",
+          "url": "https://shimojishima.jp/access_top/access_bus/",
+          "observedResponseSha256": "9834cec9d8e298b51adbfc33a6a5023526714a7f8c7f29f4e9aa86586047190c"
+        },
+        {
+          "sourceActionId": "bus:miyako-kyoei:ccby-current-airport-resort-trips",
+          "url": "https://api3.ottop.org/download/gtfs/ooXuXei4op7y/7360003005301",
+          "observedResponseSha256": "526ba6b0a3cfb9b7fe3a8d4fcc1a65539609f0642ed8d2caa53beecd0fcbe48d"
+        }
+      ],
+      "locator": "Current airport bus-location map and separate stop photograph individually reviewed; domestic arrival public exit joins landside circulation around the check-in area to the explicit local-bus stand. Current access page independently instructs Miyako Kyoei resort-line passengers to go directly to that stand, separately from Chuo Kotsu ticket purchase. Bind exact already-admitted licensed GTFS S1756, preserving blank platform_code, and the whole C28 airport. The reviewed relation avoids security/CIQ, charter/taxi/rental stands and does not add another operator or route. Retain coarse public passenger connection only; no map/photo pixels, precise walkway coordinates, guaranteed transfer time or universal step-free claim.",
+      "components": [
+        {
+          "name": "下地島空港",
+          "operator": "airport-facility:cf03_00063",
+          "line": "airport:cf03_00063",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00063",
+            "requirementId": "review:transport-node:fbdd6a31-4339-583b-bed2-7895472da7ed",
+            "expectedRequirementName": "下地島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport bus-location map and separate stop photograph individually reviewed; domestic arrival public exit joins landside circulation around the check-in area to the explicit local-bus stand. Current access page independently instructs Miyako Kyoei resort-line passengers to go directly to that stand, separately from Chuo Kotsu ticket purchase. Bind exact already-admitted licensed GTFS S1756, preserving blank platform_code, and the whole C28 airport. The reviewed relation avoids security/CIQ, charter/taxi/rental stands and does not add another operator or route. Retain coarse public passenger connection only; no map/photo pixels, precise walkway coordinates, guaranteed transfer time or universal step-free claim."
+          }
+        },
+        {
+          "name": "みやこ下地島空港",
+          "operator": "宮古協栄バス（資）",
+          "line": "gtfs:miyako-kyoei-airport:route:887",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:miyako-kyoei-airport",
+            "stopId": "S1756",
+            "sourceArchiveSha256": "526ba6b0a3cfb9b7fe3a8d4fcc1a65539609f0642ed8d2caa53beecd0fcbe48d",
+            "recordSha256": "7be4e63d50fb81e336aa55926aefdaef9b624bc1a721e4cf6379e95fab4b1252",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current airport bus-location map and separate stop photograph individually reviewed; domestic arrival public exit joins landside circulation around the check-in area to the explicit local-bus stand. Current access page independently instructs Miyako Kyoei resort-line passengers to go directly to that stand, separately from Chuo Kotsu ticket purchase. Bind exact already-admitted licensed GTFS S1756, preserving blank platform_code, and the whole C28 airport. The reviewed relation avoids security/CIQ, charter/taxi/rental stands and does not add another operator or route. Retain coarse public passenger connection only; no map/photo pixels, precise walkway coordinates, guaranteed transfer time or universal step-free claim."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_AIRPORT_PUBLIC_FLOOR_AND_OPERATOR_SPECIFIC_INSTRUCTIONS_TO_EXISTING_LICENSED_GTFS_STOP",
+      "hubScopeComplete": false
+    }
+  ]
+}

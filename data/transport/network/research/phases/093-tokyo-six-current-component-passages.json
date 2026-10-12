@@ -1,0 +1,269 @@
+{
+  "phaseId": "093-tokyo-six-current-component-passages",
+  "strategy": [
+    "CURRENT_PRIMARY_STATION_DIAGRAMS",
+    "EXACT_MISSING_HUB_COMPONENT_PASSAGES"
+  ],
+  "completedActionIds": [
+    "hub:tokyo:current-four-remaining-metro-passages",
+    "hub:tokyo:current-ueno-osaki-harajuku-jr-concourses"
+  ],
+  "facts": [
+    {
+      "factId": "ueno-current-jr-shinkansen-conventional-gate",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:current-ueno-osaki-harajuku-jr-concourses",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/0204_all.png",
+      "observedResponseSha256": "a297c7863bba22724f632f7cbf7556580b3b3f20129e18f09487badcc63a0235",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:current-ueno-osaki-harajuku-jr-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/204.html",
+          "observedResponseSha256": "0580293ebf008444b20234107ba65ce9bf65eb8a6df6e496bd4fb6a5aba631b5"
+        }
+      ],
+      "locator": "The August 2026 JR Ueno diagram explicitly marks the Shinkansen transfer gate between the conventional central concourse and the underground concourse serving Shinkansen platforms. Preserve the independent conventional and Shinkansen components and this actual controlled passenger transfer. Independently bind exact S12 operator/line components; no same-name collapse, spatial inference, raw map reuse, walking duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "上野",
+          "operator": "東日本旅客鉄道",
+          "line": "東北新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "上野",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_LINKED_PHYSICAL_GATE_AND_PASSAGE_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaki-current-jr-rinkai-common-paid-concourse",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:current-ueno-osaki-harajuku-jr-concourses",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/0319_1f-2f.png",
+      "observedResponseSha256": "af8401d0b07c927af49ea5bf7e2465c84245a66eb73c26afab91c5b7fdd1e977",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:current-ueno-osaki-harajuku-jr-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/319.html",
+          "observedResponseSha256": "3bd5de646fcbfe1ac67b694f4924950cf44170943ab311ff4aecfe73961148b4"
+        }
+      ],
+      "locator": "The April 2026 JR Osaki diagram explicitly labels Rinkai service platforms and Yamanote platforms, with both connected to the continuous north/south paid concourses. Review the physical passenger interchange of the two admitted operator components; no additional through-service train is inferred. Independently bind exact S12 operator/line components; no same-name collapse, spatial inference, raw map reuse, walking duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "大崎",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大崎",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_LINKED_PHYSICAL_GATE_AND_PASSAGE_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "harajuku-meiji-current-public-gateway",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:current-four-remaining-metro-passages",
+      "sourceUrl": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_meiji-jingumae_all.jpg",
+      "observedResponseSha256": "2f1404627087653264154fdee9ddbc149520ed6b3b44118d8797a8e5efbe35fe",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:current-four-remaining-metro-passages",
+          "url": "https://www.tokyometro.jp/station/meiji-jingumae/yardmap/index.html",
+          "observedResponseSha256": "adc9e374ced56d688094641e43fbbbdbf0b674d4a55c7e276f24579dd37a554e"
+        },
+        {
+          "sourceActionId": "hub:tokyo:current-ueno-osaki-harajuku-jr-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/1256.html",
+          "observedResponseSha256": "ccf9e18212da38969bbf389c13f5b930d75098fa20ee45ab0302ff5ef6adb4df"
+        },
+        {
+          "sourceActionId": "hub:tokyo:current-ueno-osaki-harajuku-jr-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/1256_1f-2f.png",
+          "observedResponseSha256": "dd23213814cb7912d737a55c2e19e10724cef69515d2fa7dcf112e2570b467f6"
+        }
+      ],
+      "locator": "The February 2026 Metro diagram explicitly directs exit 2 toward JR from the public Chiyoda-side concourse. The September 2025 JR Harajuku diagram independently shows the public Omotesando-gate stair/exit connection signed toward Tokyo Metro. Bind the physical public passenger connection between these distinct station components. Independently bind exact S12 operator/line components; no same-name collapse, spatial inference, raw map reuse, walking duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "明治神宮前",
+          "operator": "東京地下鉄",
+          "line": "9号線千代田線",
+          "mode": "metro"
+        },
+        {
+          "name": "原宿",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_LINKED_PHYSICAL_GATE_AND_PASSAGE_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tameike-kokkai-current-paid-interstation-passages",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:current-four-remaining-metro-passages",
+      "sourceUrl": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_tameike-sanno_all.jpg",
+      "observedResponseSha256": "f245219b9c8e04a17f63c52a66f0d3d9bdb946052871249db6ef7f12a44fd7d6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:current-four-remaining-metro-passages",
+          "url": "https://www.tokyometro.jp/station/tameike-sanno/yardmap/index.html",
+          "observedResponseSha256": "86301586bba488f77608ab4f674ee01e7cf99de955f24c8be9bb5c5c01f9a58f"
+        }
+      ],
+      "locator": "The current-linked July 2024 joint Metro layout explicitly depicts continuous paid stairs/corridors linking the Ginza/Namboku station component to the Chiyoda/Marunouchi component. Bind the two existing physical station components via that passenger connection. Independently bind exact S12 operator/line components; no same-name collapse, spatial inference, raw map reuse, walking duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "溜池山王",
+          "operator": "東京地下鉄",
+          "line": "3号線銀座線",
+          "mode": "metro"
+        },
+        {
+          "name": "国会議事堂前",
+          "operator": "東京地下鉄",
+          "line": "4号線丸ノ内線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_LINKED_PHYSICAL_GATE_AND_PASSAGE_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "korakuen-kasuga-current-operator-gate-passages",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:current-four-remaining-metro-passages",
+      "sourceUrl": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_korakuen_all.jpg",
+      "observedResponseSha256": "1026af1d763c38f844b9620e232aceb19dad7cbdb2f8ed9a03d7a1c9cb3c6ce1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:current-four-remaining-metro-passages",
+          "url": "https://www.tokyometro.jp/station/korakuen/yardmap/index.html",
+          "observedResponseSha256": "aee1b5fb613af37d394d1938a7e16b8868670f3d504f603a9150df53904f4736"
+        }
+      ],
+      "locator": "The April 2026 Korakuen layout explicitly depicts the connections and operator gates from its Namboku/Marunouchi station to Kasuga Oedo/Mita platforms and concourses. Review the actual inter-operator passenger passage while preserving separate Metro and Toei components. Independently bind exact S12 operator/line components; no same-name collapse, spatial inference, raw map reuse, walking duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "後楽園",
+          "operator": "東京地下鉄",
+          "line": "7号線南北線",
+          "mode": "metro"
+        },
+        {
+          "name": "春日",
+          "operator": "東京都",
+          "line": "12号線大江戸線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_LINKED_PHYSICAL_GATE_AND_PASSAGE_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hibiya-yurakucho-current-public-underground-concourse",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyo:current-four-remaining-metro-passages",
+      "sourceUrl": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_hibiya_all.jpg",
+      "observedResponseSha256": "4b42be6bdf930797727e60075f361b48ec0786a011f23bf7def5d8ce29c845e2",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyo:current-four-remaining-metro-passages",
+          "url": "https://www.tokyometro.jp/station/hibiya/yardmap/index.html",
+          "observedResponseSha256": "6abbbb32b9b462fbb2264d258453ac73f31fe1a9d99562da2b0e48e86ca6a0b7"
+        }
+      ],
+      "locator": "The June 2026 joint layout depicts a continuous public B1 underground passage connecting the Hibiya gate concourses to the Yurakucho Hibiya-direction gate via the Toei Mita concourse area. Bind this actual out-of-paid-area walk; do not infer shared paid areas or route through the explicitly closed B3/B4/D2 exits. Independently bind exact S12 operator/line components; no same-name collapse, spatial inference, raw map reuse, walking duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "日比谷",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "有楽町",
+          "operator": "東京地下鉄",
+          "line": "8号線有楽町線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_LINKED_PHYSICAL_GATE_AND_PASSAGE_REVIEW",
+      "hubScopeComplete": false
+    }
+  ]
+}

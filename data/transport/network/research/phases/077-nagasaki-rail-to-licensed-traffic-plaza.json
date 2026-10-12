@@ -1,0 +1,79 @@
+{
+  "phaseId": "077-nagasaki-rail-to-licensed-traffic-plaza",
+  "strategy": [
+    "CURRENT_CITY_PUBLIC_PASSAGE",
+    "EXACT_LICENSED_GTFS_STOP_REUSE",
+    "NATIONAL_RAIL_TO_EXISTING_BUS_GRAPH"
+  ],
+  "completedActionIds": [
+    "hub:nagasaki:current-kamome-traffic-plaza",
+    "bus:nagasaki:current-station-boarding-components"
+  ],
+  "facts": [
+    {
+      "factId": "nagasaki-kamome-current-traffic-plaza-exact-gtfs",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagasaki:current-kamome-traffic-plaza",
+      "sourceUrl": "https://www.city.nagasaki.lg.jp/uploaded/attachment/27407.pdf",
+      "observedResponseSha256": "b712534a5b0218eab8f86c60e05d4c5edd3e41ed7fae63dd0890aa70a5603a81",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagasaki:current-kamome-traffic-plaza",
+          "url": "https://www.city.nagasaki.lg.jp/page/6035.html",
+          "observedResponseSha256": "7c5e7a3b4d2358a7fe6840350717495b08802458fea2666a14a7d741d582072d"
+        },
+        {
+          "sourceActionId": "hub:nagasaki:current-kamome-traffic-plaza",
+          "url": "https://www.city.nagasaki.lg.jp/uploaded/life/89281_615286_misc.pdf",
+          "observedResponseSha256": "4f02ebdea4f3a645bbb56608f06711996b65a42633bcb2c430c7fbd6ff3b0ef7"
+        },
+        {
+          "sourceActionId": "bus:nagasaki:current-station-boarding-components",
+          "url": "https://www.keneibus.jp/fs/1/8/1/9/8/_/nagasaki202504.pdf",
+          "observedResponseSha256": "6d3dc2284e4e0a11cc354fe1862bc29e62a8e27553b61f266f4572401d138bd7"
+        },
+        {
+          "sourceActionId": "bus:nagasaki:current-station-boarding-components",
+          "url": "https://www.keneibus.jp/cellular/local/map/",
+          "observedResponseSha256": "0c333ddae2653956308acddbd1314bcab1464ed620dfb6fda13bbc815427897a"
+        }
+      ],
+      "locator": "The city east-exit public pedestrian guide page 3 explicitly leads from Nagasaki Station Kamome Exit along the long-roof passage to the operating traffic-plaza bus boarding area. Its August-September 2026 current construction update page 1 confirms this plaza remains operational, separately from the unopened national-road bus bay. The operator current boarding diagram component 3 identifies its traffic-plaza stop, matching the licensed GTFS exact point 881010_06. Use the existing admitted Shinkansen station component and exact bus stop, with no same-name or parent-station collapse. No walking time, step-free guarantee, or transfer to other bus bays is asserted.",
+      "components": [
+        {
+          "name": "長崎",
+          "operator": "九州旅客鉄道",
+          "line": "西九州新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "長崎駅前",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:20",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "881010_06",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "391bac80df3597ec8c754f1b71f45cf029b80a084b5ed68968c9ddbe3b9bec19",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The city east-exit public pedestrian guide page 3 explicitly leads from Nagasaki Station Kamome Exit along the long-roof passage to the operating traffic-plaza bus boarding area. Its August-September 2026 current construction update page 1 confirms this plaza remains operational, separately from the unopened national-road bus bay. The operator current boarding diagram component 3 identifies its traffic-plaza stop, matching the licensed GTFS exact point 881010_06. Use the existing admitted Shinkansen station component and exact bus stop, with no same-name or parent-station collapse. No walking time, step-free guarantee, or transfer to other bus bays is asserted."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PUBLIC_PEDESTRIAN_PASSAGE_TO_EXACT_LICENSED_GTFS_COMPONENT",
+      "hubScopeComplete": false
+    }
+  ]
+}

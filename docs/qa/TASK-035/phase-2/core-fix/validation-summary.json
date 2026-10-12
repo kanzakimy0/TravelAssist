@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "task": "FIX-TASK-035-B / R035-01–04",
+  "taskPublicationSha": "19c84116f1865866c61ee84a0858b0c0d557af46",
+  "reviewSha": "13503912bbbc163f6464457cfe820e6d748930d7",
+  "canonicalOwner": "A",
+  "implementationAndQa": "B",
+  "implementationHead": "116d4c66f2f0aed61527b89c703d24f93ec4a4b2",
+  "startingHead": "a77ec0ae24a555aba09ed6c6fc6520d2a5e2442c",
+  "developAndMergeBase": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+  "revisionKind": "BRANCH_EXACT_HEAD",
+  "runId": "local",
+  "runAttempt": "1",
+  "runtime": {
+    "node": "v24.18.0",
+    "npm": "11.16.0",
+    "python": "Python 3.14.6",
+    "pythonCommand": "python",
+    "os": "win32",
+    "arch": "x64"
+  },
+  "fixes": {
+    "R035-01": "FIXED",
+    "R035-02": "FIXED",
+    "R035-03": "FIXED",
+    "R035-04": "FIXED"
+  },
+  "status": "FIXED_AWAITING_REVIEW",
+  "wholeWbs91": "BLOCKED",
+  "integrationGate": "BLOCKED_R035_05",
+  "mergeReady": false,
+  "freshCheckout": {
+    "worktree": "I:/CodexWorktrees/TravelAssist-TASK035-CoreFixVerify",
+    "lockedInstall": "npm ci --cache I:/CodexWorktrees/task035-review-npm-cache --no-audit --no-fund",
+    "installExit": 0,
+    "artifactsBefore": false,
+    "artifactsAfterFirstFocused": false,
+    "firstFocused": "PASS",
+    "tests": 18,
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "relatedRegression": {
+    "tests": 22,
+    "passed": 22,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "topLevel": 22,
+    "suites": 0,
+    "definition": "Node v24 registered counts exclude suite containers and include nested tests once; each hash-reviewed top-level assertion script contributes one final file test. Child TAP/stdout is not added."
+  },
+  "quality": {
+    "status": "PASS",
+    "receipt": "quality-receipt.json",
+    "commands": [
+      {
+        "argv": [
+          "npm",
+          "run",
+          "deploy:validate:local"
+        ],
+        "spawnArgv": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "deploy:validate:local"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "timeout": false
+      },
+      {
+        "argv": [
+          "npm",
+          "run",
+          "lint"
+        ],
+        "spawnArgv": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "lint"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "timeout": false
+      },
+      {
+        "argv": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "spawnArgv": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "typecheck"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "timeout": false
+      },
+      {
+        "argv": [
+          "npm",
+          "run",
+          "format:check:deploy"
+        ],
+        "spawnArgv": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "format:check:deploy"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "timeout": false
+      },
+      {
+        "argv": [
+          "npm",
+          "run",
+          "deploy:build:local"
+        ],
+        "spawnArgv": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "deploy:build:local"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "timeout": false
+      },
+      {
+        "argv": [
+          "npm",
+          "run",
+          "deploy:verify-artifact"
+        ],
+        "spawnArgv": [
+          "C:\\Program Files\\nodejs\\node.exe",
+          "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "deploy:verify-artifact"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "timeout": false
+      },
+      {
+        "argv": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "spawnArgv": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "timeout": false
+      }
+    ],
+    "lintWarnings": 69,
+    "lintErrors": 0,
+    "buildArtifactFileCount": 1908
+  },
+  "verificationWorktreeCleanAfter": true,
+  "modifiedImplementationFiles": [
+    "docs/qa/TASK-035/phase-2/core-fix/execution-model.json",
+    "docs/qa/TASK-035/phase-2/core-fix/test-inventory.json",
+    "docs/qa/test-baseline.md",
+    "tests/task-035-runner.test.mjs",
+    "tools/qa/task-035-inventory.mjs",
+    "tools/qa/task-035-process.mjs",
+    "tools/qa/task-035-receipt.mjs"
+  ],
+  "newUnresolvedFailures": [],
+  "developmentAttempt": {
+    "status": "FAIL",
+    "tests": 18,
+    "passed": 17,
+    "failed": 1,
+    "reason": "New fault fixture expected summary failure; Node exits before file summary, so validator correctly rejects file-set mismatch. Corrected new regression expectation before fixed commit.",
+    "evidence": "logs/development-first-focused.log.gz"
+  },
+  "notExecuted": [
+    "Full repository regression",
+    "Graph rebuild/resume/proof chain",
+    "DB/Auth/browser/live Provider/POI production",
+    "Linux/macOS real execution for this fix",
+    "Final delivery document commit hosted CI (separate from implementation SHA)"
+  ],
+  "r03505": {
+    "status": "BLOCKED_UNCHANGED_OUT_OF_SCOPE",
+    "branchRun": 37467190704,
+    "prRun": 37467203410,
+    "attempt": 1,
+    "historicalBranchCheckout": "a77ec0ae24a555aba09ed6c6fc6520d2a5e2442c",
+    "historicalPrMergeCheckout": "f15d9bfa8062605c6f13829ef70f2981d955da2b",
+    "historicalMandatoryFailures": 3,
+    "originalEvidence": "13503912bbbc163f6464457cfe820e6d748930d7/docs/qa/TASK-035/review-phase2/review-evidence.json"
+  },
+  "pullRequest": 272,
+  "draft": true,
+  "issue": 265,
+  "issueState": "OPEN",
+  "merged": false,
+  "autoMerge": false
+}

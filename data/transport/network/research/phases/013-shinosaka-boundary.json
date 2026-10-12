@@ -1,0 +1,48 @@
+{
+  "phaseId": "013-shinosaka-boundary",
+  "strategy": [
+    "JR_CENTRAL_CURRENT_OFFICIAL_MAP",
+    "SHARED_SHINKANSEN_CONCOURSE",
+    "transfer"
+  ],
+  "facts": [
+    {
+      "factId": "shin-osaka-shinkansen-concourses",
+      "kind": "transfer",
+      "sourceActionId": "hub:shin-osaka",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/shinkansen/shin-osaka/_img/017_shin-osaka_20260914.gif",
+      "locator": "2026-09-14 official map; platforms 20-22 Sanyo down and 23-27 Tokaido/Sanyo up share Shinkansen concourse; 乗換口 directly connects conventional platforms 1-10",
+      "components": [
+        {
+          "name": "新大阪",
+          "operator": "東海旅客鉄道",
+          "line": "東海道新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "新大阪",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "新大阪",
+          "operator": "西日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0],
+        [0, 2],
+        [2, 0],
+        [1, 2],
+        [2, 1]
+      ],
+      "reviewMethod": "VISUAL_OFFICIAL_SHARED_CONCOURSE_AND_INTERCHANGE_GATE",
+      "hubScopeComplete": false
+    }
+  ],
+  "completedActionIds": ["hub:shin-osaka"]
+}

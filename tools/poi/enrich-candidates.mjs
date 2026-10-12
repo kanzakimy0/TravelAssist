@@ -9,6 +9,12 @@ import {
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  FROZEN_REGISTRY_PATH,
+  FROZEN_ENRICH_PATH,
+  FROZEN_REVIEW_PATH,
+  readFrozenCandidateInput,
+} from "./frozen-master-code-registry.mjs";
+import {
   POI_FEATURE_DEFINITIONS,
   POI_FEATURE_CODES,
 } from "../../src/shared/contracts/planning/features.ts";
@@ -31,6 +37,9 @@ export const INPUTS = [
   "tools/poi/enrich-candidates.mjs",
   `${PREFIX}/manifests/recovery-population-lock.v1.json`,
   `${PREFIX}/sources/identity-observations.v1.jsonl`,
+  FROZEN_REGISTRY_PATH,
+  FROZEN_ENRICH_PATH,
+  FROZEN_REVIEW_PATH,
 ];
 export const hash = (value) => createHash("sha256").update(value).digest("hex");
 export const json = (value) => JSON.stringify(value, null, 2) + "\n";
@@ -617,9 +626,10 @@ export function generateArtifacts(dataset, inputChecksum, rubricVersion) {
 }
 
 export function readInputs(root = ROOT) {
+  const frozenInputBytes = (path) => readFrozenCandidateInput(root, path);
   const inputHashes = INPUTS.map((path) => ({
     path,
-    sha256: hash(readFileSync(resolve(root, path))),
+    sha256: hash(frozenInputBytes(path)),
   }));
   const parse = (p) => JSON.parse(readFileSync(resolve(root, p), "utf8"));
   const candidates = readFileSync(resolve(root, INPUTS[0]), "utf8")
@@ -633,7 +643,7 @@ export function readInputs(root = ROOT) {
   );
   for (const [path, expected] of Object.entries(lock.hashes))
     assert(
-      hash(readFileSync(resolve(root, path))) === expected,
+      hash(frozenInputBytes(path)) === expected,
       `Frozen identity/Registry input changed: ${path}`,
     );
   return {

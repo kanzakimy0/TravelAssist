@@ -1,0 +1,689 @@
+{
+  "phaseId": "205-amakusa-two-adjacent-shuttle-sections-and-amx-fukuoka-chain",
+  "strategy": [
+    "TWO_INDEPENDENT_CONTIGUOUS_PARENT_SECTIONS",
+    "EXACT_P11_CURRENT_STOP_NAME_CONTINUITY",
+    "ACTUAL_AMX101_102_OCT3",
+    "EXISTING_C28_AIRFIELD_SUFFIX_REVIEW"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "government:c28:airport-identities",
+    "bus:amakusa:current-two-adjacent-airport-sections",
+    "airport:amakusa:actual-amx-101-102-oct3",
+    "airport:amakusa:government-public-shuttle-gateway"
+  ],
+  "facts": [
+    {
+      "factId": "amakusa-shuttle-horikiri-to-airport",
+      "kind": "service",
+      "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+      "sourceUrl": "https://www.sankobus.jp/busportal/wp-content/uploads/tt-shuttle_amakusa-20240401.pdf",
+      "observedResponseSha256": "ed70bd3893dbc2af81b09e351ec8cda5d7527fce394af5b5a379b04d276f2100",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+          "url": "https://www.sankobus.jp/busportal/wp-content/uploads/tt-shuttle_amakusa-20240401.pdf",
+          "observedResponseSha256": "ed70bd3893dbc2af81b09e351ec8cda5d7527fce394af5b5a379b04d276f2100"
+        },
+        {
+          "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+          "url": "https://www.sankobus.jp/bus/shuttle_amakusa/jikoku/",
+          "observedResponseSha256": "3b1cea9bb43105499d057724e40bb72600293ed28f2e8d5584cce90d5f4d8e53"
+        },
+        {
+          "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+          "url": "https://www.sankobus.jp/bus/shuttle_amakusa/",
+          "observedResponseSha256": "855c67f5d96d9db77d54c57356c36f53f63169a07c332bd89f8af08b556d1b65"
+        },
+        {
+          "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+          "url": "https://www.sankobus.jp/bus/shuttle_amakusa/rosen/",
+          "observedResponseSha256": "be13f31e3adc6466d1b02c5cfcdd99a99a1e7378eeff2bd739f4997f15644bdd"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        },
+        {
+          "sourceActionId": "bus:sankobus:licensed-current-airport-trips",
+          "url": "https://api.gtfs-data.jp/v2/organizations/sankobus/feeds/sankobus/files/feed.zip?rid=current",
+          "observedResponseSha256": "78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c"
+        },
+        {
+          "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+          "url": "https://www.amx.co.jp/news/n_20260825_903.html",
+          "observedResponseSha256": "356c183d3356750816d97b30f9d1ff4944afdca2994ed5eac8b192668e3c0632"
+        },
+        {
+          "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+          "url": "https://www.amx.co.jp/time/",
+          "observedResponseSha256": "7bbc2de42e1d4063c574e317dbc8df63f003a38868d206d4c1327042ae4f52e8"
+        }
+      ],
+      "operator": "産交バス",
+      "line": "天草空港シャトルバス",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "city-airport",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "2026-10-03 selected date; current-linked revision2024-04-01 all-day operator timetable, flight-linked service retained subject to actual flight cancellation; selected AMX101/102 not listed as cancelled Oct3. No real-time dispatch or seat guarantee.",
+      "reviewedServiceDate": "20261003",
+      "parentCallingStations": [
+        "本渡バスセンター",
+        "天草市役所前",
+        "新小松原",
+        "今釜",
+        "ナフコ前",
+        "天草拓心高校入口",
+        "イエローハット前",
+        "一の瀬",
+        "はじの原",
+        "南海寮前",
+        "堀切（天草）",
+        "天草空港"
+      ],
+      "sourcePublishedParentCallingStations": [
+        "本渡バスセンター",
+        "天草市役所前",
+        "新小松原",
+        "今釜",
+        "ナフコ前",
+        "天草拓心高校入口",
+        "イエローハット前",
+        "一の瀬",
+        "はじの原",
+        "南海寮前",
+        "堀切",
+        "天草空港"
+      ],
+      "sectionStartIndex": 10,
+      "callingStations": [
+        "堀切（天草）",
+        "天草空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "堀切（天草）",
+          "operator": "産交バス（株）",
+          "line": "p11-stop:P11-22_43:bs3878",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_43:bs3878",
+            "recordSha256": "f8c565a55903215b638553f83990c8a2c48cc588d3fa91af48459fa778f0ef78",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Same-operator road-stop representative only. P11 exact airport-shuttle route context plus current operator two directions and licensed current native full-name calls establish continuity; no GTFS pole merge or inferred pedestrian crossing.",
+            "currentOperatorEvidence": {
+              "recordOperator": "産交バス（株）",
+              "currentOperatorName": "産交バス株式会社",
+              "currentStopName": "堀切",
+              "historicalRoute": "本渡バスセンター～天草市役所前～今釜～天草空港",
+              "url": "https://www.sankobus.jp/busportal/wp-content/uploads/tt-shuttle_amakusa-20240401.pdf",
+              "observedResponseSha256": "ed70bd3893dbc2af81b09e351ec8cda5d7527fce394af5b5a379b04d276f2100"
+            },
+            "currentStopNameReview": {
+              "method": "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY",
+              "recordStopName": "堀切（天草）",
+              "currentStopName": "堀切",
+              "operator": "産交バス（株）",
+              "physicalContinuityReview": "P11 bs3878 explicitly belongs to the Amakusa airport shuttle route. Current operator PDF independently shows both adjacent airport/Horikiri sections. Retained current licensed GTFS exact route141 has the complete name 堀切（天草） at IDs104121_1/2 adjacent to 天草空港101221_1, excluding unrelated Horikiri operators/regions. P11 represents the same-road operator stop rather than either GTFS pole; no coordinate matching or arbitrary alias.",
+              "historicalEvidence": {
+                "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+                "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+                "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1",
+                "stopName": "堀切（天草）",
+                "operator": "産交バス（株）",
+                "locator": "P11-22_43.xml bs3878 exact historical airport route"
+              },
+              "currentEvidence": {
+                "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+                "url": "https://www.sankobus.jp/busportal/wp-content/uploads/tt-shuttle_amakusa-20240401.pdf",
+                "observedResponseSha256": "ed70bd3893dbc2af81b09e351ec8cda5d7527fce394af5b5a379b04d276f2100",
+                "stopName": "堀切",
+                "operator": "産交バス（株）",
+                "locator": "Both independently published airport shuttle direction tables, adjacent airport stop; current native GTFS disambiguation corroborates full name."
+              }
+            }
+          }
+        },
+        {
+          "name": "天草空港",
+          "operator": "産交バス（株）",
+          "line": "p11-stop:P11-22_43:bs3880",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_43:bs3880",
+            "recordSha256": "4d620ba35fa2ed8ae86b9b3f24c3a4db5407dceb0d3c41e8ba8334178145e862",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Same-operator road-stop representative only. P11 exact airport-shuttle route context plus current operator two directions and licensed current native full-name calls establish continuity; no GTFS pole merge or inferred pedestrian crossing.",
+            "currentOperatorEvidence": {
+              "recordOperator": "産交バス（株）",
+              "currentOperatorName": "産交バス株式会社",
+              "currentStopName": "天草空港",
+              "historicalRoute": "本渡バスセンター～天草市役所前～今釜～天草空港",
+              "url": "https://www.sankobus.jp/busportal/wp-content/uploads/tt-shuttle_amakusa-20240401.pdf",
+              "observedResponseSha256": "ed70bd3893dbc2af81b09e351ec8cda5d7527fce394af5b5a379b04d276f2100"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "sourceDisplayNameBindings": [
+        {
+          "sourceName": "堀切",
+          "canonicalName": "堀切（天草）",
+          "nativeP11RecordId": "P11-22_43:bs3878",
+          "review": "Explicit historical/current route continuity plus licensed same-current-route GTFS full name. Source printed spelling preserved separately."
+        }
+      ],
+      "locator": "Visually reviewed operator PDF page1 first column, complete twelve calls; selected parent11-12. Full parent source spelling retained; only the identity-bound Horikiri label expanded using current licensed native route. No intervening call removed, no synthetic reversed trip. Boarding-only origin and alighting-only destination retained. Current main page gives carrier 産交バス; legal suffix expanded consistently with unchanged native identity.",
+      "scheduleScope": "NO_CLOCK_FARE_FREQUENCY_RUNTIME_FIELDS"
+    },
+    {
+      "factId": "amakusa-shuttle-airport-to-horikiri",
+      "kind": "service",
+      "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+      "sourceUrl": "https://www.sankobus.jp/busportal/wp-content/uploads/tt-shuttle_amakusa-20240401.pdf",
+      "observedResponseSha256": "ed70bd3893dbc2af81b09e351ec8cda5d7527fce394af5b5a379b04d276f2100",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+          "url": "https://www.sankobus.jp/busportal/wp-content/uploads/tt-shuttle_amakusa-20240401.pdf",
+          "observedResponseSha256": "ed70bd3893dbc2af81b09e351ec8cda5d7527fce394af5b5a379b04d276f2100"
+        },
+        {
+          "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+          "url": "https://www.sankobus.jp/bus/shuttle_amakusa/jikoku/",
+          "observedResponseSha256": "3b1cea9bb43105499d057724e40bb72600293ed28f2e8d5584cce90d5f4d8e53"
+        },
+        {
+          "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+          "url": "https://www.sankobus.jp/bus/shuttle_amakusa/",
+          "observedResponseSha256": "855c67f5d96d9db77d54c57356c36f53f63169a07c332bd89f8af08b556d1b65"
+        },
+        {
+          "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+          "url": "https://www.sankobus.jp/bus/shuttle_amakusa/rosen/",
+          "observedResponseSha256": "be13f31e3adc6466d1b02c5cfcdd99a99a1e7378eeff2bd739f4997f15644bdd"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        },
+        {
+          "sourceActionId": "bus:sankobus:licensed-current-airport-trips",
+          "url": "https://api.gtfs-data.jp/v2/organizations/sankobus/feeds/sankobus/files/feed.zip?rid=current",
+          "observedResponseSha256": "78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c"
+        },
+        {
+          "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+          "url": "https://www.amx.co.jp/news/n_20260825_903.html",
+          "observedResponseSha256": "356c183d3356750816d97b30f9d1ff4944afdca2994ed5eac8b192668e3c0632"
+        },
+        {
+          "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+          "url": "https://www.amx.co.jp/time/",
+          "observedResponseSha256": "7bbc2de42e1d4063c574e317dbc8df63f003a38868d206d4c1327042ae4f52e8"
+        }
+      ],
+      "operator": "産交バス",
+      "line": "天草空港シャトルバス",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "airport-city",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "2026-10-03 selected date; current-linked revision2024-04-01 all-day operator timetable, flight-linked service retained subject to actual flight cancellation; selected AMX101/102 not listed as cancelled Oct3. No real-time dispatch or seat guarantee.",
+      "reviewedServiceDate": "20261003",
+      "parentCallingStations": [
+        "天草空港",
+        "堀切（天草）",
+        "南海寮前",
+        "はじの原",
+        "一の瀬",
+        "イエローハット前",
+        "天草拓心高校入口",
+        "ナフコ前",
+        "今釜",
+        "新小松原",
+        "天草市役所前",
+        "本渡バスセンター"
+      ],
+      "sourcePublishedParentCallingStations": [
+        "天草空港",
+        "堀切",
+        "南海寮前",
+        "はじの原",
+        "一の瀬",
+        "イエローハット前",
+        "天草拓心高校入口",
+        "ナフコ前",
+        "今釜",
+        "新小松原",
+        "天草市役所前",
+        "本渡バスセンター"
+      ],
+      "sectionStartIndex": 0,
+      "callingStations": [
+        "天草空港",
+        "堀切（天草）"
+      ],
+      "callingComponents": [
+        {
+          "name": "天草空港",
+          "operator": "産交バス（株）",
+          "line": "p11-stop:P11-22_43:bs3880",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_43:bs3880",
+            "recordSha256": "4d620ba35fa2ed8ae86b9b3f24c3a4db5407dceb0d3c41e8ba8334178145e862",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Same-operator road-stop representative only. P11 exact airport-shuttle route context plus current operator two directions and licensed current native full-name calls establish continuity; no GTFS pole merge or inferred pedestrian crossing.",
+            "currentOperatorEvidence": {
+              "recordOperator": "産交バス（株）",
+              "currentOperatorName": "産交バス株式会社",
+              "currentStopName": "天草空港",
+              "historicalRoute": "本渡バスセンター～天草市役所前～今釜～天草空港",
+              "url": "https://www.sankobus.jp/busportal/wp-content/uploads/tt-shuttle_amakusa-20240401.pdf",
+              "observedResponseSha256": "ed70bd3893dbc2af81b09e351ec8cda5d7527fce394af5b5a379b04d276f2100"
+            }
+          }
+        },
+        {
+          "name": "堀切（天草）",
+          "operator": "産交バス（株）",
+          "line": "p11-stop:P11-22_43:bs3878",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_43:bs3878",
+            "recordSha256": "f8c565a55903215b638553f83990c8a2c48cc588d3fa91af48459fa778f0ef78",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Same-operator road-stop representative only. P11 exact airport-shuttle route context plus current operator two directions and licensed current native full-name calls establish continuity; no GTFS pole merge or inferred pedestrian crossing.",
+            "currentOperatorEvidence": {
+              "recordOperator": "産交バス（株）",
+              "currentOperatorName": "産交バス株式会社",
+              "currentStopName": "堀切",
+              "historicalRoute": "本渡バスセンター～天草市役所前～今釜～天草空港",
+              "url": "https://www.sankobus.jp/busportal/wp-content/uploads/tt-shuttle_amakusa-20240401.pdf",
+              "observedResponseSha256": "ed70bd3893dbc2af81b09e351ec8cda5d7527fce394af5b5a379b04d276f2100"
+            },
+            "currentStopNameReview": {
+              "method": "PRIMARY_HISTORICAL_CURRENT_ROAD_STOP_CONTINUITY",
+              "recordStopName": "堀切（天草）",
+              "currentStopName": "堀切",
+              "operator": "産交バス（株）",
+              "physicalContinuityReview": "P11 bs3878 explicitly belongs to the Amakusa airport shuttle route. Current operator PDF independently shows both adjacent airport/Horikiri sections. Retained current licensed GTFS exact route141 has the complete name 堀切（天草） at IDs104121_1/2 adjacent to 天草空港101221_1, excluding unrelated Horikiri operators/regions. P11 represents the same-road operator stop rather than either GTFS pole; no coordinate matching or arbitrary alias.",
+              "historicalEvidence": {
+                "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+                "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+                "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1",
+                "stopName": "堀切（天草）",
+                "operator": "産交バス（株）",
+                "locator": "P11-22_43.xml bs3878 exact historical airport route"
+              },
+              "currentEvidence": {
+                "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+                "url": "https://www.sankobus.jp/busportal/wp-content/uploads/tt-shuttle_amakusa-20240401.pdf",
+                "observedResponseSha256": "ed70bd3893dbc2af81b09e351ec8cda5d7527fce394af5b5a379b04d276f2100",
+                "stopName": "堀切",
+                "operator": "産交バス（株）",
+                "locator": "Both independently published airport shuttle direction tables, adjacent airport stop; current native GTFS disambiguation corroborates full name."
+              }
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "sourceDisplayNameBindings": [
+        {
+          "sourceName": "堀切",
+          "canonicalName": "堀切（天草）",
+          "nativeP11RecordId": "P11-22_43:bs3878",
+          "review": "Explicit historical/current route continuity plus licensed same-current-route GTFS full name. Source printed spelling preserved separately."
+        }
+      ],
+      "locator": "Visually reviewed operator PDF page2 first column, complete independently published twelve calls; selected parent1-2. Full parent source spelling retained; only the identity-bound Horikiri label expanded using current licensed native route. No intervening call removed, no synthetic reversed trip. Boarding-only origin and alighting-only destination retained. Current main page gives carrier 産交バス; legal suffix expanded consistently with unchanged native identity.",
+      "scheduleScope": "NO_CLOCK_FARE_FREQUENCY_RUNTIME_FIELDS"
+    },
+    {
+      "factId": "amakusa-amx-101-oct3",
+      "kind": "service",
+      "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+      "sourceUrl": "https://www.amx.co.jp/img/time/time_fuk_2021_04.jpg",
+      "observedResponseSha256": "5e4aa6b8cd0b2b6a9b94a38f4f9f58a7a97ad0853c479390f6050a3162ad1e61",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+          "url": "https://www.amx.co.jp/img/time/time_fuk_2021_04.jpg",
+          "observedResponseSha256": "5e4aa6b8cd0b2b6a9b94a38f4f9f58a7a97ad0853c479390f6050a3162ad1e61"
+        },
+        {
+          "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+          "url": "https://www.amx.co.jp/time/",
+          "observedResponseSha256": "7bbc2de42e1d4063c574e317dbc8df63f003a38868d206d4c1327042ae4f52e8"
+        },
+        {
+          "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+          "url": "https://www.amx.co.jp/news/n_20260825_903.html",
+          "observedResponseSha256": "356c183d3356750816d97b30f9d1ff4944afdca2994ed5eac8b192668e3c0632"
+        },
+        {
+          "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+          "url": "https://www.amx.co.jp/menseki/",
+          "observedResponseSha256": "5a96b61b202558bb1e4d8249d163a2b722cdf66b8c42bebecadf1a0faf850585"
+        },
+        {
+          "sourceActionId": "airport:amakusa:government-public-shuttle-gateway",
+          "url": "https://www.pref.kumamoto.jp/soshiki/113/58941.html",
+          "observedResponseSha256": "5550129005e5c80378a630ca876c2c9bd5f450fc6e5b63d2d97a1b1636bc5218"
+        }
+      ],
+      "operator": "天草エアライン",
+      "line": "天草・福岡国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "AMX101-AXJ-FUK",
+      "reviewedFlightNumber": "AMX101",
+      "reviewedServiceDate": "20261003",
+      "serviceState": "active",
+      "serviceStateScope": "Current airline own timetable and October2026 planned cancellation notice;101/102 cancelled Oct1/2, not Oct3. No realtime operation guarantee.",
+      "callingStations": [
+        "天草飛行場",
+        "福岡空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "天草飛行場",
+          "operator": "airport-facility:cf03_00044",
+          "line": "airport:cf03_00044",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00044",
+            "requirementId": "review:official-airport:天草",
+            "expectedRequirementName": "天草",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "currentPassengerAccessReview": "Current government airport-manager access explicitly identifies public airport shuttle. Airline own current table gives actual101/102 to/from Fukuoka; October3 is not among published October cancellations. Whole-airport reference and public gateway only, no precise terminal navigation.",
+            "officialNameEvidence": {
+              "sourceActionId": "airport:amakusa:government-public-shuttle-gateway",
+              "url": "https://www.pref.kumamoto.jp/soshiki/113/58941.html",
+              "observedResponseSha256": "5550129005e5c80378a630ca876c2c9bd5f450fc6e5b63d2d97a1b1636bc5218",
+              "officialName": "天草飛行場",
+              "requirementName": "天草",
+              "publicName": "天草空港",
+              "locator": "Existing airfield-suffix review: exact original base 天草, native C28 formal 天草飛行場, current airport-manager public name 天草空港. Not an explicit alias quotation or new suffix exception."
+            }
+          }
+        },
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Actual AMX101/102 current airline table identifies Fukuoka endpoint. Reuse existing exact C28 Fukuoka airport and nationally connected public ground chain; no internal airline-terminal connection or protected transfer promise."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Airline own current Fukuoka route page links reviewed image: actual101 天草→福岡 and102 福岡→天草. Actual 天草エアライン carrier, not JAL codeshare. Identity names map to exact C28 endpoints under existing airport review. No clock, protected connection, baggage or terminal assignment claim."
+    },
+    {
+      "factId": "amakusa-amx-102-oct3",
+      "kind": "service",
+      "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+      "sourceUrl": "https://www.amx.co.jp/img/time/time_fuk_2021_04.jpg",
+      "observedResponseSha256": "5e4aa6b8cd0b2b6a9b94a38f4f9f58a7a97ad0853c479390f6050a3162ad1e61",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+          "url": "https://www.amx.co.jp/img/time/time_fuk_2021_04.jpg",
+          "observedResponseSha256": "5e4aa6b8cd0b2b6a9b94a38f4f9f58a7a97ad0853c479390f6050a3162ad1e61"
+        },
+        {
+          "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+          "url": "https://www.amx.co.jp/time/",
+          "observedResponseSha256": "7bbc2de42e1d4063c574e317dbc8df63f003a38868d206d4c1327042ae4f52e8"
+        },
+        {
+          "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+          "url": "https://www.amx.co.jp/news/n_20260825_903.html",
+          "observedResponseSha256": "356c183d3356750816d97b30f9d1ff4944afdca2994ed5eac8b192668e3c0632"
+        },
+        {
+          "sourceActionId": "airport:amakusa:actual-amx-101-102-oct3",
+          "url": "https://www.amx.co.jp/menseki/",
+          "observedResponseSha256": "5a96b61b202558bb1e4d8249d163a2b722cdf66b8c42bebecadf1a0faf850585"
+        },
+        {
+          "sourceActionId": "airport:amakusa:government-public-shuttle-gateway",
+          "url": "https://www.pref.kumamoto.jp/soshiki/113/58941.html",
+          "observedResponseSha256": "5550129005e5c80378a630ca876c2c9bd5f450fc6e5b63d2d97a1b1636bc5218"
+        }
+      ],
+      "operator": "天草エアライン",
+      "line": "天草・福岡国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "AMX102-FUK-AXJ",
+      "reviewedFlightNumber": "AMX102",
+      "reviewedServiceDate": "20261003",
+      "serviceState": "active",
+      "serviceStateScope": "Current airline own timetable and October2026 planned cancellation notice;101/102 cancelled Oct1/2, not Oct3. No realtime operation guarantee.",
+      "callingStations": [
+        "福岡空港",
+        "天草飛行場"
+      ],
+      "callingComponents": [
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Actual AMX101/102 current airline table identifies Fukuoka endpoint. Reuse existing exact C28 Fukuoka airport and nationally connected public ground chain; no internal airline-terminal connection or protected transfer promise."
+          }
+        },
+        {
+          "name": "天草飛行場",
+          "operator": "airport-facility:cf03_00044",
+          "line": "airport:cf03_00044",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00044",
+            "requirementId": "review:official-airport:天草",
+            "expectedRequirementName": "天草",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "currentPassengerAccessReview": "Current government airport-manager access explicitly identifies public airport shuttle. Airline own current table gives actual101/102 to/from Fukuoka; October3 is not among published October cancellations. Whole-airport reference and public gateway only, no precise terminal navigation.",
+            "officialNameEvidence": {
+              "sourceActionId": "airport:amakusa:government-public-shuttle-gateway",
+              "url": "https://www.pref.kumamoto.jp/soshiki/113/58941.html",
+              "observedResponseSha256": "5550129005e5c80378a630ca876c2c9bd5f450fc6e5b63d2d97a1b1636bc5218",
+              "officialName": "天草飛行場",
+              "requirementName": "天草",
+              "publicName": "天草空港",
+              "locator": "Existing airfield-suffix review: exact original base 天草, native C28 formal 天草飛行場, current airport-manager public name 天草空港. Not an explicit alias quotation or new suffix exception."
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Airline own current Fukuoka route page links reviewed image: actual101 天草→福岡 and102 福岡→天草. Actual 天草エアライン carrier, not JAL codeshare. Identity names map to exact C28 endpoints under existing airport review. No clock, protected connection, baggage or terminal assignment claim."
+    },
+    {
+      "factId": "amakusa-government-public-airport-shuttle-gateway",
+      "kind": "transfer",
+      "sourceActionId": "airport:amakusa:government-public-shuttle-gateway",
+      "sourceUrl": "https://www.pref.kumamoto.jp/soshiki/113/58941.html",
+      "observedResponseSha256": "5550129005e5c80378a630ca876c2c9bd5f450fc6e5b63d2d97a1b1636bc5218",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:amakusa:government-public-shuttle-gateway",
+          "url": "https://www.pref.kumamoto.jp/soshiki/113/58941.html",
+          "observedResponseSha256": "5550129005e5c80378a630ca876c2c9bd5f450fc6e5b63d2d97a1b1636bc5218"
+        },
+        {
+          "sourceActionId": "airport:amakusa:government-public-shuttle-gateway",
+          "url": "https://www.pref.kumamoto.jp/soshiki/113/60454.html",
+          "observedResponseSha256": "8a276fd7700649af26392cf5260e6bbf43acb2eabe815b6aa8c7dece152aca7f"
+        },
+        {
+          "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+          "url": "https://www.sankobus.jp/bus/shuttle_amakusa/",
+          "observedResponseSha256": "855c67f5d96d9db77d54c57356c36f53f63169a07c332bd89f8af08b556d1b65"
+        },
+        {
+          "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+          "url": "https://www.sankobus.jp/busportal/wp-content/uploads/tt-shuttle_amakusa-20240401.pdf",
+          "observedResponseSha256": "ed70bd3893dbc2af81b09e351ec8cda5d7527fce394af5b5a379b04d276f2100"
+        },
+        {
+          "sourceActionId": "bus:amakusa:current-two-adjacent-airport-sections",
+          "url": "https://www.sankobus.jp/bus/shuttle_amakusa/jikoku/",
+          "observedResponseSha256": "3b1cea9bb43105499d057724e40bb72600293ed28f2e8d5584cce90d5f4d8e53"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        },
+        {
+          "sourceActionId": "bus:sankobus:licensed-current-airport-trips",
+          "url": "https://api.gtfs-data.jp/v2/organizations/sankobus/feeds/sankobus/files/feed.zip?rid=current",
+          "observedResponseSha256": "78c4853f0c5d3583d33610ea46bd68dd91e3352bab0472d2f07b09ac72b8364c"
+        }
+      ],
+      "components": [
+        {
+          "name": "天草飛行場",
+          "operator": "airport-facility:cf03_00044",
+          "line": "airport:cf03_00044",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00044",
+            "requirementId": "review:official-airport:天草",
+            "expectedRequirementName": "天草",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "currentPassengerAccessReview": "Current government airport-manager access explicitly identifies public airport shuttle. Airline own current table gives actual101/102 to/from Fukuoka; October3 is not among published October cancellations. Whole-airport reference and public gateway only, no precise terminal navigation.",
+            "officialNameEvidence": {
+              "sourceActionId": "airport:amakusa:government-public-shuttle-gateway",
+              "url": "https://www.pref.kumamoto.jp/soshiki/113/58941.html",
+              "observedResponseSha256": "5550129005e5c80378a630ca876c2c9bd5f450fc6e5b63d2d97a1b1636bc5218",
+              "officialName": "天草飛行場",
+              "requirementName": "天草",
+              "publicName": "天草空港",
+              "locator": "Existing airfield-suffix review: exact original base 天草, native C28 formal 天草飛行場, current airport-manager public name 天草空港. Not an explicit alias quotation or new suffix exception."
+            }
+          }
+        },
+        {
+          "name": "天草空港",
+          "operator": "産交バス（株）",
+          "line": "p11-stop:P11-22_43:bs3880",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_43:bs3880",
+            "recordSha256": "4d620ba35fa2ed8ae86b9b3f24c3a4db5407dceb0d3c41e8ba8334178145e862",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Same-operator road-stop representative only. P11 exact airport-shuttle route context plus current operator two directions and licensed current native full-name calls establish continuity; no GTFS pole merge or inferred pedestrian crossing.",
+            "currentOperatorEvidence": {
+              "recordOperator": "産交バス（株）",
+              "currentOperatorName": "産交バス株式会社",
+              "currentStopName": "天草空港",
+              "historicalRoute": "本渡バスセンター～天草市役所前～今釜～天草空港",
+              "url": "https://www.sankobus.jp/busportal/wp-content/uploads/tt-shuttle_amakusa-20240401.pdf",
+              "observedResponseSha256": "ed70bd3893dbc2af81b09e351ec8cda5d7527fce394af5b5a379b04d276f2100"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "reviewMethod": "AIRPORT_FACILITY_GATEWAY_EXPLICIT_TERMINAL_ACCESS_ONLY",
+      "locator": "Airport manager 交通アクセス explicitly has passenger bus access and 天草市内～天草空港 airport shuttle, linked operator route; current carrier confirms public shared passenger route both directions. Coarse whole-airport gateway to exact P11 bs3880 only. Official floor establishes public entrance but does not label bus stand. No curb, geometry, crossing, walking duration or accessibility assertion."
+    }
+  ],
+  "scope": "Two actual adjacent shuttle sections from separate parent directions only; retain all twelve calls as provenance without adding other intermediate nodes. P11 coarse same-road component remains distinct from precise GTFS poles. Whole-airport access only.",
+  "metrics": {
+    "busRideEdges": 2,
+    "flightEdges": 2,
+    "publicWalkEdges": 2,
+    "newP11Identities": 2,
+    "newHttpRequests": 0
+  }
+}

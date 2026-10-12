@@ -1,0 +1,363 @@
+{
+  "phaseId": "108-three-remaining-t1-airports-independent-current-flight-pairs",
+  "strategy": [
+    "INDEPENDENT_AIRPORT_PUBLICATIONS_WITH_SEPARATE_RIGHTS_REVIEW",
+    "CURRENT_ACTUAL_FLIGHT_DIRECTIONAL_PAIRS",
+    "EXACT_C28_IDENTITIES_WITHOUT_IMPLIED_SURFACE_TRANSFER"
+  ],
+  "completedActionIds": [
+    "flight:akita-airport:current-independent-haneda-pair",
+    "flight:matsuyama-airport:current-independent-haneda-pair",
+    "flight:kitakyushu-airport:current-independent-starflyer-pair"
+  ],
+  "facts": [
+    {
+      "factId": "independent-airport-秋田-haneda-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:akita-airport:current-independent-haneda-pair",
+      "sourceUrl": "https://www.akita-airport.com/pages/flight-departure?landing=1&place_id=1&date=261002",
+      "observedResponseSha256": "499c633dfacd1a9e256940d317deff3060536eb741ead5aeef9537a852632583",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:akita-airport:current-independent-haneda-pair",
+          "url": "https://www.akita-airport.com/pages/flight",
+          "observedResponseSha256": "5b09e6e127902985725513e71ab8347a2f577a8efd32bee03903953fe3ba7720"
+        }
+      ],
+      "locator": "Airport-owned departure and arrival tables separately requested with date=261002; returned date selector also confirms October 2, 2026. Selected NH402 departure and NH401 arrival are actual separately observed directions. Only static airport-pair relationship retained; clocks and flight-status links are excluded.",
+      "line": "秋田・東京国際国内線",
+      "operator": "全日本空輸",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NH402",
+      "direction": "秋田空港→東京国際空港",
+      "callingStations": [
+        "秋田空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "秋田空港",
+          "operator": "airport-facility:cf03_00023",
+          "line": "airport:cf03_00023",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00023",
+            "requirementId": "review:transport-node:8d87ee3a-7f0b-541e-b717-9cd0baf1844c",
+            "expectedRequirementName": "秋田",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independently published airport directional service tables corroborate the operating passenger facility and exact whole-airport C28 identity. Tokyo Haneda is the previously admitted Tokyo International facility. No direct airline-site payload, live availability, terminal-door coordinate or ground-transfer edge is inferred."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independently published airport directional service tables corroborate the operating passenger facility and exact whole-airport C28 identity. Tokyo Haneda is the previously admitted Tokyo International facility. No direct airline-site payload, live availability, terminal-door coordinate or ground-transfer edge is inferred."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_PUBLICATION_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OCTOBER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "independent-airport-秋田-haneda-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:akita-airport:current-independent-haneda-pair",
+      "sourceUrl": "https://www.akita-airport.com/pages/flight-arrival?landing=2&place_id=1&date=261002",
+      "observedResponseSha256": "b42f77f501bae7e2922e6f167c584df65f2bd591a02435fad7c2c97cae4f9bf8",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:akita-airport:current-independent-haneda-pair",
+          "url": "https://www.akita-airport.com/pages/flight",
+          "observedResponseSha256": "5b09e6e127902985725513e71ab8347a2f577a8efd32bee03903953fe3ba7720"
+        }
+      ],
+      "locator": "Airport-owned departure and arrival tables separately requested with date=261002; returned date selector also confirms October 2, 2026. Selected NH402 departure and NH401 arrival are actual separately observed directions. Only static airport-pair relationship retained; clocks and flight-status links are excluded.",
+      "line": "秋田・東京国際国内線",
+      "operator": "全日本空輸",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NH401",
+      "direction": "東京国際空港→秋田空港",
+      "callingStations": [
+        "東京国際空港",
+        "秋田空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independently published airport directional service tables corroborate the operating passenger facility and exact whole-airport C28 identity. Tokyo Haneda is the previously admitted Tokyo International facility. No direct airline-site payload, live availability, terminal-door coordinate or ground-transfer edge is inferred."
+          }
+        },
+        {
+          "name": "秋田空港",
+          "operator": "airport-facility:cf03_00023",
+          "line": "airport:cf03_00023",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00023",
+            "requirementId": "review:transport-node:8d87ee3a-7f0b-541e-b717-9cd0baf1844c",
+            "expectedRequirementName": "秋田",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independently published airport directional service tables corroborate the operating passenger facility and exact whole-airport C28 identity. Tokyo Haneda is the previously admitted Tokyo International facility. No direct airline-site payload, live availability, terminal-door coordinate or ground-transfer edge is inferred."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_PUBLICATION_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OCTOBER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "independent-airport-松山-haneda-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:matsuyama-airport:current-independent-haneda-pair",
+      "sourceUrl": "https://www.matsuyama-airport.co.jp/flight/haneda/",
+      "observedResponseSha256": "2597f9c61925a8942b17ac129b756ad82fc9592014106ea08782283af575fdef",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:matsuyama-airport:current-independent-haneda-pair",
+          "url": "https://www.matsuyama-airport.co.jp/flight/dms.html",
+          "observedResponseSha256": "47f01be3328c595ed19d0e41f6f005647fcda77882b44732cfac8929ccc3ed40"
+        }
+      ],
+      "locator": "Airport-owned Haneda monthly table explicitly valid October 1-24, 2026. Departure JAL430 and arrival JAL431 were independently reviewed in their separate sections; no restrictions appear for these selected rows. Only static airport-pair relationship retained, no copied clocks, fare or table.",
+      "line": "松山・東京国際国内線",
+      "operator": "日本航空",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "JAL430",
+      "direction": "松山空港→東京国際空港",
+      "callingStations": [
+        "松山空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "松山空港",
+          "operator": "airport-facility:cf03_00053",
+          "line": "airport:cf03_00053",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00053",
+            "requirementId": "review:transport-node:9df3dd1d-5a8e-5a68-b6bc-407d8bf070dc",
+            "expectedRequirementName": "松山",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independently published airport directional service tables corroborate the operating passenger facility and exact whole-airport C28 identity. Tokyo Haneda is the previously admitted Tokyo International facility. No direct airline-site payload, live availability, terminal-door coordinate or ground-transfer edge is inferred."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independently published airport directional service tables corroborate the operating passenger facility and exact whole-airport C28 identity. Tokyo Haneda is the previously admitted Tokyo International facility. No direct airline-site payload, live availability, terminal-door coordinate or ground-transfer edge is inferred."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_PUBLICATION_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OCTOBER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "independent-airport-松山-haneda-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:matsuyama-airport:current-independent-haneda-pair",
+      "sourceUrl": "https://www.matsuyama-airport.co.jp/flight/haneda/",
+      "observedResponseSha256": "2597f9c61925a8942b17ac129b756ad82fc9592014106ea08782283af575fdef",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:matsuyama-airport:current-independent-haneda-pair",
+          "url": "https://www.matsuyama-airport.co.jp/flight/dms.html",
+          "observedResponseSha256": "47f01be3328c595ed19d0e41f6f005647fcda77882b44732cfac8929ccc3ed40"
+        }
+      ],
+      "locator": "Airport-owned Haneda monthly table explicitly valid October 1-24, 2026. Departure JAL430 and arrival JAL431 were independently reviewed in their separate sections; no restrictions appear for these selected rows. Only static airport-pair relationship retained, no copied clocks, fare or table.",
+      "line": "松山・東京国際国内線",
+      "operator": "日本航空",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "JAL431",
+      "direction": "東京国際空港→松山空港",
+      "callingStations": [
+        "東京国際空港",
+        "松山空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independently published airport directional service tables corroborate the operating passenger facility and exact whole-airport C28 identity. Tokyo Haneda is the previously admitted Tokyo International facility. No direct airline-site payload, live availability, terminal-door coordinate or ground-transfer edge is inferred."
+          }
+        },
+        {
+          "name": "松山空港",
+          "operator": "airport-facility:cf03_00053",
+          "line": "airport:cf03_00053",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00053",
+            "requirementId": "review:transport-node:9df3dd1d-5a8e-5a68-b6bc-407d8bf070dc",
+            "expectedRequirementName": "松山",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independently published airport directional service tables corroborate the operating passenger facility and exact whole-airport C28 identity. Tokyo Haneda is the previously admitted Tokyo International facility. No direct airline-site payload, live availability, terminal-door coordinate or ground-transfer edge is inferred."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_PUBLICATION_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OCTOBER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "independent-airport-北九州-haneda-outbound",
+      "kind": "service",
+      "sourceActionId": "flight:kitakyushu-airport:current-independent-starflyer-pair",
+      "sourceUrl": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+      "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:kitakyushu-airport:current-independent-starflyer-pair",
+          "url": "https://www.kitakyu-air.jp/rev-boarding/pocket_timetable.php",
+          "observedResponseSha256": "56f9c7db8b87c7d366f964694bef7ce4398c0039d62cf3e46334fee723c5d233"
+        }
+      ],
+      "locator": "Visually reviewed airport promotion council summer guide PDF page 2 (printed pages 1-2), period March 29 through October 24, 2026. Left table actual SFJ72 northbound and adjacent table actual SFJ73 southbound independently reviewed. Exclude date-restricted SFJ70/SFJ95 and suspended international routes. Retain only static airport pair and operating carrier; code-share duplicates, clocks, fares and artwork excluded.",
+      "line": "北九州・東京国際国内線",
+      "operator": "スターフライヤー",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "SFJ72",
+      "direction": "北九州空港→東京国際空港",
+      "callingStations": [
+        "北九州空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "北九州空港",
+          "operator": "airport-facility:cf03_00002",
+          "line": "airport:cf03_00002",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00002",
+            "requirementId": "review:transport-node:fbaf00c2-a946-52b8-9920-9a493ad20d20",
+            "expectedRequirementName": "北九州",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independently published airport directional service tables corroborate the operating passenger facility and exact whole-airport C28 identity. Tokyo Haneda is the previously admitted Tokyo International facility. No direct airline-site payload, live availability, terminal-door coordinate or ground-transfer edge is inferred."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independently published airport directional service tables corroborate the operating passenger facility and exact whole-airport C28 identity. Tokyo Haneda is the previously admitted Tokyo International facility. No direct airline-site payload, live availability, terminal-door coordinate or ground-transfer edge is inferred."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_PUBLICATION_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OCTOBER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "independent-airport-北九州-haneda-inbound",
+      "kind": "service",
+      "sourceActionId": "flight:kitakyushu-airport:current-independent-starflyer-pair",
+      "sourceUrl": "https://www.kitakyu-air.jp/pdf/pocket-guide_2026.03-10.pdf",
+      "observedResponseSha256": "df8142229a271712991c60f2e9bb23713c724df2db1bd22ff8157fb8fdbab47f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:kitakyushu-airport:current-independent-starflyer-pair",
+          "url": "https://www.kitakyu-air.jp/rev-boarding/pocket_timetable.php",
+          "observedResponseSha256": "56f9c7db8b87c7d366f964694bef7ce4398c0039d62cf3e46334fee723c5d233"
+        }
+      ],
+      "locator": "Visually reviewed airport promotion council summer guide PDF page 2 (printed pages 1-2), period March 29 through October 24, 2026. Left table actual SFJ72 northbound and adjacent table actual SFJ73 southbound independently reviewed. Exclude date-restricted SFJ70/SFJ95 and suspended international routes. Retain only static airport pair and operating carrier; code-share duplicates, clocks, fares and artwork excluded.",
+      "line": "北九州・東京国際国内線",
+      "operator": "スターフライヤー",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "SFJ73",
+      "direction": "東京国際空港→北九州空港",
+      "callingStations": [
+        "東京国際空港",
+        "北九州空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independently published airport directional service tables corroborate the operating passenger facility and exact whole-airport C28 identity. Tokyo Haneda is the previously admitted Tokyo International facility. No direct airline-site payload, live availability, terminal-door coordinate or ground-transfer edge is inferred."
+          }
+        },
+        {
+          "name": "北九州空港",
+          "operator": "airport-facility:cf03_00002",
+          "line": "airport:cf03_00002",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00002",
+            "requirementId": "review:transport-node:fbaf00c2-a946-52b8-9920-9a493ad20d20",
+            "expectedRequirementName": "北九州",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independently published airport directional service tables corroborate the operating passenger facility and exact whole-airport C28 identity. Tokyo Haneda is the previously admitted Tokyo International facility. No direct airline-site payload, live availability, terminal-door coordinate or ground-transfer edge is inferred."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_PUBLICATION_DIRECTIONAL_FLIGHT_AND_C28",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OCTOBER_2026_STATIC_FLIGHT_RELATION_NOT_REALTIME"
+    }
+  ]
+}

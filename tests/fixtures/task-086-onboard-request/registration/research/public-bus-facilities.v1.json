@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "facilities": [
+    {
+      "archivePath": "sources/raw/niijima-p05-tokyo.zip",
+      "extraction": {
+        "dataset": "P05-22",
+        "archiveSha256": "576e86da9142bedb839cae3b09e074a1c1a63264349b8adc41365c7574a309e5",
+        "nativeRecordSha256": "034630300011ea35ee6ae683e33be60e195f2406f1faafbe6166d55918b54f91",
+        "member": "P05-22_13.geojson",
+        "memberSha256": "df3bdefc71b1d9e22cdfe90405374f022fe7637ec0460c5b3995cbc276d46156",
+        "featureIndex": 2898
+      },
+      "nativeIdentity": {
+        "dataset": "P05-22",
+        "nativeRecord": {
+          "type": "Feature",
+          "properties": {
+            "P05_001": "13363",
+            "P05_002": "5",
+            "P05_003": "新島住民センター",
+            "P05_004": "新島村本村1-1-1"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [139.256576, 34.377138]
+          }
+        },
+        "nativeRecordSha256": "034630300011ea35ee6ae683e33be60e195f2406f1faafbe6166d55918b54f91",
+        "archiveSha256": "576e86da9142bedb839cae3b09e074a1c1a63264349b8adc41365c7574a309e5",
+        "memberSha256": "df3bdefc71b1d9e22cdfe90405374f022fe7637ec0460c5b3995cbc276d46156",
+        "featureIndex": 2898,
+        "name": "新島住民センター",
+        "address": "新島村本村1-1-1",
+        "latitude": 34.377138,
+        "longitude": 139.256576,
+        "municipalityCode": "13363",
+        "identityAnchor": "mlit-p05:22:13:新島住民センター:新島村本村1-1-1"
+      },
+      "nativeIdentityEvidenceRef": "transport-evidence:086:01c137baf90dde66e3978659265b251f",
+      "componentEvidenceRefs": [
+        "transport-evidence:086:6f962c40c21e0c40de50b04df93d415d",
+        "transport-evidence:086:75cc748ebd4df13257d61209c7dda29e"
+      ],
+      "sourcePackagePaths": [
+        "sources/niijima-static-5181a2e5a8ab3ba2.json",
+        "sources/niijima-static-ccfb159d7262a88a.json",
+        "sources/niijima-static-6f6b5aaf80c0196a.json",
+        "sources/niijima-static-6a7ed6b070cc7cc5.json",
+        "sources/niijima-static-3e438b6d1a8c6819.json",
+        "sources/niijima-static-b2806eab4ab0009c.json"
+      ],
+      "serviceOperator": "新島村",
+      "lineRef": "niijima:fureai-bus"
+    },
+    {
+      "archivePath": "sources/raw/niijima-tokyo-official-evacuation.csv",
+      "extraction": {
+        "dataset": "TOKYO_PUBLIC_EVACUATION_FACILITIES",
+        "archiveSha256": "dc6cc97a78d613ae4beab1dfbbd56280a3652d67f5f49ba31c39a5579d22483d",
+        "nativeRecordSha256": "e9789a74635796b403c501c7cf3ed85ce6b132c89ae39c0f3cf937e7d1084d43",
+        "header": [
+          "避難所_施設名称",
+          "地方公共団体コード",
+          "都道府県",
+          "指定市区町村名",
+          "所在地住所",
+          "緯度",
+          "経度",
+          "エレベーター有/\n避難スペースが１階",
+          "スロープ等",
+          "点字ブロック",
+          "車椅子使用者対応トイレ",
+          "その他"
+        ],
+        "headerRowIndex": 1,
+        "rowCount": 1046315,
+        "emptyRowCount": 1043754,
+        "logicalRowIndex": 2503
+      },
+      "nativeIdentity": {
+        "dataset": "TOKYO_PUBLIC_EVACUATION_FACILITIES",
+        "nativeRecord": {
+          "避難所_施設名称": "さわやか健康センター",
+          "地方公共団体コード": "133639",
+          "都道府県": "東京都",
+          "指定市区町村名": "新島村",
+          "所在地住所": "新島村本村3-12-8",
+          "緯度": "34.37261000 ",
+          "経度": "139.25970500 ",
+          "エレベーター有/\n避難スペースが１階": "○",
+          "スロープ等": "",
+          "点字ブロック": "",
+          "車椅子使用者対応トイレ": "",
+          "その他": "自動ドア"
+        },
+        "nativeRecordSha256": "e9789a74635796b403c501c7cf3ed85ce6b132c89ae39c0f3cf937e7d1084d43",
+        "archiveSha256": "dc6cc97a78d613ae4beab1dfbbd56280a3652d67f5f49ba31c39a5579d22483d",
+        "logicalRowIndex": 2503,
+        "name": "さわやか健康センター",
+        "address": "新島村本村3-12-8",
+        "latitude": 34.37261,
+        "longitude": 139.259705,
+        "municipalityCode": "133639",
+        "identityAnchor": "tokyo-evacuation-facility:133639:さわやか健康センター:新島村本村3-12-8"
+      },
+      "nativeIdentityEvidenceRef": "transport-evidence:086:82bee0949d9f80c4eeb8517727f7b13f",
+      "componentEvidenceRefs": [
+        "transport-evidence:086:278689cc7dc1ec77259aebfd92b9ea5a",
+        "transport-evidence:086:48ccc3cff0689c1e1ee071e751c964c7"
+      ],
+      "sourcePackagePaths": [
+        "sources/niijima-static-5181a2e5a8ab3ba2.json",
+        "sources/niijima-static-ccfb159d7262a88a.json",
+        "sources/niijima-static-6f6b5aaf80c0196a.json",
+        "sources/niijima-static-6a7ed6b070cc7cc5.json",
+        "sources/niijima-static-3e438b6d1a8c6819.json",
+        "sources/niijima-static-b2806eab4ab0009c.json"
+      ],
+      "serviceOperator": "新島村",
+      "lineRef": "niijima:fureai-bus"
+    }
+  ]
+}

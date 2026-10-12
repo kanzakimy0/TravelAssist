@@ -1,0 +1,53 @@
+{
+  "firstFullRegression": {
+    "tests": 3081,
+    "pass": 3080,
+    "fail": 1,
+    "timing": {
+      "command": [
+        "node",
+        "--import",
+        "./tests/register-route-ts.mjs",
+        "--test",
+        "--test-concurrency=2",
+        "tests/*.test.mjs"
+      ],
+      "elapsedSeconds": 1220.072334400029,
+      "exitCode": 1,
+      "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
+    },
+    "logSha256": "2617fbd295ee8ceac21f93575998708594f4063ab672d9717bcddd02bd240846",
+    "failedTest": "nightly --dry-run does not write canonical catalogs",
+    "failure": "ETIMEDOUT at unchanged30000ms"
+  },
+  "isolatedDiagnostic": {
+    "exitCode": 0,
+    "elapsedSeconds": 18.988836999982595,
+    "command": [
+      "node",
+      "--import",
+      "./tests/register-route-ts.mjs",
+      "--test",
+      "--test-name-pattern=nightly --dry-run does not write canonical catalogs",
+      "tests/task-013-1-asset-variants.test.mjs"
+    ],
+    "testFileSha256": "b2098d291d3a007da02c9ea9e14ede8d7eef5793ce711f937e72361c4794101b",
+    "testTimeoutMilliseconds": 30000,
+    "thresholdModified": false
+  },
+  "finalFullRegression": {
+    "command": [
+      "node",
+      "--import",
+      "./tests/register-route-ts.mjs",
+      "--test",
+      "--test-concurrency=1",
+      "tests/*.test.mjs"
+    ],
+    "elapsedSeconds": 1230.0468785999692,
+    "exitCode": 0,
+    "scopeId": "TASK086-FULL-ORIGINAL-PHASE200-v2"
+  },
+  "methodChange": "testConcurrency2→1; thresholds and assertions unchanged",
+  "allAttemptsRetained": true
+}

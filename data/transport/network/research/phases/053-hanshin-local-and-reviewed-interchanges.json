@@ -1,0 +1,963 @@
+{
+  "phaseId": "053-hanshin-local-and-reviewed-interchanges",
+  "strategy": [
+    "HANSHIN_ORDINARY_LOCAL_ROWS",
+    "SANNOMIYA_IMAZU_NISHIKUJO_CURRENT_MAPS",
+    "private_rail"
+  ],
+  "completedActionIds": [
+    "private:hanshin:reviewed-local-patterns"
+  ],
+  "facts": [
+    {
+      "factId": "hanshin-0-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hanshin:reviewed-local-patterns",
+      "sourceUrl": "https://www.hanshin.co.jp/station/pdf/stopstation.pdf",
+      "observedResponseSha256": "9410d07445586668eb81a75f79ddafb08b5a5f946301ee972879d7726931c8f6",
+      "locator": "Current linked official stop diagram page 1, navy ordinary row and Mukogawa branch stopping dots. Main-line section retained Osaka-Umeda to Motomachi; Namba local separately Amagasaki to Osaka-Namba; no Sanyo, Kobe-Kosoku or Kintetsu continuation inferred. Namba Amagasaki/ Daimotsu physical identities use S12 main line where applicable.",
+      "line": "本線",
+      "operator": "阪神電気鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "大阪梅田",
+        "福島",
+        "野田",
+        "淀川",
+        "姫島",
+        "千船",
+        "杭瀬",
+        "大物",
+        "尼崎",
+        "出屋敷",
+        "尼崎センタープール前",
+        "武庫川",
+        "鳴尾・武庫川女子大前",
+        "甲子園",
+        "久寿川",
+        "今津",
+        "西宮",
+        "香櫨園",
+        "打出",
+        "芦屋",
+        "深江",
+        "青木",
+        "魚崎",
+        "住吉",
+        "御影",
+        "石屋川",
+        "新在家",
+        "大石",
+        "西灘",
+        "岩屋",
+        "春日野道",
+        "神戸三宮",
+        "元町"
+      ],
+      "callingComponents": [
+        {
+          "name": "大阪梅田",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "福島",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "野田",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "淀川",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "姫島",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千船",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "杭瀬",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大物",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "尼崎",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "出屋敷",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "尼崎センタープール前",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "武庫川",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鳴尾・武庫川女子大前",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "甲子園",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "久寿川",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "今津",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西宮",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "香櫨園",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "打出",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "芦屋",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "深江",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "青木",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "魚崎",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "住吉",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "御影",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "石屋川",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新在家",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大石",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西灘",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "岩屋",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "春日野道",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "神戸三宮",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "元町",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_OFFICIAL_ORDINARY_SERVICE_ROW_AND_OPERATOR_SECTION_BOUNDARY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hanshin-0-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hanshin:reviewed-local-patterns",
+      "sourceUrl": "https://www.hanshin.co.jp/station/pdf/stopstation.pdf",
+      "observedResponseSha256": "9410d07445586668eb81a75f79ddafb08b5a5f946301ee972879d7726931c8f6",
+      "locator": "Current linked official stop diagram page 1, navy ordinary row and Mukogawa branch stopping dots. Main-line section retained Osaka-Umeda to Motomachi; Namba local separately Amagasaki to Osaka-Namba; no Sanyo, Kobe-Kosoku or Kintetsu continuation inferred. Namba Amagasaki/ Daimotsu physical identities use S12 main line where applicable.",
+      "line": "本線",
+      "operator": "阪神電気鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "元町",
+        "神戸三宮",
+        "春日野道",
+        "岩屋",
+        "西灘",
+        "大石",
+        "新在家",
+        "石屋川",
+        "御影",
+        "住吉",
+        "魚崎",
+        "青木",
+        "深江",
+        "芦屋",
+        "打出",
+        "香櫨園",
+        "西宮",
+        "今津",
+        "久寿川",
+        "甲子園",
+        "鳴尾・武庫川女子大前",
+        "武庫川",
+        "尼崎センタープール前",
+        "出屋敷",
+        "尼崎",
+        "大物",
+        "杭瀬",
+        "千船",
+        "姫島",
+        "淀川",
+        "野田",
+        "福島",
+        "大阪梅田"
+      ],
+      "callingComponents": [
+        {
+          "name": "元町",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "神戸三宮",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "春日野道",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "岩屋",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西灘",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大石",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新在家",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "石屋川",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "御影",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "住吉",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "魚崎",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "青木",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "深江",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "芦屋",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "打出",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "香櫨園",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西宮",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "今津",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "久寿川",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "甲子園",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鳴尾・武庫川女子大前",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "武庫川",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "尼崎センタープール前",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "出屋敷",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "尼崎",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大物",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "杭瀬",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千船",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "姫島",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "淀川",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "野田",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "福島",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大阪梅田",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_OFFICIAL_ORDINARY_SERVICE_ROW_AND_OPERATOR_SECTION_BOUNDARY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hanshin-1-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hanshin:reviewed-local-patterns",
+      "sourceUrl": "https://www.hanshin.co.jp/station/pdf/stopstation.pdf",
+      "observedResponseSha256": "9410d07445586668eb81a75f79ddafb08b5a5f946301ee972879d7726931c8f6",
+      "locator": "Current linked official stop diagram page 1, navy ordinary row and Mukogawa branch stopping dots. Main-line section retained Osaka-Umeda to Motomachi; Namba local separately Amagasaki to Osaka-Namba; no Sanyo, Kobe-Kosoku or Kintetsu continuation inferred. Namba Amagasaki/ Daimotsu physical identities use S12 main line where applicable.",
+      "line": "阪神なんば線",
+      "operator": "阪神電気鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "尼崎",
+        "大物",
+        "出来島",
+        "福",
+        "伝法",
+        "千鳥橋",
+        "西九条",
+        "九条",
+        "ドーム前",
+        "桜川",
+        "大阪難波"
+      ],
+      "callingComponents": [
+        {
+          "name": "尼崎",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大物",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "出来島",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "福",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "伝法",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千鳥橋",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西九条",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "九条",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "ドーム前",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桜川",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大阪難波",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_OFFICIAL_ORDINARY_SERVICE_ROW_AND_OPERATOR_SECTION_BOUNDARY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hanshin-1-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hanshin:reviewed-local-patterns",
+      "sourceUrl": "https://www.hanshin.co.jp/station/pdf/stopstation.pdf",
+      "observedResponseSha256": "9410d07445586668eb81a75f79ddafb08b5a5f946301ee972879d7726931c8f6",
+      "locator": "Current linked official stop diagram page 1, navy ordinary row and Mukogawa branch stopping dots. Main-line section retained Osaka-Umeda to Motomachi; Namba local separately Amagasaki to Osaka-Namba; no Sanyo, Kobe-Kosoku or Kintetsu continuation inferred. Namba Amagasaki/ Daimotsu physical identities use S12 main line where applicable.",
+      "line": "阪神なんば線",
+      "operator": "阪神電気鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "大阪難波",
+        "桜川",
+        "ドーム前",
+        "九条",
+        "西九条",
+        "千鳥橋",
+        "伝法",
+        "福",
+        "出来島",
+        "大物",
+        "尼崎"
+      ],
+      "callingComponents": [
+        {
+          "name": "大阪難波",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桜川",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "ドーム前",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "九条",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西九条",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千鳥橋",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "伝法",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "福",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "出来島",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大物",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "尼崎",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_OFFICIAL_ORDINARY_SERVICE_ROW_AND_OPERATOR_SECTION_BOUNDARY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hanshin-2-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:hanshin:reviewed-local-patterns",
+      "sourceUrl": "https://www.hanshin.co.jp/station/pdf/stopstation.pdf",
+      "observedResponseSha256": "9410d07445586668eb81a75f79ddafb08b5a5f946301ee972879d7726931c8f6",
+      "locator": "Current linked official stop diagram page 1, navy ordinary row and Mukogawa branch stopping dots. Main-line section retained Osaka-Umeda to Motomachi; Namba local separately Amagasaki to Osaka-Namba; no Sanyo, Kobe-Kosoku or Kintetsu continuation inferred. Namba Amagasaki/ Daimotsu physical identities use S12 main line where applicable.",
+      "line": "武庫川線",
+      "operator": "阪神電気鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "武庫川",
+        "東鳴尾",
+        "洲先",
+        "武庫川団地前"
+      ],
+      "callingComponents": [
+        {
+          "name": "武庫川",
+          "operator": "阪神電気鉄道",
+          "line": "武庫川線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東鳴尾",
+          "operator": "阪神電気鉄道",
+          "line": "武庫川線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "洲先",
+          "operator": "阪神電気鉄道",
+          "line": "武庫川線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "武庫川団地前",
+          "operator": "阪神電気鉄道",
+          "line": "武庫川線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_OFFICIAL_ORDINARY_SERVICE_ROW_AND_OPERATOR_SECTION_BOUNDARY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hanshin-2-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:hanshin:reviewed-local-patterns",
+      "sourceUrl": "https://www.hanshin.co.jp/station/pdf/stopstation.pdf",
+      "observedResponseSha256": "9410d07445586668eb81a75f79ddafb08b5a5f946301ee972879d7726931c8f6",
+      "locator": "Current linked official stop diagram page 1, navy ordinary row and Mukogawa branch stopping dots. Main-line section retained Osaka-Umeda to Motomachi; Namba local separately Amagasaki to Osaka-Namba; no Sanyo, Kobe-Kosoku or Kintetsu continuation inferred. Namba Amagasaki/ Daimotsu physical identities use S12 main line where applicable.",
+      "line": "武庫川線",
+      "operator": "阪神電気鉄道",
+      "mode": "private_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "武庫川団地前",
+        "洲先",
+        "東鳴尾",
+        "武庫川"
+      ],
+      "callingComponents": [
+        {
+          "name": "武庫川団地前",
+          "operator": "阪神電気鉄道",
+          "line": "武庫川線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "洲先",
+          "operator": "阪神電気鉄道",
+          "line": "武庫川線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東鳴尾",
+          "operator": "阪神電気鉄道",
+          "line": "武庫川線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "武庫川",
+          "operator": "阪神電気鉄道",
+          "line": "武庫川線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_OFFICIAL_ORDINARY_SERVICE_ROW_AND_OPERATOR_SECTION_BOUNDARY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "hanshin-imazu-reviewed-interchange",
+      "kind": "transfer",
+      "sourceActionId": "private:hanshin:reviewed-local-patterns",
+      "sourceUrl": "https://www.hanshin.co.jp/uploads/guidemap/imazu.pdf",
+      "observedResponseSha256": "d87cf562ca00b73919129f2ee9f99bdc895d566fd96cda78e6aa2e05b6f975dd",
+      "locator": "Map dated 2026-02-01 traces the public second-floor concourse from Hanshin gates to named Hankyu Imazu station. Retain only the independently resolved pair.",
+      "components": [
+        {
+          "name": "今津",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "今津",
+          "operator": "阪急電鉄",
+          "line": "今津線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUAL_CURRENT_STATION_MAP_ACTIVE_PUBLIC_PATH_AND_NAMED_OPERATOR_ENTRANCE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hanshin-nishikujo-reviewed-interchange",
+      "kind": "transfer",
+      "sourceActionId": "private:hanshin:reviewed-local-patterns",
+      "sourceUrl": "https://www.hanshin.co.jp/uploads/guidemap/nishikujo.pdf",
+      "observedResponseSha256": "b380097c74f8a893d596a1bd2f72c27bbea496fb9f250796e9a77f19417eb22a",
+      "locator": "Map dated 2026-02-01 explicitly traces the west-gate connecting elevator and stairs to JR Nishikujo concourse, listing Osaka Loop and Yumesaki lines. One JR physical operator component only.",
+      "components": [
+        {
+          "name": "西九条",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西九条",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUAL_CURRENT_STATION_MAP_ACTIVE_PUBLIC_PATH_AND_NAMED_OPERATOR_ENTRANCE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hanshin-sannomiya-reviewed-interchange",
+      "kind": "transfer",
+      "sourceActionId": "private:hanshin:reviewed-local-patterns",
+      "sourceUrl": "https://www.hanshin.co.jp/uploads/guidemap/sannomiya.pdf",
+      "observedResponseSha256": "d679fc1f24103ae1daf9cdb67c5b4b2afdac69a8634900c49997a743e78c464d",
+      "locator": "Map dated 2025-12-31 traces active public west-concourse access toward named Hankyu Kobe-Sannomiya and subway Sannomiya, east access toward JR Sannomiya and Port Liner, and Sanchika access toward Sannomiya-Hanadokeimae. Construction-closed passage excluded; signed alternative JR stairs/surface crossing retained at topology-only scope. Explicit different-name operator identities; no assumed co-location or travel times.",
+      "components": [
+        {
+          "name": "神戸三宮",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "神戸三宮",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三ノ宮",
+          "operator": "西日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三宮",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        },
+        {
+          "name": "三宮・花時計前",
+          "operator": "神戸市",
+          "line": "海岸線",
+          "mode": "metro"
+        },
+        {
+          "name": "三宮",
+          "operator": "神戸新交通",
+          "line": "ポートアイランド線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUAL_CURRENT_STATION_MAP_ACTIVE_PUBLIC_PATH_AND_NAMED_OPERATOR_ENTRANCE",
+      "hubScopeComplete": false
+    }
+  ]
+}

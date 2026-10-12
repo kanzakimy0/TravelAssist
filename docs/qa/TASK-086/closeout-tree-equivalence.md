@@ -1,0 +1,3 @@
+# Closeout file-by-file equivalence
+
+Compare preserved local closeout1d5b5165 with recovery using every tree entry, exact blob OID and file mode. Permitted differences: omitted oversized derived diagnostics; compact manifests; validation/workflow/audit scripts; the later894e57e9documentation-only timeout/handoff record; this task's closeout documentation. Any other changed raw traffic/source/rights/node/edge/transfer file is a blocker. All251certification blocker objects must remain byte-equivalent; recovered historical inventory additionally retains the two previous execution failures. Machine report lists every path, source/recovered OIDs and classification. Reports identify their audited commit; the final command also checks the entire final object range before push.

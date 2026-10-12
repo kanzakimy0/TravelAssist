@@ -1,0 +1,192 @@
+{
+  "phaseId": "104-miyanojin-amagi-bridge-and-tenjin-three-component-passages",
+  "strategy": [
+    "CURRENT_INTERNAL_BRANCH_PLATFORM_PASSAGE",
+    "CURRENT_EXPLICIT_TENJIN_PUBLIC_UNDERGROUND_CONNECTIONS",
+    "AIRLINE_COMMERCIAL_RESTRICTIONS_SELECT_INDEPENDENT_ALTERNATIVES"
+  ],
+  "completedActionIds": [
+    "hub:fukuoka:tenjin-three-current-public-passages",
+    "hub:nishitetsu:miyanojin-internal-branch-passage"
+  ],
+  "facts": [
+    {
+      "factId": "miyanojin-amagi-mainline-explicit-internal-platform-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:nishitetsu:miyanojin-internal-branch-passage",
+      "sourceUrl": "https://www.ensen24.jp/images/station/miyanojin.png",
+      "observedResponseSha256": "d9f0dd8dcc9d6857a73db467cc6198cff5ab41588d3834216ac426fef3144906",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nishitetsu:miyanojin-internal-branch-passage",
+          "url": "https://www.ensen24.jp/tenjinomuta-line/miyanojin.html",
+          "observedResponseSha256": "11e54393a4972f5f08d9c359ed17fe8299344e09282a997884a09649e0c1e7b7"
+        },
+        {
+          "sourceActionId": "hub:nishitetsu:miyanojin-internal-branch-passage",
+          "url": "https://www.nishitetsu.jp/train/rosen/index.html",
+          "observedResponseSha256": "10bf3208a3c004433dddb85029fbcfd0c2e99e3c183415c1f7a6d40b8182743c"
+        },
+        {
+          "sourceActionId": "hub:nishitetsu:miyanojin-internal-branch-passage",
+          "url": "https://www.nishitetsu.jp/train/service/shisetu/",
+          "observedResponseSha256": "4d967109d9550f75dc96267a746abcf289a01525e0f753b4d2f223b81de7b2bc"
+        }
+      ],
+      "locator": "Current operator-linked Miyanojin diagram visually reviewed: Amagi platform 1 joins the continuous platform 2 and the internal concourse/stair connection to Fukuoka platform 3. Explicitly bind S12 Amagi station 009377 to mainline station 009375; common groupCode alone is not used. This is a physical transfer, not through-running or a step-free claim. No diagram artwork retained.",
+      "components": [
+        {
+          "name": "宮の陣",
+          "operator": "西日本鉄道",
+          "line": "甘木線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "宮の陣",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_EXPLICIT_BRANCH_PLATFORM_INTERNAL_CONCOURSE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tenjin-current-public-underground-metro-metro",
+      "kind": "transfer",
+      "sourceActionId": "hub:fukuoka:tenjin-three-current-public-passages",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/eki/stations/tenjin_sisetu.php?lan=ja",
+      "observedResponseSha256": "85bb9641a19513552c7af896280395c8bd2cfc748516c08048bfad08b645d0e4",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:fukuoka:tenjin-three-current-public-passages",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/tenjin.php",
+          "observedResponseSha256": "117804700937c8f696fa8e648fa46d9d4b2e303a33cefabdfd33c3b482ecb1ab"
+        },
+        {
+          "sourceActionId": "hub:fukuoka:tenjin-three-current-public-passages",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/tenjinminami.php",
+          "observedResponseSha256": "4d28bdc97c2971f7cda21e7947528ca04b539abe10f348f8da7b55defbef62d8"
+        },
+        {
+          "sourceActionId": "hub:fukuoka:tenjin-three-current-public-passages",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/img/map_tenjin.jpg",
+          "observedResponseSha256": "95514353eef9c3fd7bd3886a4b1e908935f57fd229bae810db5412bb6a6fcf39"
+        },
+        {
+          "sourceActionId": "hub:fukuoka:tenjin-three-current-public-passages",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/img/map_tenjinminami.jpg",
+          "observedResponseSha256": "d41a4a012d61e4902d0974ec7466081c71fb2de46f97c1913ac26deb38c9fba0"
+        }
+      ],
+      "locator": "Current official facility guide Tenjin Chikagai section and visually reviewed current diagrams. Both current municipal station maps independently show their public concourses connecting to Tenjin underground street. The municipal facility guide explicitly confirms direct connections to both subway stations. Do not infer in-paid-area transfer, fare continuity or an operating-day travel time. Retain only minimum physical relation and source provenance; no copied prose/artwork, distance-based edge, walking time, 24-hour public passage or accessibility guarantee.",
+      "components": [
+        {
+          "name": "天神",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "天神南",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "MUNICIPAL_EXPLICIT_UNDERGROUND_STATION_CONNECTION_AND_CURRENT_MAPS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tenjin-current-public-underground-metro-nishitetsu",
+      "kind": "transfer",
+      "sourceActionId": "hub:fukuoka:tenjin-three-current-public-passages",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/eki/stations/tenjin_sisetu.php?lan=ja",
+      "observedResponseSha256": "85bb9641a19513552c7af896280395c8bd2cfc748516c08048bfad08b645d0e4",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:fukuoka:tenjin-three-current-public-passages",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/tenjin.php",
+          "observedResponseSha256": "117804700937c8f696fa8e648fa46d9d4b2e303a33cefabdfd33c3b482ecb1ab"
+        },
+        {
+          "sourceActionId": "hub:fukuoka:tenjin-three-current-public-passages",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/tenjinminami.php",
+          "observedResponseSha256": "4d28bdc97c2971f7cda21e7947528ca04b539abe10f348f8da7b55defbef62d8"
+        },
+        {
+          "sourceActionId": "hub:fukuoka:tenjin-three-current-public-passages",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/img/map_tenjin.jpg",
+          "observedResponseSha256": "95514353eef9c3fd7bd3886a4b1e908935f57fd229bae810db5412bb6a6fcf39"
+        },
+        {
+          "sourceActionId": "hub:fukuoka:tenjin-three-current-public-passages",
+          "url": "https://subway.city.fukuoka.lg.jp/eki/stations/img/map_tenjinminami.jpg",
+          "observedResponseSha256": "d41a4a012d61e4902d0974ec7466081c71fb2de46f97c1913ac26deb38c9fba0"
+        },
+        {
+          "sourceActionId": "hub:nishitetsu:miyanojin-internal-branch-passage",
+          "url": "https://www.nishitetsu.jp/train/service/cycletrain/fukuoka/",
+          "observedResponseSha256": "86deed5d34e2c9786bf696c94d117ba1469efe3b6535408c61db2db0b0799361"
+        },
+        {
+          "sourceActionId": "hub:nishitetsu:miyanojin-internal-branch-passage",
+          "url": "https://www.nishitetsu.jp/train/service/cycletrain/static/img/ct__station_map01_2.png",
+          "observedResponseSha256": "b5eef3520101aa555685fdba2de7b425c141e6d97fd5f249b45a674084d33efd"
+        },
+        {
+          "sourceActionId": "hub:nishitetsu:miyanojin-internal-branch-passage",
+          "url": "https://www.nishitetsu.jp/train/service/cycletrain/static/img/ct__station_map01_3.png",
+          "observedResponseSha256": "de23a222665ab7a3aad88e935e36ed9bf65733cad8c2e55a8d82f1d7aaae133b"
+        }
+      ],
+      "locator": "Current official facility guide Tenjin Chikagai section and visually reviewed current diagrams. Municipal facility guide explicitly identifies the underground street connection to Nishitetsu Fukuoka station. Current operator floor diagrams independently show north public gate and the connected public 2F/1F/B1 approaches. Blue cycling guidance is not treated as general bicycle or accessibility permission. Retain only minimum physical relation and source provenance; no copied prose/artwork, distance-based edge, walking time, 24-hour public passage or accessibility guarantee.",
+      "components": [
+        {
+          "name": "天神",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "西鉄福岡（天神）",
+          "operator": "西日本鉄道",
+          "line": "天神大牟田線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "MUNICIPAL_EXPLICIT_UNDERGROUND_STATION_CONNECTION_AND_CURRENT_MAPS",
+      "hubScopeComplete": false
+    }
+  ]
+}

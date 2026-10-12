@@ -1,0 +1,107 @@
+{
+  "kind": "REVIEWED_QUALIFIED_AIRPORT_SURFACE_V1",
+  "requirementId": "review:official-airport:波照間",
+  "checkId": "mode:review:official-airport:波照間",
+  "airportNodeId": "transport-node:086:ba6e999225700e3dceac70cd28323a5c",
+  "endpointNodeId": "transport-node:086:ee6eb0d460eed1048f24a9bcb90f50cb",
+  "endpointIdentityAnchor": "abr-parcel:473812:0009000:027800000000000:municipal-public-facility",
+  "eligibilityKeys": [
+    "CURRENT_LINKED_FLIGHT_USER",
+    "NON_LODGING_VISITOR_OR_ISLAND_RESIDENT"
+  ],
+  "contextSha256": "df84487e15894e46dc1198784cabeb76294ac76bd93ebd1f0158fe83c966e329",
+  "originalScopeBasis": "TASK086_17_6_WHERE_SERVICE_EXISTS_NO_PUBLIC_ONLY_QUALIFIER",
+  "phaseId": "229-hateruma-flight-passenger-shuttle",
+  "phaseFile": "research/phases/229-hateruma-flight-passenger-shuttle.json",
+  "factBindings": [
+    [
+      "hateruma229-current-flight-0",
+      "93467455dd3f0228bef876b284f544d31fa53daa78165b7df8ceeb8519453616"
+    ],
+    [
+      "hateruma229-current-flight-1",
+      "11aa6bbce18d3f43b141690eb62d8c953ef41c26df6935b2bcdcdc316dacca12"
+    ],
+    [
+      "hateruma229-airport-shuttle-0",
+      "2be163477d6e2738893a49a751f5bd06a6fdcbe913fa6e1e41a2c2c26e89dd23"
+    ],
+    [
+      "hateruma229-airport-shuttle-1",
+      "f5142cfe4a583dae6afb5bdf121ceedc4cb4bfb2113a3538d06d8d1ec6d72e51"
+    ]
+  ],
+  "patternIds": [
+    "transport-pattern:086:dd0d087804806bc9706144eab0463e5a",
+    "transport-pattern:086:c16a8be1b28cd3df6d1eea9dd8414b91"
+  ],
+  "edgeIds": [
+    "transport-edge:086:b57b6c5ca788fcce73b89dc8cabe2450",
+    "transport-edge:086:097c64d0376044b258094d30466b5a86"
+  ],
+  "contractSha256s": [
+    "2e0acaefa90f44793c7404ae648bee3264f162cbedaf7f1f9d1016051edb1ba8",
+    "ec0889e9f18958c8cfc562e057fc9591de36063f6d86bb40fc522a515d085cdc"
+  ],
+  "sourceBindings": [
+    {
+      "sourceId": "hateruma229:abr:master",
+      "url": "https://data.address-br.digital.go.jp/mt_parcel/city/mt_parcel_city473812.csv.zip",
+      "contentSha256": "36099b0e034a2016c7b4b2183a3ccc40384cb6b8c09edf478cb8740f0b598233"
+    },
+    {
+      "sourceId": "hateruma229:abr:position",
+      "url": "https://data.address-br.digital.go.jp/mt_parcel_pos/city/mt_parcel_pos_city473812.csv.zip",
+      "contentSha256": "a5ec9ac3cac764b83f198c636877d142e37969d6bda5b7099e151854ab800092"
+    },
+    {
+      "sourceId": "transport-source:086:2ff27148db682b8da8cf3fdbdcce95d1",
+      "url": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+      "contentSha256": "704925c594f9e26023363d58898927353565cf62a262d90214d29a86857c40eb"
+    },
+    {
+      "sourceId": "transport-source:086:847f902840913336f44fd1b05c3f52aa",
+      "url": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+      "contentSha256": "a3e7dfd42747186c661c4b377d0fac482c299a9c763e179d7c9ad8c784893d99"
+    },
+    {
+      "sourceId": "transport-source:086:c4108116289b0d286a2187271f853c92",
+      "url": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+      "contentSha256": "ce238662383e7e925255342483f8e4f226c1ef48d9ee181426335b9b0b1cd06b"
+    },
+    {
+      "sourceId": "transport-source:086:c6a72610d49403ede788dd208b29a2b5",
+      "url": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+      "contentSha256": "ac57bff59019cb3fca676b2fa5ca2a661213ad4a4f4e7733b0d6a1e5703a2c92"
+    },
+    {
+      "sourceId": "transport-source:086:cadb5b1a3c03c7055eca0491cea23658",
+      "url": "https://www.town.taketomi.lg.jp/userfiles/files/sanngyou_h28.pdf",
+      "contentSha256": "dc28725a1a2873d20998396bba43959ee4d2a0ce6fc75fe0dc025cb4d137fbd4"
+    },
+    {
+      "sourceId": "transport-source:086:d25da6c827b5cd20ebc6d9ee5e7378a0",
+      "url": "https://www.tellusxdp.com/docs/api-service/aigid-moj/tos.pdf",
+      "contentSha256": "a46fe0b5004edf62fc34b3bb908d2e4ed151306e72d6128c81b4953543183615"
+    },
+    {
+      "sourceId": "transport-source:086:f3a40550a7607700dbfc5b952f6ff9c9",
+      "url": "https://www.digital.go.jp/policies/base_registry_address_tos",
+      "contentSha256": "5ea64ce1b5229e7429998b16610f002adf33b3807dc1956db2b1a7056aeb40aa"
+    }
+  ],
+  "inputBindings": [
+    {
+      "path": "research/qualified-hateruma-original-task.md",
+      "sha256": "48fdc1db3d7d0818a5cea65a9c927afacb5acc6e834a8198d3cd6ee3067c48f2"
+    },
+    {
+      "path": "research/qualified-hateruma-scope-review.json",
+      "sha256": "da0bf0f691e3d71a043b596f76bef14682a832f93bd808a6092863e979d1fb7b"
+    },
+    {
+      "path": "research/qualified-hateruma-native-selection.json",
+      "sha256": "3baccdd0b5961c7a67d4d9af92e0f4678b41a1aec8dd6e8f6838b58742611f06"
+    }
+  ]
+}

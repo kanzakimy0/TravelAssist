@@ -1,0 +1,57 @@
+{
+  "phaseId": "199-hyogomachi-jr-reviewed-public-walk",
+  "strategy": [
+    "ORIGINAL_REQUIRED_BUS_DIRECTION_ROOTS",
+    "EXPLICIT_NAMED_PUBLIC_STATION_WALK",
+    "PRESERVE_DISTINCT_NATIVE_POLES_AND_BOARDING"
+  ],
+  "completedActionIds": [
+    "transfer:kotoden:hyogomachi-frontage-jr-public-walk"
+  ],
+  "facts": [
+    {
+      "factId": "hyogomachi-airport-alighting-public-frontage-jr-takamatsu-walk",
+      "kind": "transfer",
+      "sourceActionId": "transfer:kotoden:hyogomachi-frontage-jr-public-walk",
+      "sourceUrl": "https://www.jrclement.co.jp/inn/takamatsuhyogomachi/access/",
+      "observedResponseSha256": "ae102f72a294a45650fdd93117432ea2f8e8499a31526a24b8c88b1d0e758180",
+      "corroboratingEvidence": [],
+      "components": [
+        {
+          "name": "兵庫町（JRクレメントイン高松兵庫町前）",
+          "operator": "ことでんバス",
+          "line": "gtfs:kotoden-airport:route:005500",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:kotoden-airport",
+            "stopId": "051202",
+            "sourceArchiveSha256": "6c2b1c419d05b9aa3a34439509a3f038a1c516603c405275f31603fdb54b2de6",
+            "recordSha256": "a441b7937d4d922dffe8deda0dffc2745dc46da8e4bb6824eff77b87d75c74d0",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current July2026-renewed JR Clement Inn Takamatsu Hyogomachi official access page separately identifies airport limousine alighting at Hyogomachi directly in front of this hotel, and gives an explicit walking approach from JR Takamatsu Station/bus terminal toward Tamamo Park then along Chuo-dori to the same frontage. The exact licensed airport native stop051202 is named Hyogomachi JR Clement Inn Takamatsu Hyogomachi-front; it remains a distinct alighting-only stop. Admit only coarse reversible public-street walking between that named public bus frontage and existing JR Takamatsu public station component following the independently described pedestrian approach. No traversal through hotel rooms/lobby, no crossing to the opposite airport boarding pole, no same-name local-stop025802 join, no geometric/metric/accessibility claim. No station or local network expansion. Station and named public-frontage walking availability is explicit source prose rather than coordinate proximity."
+          }
+        },
+        {
+          "name": "高松",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_PRIMARY_NAMED_FRONTAGE_AND_STATION_PUBLIC_WALK",
+      "hubScopeComplete": false,
+      "locator": "Current July2026-renewed JR Clement Inn Takamatsu Hyogomachi official access page separately identifies airport limousine alighting at Hyogomachi directly in front of this hotel, and gives an explicit walking approach from JR Takamatsu Station/bus terminal toward Tamamo Park then along Chuo-dori to the same frontage. The exact licensed airport native stop051202 is named Hyogomachi JR Clement Inn Takamatsu Hyogomachi-front; it remains a distinct alighting-only stop. Admit only coarse reversible public-street walking between that named public bus frontage and existing JR Takamatsu public station component following the independently described pedestrian approach. No traversal through hotel rooms/lobby, no crossing to the opposite airport boarding pole, no same-name local-stop025802 join, no geometric/metric/accessibility claim. No station or local network expansion. Station and named public-frontage walking availability is explicit source prose rather than coordinate proximity."
+    }
+  ]
+}

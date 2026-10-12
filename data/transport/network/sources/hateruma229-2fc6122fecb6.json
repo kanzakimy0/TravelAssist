@@ -1,0 +1,80 @@
+{
+  "kind": "REVIEWED_NATIVE_OR_MINIMAL_FACTS",
+  "source": {
+    "sourceId": "transport-source:086:cadb5b1a3c03c7055eca0491cea23658",
+    "url": "https://www.town.taketomi.lg.jp/userfiles/files/sanngyou_h28.pdf",
+    "contentSha256": "dc28725a1a2873d20998396bba43959ee4d2a0ce6fc75fe0dc025cb4d137fbd4",
+    "evidenceContentSha256": "826535407bdce0aa299c33e6e4caf2d2b1368015e5f7804c012a5f66c6998925",
+    "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+    "observedAt": "2026-10-03T19:33:28.571615+00:00",
+    "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+    "rawPayloadRetained": false,
+    "derivedDataAllowed": true,
+    "redistributionAllowed": true,
+    "metricPersistenceAllowed": false,
+    "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+    "rightsReview": {
+      "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+      "termsUrl": "https://www.town.taketomi.lg.jp/userfiles/files/sanngyou_h28.pdf",
+      "reason": "Municipal own asset record physical page8 identifies exact public park parcel/address; independent2021 plan and current service establish same named facility. Minimum nonexpressive address/name/role/current pickup facts; native coordinate license is separately reviewed. No raw municipal assets PDF publication."
+    },
+    "attribution": "https://www.town.taketomi.lg.jp/userfiles/files/sanngyou_h28.pdf; operator factual topology; reviewed 2026-10-03T19:33:28.571615+00:00"
+  },
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:8bcd4d18662a54e34693cc31e40af6bd",
+      "sourceId": "transport-source:086:cadb5b1a3c03c7055eca0491cea23658",
+      "sourceSha256": "dc28725a1a2873d20998396bba43959ee4d2a0ce6fc75fe0dc025cb4d137fbd4",
+      "record": {
+        "kind": "REVIEWED_OFFICIAL_NAMED_FACILITY_EXACT_PARCEL",
+        "sourceFactId": "hateruma:municipal-park-exact-address:2016:p8",
+        "sourceActionId": "hateruma:municipal-park-identity",
+        "sourceUrl": "https://www.town.taketomi.lg.jp/userfiles/files/sanngyou_h28.pdf",
+        "observedResponseSha256": "826535407bdce0aa299c33e6e4caf2d2b1368015e5f7804c012a5f66c6998925",
+        "municipalityCode": "473812",
+        "city": "竹富町",
+        "oazaCho": "字波照間",
+        "parcelNumbers": [
+          "2780",
+          "",
+          ""
+        ],
+        "facilityName": "ムシャマー公園",
+        "officialAddress": "竹富町字波照間2780番地",
+        "areaSquareMetres": 4000,
+        "physicalPage": 8,
+        "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+        "coordinateProximityUsed": false,
+        "googleCoordinatesUsed": false
+      },
+      "recordSha256": "9dd38d3240acc83f91922e4b634dd19b910f36e1efa3a92a6bb34dc8e8e95c60",
+      "locator": "Independently reviewed minimum factual source record"
+    },
+    {
+      "evidenceId": "transport-evidence:086:9d5ea227ca3a5b3f6aa2c0eeeb3b0be7",
+      "sourceId": "transport-source:086:cadb5b1a3c03c7055eca0491cea23658",
+      "sourceSha256": "dc28725a1a2873d20998396bba43959ee4d2a0ce6fc75fe0dc025cb4d137fbd4",
+      "record": {
+        "kind": "REVIEWED_MUNICIPAL_PUBLIC_FACILITY_ROLE",
+        "factId": "hateruma229:REVIEWED_MUNICIPAL_PUBLIC_FACILITY_ROLE",
+        "sourceActionId": "hateruma:municipal-park-identity",
+        "sourceUrl": "https://www.town.taketomi.lg.jp/userfiles/files/sanngyou_h28.pdf",
+        "observedResponseSha256": "826535407bdce0aa299c33e6e4caf2d2b1368015e5f7804c012a5f66c6998925",
+        "identityAnchor": "abr-parcel:473812:0009000:027800000000000:municipal-public-facility",
+        "nativeIdentitySha256": "ce65f8e699e244cbc8a20ec6e92ff92b671d3f52431baf3c60988be9c229b175",
+        "facilityRole": "MUNICIPAL_PUBLIC_PARK",
+        "originalAssetType": "公園（公共工作物）",
+        "physicalPage": 8,
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "hateruma:municipal-park-identity",
+            "url": "https://www.town.taketomi.lg.jp/userfiles/files/R3koukyoushisetusougoukanrikeikaku.pdf",
+            "observedResponseSha256": "da7caaa7554ccd25c9e91b7179e335f321d00527a1c81cc2bad43cd5d371cd49"
+          }
+        ]
+      },
+      "recordSha256": "904708b285bc2693b824f7a2ea45a87b0332ebee417391d247589a9234cf647a",
+      "locator": "Independently reviewed minimum factual source record"
+    }
+  ]
+}

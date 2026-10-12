@@ -1,0 +1,258 @@
+{
+  "phaseId": "084-kochi-airport-licensed-trips-and-current-gateways",
+  "strategy": [
+    "LICENSED_CURRENT_TOSADEN_SELECTED_ACTUAL_TRIPS",
+    "PRESERVE_DISTINCT_BOARDING_AND_ALIGHTING_COMPONENTS",
+    "CURRENT_RAIL_AND_AIRPORT_PUBLIC_PASSAGES"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "tosaden-airport.json",
+      "packageSha256": "275a84b891489e728ce64a160ddbe144d55a0d3a138000ab3b8c2dc93c86d0e3",
+      "sourceActionId": "bus:tosaden:licensed-current-airport-trips"
+    }
+  ],
+  "completedActionIds": [
+    "bus:tosaden:licensed-current-airport-trips",
+    "hub:kochi:current-jr-north-terminal-gtfs-platforms",
+    "airport:kochi:current-public-terminal-bus-passages"
+  ],
+  "facts": [
+    {
+      "factId": "kochi-jr-north-terminal-to-gtfs-3901_06",
+      "kind": "transfer",
+      "sourceActionId": "hub:kochi:current-jr-north-terminal-gtfs-platforms",
+      "sourceUrl": "https://www.tosaden.co.jp/download/?fid=11725&id=2445&t=LD",
+      "observedResponseSha256": "48f30f3438d5497f83b2c9a3322bb0449d24a76d8592c5b161952f1f46d61d83",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:kochi:current-jr-north-terminal-gtfs-platforms",
+          "url": "https://www.tosaden.co.jp/bus/airport.php",
+          "observedResponseSha256": "037e05c5b3a250831522604864d71b001d98b11f7a0726d5c3af718dfef4f7a6"
+        }
+      ],
+      "locator": "The current Tosaden diagram dated 20260201 labels JR Kochi, its public passage, the north bus terminal, airport-bus departure platform 6 and alighting platform 3. Bind the exact selected GTFS stop 3901_06 or 3901_03 independently to the JR Dosan component through that explicitly depicted public station forecourt. The southern 高知駅前 roadside stops remain separate. Preserve raw pickup/drop restrictions; no walking duration, live platform or accessibility guarantee is inferred.",
+      "components": [
+        {
+          "name": "高知",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高知駅バスターミナル",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_B",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3901_06",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "a4657b0864fbf7fd34f7b9a03f96daa7ba067b32d38ce27de3ce433bdf0df3a2",
+            "expectedPlatformCode": "6",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The current Tosaden diagram dated 20260201 labels JR Kochi, its public passage, the north bus terminal, airport-bus departure platform 6 and alighting platform 3. Bind the exact selected GTFS stop 3901_06 or 3901_03 independently to the JR Dosan component through that explicitly depicted public station forecourt. The southern 高知駅前 roadside stops remain separate. Preserve raw pickup/drop restrictions; no walking duration, live platform or accessibility guarantee is inferred."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_PASSAGE_AND_EXACT_GTFS_PLATFORM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kochi-jr-north-terminal-to-gtfs-3901_03",
+      "kind": "transfer",
+      "sourceActionId": "hub:kochi:current-jr-north-terminal-gtfs-platforms",
+      "sourceUrl": "https://www.tosaden.co.jp/download/?fid=11725&id=2445&t=LD",
+      "observedResponseSha256": "48f30f3438d5497f83b2c9a3322bb0449d24a76d8592c5b161952f1f46d61d83",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:kochi:current-jr-north-terminal-gtfs-platforms",
+          "url": "https://www.tosaden.co.jp/bus/airport.php",
+          "observedResponseSha256": "037e05c5b3a250831522604864d71b001d98b11f7a0726d5c3af718dfef4f7a6"
+        }
+      ],
+      "locator": "The current Tosaden diagram dated 20260201 labels JR Kochi, its public passage, the north bus terminal, airport-bus departure platform 6 and alighting platform 3. Bind the exact selected GTFS stop 3901_06 or 3901_03 independently to the JR Dosan component through that explicitly depicted public station forecourt. The southern 高知駅前 roadside stops remain separate. Preserve raw pickup/drop restrictions; no walking duration, live platform or accessibility guarantee is inferred.",
+      "components": [
+        {
+          "name": "高知",
+          "operator": "四国旅客鉄道",
+          "line": "土讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高知駅バスターミナル",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_A",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3901_03",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "a8da6d20794266f48e2e61b59e3bffde3a176d04d1cbece321bf5ac76a472c85",
+            "expectedPlatformCode": "3",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The current Tosaden diagram dated 20260201 labels JR Kochi, its public passage, the north bus terminal, airport-bus departure platform 6 and alighting platform 3. Bind the exact selected GTFS stop 3901_06 or 3901_03 independently to the JR Dosan component through that explicitly depicted public station forecourt. The southern 高知駅前 roadside stops remain separate. Preserve raw pickup/drop restrictions; no walking duration, live platform or accessibility guarantee is inferred."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_PASSAGE_AND_EXACT_GTFS_PLATFORM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kochi-airport-public-terminal-to-gtfs-3920_04",
+      "kind": "transfer",
+      "sourceActionId": "airport:kochi:current-public-terminal-bus-passages",
+      "sourceUrl": "https://www.kochiap.co.jp/wp-content/themes/kochiap/img/international-terminal/img01_3.png",
+      "observedResponseSha256": "c6ea693c3799453216bcd3b9ddeaa7c05cea9854f5ad2a6f0e6c08c67c6fb8d3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kochi:current-public-terminal-bus-passages",
+          "url": "https://www.kochiap.co.jp/floor/1f/",
+          "observedResponseSha256": "c0361147b83d49e55a06f089df2ca28cc2eb65b72028bc0879f9af28527f4656"
+        },
+        {
+          "sourceActionId": "airport:kochi:current-public-terminal-bus-passages",
+          "url": "https://www.kochiap.co.jp/access/",
+          "observedResponseSha256": "bf0abaa8eee8e9117e47fec879b785508c3ccea85ef43a14a9e0eb51d28acc69"
+        },
+        {
+          "sourceActionId": "airport:kochi:current-public-terminal-bus-passages",
+          "url": "https://www.tosaden.co.jp/bus/airport.php",
+          "observedResponseSha256": "037e05c5b3a250831522604864d71b001d98b11f7a0726d5c3af718dfef4f7a6"
+        }
+      ],
+      "locator": "The current airport first-floor map explicitly depicts a bus alighting point west of the central arrivals/check-in public frontage and a separate bus boarding point to the east, joined by the public terminal frontage and entrances. The airport current access page names Tosaden airport service. Bind the selected licensed arrival endpoint 3920_04 and departure endpoint 3920_02 separately to the independently identified whole-airport C28 facility. GTFS departure platform 2 and blank arrival platform are preserved as provider metadata; stop-ID suffix 04 is not interpreted as public bay 4. No coordinate proximity, same-name collapse, precise entrance coordinate, live-platform claim, walking time or accessibility assumption creates this transfer.",
+      "components": [
+        {
+          "name": "高知空港",
+          "operator": "airport-facility:cf03_00052",
+          "line": "airport:cf03_00052",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00052",
+            "requirementId": "review:transport-node:0eb57e02-cd64-5fe0-8977-7586a0614d36",
+            "expectedRequirementName": "高知",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "The current airport first-floor map explicitly depicts a bus alighting point west of the central arrivals/check-in public frontage and a separate bus boarding point to the east, joined by the public terminal frontage and entrances. The airport current access page names Tosaden airport service. Bind the selected licensed arrival endpoint 3920_04 and departure endpoint 3920_02 separately to the independently identified whole-airport C28 facility. GTFS departure platform 2 and blank arrival platform are preserved as provider metadata; stop-ID suffix 04 is not interpreted as public bay 4. No coordinate proximity, same-name collapse, precise entrance coordinate, live-platform claim, walking time or accessibility assumption creates this transfer."
+          }
+        },
+        {
+          "name": "高知龍馬空港",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_B",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3920_04",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "119056e67c751a9d9bab3f69e0182517327bd537f7167f603f41c4889f8359c5",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The current airport first-floor map explicitly depicts a bus alighting point west of the central arrivals/check-in public frontage and a separate bus boarding point to the east, joined by the public terminal frontage and entrances. The airport current access page names Tosaden airport service. Bind the selected licensed arrival endpoint 3920_04 and departure endpoint 3920_02 separately to the independently identified whole-airport C28 facility. GTFS departure platform 2 and blank arrival platform are preserved as provider metadata; stop-ID suffix 04 is not interpreted as public bay 4. No coordinate proximity, same-name collapse, precise entrance coordinate, live-platform claim, walking time or accessibility assumption creates this transfer."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_AIRPORT_ENDPOINT_AND_PUBLIC_TERMINAL_PASSAGE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kochi-airport-public-terminal-to-gtfs-3920_02",
+      "kind": "transfer",
+      "sourceActionId": "airport:kochi:current-public-terminal-bus-passages",
+      "sourceUrl": "https://www.kochiap.co.jp/wp-content/themes/kochiap/img/international-terminal/img01_3.png",
+      "observedResponseSha256": "c6ea693c3799453216bcd3b9ddeaa7c05cea9854f5ad2a6f0e6c08c67c6fb8d3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kochi:current-public-terminal-bus-passages",
+          "url": "https://www.kochiap.co.jp/floor/1f/",
+          "observedResponseSha256": "c0361147b83d49e55a06f089df2ca28cc2eb65b72028bc0879f9af28527f4656"
+        },
+        {
+          "sourceActionId": "airport:kochi:current-public-terminal-bus-passages",
+          "url": "https://www.kochiap.co.jp/access/",
+          "observedResponseSha256": "bf0abaa8eee8e9117e47fec879b785508c3ccea85ef43a14a9e0eb51d28acc69"
+        },
+        {
+          "sourceActionId": "airport:kochi:current-public-terminal-bus-passages",
+          "url": "https://www.tosaden.co.jp/bus/airport.php",
+          "observedResponseSha256": "037e05c5b3a250831522604864d71b001d98b11f7a0726d5c3af718dfef4f7a6"
+        }
+      ],
+      "locator": "The current airport first-floor map explicitly depicts a bus alighting point west of the central arrivals/check-in public frontage and a separate bus boarding point to the east, joined by the public terminal frontage and entrances. The airport current access page names Tosaden airport service. Bind the selected licensed arrival endpoint 3920_04 and departure endpoint 3920_02 separately to the independently identified whole-airport C28 facility. GTFS departure platform 2 and blank arrival platform are preserved as provider metadata; stop-ID suffix 04 is not interpreted as public bay 4. No coordinate proximity, same-name collapse, precise entrance coordinate, live-platform claim, walking time or accessibility assumption creates this transfer.",
+      "components": [
+        {
+          "name": "高知空港",
+          "operator": "airport-facility:cf03_00052",
+          "line": "airport:cf03_00052",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00052",
+            "requirementId": "review:transport-node:0eb57e02-cd64-5fe0-8977-7586a0614d36",
+            "expectedRequirementName": "高知",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "The current airport first-floor map explicitly depicts a bus alighting point west of the central arrivals/check-in public frontage and a separate bus boarding point to the east, joined by the public terminal frontage and entrances. The airport current access page names Tosaden airport service. Bind the selected licensed arrival endpoint 3920_04 and departure endpoint 3920_02 separately to the independently identified whole-airport C28 facility. GTFS departure platform 2 and blank arrival platform are preserved as provider metadata; stop-ID suffix 04 is not interpreted as public bay 4. No coordinate proximity, same-name collapse, precise entrance coordinate, live-platform claim, walking time or accessibility assumption creates this transfer."
+          }
+        },
+        {
+          "name": "高知龍馬空港",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_A",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3920_02",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "28aa943de3b9d593ba7009419760c82447fb6a92c49ea027245855b595271aea",
+            "expectedPlatformCode": "2",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The current airport first-floor map explicitly depicts a bus alighting point west of the central arrivals/check-in public frontage and a separate bus boarding point to the east, joined by the public terminal frontage and entrances. The airport current access page names Tosaden airport service. Bind the selected licensed arrival endpoint 3920_04 and departure endpoint 3920_02 separately to the independently identified whole-airport C28 facility. GTFS departure platform 2 and blank arrival platform are preserved as provider metadata; stop-ID suffix 04 is not interpreted as public bay 4. No coordinate proximity, same-name collapse, precise entrance coordinate, live-platform claim, walking time or accessibility assumption creates this transfer."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_AIRPORT_ENDPOINT_AND_PUBLIC_TERMINAL_PASSAGE",
+      "hubScopeComplete": false
+    }
+  ]
+}

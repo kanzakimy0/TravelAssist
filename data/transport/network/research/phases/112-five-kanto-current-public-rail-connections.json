@@ -1,0 +1,232 @@
+{
+  "phaseId": "112-five-kanto-current-public-rail-connections",
+  "strategy": [
+    "CURRENT_VISUALLY_REVIEWED_PUBLIC_PASSAGES",
+    "PUBLIC_REFERENCE_STATION_NAME_CORROBORATION",
+    "KEEP_UNVIEWED_OR_PROTECTED_DIAGRAM_GAPS_OPEN"
+  ],
+  "completedActionIds": [
+    "hub:sotetsu:shonandai-current-public-concourse",
+    "hub:jr-east:tamachi-hamamatsucho-current-toei-passages",
+    "hub:keisei:yawata-current-toei-public-approach",
+    "hub:metro:akihabara-iwamotocho-current-surface-passage",
+    "hub:toei:tamachi-daimon-current-interchange-reference"
+  ],
+  "facts": [
+    {
+      "factId": "shonandai-reviewed-current-public-rail-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:sotetsu:shonandai-current-public-concourse",
+      "sourceUrl": "https://cdn.sotetsu.co.jp/media/2026/train/stations/shonandai/shonandai.pdf",
+      "observedResponseSha256": "ce40544144d816528be8ded1805dbb31f3af2d3d8c0705d58408f438c62d8c99",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:sotetsu:shonandai-current-public-concourse",
+          "url": "https://www.sotetsu.co.jp/train/stations/shonandai/",
+          "observedResponseSha256": "6ca66fb7d3ef63c6bced7a053d3ac8fefbf23417c46b86149a55655a528e605c"
+        }
+      ],
+      "locator": "August 2026 Sotetsu diagram: B3 platforms lead to B1 Sotetsu gate and the public B1 concourse explicitly joining the Odakyu gate. Existing reviewed Odakyu-Yokohama subway connection is reused without a duplicate edge. Individually visually reviewed physical diagram; minimum connection only, no raw graphic, precise walking time or universal accessibility guarantee.",
+      "components": [
+        {
+          "name": "湘南台",
+          "operator": "相模鉄道",
+          "line": "相鉄いずみ野線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "湘南台",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_EXPLICIT_PUBLIC_PASSAGE_AND_DISTINCT_OPERATOR_IDENTITY",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tamachi-reviewed-current-public-rail-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-east:tamachi-hamamatsucho-current-toei-passages",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/0976_1f-2f.png",
+      "observedResponseSha256": "e5c200ecf2bba5134e7020ee0503dde7ad3026a00cbc53eeb2555ac4bca59f62",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-east:tamachi-hamamatsucho-current-toei-passages",
+          "url": "https://www.jreast.co.jp/estation/stations/976.html",
+          "observedResponseSha256": "c9118b0874626e7cc08ea97f062eae695624129631281a7cab109a5ba264904a"
+        },
+        {
+          "sourceActionId": "hub:toei:tamachi-daimon-current-interchange-reference",
+          "url": "https://www.kotsu.metro.tokyo.jp/subway/stations/mita.html",
+          "observedResponseSha256": "aa6e65057b7ed77676974ae6fc5ff540b51948f22e42ff2eb889dd1ebf677c22"
+        }
+      ],
+      "locator": "April 2026 JR diagram: platform stairs reach the 2F south gate, then public concourse and Mita west exit explicitly signed for Toei Asakusa and Mita lines. Avoid north-gate construction. Current Toei Mita page independently names JR Tamachi as interchange. Individually visually reviewed physical diagram; minimum connection only, no raw graphic, precise walking time or universal accessibility guarantee.",
+      "components": [
+        {
+          "name": "田町",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三田",
+          "operator": "東京都",
+          "line": "1号線浅草線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_EXPLICIT_PUBLIC_PASSAGE_AND_DISTINCT_OPERATOR_IDENTITY",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hamamatsucho-reviewed-current-public-rail-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-east:tamachi-hamamatsucho-current-toei-passages",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/1248_1f-3f.png",
+      "observedResponseSha256": "983cc2b4c58fdd1ca9290f3b6896237ad037bc82b5973d9631a3c7608b479404",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-east:tamachi-hamamatsucho-current-toei-passages",
+          "url": "https://www.jreast.co.jp/estation/stations/1248.html",
+          "observedResponseSha256": "54c74a7912d02bac12b084ef1459f6e2322c2b337e0b5b999002bb347fee51dc"
+        },
+        {
+          "sourceActionId": "hub:toei:tamachi-daimon-current-interchange-reference",
+          "url": "https://www.kotsu.metro.tokyo.jp/subway/stations/daimon.html",
+          "observedResponseSha256": "ad022c89b746fc00e6ed136f752c42cb5b888bdc8f9ae1c063bba86190e0d512"
+        }
+      ],
+      "locator": "June 2026 JR diagram: both 2F platform groups connect by stairs to the 1F north gate/public exit explicitly signed for Toei Asakusa and Oedo lines. Current Toei Daimon page independently names JR Hamamatsucho as interchange. Existing JR-Monorail transfer is reused. Individually visually reviewed physical diagram; minimum connection only, no raw graphic, precise walking time or universal accessibility guarantee.",
+      "components": [
+        {
+          "name": "浜松町",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大門",
+          "operator": "東京都",
+          "line": "1号線浅草線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_EXPLICIT_PUBLIC_PASSAGE_AND_DISTINCT_OPERATOR_IDENTITY",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "yawata-reviewed-current-public-rail-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:keisei:yawata-current-toei-public-approach",
+      "sourceUrl": "https://www.keisei.co.jp/keisei/tetudou/accessj/assets/images/keisei-yawata/floormap.jpg",
+      "observedResponseSha256": "97702cb2f9d5d97dbaedc751826212b6492a9afe7ac409f53550b6bb9b2ac930",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:keisei:yawata-current-toei-public-approach",
+          "url": "https://www.keisei.co.jp/keisei/tetudou/accessj/keisei-yawata.php",
+          "observedResponseSha256": "f799dbe627d80c215b385e5ccaaf38dc61a77b7ad886c517e680d0a0a34130ae"
+        }
+      ],
+      "locator": "Current-linked undated Keisei diagram: 2F gate leads outside via M2F stair/escalator passage to the 1F approach explicitly signed for Toei Shinjuku. Current station text names Motoyawata. No JR-side connection inferred; Toei solid.png returned HTML protection instead of a viewable diagram. Individually visually reviewed physical diagram; minimum connection only, no raw graphic, precise walking time or universal accessibility guarantee.",
+      "components": [
+        {
+          "name": "京成八幡",
+          "operator": "京成電鉄",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "本八幡",
+          "operator": "東京都",
+          "line": "10号線新宿線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_EXPLICIT_PUBLIC_PASSAGE_AND_DISTINCT_OPERATOR_IDENTITY",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "akihabara-reviewed-current-public-rail-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:metro:akihabara-iwamotocho-current-surface-passage",
+      "sourceUrl": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_akihabara_all.jpg",
+      "observedResponseSha256": "f20dc1a3b174c30f95502d6cf9c6c3103584a0480d3d0d467e651f9705fc8e5c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:metro:akihabara-iwamotocho-current-surface-passage",
+          "url": "https://www.tokyometro.jp/station/akihabara/index.html",
+          "observedResponseSha256": "7838ff2f2a26684f4858caab3e203b9fd26bf28654c092ac47a943c2574252ef"
+        }
+      ],
+      "locator": "Current-linked January 2025 Metro combined diagram explicitly marks bidirectional ground-level interchange on Showa-dori between Akihabara exit 5 and Iwamotocho A3, separately showing both underground platform/gate access paths. No underground paid-area connection inferred. Individually visually reviewed physical diagram; minimum connection only, no raw graphic, precise walking time or universal accessibility guarantee.",
+      "components": [
+        {
+          "name": "秋葉原",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "岩本町",
+          "operator": "東京都",
+          "line": "10号線新宿線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_EXPLICIT_PUBLIC_PASSAGE_AND_DISTINCT_OPERATOR_IDENTITY",
+      "hubScopeComplete": false
+    }
+  ]
+}

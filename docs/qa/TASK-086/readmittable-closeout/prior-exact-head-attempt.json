@@ -1,0 +1,16 @@
+{
+  "status": "FAIL",
+  "runId": "37332779291",
+  "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37332779291",
+  "head": "ffd8ed7b49295c6fb044fd3b53e86dcb826a070f",
+  "failedLane": "regression-0",
+  "failedTest": "full frozen inventory has deterministic terminal decisions and no excluded export leaks",
+  "cause": "Local .gitattributes CRLF working bytes differed from committed LF bytes, changing actual frozen-input digest; graph/entity/root/export content matched but three input-bound metadata files differed.",
+  "workingSha256": "911d9f8ac391ef0581caa16cfef8488d50d74c414ffa56132077c835783273fa",
+  "committedSha256": "cfe786cdbfdcfd8b172577d23a526a29abeeac7ad3709db952f86fc92d4caf9f",
+  "remediation": "Restore exact committed .gitattributes bytes, independently regenerate all metadata from the actual inputs, and require a new exact-head gate. No hand-edited hashes, test skips, coverage or rights changes.",
+  "cancelReason": "Known failed final gate; stop remaining obsolete-head heavy lanes, retain completed results and failure artifact.",
+  "workflowConclusion": "CANCELLED_REMAINDER_AFTER_KNOWN_FAILURE",
+  "failedLaneConclusion": "failure",
+  "finalGateConclusion": "NOT_COMPLETED"
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0.0",
+  "auditedDevelopSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+  "legacyPrHeadSha": "f157f23ba1b93def006c2703ea8f42dcd9266c01",
+  "taskPublicationSha": "4fbbe4a12626b41ddcad15cc9ebf9440698192fc",
+  "auditValidation": {
+    "status": "PASS",
+    "method": "two complete Git-object scans; exact UTF-8 JSON byte equality; dedup/count/reference validation",
+    "generatedInventorySha256": "bbcd120346fa729442c67613caf72c84af88fa9b906801a466d67c08e793484a",
+    "generatedCoverageSha256": "5154df62190b6435d2e27b968bca19c64acb164c5c5713950c95c339edad9ee9",
+    "repeatedGenerationEqual": true,
+    "candidatesClassified": 586,
+    "uniqueIds": 586,
+    "uniquePaths": 586,
+    "resolvedReferenceEdges": 7064,
+    "resolvedReferenceTargetsValid": true,
+    "unresolvedImportReferences": 15,
+    "primaryLaneUnionEqualsSelection": true,
+    "primaryLaneDuplicates": 0,
+    "roleCountsConsistent": true,
+    "coveragePartitionConsistent": true,
+    "auditedTargetsExecuted": 0,
+    "generatorSelfValidation": {
+      "status": "PASS",
+      "checks": 10,
+      "scope": "in-memory audit classifier/partition only; no audited code executed"
+    },
+    "caveat": "PASS is audit invariant validation, not business test success or human per-file confirmation; unresolved references retained"
+  },
+  "businessTestsExecution": {
+    "status": "NOT_EXECUTED",
+    "cases": null,
+    "suites": null,
+    "notExecuted": [
+      "repository Node regression",
+      "Python tests/selftests",
+      "graph clean rebuild/extraction/resume/proof",
+      "browser/physical-device smoke",
+      "Local DB/Auth runtime",
+      "real Provider/network smoke",
+      "lint/typecheck/build/deployment gates"
+    ]
+  },
+  "ciStatus": {
+    "status": "NOT_EXECUTED_BY_THIS_AUDIT",
+    "eventSha": null,
+    "checkoutSha": null,
+    "branchHeadSha": null,
+    "note": "docs branch push not a workflow trigger at audited SHA; historical runs not current evidence; remote observation belongs in external publication receipt"
+  }
+}

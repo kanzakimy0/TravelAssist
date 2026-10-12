@@ -1,0 +1,165 @@
+{
+  "phaseId": "062-kita-osaka-directional-service-and-esaka-boundary",
+  "strategy": [
+    "KITA_OSAKA_DIRECTIONAL_BOARDING_CALLS",
+    "ESAKA_SHARED_THROUGH_SERVICE_PLATFORM",
+    "private_rail"
+  ],
+  "completedActionIds": [
+    "private:kita-osaka:directional-boarding-and-boundary"
+  ],
+  "facts": [
+    {
+      "factId": "kita-osaka-directional-southbound",
+      "kind": "service",
+      "sourceActionId": "private:kita-osaka:directional-boarding-and-boundary",
+      "sourceUrl": "https://www.kita-kyu.co.jp/train/traffic/images/position.pdf",
+      "observedResponseSha256": "f9b060df999bf823cf55ec3097cdfe922172ddedb4a27d813b9966a51f7ef63c",
+      "locator": "Current linked directional Boarding and Exit Guide, left Nakamozu-bound and right Minoh-Kayano-bound panels. Review the six real platform calls M06-M11 in each direction, including the 2024 extension. Current station departure tables corroborate service to Nakamozu/Tennoji and Minoh-Kayano. Retain only Kita-Osaka territory, with no clock or seat/boarding-position copy. The existing phase-036 independently reviewed Esaka operator-component transfer supplies the national boundary; no duplicate transfer is generated.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.kita-kyu.co.jp/train/traffic/",
+          "observedResponseSha256": "555903d964a0a389c049e2bfb2daaeac2fcda798a7ddf2e2e558907379d6d3d1"
+        },
+        {
+          "url": "https://www.kita-kyu.co.jp/train/traffic/timetable/",
+          "observedResponseSha256": "aa9a4d9441f1c4c85f810392b3fb8d2adfffff79424e20ae9f9309f071515513"
+        },
+        {
+          "url": "https://www.kita-kyu.co.jp/train/traffic/images/routemap.pdf",
+          "observedResponseSha256": "778dce40591fcfe6df06c0e565f677ee587410e62c8cb7d5a95efc431d1035cc"
+        }
+      ],
+      "line": "南北線",
+      "operator": "北大阪急行電鉄",
+      "mode": "private_rail",
+      "serviceClass": "旅客列車・方向別乗降位置案内",
+      "direction": "southbound",
+      "callingStations": [
+        "箕面萱野",
+        "箕面船場阪大前",
+        "千里中央",
+        "桃山台",
+        "緑地公園",
+        "江坂"
+      ],
+      "callingComponents": [
+        {
+          "name": "箕面萱野",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "箕面船場阪大前",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千里中央",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桃山台",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "緑地公園",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "江坂",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "DIRECTION_SPECIFIC_BOARDING_CALLS_AND_CURRENT_DEPARTURE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_PASSENGER_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "kita-osaka-directional-northbound",
+      "kind": "service",
+      "sourceActionId": "private:kita-osaka:directional-boarding-and-boundary",
+      "sourceUrl": "https://www.kita-kyu.co.jp/train/traffic/images/position.pdf",
+      "observedResponseSha256": "f9b060df999bf823cf55ec3097cdfe922172ddedb4a27d813b9966a51f7ef63c",
+      "locator": "Current linked directional Boarding and Exit Guide, left Nakamozu-bound and right Minoh-Kayano-bound panels. Review the six real platform calls M06-M11 in each direction, including the 2024 extension. Current station departure tables corroborate service to Nakamozu/Tennoji and Minoh-Kayano. Retain only Kita-Osaka territory, with no clock or seat/boarding-position copy. The existing phase-036 independently reviewed Esaka operator-component transfer supplies the national boundary; no duplicate transfer is generated.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.kita-kyu.co.jp/train/traffic/",
+          "observedResponseSha256": "555903d964a0a389c049e2bfb2daaeac2fcda798a7ddf2e2e558907379d6d3d1"
+        },
+        {
+          "url": "https://www.kita-kyu.co.jp/train/traffic/timetable/",
+          "observedResponseSha256": "aa9a4d9441f1c4c85f810392b3fb8d2adfffff79424e20ae9f9309f071515513"
+        },
+        {
+          "url": "https://www.kita-kyu.co.jp/train/traffic/images/routemap.pdf",
+          "observedResponseSha256": "778dce40591fcfe6df06c0e565f677ee587410e62c8cb7d5a95efc431d1035cc"
+        }
+      ],
+      "line": "南北線",
+      "operator": "北大阪急行電鉄",
+      "mode": "private_rail",
+      "serviceClass": "旅客列車・方向別乗降位置案内",
+      "direction": "northbound",
+      "callingStations": [
+        "江坂",
+        "緑地公園",
+        "桃山台",
+        "千里中央",
+        "箕面船場阪大前",
+        "箕面萱野"
+      ],
+      "callingComponents": [
+        {
+          "name": "江坂",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "緑地公園",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桃山台",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千里中央",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "箕面船場阪大前",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "箕面萱野",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "DIRECTION_SPECIFIC_BOARDING_CALLS_AND_CURRENT_DEPARTURE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_LINKED_PASSENGER_SERVICE_NOT_REALTIME"
+    }
+  ]
+}

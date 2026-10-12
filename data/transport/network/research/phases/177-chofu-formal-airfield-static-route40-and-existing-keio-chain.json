@@ -1,0 +1,822 @@
+{
+  "phaseId": "177-chofu-formal-airfield-static-route40-and-existing-keio-chain",
+  "strategy": [
+    "ORIGINAL_REQUIRED_AIRFIELD_FORMAL_NAME",
+    "CURRENT_OFFICIAL_BIDIRECTIONAL_STATIC_CALLING_TOPOLOGY",
+    "PUBLIC_TERMINAL_AND_KEIO_INTERFACES"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "government:c28:airport-identities",
+    "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+    "bus:odakyu:chofu40-current-static-two-direction-calls",
+    "station:keio:chofu-public-outside-gate-interface"
+  ],
+  "facts": [
+    {
+      "factId": "chofu40-static-chofu-north-to-airfield",
+      "kind": "service",
+      "operator": "小田急バス株式会社",
+      "line": "調40",
+      "mode": "airport_bus",
+      "direction": "chofu-north-to-airfield",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Static route topology as depicted in operator diagrams currently linked by 2026-10-01 map index; system diagram dated2026-06-01. No exact service date, trip, timetable, frequency or availability-at-time guarantee.",
+      "purpose": "airport",
+      "sourceActionId": "bus:odakyu:chofu40-current-static-two-direction-calls",
+      "sourceUrl": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+      "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:odakyu:chofu40-current-static-two-direction-calls",
+          "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+          "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+        },
+        {
+          "sourceActionId": "bus:odakyu:chofu40-current-static-two-direction-calls",
+          "url": "https://www.odakyubus.co.jp/regular/map/doc/mapA.pdf",
+          "observedResponseSha256": "3e4033977d31a8d854acf82818b7f0e07827ed998221f8db5fd08e8551f3a294"
+        },
+        {
+          "sourceActionId": "bus:odakyu:chofu40-current-static-two-direction-calls",
+          "url": "https://www.odakyubus.co.jp/regular/map/",
+          "observedResponseSha256": "9d374beef1221f02147f8d33e08faa96f962c30a7812c5cc31d671e5756952b2"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+          "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        }
+      ],
+      "callingStations": [
+        "調布駅北口",
+        "電気通信大学前",
+        "富士見町三丁目",
+        "御塔坂下",
+        "大沢四丁目",
+        "大沢コミュニティセンター",
+        "大沢五丁目",
+        "大沢グランド入口",
+        "調布飛行場"
+      ],
+      "callingComponents": [
+        {
+          "name": "調布駅北口",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs9388",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs9388",
+            "recordSha256": "72c6fe7eaa608eaf40e0dda18a9412cc923b9f23a80f050b832a96186106ab29",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "調布駅北口",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "電気通信大学前",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs9011",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs9011",
+            "recordSha256": "2a5dafa16d4dd55bdce220e79f1bcbacecf8ffa17985c69f345c17edf1e076a0",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "電気通信大学前",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "富士見町三丁目",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs8838",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs8838",
+            "recordSha256": "ae2b758f8c55e03b3b7f9bc4a66c93aa290aecb9d88086851ff94dc69c282531",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "富士見町三丁目",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "御塔坂下",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs8628",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs8628",
+            "recordSha256": "976d336a0c14a2ee7e545bd0dca62cfb622d64abd29d5637a5b0bf65640c4921",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "御塔坂下",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "大沢四丁目",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs8378",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs8378",
+            "recordSha256": "8953834f1af044b76d2f323f1b3805cc57c090e5cef63ce1a2ee800d7010235e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "大沢四丁目",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "大沢コミュニティセンター",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs8164",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs8164",
+            "recordSha256": "b667f2c4f1c401c3e048c2943489aba3e5fc49cbeb2afdfa2c68969f03a80a36",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "大沢コミュニティセンター",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "大沢五丁目",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs8103",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs8103",
+            "recordSha256": "111f10a5407862651727ec6047d91224097c89688a93cf69f6a1ef52330e7111",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "大沢五丁目",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "大沢グランド入口",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs8087",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs8087",
+            "recordSha256": "e27a751c7fe776cd77d34475e1fc61de748e03cb468c20f22ca20b35d1956383",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "大沢グランド入口",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "調布飛行場",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs7929",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs7929",
+            "recordSha256": "c3afaef9c7f52b2947619ce6cdc902668e99bf3e516cde1f17a717521c5f7f7c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "調布飛行場",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Root visual review of current-linked Komae system diagram: orange route40 connects nine stop circles continuously between the two labelled terminals; route-specific one-direction and pickup/alighting-only labels are explicit on other services, absent on route40. Geographic map independently confirms the same complete two-direction stop topology. Adjacent one-way route31 is excluded. This is direct bidirectional route-graph evidence, not reversal of a one-way trip.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS: no clock, fare, frequency, trip ID or operating calendar is asserted. Original SPEC5.1/5.2/7.1/7.2 permits official static topology.",
+      "sourceAttribution": "小田急バス株式会社, current route map index and Komae system map; minimum independent directed topology facts only."
+    },
+    {
+      "factId": "chofu40-static-airfield-to-chofu-north",
+      "kind": "service",
+      "operator": "小田急バス株式会社",
+      "line": "調40",
+      "mode": "airport_bus",
+      "direction": "airfield-to-chofu-north",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Static route topology as depicted in operator diagrams currently linked by 2026-10-01 map index; system diagram dated2026-06-01. No exact service date, trip, timetable, frequency or availability-at-time guarantee.",
+      "purpose": "airport",
+      "sourceActionId": "bus:odakyu:chofu40-current-static-two-direction-calls",
+      "sourceUrl": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+      "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:odakyu:chofu40-current-static-two-direction-calls",
+          "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+          "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+        },
+        {
+          "sourceActionId": "bus:odakyu:chofu40-current-static-two-direction-calls",
+          "url": "https://www.odakyubus.co.jp/regular/map/doc/mapA.pdf",
+          "observedResponseSha256": "3e4033977d31a8d854acf82818b7f0e07827ed998221f8db5fd08e8551f3a294"
+        },
+        {
+          "sourceActionId": "bus:odakyu:chofu40-current-static-two-direction-calls",
+          "url": "https://www.odakyubus.co.jp/regular/map/",
+          "observedResponseSha256": "9d374beef1221f02147f8d33e08faa96f962c30a7812c5cc31d671e5756952b2"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+          "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        }
+      ],
+      "callingStations": [
+        "調布飛行場",
+        "大沢グランド入口",
+        "大沢五丁目",
+        "大沢コミュニティセンター",
+        "大沢四丁目",
+        "御塔坂下",
+        "富士見町三丁目",
+        "電気通信大学前",
+        "調布駅北口"
+      ],
+      "callingComponents": [
+        {
+          "name": "調布飛行場",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs7929",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs7929",
+            "recordSha256": "c3afaef9c7f52b2947619ce6cdc902668e99bf3e516cde1f17a717521c5f7f7c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "調布飛行場",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "大沢グランド入口",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs8087",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs8087",
+            "recordSha256": "e27a751c7fe776cd77d34475e1fc61de748e03cb468c20f22ca20b35d1956383",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "大沢グランド入口",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "大沢五丁目",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs8103",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs8103",
+            "recordSha256": "111f10a5407862651727ec6047d91224097c89688a93cf69f6a1ef52330e7111",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "大沢五丁目",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "大沢コミュニティセンター",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs8164",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs8164",
+            "recordSha256": "b667f2c4f1c401c3e048c2943489aba3e5fc49cbeb2afdfa2c68969f03a80a36",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "大沢コミュニティセンター",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "大沢四丁目",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs8378",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs8378",
+            "recordSha256": "8953834f1af044b76d2f323f1b3805cc57c090e5cef63ce1a2ee800d7010235e",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "大沢四丁目",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "御塔坂下",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs8628",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs8628",
+            "recordSha256": "976d336a0c14a2ee7e545bd0dca62cfb622d64abd29d5637a5b0bf65640c4921",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "御塔坂下",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "富士見町三丁目",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs8838",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs8838",
+            "recordSha256": "ae2b758f8c55e03b3b7f9bc4a66c93aa290aecb9d88086851ff94dc69c282531",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "富士見町三丁目",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "電気通信大学前",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs9011",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs9011",
+            "recordSha256": "2a5dafa16d4dd55bdce220e79f1bcbacecf8ffa17985c69f345c17edf1e076a0",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "電気通信大学前",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "調布駅北口",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs9388",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs9388",
+            "recordSha256": "72c6fe7eaa608eaf40e0dda18a9412cc923b9f23a80f050b832a96186106ab29",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "調布駅北口",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Root visual review of current-linked Komae system diagram: orange route40 connects nine stop circles continuously between the two labelled terminals; route-specific one-direction and pickup/alighting-only labels are explicit on other services, absent on route40. Geographic map independently confirms the same complete two-direction stop topology. Adjacent one-way route31 is excluded. This is direct bidirectional route-graph evidence, not reversal of a one-way trip.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS: no clock, fare, frequency, trip ID or operating calendar is asserted. Original SPEC5.1/5.2/7.1/7.2 permits official static topology.",
+      "sourceAttribution": "小田急バス株式会社, current route map index and Komae system map; minimum independent directed topology facts only."
+    },
+    {
+      "factId": "chofu-public-terminal-frontage-to-route40",
+      "kind": "transfer",
+      "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+      "sourceUrl": "https://www.kouwan.metro.tokyo.lg.jp/documents/39915617/53103491/33541_chofuairdromeheimenzu.png/4fbe8157-5fab-ff0d-d081-aeddd16f5919?version=1.0&t=1724729473604",
+      "observedResponseSha256": "612d4cd6ff7de4c294d9b5b07be09ce864ffd52b9b9c5d3ba1b37630fe4f3fab",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/documents/39915617/53103491/33541_chofuairdromeheimenzu.png/4fbe8157-5fab-ff0d-d081-aeddd16f5919?version=1.0&t=1724729473604",
+          "observedResponseSha256": "612d4cd6ff7de4c294d9b5b07be09ce864ffd52b9b9c5d3ba1b37630fe4f3fab"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/shisetuannai/",
+          "observedResponseSha256": "52fb61efd1c07bf1a6f966bd53ee305a9e73ba2bda5cd0492b2e4e5a66f49201"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+          "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/policy",
+          "observedResponseSha256": "2df6a5d0aed46e1a9c7ed8ea13fc91cad383addc7c90eda14fbbe51affccb9da"
+        },
+        {
+          "sourceActionId": "bus:odakyu:chofu40-current-static-two-direction-calls",
+          "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+          "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+        },
+        {
+          "sourceActionId": "bus:odakyu:chofu40-current-static-two-direction-calls",
+          "url": "https://www.odakyubus.co.jp/regular/map/doc/mapA.pdf",
+          "observedResponseSha256": "3e4033977d31a8d854acf82818b7f0e07827ed998221f8db5fd08e8551f3a294"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        },
+        {
+          "sourceActionId": "government:c28:airport-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/C28/C28-21/C28-21_GML.zip",
+          "observedResponseSha256": "07d69353a34558d7ebd21d4b5f62b685d4f9b9d0e55c6eed6ce05aefcc6b7b35"
+        }
+      ],
+      "components": [
+        {
+          "name": "調布飛行場",
+          "operator": "airport-facility:cf03_00029",
+          "line": "airport:cf03_00029",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00029",
+            "requirementId": "review:official-airport:調布",
+            "expectedRequirementName": "調布",
+            "method": "REVIEWED_EXACT_CURRENT_OFFICIAL_AIRFIELD_NAME",
+            "officialNameEvidence": {
+              "officialName": "調布飛行場",
+              "requirementName": "調布",
+              "publicName": "調布飛行場",
+              "equivalenceKind": "EXACT_PRIMARY_CURRENT_FORMAL_NAME",
+              "locator": "Tokyo port bureau current Chofu airfield access/facility pages explicitly name the passenger facility 調布飛行場; original required name調布 plus exact飛行場 suffix. No invented 空港 public alias.",
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+              "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+            },
+            "currentPassengerAccessReview": "Current government access names Odakyu調40 from Keio Chofu north bay14, airfield bus stop zero-minute terminal access. Root-reviewed facility diagram places bus pole on public terminal/front-carpark access outside airfield. C28 remains airport reference point only."
+          }
+        },
+        {
+          "name": "調布飛行場",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs7929",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs7929",
+            "recordSha256": "c3afaef9c7f52b2947619ce6cdc902668e99bf3e516cde1f17a717521c5f7f7c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "調布飛行場",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_GOVERNMENT_PUBLIC_AIRFIELD_FRONTAGE_AND_NAMED_STOP",
+      "hubScopeComplete": false,
+      "locator": "Government facility diagram places bus stop beside terminal/public front carpark outside airfield; current access page says stop-to-terminal zero-minute walk. Coarse public interface only, no exact doorway/bay/curb path, coordinates or accessibility guarantee."
+    },
+    {
+      "factId": "chofu-north-public-bus-frontage-to-existing-keio",
+      "kind": "transfer",
+      "sourceActionId": "station:keio:chofu-public-outside-gate-interface",
+      "sourceUrl": "https://www.keio.co.jp/train/station/station_map/pdf/ko18_chofu.pdf",
+      "observedResponseSha256": "b7d94f98dd2c54c6eacc60e9bb4b676c94ae9354ca5b75a9e33a30531cdd88ea",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "station:keio:chofu-public-outside-gate-interface",
+          "url": "https://www.keio.co.jp/train/station/station_map/pdf/ko18_chofu.pdf",
+          "observedResponseSha256": "b7d94f98dd2c54c6eacc60e9bb4b676c94ae9354ca5b75a9e33a30531cdd88ea"
+        },
+        {
+          "sourceActionId": "station:keio:chofu-public-outside-gate-interface",
+          "url": "https://www.keio.co.jp/train/station/ko18_chofu/",
+          "observedResponseSha256": "114c767cd9d4d4bd68fc139e7e5831aa5f9cfcb20b3852108afb7e879ad75288"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+          "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+        },
+        {
+          "sourceActionId": "bus:odakyu:chofu40-current-static-two-direction-calls",
+          "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+          "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+        },
+        {
+          "sourceActionId": "government:p11:reviewed-airport-bus-identities",
+          "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+          "observedResponseSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1"
+        }
+      ],
+      "components": [
+        {
+          "name": "調布駅北口",
+          "operator": "小田急バス（株）",
+          "line": "p11-stop:P11-22_13:bs9388",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs9388",
+            "recordSha256": "72c6fe7eaa608eaf40e0dda18a9412cc923b9f23a80f050b832a96186106ab29",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-linked official Odakyu Komae system diagram and geographic map both depict this named call on complete route40 between Chofu north station and Chofu airfield. P11 remains a same-operator historical road-stop representative, not a current pole, platform or doorway coordinate.",
+            "currentOperatorEvidence": {
+              "recordOperator": "小田急バス（株）",
+              "currentOperatorName": "小田急バス株式会社",
+              "currentStopName": "調布駅北口",
+              "historicalRoute": "調40",
+              "url": "https://www.odakyubus.co.jp/regular/map/doc/komae.pdf",
+              "observedResponseSha256": "56d2059bb9d2ff4d3c9c91fbf5e039527e0f849a391bed82c091eb86f5caa6c1"
+            }
+          }
+        },
+        {
+          "name": "調布",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_STATION_PUBLIC_OUTSIDE_GATE_TO_NAMED_NORTH_BUS_FRONTAGE",
+      "hubScopeComplete": false,
+      "locator": "Current Keio station page lists Odakyu bus as connecting transport and links March2025 floor map with B1 central gate outside-gate public concourse/stairs to surface. Government airport access identifies Keio Chofu north bus bay14. Coarse public station-front interface only; no fabricated measured path, curb geometry, crossing or accessibility guarantee."
+    }
+  ],
+  "metrics": {
+    "facts": 4,
+    "directedEdges": 20,
+    "busDirectedEdges": 16,
+    "publicTransferDirectedEdges": 4,
+    "newP11IdentityRecords": 9
+  },
+  "reviewNotes": [
+    "No Navitime timetable data retained or used. No exact trip/calendar/frequency assertions.",
+    "Airport formal-name validator branch still requires separately reviewed fail-closed fix and negative tests; this is a private candidate only."
+  ]
+}

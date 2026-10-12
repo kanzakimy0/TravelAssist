@@ -1,0 +1,7 @@
+# Certification engine repair audit
+
+The old JR East regression failed REVIEW_REQUIRED versus expected derived-fact certification; the actual log is retained. The repaired final classifier reuses the repository-reviewed minimal nonexpressive-fact policy, with separate raw/identity/service/direction/transfer/walking/metric/runtime capabilities. Empty license and no structured reviewed basis still fail.
+
+Nodes use exact required identity plus reviewed operator transition evidence. Segments use their own ordered calls, endpoint identity, direction, pickup/dropoff and actually crossed operator boundary; unrelated remote calling-node certification is not fatal. Scoped production records preserve canonical IDs. Export patterns enumerate eligible segments and forbid full-pattern expansion. Required variant station codes and all nested essential proof rows are retained. Auxiliary and metric-only evidence do not become station identity requirements.
+
+Source snapshot/provenance integrity is preserved; no whole-source one-valid-record relaxation was applied. Invalid essential identities, direction/access, transfer facts and source hashes still fail. Tests cover real Tokyo/Ueno, separate Otemachi identity, invalid/public-only rights, invalid required facts, unrelated auxiliary and remote-node cases, operator transitions, orthographic variants, GTFS minimum transfer and ODbL tampering. All call sites are enumerated in the JSON audit. No production Tokyo/Ueno/JR East whitelist.

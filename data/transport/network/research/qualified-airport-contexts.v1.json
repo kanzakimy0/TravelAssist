@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "contexts": [
+    {
+      "context": {
+        "kind": "EXPLICIT_CONDITIONAL_PLANNING",
+        "publicStructureOnly": false,
+        "acceptedContracts": [
+          "f6dec7df8b28fc373a6babe437e02e28f45cdaf6fc5aeea116d53a4c2d175747",
+          "7d8dc99e6e6e46239c49f0d0312eb688664f432a6685181a3cf08c81db231f38"
+        ],
+        "eligibilityKeys": [
+          "pricia:lodging-guest"
+        ],
+        "hotelIdentityAnchor": "osm:way:1353020075:pricia-hotel",
+        "qualificationStatus": "ACTUAL_LODGING_GUEST",
+        "flightServiceStatus": "PLANNED_OPERATING",
+        "acceptsFlightAssociatedOnly": true,
+        "acceptsNoDispatchGuarantee": true,
+        "acknowledgesStaffReporting": true,
+        "advanceContactStatus": "REPORTED_FOR_THIS_SHUTTLE"
+      },
+      "reviewPath": "research/qualified-yoron-applicability.v1.json"
+    },
+    {
+      "context": {
+        "kind": "EXPLICIT_CONDITIONAL_PLANNING",
+        "publicStructureOnly": false,
+        "travelDate": "2026-10-05",
+        "eligibilityKeys": [
+          "CURRENT_LINKED_FLIGHT_USER",
+          "NON_LODGING_VISITOR_OR_ISLAND_RESIDENT"
+        ],
+        "acceptedContracts": [
+          "2e0acaefa90f44793c7404ae648bee3264f162cbedaf7f1f9d1016051edb1ba8",
+          "ec0889e9f18958c8cfc562e057fc9591de36063f6d86bb40fc522a515d085cdc"
+        ],
+        "airPassengerIntents": [
+          {
+            "contractSha256": "2e0acaefa90f44793c7404ae648bee3264f162cbedaf7f1f9d1016051edb1ba8",
+            "travelDate": "2026-10-05",
+            "linkedFlightUserDeclared": true,
+            "flightServicePatternId": "transport-pattern:086:c584c7278457d517b94ae6f170cd30ff",
+            "flightServiceStatus": "PLANNED_OPERATING",
+            "passengerRole": "NON_LODGING_VISITOR",
+            "lodgingVisitor": false,
+            "partySize": 1,
+            "acceptedPassengerRulesSha256": "a15c2293c722861c0cb32ac66f58dab19088961fef545f9e5f456b6c94ba2b53",
+            "wetBody": false,
+            "willEat": false,
+            "willDrink": false,
+            "willSmokeIncludingHeatedOrElectronic": false,
+            "acceptsDirectServiceOnly": true,
+            "acceptsCapacityRefusal": true,
+            "acceptsNoSeatOrActualDispatchGuarantee": true
+          },
+          {
+            "contractSha256": "ec0889e9f18958c8cfc562e057fc9591de36063f6d86bb40fc522a515d085cdc",
+            "travelDate": "2026-10-05",
+            "linkedFlightUserDeclared": true,
+            "flightServicePatternId": "transport-pattern:086:dca30c342faae9f7c803ef2a12cac234",
+            "flightServiceStatus": "PLANNED_OPERATING",
+            "passengerRole": "NON_LODGING_VISITOR",
+            "lodgingVisitor": false,
+            "partySize": 1,
+            "acceptedPassengerRulesSha256": "a15c2293c722861c0cb32ac66f58dab19088961fef545f9e5f456b6c94ba2b53",
+            "wetBody": false,
+            "willEat": false,
+            "willDrink": false,
+            "willSmokeIncludingHeatedOrElectronic": false,
+            "acceptsDirectServiceOnly": true,
+            "acceptsCapacityRefusal": true,
+            "acceptsNoSeatOrActualDispatchGuarantee": true
+          }
+        ]
+      },
+      "reviewPath": "research/qualified-hateruma-applicability.v1.json"
+    },
+    {
+      "context": {
+        "kind": "EXPLICIT_CONDITIONAL_PLANNING",
+        "publicStructureOnly": false,
+        "travelDate": "2026-10-05",
+        "eligibilityKeys": [
+          "hamayuso:lodging-guest",
+          "nansei:confirmed-kitadaito-product-participant"
+        ],
+        "acceptedContracts": [
+          "426b14bdf422cd418a20fc8f574353d658340c3d57fa1c107a74cb807e454db7",
+          "67bbf074ffd0db4c424711e8d6fad8b7ee13a330bfaade37ea8340a2f285206e"
+        ],
+        "hotelIdentityAnchor": "abr-parcel:473588:0004000:001520000900000:private-hotel-facility",
+        "hotelGuestStatus": "ACTUAL_LODGING_GUEST",
+        "tourProductStatus": "OPERATOR_CONFIRMED_EXACT_PRODUCT_BOOKING",
+        "arrivalFlightInformationStatus": "REPORTED_TO_HOTEL",
+        "flightServiceStatus": "PLANNED_OPERATING",
+        "acceptsUnknownShuttleDispatchAndCapacity": true
+      },
+      "reviewPath": "research/qualified-hamayuso-applicability.v1.json"
+    }
+  ]
+}

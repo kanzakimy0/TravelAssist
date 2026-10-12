@@ -1,0 +1,79 @@
+{
+  "phaseId": "210-nagasaki-roadside-arrival-terminal-public-frontage",
+  "strategy": [
+    "ORIGINAL_REQUIRED_BUS_DIRECTION_ROOT",
+    "CITY_EXPLICIT_PUBLIC_GROUND_PASSAGE",
+    "PRESERVE_NATIVE_STOPS_AND_CALL_RESTRICTIONS",
+    "NO_TEMPORARY_BRIDGE_DEPENDENCY"
+  ],
+  "completedActionIds": [
+    "transfer:nagasaki:roadside-arrival-to-terminal-public-frontage"
+  ],
+  "facts": [
+    {
+      "factId": "nagasaki-roadside-arrival1-to-terminal2-public-ground-frontage",
+      "kind": "transfer",
+      "sourceActionId": "transfer:nagasaki:roadside-arrival-to-terminal-public-frontage",
+      "sourceUrl": "https://www.city.nagasaki.lg.jp/uploaded/attachment/27407.pdf",
+      "observedResponseSha256": "b712534a5b0218eab8f86c60e05d4c5edd3e41ed7fae63dd0890aa70a5603a81",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:nagasaki:roadside-arrival-to-terminal-public-frontage",
+          "url": "https://www.city.nagasaki.lg.jp/page/6035.html",
+          "observedResponseSha256": "7c5e7a3b4d2358a7fe6840350717495b08802458fea2666a14a7d741d582072d"
+        },
+        {
+          "sourceActionId": "transfer:nagasaki:roadside-arrival-to-terminal-public-frontage",
+          "url": "https://www.city.nagasaki.lg.jp/uploaded/life/89281_615286_misc.pdf",
+          "observedResponseSha256": "4f02ebdea4f3a645bbb56608f06711996b65a42633bcb2c430c7fbd6ff3b0ef7"
+        },
+        {
+          "sourceActionId": "transfer:nagasaki:roadside-arrival-to-terminal-public-frontage",
+          "url": "https://www.keneibus.jp/cellular/highway/sasebo/index.html",
+          "observedResponseSha256": "239eae37e57cfc0be43aba76c6aa30efca3b743087c90f757a3ab1fc72a88463"
+        }
+      ],
+      "components": [
+        {
+          "name": "長崎駅前",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:40",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "881010_01",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "91478429eab63f0809a36ac1471a84c4e833a9c4e4e2b3fda3653b0fb649aae7",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "City currently published east-exit guide PDF page1 explicitly legends pale-yellow areas as ground-floor public-passable areas. Marker9 is the roadside Nagasaki-ekimae alighting-only stop directly outside Keneibus Traffic Kaikan, and marker8 is the operating Keneibus terminal. Page7 independently photographs the countybus alighting pole and sidewalk and describes the terminal services. The proposed directed relation follows the same public ground-level frontage from9 south toward8 using the marked minor-street crossing, then the public passenger entry of terminal8. It does not cross the main national road, enter bus traffic lanes, or use any temporary footbridge/stairs shown elsewhere in the old map. The August/September2026 city update concerns the station-side new boarding bay and temporary-bridge replacement; no route through those works is proposed. Current Keneibus Sasebo route page binds native producer pole1 of001010 to Nagasaki-bound alighting and pole2 to departure from the named terminal; retained licensedGTFS881010_01 is the actual Sasebo-corridor drop-only endpoint while881010_02 is the terminal passenger component. Native names remain distinct records and no generic suffix/coordinate alias is created. Only one necessary walk from arrival to existing terminal component is claimed, with no ride reversal, distance, clocks, accessibility guarantee or unrestricted map reuse."
+          }
+        },
+        {
+          "name": "長崎駅前",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:10",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "881010_02",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "96dde2d8a05838f28440561d7ff644d477bfdb59bdd33c8d4f052c33a5ac7250",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "City currently published east-exit guide PDF page1 explicitly legends pale-yellow areas as ground-floor public-passable areas. Marker9 is the roadside Nagasaki-ekimae alighting-only stop directly outside Keneibus Traffic Kaikan, and marker8 is the operating Keneibus terminal. Page7 independently photographs the countybus alighting pole and sidewalk and describes the terminal services. The proposed directed relation follows the same public ground-level frontage from9 south toward8 using the marked minor-street crossing, then the public passenger entry of terminal8. It does not cross the main national road, enter bus traffic lanes, or use any temporary footbridge/stairs shown elsewhere in the old map. The August/September2026 city update concerns the station-side new boarding bay and temporary-bridge replacement; no route through those works is proposed. Current Keneibus Sasebo route page binds native producer pole1 of001010 to Nagasaki-bound alighting and pole2 to departure from the named terminal; retained licensedGTFS881010_01 is the actual Sasebo-corridor drop-only endpoint while881010_02 is the terminal passenger component. Native names remain distinct records and no generic suffix/coordinate alias is created. Only one necessary walk from arrival to existing terminal component is claimed, with no ride reversal, distance, clocks, accessibility guarantee or unrestricted map reuse."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CITY_PUBLIC_GROUND_FRONTAGE_AND_CURRENT_OPERATOR_DIRECTIONAL_COMPONENTS",
+      "hubScopeComplete": false,
+      "locator": "City currently published east-exit guide PDF page1 explicitly legends pale-yellow areas as ground-floor public-passable areas. Marker9 is the roadside Nagasaki-ekimae alighting-only stop directly outside Keneibus Traffic Kaikan, and marker8 is the operating Keneibus terminal. Page7 independently photographs the countybus alighting pole and sidewalk and describes the terminal services. The proposed directed relation follows the same public ground-level frontage from9 south toward8 using the marked minor-street crossing, then the public passenger entry of terminal8. It does not cross the main national road, enter bus traffic lanes, or use any temporary footbridge/stairs shown elsewhere in the old map. The August/September2026 city update concerns the station-side new boarding bay and temporary-bridge replacement; no route through those works is proposed. Current Keneibus Sasebo route page binds native producer pole1 of001010 to Nagasaki-bound alighting and pole2 to departure from the named terminal; retained licensedGTFS881010_01 is the actual Sasebo-corridor drop-only endpoint while881010_02 is the terminal passenger component. Native names remain distinct records and no generic suffix/coordinate alias is created. Only one necessary walk from arrival to existing terminal component is claimed, with no ride reversal, distance, clocks, accessibility guarantee or unrestricted map reuse."
+    }
+  ]
+}

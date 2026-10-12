@@ -1,0 +1,218 @@
+{
+  "phaseId": "079-miyazaki-airport-current-ordinary-rail-and-terminal",
+  "strategy": [
+    "CURRENT_JR_ACTUAL_ORDINARY_TRIPS",
+    "CONTIGUOUS_FOUR_CALL_AIRPORT_RAIL_SECTION",
+    "CURRENT_TERMINAL_PUBLIC_RAIL_PASSAGE"
+  ],
+  "completedActionIds": [
+    "rail:jr-kyushu:miyazaki-airport-current-ordinary",
+    "airport:miyazaki:current-terminal-rail-passage"
+  ],
+  "facts": [
+    {
+      "factId": "miyazaki-airport-current-ordinary-728M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-kyushu:miyazaki-airport-current-ordinary",
+      "sourceUrl": "https://www.jrkyushu-timetable.jp/jr-k_time/2610/0032/00329801.html?c=28904&ym=202610&d=01",
+      "observedResponseSha256": "2e06a73087c1483c339c854e282ea0e4782deeb8e3f85625801e1f8551fea654",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-kyushu:miyazaki-airport-current-ordinary",
+          "url": "https://www.jrkyushu-timetable.jp/cgi-bin/jr-k_time/tt_dep.cgi?c=28904",
+          "observedResponseSha256": "851899c224c110de5aab7623fffa248865ace9ae3f7f78159c4028559757b6af"
+        }
+      ],
+      "locator": "JR Kyushu official 2026-10-01 actual daily ordinary train 728M. Retain the four-call contiguous airport-city section only. Full parent station order records the reviewed bounds; no clock times or invented stopping pattern. Each direction is independently observed, and intermediate Tayoshi and Minami-Miyazaki are retained.",
+      "operator": "九州旅客鉄道",
+      "line": "宮崎空港線・日南線・日豊本線（宮崎空港—宮崎区間）",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "direction": "city-bound",
+      "sourceTrainNumber": "728M",
+      "parentCallingStations": [
+        "宮崎空港",
+        "田吉",
+        "南宮崎",
+        "宮崎",
+        "宮崎神宮",
+        "蓮ケ池",
+        "日向住吉",
+        "佐土原",
+        "日向新富",
+        "高鍋"
+      ],
+      "sectionStartIndex": 0,
+      "callingStations": [
+        "宮崎空港",
+        "田吉",
+        "南宮崎",
+        "宮崎"
+      ],
+      "callingComponents": [
+        {
+          "name": "宮崎空港",
+          "operator": "九州旅客鉄道",
+          "line": "宮崎空港線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "田吉",
+          "operator": "九州旅客鉄道",
+          "line": "宮崎空港線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "南宮崎",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宮崎",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "ACTUAL_CURRENT_DAILY_ORDINARY_TRIP_CONTIGUOUS_FOUR_CALL_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_SERVICE_DATE_2026_10_01_NOT_REALTIME"
+    },
+    {
+      "factId": "miyazaki-airport-current-ordinary-723M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-kyushu:miyazaki-airport-current-ordinary",
+      "sourceUrl": "https://www.jrkyushu-timetable.jp/jr-k_time/2610/0008/00084201.html?c=28903&ym=202610&d=01",
+      "observedResponseSha256": "6f39d05fbdfb98a1ea8a92b65229bced56d0a2dc9ba31b3309a7371e84e89b0c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-kyushu:miyazaki-airport-current-ordinary",
+          "url": "https://www.jrkyushu-timetable.jp/cgi-bin/jr-k_time/tt_dep.cgi?c=28903",
+          "observedResponseSha256": "09e23a61fd39c09280e34cf97dbaaf5a409f1d417bd3fdb0db5d18b32bb4bca2"
+        }
+      ],
+      "locator": "JR Kyushu official 2026-10-01 actual daily ordinary train 723M. Retain the four-call contiguous airport-city section only. Full parent station order records the reviewed bounds; no clock times or invented stopping pattern. Each direction is independently observed, and intermediate Tayoshi and Minami-Miyazaki are retained.",
+      "operator": "九州旅客鉄道",
+      "line": "宮崎空港線・日南線・日豊本線（宮崎空港—宮崎区間）",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "direction": "airport-bound",
+      "sourceTrainNumber": "723M",
+      "parentCallingStations": [
+        "延岡",
+        "南延岡",
+        "旭ケ丘",
+        "土々呂",
+        "門川",
+        "日向市",
+        "財光寺",
+        "南日向",
+        "美々津",
+        "東都農",
+        "都農",
+        "川南",
+        "高鍋",
+        "日向新富",
+        "佐土原",
+        "日向住吉",
+        "蓮ケ池",
+        "宮崎神宮",
+        "宮崎",
+        "南宮崎",
+        "田吉",
+        "宮崎空港"
+      ],
+      "sectionStartIndex": 18,
+      "callingStations": [
+        "宮崎",
+        "南宮崎",
+        "田吉",
+        "宮崎空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "宮崎",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "南宮崎",
+          "operator": "九州旅客鉄道",
+          "line": "日豊線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "田吉",
+          "operator": "九州旅客鉄道",
+          "line": "宮崎空港線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宮崎空港",
+          "operator": "九州旅客鉄道",
+          "line": "宮崎空港線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "ACTUAL_CURRENT_DAILY_ORDINARY_TRIP_CONTIGUOUS_FOUR_CALL_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_SERVICE_DATE_2026_10_01_NOT_REALTIME"
+    },
+    {
+      "factId": "miyazaki-airport-current-west-jr-terminal-passage",
+      "kind": "transfer",
+      "sourceActionId": "airport:miyazaki:current-terminal-rail-passage",
+      "sourceUrl": "https://www.miyazaki-airport.co.jp/contents/wp-content/uploads/2026/03/1F_20260310-01-1-scaled-1-900x345-1.jpg",
+      "observedResponseSha256": "a10f45e6a60cef9ac42b827d758f85792c71056b963ca223205b7827019cb28a",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:miyazaki:current-terminal-rail-passage",
+          "url": "https://www.miyazaki-airport.co.jp/terminal/floor_1f",
+          "observedResponseSha256": "786b8ca5764829eee08c7a3026e084b1fed13b5da372ae981c3fd9924134cfce"
+        },
+        {
+          "sourceActionId": "airport:miyazaki:current-terminal-rail-passage",
+          "url": "https://www.miyazaki-airport.co.jp/access/train",
+          "observedResponseSha256": "875c9652e7b114a121e18c93ed495980bba8a4fffe61873ff219d58e49b369d7"
+        }
+      ],
+      "locator": "Current March 2026 terminal 1F floor diagram marks the JR railway entrance at the west public frontage and shows the connecting public terminal doorway. Current rail access page confirms the airport railway operation. Bind the separate S12 Miyazaki Airport station to the C28 whole airport facility; no full map artwork, precise entrance coordinate, travel minutes or accessibility guarantee is retained.",
+      "components": [
+        {
+          "name": "宮崎空港",
+          "operator": "airport-facility:cf03_00050",
+          "line": "airport:cf03_00050",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00050",
+            "requirementId": "review:transport-node:85c76722-acf0-5328-a2aa-c59e275df490",
+            "expectedRequirementName": "宮崎",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current March 2026 terminal 1F floor diagram marks the JR railway entrance at the west public frontage and shows the connecting public terminal doorway. Current rail access page confirms the airport railway operation. Bind the separate S12 Miyazaki Airport station to the C28 whole airport facility; no full map artwork, precise entrance coordinate, travel minutes or accessibility guarantee is retained."
+          }
+        },
+        {
+          "name": "宮崎空港",
+          "operator": "九州旅客鉄道",
+          "line": "宮崎空港線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_TERMINAL_JR_ENTRANCE_AND_INDEPENDENT_IDENTITIES",
+      "hubScopeComplete": false
+    }
+  ]
+}

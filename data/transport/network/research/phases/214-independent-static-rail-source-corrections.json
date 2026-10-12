@@ -1,0 +1,424 @@
+{
+  "phaseId": "214-independent-static-rail-source-corrections",
+  "strategy": [
+    "EXPLICIT_AUDITED_CORRECTION_OF_THREE_SOURCE_UNSUPPORTED_IMPLEMENTATIONS"
+  ],
+  "completedActionIds": [
+    "rail:independent-static-correction-214:operator",
+    "rail:independent-static-correction-214:city",
+    "rail:independent-static-correction-214:jnto",
+    "rail:independent-static-correction-214:map",
+    "rail:independent-static-correction-214:prefectural-tourism"
+  ],
+  "facts": [
+    {
+      "factId": "okayama-kojima-static-local-214-okayama-to-kojima",
+      "kind": "service",
+      "sourceActionId": "rail:independent-static-correction-214:prefectural-tourism",
+      "sourceUrl": "https://www.okayama-kanko.jp/okatabi/1484/page",
+      "observedResponseSha256": "428df9c109cf7fae75537ced3b601309a14337166ef479e173deb2b24a90653d",
+      "line": "瀬戸大橋線・岡山児島区間普通",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "serviceClass": "static_local_all_stop",
+      "direction": "岡山→児島",
+      "callingStations": [
+        "岡山",
+        "大元",
+        "備前西市",
+        "妹尾",
+        "備中箕島",
+        "早島",
+        "久々原",
+        "茶屋町",
+        "植松",
+        "木見",
+        "上の町",
+        "児島"
+      ],
+      "callingComponents": [
+        {
+          "name": "岡山",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大元",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "備前西市",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "妹尾",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "備中箕島",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "早島",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "久々原",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "茶屋町",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "植松",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "木見",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "上の町",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "児島",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_DIRECTIONAL_LOCAL_OPERATION_AND_EXPLICIT_LOCAL_DEFINITION_WITH_OPERATOR_STATION_ORDER",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_PASSENGER_RELATION_NO_TRAIN_DATE_CLOCK_OR_FREQUENCY_CLAIM",
+      "locator": "Independent static evidence combination: 2025 prefectural Japanese access guide identifies Okayama-to-Kojima local passenger service; 2024 operator incident identifies Kojima-to-Okayama ordinary passenger service and intended Kuguhara call; 2025 operator announcement states ordinary operation across this interval without an end date. JNTO distinguishes all-station local service from rapid; the current 2026 operator map supplies the complete twelve-station order. The map alone is not service proof. Staffing exceptions in the one-man announcement are not stopping exceptions. This is a new ordinary service representation, not Marine10/35, not an assertion about a specified operating date, and not proof of an old rapid variant.",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:independent-static-correction-214:operator",
+          "url": "https://www.westjr.co.jp/press/article/items/240122_00_press.pdf",
+          "observedResponseSha256": "4c9e01b8fdf712ef098e6a3e1f7f9cca846eeb961b8cefafdf71a8b5d5729b26"
+        },
+        {
+          "sourceActionId": "rail:independent-static-correction-214:operator",
+          "url": "https://www.westjr.co.jp/press/article/items/241213_00_press_2025harudaiyakaisei4_1.pdf",
+          "observedResponseSha256": "34f758e4a056e54b5713ac8e5ca80cf26ca3f1b54a3f1b52f97ea22d49e0e514"
+        },
+        {
+          "sourceActionId": "rail:independent-static-correction-214:map",
+          "url": "https://www.jr-odekake.net/station/pdf/oka.pdf",
+          "observedResponseSha256": "c93056f7c00a768d56e4a3a986ff95545ed45faf26ca34c55e0c117e26b74ca6"
+        },
+        {
+          "sourceActionId": "rail:independent-static-correction-214:jnto",
+          "url": "https://faq.japan-travel.jnto.go.jp/en/guide/traveling-by-rail/",
+          "observedResponseSha256": "8838c0438b8940ebacc8942a03598ce620ccaa501b16904d0a85e68b20491790"
+        }
+      ]
+    },
+    {
+      "factId": "okayama-kojima-static-local-214-kojima-to-okayama",
+      "kind": "service",
+      "sourceActionId": "rail:independent-static-correction-214:operator",
+      "sourceUrl": "https://www.westjr.co.jp/press/article/items/240122_00_press.pdf",
+      "observedResponseSha256": "4c9e01b8fdf712ef098e6a3e1f7f9cca846eeb961b8cefafdf71a8b5d5729b26",
+      "line": "瀬戸大橋線・岡山児島区間普通",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "serviceClass": "static_local_all_stop",
+      "direction": "児島→岡山",
+      "callingStations": [
+        "児島",
+        "上の町",
+        "木見",
+        "植松",
+        "茶屋町",
+        "久々原",
+        "早島",
+        "備中箕島",
+        "妹尾",
+        "備前西市",
+        "大元",
+        "岡山"
+      ],
+      "callingComponents": [
+        {
+          "name": "児島",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "上の町",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "木見",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "植松",
+          "operator": "西日本旅客鉄道",
+          "line": "本四備讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "茶屋町",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "久々原",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "早島",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "備中箕島",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "妹尾",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "備前西市",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大元",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "岡山",
+          "operator": "西日本旅客鉄道",
+          "line": "宇野線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_DIRECTIONAL_LOCAL_OPERATION_AND_EXPLICIT_LOCAL_DEFINITION_WITH_OPERATOR_STATION_ORDER",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_PASSENGER_RELATION_NO_TRAIN_DATE_CLOCK_OR_FREQUENCY_CLAIM",
+      "locator": "Independent static evidence combination: 2025 prefectural Japanese access guide identifies Okayama-to-Kojima local passenger service; 2024 operator incident identifies Kojima-to-Okayama ordinary passenger service and intended Kuguhara call; 2025 operator announcement states ordinary operation across this interval without an end date. JNTO distinguishes all-station local service from rapid; the current 2026 operator map supplies the complete twelve-station order. The map alone is not service proof. Staffing exceptions in the one-man announcement are not stopping exceptions. This is a new ordinary service representation, not Marine10/35, not an assertion about a specified operating date, and not proof of an old rapid variant.",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:independent-static-correction-214:prefectural-tourism",
+          "url": "https://www.okayama-kanko.jp/okatabi/1484/page",
+          "observedResponseSha256": "428df9c109cf7fae75537ced3b601309a14337166ef479e173deb2b24a90653d"
+        },
+        {
+          "sourceActionId": "rail:independent-static-correction-214:operator",
+          "url": "https://www.westjr.co.jp/press/article/items/241213_00_press_2025harudaiyakaisei4_1.pdf",
+          "observedResponseSha256": "34f758e4a056e54b5713ac8e5ca80cf26ca3f1b54a3f1b52f97ea22d49e0e514"
+        },
+        {
+          "sourceActionId": "rail:independent-static-correction-214:map",
+          "url": "https://www.jr-odekake.net/station/pdf/oka.pdf",
+          "observedResponseSha256": "c93056f7c00a768d56e4a3a986ff95545ed45faf26ca34c55e0c117e26b74ca6"
+        },
+        {
+          "sourceActionId": "rail:independent-static-correction-214:jnto",
+          "url": "https://faq.japan-travel.jnto.go.jp/en/guide/traveling-by-rail/",
+          "observedResponseSha256": "8838c0438b8940ebacc8942a03598ce620ccaa501b16904d0a85e68b20491790"
+        }
+      ]
+    },
+    {
+      "factId": "iwakuni-hiroshima-independent-static-local-eastbound",
+      "kind": "service",
+      "sourceActionId": "rail:independent-static-correction-214:operator",
+      "sourceUrl": "https://www.westjr.co.jp/press/article/items/221014_00_press_genin.pdf",
+      "observedResponseSha256": "27e077a3b21f04c86bc63d3f9480abbe979cab8b40315362237c9b687a0e9b4c",
+      "callingStations": [
+        "岩国",
+        "和木",
+        "大竹",
+        "玖波",
+        "大野浦",
+        "前空",
+        "宮島口",
+        "阿品",
+        "宮内串戸",
+        "廿日市",
+        "五日市",
+        "新井口",
+        "西広島",
+        "横川",
+        "新白島",
+        "広島"
+      ],
+      "callingComponents": [
+        {
+          "name": "岩国",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和木",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大竹",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "玖波",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大野浦",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "前空",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宮島口",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "阿品",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宮内串戸",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "廿日市",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "五日市",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新井口",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "横川",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新白島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "広島",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "line": "山陽本線・岩国広島区間",
+      "operator": "西日本旅客鉄道",
+      "direction": "岩国→広島",
+      "serviceClass": "static_local_all_stop",
+      "reviewMethod": "INDEPENDENT_OPERATOR_DIRECTIONAL_ORDINARY_OPERATION_WITH_CURRENT_CORRIDOR_CONTINUITY_AND_EXPLICIT_LOCAL_DEFINITION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_PASSENGER_RELATION_NO_TRAIN_DATE_CLOCK_OR_FREQUENCY_CLAIM",
+      "locator": "Independent operator-authored 2022 incident prose identifies an actual Iwakuni-origin Itozaki-bound eastbound ordinary passenger train, beyond Hiroshima. Combine current municipal eastbound corridor operation, ongoing2025 ordinary operation in the Hiroshima district, explicit JNTO local all-station definition, and current operator sixteen-station order. The geographic map and frequency figure do not alone establish calls. This is an inferred quasi-static local service, not510M, not an October2 calendar assertion. No native timetable-data transformation, clocks or raw prose output.",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:independent-static-correction-214:city",
+          "url": "https://www.city.hiroshima.lg.jp/_res/projects/default_project/_page_/001/012/360/vision_statisticaldata_202603.pdf",
+          "observedResponseSha256": "b2055b92d9758f6c57d9c16b03ea49a64cd4b59734df6efba6d5faf14dc03732"
+        },
+        {
+          "sourceActionId": "rail:independent-static-correction-214:operator",
+          "url": "https://www.westjr.co.jp/press/article/items/241213_00_press_2025harudaiyakaisei4_1.pdf",
+          "observedResponseSha256": "34f758e4a056e54b5713ac8e5ca80cf26ca3f1b54a3f1b52f97ea22d49e0e514"
+        },
+        {
+          "sourceActionId": "rail:independent-static-correction-214:jnto",
+          "url": "https://faq.japan-travel.jnto.go.jp/en/guide/traveling-by-rail/",
+          "observedResponseSha256": "8838c0438b8940ebacc8942a03598ce620ccaa501b16904d0a85e68b20491790"
+        },
+        {
+          "sourceActionId": "rail:independent-static-correction-214:map",
+          "url": "https://www.jr-odekake.net/station/pdf/cnh.pdf",
+          "observedResponseSha256": "0c1a51fdfc263b07555fdd126d8035f981c02d0d5ee2ef2940ed18e768287fe3"
+        }
+      ]
+    }
+  ]
+}

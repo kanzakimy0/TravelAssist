@@ -1,0 +1,476 @@
+{
+  "phaseId": "154-toyama-current-asymmetric-direct-trips-and-reviewed-public-gateways",
+  "strategy": [
+    "EXACT_P11_SAME_OPERATOR_ROAD_STOP_IDENTITY",
+    "CURRENT_ACTUAL_ASYMMETRIC_FIVE_CALL_DIRECT_TRIPS",
+    "CURRENT_JR_PUBLIC_SOUTH_EXIT",
+    "GOVERNMENT_FACILITY_EVIDENCE_WITH_CURRENT_CARRIER_CORROBORATION",
+    "RESTRICTIVE_SOURCE_ALTERNATIVES"
+  ],
+  "completedActionIds": [
+    "bus:chitetsu:current-toyama-airport-independent-five-call-directions",
+    "hub:jr-west:toyama-current-south-exit-airport-bus-connection",
+    "airport:toyama-prefecture:published-public-terminal-bus-frontage",
+    "reference:chitetsu-gtfs:conflicting-cc0-and-feed-restrictions",
+    "reference:toyama-airport-building:restricted-website-alternative",
+    "reference:ana:toyama-airport-restricted-acquisition-policy",
+    "reference:toyama-airport-council:restricted-reference-website"
+  ],
+  "facts": [
+    {
+      "factId": "chitetsu-toyama-airport-current-airport-bound-actual-direct-trip",
+      "kind": "service",
+      "sourceActionId": "bus:chitetsu:current-toyama-airport-independent-five-call-directions",
+      "sourceUrl": "https://www.chitetsu.co.jp/wp-content/uploads/2017/03/7de117b72b5b1984a5b9a54bed21b477.pdf",
+      "observedResponseSha256": "8e3ee69022fe3d3d5d63b4ac2d9ebddfeee96862e2cb1141928181fb0e51a71a",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:chitetsu:current-toyama-airport-independent-five-call-directions",
+          "url": "https://www.chitetsu.co.jp/?page_id=733",
+          "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+        },
+        {
+          "sourceActionId": "bus:chitetsu:current-toyama-airport-independent-five-call-directions",
+          "url": "https://www.chitetsu.co.jp/wp-content/themes/custom2/pdf/bus/teiryujyo.pdf",
+          "observedResponseSha256": "1294fdd418287a3d9901b4e4f8cf9578d7d51eb48a8dcb204757b74e97da85ec"
+        }
+      ],
+      "locator": "Individually visually reviewed weekday page 1 column 1 of current April 1-October 24 2026 timetable. This actual direct trip has exactly five calls; outbound calls hotel-front, return calls Sogawa. Current carrier route page supplies exact same-operator canonical road-stop labels, including Toyama Airport for linked timetable Toyama Airport-mae. Exclude all-stop local 36-series trips and infer no reversed pattern. Retain minimum ordered calls only, no clocks, fares, artwork, realtime operation or guaranteed flight connection.",
+      "line": "富山空港直行バス",
+      "operator": "富山地方鉄道株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "空港直行バス",
+      "direction": "airport-bound",
+      "callingStations": [
+        "富山駅前",
+        "富山市役所前",
+        "城址公園前",
+        "ANAクラウンプラザホテル前",
+        "富山空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "富山駅前",
+          "operator": "富山地方鉄道（株）",
+          "line": "p11-stop:P11-22_16:bs1336",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_16:bs1336",
+            "recordSha256": "b336eab27bdace0d0e421d77e13f6605b505b6d661fea70de822d88c4f353d2d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator licensed P11 road-stop representative matched against current carrier airport-route page and independently viewed actual direct-trip calls. Current page explicitly uses canonical Toyama Airport for the endpoint whose linked timetable adds mae; this is the same carrier-declared airport endpoint, not a proximity match or inferred relocation. Retain direction-specific intermediate stops and distinct boarding/alighting roles without converting representative coordinates into platform or doorway coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "富山地方鉄道（株）",
+              "currentOperatorName": "富山地方鉄道株式会社",
+              "currentStopName": "富山駅前",
+              "historicalRoute": "空港直通バス",
+              "url": "https://www.chitetsu.co.jp/?page_id=733",
+              "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+            }
+          }
+        },
+        {
+          "name": "富山市役所前",
+          "operator": "富山地方鉄道（株）",
+          "line": "p11-stop:P11-22_16:bs1391",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_16:bs1391",
+            "recordSha256": "e3b84cff8d0cd982706e53bdd94f771229103108483567f8c3a29d14cca414fb",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator licensed P11 road-stop representative matched against current carrier airport-route page and independently viewed actual direct-trip calls. Current page explicitly uses canonical Toyama Airport for the endpoint whose linked timetable adds mae; this is the same carrier-declared airport endpoint, not a proximity match or inferred relocation. Retain direction-specific intermediate stops and distinct boarding/alighting roles without converting representative coordinates into platform or doorway coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "富山地方鉄道（株）",
+              "currentOperatorName": "富山地方鉄道株式会社",
+              "currentStopName": "富山市役所前",
+              "historicalRoute": "空港直通バス",
+              "url": "https://www.chitetsu.co.jp/?page_id=733",
+              "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+            }
+          }
+        },
+        {
+          "name": "城址公園前",
+          "operator": "富山地方鉄道（株）",
+          "line": "p11-stop:P11-22_16:bs1421",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_16:bs1421",
+            "recordSha256": "d18dd1d06861e8e0acb98416763b5285d560047b58d3ac308d3ce6b389fc4e2c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator licensed P11 road-stop representative matched against current carrier airport-route page and independently viewed actual direct-trip calls. Current page explicitly uses canonical Toyama Airport for the endpoint whose linked timetable adds mae; this is the same carrier-declared airport endpoint, not a proximity match or inferred relocation. Retain direction-specific intermediate stops and distinct boarding/alighting roles without converting representative coordinates into platform or doorway coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "富山地方鉄道（株）",
+              "currentOperatorName": "富山地方鉄道株式会社",
+              "currentStopName": "城址公園前",
+              "historicalRoute": "空港直通バス",
+              "url": "https://www.chitetsu.co.jp/?page_id=733",
+              "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+            }
+          }
+        },
+        {
+          "name": "ANAクラウンプラザホテル前",
+          "operator": "富山地方鉄道（株）",
+          "line": "p11-stop:P11-22_16:bs1431",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_16:bs1431",
+            "recordSha256": "1aae03f2bf68d5de8134db23743a8f1840e643914ae3dadd2b5e8d142b37633b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator licensed P11 road-stop representative matched against current carrier airport-route page and independently viewed actual direct-trip calls. Current page explicitly uses canonical Toyama Airport for the endpoint whose linked timetable adds mae; this is the same carrier-declared airport endpoint, not a proximity match or inferred relocation. Retain direction-specific intermediate stops and distinct boarding/alighting roles without converting representative coordinates into platform or doorway coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "富山地方鉄道（株）",
+              "currentOperatorName": "富山地方鉄道株式会社",
+              "currentStopName": "ANAクラウンプラザホテル前",
+              "historicalRoute": "空港直通バス",
+              "url": "https://www.chitetsu.co.jp/?page_id=733",
+              "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+            }
+          }
+        },
+        {
+          "name": "富山空港",
+          "operator": "富山地方鉄道（株）",
+          "line": "p11-stop:P11-22_16:bs1859",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_16:bs1859",
+            "recordSha256": "91ae3ef93be25ecd53cc04f4cf128cc2db2d9a6856d93fc3d2522fb1f4820da7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator licensed P11 road-stop representative matched against current carrier airport-route page and independently viewed actual direct-trip calls. Current page explicitly uses canonical Toyama Airport for the endpoint whose linked timetable adds mae; this is the same carrier-declared airport endpoint, not a proximity match or inferred relocation. Retain direction-specific intermediate stops and distinct boarding/alighting roles without converting representative coordinates into platform or doorway coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "富山地方鉄道（株）",
+              "currentOperatorName": "富山地方鉄道株式会社",
+              "currentStopName": "富山空港",
+              "historicalRoute": "空港直通バス",
+              "url": "https://www.chitetsu.co.jp/?page_id=733",
+              "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+            }
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_DIRECTIONAL_ACTUAL_DIRECT_TRIPS_AND_EXACT_OPERATOR_P11_CONTEXT",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_APRIL_1_OCTOBER_24_2026_WEEKDAY_SERVICE_WITH_ARRIVAL_DEPENDENT_RETURN_NOT_REALTIME"
+    },
+    {
+      "factId": "chitetsu-toyama-airport-current-station-bound-actual-direct-trip",
+      "kind": "service",
+      "sourceActionId": "bus:chitetsu:current-toyama-airport-independent-five-call-directions",
+      "sourceUrl": "https://www.chitetsu.co.jp/wp-content/uploads/2017/03/a9a24ed38c275dbce7fcab5f74a50d0b.pdf",
+      "observedResponseSha256": "52ee071bc215636244fab03f235bd2c54d4c0d046b407018901d31367a5d5485",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:chitetsu:current-toyama-airport-independent-five-call-directions",
+          "url": "https://www.chitetsu.co.jp/?page_id=733",
+          "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+        },
+        {
+          "sourceActionId": "bus:chitetsu:current-toyama-airport-independent-five-call-directions",
+          "url": "https://www.chitetsu.co.jp/wp-content/themes/custom2/pdf/bus/teiryujyo.pdf",
+          "observedResponseSha256": "1294fdd418287a3d9901b4e4f8cf9578d7d51eb48a8dcb204757b74e97da85ec"
+        }
+      ],
+      "locator": "Individually visually reviewed weekday page 1 column 5 of current April 1-October 24 2026 timetable. This actual direct trip has exactly five calls; outbound calls hotel-front, return calls Sogawa. Current carrier route page supplies exact same-operator canonical road-stop labels, including Toyama Airport for linked timetable Toyama Airport-mae. Exclude all-stop local 36-series trips and infer no reversed pattern. Retain minimum ordered calls only, no clocks, fares, artwork, realtime operation or guaranteed flight connection.",
+      "line": "富山空港直行バス",
+      "operator": "富山地方鉄道株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "空港直行バス",
+      "direction": "station-bound",
+      "callingStations": [
+        "富山空港",
+        "総曲輪",
+        "城址公園前",
+        "富山市役所前",
+        "富山駅前"
+      ],
+      "callingComponents": [
+        {
+          "name": "富山空港",
+          "operator": "富山地方鉄道（株）",
+          "line": "p11-stop:P11-22_16:bs1859",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_16:bs1859",
+            "recordSha256": "91ae3ef93be25ecd53cc04f4cf128cc2db2d9a6856d93fc3d2522fb1f4820da7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator licensed P11 road-stop representative matched against current carrier airport-route page and independently viewed actual direct-trip calls. Current page explicitly uses canonical Toyama Airport for the endpoint whose linked timetable adds mae; this is the same carrier-declared airport endpoint, not a proximity match or inferred relocation. Retain direction-specific intermediate stops and distinct boarding/alighting roles without converting representative coordinates into platform or doorway coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "富山地方鉄道（株）",
+              "currentOperatorName": "富山地方鉄道株式会社",
+              "currentStopName": "富山空港",
+              "historicalRoute": "空港直通バス",
+              "url": "https://www.chitetsu.co.jp/?page_id=733",
+              "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+            }
+          }
+        },
+        {
+          "name": "総曲輪",
+          "operator": "富山地方鉄道（株）",
+          "line": "p11-stop:P11-22_16:bs1444",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_16:bs1444",
+            "recordSha256": "6cc5d15aacde503cf71c8a11c16e9b3b3b83020470361c7972a950ee06286002",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator licensed P11 road-stop representative matched against current carrier airport-route page and independently viewed actual direct-trip calls. Current page explicitly uses canonical Toyama Airport for the endpoint whose linked timetable adds mae; this is the same carrier-declared airport endpoint, not a proximity match or inferred relocation. Retain direction-specific intermediate stops and distinct boarding/alighting roles without converting representative coordinates into platform or doorway coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "富山地方鉄道（株）",
+              "currentOperatorName": "富山地方鉄道株式会社",
+              "currentStopName": "総曲輪",
+              "historicalRoute": "空港直通バス",
+              "url": "https://www.chitetsu.co.jp/?page_id=733",
+              "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+            }
+          }
+        },
+        {
+          "name": "城址公園前",
+          "operator": "富山地方鉄道（株）",
+          "line": "p11-stop:P11-22_16:bs1421",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_16:bs1421",
+            "recordSha256": "d18dd1d06861e8e0acb98416763b5285d560047b58d3ac308d3ce6b389fc4e2c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator licensed P11 road-stop representative matched against current carrier airport-route page and independently viewed actual direct-trip calls. Current page explicitly uses canonical Toyama Airport for the endpoint whose linked timetable adds mae; this is the same carrier-declared airport endpoint, not a proximity match or inferred relocation. Retain direction-specific intermediate stops and distinct boarding/alighting roles without converting representative coordinates into platform or doorway coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "富山地方鉄道（株）",
+              "currentOperatorName": "富山地方鉄道株式会社",
+              "currentStopName": "城址公園前",
+              "historicalRoute": "空港直通バス",
+              "url": "https://www.chitetsu.co.jp/?page_id=733",
+              "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+            }
+          }
+        },
+        {
+          "name": "富山市役所前",
+          "operator": "富山地方鉄道（株）",
+          "line": "p11-stop:P11-22_16:bs1391",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_16:bs1391",
+            "recordSha256": "e3b84cff8d0cd982706e53bdd94f771229103108483567f8c3a29d14cca414fb",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator licensed P11 road-stop representative matched against current carrier airport-route page and independently viewed actual direct-trip calls. Current page explicitly uses canonical Toyama Airport for the endpoint whose linked timetable adds mae; this is the same carrier-declared airport endpoint, not a proximity match or inferred relocation. Retain direction-specific intermediate stops and distinct boarding/alighting roles without converting representative coordinates into platform or doorway coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "富山地方鉄道（株）",
+              "currentOperatorName": "富山地方鉄道株式会社",
+              "currentStopName": "富山市役所前",
+              "historicalRoute": "空港直通バス",
+              "url": "https://www.chitetsu.co.jp/?page_id=733",
+              "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+            }
+          }
+        },
+        {
+          "name": "富山駅前",
+          "operator": "富山地方鉄道（株）",
+          "line": "p11-stop:P11-22_16:bs1336",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_16:bs1336",
+            "recordSha256": "b336eab27bdace0d0e421d77e13f6605b505b6d661fea70de822d88c4f353d2d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator licensed P11 road-stop representative matched against current carrier airport-route page and independently viewed actual direct-trip calls. Current page explicitly uses canonical Toyama Airport for the endpoint whose linked timetable adds mae; this is the same carrier-declared airport endpoint, not a proximity match or inferred relocation. Retain direction-specific intermediate stops and distinct boarding/alighting roles without converting representative coordinates into platform or doorway coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "富山地方鉄道（株）",
+              "currentOperatorName": "富山地方鉄道株式会社",
+              "currentStopName": "富山駅前",
+              "historicalRoute": "空港直通バス",
+              "url": "https://www.chitetsu.co.jp/?page_id=733",
+              "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+            }
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_DIRECTIONAL_ACTUAL_DIRECT_TRIPS_AND_EXACT_OPERATOR_P11_CONTEXT",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_APRIL_1_OCTOBER_24_2026_WEEKDAY_SERVICE_WITH_ARRIVAL_DEPENDENT_RETURN_NOT_REALTIME"
+    },
+    {
+      "factId": "toyama-airport-prefectural-public-frontage-and-current-carrier-passenger-access",
+      "kind": "transfer",
+      "sourceActionId": "airport:toyama-prefecture:published-public-terminal-bus-frontage",
+      "sourceUrl": "https://www.pref.toyama.jp/documents/32823/toyamaairportconcenssion_houkoku_hontai.pdf",
+      "observedResponseSha256": "710c622e5793311492f14b7bdf2e090ecbe07422fdda78ce56504262f0b116a3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:toyama-prefecture:published-public-terminal-bus-frontage",
+          "url": "https://www.pref.toyama.jp/8002/kendodukuri/koukyou/airport/commission04.html",
+          "observedResponseSha256": "ebb712b9b62cba4bc53fa1af8ff89fc4a8376c15a64aeef9b8775138434485de"
+        },
+        {
+          "sourceActionId": "bus:chitetsu:current-toyama-airport-independent-five-call-directions",
+          "url": "https://www.chitetsu.co.jp/?page_id=733",
+          "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+        },
+        {
+          "sourceActionId": "bus:chitetsu:current-toyama-airport-independent-five-call-directions",
+          "url": "https://www.chitetsu.co.jp/wp-content/uploads/2017/03/7de117b72b5b1984a5b9a54bed21b477.pdf",
+          "observedResponseSha256": "8e3ee69022fe3d3d5d63b4ac2d9ebddfeee96862e2cb1141928181fb0e51a71a"
+        },
+        {
+          "sourceActionId": "bus:chitetsu:current-toyama-airport-independent-five-call-directions",
+          "url": "https://www.chitetsu.co.jp/wp-content/uploads/2017/03/a9a24ed38c275dbce7fcab5f74a50d0b.pdf",
+          "observedResponseSha256": "52ee071bc215636244fab03f235bd2c54d4c0d046b407018901d31367a5d5485"
+        }
+      ],
+      "locator": "Government facility report March 2023 page 9 figure 2-4 shows public first-floor passenger exit beside Toyama-station bus boarding. Current carrier October 2026 page independently confirms the airport endpoint, first-floor in-terminal ticket machine and arrival-linked passenger service; retain only continuing coarse public airport-to-road-stop access, not an assertion that every 2023 tenant, exact door or bay layout remains unchanged. Retain no government/third-party diagram or geometry, no discontinued Takayama service, no restricted airport/ANA website binding, no gate timing or step-free guarantee.",
+      "components": [
+        {
+          "name": "富山空港",
+          "operator": "airport-facility:cf03_00070",
+          "line": "airport:cf03_00070",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00070",
+            "requirementId": "review:transport-node:f948ed3d-6230-5390-ad73-0142348174e1",
+            "expectedRequirementName": "富山",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Government facility report March 2023 page 9 figure 2-4 shows public first-floor passenger exit beside Toyama-station bus boarding. Current carrier October 2026 page independently confirms the airport endpoint, first-floor in-terminal ticket machine and arrival-linked passenger service; retain only continuing coarse public airport-to-road-stop access, not an assertion that every 2023 tenant, exact door or bay layout remains unchanged."
+          }
+        },
+        {
+          "name": "富山空港",
+          "operator": "富山地方鉄道（株）",
+          "line": "p11-stop:P11-22_16:bs1859",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_16:bs1859",
+            "recordSha256": "91ae3ef93be25ecd53cc04f4cf128cc2db2d9a6856d93fc3d2522fb1f4820da7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator licensed P11 road-stop representative matched against current carrier airport-route page and independently viewed actual direct-trip calls. Current page explicitly uses canonical Toyama Airport for the endpoint whose linked timetable adds mae; this is the same carrier-declared airport endpoint, not a proximity match or inferred relocation. Retain direction-specific intermediate stops and distinct boarding/alighting roles without converting representative coordinates into platform or doorway coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "富山地方鉄道（株）",
+              "currentOperatorName": "富山地方鉄道株式会社",
+              "currentStopName": "富山空港",
+              "historicalRoute": "空港直通バス",
+              "url": "https://www.chitetsu.co.jp/?page_id=733",
+              "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "PUBLISHED_GOVERNMENT_PUBLIC_TERMINAL_FRONTAGE_WITH_CURRENT_CARRIER_CORROBORATION",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "toyama-jr-shinkansen-central-gate-public-south-airport-bus-plaza",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-west:toyama-current-south-exit-airport-bus-connection",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0541465_8cb76c1d-3a87-4429-9570-6977e69efb81.pdf",
+      "observedResponseSha256": "ab1a3ada20c63c1074bc4ca28013ea7344db52c0f8a07b5b3d4cb2abb89791b3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-west:toyama-current-south-exit-airport-bus-connection",
+          "url": "https://eki.jr-odekake.net/premises?id=0541465",
+          "observedResponseSha256": "fe4f9bd801a089aed35d7ffdbb0897dab7e2f6b945632f282168465cde59c01e"
+        },
+        {
+          "sourceActionId": "bus:chitetsu:current-toyama-airport-independent-five-call-directions",
+          "url": "https://www.chitetsu.co.jp/wp-content/themes/custom2/img/bus/noriba_toyamast.pdf",
+          "observedResponseSha256": "4061625db7aeff902cf921972c72a635536227bc28f0b2a71205fe30e74a067d"
+        },
+        {
+          "sourceActionId": "bus:chitetsu:current-toyama-airport-independent-five-call-directions",
+          "url": "https://www.chitetsu.co.jp/?page_id=733",
+          "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+        }
+      ],
+      "locator": "Current JR index links March 27 2026 map, individually viewed: Shinkansen central gate opens to public north-south passage and south bus plaza. Current carrier station plan independently identifies airport stand 6 and south alighting area at the same named operator road-stop component. Retain coarse bidirectional public transfer from JR West Hokuriku Shinkansen Toyama to exact P11 bus-stop representative, without paid-area shortcut, platform merging, map pixels, walking-time or universal accessible-route claims.",
+      "components": [
+        {
+          "name": "富山",
+          "operator": "西日本旅客鉄道",
+          "line": "北陸新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "富山駅前",
+          "operator": "富山地方鉄道（株）",
+          "line": "p11-stop:P11-22_16:bs1336",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_16:bs1336",
+            "recordSha256": "b336eab27bdace0d0e421d77e13f6605b505b6d661fea70de822d88c4f353d2d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator licensed P11 road-stop representative matched against current carrier airport-route page and independently viewed actual direct-trip calls. Current page explicitly uses canonical Toyama Airport for the endpoint whose linked timetable adds mae; this is the same carrier-declared airport endpoint, not a proximity match or inferred relocation. Retain direction-specific intermediate stops and distinct boarding/alighting roles without converting representative coordinates into platform or doorway coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "富山地方鉄道（株）",
+              "currentOperatorName": "富山地方鉄道株式会社",
+              "currentStopName": "富山駅前",
+              "historicalRoute": "空港直通バス",
+              "url": "https://www.chitetsu.co.jp/?page_id=733",
+              "observedResponseSha256": "16ee83dd799c60a555b20b869dfc4a3065d5c402f19790edbd27977addaa28f2"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_JR_PUBLIC_SOUTH_EXIT_AND_CARRIER_SPECIFIC_AIRPORT_BOARDING_ALIGHTING_AREA",
+      "hubScopeComplete": false
+    }
+  ]
+}

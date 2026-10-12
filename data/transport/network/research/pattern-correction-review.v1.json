@@ -1,0 +1,532 @@
+{
+  "schemaVersion": 1,
+  "kind": "EXACT_THREE_IMPLEMENTATION_CORRECTION_REVIEW",
+  "decision": "ROOT_REVIEWED_EXPLICIT_IMPLEMENTATION_CORRECTION",
+  "authorityBoundary": "Root authorizes correcting later implementation choices, not asserting an unreviewed sample is lawful or real. Each current fact/action/native hash and actual graph must still pass; root reviews source semantics before canonical adoption.",
+  "originalTaskQuotes": {
+    "status": "EXACT_ORIGINAL_REQUIREMENT_REVIEW_NOT_CORRECTION_AUTHORIZATION",
+    "specBinding": {
+      "path": "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+      "sha256": "48fdc1db3d7d0818a5cea65a9c927afacb5acc6e834a8198d3cd6ee3067c48f2"
+    },
+    "exactSpecQuotes": [
+      {
+        "path": "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+        "startLine": 67,
+        "endLine": 81,
+        "text": "The Task must cover the transport structure actually needed by Japanese travel planning, including where supported:\n\n- rail\n- Shinkansen\n- metro\n- private rail\n- local / regional rail\n- major local bus\n- highway bus\n- airport bus\n- flight\n- ferry\n- ropeway\n- cable car / funicular\n- task-relevant tourism transport"
+      },
+      {
+        "path": "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+        "startLine": 194,
+        "endLine": 206,
+        "text": "A segment requires:\n\n- accepted from/to node identities;\n- direction;\n- mode;\n- operator/line/service/service-pattern reference;\n- provenance.\n\nIt does **not** require exact current timetable or fare.\n\n## 5.2 SERVICE_PATTERN\n\nRepresents ordered calling points and service class."
+      },
+      {
+        "path": "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+        "startLine": 222,
+        "endLine": 222,
+        "text": "Express/local/limited-express/Shinkansen stopping patterns must not be collapsed into one false pattern."
+      },
+      {
+        "path": "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+        "startLine": 320,
+        "endLine": 334,
+        "text": "## 7.1 Static/quasi-static data allowed\n\nWhen rights permit:\n\n- node identity;\n- ordered stop sequence;\n- line/operator association;\n- service class;\n- route topology;\n- service-pattern direction;\n- hub transfer relationship;\n- broad reservation semantics;\n- broad seasonal flag;\n- stable accessibility facts;\n- permitted derived snapshot metrics."
+      },
+      {
+        "path": "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+        "startLine": 504,
+        "endLine": 516,
+        "text": "## 11.1 Rail / Shinkansen / metro / private rail\n\nMust preserve:\n\n- direction;\n- ordered calling points;\n- service class;\n- skipped stations;\n- through-service boundaries;\n- operator boundaries;\n- hub transfers.\n\nPhysical adjacent stations do not imply every service stops there."
+      },
+      {
+        "path": "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+        "startLine": 694,
+        "endLine": 711,
+        "text": "# 16. Acceptance inventory\n\nTo prevent gaming the denominator, freeze a machine-readable **required-backbone inventory**.\n\nIt must include, after task-local admission:\n\n- all accepted T0 nodes;\n- all accepted T1 nodes;\n- all intermediate nodes required by accepted service patterns;\n- all accepted airport/ferry/bus gateways necessary for national/regional connectivity;\n- all accepted special transport nodes actually required by the graph;\n- accepted TASK-085 gateway nodes only if TASK-085 has been formally accepted/merged or separately revalidated by TASK-086.\n\nThe inventory may grow during discovery.\n\nIt may not shrink merely to make coverage pass.\n\nRemoval requires explicit rejection/deprecation evidence."
+      },
+      {
+        "path": "docs/tasks/TASK-086-b-transport-node-mobility-backbone.md",
+        "startLine": 732,
+        "endLine": 758,
+        "text": "2. **Edge truth**\n   - topology-confirmed edge provenance = 100%\n   - both endpoints admitted = 100%\n   - directed semantics = 100%\n   - duplicate same-service edges = 0\n   - false spatial-only edges = 0\n\n3. **Service-pattern integrity**\n   - accepted service-pattern references valid = 100%\n   - ordered stop sequences valid = 100%\n   - direction resolved for accepted patterns = 100%\n   - express/local/Shinkansen stop semantics not silently collapsed\n\n4. **National connectivity**\n   - all required T0 nodes belong to the intended national multimodal connected backbone, except audited external-fixpoint exceptions\n   - all required T1 nodes have a path into a T0/T1 backbone, except audited external-fixpoint exceptions\n   - disconnected required nodes without proof = 0\n\n5. **Hub transfer**\n   - every multi-component hub needed by accepted routes has the required transfer topology or explicit proven non-transfer\n   - missing required hub transfer without proof = 0\n\n6. **Mode/corridor coverage**\n   - Shinkansen backbone continuity PASS\n   - major conventional/private/metro hub connectivity PASS\n   - airport-to-surface-network structural coverage PASS where service exists\n   - ferry/island structural coverage PASS where required"
+      }
+    ],
+    "literalNameScan": {
+      "403": false,
+      "2521": false,
+      "Marine": false,
+      "マリンライナー": false,
+      "3135M": false,
+      "3110M": false,
+      "快速": false
+    },
+    "originalOkayamaDiscovery": [
+      {
+        "path": "data/transport/nodes/task-084-b-v2-amendment-review/rail-components.jsonl",
+        "line": 890,
+        "record": {
+          "canonicalNameJa": "岡山",
+          "confidence": 0.9,
+          "dataAvailabilityCode": 1,
+          "decisionReason": "S12_061 usage threshold",
+          "duplicateCode": 1,
+          "functionalRole": "STATION",
+          "identityKey": "station-component|岡山|西日本旅客鉄道|conventional_rail|34.6670|133.9183|",
+          "inclusionReasons": [
+            "S12_061_GE_10000"
+          ],
+          "latitude": 34.66696,
+          "levelDecisionVersion": "TASK-084-B-V2-S12-FY2024-1",
+          "lineRefs": [
+            "吉備線",
+            "宇野線",
+            "山陽線",
+            "津山線"
+          ],
+          "longitude": 133.91833,
+          "manualLevelReview": false,
+          "modeFamily": "conventional_rail",
+          "nodeKind": "rail_station",
+          "operatorRefs": [
+            "西日本旅客鉄道"
+          ],
+          "parentHubAssignmentAuthorized": false,
+          "promotionReason": null,
+          "proposedNodeLevel": "T1",
+          "proposedParentHubId": null,
+          "proposedTransportNodeId": "transport-node:87f72998-3d87-5f22-89d7-8a82e77a81ad",
+          "reviewStatus": "COMPONENT_REVIEW_REQUIRED",
+          "runtimeImportAuthorized": false,
+          "sourceArchiveSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28",
+          "sourceLicense": "CC BY 4.0",
+          "sourceObservedAt": "FY2024",
+          "sourcePrimaryLine": "山陽線",
+          "sourcePrimaryStationCode": "007313",
+          "sourceRefs": [
+            "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-S12-2024.html"
+          ],
+          "sourceStationRefs": [
+            {
+              "groupCode": "007310",
+              "line": "宇野線",
+              "stationCode": "007310"
+            },
+            {
+              "groupCode": "007310",
+              "line": "津山線",
+              "stationCode": "007311"
+            },
+            {
+              "groupCode": "007310",
+              "line": "山陽線",
+              "stationCode": "007313"
+            },
+            {
+              "groupCode": "007310",
+              "line": "吉備線",
+              "stationCode": "007316"
+            }
+          ],
+          "usageMetricType": "DAILY_ENTRIES_EXITS",
+          "usagePeriod": "FY2024",
+          "usageSource": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-S12-2024.html",
+          "usageUnit": "persons/day",
+          "usageValue": 136100
+        }
+      }
+    ],
+    "discoverySha256": "0e56c47350f1ed668b92257a2b52a03c0d21b3f06f4397f657e39c40cdc783e1",
+    "laterImplementation": {
+      "path": "data/transport/network/research/phases/032-shikoku-seto-ohashi-gateway.json",
+      "sha256": "99fae6a85f5103657bc43d80f75c3fade53c2c105cf5f6d99ad562d66d1543dd",
+      "exactLocations": [
+        {
+          "line": 13,
+          "text": "\"factId\": \"marine-3135M-west\","
+        },
+        {
+          "line": 22,
+          "text": "\"serviceClass\": \"快速マリンライナー\","
+        },
+        {
+          "line": 79,
+          "text": "\"serviceClass\": \"快速マリンライナー\","
+        },
+        {
+          "line": 152,
+          "text": "\"serviceClass\": \"快速マリンライナー\","
+        },
+        {
+          "line": 216,
+          "text": "\"factId\": \"marine-3110M-west\","
+        },
+        {
+          "line": 225,
+          "text": "\"serviceClass\": \"快速マリンライナー\","
+        }
+      ]
+    },
+    "determination": {
+      "specificMarineRapidVariantExplicitlyRequiredByOriginalTask": false,
+      "basis": "Originalscope includes rail and local/regionalrail; required service semantics are general integrity constraints, not a command to select Marine10/35. The originalOkayama component records physicaloperator/mode/lines/tier; no namedtrain orrapid field. Exact rapid class andtrain selections enter laterphase032.",
+      "whatOriginalSpecStillRequires": "Every service represented must preserve its true class, skips, direction and provenance. All accepted necessarynodes remain; no denominator reduction forPASS.",
+      "notEquivalent": "Newlocal pair does not satisfy a claim that the oldrapid variants have beenproved. It can only be reviewed as explicit correction of a later implementation choice with newIDs and retainedold audit.",
+      "authorityLimit": "This file supplies textual evidence. Rootreview and explicit failclosed correction treatment still required; no self-authorized deletion of original403pattern obligations or weakeninggates."
+    },
+    "canonicalWrites": 0
+  },
+  "sourceReviews": {
+    "marine": {
+      "schema": "PRIVATE_MARINE214_INDEPENDENT_EVIDENCE_REVIEW_V1",
+      "reviewedAt": "2026-10-03T11:38:29.971506+00:00",
+      "status": "EVIDENCE_CANDIDATE_READY_FOR_ROOT_REVIEW_NOT_CANONICAL_READY",
+      "phase": {
+        "file": ".cache/task-086/jr-timetable-rights/marine214-private/phase214-private.json",
+        "sha256": "69beb97d04218970ed0fac8743485e5275aa7f9028eb71efa3fb4579707a0447"
+      },
+      "actions": {
+        "file": ".cache/task-086/jr-timetable-rights/marine214-private/actions214-private.jsonl",
+        "sha256": "3a7672366726a6011219301e15fe338f9d4970366adb4bcc4abeb98d662b44fd"
+      },
+      "identity": {
+        "file": ".cache/task-086/jr-timetable-rights/marine214-private/necessary-native-identities-private.json",
+        "sha256": "38c442eec5372963bcdf34f5061029731d1bb69a4e3021fc6cd46907f0fb794d"
+      },
+      "legacyMapping": {
+        "file": ".cache/task-086/jr-timetable-rights/marine214-private/legacy-obligation-mapping-private.json",
+        "sha256": "be0a90bf8fdbaff2468dd4467cf5e1ee7d1982cd111d06b6e005f68cdc196d02"
+      },
+      "sourceMetadataBindings": [
+        {
+          "file": ".cache/task-086/jr-timetable-rights/marine-prefecture-japanese-local-guide-native-v15.json",
+          "sha256": "6190c63f1695beb10ed56a8aa8d84074ddfb3cbcb52949455c50b61dea211a0f"
+        },
+        {
+          "file": ".cache/task-086/jr-timetable-rights/marine-local-2024-north-operator-v14.json",
+          "sha256": "7a929b5bfd856450ff6a2585a8cca49d91ad90b9ff1b7ea38db088a32dca810a"
+        },
+        {
+          "file": ".cache/task-086/jr-timetable-rights/marine-local-2025-one-man-operator-v14.json",
+          "sha256": "5c0cae1105ab9230f5ba50a00c5758e37178ceae6906b130b7318ccf7139041a"
+        },
+        {
+          "file": ".cache/task-086/jr-timetable-rights/marine-local-current-operator-map-v14.json",
+          "sha256": "5f37270c06ab77b23c5c7505f80247b7ca768a793b95372b1d2f1ebf9de24334"
+        },
+        {
+          "file": ".cache/task-086/jr-timetable-rights/jnto-local-definition-no-raw.json",
+          "sha256": "f8e832b285b0c15cbe3aa84caf956de55c2c548cb8e13e77cfc4f0d759f8390c"
+        },
+        {
+          "file": ".cache/task-086/jr-timetable-rights/marine-prefecture-copyright-native-v16.json",
+          "sha256": "c568853ada5993c901dd3632573185c95215e711176bdcb2442bce40789ed350"
+        },
+        {
+          "file": ".cache/task-086/jr-timetable-rights/jrwest-corporate-site-policy-encoding-audit-v15.json",
+          "sha256": "136675bd097277e10055e1d77e9f28d21ce68ae7227dfc92d0e846c38d564fa7"
+        },
+        {
+          "file": ".cache/task-086/jr-timetable-rights/jnto-terms-no-raw.json",
+          "sha256": "d02ddfd74389a211148994111ecfec5fa01f749f809ec42c1c4c28511bf536a0"
+        }
+      ],
+      "frozenInputBindings": [
+        {
+          "file": "data/transport/network/research/phases/032-shikoku-seto-ohashi-gateway.json",
+          "sha256": "99fae6a85f5103657bc43d80f75c3fade53c2c105cf5f6d99ad562d66d1543dd"
+        },
+        {
+          "file": ".cache/task-086/jr-timetable-rights/variant-business-correction-design-v1.json",
+          "sha256": "511ea918229ef1c75cf5aafe2b373f0fa18732e9233b6cf80bb913772fb2fff7"
+        }
+      ],
+      "proofRoles": [
+        {
+          "year": 2024,
+          "source": "marine-local-2024-north-operator-v14.json",
+          "proves": "Actual northbound ordinary passenger operation Kojima→Okayama; intended Kuguhara call.",
+          "doesNotProve": "A2026 named train, current clock/calendar, or all calls from the incident alone."
+        },
+        {
+          "year": 2025,
+          "source": "marine-local-2025-one-man-operator-v14.json",
+          "proves": "Operator ordinary operation across Okayama–Kojima as ongoing staffing-change subject, with no stated end date.",
+          "doesNotProve": "An individual train stopping table or one-man status of every train; 一部除く qualifies staffing."
+        },
+        {
+          "year": 2025,
+          "source": "marine-prefecture-japanese-local-guide-native-v15.json",
+          "proves": "Japanese prefectural guide explicitly identifies outward local passenger service distinct from rapid Marine Liner.",
+          "doesNotProve": "Automatically inferred reverse direction, frequency/calendar guarantee or raw license."
+        },
+        {
+          "year": 2026,
+          "source": "marine-local-current-operator-map-v14.json",
+          "proves": "Current complete physical12-station order; includes備中箕島 and久々原.",
+          "doesNotProve": "Passenger stopping by map alone."
+        },
+        {
+          "source": "jnto-local-definition-no-raw.json",
+          "proves": "Independent static category definition of local all-station service, rapid distinct.",
+          "doesNotProve": "Every service in an operator ordinary umbrella section is all-stop irrespective of actual exception."
+        }
+      ],
+      "combinedInference": "Independent directional local service statements plus ongoing operator ordinary interval operation support a quasi-static ordinary pair; bind complete station order through the explicit local all-stop definition. This is an evidence inference, not a published12row timetable or current train-specific claim. Publication year alone is not an expiry condition under TASK086§7.1. No exact serviceDate is assigned.",
+      "counterevidenceAndLimits": [
+        "Original Marine10/35 skip patterns are rapid-class alternatives; they neither prove nor contradict the independent local pair. They remain source-invalid/open until explicit correction is approved.",
+        "2024 Kuguhara overrun is an operational error with an intended call, not evidence of a planned skip pattern.",
+        "2025 staffing announcement 一部除く does not assert a stopping exception. It also does not alone prove direction/order.",
+        "Existing broad JR2026 ordinary headings include rapid elsewhere; this candidate does not rely on umbrella headings.",
+        "Existing reviewed caches contain no identified withdrawal or intentional local skip for this selected interval. This is not a claim of exhaustive absence and no new search was made to manufacture it.",
+        "The2025 announcement relevant prose was text-reviewed, not visually inspected on its relevant page; no claim to have read a timetable cell.",
+        "Current exact train/date/frequency/accessibility/reservation or all-trains claim is intentionally absent, not fabricated."
+      ],
+      "rightsBoundary": "Source-specific minimal nonexpressive topology under the original project contract, not an open raw license or legal adjudication. Independent press prose and tourist access statements are distinct from the prohibited timetable-data transformation payload. Preserve explicit generic copyrighted-work restrictions. No article prose, map art, clock table or timetable database is put in candidate facts.",
+      "structuralChecks": {
+        "bothDirectionsTwelveCalls": true,
+        "allTenExistingNamesPreserved": true,
+        "oldRapidClassNotReused": true,
+        "freshFactIds": true,
+        "newExactS12Records": 2,
+        "graphValidationRun": false,
+        "reason": "Root full211 regression in progress; no dynamic canonical output read."
+      },
+      "requestMetrics": {
+        "thisPacketNewSearchQueries": 0,
+        "thisPacketNativeRequests": 1,
+        "currentReviewCumulativeSearchQueries": 39,
+        "currentReviewCumulativeNativeRequests": 18,
+        "earlier172QueriesSeparate": true,
+        "restrictedTimetableRequests": 0,
+        "deniedRetries": 0
+      },
+      "nextAction": "Root independently review this exact source/rights combination and explicit tier correction; then design atomic obligation-preserving successor audit before isolated graph preflight. Do not import candidate directly or close global review."
+    },
+    "iwakuni": {
+      "status": "PRIVATE_PRODUCTION_SCHEMA_CANDIDATE_ROOT_REVIEW_PENDING",
+      "phaseIdNote": "Unregistered private phase identity; root assigns final phaseId before importing, then pattern/edge identity proof must be regenerated. No public phase number claimed.",
+      "sourceReviews": [
+        {
+          "role": "operator",
+          "actionId": "rail:jr-west:independent-static-iwakuni-hiroshima-eastbound",
+          "sources": [
+            {
+              "url": "https://www.westjr.co.jp/press/article/items/221014_00_press_genin.pdf",
+              "status": 200,
+              "contentSha256": "27e077a3b21f04c86bc63d3f9480abbe979cab8b40315362237c9b687a0e9b4c",
+              "observedAt": "2026-10-03T11:50:45.784170+00:00",
+              "bytes": 96486,
+              "rawPayloadRetained": false,
+              "purpose": "topology"
+            },
+            {
+              "url": "https://www.westjr.co.jp/press/article/items/241213_00_press_2025harudaiyakaisei4_1.pdf",
+              "status": 200,
+              "contentSha256": "34f758e4a056e54b5713ac8e5ca80cf26ca3f1b54a3f1b52f97ea22d49e0e514",
+              "observedAt": "2026-10-03T11:18:21.623772+00:00",
+              "bytes": 1590467,
+              "rawPayloadRetained": false,
+              "purpose": "topology"
+            },
+            {
+              "url": "https://www.westjr.co.jp/guide/site_policy.html",
+              "status": 200,
+              "contentSha256": "ac65793fa84d0bfef5b46f9e8fb7dc765e6160e9d8a2a30f5465f5688999400a",
+              "observedAt": "2026-10-03T11:27:48.008967+00:00",
+              "bytes": 60897,
+              "rawPayloadRetained": false,
+              "purpose": "terms"
+            }
+          ],
+          "allowedScope": "Operator-authored incident prose explicitly identifies eastbound ordinary service from Iwakuni beyond Hiroshima;2025 operational prose separately confirms continued ordinary service in Hiroshima district. Corporate copyright policy reserves works. Independently structured direction/class/interval facts only; no clocks, table, prose, artwork or timetable-provider database is copied."
+        },
+        {
+          "role": "city",
+          "actionId": "rail:jr-west:independent-static-iwakuni-hiroshima-eastbound:municipal-continuity",
+          "sources": [
+            {
+              "url": "https://www.city.hiroshima.lg.jp/_res/projects/default_project/_page_/001/012/360/vision_statisticaldata_202603.pdf",
+              "status": 200,
+              "contentSha256": "b2055b92d9758f6c57d9c16b03ea49a64cd4b59734df6efba6d5faf14dc03732",
+              "observedAt": "2026-10-03T10:51:15.378366+00:00",
+              "bytes": 8474913,
+              "rawPayloadRetained": false,
+              "purpose": "topology"
+            },
+            {
+              "url": "https://www.city.hiroshima.lg.jp/about/1010662.html",
+              "status": 200,
+              "contentSha256": "3912ad3edaa5e00cc8a63ebd769bedfc4ca7a815adb5609575bc91797684ac1c",
+              "observedAt": "2026-10-03T11:59:57.083798+00:00",
+              "bytes": 45402,
+              "rawPayloadRetained": false,
+              "purpose": "terms"
+            }
+          ],
+          "allowedScope": "Municipal transport analysis confirms present Iwakuni-to-Hiroshima operation and direction. Actual copyright terms reserve documents/images with statutory-use exception. Only independently structured coarse operation/direction is proposed; no figure, service counts, graphic, prose or third-party timetable is reproduced."
+        },
+        {
+          "role": "definition",
+          "actionId": "rail:jr-west:independent-static-iwakuni-hiroshima-eastbound:jnto-local-definition",
+          "sources": [
+            {
+              "url": "https://faq.japan-travel.jnto.go.jp/en/guide/traveling-by-rail/",
+              "status": 200,
+              "contentSha256": "8838c0438b8940ebacc8942a03598ce620ccaa501b16904d0a85e68b20491790",
+              "observedAt": "2026-10-02T22:40:15.361070+00:00",
+              "bytes": 173217,
+              "rawPayloadRetained": false,
+              "purpose": "topology"
+            },
+            {
+              "url": "https://faq.japan-travel.jnto.go.jp/en/terms-of-use/",
+              "status": 200,
+              "contentSha256": "fc78d9ec8a455a9205cdaad8af6774293c76a548ff3947a54bbd098f086ba7af",
+              "observedAt": "2026-10-02T22:40:15.822111+00:00",
+              "bytes": 149098,
+              "rawPayloadRetained": false,
+              "purpose": "terms"
+            }
+          ],
+          "allowedScope": "Reuse prior bounded review of independently stated local all-station category distinct from rapid. JNTO creative materials and raw storage/republication are not licensed; no raw page or expressive text is admitted."
+        },
+        {
+          "role": "map",
+          "actionId": "rail:jr-west:independent-static-iwakuni-hiroshima-eastbound:operator-station-order",
+          "sources": [
+            {
+              "url": "https://www.jr-odekake.net/station/pdf/cnh.pdf",
+              "status": 200,
+              "contentSha256": "0c1a51fdfc263b07555fdd126d8035f981c02d0d5ee2ef2940ed18e768287fe3",
+              "observedAt": "2026-10-02T21:52:00.970741+00:00",
+              "bytes": 738852,
+              "rawPayloadRetained": false,
+              "purpose": "topology"
+            },
+            {
+              "url": "https://www.jr-odekake.net/use/about.html",
+              "status": 200,
+              "contentSha256": "c66721174e23599714a91a34633b3e50d845b66a3c061d051951296c07311d79",
+              "observedAt": "2026-10-02T00:37:09.941Z",
+              "bytes": 115477,
+              "rawPayloadRetained": false,
+              "purpose": "terms"
+            }
+          ],
+          "allowedScope": "Current operator diagram supplies complete ordered station identities only; it does not establish train calls or service existence. Copyright in the drawing remains reserved. No map artwork, geometry or raw diagram is redistributed; existing bounded minimal station-order review reused."
+        }
+      ],
+      "semanticComposition": {
+        "mainDirection": "2022operator report explicitly actual岩国→糸崎上り普通; Hiroshima lies within independently mapped path. This source alone is historical event evidence, not2026calendar.",
+        "continuity": "2026municipal current exact eastbound corridor +2025operator ordinary district operation corroborate continued static applicability. Neither independently identifies all16current calls.",
+        "allStops": "Use explicit JNTO local category only after service-specific普通 evidence; physical map supplies exact16station order. No broadheading-to-alltrains inference.",
+        "scope": "Same physical16nodes and eastbound ordinary tier as original required chain; no exact510M or publication-date-as-service-date claim.",
+        "remainingJudgment": "Root must independently assess quasi-static continuity combination; production schema PASS does not settle source semantic adequacy."
+      },
+      "legacy": "Original510M fact/pattern/15edges stay auditable and its source gap remains OPEN until explicitly reviewed correction. Newfact/newpattern cannot silently replace403entry.",
+      "sourceRequestMetrics": {
+        "thisPreparationSearchQueries": 1,
+        "thisPreparationNativeRequests": 1,
+        "currentReviewCumulativeSearchQueries": 44,
+        "currentReviewCumulativeNativeRequests": 20,
+        "restrictedTimetableRequests": 0,
+        "deniedRetries": 0
+      },
+      "canonicalWrites": 0
+    }
+  },
+  "oldSourceIneligible": "Source-specific timetable transformation restriction, not a finding that all bare facts or rail diagrams are illegal.",
+  "newIdsNeverProveOldRapid": true,
+  "rootReview": {
+    "reviewedAt": "2026-10-03T12:54:41.676028+00:00",
+    "decision": "ADOPT_NEW_INDEPENDENT_STATIC_LOCAL_PATTERNS_AND_ARCHIVE_THREE_UNSUPPORTED_LATER_IMPLEMENTATIONS",
+    "basis": [
+      "Original requirement specifies accurate service class and all required nodes, not these sample train numbers.",
+      "Independent directional ordinary passenger operation plus exact operator station order and local all-stop class definition support these new quasi-static patterns. Geography alone does not.",
+      "Both source-specific corporate/municipal/tourism rights reviews retain only minimum nonexpressive facts; no restricted timetable-derived data or raw prose redistribution.",
+      "Keep original1038 and required review ID sets; retain immutable phase032/170 and old fact/pattern/edge hashes.",
+      "No claim that Marine rapid variants or510M were proven. Remaining Sonic two facts and source root remain OPEN."
+    ],
+    "productionProof": ".cache/task-086/jr-timetable-rights/correction-production-private/actual-root-final-receipt.json",
+    "fullGate": "PENDING_CURRENT_REPLAY_AND_FULL_REGRESSION"
+  },
+  "sonic219": {
+    "decision": "ROOT_REVIEWED_EXPLICIT_IMPLEMENTATION_CORRECTION",
+    "originalTaskDoesNotSpecifySonic3Or6OrThisCorridorLimitedExpressClass": true,
+    "rootSourceReview": {
+      "sourcePage": "sonic31-airport-required-page-v38.page1.review.png",
+      "pageSha256": "99e13763991116abd89a3e99e90569df2f14fb51103dd3fa76757e420e639caf",
+      "nativeSha256": "2eac57da7b3c555293c2b3d599d82a7a115aa20ed352b94f47f6f9ef2fac5faa",
+      "termsSha256": "b7b2f42b2a6cd3476a247d77f2a2260b1511f8c6e4c83c9ef42d62ab62a09214",
+      "author": "JR Kyushu",
+      "publisher": "Kitakyushu Air Terminal airport website",
+      "decision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+      "scope": "Sonic31 selected three actual calls only; five intervening noncalls independently corroborated. No raw timetable, clocks, prose, artwork or commercial-link license; does not prove Sonic3/6.",
+      "rootPersonallyReviewed": true
+    },
+    "newServicePatternsRemainSeparate": true,
+    "oldLimitedExpressServicesProved": false,
+    "oldPatternIds": [
+      "transport-pattern:086:ee9eb7b9d3e078e3711a80071f98e05c",
+      "transport-pattern:086:f68de1ad76cbfaf9755e77eb7dffb643"
+    ],
+    "successorPhaseId": "219-independent-nippo-rail-source-correction-chain",
+    "successors": [
+      {
+        "factId": "nippo-yanagigaura-kokura-independent-static-local-v28",
+        "sha256": "1d6b21ace74ed62c4d9b79e54d109c9f8842ee2142b5f9b460984de254ce9f94",
+        "serviceClass": "static_local_all_stop",
+        "direction": "柳ヶ浦→小倉"
+      },
+      {
+        "factId": "sonic31-independent-nakatsu-usa-three-call-section-v32",
+        "sha256": "1b968fdb2ea8680e86b41e6018f935d1d6bf3920ac0ad861fe6563cacd0e2da2",
+        "serviceClass": "特急ソニック",
+        "direction": "中津→宇佐"
+      },
+      {
+        "factId": "nippo-usa-beppu-static-ordinary-return-v35",
+        "sha256": "acf377d7e226c9f2effa5051e9bce97168eab36c0c87b7bb5a7aa7d97fae1204",
+        "serviceClass": "static_local_all_stop",
+        "direction": "宇佐→別府"
+      },
+      {
+        "factId": "nippo-kokura-yoshitomi-static-local-south-v37",
+        "sha256": "bb887aedeb40a82dec8b9933fc483b1d822190b4c7806dbdfe9e5868f9451dc9",
+        "serviceClass": "static_local_all_stop",
+        "direction": "小倉→吉富"
+      },
+      {
+        "factId": "nippo-kusami-nakatsu-static-local-south-v37",
+        "sha256": "787fe47de17411ed45af51691478281053026988f3022e8a3e7c0facf9289645",
+        "serviceClass": "static_local_all_stop",
+        "direction": "朽網→中津"
+      },
+      {
+        "factId": "nippo-beppu-nakatsu-static-local-north-v37",
+        "sha256": "d55e9c94c9d1e2fba8f25879a80909dac90f67ff70cdc00b5991129c7416169b",
+        "serviceClass": "static_local_all_stop",
+        "direction": "別府→中津"
+      },
+      {
+        "factId": "nippo-beppu-oita-static-local-south-v37",
+        "sha256": "94ff88d976a60c8016aafa9b1b5479b8d8777e87a8a03e3b87d63f51f8f35c04",
+        "serviceClass": "static_local_all_stop",
+        "direction": "別府→大分"
+      },
+      {
+        "factId": "nippo-oita-beppudaigaku-static-local-north-v37",
+        "sha256": "6189b1c9b92262c92a695eaa7d046da277946839ae394df4bf269f3534513ff9",
+        "serviceClass": "static_local_all_stop",
+        "direction": "大分→別府大学"
+      }
+    ],
+    "originalRequiredPatternCount": 403,
+    "originalRequiredNodeCount": 2521,
+    "secondaryPatternCount": 375,
+    "secondaryNodeCount": 2421,
+    "allOldThreeCorrectionsRetained": true
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "phaseId": "202-obihiro-minimal-kofuku-native-city-cycle-and-public-airport",
+  "strategy": [
+    "ORIGINAL_REQUIRED_AIRPORT",
+    "DIRECT_PROVIDER_GRANT_MINIMAL_DERIVED_INPUT",
+    "EXACT_NATIVE_SAME_STOP_CITY_ROUTE_CYCLE",
+    "TWO_DIRECTION_SPECIFIC_PUBLISHED_INTERCHANGES",
+    "EXISTING_NATIONAL_AIR_CONNECTION"
+  ],
+  "completedActionIds": [
+    "bus:tokachi:reviewed-minimal-airport-kofuku-sections",
+    "bus:tokachi:reviewed-minimal-kofuku-city-dependency",
+    "hub:tokachi:reviewed-two-direction-kofuku-public-interchange",
+    "airport:obihiro:published-public-arrival-lobby-to-terminal-front-bus"
+  ],
+  "derivedGtfsPackages": [
+    {
+      "packageFile": "tokachi-airport-kofuku-minimal-derived-v1.json",
+      "packageSha256": "86c2c71d9881b369c4feafb7a3d35bd3740e89a048e59b0822fdd319a8b77dd6",
+      "nativeAuditSha256": "555e4ee85072e5bff827e12577d5150e490672cf5a6fb6e3467bf37619c2b327",
+      "derivedInputSha256": "65158d7eeff1c35be6ba15a673ca39ee269e0e20bbea370404efbae482da6e47",
+      "sourceActionId": "bus:tokachi:reviewed-minimal-airport-kofuku-sections",
+      "reviewedServiceDate": "20261002"
+    },
+    {
+      "packageFile": "tokachi-city-kofuku-minimal-derived-v1.json",
+      "packageSha256": "6ae1d2ac06b4a4c3a98ba9f0543821238b3a9a1c77b49bc6bc2c533c0cbea007",
+      "nativeAuditSha256": "e7ffee5f76860e58d3b28fe786a6eaabd92bc5e2f536c11a536c984a82cfce99",
+      "derivedInputSha256": "767f14644d791f220755e7e171a580ea9c16c5ef04a2af82f69232e37e1970f0",
+      "sourceActionId": "bus:tokachi:reviewed-minimal-kofuku-city-dependency",
+      "reviewedServiceDate": "20261002"
+    }
+  ],
+  "facts": [
+    {
+      "factId": "obihiro-public-arrival-lobby-and-terminal-front-airport-bus",
+      "kind": "transfer",
+      "sourceActionId": "airport:obihiro:published-public-arrival-lobby-to-terminal-front-bus",
+      "sourceUrl": "https://www.hokkaido-airports.com/ja/obihiro/contact/qa/",
+      "observedResponseSha256": "5262aef870cf0550949abdfa1e9f2872b23fc762bc5a2f3e59f450c084817f03",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:tokachi:reviewed-minimal-airport-kofuku-sections",
+          "url": "https://www.tokachibus.jp/download/20261001GTFS-airport.zip",
+          "observedResponseSha256": "f7a8ae96c1b85d3abd3ef6788a44f1fd5ebff806c968474db01a74d40eb8032c"
+        },
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/plan/timetable/",
+          "observedResponseSha256": "a47e09fb7f5ad689a703f887e8810b725ba78e33531146f1fb4469061db1d654"
+        },
+        {
+          "sourceActionId": "flight:airdo:five-current-hokkaido-directional-pairs",
+          "url": "https://www.airdo.jp/departure/airport/",
+          "observedResponseSha256": "5f989e454da00eb0563e6419e5dbb776963ed184c114ad386cfd5eac4054b59b"
+        }
+      ],
+      "components": [
+        {
+          "name": "帯広空港",
+          "operator": "airport-facility:cf03_00009",
+          "line": "airport:cf03_00009",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00009",
+            "requirementId": "review:transport-node:69798f02-fe68-5045-b796-c5623216284e",
+            "expectedRequirementName": "帯広",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "AIRDO current airport-counter/access guide separately identifies the operating passenger facility; current dated directional flights bind exact C28 whole-airport identity. The guide is not a boarding-platform identity and creates no surface edge. Airport-surface closure still requires independently reviewed physical connections."
+          }
+        },
+        {
+          "name": "とかち帯広空港",
+          "operator": "十勝バス株式会社 ",
+          "line": "gtfs:tokachi-airport:route:とかち帯広空港線_A",
+          "nodeKind": "bus_stop",
+          "derivedGtfsIdentity": {
+            "method": "EXACT_REVIEWED_DERIVED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact native airport endpoint shared by both independently selected trips, matched to official terminal-front bus guidance. No inferred roadside coordinate join.",
+            "sourceId": "gtfs:tokachi-airport",
+            "stopId": "22_01",
+            "serviceDate": "20261002",
+            "expectedPlatformCode": "",
+            "recordSha256": "74592812b6d63cf09992f7594e983970429208a95e2e53558e594f6f949d8c5e",
+            "sourceArchiveSha256": "f7a8ae96c1b85d3abd3ef6788a44f1fd5ebff806c968474db01a74d40eb8032c",
+            "derivedInputSha256": "65158d7eeff1c35be6ba15a673ca39ee269e0e20bbea370404efbae482da6e47",
+            "derivedProjectionSha256": "21b2e9d1be9b5127b0470c260518f4d98e465688cb88a736a7e84adedf1dfdbe"
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "locator": "Hash-bound official FAQ explicitly places bus ticket sales in public1F arrival lobby near ArrivalGate2 and instructs boarding at terminal-front bus stop. Exact single native22_01 airport point appears in both independently directed services. Coarse whole-airport public terminal to named bus-stop relation; no airside relation, precise walking polyline, coordinate proximity join or accessibility/time guarantee."
+    },
+    {
+      "factId": "obihiro-kofuku-explicit-public-drop-to-city",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokachi:reviewed-two-direction-kofuku-public-interchange",
+      "sourceUrl": "https://www.tokachibus.jp/bus/wp-content/themes/kachibus/images/airport-koufukubus2.png",
+      "observedResponseSha256": "89712a8176701b64cd66acb4400487a0922c30651513a1ecf82a0429765690e6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokachi:reviewed-two-direction-kofuku-public-interchange",
+          "url": "https://www.tokachibus.jp/airport/",
+          "observedResponseSha256": "23b730c2ec488e25da8945d3f83f9c692a7ef559cefa0f9da754d31df9259c45"
+        },
+        {
+          "sourceActionId": "bus:tokachi:reviewed-minimal-airport-kofuku-sections",
+          "url": "https://www.tokachibus.jp/download/20261001GTFS-airport.zip",
+          "observedResponseSha256": "f7a8ae96c1b85d3abd3ef6788a44f1fd5ebff806c968474db01a74d40eb8032c"
+        },
+        {
+          "sourceActionId": "bus:tokachi:reviewed-minimal-kofuku-city-dependency",
+          "url": "https://www.tokachibus.jp/download/20251201GTFS-dia.zip",
+          "observedResponseSha256": "830b04dbd770feb65124adf9cee0df53b0dc2be97e75b2f351d4ff304db86f78"
+        }
+      ],
+      "components": [
+        {
+          "name": "幸福駅",
+          "operator": "十勝バス株式会社 ",
+          "line": "gtfs:tokachi-airport:route:とかち帯広空港線_A",
+          "nodeKind": "bus_stop",
+          "derivedGtfsIdentity": {
+            "method": "EXACT_REVIEWED_DERIVED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Operator map airport-origin Obihirobound alighting-only south-side point; native21_02 drop0/pickup1 preserved.",
+            "sourceId": "gtfs:tokachi-airport",
+            "stopId": "21_02",
+            "serviceDate": "20261002",
+            "expectedPlatformCode": "",
+            "recordSha256": "666b4bc476a8f618d1b8f97c4cef79bc6e87c3315fc7d49b4737caf331d1e96c",
+            "sourceArchiveSha256": "f7a8ae96c1b85d3abd3ef6788a44f1fd5ebff806c968474db01a74d40eb8032c",
+            "derivedInputSha256": "65158d7eeff1c35be6ba15a673ca39ee269e0e20bbea370404efbae482da6e47",
+            "derivedProjectionSha256": "21b2e9d1be9b5127b0470c260518f4d98e465688cb88a736a7e84adedf1dfdbe"
+          }
+        },
+        {
+          "name": "幸福",
+          "operator": "十勝バス株式会社 ",
+          "line": "gtfs:tokachi-city:route:60 広尾線_A",
+          "nodeKind": "bus_stop",
+          "derivedGtfsIdentity": {
+            "method": "EXACT_REVIEWED_DERIVED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Operator map west Hiroo-road Obihirobound local boarding/alighting point; exact native200180_01, original direction0.",
+            "sourceId": "gtfs:tokachi-city",
+            "stopId": "200180_01",
+            "serviceDate": "20261002",
+            "expectedPlatformCode": "",
+            "recordSha256": "95ecc8bf6b740a74d1c449a060016e53b51ba35c1a58ecdf2219528eae952193",
+            "sourceArchiveSha256": "830b04dbd770feb65124adf9cee0df53b0dc2be97e75b2f351d4ff304db86f78",
+            "derivedInputSha256": "767f14644d791f220755e7e171a580ea9c16c5ef04a2af82f69232e37e1970f0",
+            "derivedProjectionSha256": "fccc1ba10ec2fdd5ddfecaccb841fb25cf94ff2fe3440382b7e73cf337c3704d"
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "hubScopeComplete": false,
+      "locator": "Current operator airport page directly publishes four distinct direction-labelled stop roles and a bidirectional public-walking interchange between airport connector and Hiroo-line stop groups. Apply only independently reviewed airport-origin alighting→Obihirobound local boarding and Hiroobound local alighting→airportbound boarding, as retained v5 review. Preserve exact four feed-qualified native identities and all pickup/dropoff flags. No implicit reverse edge, all-pairs claim, same-name merge, coordinate-derived path or surveyed crossing assertion."
+    },
+    {
+      "factId": "obihiro-kofuku-explicit-public-city-to-airport",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokachi:reviewed-two-direction-kofuku-public-interchange",
+      "sourceUrl": "https://www.tokachibus.jp/bus/wp-content/themes/kachibus/images/airport-koufukubus2.png",
+      "observedResponseSha256": "89712a8176701b64cd66acb4400487a0922c30651513a1ecf82a0429765690e6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokachi:reviewed-two-direction-kofuku-public-interchange",
+          "url": "https://www.tokachibus.jp/airport/",
+          "observedResponseSha256": "23b730c2ec488e25da8945d3f83f9c692a7ef559cefa0f9da754d31df9259c45"
+        },
+        {
+          "sourceActionId": "bus:tokachi:reviewed-minimal-airport-kofuku-sections",
+          "url": "https://www.tokachibus.jp/download/20261001GTFS-airport.zip",
+          "observedResponseSha256": "f7a8ae96c1b85d3abd3ef6788a44f1fd5ebff806c968474db01a74d40eb8032c"
+        },
+        {
+          "sourceActionId": "bus:tokachi:reviewed-minimal-kofuku-city-dependency",
+          "url": "https://www.tokachibus.jp/download/20251201GTFS-dia.zip",
+          "observedResponseSha256": "830b04dbd770feb65124adf9cee0df53b0dc2be97e75b2f351d4ff304db86f78"
+        }
+      ],
+      "components": [
+        {
+          "name": "幸福",
+          "operator": "十勝バス株式会社 ",
+          "line": "gtfs:tokachi-city:route:60 広尾線_A",
+          "nodeKind": "bus_stop",
+          "derivedGtfsIdentity": {
+            "method": "EXACT_REVIEWED_DERIVED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Operator map east Hiroo-road Hiroobound local boarding/alighting point; exact native200180_02, original direction1.",
+            "sourceId": "gtfs:tokachi-city",
+            "stopId": "200180_02",
+            "serviceDate": "20261002",
+            "expectedPlatformCode": "",
+            "recordSha256": "ac73f2e6f8e5969d694b1eb1d2e738e860468aef2cb30541c709189247d0cc10",
+            "sourceArchiveSha256": "830b04dbd770feb65124adf9cee0df53b0dc2be97e75b2f351d4ff304db86f78",
+            "derivedInputSha256": "767f14644d791f220755e7e171a580ea9c16c5ef04a2af82f69232e37e1970f0",
+            "derivedProjectionSha256": "fccc1ba10ec2fdd5ddfecaccb841fb25cf94ff2fe3440382b7e73cf337c3704d"
+          }
+        },
+        {
+          "name": "幸福駅",
+          "operator": "十勝バス株式会社 ",
+          "line": "gtfs:tokachi-airport:route:とかち帯広空港線_A",
+          "nodeKind": "bus_stop",
+          "derivedGtfsIdentity": {
+            "method": "EXACT_REVIEWED_DERIVED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Operator map airportbound boarding-only north-side point; native21_01 pickup0/drop1 preserved.",
+            "sourceId": "gtfs:tokachi-airport",
+            "stopId": "21_01",
+            "serviceDate": "20261002",
+            "expectedPlatformCode": "",
+            "recordSha256": "67a0574bc7c4de15237a465b1d822372489e3a0e5d83d4f52484648c5415382a",
+            "sourceArchiveSha256": "f7a8ae96c1b85d3abd3ef6788a44f1fd5ebff806c968474db01a74d40eb8032c",
+            "derivedInputSha256": "65158d7eeff1c35be6ba15a673ca39ee269e0e20bbea370404efbae482da6e47",
+            "derivedProjectionSha256": "21b2e9d1be9b5127b0470c260518f4d98e465688cb88a736a7e84adedf1dfdbe"
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "hubScopeComplete": false,
+      "locator": "Current operator airport page directly publishes four distinct direction-labelled stop roles and a bidirectional public-walking interchange between airport connector and Hiroo-line stop groups. Apply only independently reviewed airport-origin alighting→Obihirobound local boarding and Hiroobound local alighting→airportbound boarding, as retained v5 review. Preserve exact four feed-qualified native identities and all pickup/dropoff flags. No implicit reverse edge, all-pairs claim, same-name merge, coordinate-derived path or surveyed crossing assertion."
+    }
+  ],
+  "scope": "Original Obihiro airport only; two adjacent airport-Kofuku rides plus two contiguous Hiroo-line sections joined at exact native200045_01.83necessary native stops,81ride4walk edges. No new JR anchor, no full airport-to-city route and no unrelated routes."
+}

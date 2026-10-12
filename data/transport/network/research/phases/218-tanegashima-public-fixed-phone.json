@@ -1,0 +1,439 @@
+{
+  "phaseId": "218-tanegashima-public-fixed-phone",
+  "completedActionIds": [
+    "taxi:tanegashima:public-fixed-phone:20260901"
+  ],
+  "strategy": [
+    "SOURCE_BOUND_FIXED_PHONE_RECEPTION",
+    "NATIVE_P11_CURRENT_CITY_COMPONENT",
+    "EXISTING_C28_PUBLIC_AIRPORT_GATEWAY"
+  ],
+  "facts": [
+    {
+      "factId": "tanegashima-bank-airport-outbound",
+      "kind": "service",
+      "sourceActionId": "taxi:tanegashima:public-fixed-phone:20260901",
+      "sourceUrl": "https://www.city.nishinoomote.lg.jp/material/files/group/89/kukotaxijikokuhyou0901.pdf",
+      "observedResponseSha256": "333b163d65c6d247f20578a8f286220f844ada37991a305317e026c086b19141",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "taxi:tanegashima:public-fixed-phone:20260901",
+          "url": "https://www.city.nishinoomote.lg.jp/admin/soshiki/kikaku/seisakusuishin/koutuu/8270.html",
+          "observedResponseSha256": "274724f4f7f2ed182d7e3a5ad6ba5ea242525ceef4351a01e89af30cb9d2ce75"
+        },
+        {
+          "sourceActionId": "taxi:tanegashima:public-fixed-phone:20260901",
+          "url": "https://www.city.nishinoomote.lg.jp/material/files/group/89/jikokuhyou.pdf",
+          "observedResponseSha256": "87e879663ac39841b4e8bbb1b915a2e6e8566a58d4248fbc67213b394f5eb131"
+        }
+      ],
+      "operator": "株式会社 市丸タクシー",
+      "line": "種子島空港予約型乗合タクシー（西之表線）",
+      "mode": "demand_shared_taxi",
+      "purpose": "airport",
+      "serviceClass": "公共予約型乗合タクシー",
+      "direction": "outbound",
+      "serviceState": "active",
+      "serviceStateScope": "Current2026-09-01 to2026-10-20 only; daily fixed published service subject to reservation, no dispatch without booking. Static structural possibility, no accepted booking, timing, seat or operation guarantee.",
+      "parentCallingStations": [
+        "西之表港",
+        "相互信用金庫前",
+        "種子島空港"
+      ],
+      "parentCallingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "sectionStartIndex": 1,
+      "callingStations": [
+        "相互信用金庫前",
+        "種子島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "相互信用金庫前",
+          "operator": "西之表市",
+          "line": "p11-stop:P11-22_46:bs8854",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs8854",
+            "recordSha256": "4af4b566ebc37e65500e24056e8e99e2de83e885321fba4d2298181f9658c001",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact city P11 bank-front named physical stop component, retained by current2026-04-01 city loop between KagoshimaBank-front and BranchOffice-down. Same municipal authority current airport taxi explicitly names this coarse physical stop; independent current city context reviewed. Retain native municipal operator and coordinate scope, not a taxi-native ID, shared precise pole, ceased Sanmarin bus or proximity transfer.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西之表市",
+              "currentOperatorName": "西之表市",
+              "currentStopName": "相互信用金庫前",
+              "historicalRoute": "市街地巡回バス",
+              "url": "https://www.city.nishinoomote.lg.jp/material/files/group/89/jikokuhyou.pdf",
+              "observedResponseSha256": "87e879663ac39841b4e8bbb1b915a2e6e8566a58d4248fbc67213b394f5eb131"
+            }
+          }
+        },
+        {
+          "name": "種子島空港",
+          "operator": "airport-facility:cf03_00047",
+          "line": "airport:cf03_00047",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00047",
+            "requirementId": "review:transport-node:ad51382d-7bfc-54da-9496-9d5d86a7bbfe",
+            "expectedRequirementName": "種子島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "accessContract": {
+        "schemaVersion": 2,
+        "kind": "BOOKABLE_PASSENGER_SERVICE",
+        "audience": "PUBLIC",
+        "eligibilityKeys": [],
+        "reservation": {
+          "requirement": "REQUIRED",
+          "method": "PHONE",
+          "deadline": {
+            "daysBefore": 1,
+            "localTime": "17:00",
+            "timeZone": "Asia/Tokyo"
+          },
+          "noBookingNoDispatch": true,
+          "reception": {
+            "startLocalTime": "09:00",
+            "endLocalTime": "17:00",
+            "timeZone": "Asia/Tokyo"
+          }
+        },
+        "payment": "CASH_ONLY",
+        "passengerRules": {
+          "petsAllowed": false,
+          "dangerousGoodsAllowed": false,
+          "smokingAllowed": false,
+          "drinkingAllowed": false,
+          "largeLuggageNoticeThresholdMetres": 1.5,
+          "largeLuggageNoticeAtBooking": true,
+          "cancellationNoticeHours": 2,
+          "bookingDetailsRequired": [
+            "NAME",
+            "PHONE",
+            "PASSENGER_COUNT",
+            "TRAVEL_DATE",
+            "SERVICE",
+            "PICKUP",
+            "DROPOFF"
+          ]
+        },
+        "validFrom": "2026-09-01",
+        "validTo": "2026-10-20",
+        "operatingDays": "DAILY",
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:af8e43b3f7a5fb230d137951d296a6dd"
+        ]
+      },
+      "conditionEvidence": [
+        {
+          "conditionId": "public-phone-09-17-prior-day17-cash-and-passenger-rules",
+          "sourceActionId": "taxi:tanegashima:public-fixed-phone:20260901",
+          "sourceUrl": "https://www.city.nishinoomote.lg.jp/material/files/group/89/kukotaxijikokuhyou0901.pdf",
+          "observedResponseSha256": "333b163d65c6d247f20578a8f286220f844ada37991a305317e026c086b19141",
+          "locator": "Current city own taxi sheet independently reviewed booking/reception notices and passenger rules; no clock/fare table retained",
+          "accessTerms": {
+            "schemaVersion": 2,
+            "kind": "BOOKABLE_PASSENGER_SERVICE",
+            "audience": "PUBLIC",
+            "eligibilityKeys": [],
+            "reservation": {
+              "requirement": "REQUIRED",
+              "method": "PHONE",
+              "deadline": {
+                "daysBefore": 1,
+                "localTime": "17:00",
+                "timeZone": "Asia/Tokyo"
+              },
+              "noBookingNoDispatch": true,
+              "reception": {
+                "startLocalTime": "09:00",
+                "endLocalTime": "17:00",
+                "timeZone": "Asia/Tokyo"
+              }
+            },
+            "payment": "CASH_ONLY",
+            "passengerRules": {
+              "petsAllowed": false,
+              "dangerousGoodsAllowed": false,
+              "smokingAllowed": false,
+              "drinkingAllowed": false,
+              "largeLuggageNoticeThresholdMetres": 1.5,
+              "largeLuggageNoticeAtBooking": true,
+              "cancellationNoticeHours": 2,
+              "bookingDetailsRequired": [
+                "NAME",
+                "PHONE",
+                "PASSENGER_COUNT",
+                "TRAVEL_DATE",
+                "SERVICE",
+                "PICKUP",
+                "DROPOFF"
+              ]
+            },
+            "validFrom": "2026-09-01",
+            "validTo": "2026-10-20",
+            "operatingDays": "DAILY"
+          },
+          "corroboratingEvidence": [
+            {
+              "sourceActionId": "taxi:tanegashima:public-fixed-phone:20260901",
+              "url": "https://www.city.nishinoomote.lg.jp/admin/soshiki/kikaku/seisakusuishin/koutuu/8270.html",
+              "observedResponseSha256": "274724f4f7f2ed182d7e3a5ad6ba5ea242525ceef4351a01e89af30cb9d2ce75"
+            }
+          ]
+        }
+      ],
+      "corroboratingConditionEvidenceRefs": [
+        "transport-evidence:086:af8e43b3f7a5fb230d137951d296a6dd"
+      ],
+      "locator": "Independent outbound three-call parent, exact contiguous two-call bank-airport section; opposite directional table independently observed. Whole-airport public passenger service endpoint; no curb, door, airside or coordinate-nearness join.",
+      "physicalComponentReview": {
+        "bank": "Coarse named physical municipal stop with native P11 and independently current city loop; no native operator alias or precise shared pole assertion",
+        "airport": "Existing C28 whole-airport passenger gateway. City dedicated public airport taxi page explicitly describes journeys to and from airport; independently observed table gives both airport calls. Not a newly invented taxi pole."
+      }
+    },
+    {
+      "factId": "tanegashima-bank-airport-inbound",
+      "kind": "service",
+      "sourceActionId": "taxi:tanegashima:public-fixed-phone:20260901",
+      "sourceUrl": "https://www.city.nishinoomote.lg.jp/material/files/group/89/kukotaxijikokuhyou0901.pdf",
+      "observedResponseSha256": "333b163d65c6d247f20578a8f286220f844ada37991a305317e026c086b19141",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "taxi:tanegashima:public-fixed-phone:20260901",
+          "url": "https://www.city.nishinoomote.lg.jp/admin/soshiki/kikaku/seisakusuishin/koutuu/8270.html",
+          "observedResponseSha256": "274724f4f7f2ed182d7e3a5ad6ba5ea242525ceef4351a01e89af30cb9d2ce75"
+        },
+        {
+          "sourceActionId": "taxi:tanegashima:public-fixed-phone:20260901",
+          "url": "https://www.city.nishinoomote.lg.jp/material/files/group/89/jikokuhyou.pdf",
+          "observedResponseSha256": "87e879663ac39841b4e8bbb1b915a2e6e8566a58d4248fbc67213b394f5eb131"
+        }
+      ],
+      "operator": "株式会社 市丸タクシー",
+      "line": "種子島空港予約型乗合タクシー（西之表線）",
+      "mode": "demand_shared_taxi",
+      "purpose": "airport",
+      "serviceClass": "公共予約型乗合タクシー",
+      "direction": "inbound",
+      "serviceState": "active",
+      "serviceStateScope": "Current2026-09-01 to2026-10-20 only; daily fixed published service subject to reservation, no dispatch without booking. Static structural possibility, no accepted booking, timing, seat or operation guarantee.",
+      "parentCallingStations": [
+        "種子島空港",
+        "相互信用金庫前",
+        "西之表港"
+      ],
+      "parentCallingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "sectionStartIndex": 0,
+      "callingStations": [
+        "種子島空港",
+        "相互信用金庫前"
+      ],
+      "callingComponents": [
+        {
+          "name": "種子島空港",
+          "operator": "airport-facility:cf03_00047",
+          "line": "airport:cf03_00047",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00047",
+            "requirementId": "review:transport-node:ad51382d-7bfc-54da-9496-9d5d86a7bbfe",
+            "expectedRequirementName": "種子島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        },
+        {
+          "name": "相互信用金庫前",
+          "operator": "西之表市",
+          "line": "p11-stop:P11-22_46:bs8854",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs8854",
+            "recordSha256": "4af4b566ebc37e65500e24056e8e99e2de83e885321fba4d2298181f9658c001",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact city P11 bank-front named physical stop component, retained by current2026-04-01 city loop between KagoshimaBank-front and BranchOffice-down. Same municipal authority current airport taxi explicitly names this coarse physical stop; independent current city context reviewed. Retain native municipal operator and coordinate scope, not a taxi-native ID, shared precise pole, ceased Sanmarin bus or proximity transfer.",
+            "currentOperatorEvidence": {
+              "recordOperator": "西之表市",
+              "currentOperatorName": "西之表市",
+              "currentStopName": "相互信用金庫前",
+              "historicalRoute": "市街地巡回バス",
+              "url": "https://www.city.nishinoomote.lg.jp/material/files/group/89/jikokuhyou.pdf",
+              "observedResponseSha256": "87e879663ac39841b4e8bbb1b915a2e6e8566a58d4248fbc67213b394f5eb131"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "accessContract": {
+        "schemaVersion": 2,
+        "kind": "BOOKABLE_PASSENGER_SERVICE",
+        "audience": "PUBLIC",
+        "eligibilityKeys": [],
+        "reservation": {
+          "requirement": "REQUIRED",
+          "method": "PHONE",
+          "deadline": {
+            "daysBefore": 1,
+            "localTime": "17:00",
+            "timeZone": "Asia/Tokyo"
+          },
+          "noBookingNoDispatch": true,
+          "reception": {
+            "startLocalTime": "09:00",
+            "endLocalTime": "17:00",
+            "timeZone": "Asia/Tokyo"
+          }
+        },
+        "payment": "CASH_ONLY",
+        "passengerRules": {
+          "petsAllowed": false,
+          "dangerousGoodsAllowed": false,
+          "smokingAllowed": false,
+          "drinkingAllowed": false,
+          "largeLuggageNoticeThresholdMetres": 1.5,
+          "largeLuggageNoticeAtBooking": true,
+          "cancellationNoticeHours": 2,
+          "bookingDetailsRequired": [
+            "NAME",
+            "PHONE",
+            "PASSENGER_COUNT",
+            "TRAVEL_DATE",
+            "SERVICE",
+            "PICKUP",
+            "DROPOFF"
+          ]
+        },
+        "validFrom": "2026-09-01",
+        "validTo": "2026-10-20",
+        "operatingDays": "DAILY",
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:af8e43b3f7a5fb230d137951d296a6dd"
+        ]
+      },
+      "conditionEvidence": [
+        {
+          "conditionId": "public-phone-09-17-prior-day17-cash-and-passenger-rules",
+          "sourceActionId": "taxi:tanegashima:public-fixed-phone:20260901",
+          "sourceUrl": "https://www.city.nishinoomote.lg.jp/material/files/group/89/kukotaxijikokuhyou0901.pdf",
+          "observedResponseSha256": "333b163d65c6d247f20578a8f286220f844ada37991a305317e026c086b19141",
+          "locator": "Current city own taxi sheet independently reviewed booking/reception notices and passenger rules; no clock/fare table retained",
+          "accessTerms": {
+            "schemaVersion": 2,
+            "kind": "BOOKABLE_PASSENGER_SERVICE",
+            "audience": "PUBLIC",
+            "eligibilityKeys": [],
+            "reservation": {
+              "requirement": "REQUIRED",
+              "method": "PHONE",
+              "deadline": {
+                "daysBefore": 1,
+                "localTime": "17:00",
+                "timeZone": "Asia/Tokyo"
+              },
+              "noBookingNoDispatch": true,
+              "reception": {
+                "startLocalTime": "09:00",
+                "endLocalTime": "17:00",
+                "timeZone": "Asia/Tokyo"
+              }
+            },
+            "payment": "CASH_ONLY",
+            "passengerRules": {
+              "petsAllowed": false,
+              "dangerousGoodsAllowed": false,
+              "smokingAllowed": false,
+              "drinkingAllowed": false,
+              "largeLuggageNoticeThresholdMetres": 1.5,
+              "largeLuggageNoticeAtBooking": true,
+              "cancellationNoticeHours": 2,
+              "bookingDetailsRequired": [
+                "NAME",
+                "PHONE",
+                "PASSENGER_COUNT",
+                "TRAVEL_DATE",
+                "SERVICE",
+                "PICKUP",
+                "DROPOFF"
+              ]
+            },
+            "validFrom": "2026-09-01",
+            "validTo": "2026-10-20",
+            "operatingDays": "DAILY"
+          },
+          "corroboratingEvidence": [
+            {
+              "sourceActionId": "taxi:tanegashima:public-fixed-phone:20260901",
+              "url": "https://www.city.nishinoomote.lg.jp/admin/soshiki/kikaku/seisakusuishin/koutuu/8270.html",
+              "observedResponseSha256": "274724f4f7f2ed182d7e3a5ad6ba5ea242525ceef4351a01e89af30cb9d2ce75"
+            }
+          ]
+        }
+      ],
+      "corroboratingConditionEvidenceRefs": [
+        "transport-evidence:086:af8e43b3f7a5fb230d137951d296a6dd"
+      ],
+      "locator": "Independent inbound three-call parent, exact contiguous two-call bank-airport section; opposite directional table independently observed. Whole-airport public passenger service endpoint; no curb, door, airside or coordinate-nearness join.",
+      "physicalComponentReview": {
+        "bank": "Coarse named physical municipal stop with native P11 and independently current city loop; no native operator alias or precise shared pole assertion",
+        "airport": "Existing C28 whole-airport passenger gateway. City dedicated public airport taxi page explicitly describes journeys to and from airport; independently observed table gives both airport calls. Not a newly invented taxi pole."
+      }
+    }
+  ]
+}

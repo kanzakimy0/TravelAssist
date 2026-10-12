@@ -1,0 +1,67 @@
+{
+  "phaseId": "120-kyoto-kawaramachi-gionshijo-reviewed-public-walk",
+  "strategy": [
+    "INDEPENDENT_OPERATOR_CONNECTION_IDENTITY",
+    "PRIMARY_LOCAL_PUBLIC_BRIDGE_ACCESS",
+    "RESTRICTIVE_PORTAL_AND_FACILITY_REFERENCES_NOT_USED"
+  ],
+  "completedActionIds": [
+    "hub:hankyu:kyotokawaramachi-gionshijo-current-connection",
+    "hub:shijo-association:gionshijo-public-bridge-access",
+    "hub:kyoto-municipal-portal:cross-station-walk-rights-review",
+    "hub:jrtk:motoyawata-facility-diagram-rights-review"
+  ],
+  "facts": [
+    {
+      "factId": "kyoto-kawaramachi-gionshijo-public-shijo-bridge-walk",
+      "kind": "transfer",
+      "sourceActionId": "hub:hankyu:kyotokawaramachi-gionshijo-current-connection",
+      "sourceUrl": "https://www.hankyu.co.jp/files/upload/HPFAQ/hankyu_keihan_kyotokawaramachi_connect_teiki_area_210413.pdf",
+      "observedResponseSha256": "aa6101a7006b7be9a44fed7347ff9d43571f38073b5d8c404ad11c08797e6c2e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:hankyu:kyotokawaramachi-gionshijo-current-connection",
+          "url": "https://www.hankyu.co.jp/station/map/img/kawaramachi.svg",
+          "observedResponseSha256": "0d06b68e2cdd047e6dc69eeeb8b184811ea343322921c2432a1652c4e3687ea7"
+        },
+        {
+          "sourceActionId": "hub:hankyu:kyotokawaramachi-gionshijo-current-connection",
+          "url": "https://www.hankyu.co.jp/station/kawaramachi.html",
+          "observedResponseSha256": "014ce9ce3c7eac64b0b005c6c8aa647a2f870d2db367c9439d958864b357b6aa"
+        },
+        {
+          "sourceActionId": "hub:shijo-association:gionshijo-public-bridge-access",
+          "url": "https://kyoto-shijo.or.jp/access/",
+          "observedResponseSha256": "959f0e5c0d47c4cdc1ff87f69a1f83fc19335808a679b3cf68b7d54bddb526c2"
+        }
+      ],
+      "locator": "Official Hankyu connection document explicitly pairs Kyoto-kawaramachi and Gion-shijo. Current-linked station diagram individually viewed: east gate to public Kiyamachi exit 1. The shopping-street operating association independently describes pedestrian access from Gion-shijo across Shijo bridge to the street served by Kyoto-kawaramachi. Retain coarse public surface interchange only, without inventing a Keihan exit number, universal opening hours, paid-area connection, walking duration or accessibility guarantee.",
+      "components": [
+        {
+          "name": "京都河原町",
+          "operator": "阪急電鉄",
+          "line": "京都線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "祇園四条",
+          "operator": "京阪電気鉄道",
+          "line": "京阪本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "PRIMARY_OPERATOR_INTERCHANGE_AND_LOCAL_PUBLIC_BRIDGE_ACCESS",
+      "hubScopeComplete": false
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "task": "TASK-084-A",
+  "status": "PASS_RUNTIME",
+  "realPilotStatus": "PASS_DETERMINISTIC_REAL_PILOT_SMOKE",
+  "mappingVersion": "preference-to-poi-v1-pilot-candidate",
+  "scoringConfigVersion": "poi-match-v1-pilot-candidate",
+  "featureCodeCount": 43,
+  "preferenceKeyCount": 23,
+  "historicalPersonaFixtureCount": 8,
+  "executedQaInputCount": 1,
+  "targetedContractTestCount": 30,
+  "deterministicSyntheticResultHash": "5e02d862421b4853b435ea71349249943232e27a163453898d650c447457b3d2",
+  "performance": {
+    "onePoiOnePersona": {
+      "callsPerRun": 1,
+      "personasPerRun": 1,
+      "repeats": 25,
+      "p50Ms": 0.066,
+      "p95Ms": 0.145,
+      "lastResultHash": "5e02d862421b4853b435ea71349249943232e27a163453898d650c447457b3d2",
+      "syntheticFixtureOnly": true
+    },
+    "oneHundredPoiOnePersona": {
+      "callsPerRun": 100,
+      "personasPerRun": 1,
+      "repeats": 25,
+      "p50Ms": 3.488,
+      "p95Ms": 4.358,
+      "lastResultHash": "5e02d862421b4853b435ea71349249943232e27a163453898d650c447457b3d2",
+      "syntheticFixtureOnly": true
+    }
+  },
+  "caution": "Performance fixture is synthetic and separate from the one-input real Canonical Pilot. No real-user ranking quality, calibration or pairwise benchmark was validated."
+}

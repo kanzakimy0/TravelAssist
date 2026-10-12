@@ -1,0 +1,150 @@
+{
+  "phaseId": "070-sapporo-and-yurikamome-explicit-t1-gateways",
+  "strategy": [
+    "CURRENT_T1_PUBLIC_INTERCHANGE",
+    "BOUNDED_ACTUAL_LAST_TRAIN_CALLS",
+    "transfer"
+  ],
+  "completedActionIds": [
+    "hub:sapporo:current-jr-municipal-passage",
+    "rail:yurikamome:shimbashi-gateway-and-bounded-last-train"
+  ],
+  "facts": [
+    {
+      "factId": "sapporo-jr-subway-north-public-route",
+      "kind": "transfer",
+      "sourceActionId": "hub:sapporo:current-jr-municipal-passage",
+      "sourceUrl": "https://www.city.sapporo.jp/st/subway/ekikonaizu/documents/sapporo.pdf",
+      "observedResponseSha256": "4a6d0a0ab1353d115cea1193f76a143e264abdc8bcbf8f967400ba8197cb8111",
+      "locator": "Current municipal station-map page explicitly links JR Sapporo via the northern public route marked exit 2/APIA; subway paid area joins this concourse through the northern gates. Excludes closed exits 4/5. No precise walking time, step-free guarantee or retail opening hours retained.",
+      "components": [
+        {
+          "name": "札幌",
+          "operator": "北海道旅客鉄道",
+          "line": "函館線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "さっぽろ",
+          "operator": "札幌市",
+          "line": "南北線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_EXPLICIT_CURRENT_PUBLIC_GATEWAY",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "shimbashi-yurikamome-jr-public-1a-route",
+      "kind": "transfer",
+      "sourceActionId": "rail:yurikamome:shimbashi-gateway-and-bounded-last-train",
+      "sourceUrl": "https://www.yurikamome.co.jp/station-timetable/station_jp_Part1.pdf",
+      "observedResponseSha256": "06fd0a513bd14d773375af2bb0155bdb07058eae50be8d9e7db891823d58ce1b",
+      "locator": "Current official Shimbashi map: west ticket gate joins public concourse and 1A stairs/escalator toward explicitly labeled JR connection. This is a public out-of-gate interchange; no direct train operation or guaranteed accessible path implied.",
+      "components": [
+        {
+          "name": "新橋",
+          "operator": "ゆりかもめ",
+          "line": "東京臨海新交通臨海線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "新橋",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_EXPLICIT_CURRENT_PUBLIC_GATEWAY",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "yurikamome-last-train-bounded-outbound",
+      "kind": "service",
+      "sourceActionId": "rail:yurikamome:shimbashi-gateway-and-bounded-last-train",
+      "sourceUrl": "https://www.yurikamome.co.jp/station-timetable/search.html",
+      "observedResponseSha256": "d7c9f2add522eacafbb5c923905c4176f2f16ced8120e59a40505c8242229c4c",
+      "locator": "Current official major-station last-train table: Toyosu-bound final train and Shimbashi-bound final train explicitly call both adjacent U01/U02 stations. Retain only this bounded two-call segment; omitted intermediate stations in the major-station table do not become skipped calls or express services. No clocks retained.",
+      "line": "東京臨海新交通臨海線",
+      "operator": "ゆりかもめ",
+      "mode": "fixed_guideway",
+      "serviceClass": "公表終電の新橋・汐留区間",
+      "direction": "outbound",
+      "callingStations": [
+        "新橋",
+        "汐留"
+      ],
+      "callingComponents": [
+        {
+          "name": "新橋",
+          "operator": "ゆりかもめ",
+          "line": "東京臨海新交通臨海線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "汐留",
+          "operator": "ゆりかもめ",
+          "line": "東京臨海新交通臨海線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "ACTUAL_PUBLISHED_LAST_TRAIN_TWO_ADJACENT_CALLS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_BOUNDED_TRIP_NOT_REALTIME"
+    },
+    {
+      "factId": "yurikamome-last-train-bounded-inbound",
+      "kind": "service",
+      "sourceActionId": "rail:yurikamome:shimbashi-gateway-and-bounded-last-train",
+      "sourceUrl": "https://www.yurikamome.co.jp/station-timetable/search.html",
+      "observedResponseSha256": "d7c9f2add522eacafbb5c923905c4176f2f16ced8120e59a40505c8242229c4c",
+      "locator": "Current official major-station last-train table: Toyosu-bound final train and Shimbashi-bound final train explicitly call both adjacent U01/U02 stations. Retain only this bounded two-call segment; omitted intermediate stations in the major-station table do not become skipped calls or express services. No clocks retained.",
+      "line": "東京臨海新交通臨海線",
+      "operator": "ゆりかもめ",
+      "mode": "fixed_guideway",
+      "serviceClass": "公表終電の新橋・汐留区間",
+      "direction": "inbound",
+      "callingStations": [
+        "汐留",
+        "新橋"
+      ],
+      "callingComponents": [
+        {
+          "name": "汐留",
+          "operator": "ゆりかもめ",
+          "line": "東京臨海新交通臨海線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "新橋",
+          "operator": "ゆりかもめ",
+          "line": "東京臨海新交通臨海線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "ACTUAL_PUBLISHED_LAST_TRAIN_TWO_ADJACENT_CALLS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_BOUNDED_TRIP_NOT_REALTIME"
+    }
+  ]
+}

@@ -1,0 +1,318 @@
+{
+  "phaseId": "188-amami-independent-adjacent-bus-directions-and-public-terminal-interface",
+  "strategy": [
+    "ORIGINAL_AIRPORT_GROUND_GAP",
+    "TWO_INDEPENDENT_OPERATOR_MAP_SECTIONS",
+    "EXISTING_REVIEWED_NATIONAL_FLIGHTS_REUSED",
+    "EXACT_P11_C28_IDENTITIES"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "bus:amami:current-independent-airport-wano-adjacent-sections",
+    "airport:amami:own-terminal-public-bus-interface"
+  ],
+  "facts": [
+    {
+      "factId": "amami-current-airport-bound-adjacent-airport-wano",
+      "kind": "service",
+      "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+      "sourceUrl": "https://shimabus.co.jp/wp-content/uploads/2026/02/1_1.pdf",
+      "observedResponseSha256": "bc2c559ec7b72c5200cd0ec317adaa9db8cc7d717189d071692e8be8d1a11b7d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+          "url": "https://shimabus.co.jp/wp-content/uploads/2026/02/1_1.pdf",
+          "observedResponseSha256": "bc2c559ec7b72c5200cd0ec317adaa9db8cc7d717189d071692e8be8d1a11b7d"
+        },
+        {
+          "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+          "url": "https://shimabus.co.jp/wp-content/uploads/2026/09/20261001_koshuku_kuko.pdf",
+          "observedResponseSha256": "9529a0669fd74a05110ee7396a3c4efa2ce891674c9d15eee7ee8b050e594f6c"
+        },
+        {
+          "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+          "url": "https://shimabus.co.jp/rosen/suburban-line-new/",
+          "observedResponseSha256": "0127a7ce14b93ad944819c2bdf783eca7aa537c6f62ed6dbb40356b11258d2be"
+        },
+        {
+          "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+          "url": "https://shimabus.co.jp/rosen/ride-guide/",
+          "observedResponseSha256": "1777645a4f2b0a34feee15f076bfc7a875c9638cf1d186e5c0f03bb217545854"
+        }
+      ],
+      "operator": "（株）しまバス",
+      "line": "奄美空港線",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "airport-bound",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Operator2025-10 full direction-specific map currently linked alongside2026-10-01 revision timetable. Static adjacent section only; no date-specific dispatch or realtime guarantee.",
+      "callingStations": [
+        "和野",
+        "奄美空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "和野",
+          "operator": "（株）しまバス",
+          "line": "p11-stop:P11-22_46:bs223",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs223",
+            "recordSha256": "c246a496e710b51cd4fc4b0566eb513839cc72bc55170cff2cf573952d4411c6",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Operator direction-specific full route map marks this exact named stop in adjacent airport/Wano section. P11 same-operator road-stop representative only, never exact directional platform or entrance. Current map and2026-10-01 service corroborate operator continuity. No geographic proximity join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "（株）しまバス",
+              "currentOperatorName": "株式会社しまバス",
+              "currentStopName": "和野",
+              "historicalRoute": "奄美空港-こしゅく第1公園",
+              "url": "https://shimabus.co.jp/wp-content/uploads/2026/02/1_1.pdf",
+              "observedResponseSha256": "bc2c559ec7b72c5200cd0ec317adaa9db8cc7d717189d071692e8be8d1a11b7d"
+            }
+          }
+        },
+        {
+          "name": "奄美空港",
+          "operator": "（株）しまバス",
+          "line": "p11-stop:P11-22_46:bs219",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs219",
+            "recordSha256": "11dd1d176aa27653992ad9b17876582c4493e4ec8679c883429a3a9688ba2d29",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Operator direction-specific full route map marks this exact named stop in adjacent airport/Wano section. P11 same-operator road-stop representative only, never exact directional platform or entrance. Current map and2026-10-01 service corroborate operator continuity. No geographic proximity join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "（株）しまバス",
+              "currentOperatorName": "株式会社しまバス",
+              "currentStopName": "奄美空港",
+              "historicalRoute": "奄美空港-こしゅく第1公園",
+              "url": "https://shimabus.co.jp/wp-content/uploads/2026/02/1_1.pdf",
+              "observedResponseSha256": "bc2c559ec7b72c5200cd0ec317adaa9db8cc7d717189d071692e8be8d1a11b7d"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_DIRECTION_SPECIFIC_OPERATOR_MAP_ADJACENT_CALLS",
+      "locator": "Visually reviewed full operator map airport inset/right side: exactly named airport and Wano stop markers are adjacent on selected red directional route; no intervening stop marker. airport-bound map reviewed separately; no reversal inference. Map warns schematic stop positions may differ, so coordinates/geometry are not derived. Current major-stop timetable proves branch service but is not used as complete calling order. Operator local-bus ride instructions and no exclusive restriction at either selected call support ordinary boarding/alighting. Only this actual contiguous pair imported; all other mapped routes remain out of scope.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clock, fare, frequency or runtime availability asserted."
+    },
+    {
+      "factId": "amami-current-city-bound-adjacent-airport-wano",
+      "kind": "service",
+      "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+      "sourceUrl": "https://shimabus.co.jp/wp-content/uploads/2026/02/1_4.pdf",
+      "observedResponseSha256": "f6903a52aa6fb04b67684e9e55e2c86a3279795a765c5d70ea4455b73fe02eb0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+          "url": "https://shimabus.co.jp/wp-content/uploads/2026/02/1_4.pdf",
+          "observedResponseSha256": "f6903a52aa6fb04b67684e9e55e2c86a3279795a765c5d70ea4455b73fe02eb0"
+        },
+        {
+          "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+          "url": "https://shimabus.co.jp/wp-content/uploads/2026/09/20261001_kuko_koshuku.pdf",
+          "observedResponseSha256": "2220f89f8b5aa868f7308c7edd3547f5e65771c8fe69145f1a909d5594dc6ed6"
+        },
+        {
+          "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+          "url": "https://shimabus.co.jp/rosen/suburban-line-new/",
+          "observedResponseSha256": "0127a7ce14b93ad944819c2bdf783eca7aa537c6f62ed6dbb40356b11258d2be"
+        },
+        {
+          "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+          "url": "https://shimabus.co.jp/rosen/ride-guide/",
+          "observedResponseSha256": "1777645a4f2b0a34feee15f076bfc7a875c9638cf1d186e5c0f03bb217545854"
+        }
+      ],
+      "operator": "（株）しまバス",
+      "line": "奄美空港線",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "city-bound",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Operator2025-10 full direction-specific map currently linked alongside2026-10-01 revision timetable. Static adjacent section only; no date-specific dispatch or realtime guarantee.",
+      "callingStations": [
+        "奄美空港",
+        "和野"
+      ],
+      "callingComponents": [
+        {
+          "name": "奄美空港",
+          "operator": "（株）しまバス",
+          "line": "p11-stop:P11-22_46:bs219",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs219",
+            "recordSha256": "11dd1d176aa27653992ad9b17876582c4493e4ec8679c883429a3a9688ba2d29",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Operator direction-specific full route map marks this exact named stop in adjacent airport/Wano section. P11 same-operator road-stop representative only, never exact directional platform or entrance. Current map and2026-10-01 service corroborate operator continuity. No geographic proximity join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "（株）しまバス",
+              "currentOperatorName": "株式会社しまバス",
+              "currentStopName": "奄美空港",
+              "historicalRoute": "奄美空港-こしゅく第1公園",
+              "url": "https://shimabus.co.jp/wp-content/uploads/2026/02/1_4.pdf",
+              "observedResponseSha256": "f6903a52aa6fb04b67684e9e55e2c86a3279795a765c5d70ea4455b73fe02eb0"
+            }
+          }
+        },
+        {
+          "name": "和野",
+          "operator": "（株）しまバス",
+          "line": "p11-stop:P11-22_46:bs223",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs223",
+            "recordSha256": "c246a496e710b51cd4fc4b0566eb513839cc72bc55170cff2cf573952d4411c6",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Operator direction-specific full route map marks this exact named stop in adjacent airport/Wano section. P11 same-operator road-stop representative only, never exact directional platform or entrance. Current map and2026-10-01 service corroborate operator continuity. No geographic proximity join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "（株）しまバス",
+              "currentOperatorName": "株式会社しまバス",
+              "currentStopName": "和野",
+              "historicalRoute": "奄美空港-こしゅく第1公園",
+              "url": "https://shimabus.co.jp/wp-content/uploads/2026/02/1_4.pdf",
+              "observedResponseSha256": "f6903a52aa6fb04b67684e9e55e2c86a3279795a765c5d70ea4455b73fe02eb0"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_DIRECTION_SPECIFIC_OPERATOR_MAP_ADJACENT_CALLS",
+      "locator": "Visually reviewed full operator map airport inset/right side: exactly named airport and Wano stop markers are adjacent on selected red directional route; no intervening stop marker. city-bound map reviewed separately; no reversal inference. Map warns schematic stop positions may differ, so coordinates/geometry are not derived. Current major-stop timetable proves branch service but is not used as complete calling order. Operator local-bus ride instructions and no exclusive restriction at either selected call support ordinary boarding/alighting. Only this actual contiguous pair imported; all other mapped routes remain out of scope.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clock, fare, frequency or runtime availability asserted."
+    },
+    {
+      "factId": "amami-own-terminal-public-bus-stop-frontage",
+      "kind": "transfer",
+      "sourceActionId": "airport:amami:own-terminal-public-bus-interface",
+      "sourceUrl": "https://amami-airport.co.jp/rjkaw/wp-content/uploads/2021/12/temporary_waiting_space.pdf",
+      "observedResponseSha256": "b6eba704a42190f025a4c383b44af0d0128a53df1244ca628d06c5ad35bcc60e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:amami:own-terminal-public-bus-interface",
+          "url": "https://amami-airport.co.jp/rjkaw/wp-content/uploads/2021/12/temporary_waiting_space.pdf",
+          "observedResponseSha256": "b6eba704a42190f025a4c383b44af0d0128a53df1244ca628d06c5ad35bcc60e"
+        },
+        {
+          "sourceActionId": "airport:amami:own-terminal-public-bus-interface",
+          "url": "https://amami-airport.co.jp/archives/4316",
+          "observedResponseSha256": "0cc725e70cd205bcd3161af45df803c4389e29a4f2d02f6f2f970034e1f4caad"
+        },
+        {
+          "sourceActionId": "airport:amami:own-terminal-public-bus-interface",
+          "url": "https://amami-airport.co.jp/access/bus",
+          "observedResponseSha256": "45d167a275ab1cf7bdeea106fcb7be023ed94b59b09dd8a21ccb6b99cb433370"
+        },
+        {
+          "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+          "url": "https://shimabus.co.jp/rosen/suburban-line-new/",
+          "observedResponseSha256": "0127a7ce14b93ad944819c2bdf783eca7aa537c6f62ed6dbb40356b11258d2be"
+        },
+        {
+          "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+          "url": "https://shimabus.co.jp/wp-content/uploads/2026/02/1_1.pdf",
+          "observedResponseSha256": "bc2c559ec7b72c5200cd0ec317adaa9db8cc7d717189d071692e8be8d1a11b7d"
+        },
+        {
+          "sourceActionId": "bus:amami:current-independent-airport-wano-adjacent-sections",
+          "url": "https://shimabus.co.jp/wp-content/uploads/2026/02/1_4.pdf",
+          "observedResponseSha256": "f6903a52aa6fb04b67684e9e55e2c86a3279795a765c5d70ea4455b73fe02eb0"
+        }
+      ],
+      "components": [
+        {
+          "name": "奄美空港",
+          "operator": "airport-facility:cf03_00098",
+          "line": "airport:cf03_00098",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00098",
+            "requirementId": "review:transport-node:32b1a4f3-8e41-5a10-9ac5-ce2d7ab08e03",
+            "expectedRequirementName": "奄美",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Airport company own public-passage notice directs arriving bus passengers through terminal exit; its linked1F diagram explicitly depicts bus-stop frontage immediately outside connected public arrival/check-in lobbies. Current company bus page identifies Shimabus service in both directions. Coarse public whole-facility to operator-road-stop representative only; no security-zone shortcut, closed arrival-gate use, curb, time or step-free claim."
+          }
+        },
+        {
+          "name": "奄美空港",
+          "operator": "（株）しまバス",
+          "line": "p11-stop:P11-22_46:bs219",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs219",
+            "recordSha256": "11dd1d176aa27653992ad9b17876582c4493e4ec8679c883429a3a9688ba2d29",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Operator direction-specific full route map marks this exact named stop in adjacent airport/Wano section. P11 same-operator road-stop representative only, never exact directional platform or entrance. Current map and2026-10-01 service corroborate operator continuity. No geographic proximity join.",
+            "currentOperatorEvidence": {
+              "recordOperator": "（株）しまバス",
+              "currentOperatorName": "株式会社しまバス",
+              "currentStopName": "奄美空港",
+              "historicalRoute": "奄美空港-こしゅく第1公園",
+              "url": "https://shimabus.co.jp/wp-content/uploads/2026/02/1_1.pdf",
+              "observedResponseSha256": "bc2c559ec7b72c5200cd0ec317adaa9db8cc7d717189d071692e8be8d1a11b7d"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "reviewMethod": "AIRPORT_OWN_PUBLIC_LOBBY_EXIT_AND_EXPLICIT_BUS_STOP_FRONTAGE",
+      "locator": "Airport company current arrival-passage notice and linked1F map: connected public arrival/check-in lobbies have doors onto explicitly labeled bus-stop frontage. Closed baggage arrival gate is not used as public route. Current airport bus-access page identifies Shimabus both directions. Coarse whole-airport to exact operator-road-stop representative. No tourism-federation evidence used; no coordinate-only or inferred cross-road transfer, geometry, duration or accessibility claim."
+    }
+  ],
+  "scope": "Two native bus-stop identities, two separately documented adjacent ride edges, two coarse public airport interfaces; existing reviewed flight chain reused, no new airline relation or citywide service expansion.",
+  "metrics": {
+    "busRideEdges": 2,
+    "flightEdges": 0,
+    "publicWalkEdges": 2,
+    "newP11Identities": 2
+  }
+}

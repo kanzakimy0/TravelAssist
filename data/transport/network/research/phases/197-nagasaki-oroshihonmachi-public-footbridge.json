@@ -1,0 +1,77 @@
+{
+  "phaseId": "197-nagasaki-oroshihonmachi-public-footbridge",
+  "strategy": [
+    "ORIGINAL_REQUIRED_BUS_DIRECTION_ROOTS",
+    "OPERATOR_EXPLICIT_PUBLIC_FOOTBRIDGE",
+    "PRESERVE_NATIVE_PLATFORMS_AND_ALIGHTING_ONLY"
+  ],
+  "completedActionIds": [
+    "transfer:nagasaki:oroshihonmachi-explicit-public-footbridge"
+  ],
+  "facts": [
+    {
+      "factId": "oroshihonmachi-actual-public-footbridge-between-directional-stops",
+      "kind": "transfer",
+      "sourceActionId": "transfer:nagasaki:oroshihonmachi-explicit-public-footbridge",
+      "sourceUrl": "https://www.bus.saihigroup.co.jp/cms/wp-content/uploads/2019/03/oroshimotomachi201903.png",
+      "observedResponseSha256": "ed58f89fdc3bcb04fbe5b382ebaf05e3ccc3621623c879a7bc56795f32c6fe85",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:nagasaki:oroshihonmachi-explicit-public-footbridge",
+          "url": "https://www.bus.saihigroup.co.jp/main-bus-stop/2184.html",
+          "observedResponseSha256": "872d2b1095adff528046d6b5e4c800576e9d1d726e775358dfd04787c66a9b73"
+        },
+        {
+          "sourceActionId": "transfer:nagasaki:oroshihonmachi-explicit-public-footbridge",
+          "url": "https://www.keneibus.jp/cellular/highway/sasebo/index.html",
+          "observedResponseSha256": "239eae37e57cfc0be43aba76c6aa30efca3b743087c90f757a3ab1fc72a88463"
+        }
+      ],
+      "components": [
+        {
+          "name": "卸本町入口",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:10",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "887063_01",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "9899f30820bdaa85a381ea75fc0eeb3391f64e5e7603cb1cd28a7a558fed090a",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current co-operator Saihi named卸本町入口 page binds boardingmap1 toSasebo-boundservices and map2 toNagasaki-boundhighwayservices. Current Keneibus ownroutepage independentlylists thisnamedstop alightingonly towardSasebo andboardingonly towardNagasaki, withrespectivepole1and5. ExistinglicensedGTFS exact887063_01/887063_05 preserve thoseoppositedirections andnativepointrecords; officialmapnumbers1/2 are NOT GTFSplatformcodes. Visuallyreviewed officialmap explicitlyshowspublic歩道橋 acrossmainroad, westofthestops, withlandingsonbothpublicstreet sides. WalkfromSaseboarrivalstop1 westalongpublicstreetfrontage, crossusingthatfootbridge, theneastalongoppositeside toNagasakideparturestop2. Return uses samepublicbridge. No crossingbuslanes, coordinate-distancejoin, reversedbus, wheelchair/stepfree claim, geometry, duration or24hourguarantee. Bothnativebuscallingrestrictions retained."
+          }
+        },
+        {
+          "name": "卸本町入口",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:10",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "887063_05",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "632c5412f9d4ddeacc5c00bf4a149f155820e60ef033ebc6bb6f593823b66f51",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current co-operator Saihi named卸本町入口 page binds boardingmap1 toSasebo-boundservices and map2 toNagasaki-boundhighwayservices. Current Keneibus ownroutepage independentlylists thisnamedstop alightingonly towardSasebo andboardingonly towardNagasaki, withrespectivepole1and5. ExistinglicensedGTFS exact887063_01/887063_05 preserve thoseoppositedirections andnativepointrecords; officialmapnumbers1/2 are NOT GTFSplatformcodes. Visuallyreviewed officialmap explicitlyshowspublic歩道橋 acrossmainroad, westofthestops, withlandingsonbothpublicstreet sides. WalkfromSaseboarrivalstop1 westalongpublicstreetfrontage, crossusingthatfootbridge, theneastalongoppositeside toNagasakideparturestop2. Return uses samepublicbridge. No crossingbuslanes, coordinate-distancejoin, reversedbus, wheelchair/stepfree claim, geometry, duration or24hourguarantee. Bothnativebuscallingrestrictions retained."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_COOPERATOR_FOOTBRIDGE_CURRENT_DIRECTION_ENDPOINT_BINDING",
+      "hubScopeComplete": false,
+      "locator": "Current co-operator Saihi named卸本町入口 page binds boardingmap1 toSasebo-boundservices and map2 toNagasaki-boundhighwayservices. Current Keneibus ownroutepage independentlylists thisnamedstop alightingonly towardSasebo andboardingonly towardNagasaki, withrespectivepole1and5. ExistinglicensedGTFS exact887063_01/887063_05 preserve thoseoppositedirections andnativepointrecords; officialmapnumbers1/2 are NOT GTFSplatformcodes. Visuallyreviewed officialmap explicitlyshowspublic歩道橋 acrossmainroad, westofthestops, withlandingsonbothpublicstreet sides. WalkfromSaseboarrivalstop1 westalongpublicstreetfrontage, crossusingthatfootbridge, theneastalongoppositeside toNagasakideparturestop2. Return uses samepublicbridge. No crossingbuslanes, coordinate-distancejoin, reversedbus, wheelchair/stepfree claim, geometry, duration or24hourguarantee. Bothnativebuscallingrestrictions retained."
+    }
+  ]
+}

@@ -1,0 +1,443 @@
+{
+  "phaseId": "193-iki-independent-airport-bus-sections-orc-and-public-terminal-chain",
+  "strategy": [
+    "ORIGINAL_AIRPORT_IDENTITY_UPGRADE_WITHOUT_REPLACEMENT",
+    "EXACT_NATIVE_P11_TWO_ADJACENT_CALLS",
+    "INDEPENDENT_FLIGHT_DIRECTIONS",
+    "PUBLIC_TERMINAL_INTERFACE",
+    "CONDITIONAL_FLIGHT_DEPENDENT_SERVICE_PRESERVED"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "government:c28:airport-identities",
+    "bus:iki:current-independent-onokuchi-airport-sections",
+    "airport:iki:current-orc-nagasaki-and-public-terminal-stop"
+  ],
+  "facts": [
+    {
+      "factId": "iki-airport-adjacent-direction-0",
+      "kind": "service",
+      "sourceActionId": "bus:iki:current-independent-onokuchi-airport-sections",
+      "sourceUrl": "https://iki-kotsu.com/pdf/iki_AirPortBus.pdf",
+      "observedResponseSha256": "8027a56e5f3949f451142ae14d046c7b05778124e12427e159e8dedc3432fb1c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:iki:current-independent-onokuchi-airport-sections",
+          "url": "https://iki-kotsu.com/pdf/iki_AirPortBus.pdf",
+          "observedResponseSha256": "8027a56e5f3949f451142ae14d046c7b05778124e12427e159e8dedc3432fb1c"
+        },
+        {
+          "sourceActionId": "bus:iki:current-independent-onokuchi-airport-sections",
+          "url": "https://iki-kotsu.com/connection-bus/",
+          "observedResponseSha256": "c595fcb9820ccd19e7e7eee60e0a1b1da8313cb8d6976ba9dc8509d3bf65d22c"
+        },
+        {
+          "sourceActionId": "airport:iki:current-orc-nagasaki-and-public-terminal-stop",
+          "url": "https://nagasaki-airport.jp/flight/timetable/",
+          "observedResponseSha256": "a430492e075081ad57f8f64ea17dfba7d10a202703efbdf34a1f1b21173b4712"
+        }
+      ],
+      "operator": "壱岐交通（株）",
+      "line": "壱岐空港連絡バス",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "onokuchi-to-airport",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Published2026-03-29 to2026-10-24 conditional airport service: buses cancelled if corresponding ORC41/43 cancelled; airport departure follows actual flight arrival. Planned May/June suspension dates do not cover October checkpoint. Static relation only; no live dispatch or guaranteed timed transfer.",
+      "callingStations": [
+        "尾ノ口",
+        "壱岐空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "尾ノ口",
+          "operator": "壱岐交通（株）",
+          "line": "p11-stop:P11-22_42:bs989",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs989",
+            "recordSha256": "375ed0b8cf07c63c8e19a2d1365a5d04315e7da85a9d75fe7ff1ef4207cd00ad",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 representative. Current carrier full-stop timetable separately calls尾ノ口 then壱岐空港 in outbound block and壱岐空港 then尾ノ口 in return block. No side-of-road physical pole, platform or doorway coordinates inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "壱岐交通（株）",
+              "currentOperatorName": "壱岐交通（株）",
+              "currentStopName": "尾ノ口",
+              "historicalRoute": "壱岐空港連絡バス〔空港方面〕［壱岐交通］",
+              "url": "https://iki-kotsu.com/pdf/iki_AirPortBus.pdf",
+              "observedResponseSha256": "8027a56e5f3949f451142ae14d046c7b05778124e12427e159e8dedc3432fb1c"
+            }
+          }
+        },
+        {
+          "name": "壱岐空港",
+          "operator": "壱岐交通（株）",
+          "line": "p11-stop:P11-22_42:bs987",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs987",
+            "recordSha256": "95903c16a64d6ef6613f20e64b5060334b8de35822a40a534f06df14cbf39bf6",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 representative. Current carrier full-stop timetable separately calls尾ノ口 then壱岐空港 in outbound block and壱岐空港 then尾ノ口 in return block. No side-of-road physical pole, platform or doorway coordinates inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "壱岐交通（株）",
+              "currentOperatorName": "壱岐交通（株）",
+              "currentStopName": "壱岐空港",
+              "historicalRoute": "壱岐空港連絡バス〔空港方面〕［壱岐交通］",
+              "url": "https://iki-kotsu.com/pdf/iki_AirPortBus.pdf",
+              "observedResponseSha256": "8027a56e5f3949f451142ae14d046c7b05778124e12427e159e8dedc3432fb1c"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Operator full-stop timetable upper壱岐空港行 block independently lists尾ノ口 then壱岐空港 consecutive final two calls.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clocks, fares, frequencies or guaranteed operation persisted."
+    },
+    {
+      "factId": "iki-airport-adjacent-direction-1",
+      "kind": "service",
+      "sourceActionId": "bus:iki:current-independent-onokuchi-airport-sections",
+      "sourceUrl": "https://iki-kotsu.com/pdf/iki_AirPortBus.pdf",
+      "observedResponseSha256": "8027a56e5f3949f451142ae14d046c7b05778124e12427e159e8dedc3432fb1c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:iki:current-independent-onokuchi-airport-sections",
+          "url": "https://iki-kotsu.com/pdf/iki_AirPortBus.pdf",
+          "observedResponseSha256": "8027a56e5f3949f451142ae14d046c7b05778124e12427e159e8dedc3432fb1c"
+        },
+        {
+          "sourceActionId": "bus:iki:current-independent-onokuchi-airport-sections",
+          "url": "https://iki-kotsu.com/connection-bus/",
+          "observedResponseSha256": "c595fcb9820ccd19e7e7eee60e0a1b1da8313cb8d6976ba9dc8509d3bf65d22c"
+        },
+        {
+          "sourceActionId": "airport:iki:current-orc-nagasaki-and-public-terminal-stop",
+          "url": "https://nagasaki-airport.jp/flight/timetable/",
+          "observedResponseSha256": "a430492e075081ad57f8f64ea17dfba7d10a202703efbdf34a1f1b21173b4712"
+        }
+      ],
+      "operator": "壱岐交通（株）",
+      "line": "壱岐空港連絡バス",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "airport-to-onokuchi",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Published2026-03-29 to2026-10-24 conditional airport service: buses cancelled if corresponding ORC41/43 cancelled; airport departure follows actual flight arrival. Planned May/June suspension dates do not cover October checkpoint. Static relation only; no live dispatch or guaranteed timed transfer.",
+      "callingStations": [
+        "壱岐空港",
+        "尾ノ口"
+      ],
+      "callingComponents": [
+        {
+          "name": "壱岐空港",
+          "operator": "壱岐交通（株）",
+          "line": "p11-stop:P11-22_42:bs987",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs987",
+            "recordSha256": "95903c16a64d6ef6613f20e64b5060334b8de35822a40a534f06df14cbf39bf6",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 representative. Current carrier full-stop timetable separately calls尾ノ口 then壱岐空港 in outbound block and壱岐空港 then尾ノ口 in return block. No side-of-road physical pole, platform or doorway coordinates inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "壱岐交通（株）",
+              "currentOperatorName": "壱岐交通（株）",
+              "currentStopName": "壱岐空港",
+              "historicalRoute": "壱岐空港連絡バス〔空港方面〕［壱岐交通］",
+              "url": "https://iki-kotsu.com/pdf/iki_AirPortBus.pdf",
+              "observedResponseSha256": "8027a56e5f3949f451142ae14d046c7b05778124e12427e159e8dedc3432fb1c"
+            }
+          }
+        },
+        {
+          "name": "尾ノ口",
+          "operator": "壱岐交通（株）",
+          "line": "p11-stop:P11-22_42:bs989",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs989",
+            "recordSha256": "375ed0b8cf07c63c8e19a2d1365a5d04315e7da85a9d75fe7ff1ef4207cd00ad",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 representative. Current carrier full-stop timetable separately calls尾ノ口 then壱岐空港 in outbound block and壱岐空港 then尾ノ口 in return block. No side-of-road physical pole, platform or doorway coordinates inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "壱岐交通（株）",
+              "currentOperatorName": "壱岐交通（株）",
+              "currentStopName": "尾ノ口",
+              "historicalRoute": "壱岐空港連絡バス〔空港方面〕［壱岐交通］",
+              "url": "https://iki-kotsu.com/pdf/iki_AirPortBus.pdf",
+              "observedResponseSha256": "8027a56e5f3949f451142ae14d046c7b05778124e12427e159e8dedc3432fb1c"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Operator full-stop timetable lower郷ノ浦行 block independently lists壱岐空港 then尾ノ口 consecutive first two calls. Not a reversal of upper block, which has a different city-end sequence.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clocks, fares, frequencies or guaranteed operation persisted."
+    },
+    {
+      "factId": "iki-orc-independent-direction-0",
+      "kind": "service",
+      "sourceActionId": "airport:iki:current-orc-nagasaki-and-public-terminal-stop",
+      "sourceUrl": "https://nagasaki-airport.jp/flight/timetable/",
+      "observedResponseSha256": "a430492e075081ad57f8f64ea17dfba7d10a202703efbdf34a1f1b21173b4712",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:iki:current-orc-nagasaki-and-public-terminal-stop",
+          "url": "https://nagasaki-airport.jp/flight/timetable/",
+          "observedResponseSha256": "a430492e075081ad57f8f64ea17dfba7d10a202703efbdf34a1f1b21173b4712"
+        }
+      ],
+      "operator": "ORC",
+      "line": "長崎・壱岐国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "NGS-IKI",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_2026_OCTOBER_01_TO_24_STATIC_RELATION_NOT_REALTIME",
+      "callingStations": [
+        "長崎空港",
+        "壱岐空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "長崎空港",
+          "operator": "airport-facility:cf03_00001",
+          "line": "airport:cf03_00001",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00001",
+            "requirementId": "review:transport-node:948a4f5d-b386-5d98-84ab-af69c9818a84",
+            "expectedRequirementName": "長崎",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Reuse admitted C28長崎空港 and actual national public connections; own October2026 timetable independently witnesses both Iki directions. No new terminal/curb assertion."
+          }
+        },
+        {
+          "name": "壱岐空港",
+          "operator": "airport-facility:cf03_00041",
+          "line": "airport:cf03_00041",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00041",
+            "requirementId": "review:official-airport:壱岐",
+            "expectedRequirementName": "壱岐",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Official prefecture airport public-terminal diagram and prefectural tourism municipal facility information identify壱岐空港, public entrance and buses at that entrance. Exact C28 whole-airport identity; no precise door coordinate. Current Nagasaki Airport own October timetable separately witnesses ORC flights to/from壱岐."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "壱岐",
+          "canonicalAirportName": "壱岐空港",
+          "referencePointId": "cf03_00041"
+        },
+        {
+          "sourceName": "長崎",
+          "canonicalAirportName": "長崎空港",
+          "referencePointId": "cf03_00001"
+        }
+      ],
+      "locator": "Nagasaki Airport own October1-24 table separate長崎発→壱岐着 heading explicitly shows ORC41 with physical-carrier note. No reversal or clocks persisted."
+    },
+    {
+      "factId": "iki-orc-independent-direction-1",
+      "kind": "service",
+      "sourceActionId": "airport:iki:current-orc-nagasaki-and-public-terminal-stop",
+      "sourceUrl": "https://nagasaki-airport.jp/flight/timetable/",
+      "observedResponseSha256": "a430492e075081ad57f8f64ea17dfba7d10a202703efbdf34a1f1b21173b4712",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:iki:current-orc-nagasaki-and-public-terminal-stop",
+          "url": "https://nagasaki-airport.jp/flight/timetable/",
+          "observedResponseSha256": "a430492e075081ad57f8f64ea17dfba7d10a202703efbdf34a1f1b21173b4712"
+        }
+      ],
+      "operator": "ORC",
+      "line": "長崎・壱岐国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "IKI-NGS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_2026_OCTOBER_01_TO_24_STATIC_RELATION_NOT_REALTIME",
+      "callingStations": [
+        "壱岐空港",
+        "長崎空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "壱岐空港",
+          "operator": "airport-facility:cf03_00041",
+          "line": "airport:cf03_00041",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00041",
+            "requirementId": "review:official-airport:壱岐",
+            "expectedRequirementName": "壱岐",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Official prefecture airport public-terminal diagram and prefectural tourism municipal facility information identify壱岐空港, public entrance and buses at that entrance. Exact C28 whole-airport identity; no precise door coordinate. Current Nagasaki Airport own October timetable separately witnesses ORC flights to/from壱岐."
+          }
+        },
+        {
+          "name": "長崎空港",
+          "operator": "airport-facility:cf03_00001",
+          "line": "airport:cf03_00001",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00001",
+            "requirementId": "review:transport-node:948a4f5d-b386-5d98-84ab-af69c9818a84",
+            "expectedRequirementName": "長崎",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Reuse admitted C28長崎空港 and actual national public connections; own October2026 timetable independently witnesses both Iki directions. No new terminal/curb assertion."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "壱岐",
+          "canonicalAirportName": "壱岐空港",
+          "referencePointId": "cf03_00041"
+        },
+        {
+          "sourceName": "長崎",
+          "canonicalAirportName": "長崎空港",
+          "referencePointId": "cf03_00001"
+        }
+      ],
+      "locator": "Nagasaki Airport own October1-24 table separate壱岐発→長崎着 heading explicitly shows ORC42; ANA/JAL codeshare labels are not duplicate physical services."
+    },
+    {
+      "factId": "iki-terminal-public-entrance-named-airport-bus",
+      "kind": "transfer",
+      "sourceActionId": "airport:iki:current-orc-nagasaki-and-public-terminal-stop",
+      "sourceUrl": "https://www.nagasaki-tabinet.com/barrierfree/100924",
+      "observedResponseSha256": "e08ddd1b79a4b1fa6ec2739925a75956feed161b367b84342ce7ba25a1170701",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:iki:current-orc-nagasaki-and-public-terminal-stop",
+          "url": "https://www.pref.nagasaki.lg.jp/uploads/2026/01/1769506897.pdf",
+          "observedResponseSha256": "24a374c28773f48711d8f8675a146a3ff2d4e458882232b36a11efb7b3fab3d3"
+        },
+        {
+          "sourceActionId": "bus:iki:current-independent-onokuchi-airport-sections",
+          "url": "https://iki-kotsu.com/pdf/iki_AirPortBus.pdf",
+          "observedResponseSha256": "8027a56e5f3949f451142ae14d046c7b05778124e12427e159e8dedc3432fb1c"
+        },
+        {
+          "sourceActionId": "bus:iki:current-independent-onokuchi-airport-sections",
+          "url": "https://iki-kotsu.com/connection-bus/",
+          "observedResponseSha256": "c595fcb9820ccd19e7e7eee60e0a1b1da8313cb8d6976ba9dc8509d3bf65d22c"
+        }
+      ],
+      "components": [
+        {
+          "name": "壱岐空港",
+          "operator": "airport-facility:cf03_00041",
+          "line": "airport:cf03_00041",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00041",
+            "requirementId": "review:official-airport:壱岐",
+            "expectedRequirementName": "壱岐",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Official prefecture airport public-terminal diagram and prefectural tourism municipal facility information identify壱岐空港, public entrance and buses at that entrance. Exact C28 whole-airport identity; no precise door coordinate. Current Nagasaki Airport own October timetable separately witnesses ORC flights to/from壱岐."
+          }
+        },
+        {
+          "name": "壱岐空港",
+          "operator": "壱岐交通（株）",
+          "line": "p11-stop:P11-22_42:bs987",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs987",
+            "recordSha256": "95903c16a64d6ef6613f20e64b5060334b8de35822a40a534f06df14cbf39bf6",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 representative. Current carrier full-stop timetable separately calls尾ノ口 then壱岐空港 in outbound block and壱岐空港 then尾ノ口 in return block. No side-of-road physical pole, platform or doorway coordinates inferred.",
+            "currentOperatorEvidence": {
+              "recordOperator": "壱岐交通（株）",
+              "currentOperatorName": "壱岐交通（株）",
+              "currentStopName": "壱岐空港",
+              "historicalRoute": "壱岐空港連絡バス〔空港方面〕［壱岐交通］",
+              "url": "https://iki-kotsu.com/pdf/iki_AirPortBus.pdf",
+              "observedResponseSha256": "8027a56e5f3949f451142ae14d046c7b05778124e12427e159e8dedc3432fb1c"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "reviewMethod": "OFFICIAL_MUNICIPAL_TERMINAL_PUBLIC_ENTRANCE_BUS_INTERFACE",
+      "locator": "Nagasaki prefectural official tourism terminal survey section壱岐空港 explicitly places taxi/bus at the facility public entrance and describes access to it. Prefectural airport plan independently marks public entrance and arrival lobby. Carrier current independently directional buses call壱岐空港. Only whole-airport to representative named airport stop interface; no precise pole, side-of-road crossing, accessibility, duration or airside claim; not based on coordinate distance."
+    }
+  ],
+  "scope": "Original Iki airport chain only; two necessary P11 representatives, original HOLD airport same-ID upgrade, six directed edges. Phase192Fukue private P11 records retained as pending dependency; no islandwide expansion."
+}

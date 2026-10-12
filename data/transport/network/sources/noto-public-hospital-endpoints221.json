@@ -1,0 +1,56 @@
+{
+  "source": {
+    "sourceId": "transport-source:086:a2ff8e43552dc9f4923f103d0ca77c34",
+    "url": "https://www.town.noto.lg.jp/kakuka/ushitsu-hospital/5004.html",
+    "contentSha256": "880fab8e1e087b392ca028f8d64de54c114d5f4df186185ae5c99fe219a793ca",
+    "evidenceContentSha256": "2aa08d5e31b1f8c2c7e72b4636f7da3bc9d0e82bca46d01b2f5a5e380fb9429f",
+    "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+    "observedAt": "2026-10-03T16:04:05.208Z",
+    "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+    "rawPayloadRetained": false,
+    "derivedDataAllowed": true,
+    "redistributionAllowed": true,
+    "metricPersistenceAllowed": false,
+    "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+    "rightsReview": {
+      "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+      "termsUrl": "https://www.town.noto.lg.jp/kakuka/1011/gyomu/7/hp/3308.html",
+      "reason": "Minimum independently structured named hospital passenger access and exact current name/address. Copyright reservation on expressive works is retained; no article, image or map republication licence claimed. Airport furusato service is separate from resident-only local taxi."
+    },
+    "attribution": "https://www.town.noto.lg.jp/kakuka/ushitsu-hospital/5004.html; operator factual topology; reviewed 2026-10-03T16:04:05.208Z"
+  },
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:9caa3a6553a598d29152bff801222f4d",
+      "sourceId": "transport-source:086:a2ff8e43552dc9f4923f103d0ca77c34",
+      "sourceSha256": "880fab8e1e087b392ca028f8d64de54c114d5f4df186185ae5c99fe219a793ca",
+      "record": {
+        "kind": "REVIEWED_PUBLIC_OD_ENDPOINTS",
+        "factId": "noto-public-hospital-endpoints221",
+        "endpointNames": [
+          "能登空港",
+          "公立宇出津総合病院"
+        ],
+        "currentHospitalAddress": "鳳珠郡能登町字宇出津タ字97番地",
+        "sourceActionId": "od:noto:town-hospital-current-public-endpoint:221",
+        "sourceUrl": "https://www.town.noto.lg.jp/kakuka/ushitsu-hospital/5004.html",
+        "observedResponseSha256": "2aa08d5e31b1f8c2c7e72b4636f7da3bc9d0e82bca46d01b2f5a5e380fb9429f",
+        "corroboratingEvidence": [
+          {
+            "sourceActionId": "od:noto:town-hospital-current-public-endpoint:221",
+            "url": "https://www.town.noto.lg.jp/kakuka/ushitsu-hospital/4979.html",
+            "observedResponseSha256": "1a31a4934e03be3784a11b3ce310cc4db1cbf493c368ba027a0fe3f629423f20"
+          },
+          {
+            "sourceActionId": "od:noto:airport-flight-associated-public:221",
+            "url": "https://www.noto-airport.jp/access/furutaku.html",
+            "observedResponseSha256": "d805ac40711903ee54ada66643f540a8e59856b2821900d6947aec5a54163044"
+          }
+        ],
+        "locator": "Hospital Q1 names airport furusato access separately from residents-only local taxi; current introduction exact name/address. Airport bidirectional requested boarding/alighting place coverage includes this named facility, subject to assignment/confirmation."
+      },
+      "recordSha256": "2a27bc5b91175a916f694834a05c7d571effd9073fc093ecf4b8f4ffb9b8f792",
+      "locator": "Hospital Q1 names airport furusato access separately from residents-only local taxi; current introduction exact name/address. Airport bidirectional requested boarding/alighting place coverage includes this named facility, subject to assignment/confirmation."
+    }
+  ]
+}

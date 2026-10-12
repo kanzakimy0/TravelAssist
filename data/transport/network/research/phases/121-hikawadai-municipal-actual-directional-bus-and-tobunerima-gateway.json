@@ -1,0 +1,729 @@
+{
+  "phaseId": "121-hikawadai-municipal-actual-directional-bus-and-tobunerima-gateway",
+  "strategy": [
+    "T1_RAIL_DEFICIT_REPAIRED_VIA_CURRENT_MUNICIPAL_SERVICE",
+    "INDEPENDENT_DIRECTIONAL_COLUMNS_PRESERVE_LOOP_STOPS",
+    "LICENSED_P11_PROVIDER_IDENTITIES_WITH_CURRENT_CONTRACTOR_REVIEW",
+    "EXPLICIT_PUBLIC_RAIL_BUS_GATEWAYS"
+  ],
+  "completedActionIds": [
+    "bus:nerima:current-hikawadai-nerima-line-directional-sections",
+    "hub:itabashi:tobunerima-south-exit-midori-bus-gateway",
+    "hub:tokyometro:hikawadai-public-exits-municipal-bus-connection"
+  ],
+  "facts": [
+    {
+      "factId": "midori-hikawadai-nerima-line-nerima-bound-reviewed-section",
+      "kind": "service",
+      "sourceActionId": "bus:nerima:current-hikawadai-nerima-line-directional-sections",
+      "sourceUrl": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+      "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:nerima:current-hikawadai-nerima-line-directional-sections",
+          "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+          "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+        },
+        {
+          "sourceActionId": "bus:nerima:current-hikawadai-nerima-line-directional-sections",
+          "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/kakuruto/hikawadai-route.html",
+          "observedResponseSha256": "5db1d458ab7baa077b5164f594195d39a47401920a1f63d74aae154cbe630d81"
+        }
+      ],
+      "locator": "Page 2 left table, second actual column / first Nerima-line column; contiguous retained rows 34 through 23 of the full Kitamachi-school to Nerima-station trip. Both actual directional columns independently viewed; the return uses Kitamachi-school and Kitamachi-2-east, not reversal of the outward loop. Only contiguous partial service topology retained; no invented terminus, Hikarigaoka-line substitution, clocks or timetable compilation.",
+      "line": "みどりバス氷川台ルート練馬線・東武練馬氷川台区間",
+      "operator": "国際興業株式会社",
+      "serviceProvider": "練馬区",
+      "mode": "local_bus",
+      "serviceClass": "みどりバス練馬線",
+      "direction": "nerima-bound",
+      "callingStations": [
+        "東武練馬駅入口",
+        "北町上宿公園",
+        "北町中学校",
+        "北町二丁目",
+        "自衛隊前",
+        "練馬北町車庫",
+        "錦団地",
+        "仲町小学校",
+        "氷川台福祉園",
+        "城北中央公園",
+        "羽沢三丁目",
+        "氷川台駅"
+      ],
+      "callingComponents": [
+        {
+          "name": "東武練馬駅入口",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1477",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1477",
+            "recordSha256": "1151c5523784039a8d5a82fc7cfc8ac82be06e96c219c7a6e9b585ddd8c48699",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "東武練馬駅入口",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "北町上宿公園",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1462",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1462",
+            "recordSha256": "246aa7b5ca476dff18081f8161a0070d3d6679d9febf862f41f74da664bfcfd8",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "北町上宿公園",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "北町中学校",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1542",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1542",
+            "recordSha256": "889a3574425e7af7931cab4b9d132fa3eb509c38899671371ae9ea0590819c32",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "北町中学校",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "北町二丁目",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1579",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1579",
+            "recordSha256": "85ed3172b9e61bd39001e375577a4c909472f26ec41ee73e15c284a793d2b558",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "北町二丁目",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "自衛隊前",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1616",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1616",
+            "recordSha256": "6f42b589c99a1e4ea35b3e97341c848b4a410216a1527a373fe4a84065cdae97",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "自衛隊前",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "練馬北町車庫",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1672",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1672",
+            "recordSha256": "c96fa2dea700d9eff3b400d2baa15bfaee5d928dfd9c0fc88214f0bf55b19ac6",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "練馬北町車庫",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "錦団地",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1813",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1813",
+            "recordSha256": "5bbba79eab0eae85583f4360f4fd44ba90107543ceeb4c2f02547afeb18e5916",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "錦団地",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "仲町小学校",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1980",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1980",
+            "recordSha256": "79d93ad0a7abc27377465b047f5c130be9cf1830ab570e8cb490f7f9da078890",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "仲町小学校",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "氷川台福祉園",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs2085",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs2085",
+            "recordSha256": "90bd7ea40a7ebdb88d7cb70377a2d736d7a94a21291bdbf9106a848c4cbbea72",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "氷川台福祉園",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "城北中央公園",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs2229",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs2229",
+            "recordSha256": "bfbde1dc0b0413b1ea218f2bbd6055ad8df5f95b1c25dec549ed1ba197ceecd1",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "城北中央公園",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "羽沢三丁目",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs2515",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs2515",
+            "recordSha256": "ae383b20ab7a3d67377ad882e8410cc85cb7f0d34d67141768277d4a0d1d7c79",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "羽沢三丁目",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "氷川台駅",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs2512",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs2512",
+            "recordSha256": "9e4041384c0cbacb735d4b496ac94a4e50bf618f4d4ff1cc4f697b59a41dc84c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "氷川台駅",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_MUNICIPAL_ACTUAL_DIRECTIONAL_TRIP_COLUMNS_WITH_EXACT_LICENSED_P11_STOPS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_SECTION_NOT_REALTIME",
+      "purpose": "required_gateway"
+    },
+    {
+      "factId": "midori-hikawadai-nerima-line-kitamachi-bound-reviewed-section",
+      "kind": "service",
+      "sourceActionId": "bus:nerima:current-hikawadai-nerima-line-directional-sections",
+      "sourceUrl": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+      "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:nerima:current-hikawadai-nerima-line-directional-sections",
+          "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+          "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+        },
+        {
+          "sourceActionId": "bus:nerima:current-hikawadai-nerima-line-directional-sections",
+          "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/kakuruto/hikawadai-route.html",
+          "observedResponseSha256": "5db1d458ab7baa077b5164f594195d39a47401920a1f63d74aae154cbe630d81"
+        }
+      ],
+      "locator": "Page 2 right table, third actual column / second Nerima-line column; contiguous retained rows 24 through 32 of the full Nerima-station to Kitamachi-depot trip. First partial Nerima-line trip does not call Hikawadai and is excluded. Both actual directional columns independently viewed; the return uses Kitamachi-school and Kitamachi-2-east, not reversal of the outward loop. Only contiguous partial service topology retained; no invented terminus, Hikarigaoka-line substitution, clocks or timetable compilation.",
+      "line": "みどりバス氷川台ルート練馬線・東武練馬氷川台区間",
+      "operator": "国際興業株式会社",
+      "serviceProvider": "練馬区",
+      "mode": "local_bus",
+      "serviceClass": "みどりバス練馬線",
+      "direction": "kitamachi-bound",
+      "callingStations": [
+        "氷川台駅",
+        "羽沢三丁目",
+        "城北中央公園",
+        "氷川台福祉園",
+        "仲町小学校",
+        "錦団地",
+        "北町小学校",
+        "北町二丁目東",
+        "東武練馬駅入口"
+      ],
+      "callingComponents": [
+        {
+          "name": "氷川台駅",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs2512",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs2512",
+            "recordSha256": "9e4041384c0cbacb735d4b496ac94a4e50bf618f4d4ff1cc4f697b59a41dc84c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "氷川台駅",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "羽沢三丁目",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs2515",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs2515",
+            "recordSha256": "ae383b20ab7a3d67377ad882e8410cc85cb7f0d34d67141768277d4a0d1d7c79",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "羽沢三丁目",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "城北中央公園",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs2229",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs2229",
+            "recordSha256": "bfbde1dc0b0413b1ea218f2bbd6055ad8df5f95b1c25dec549ed1ba197ceecd1",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "城北中央公園",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "氷川台福祉園",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs2085",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs2085",
+            "recordSha256": "90bd7ea40a7ebdb88d7cb70377a2d736d7a94a21291bdbf9106a848c4cbbea72",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "氷川台福祉園",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "仲町小学校",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1980",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1980",
+            "recordSha256": "79d93ad0a7abc27377465b047f5c130be9cf1830ab570e8cb490f7f9da078890",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "仲町小学校",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "錦団地",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1813",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1813",
+            "recordSha256": "5bbba79eab0eae85583f4360f4fd44ba90107543ceeb4c2f02547afeb18e5916",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "錦団地",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "北町小学校",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1596",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1596",
+            "recordSha256": "6176d600ae533236596fd0dc48bde79c70699a009720a531d8a8123e0e28d9ae",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "北町小学校",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "北町二丁目東",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1491",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1491",
+            "recordSha256": "6180c187a9b8af19af248144c118612ada62690a50984abc47554fac6e73ed5d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "北町二丁目東",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "東武練馬駅入口",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1477",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1477",
+            "recordSha256": "1151c5523784039a8d5a82fc7cfc8ac82be06e96c219c7a6e9b585ddd8c48699",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "東武練馬駅入口",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_MUNICIPAL_ACTUAL_DIRECTIONAL_TRIP_COLUMNS_WITH_EXACT_LICENSED_P11_STOPS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_SECTION_NOT_REALTIME",
+      "purpose": "required_gateway"
+    },
+    {
+      "factId": "tobunerima-south-public-exit-midori-road-stop",
+      "kind": "transfer",
+      "sourceActionId": "hub:itabashi:tobunerima-south-exit-midori-bus-gateway",
+      "sourceUrl": "https://www.city.itabashi.tokyo.jp/_res/projects/default_project/_page_/001/016/266/tobunerima202210.pdf",
+      "observedResponseSha256": "988f57cd57925c9dfe42b36c7153ad18f310d54cc38ee8e874497a6f16cef60d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:itabashi:tobunerima-south-exit-midori-bus-gateway",
+          "url": "https://www.city.itabashi.tokyo.jp/bousai/toshikeiakku/kotsu/1016261/1016266.html",
+          "observedResponseSha256": "df90bc50f1818882d6dbef4ea9051b0f3aa6ec791b969b2f12cfa572940fb7dd"
+        },
+        {
+          "sourceActionId": "bus:nerima:current-hikawadai-nerima-line-directional-sections",
+          "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+          "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+        },
+        {
+          "sourceActionId": "bus:nerima:current-hikawadai-nerima-line-directional-sections",
+          "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/kakuruto/hikawadai-route.html",
+          "observedResponseSha256": "5db1d458ab7baa077b5164f594195d39a47401920a1f63d74aae154cbe630d81"
+        }
+      ],
+      "locator": "Individually viewed municipal station diagram: south public exit leads to the public street and Tobu-nerima-ekii-riguchi Midori stop; the one-way loop uses this stop in both retained service sections. Current municipal route explicitly confirms the rail connection. North-side Tobu-nerima stops, other operators, paid-area equivalence, precise curb coordinates and walking-time claims are excluded.",
+      "components": [
+        {
+          "name": "東武練馬",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東武練馬駅入口",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs1477",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs1477",
+            "recordSha256": "1151c5523784039a8d5a82fc7cfc8ac82be06e96c219c7a6e9b585ddd8c48699",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "東武練馬駅入口",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_MUNICIPAL_STATION_PUBLIC_EXIT_STOP_DIAGRAM_AND_CURRENT_SERVICE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hikawadai-public-gate-road-stop-municipal-interchange",
+      "kind": "transfer",
+      "sourceActionId": "bus:nerima:current-hikawadai-nerima-line-directional-sections",
+      "sourceUrl": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/kakuruto/hikawadai-route.html",
+      "observedResponseSha256": "5db1d458ab7baa077b5164f594195d39a47401920a1f63d74aae154cbe630d81",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:nerima:current-hikawadai-nerima-line-directional-sections",
+          "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+          "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+        },
+        {
+          "sourceActionId": "hub:tokyometro:hikawadai-public-exits-municipal-bus-connection",
+          "url": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_hikawadai_all.jpg",
+          "observedResponseSha256": "04f1686c9480fe0a7035f9599661b4f64067a39c2e72f8e8e6b5637e6ae80a1a"
+        },
+        {
+          "sourceActionId": "hub:tokyometro:hikawadai-public-exits-municipal-bus-connection",
+          "url": "https://www.tokyometro.jp/station/hikawadai/index.html",
+          "observedResponseSha256": "a60152595706b61d2afb434feb93ce3f98e94c9a0a86f104c5addea032afe8b8"
+        },
+        {
+          "sourceActionId": "hub:tokyometro:hikawadai-public-exits-municipal-bus-connection",
+          "url": "https://www.tokyometro.jp/station/hikawadai/accessibility/index.html",
+          "observedResponseSha256": "15d1a2de646f7d83a88fa0b11b72c2d058faf45d6ecd8a27f319c7631305ceb0"
+        }
+      ],
+      "locator": "Current municipal route explicitly identifies interchange with Tokyo Metro Hikawadai; individually viewed municipal route map places the road stop at the station. Current-linked Metro diagram independently shows B3 platforms through the B2 public gate and public exits 1/2 to street level. Retain coarse public surface interchange only; no exact exit-to-bay assignment, same-name/proximity-only inference, paid-area equivalence or step-free guarantee.",
+      "components": [
+        {
+          "name": "氷川台駅",
+          "operator": "練馬区",
+          "line": "p11-stop:P11-22_13:bs2512",
+          "mode": "local_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs2512",
+            "recordSha256": "9e4041384c0cbacb735d4b496ac94a4e50bf618f4d4ff1cc4f697b59a41dc84c",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact P11 municipal-provider stop and historical Hikawadai route matched to individually viewed current municipal Nerima-line calls. General-passenger road-stop component, not another colocated operator, a precise bay, or an automatic rail transfer. Municipal provider identity remains separate from current Kokusai Kogyo operating contractor.",
+            "currentOperatorEvidence": {
+              "recordOperator": "練馬区",
+              "currentOperatorName": "練馬区（運行委託：国際興業株式会社）",
+              "currentStopName": "氷川台駅",
+              "historicalRoute": "氷川台ルート",
+              "url": "https://www.city.nerima.tokyo.jp/kurashi/sumai/bus/jikokuhyo/hikawadai_timetable.files/20250601_hikawadai.pdf",
+              "observedResponseSha256": "436be81afe6b828f2ad09fa5f57ee5d940e55b7b6ab1666c862d703064aedeb0"
+            }
+          }
+        },
+        {
+          "name": "氷川台",
+          "operator": "東京地下鉄",
+          "line": "8号線有楽町線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_MUNICIPAL_RAIL_BUS_CONNECTION_AND_OPERATOR_PUBLIC_EXIT",
+      "hubScopeComplete": false
+    }
+  ]
+}

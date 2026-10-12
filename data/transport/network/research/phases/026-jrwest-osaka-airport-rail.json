@@ -1,0 +1,1511 @@
+{
+  "phaseId": "026-jrwest-osaka-airport-rail",
+  "strategy": [
+    "JR_WEST_SERVICE_STOPPING_DIAGRAM",
+    "OSAKA_LOOP_YAMATOJI_HANWA_KANSAI_AIRPORT",
+    "conventional_rail"
+  ],
+  "completedActionIds": ["rail:jr-west:osaka"],
+  "facts": [
+    {
+      "factId": "osaka-loop-outbound",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:osaka",
+      "sourceUrl": "https://www.jr-odekake.net/station/pdf/teisya_02.pdf",
+      "observedResponseSha256": "f1ae75c6d83c1362cd6b6c9dde5e21151066170bc2c81badeff3c3acb206f4c1",
+      "locator": "Official currently linked Stops Information diagram, printed revision 2023-03-18, observed 2026-10-01. Trace only 普通 row in the named section; all open-circle calls, both directions. Optional-stop Kishu Rapid rows are excluded. Separate branches and service classes are not unioned.",
+      "line": "大阪環状線",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "天王寺",
+        "寺田町",
+        "桃谷",
+        "鶴橋",
+        "玉造",
+        "森ノ宮",
+        "大阪城公園",
+        "京橋",
+        "桜ノ宮",
+        "天満",
+        "大阪",
+        "福島",
+        "野田",
+        "西九条",
+        "弁天町",
+        "大正",
+        "芦原橋",
+        "今宮",
+        "新今宮",
+        "天王寺"
+      ],
+      "callingComponents": [
+        {
+          "name": "天王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "寺田町",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "桃谷",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鶴橋",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "玉造",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "森ノ宮",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大阪城公園",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "京橋",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "桜ノ宮",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "天満",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大阪",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "福島",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "野田",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西九条",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "弁天町",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大正",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "芦原橋",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "今宮",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新今宮",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "天王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_SERVICE_SPECIFIC_STOPPING_TRACE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENTLY_PUBLISHED_OFFICIAL_STATIC_DIAGRAM_NOT_REALTIME"
+    },
+    {
+      "factId": "osaka-loop-inbound",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:osaka",
+      "sourceUrl": "https://www.jr-odekake.net/station/pdf/teisya_02.pdf",
+      "observedResponseSha256": "f1ae75c6d83c1362cd6b6c9dde5e21151066170bc2c81badeff3c3acb206f4c1",
+      "locator": "Official currently linked Stops Information diagram, printed revision 2023-03-18, observed 2026-10-01. Trace only 普通 row in the named section; all open-circle calls, both directions. Optional-stop Kishu Rapid rows are excluded. Separate branches and service classes are not unioned.",
+      "line": "大阪環状線",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "天王寺",
+        "新今宮",
+        "今宮",
+        "芦原橋",
+        "大正",
+        "弁天町",
+        "西九条",
+        "野田",
+        "福島",
+        "大阪",
+        "天満",
+        "桜ノ宮",
+        "京橋",
+        "大阪城公園",
+        "森ノ宮",
+        "玉造",
+        "鶴橋",
+        "桃谷",
+        "寺田町",
+        "天王寺"
+      ],
+      "callingComponents": [
+        {
+          "name": "天王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新今宮",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "今宮",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "芦原橋",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大正",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "弁天町",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西九条",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "野田",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "福島",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大阪",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "天満",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "桜ノ宮",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "京橋",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大阪城公園",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "森ノ宮",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "玉造",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鶴橋",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "桃谷",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "寺田町",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "天王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_SERVICE_SPECIFIC_STOPPING_TRACE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENTLY_PUBLISHED_OFFICIAL_STATIC_DIAGRAM_NOT_REALTIME"
+    },
+    {
+      "factId": "yamatoji-local-outbound",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:osaka",
+      "sourceUrl": "https://www.jr-odekake.net/station/pdf/teisya_02.pdf",
+      "observedResponseSha256": "f1ae75c6d83c1362cd6b6c9dde5e21151066170bc2c81badeff3c3acb206f4c1",
+      "locator": "Official currently linked Stops Information diagram, printed revision 2023-03-18, observed 2026-10-01. Trace only 普通 row in the named section; all open-circle calls, both directions. Optional-stop Kishu Rapid rows are excluded. Separate branches and service classes are not unioned.",
+      "line": "関西線",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "JR難波",
+        "今宮",
+        "新今宮",
+        "天王寺",
+        "東部市場前",
+        "平野",
+        "加美",
+        "久宝寺",
+        "八尾",
+        "志紀",
+        "柏原",
+        "高井田",
+        "河内堅上",
+        "三郷",
+        "王寺",
+        "法隆寺",
+        "大和小泉",
+        "郡山",
+        "奈良",
+        "平城山",
+        "木津",
+        "加茂"
+      ],
+      "callingComponents": [
+        {
+          "name": "JR難波",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "今宮",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新今宮",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "天王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東部市場前",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "平野",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "加美",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "久宝寺",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "八尾",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "志紀",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "柏原",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高井田",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "河内堅上",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三郷",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "法隆寺",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大和小泉",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "郡山",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "奈良",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "平城山",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "木津",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "加茂",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_SERVICE_SPECIFIC_STOPPING_TRACE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENTLY_PUBLISHED_OFFICIAL_STATIC_DIAGRAM_NOT_REALTIME"
+    },
+    {
+      "factId": "yamatoji-local-inbound",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:osaka",
+      "sourceUrl": "https://www.jr-odekake.net/station/pdf/teisya_02.pdf",
+      "observedResponseSha256": "f1ae75c6d83c1362cd6b6c9dde5e21151066170bc2c81badeff3c3acb206f4c1",
+      "locator": "Official currently linked Stops Information diagram, printed revision 2023-03-18, observed 2026-10-01. Trace only 普通 row in the named section; all open-circle calls, both directions. Optional-stop Kishu Rapid rows are excluded. Separate branches and service classes are not unioned.",
+      "line": "関西線",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "加茂",
+        "木津",
+        "平城山",
+        "奈良",
+        "郡山",
+        "大和小泉",
+        "法隆寺",
+        "王寺",
+        "三郷",
+        "河内堅上",
+        "高井田",
+        "柏原",
+        "志紀",
+        "八尾",
+        "久宝寺",
+        "加美",
+        "平野",
+        "東部市場前",
+        "天王寺",
+        "新今宮",
+        "今宮",
+        "JR難波"
+      ],
+      "callingComponents": [
+        {
+          "name": "加茂",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "木津",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "平城山",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "奈良",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "郡山",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大和小泉",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "法隆寺",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三郷",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "河内堅上",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高井田",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "柏原",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "志紀",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "八尾",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "久宝寺",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "加美",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "平野",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東部市場前",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "天王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新今宮",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "今宮",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "JR難波",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_SERVICE_SPECIFIC_STOPPING_TRACE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENTLY_PUBLISHED_OFFICIAL_STATIC_DIAGRAM_NOT_REALTIME"
+    },
+    {
+      "factId": "hanwa-local-outbound",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:osaka",
+      "sourceUrl": "https://www.jr-odekake.net/station/pdf/teisya_02.pdf",
+      "observedResponseSha256": "f1ae75c6d83c1362cd6b6c9dde5e21151066170bc2c81badeff3c3acb206f4c1",
+      "locator": "Official currently linked Stops Information diagram, printed revision 2023-03-18, observed 2026-10-01. Trace only 普通 row in the named section; all open-circle calls, both directions. Optional-stop Kishu Rapid rows are excluded. Separate branches and service classes are not unioned.",
+      "line": "阪和線",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "天王寺",
+        "美章園",
+        "南田辺",
+        "鶴ケ丘",
+        "長居",
+        "我孫子町",
+        "杉本町",
+        "浅香",
+        "堺市",
+        "三国ケ丘",
+        "百舌鳥",
+        "上野芝",
+        "津久野",
+        "鳳",
+        "富木",
+        "北信太",
+        "信太山",
+        "和泉府中",
+        "久米田",
+        "下松",
+        "東岸和田",
+        "東貝塚",
+        "和泉橋本",
+        "東佐野",
+        "熊取",
+        "日根野",
+        "長滝",
+        "新家",
+        "和泉砂川",
+        "和泉鳥取",
+        "山中渓",
+        "紀伊",
+        "六十谷",
+        "紀伊中ノ島",
+        "和歌山"
+      ],
+      "callingComponents": [
+        {
+          "name": "天王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "美章園",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "南田辺",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鶴ヶ丘",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "鶴ケ丘",
+            "stationCode": "007556",
+            "review": "Only Japanese small-ke orthography differs; exact operator, physical line and station code reviewed."
+          }
+        },
+        {
+          "name": "長居",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "我孫子町",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "杉本町",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "浅香",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "堺市",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三国ヶ丘",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "三国ケ丘",
+            "stationCode": "007693",
+            "review": "Only Japanese small-ke orthography differs; exact operator, physical line and station code reviewed."
+          }
+        },
+        {
+          "name": "百舌鳥",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "上野芝",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "津久野",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鳳",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "富木",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "北信太",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "信太山",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和泉府中",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "久米田",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "下松",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東岸和田",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東貝塚",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和泉橋本",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東佐野",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "熊取",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "日根野",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "長滝",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新家",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和泉砂川",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和泉鳥取",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "山中渓",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "紀伊",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "六十谷",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "紀伊中ノ島",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和歌山",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_SERVICE_SPECIFIC_STOPPING_TRACE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENTLY_PUBLISHED_OFFICIAL_STATIC_DIAGRAM_NOT_REALTIME"
+    },
+    {
+      "factId": "hanwa-local-inbound",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:osaka",
+      "sourceUrl": "https://www.jr-odekake.net/station/pdf/teisya_02.pdf",
+      "observedResponseSha256": "f1ae75c6d83c1362cd6b6c9dde5e21151066170bc2c81badeff3c3acb206f4c1",
+      "locator": "Official currently linked Stops Information diagram, printed revision 2023-03-18, observed 2026-10-01. Trace only 普通 row in the named section; all open-circle calls, both directions. Optional-stop Kishu Rapid rows are excluded. Separate branches and service classes are not unioned.",
+      "line": "阪和線",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "和歌山",
+        "紀伊中ノ島",
+        "六十谷",
+        "紀伊",
+        "山中渓",
+        "和泉鳥取",
+        "和泉砂川",
+        "新家",
+        "長滝",
+        "日根野",
+        "熊取",
+        "東佐野",
+        "和泉橋本",
+        "東貝塚",
+        "東岸和田",
+        "下松",
+        "久米田",
+        "和泉府中",
+        "信太山",
+        "北信太",
+        "富木",
+        "鳳",
+        "津久野",
+        "上野芝",
+        "百舌鳥",
+        "三国ケ丘",
+        "堺市",
+        "浅香",
+        "杉本町",
+        "我孫子町",
+        "長居",
+        "鶴ケ丘",
+        "南田辺",
+        "美章園",
+        "天王寺"
+      ],
+      "callingComponents": [
+        {
+          "name": "和歌山",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "紀伊中ノ島",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "六十谷",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "紀伊",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "山中渓",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和泉鳥取",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和泉砂川",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新家",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "長滝",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "日根野",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "熊取",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東佐野",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和泉橋本",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東貝塚",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東岸和田",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "下松",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "久米田",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和泉府中",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "信太山",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "北信太",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "富木",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鳳",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "津久野",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "上野芝",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "百舌鳥",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三国ヶ丘",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "三国ケ丘",
+            "stationCode": "007693",
+            "review": "Only Japanese small-ke orthography differs; exact operator, physical line and station code reviewed."
+          }
+        },
+        {
+          "name": "堺市",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "浅香",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "杉本町",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "我孫子町",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "長居",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鶴ヶ丘",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "鶴ケ丘",
+            "stationCode": "007556",
+            "review": "Only Japanese small-ke orthography differs; exact operator, physical line and station code reviewed."
+          }
+        },
+        {
+          "name": "南田辺",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "美章園",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "天王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_SERVICE_SPECIFIC_STOPPING_TRACE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENTLY_PUBLISHED_OFFICIAL_STATIC_DIAGRAM_NOT_REALTIME"
+    },
+    {
+      "factId": "kansai-airport-rapid-outbound",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:osaka",
+      "sourceUrl": "https://www.jr-odekake.net/station/pdf/teisya_02.pdf",
+      "observedResponseSha256": "f1ae75c6d83c1362cd6b6c9dde5e21151066170bc2c81badeff3c3acb206f4c1",
+      "locator": "Official currently linked Stops Information diagram, printed revision 2023-03-18, observed 2026-10-01. Trace only 関空快速 row in the named section; all open-circle calls, both directions. Optional-stop Kishu Rapid rows are excluded. Separate branches and service classes are not unioned.",
+      "line": "関空快速",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "関空快速",
+      "direction": "outbound",
+      "callingStations": [
+        "天王寺",
+        "堺市",
+        "三国ケ丘",
+        "鳳",
+        "和泉府中",
+        "東岸和田",
+        "熊取",
+        "日根野",
+        "りんくうタウン",
+        "関西空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "天王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "堺市",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三国ヶ丘",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "三国ケ丘",
+            "stationCode": "007693",
+            "review": "Only Japanese small-ke orthography differs; exact operator, physical line and station code reviewed."
+          }
+        },
+        {
+          "name": "鳳",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和泉府中",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東岸和田",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "熊取",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "日根野",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "りんくうタウン",
+          "operator": "西日本旅客鉄道",
+          "line": "関西空港線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "関西空港",
+          "operator": "西日本旅客鉄道",
+          "line": "関西空港線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_SERVICE_SPECIFIC_STOPPING_TRACE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENTLY_PUBLISHED_OFFICIAL_STATIC_DIAGRAM_NOT_REALTIME"
+    },
+    {
+      "factId": "kansai-airport-rapid-inbound",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:osaka",
+      "sourceUrl": "https://www.jr-odekake.net/station/pdf/teisya_02.pdf",
+      "observedResponseSha256": "f1ae75c6d83c1362cd6b6c9dde5e21151066170bc2c81badeff3c3acb206f4c1",
+      "locator": "Official currently linked Stops Information diagram, printed revision 2023-03-18, observed 2026-10-01. Trace only 関空快速 row in the named section; all open-circle calls, both directions. Optional-stop Kishu Rapid rows are excluded. Separate branches and service classes are not unioned.",
+      "line": "関空快速",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "関空快速",
+      "direction": "inbound",
+      "callingStations": [
+        "関西空港",
+        "りんくうタウン",
+        "日根野",
+        "熊取",
+        "東岸和田",
+        "和泉府中",
+        "鳳",
+        "三国ケ丘",
+        "堺市",
+        "天王寺"
+      ],
+      "callingComponents": [
+        {
+          "name": "関西空港",
+          "operator": "西日本旅客鉄道",
+          "line": "関西空港線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "りんくうタウン",
+          "operator": "西日本旅客鉄道",
+          "line": "関西空港線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "日根野",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "熊取",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東岸和田",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "和泉府中",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鳳",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三国ヶ丘",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "三国ケ丘",
+            "stationCode": "007693",
+            "review": "Only Japanese small-ke orthography differs; exact operator, physical line and station code reviewed."
+          }
+        },
+        {
+          "name": "堺市",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "天王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_SERVICE_SPECIFIC_STOPPING_TRACE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENTLY_PUBLISHED_OFFICIAL_STATIC_DIAGRAM_NOT_REALTIME"
+    },
+    {
+      "factId": "yumesaki-local-outbound",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:osaka",
+      "sourceUrl": "https://www.jr-odekake.net/station/pdf/teisya_02.pdf",
+      "observedResponseSha256": "f1ae75c6d83c1362cd6b6c9dde5e21151066170bc2c81badeff3c3acb206f4c1",
+      "locator": "Official currently linked Stops Information diagram, printed revision 2023-03-18, observed 2026-10-01. Trace only 普通 row in the named section; all open-circle calls, both directions. Optional-stop Kishu Rapid rows are excluded. Separate branches and service classes are not unioned.",
+      "line": "桜島線",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": ["西九条", "安治川口", "ユニバーサルシティ", "桜島"],
+      "callingComponents": [
+        {
+          "name": "西九条",
+          "operator": "西日本旅客鉄道",
+          "line": "桜島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "安治川口",
+          "operator": "西日本旅客鉄道",
+          "line": "桜島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "ユニバーサルシティ",
+          "operator": "西日本旅客鉄道",
+          "line": "桜島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "桜島",
+          "operator": "西日本旅客鉄道",
+          "line": "桜島線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_SERVICE_SPECIFIC_STOPPING_TRACE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENTLY_PUBLISHED_OFFICIAL_STATIC_DIAGRAM_NOT_REALTIME"
+    },
+    {
+      "factId": "yumesaki-local-inbound",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:osaka",
+      "sourceUrl": "https://www.jr-odekake.net/station/pdf/teisya_02.pdf",
+      "observedResponseSha256": "f1ae75c6d83c1362cd6b6c9dde5e21151066170bc2c81badeff3c3acb206f4c1",
+      "locator": "Official currently linked Stops Information diagram, printed revision 2023-03-18, observed 2026-10-01. Trace only 普通 row in the named section; all open-circle calls, both directions. Optional-stop Kishu Rapid rows are excluded. Separate branches and service classes are not unioned.",
+      "line": "桜島線",
+      "operator": "西日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": ["桜島", "ユニバーサルシティ", "安治川口", "西九条"],
+      "callingComponents": [
+        {
+          "name": "桜島",
+          "operator": "西日本旅客鉄道",
+          "line": "桜島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "ユニバーサルシティ",
+          "operator": "西日本旅客鉄道",
+          "line": "桜島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "安治川口",
+          "operator": "西日本旅客鉄道",
+          "line": "桜島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西九条",
+          "operator": "西日本旅客鉄道",
+          "line": "桜島線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_SERVICE_SPECIFIC_STOPPING_TRACE",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENTLY_PUBLISHED_OFFICIAL_STATIC_DIAGRAM_NOT_REALTIME"
+    }
+  ]
+}

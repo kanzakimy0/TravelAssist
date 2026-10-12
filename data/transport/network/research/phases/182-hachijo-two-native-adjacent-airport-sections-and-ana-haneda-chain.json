@@ -1,0 +1,561 @@
+{
+  "phaseId": "182-hachijo-two-native-adjacent-airport-sections-and-ana-haneda-chain",
+  "strategy": [
+    "TWO_INDEPENDENT_CONTIGUOUS_PARENT_SECTIONS",
+    "CURRENT_MUNICIPAL_EXPLICIT_ANA_ROUNDTRIP",
+    "EXACT_P11_C28_IDENTITIES"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "government:c28:airport-identities",
+    "bus:hachijo:current-circular-two-contiguous-airport-sections",
+    "airport:hachijo:current-town-ana-roundtrip-and-public-stop"
+  ],
+  "facts": [
+    {
+      "factId": "hachijo-circular-parent-call-13-to-14",
+      "kind": "service",
+      "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+      "sourceUrl": "https://www.8bus.jp/hachijo/wp-content/uploads/2025/03/R7.4.1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E3%82%B3%E3%83%9F%E8%A1%A8%E7%B4%99%E5%8D%B0%E5%88%B7%E7%94%A8.pdf",
+      "observedResponseSha256": "70036065a51e55ee3c88f5fb2fd21f6729534fbb0e84eb32949ad86860ab590d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+          "url": "https://www.8bus.jp/hachijo/wp-content/uploads/2025/03/R7.4.1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E3%82%B3%E3%83%9F%E8%A1%A8%E7%B4%99%E5%8D%B0%E5%88%B7%E7%94%A8.pdf",
+          "observedResponseSha256": "70036065a51e55ee3c88f5fb2fd21f6729534fbb0e84eb32949ad86860ab590d"
+        },
+        {
+          "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+          "url": "https://www.8bus.jp/hachijo/%E6%99%82%E5%88%BB%E8%A1%A8",
+          "observedResponseSha256": "15e40938ff0890c7e18cb7941402b50463ba1cc05cb3f68cafd800f0a9c201b5"
+        },
+        {
+          "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+          "url": "https://www.8bus.jp/hachijo/%E3%83%90%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95",
+          "observedResponseSha256": "9cd056677a2f45fb301ea0dee655cddb642dbc2ece217ed1dcdbcc780c42cf72"
+        },
+        {
+          "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+          "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/islands/hachijojima-access.html",
+          "observedResponseSha256": "7e705a97b469587b9d848ba920fd18a14b42aff01a15ff2c40ae47beb8b4574c"
+        }
+      ],
+      "operator": "八丈町",
+      "line": "循環路線",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "current-circular-parent-section-12",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current-linked operator revision 2025-04-01, independently corroborated by 2026 Tokyo government route information. Static contiguous section only; no frequency, timetable, date-specific dispatch or realtime guarantee.",
+      "parentCallingStations": [
+        "町営バス",
+        "町立病院",
+        "町役場",
+        "スーパーあさぬま",
+        "金土川",
+        "大中前",
+        "八重根",
+        "千鳥",
+        "寺山",
+        "ビューホテル下",
+        "老人ホーム",
+        "八高",
+        "八丈島空港",
+        "富士登山道入口",
+        "富士中前",
+        "丘里",
+        "三根駐在所",
+        "三根郵便局",
+        "護神",
+        "三根分団",
+        "八丈ストアー",
+        "富士登山道入口",
+        "八丈島空港",
+        "八高",
+        "老人ホーム",
+        "ビューホテル下",
+        "寺山",
+        "千鳥",
+        "八重根",
+        "大中前",
+        "金土川",
+        "スーパーあさぬま",
+        "町役場",
+        "町立病院",
+        "町営バス"
+      ],
+      "sectionStartIndex": 12,
+      "callingStations": [
+        "八丈島空港",
+        "富士登山道入口"
+      ],
+      "callingComponents": [
+        {
+          "name": "八丈島空港",
+          "operator": "八丈町",
+          "line": "p11-stop:P11-22_13:bs12348",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs12348",
+            "recordSha256": "315fc74b91ec36f8d0da26793d2c2fdf90c1823656ae009c23633064b1987cf3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current operator circular timetable explicitly calls this exact stop twice in the same one-way loop; representative P11 operator-road-stop identity only, not an exact pole or directional platform. Only the separately witnessed adjacent airport/Fuji-trail-entrance sections are selected.",
+            "currentOperatorEvidence": {
+              "recordOperator": "八丈町",
+              "currentOperatorName": "八丈町",
+              "currentStopName": "八丈島空港",
+              "historicalRoute": "循環路線",
+              "url": "https://www.8bus.jp/hachijo/wp-content/uploads/2025/03/R7.4.1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E3%82%B3%E3%83%9F%E8%A1%A8%E7%B4%99%E5%8D%B0%E5%88%B7%E7%94%A8.pdf",
+              "observedResponseSha256": "70036065a51e55ee3c88f5fb2fd21f6729534fbb0e84eb32949ad86860ab590d"
+            }
+          }
+        },
+        {
+          "name": "富士登山道入口",
+          "operator": "八丈町",
+          "line": "p11-stop:P11-22_13:bs12345",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs12345",
+            "recordSha256": "99d8f754f85b0b50d267cf2c4393d3048da943d74da58df4a7d28fd212236ae3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current operator circular timetable explicitly calls this exact stop twice in the same one-way loop; representative P11 operator-road-stop identity only, not an exact pole or directional platform. Only the separately witnessed adjacent airport/Fuji-trail-entrance sections are selected.",
+            "currentOperatorEvidence": {
+              "recordOperator": "八丈町",
+              "currentOperatorName": "八丈町",
+              "currentStopName": "富士登山道入口",
+              "historicalRoute": "循環路線",
+              "url": "https://www.8bus.jp/hachijo/wp-content/uploads/2025/03/R7.4.1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E3%82%B3%E3%83%9F%E8%A1%A8%E7%B4%99%E5%8D%B0%E5%88%B7%E7%94%A8.pdf",
+              "observedResponseSha256": "70036065a51e55ee3c88f5fb2fd21f6729534fbb0e84eb32949ad86860ab590d"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Visually reviewed complete single-page operator PDF column 3, full 35-call parent. Selected exact adjacent calls 13 and 14. Other loop calls remain in parent provenance only. Two opposing adjacent pairs occur separately at parent13-14 and22-23; neither inferred reverse nor deletion of intervening stops. General operator use instructions and ordinary table entries support normal board/alight; no restriction is marked at either call.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clock, fare, frequency or runtime availability asserted."
+    },
+    {
+      "factId": "hachijo-circular-parent-call-22-to-23",
+      "kind": "service",
+      "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+      "sourceUrl": "https://www.8bus.jp/hachijo/wp-content/uploads/2025/03/R7.4.1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E3%82%B3%E3%83%9F%E8%A1%A8%E7%B4%99%E5%8D%B0%E5%88%B7%E7%94%A8.pdf",
+      "observedResponseSha256": "70036065a51e55ee3c88f5fb2fd21f6729534fbb0e84eb32949ad86860ab590d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+          "url": "https://www.8bus.jp/hachijo/wp-content/uploads/2025/03/R7.4.1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E3%82%B3%E3%83%9F%E8%A1%A8%E7%B4%99%E5%8D%B0%E5%88%B7%E7%94%A8.pdf",
+          "observedResponseSha256": "70036065a51e55ee3c88f5fb2fd21f6729534fbb0e84eb32949ad86860ab590d"
+        },
+        {
+          "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+          "url": "https://www.8bus.jp/hachijo/%E6%99%82%E5%88%BB%E8%A1%A8",
+          "observedResponseSha256": "15e40938ff0890c7e18cb7941402b50463ba1cc05cb3f68cafd800f0a9c201b5"
+        },
+        {
+          "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+          "url": "https://www.8bus.jp/hachijo/%E3%83%90%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95",
+          "observedResponseSha256": "9cd056677a2f45fb301ea0dee655cddb642dbc2ece217ed1dcdbcc780c42cf72"
+        },
+        {
+          "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+          "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/islands/hachijojima-access.html",
+          "observedResponseSha256": "7e705a97b469587b9d848ba920fd18a14b42aff01a15ff2c40ae47beb8b4574c"
+        }
+      ],
+      "operator": "八丈町",
+      "line": "循環路線",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "current-circular-parent-section-21",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current-linked operator revision 2025-04-01, independently corroborated by 2026 Tokyo government route information. Static contiguous section only; no frequency, timetable, date-specific dispatch or realtime guarantee.",
+      "parentCallingStations": [
+        "町営バス",
+        "町立病院",
+        "町役場",
+        "スーパーあさぬま",
+        "金土川",
+        "大中前",
+        "八重根",
+        "千鳥",
+        "寺山",
+        "ビューホテル下",
+        "老人ホーム",
+        "八高",
+        "八丈島空港",
+        "富士登山道入口",
+        "富士中前",
+        "丘里",
+        "三根駐在所",
+        "三根郵便局",
+        "護神",
+        "三根分団",
+        "八丈ストアー",
+        "富士登山道入口",
+        "八丈島空港",
+        "八高",
+        "老人ホーム",
+        "ビューホテル下",
+        "寺山",
+        "千鳥",
+        "八重根",
+        "大中前",
+        "金土川",
+        "スーパーあさぬま",
+        "町役場",
+        "町立病院",
+        "町営バス"
+      ],
+      "sectionStartIndex": 21,
+      "callingStations": [
+        "富士登山道入口",
+        "八丈島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "富士登山道入口",
+          "operator": "八丈町",
+          "line": "p11-stop:P11-22_13:bs12345",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs12345",
+            "recordSha256": "99d8f754f85b0b50d267cf2c4393d3048da943d74da58df4a7d28fd212236ae3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current operator circular timetable explicitly calls this exact stop twice in the same one-way loop; representative P11 operator-road-stop identity only, not an exact pole or directional platform. Only the separately witnessed adjacent airport/Fuji-trail-entrance sections are selected.",
+            "currentOperatorEvidence": {
+              "recordOperator": "八丈町",
+              "currentOperatorName": "八丈町",
+              "currentStopName": "富士登山道入口",
+              "historicalRoute": "循環路線",
+              "url": "https://www.8bus.jp/hachijo/wp-content/uploads/2025/03/R7.4.1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E3%82%B3%E3%83%9F%E8%A1%A8%E7%B4%99%E5%8D%B0%E5%88%B7%E7%94%A8.pdf",
+              "observedResponseSha256": "70036065a51e55ee3c88f5fb2fd21f6729534fbb0e84eb32949ad86860ab590d"
+            }
+          }
+        },
+        {
+          "name": "八丈島空港",
+          "operator": "八丈町",
+          "line": "p11-stop:P11-22_13:bs12348",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs12348",
+            "recordSha256": "315fc74b91ec36f8d0da26793d2c2fdf90c1823656ae009c23633064b1987cf3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current operator circular timetable explicitly calls this exact stop twice in the same one-way loop; representative P11 operator-road-stop identity only, not an exact pole or directional platform. Only the separately witnessed adjacent airport/Fuji-trail-entrance sections are selected.",
+            "currentOperatorEvidence": {
+              "recordOperator": "八丈町",
+              "currentOperatorName": "八丈町",
+              "currentStopName": "八丈島空港",
+              "historicalRoute": "循環路線",
+              "url": "https://www.8bus.jp/hachijo/wp-content/uploads/2025/03/R7.4.1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E3%82%B3%E3%83%9F%E8%A1%A8%E7%B4%99%E5%8D%B0%E5%88%B7%E7%94%A8.pdf",
+              "observedResponseSha256": "70036065a51e55ee3c88f5fb2fd21f6729534fbb0e84eb32949ad86860ab590d"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Visually reviewed complete single-page operator PDF column 3, full 35-call parent. Selected exact adjacent calls 22 and 23. Other loop calls remain in parent provenance only. Two opposing adjacent pairs occur separately at parent13-14 and22-23; neither inferred reverse nor deletion of intervening stops. General operator use instructions and ordinary table entries support normal board/alight; no restriction is marked at either call.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clock, fare, frequency or runtime availability asserted."
+    },
+    {
+      "factId": "hachijo-town-ana-regular-HND-HAC",
+      "kind": "service",
+      "sourceActionId": "airport:hachijo:current-town-ana-roundtrip-and-public-stop",
+      "sourceUrl": "https://www.town.hachijo.tokyo.jp/access/",
+      "observedResponseSha256": "38db060f1355ea4159db96a8cc379a62605d2a367c56b9c31cea710a9a30674a",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:hachijo:current-town-ana-roundtrip-and-public-stop",
+          "url": "https://www.town.hachijo.tokyo.jp/access/",
+          "observedResponseSha256": "38db060f1355ea4159db96a8cc379a62605d2a367c56b9c31cea710a9a30674a"
+        },
+        {
+          "sourceActionId": "airport:hachijo:current-town-ana-roundtrip-and-public-stop",
+          "url": "https://www.islandaccess.metro.tokyo.lg.jp/stations/hachijojima_airport/",
+          "observedResponseSha256": "ae3372617e55212a290b8278d7e3b45b231b0adadbf5a9a0abd7b8123b44569f"
+        }
+      ],
+      "operator": "ANA",
+      "line": "羽田・八丈島国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "HND-HAC",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_TOWN_PUBLISHED_STATIC_REGULAR_ROUNDTRIP_RELATION_NOT_REALTIME",
+      "callingStations": [
+        "東京国際空港",
+        "八丈島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Town official current access page explicitly identifies Tokyo Haneda Airport endpoint of ANA regular roundtrips. Exact Haneda/Tokyo International Airport correspondence reuses already admitted C28 cf03_00030 and existing reviewed terminal-to-national ground chain. No new internal terminal or gate connection implied."
+          }
+        },
+        {
+          "name": "八丈島空港",
+          "operator": "airport-facility:cf03_00035",
+          "line": "airport:cf03_00035",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00035",
+            "requirementId": "review:transport-node:9a55f8a8-6e00-5c21-8cdb-eb11825997dc",
+            "expectedRequirementName": "八丈島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Tokyo government island-access page explicitly names airport circular-bus stop immediately at Hachijojima Airport. Coarse public facility-to-representative-stop access only. Current town page explicitly identifies ANA roundtrips to Haneda. No exact curb, door, geometry or accessibility claim."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_AIRPORT_MUNICIPALITY_EXPLICIT_ANA_REGULAR_ROUNDTRIP_WITH_C28_ENDPOINTS",
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "東京・羽田空港",
+          "canonicalAirportName": "東京国際空港",
+          "referencePointId": "cf03_00030"
+        },
+        {
+          "sourceName": "八丈島空港",
+          "canonicalAirportName": "八丈島空港",
+          "referencePointId": "cf03_00035"
+        }
+      ],
+      "locator": "Town current official access page section 東京・羽田空港～八丈島空港 explicitly states ANA regular roundtrip service. Roundtrip is direct independent evidence for each direction, not reversal of a single-flight record. ANA retained as displayed carrier label, no codeshare or carrier expansion. Whole-airport coarse static relation; no flight number, terminal, gate, timetable or guaranteed connection asserted."
+    },
+    {
+      "factId": "hachijo-town-ana-regular-HAC-HND",
+      "kind": "service",
+      "sourceActionId": "airport:hachijo:current-town-ana-roundtrip-and-public-stop",
+      "sourceUrl": "https://www.town.hachijo.tokyo.jp/access/",
+      "observedResponseSha256": "38db060f1355ea4159db96a8cc379a62605d2a367c56b9c31cea710a9a30674a",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:hachijo:current-town-ana-roundtrip-and-public-stop",
+          "url": "https://www.town.hachijo.tokyo.jp/access/",
+          "observedResponseSha256": "38db060f1355ea4159db96a8cc379a62605d2a367c56b9c31cea710a9a30674a"
+        },
+        {
+          "sourceActionId": "airport:hachijo:current-town-ana-roundtrip-and-public-stop",
+          "url": "https://www.islandaccess.metro.tokyo.lg.jp/stations/hachijojima_airport/",
+          "observedResponseSha256": "ae3372617e55212a290b8278d7e3b45b231b0adadbf5a9a0abd7b8123b44569f"
+        }
+      ],
+      "operator": "ANA",
+      "line": "羽田・八丈島国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "HAC-HND",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_TOWN_PUBLISHED_STATIC_REGULAR_ROUNDTRIP_RELATION_NOT_REALTIME",
+      "callingStations": [
+        "八丈島空港",
+        "東京国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "八丈島空港",
+          "operator": "airport-facility:cf03_00035",
+          "line": "airport:cf03_00035",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00035",
+            "requirementId": "review:transport-node:9a55f8a8-6e00-5c21-8cdb-eb11825997dc",
+            "expectedRequirementName": "八丈島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Tokyo government island-access page explicitly names airport circular-bus stop immediately at Hachijojima Airport. Coarse public facility-to-representative-stop access only. Current town page explicitly identifies ANA roundtrips to Haneda. No exact curb, door, geometry or accessibility claim."
+          }
+        },
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Town official current access page explicitly identifies Tokyo Haneda Airport endpoint of ANA regular roundtrips. Exact Haneda/Tokyo International Airport correspondence reuses already admitted C28 cf03_00030 and existing reviewed terminal-to-national ground chain. No new internal terminal or gate connection implied."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "CURRENT_AIRPORT_MUNICIPALITY_EXPLICIT_ANA_REGULAR_ROUNDTRIP_WITH_C28_ENDPOINTS",
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "東京・羽田空港",
+          "canonicalAirportName": "東京国際空港",
+          "referencePointId": "cf03_00030"
+        },
+        {
+          "sourceName": "八丈島空港",
+          "canonicalAirportName": "八丈島空港",
+          "referencePointId": "cf03_00035"
+        }
+      ],
+      "locator": "Town current official access page section 東京・羽田空港～八丈島空港 explicitly states ANA regular roundtrip service. Roundtrip is direct independent evidence for each direction, not reversal of a single-flight record. ANA retained as displayed carrier label, no codeshare or carrier expansion. Whole-airport coarse static relation; no flight number, terminal, gate, timetable or guaranteed connection asserted."
+    },
+    {
+      "factId": "hachijo-public-airport-to-named-circular-stop",
+      "kind": "transfer",
+      "sourceActionId": "airport:hachijo:current-town-ana-roundtrip-and-public-stop",
+      "sourceUrl": "https://www.islandaccess.metro.tokyo.lg.jp/stations/hachijojima_airport/",
+      "observedResponseSha256": "ae3372617e55212a290b8278d7e3b45b231b0adadbf5a9a0abd7b8123b44569f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:hachijo:current-town-ana-roundtrip-and-public-stop",
+          "url": "https://www.islandaccess.metro.tokyo.lg.jp/stations/hachijojima_airport/",
+          "observedResponseSha256": "ae3372617e55212a290b8278d7e3b45b231b0adadbf5a9a0abd7b8123b44569f"
+        },
+        {
+          "sourceActionId": "airport:hachijo:current-town-ana-roundtrip-and-public-stop",
+          "url": "https://www.town.hachijo.tokyo.jp/access/",
+          "observedResponseSha256": "38db060f1355ea4159db96a8cc379a62605d2a367c56b9c31cea710a9a30674a"
+        },
+        {
+          "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+          "url": "https://www.8bus.jp/hachijo/wp-content/uploads/2025/03/R7.4.1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E3%82%B3%E3%83%9F%E8%A1%A8%E7%B4%99%E5%8D%B0%E5%88%B7%E7%94%A8.pdf",
+          "observedResponseSha256": "70036065a51e55ee3c88f5fb2fd21f6729534fbb0e84eb32949ad86860ab590d"
+        },
+        {
+          "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+          "url": "https://www.8bus.jp/hachijo/%E6%99%82%E5%88%BB%E8%A1%A8",
+          "observedResponseSha256": "15e40938ff0890c7e18cb7941402b50463ba1cc05cb3f68cafd800f0a9c201b5"
+        },
+        {
+          "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+          "url": "https://www.8bus.jp/hachijo/%E3%83%90%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95",
+          "observedResponseSha256": "9cd056677a2f45fb301ea0dee655cddb642dbc2ece217ed1dcdbcc780c42cf72"
+        },
+        {
+          "sourceActionId": "bus:hachijo:current-circular-two-contiguous-airport-sections",
+          "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/islands/hachijojima-access.html",
+          "observedResponseSha256": "7e705a97b469587b9d848ba920fd18a14b42aff01a15ff2c40ae47beb8b4574c"
+        }
+      ],
+      "components": [
+        {
+          "name": "八丈島空港",
+          "operator": "airport-facility:cf03_00035",
+          "line": "airport:cf03_00035",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00035",
+            "requirementId": "review:transport-node:9a55f8a8-6e00-5c21-8cdb-eb11825997dc",
+            "expectedRequirementName": "八丈島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Tokyo government island-access page explicitly names airport circular-bus stop immediately at Hachijojima Airport. Coarse public facility-to-representative-stop access only. Current town page explicitly identifies ANA roundtrips to Haneda. No exact curb, door, geometry or accessibility claim."
+          }
+        },
+        {
+          "name": "八丈島空港",
+          "operator": "八丈町",
+          "line": "p11-stop:P11-22_13:bs12348",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs12348",
+            "recordSha256": "315fc74b91ec36f8d0da26793d2c2fdf90c1823656ae009c23633064b1987cf3",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current operator circular timetable explicitly calls this exact stop twice in the same one-way loop; representative P11 operator-road-stop identity only, not an exact pole or directional platform. Only the separately witnessed adjacent airport/Fuji-trail-entrance sections are selected.",
+            "currentOperatorEvidence": {
+              "recordOperator": "八丈町",
+              "currentOperatorName": "八丈町",
+              "currentStopName": "八丈島空港",
+              "historicalRoute": "循環路線",
+              "url": "https://www.8bus.jp/hachijo/wp-content/uploads/2025/03/R7.4.1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E3%82%B3%E3%83%9F%E8%A1%A8%E7%B4%99%E5%8D%B0%E5%88%B7%E7%94%A8.pdf",
+              "observedResponseSha256": "70036065a51e55ee3c88f5fb2fd21f6729534fbb0e84eb32949ad86860ab590d"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "reviewMethod": "CURRENT_GOVERNMENT_NAMED_AIRPORT_BUS_STOP_IMMEDIATE_PUBLIC_ACCESS",
+      "locator": "Tokyo official island-access airport page expressly identifies Hachijo Town circular route 八丈島空港 stop and immediate airport access. Coarse public whole-airport to exact operator-road-stop representative; no coordinate join, curb, doorway, accessibility, distance or duration claimed."
+    }
+  ],
+  "scope": "Two separately witnessed two-call sections only; not the complete eleven-call airport loop. Missing native identities 丘里 and 三根分団 are outside this candidate and not silently skipped.",
+  "metrics": {
+    "busRideEdges": 2,
+    "flightEdges": 2,
+    "publicWalkEdges": 2,
+    "newP11Identities": 2,
+    "newHttpRequests": 0
+  }
+}

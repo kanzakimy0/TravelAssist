@@ -1,0 +1,90 @@
+{
+  "failure": {
+    "exitCode": 1,
+    "elapsedSeconds": 205.45769240002846,
+    "inputScope": "TASK086-FULL-ORIGINAL-PHASE202-v2",
+    "logSha256": "f9fa822524171b32df71f270d49bddc195913167508d0536d234130be10b1faa"
+  },
+  "repair": {
+    "status": "RENAMED_ONLY_NEW_UNCOMMITTED_INPUTS_CONTENT_IDENTICAL",
+    "failure": "LICENSED_GTFS_PACKAGE_PATH_INVALID",
+    "changes": [
+      {
+        "old": "data\\transport\\network\\sources\\tokachi-airport-kofuku-minimal-derived.v1.json",
+        "new": "data\\transport\\network\\sources\\tokachi-airport-kofuku-minimal-derived-v1.json",
+        "sha256": "4653d6fd2d2720ab49d1acdfb47aad78bf2789b9679a0acf8c8dba2b9589bb92"
+      },
+      {
+        "old": "data\\transport\\network\\sources\\tokachi-city-kofuku-minimal-derived.v1.json",
+        "new": "data\\transport\\network\\sources\\tokachi-city-kofuku-minimal-derived-v1.json",
+        "sha256": "e0fb9fa5fecd8e1707124058dc2b706df913ea7c26020c2ea5b5a17ba7af0b13"
+      }
+    ],
+    "at": "2026-10-03T08:11:27.272737+00:00"
+  },
+  "successfulReplay": {
+    "exitCode": 0,
+    "elapsedSeconds": 238.0650587999844,
+    "inputScope": "TASK086-FULL-ORIGINAL-PHASE202-v2",
+    "logSha256": "e9c650f38a285194b6d833f2e0cf9239adb6533dc0f59d5ad8baf3267a75c144"
+  },
+  "thresholdsChanged": false,
+  "existingDataPreservation": {
+    "status": "PASS_EXISTING_DATA_PRESERVED_AND_EXACT_ROOT_OUTCOMES_VERIFIED",
+    "scopeId": "TASK086-FULL-ORIGINAL-PHASE202-v2",
+    "originalRequirements": 1038,
+    "priorEdges": 9059,
+    "priorPatterns": 759,
+    "priorRequirements": 3849,
+    "existingAirportAdmissionUpgrades": [],
+    "actualClosedRootIds": [
+      "root:airport:review:transport-node:69798f02-fe68-5045-b796-c5623216284e"
+    ],
+    "actualOpenedRootIds": [
+      "root:obligation:service:major-rail-private-metro",
+      "root:obligation:service:shinkansen-continuity"
+    ],
+    "exactRootMemberWitnesses": [
+      {
+        "rootCauseId": "root:airport:review:transport-node:69798f02-fe68-5045-b796-c5623216284e",
+        "nodeId": "transport-node:086:c46e3e0c8949f94d6bad5d366a6a63cb",
+        "fromNational": [
+          "transport-edge:086:0559c955e0138e163409d97b4f842551",
+          "transport-edge:086:d44ab3559e729e6c7ba334900387b3ff",
+          "transport-edge:086:345596180d2814008dd85d63b3dc0d4b",
+          "transport-edge:086:bed219398f724fc78b94c5bbe04e2118",
+          "transport-edge:086:b161d6ef1bb015a48f53f36493773f00",
+          "transport-edge:086:a74266dcce42a3308e4023cbcdc19cad",
+          "transport-edge:086:6011c3e3c839bc98f4ffd5505d0e0f56",
+          "transport-edge:086:4ead319f8aad956bd4fd43526ea6473a",
+          "transport-edge:086:9ec00e19b8ac3a0a00283b569da0cc96"
+        ],
+        "toNational": [
+          "transport-edge:086:1e4a1172759b04968809fdbd45b464c6",
+          "transport-edge:086:5d8cdea3d3696c7f896c6a1f1fa7627b",
+          "transport-edge:086:f09c3a37f1b4da3831a041078b1d17c6",
+          "transport-edge:086:52e4606cc1e78ab29ebbe3a62dbafa56",
+          "transport-edge:086:f2dd49f0a95fc98820c3461c2e9a081e",
+          "transport-edge:086:4e8224561dd23d48946cc6f25278945e",
+          "transport-edge:086:63f51ab7e808fd4aa4814a2fedc4eb2b",
+          "transport-edge:086:267b78c1aa260224252627ca3091d06c",
+          "transport-edge:086:bf473ab41fdac48d9c756c803eaae958"
+        ]
+      }
+    ],
+    "globalRailSourceDeficitRetained": true,
+    "acceptanceGateBytesUnchangedByReporting": true,
+    "stageStatus": "CORE_STAGE_FAILED",
+    "fullGate": "UNVERIFIED_PENDING_CURRENT_REBUILD",
+    "counts": {
+      "admitted": 3918,
+      "edges": 9144,
+      "hold": 14,
+      "iterations": 202,
+      "lines": 351,
+      "rejected": 0,
+      "required": 3932,
+      "servicePatterns": 763
+    }
+  }
+}

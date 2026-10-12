@@ -1,0 +1,777 @@
+{
+  "phaseId": "058-kyoto-metro-and-minatomirai-local-gateways",
+  "strategy": [
+    "KYOTO_MUNICIPAL_ORDINARY_SERVICE_GUIDE_AND_NAMED_PASSAGES",
+    "MM21_LOCAL_STOPPING_ROW",
+    "metro",
+    "private_rail"
+  ],
+  "completedActionIds": [
+    "rail:kyoto-metro:local-and-interchange",
+    "rail:mm21:local-and-interchange"
+  ],
+  "facts": [
+    {
+      "factId": "kyoto-metro-烏丸線-local-outbound",
+      "kind": "service",
+      "sourceActionId": "rail:kyoto-metro:local-and-interchange",
+      "sourceUrl": "https://www2.city.kyoto.lg.jp/kotsu/webguide/ja/tika/tika_route_info.html",
+      "observedResponseSha256": "7c888ae2cc8e5a4e4aa47fb7d0a40fbeae659d56d81100c6f5ffc81d96abd51a",
+      "locator": "Official guide explicitly identifies ordinary/all-stop northbound Kokusaikaikan and southbound Takeda services; retain only K01-K15 municipal section. Kintetsu express beyond Takeda is excluded. Official Karasuma-Oike interchange guide corroborates shared operator component across these lines; no self-transfer edge is created.",
+      "line": "烏丸線",
+      "operator": "京都市",
+      "mode": "metro",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "国際会館",
+        "松ヶ崎",
+        "北山",
+        "北大路",
+        "鞍馬口",
+        "今出川",
+        "丸太町",
+        "烏丸御池",
+        "四条",
+        "五条",
+        "京都",
+        "九条",
+        "十条",
+        "くいな橋",
+        "竹田"
+      ],
+      "callingComponents": [
+        {
+          "name": "国際会館",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "松ヶ崎",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "北山",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "北大路",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "鞍馬口",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "今出川",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "丸太町",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "烏丸御池",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "四条",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "五条",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "京都",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "九条",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "十条",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "くいな橋",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "竹田",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_NAMED_ORDINARY_SERVICE_AND_ORDERED_STOPS_WITH_EXACT_S12_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:kyoto-metro:local-and-interchange",
+          "url": "https://www2.city.kyoto.lg.jp/kotsu/webguide/ja/tika/pop_howtochange_line.html",
+          "observedResponseSha256": "b2cefbd0e831707ebf987d7bb5bd1b71c6bfa42638960645a4d6b495e6f2c134"
+        }
+      ]
+    },
+    {
+      "factId": "kyoto-metro-烏丸線-local-inbound",
+      "kind": "service",
+      "sourceActionId": "rail:kyoto-metro:local-and-interchange",
+      "sourceUrl": "https://www2.city.kyoto.lg.jp/kotsu/webguide/ja/tika/tika_route_info.html",
+      "observedResponseSha256": "7c888ae2cc8e5a4e4aa47fb7d0a40fbeae659d56d81100c6f5ffc81d96abd51a",
+      "locator": "Official guide explicitly identifies ordinary/all-stop northbound Kokusaikaikan and southbound Takeda services; retain only K01-K15 municipal section. Kintetsu express beyond Takeda is excluded. Official Karasuma-Oike interchange guide corroborates shared operator component across these lines; no self-transfer edge is created.",
+      "line": "烏丸線",
+      "operator": "京都市",
+      "mode": "metro",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "竹田",
+        "くいな橋",
+        "十条",
+        "九条",
+        "京都",
+        "五条",
+        "四条",
+        "烏丸御池",
+        "丸太町",
+        "今出川",
+        "鞍馬口",
+        "北大路",
+        "北山",
+        "松ヶ崎",
+        "国際会館"
+      ],
+      "callingComponents": [
+        {
+          "name": "竹田",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "くいな橋",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "十条",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "九条",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "京都",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "五条",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "四条",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "烏丸御池",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "丸太町",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "今出川",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "鞍馬口",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "北大路",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "北山",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "松ヶ崎",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "国際会館",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_NAMED_ORDINARY_SERVICE_AND_ORDERED_STOPS_WITH_EXACT_S12_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:kyoto-metro:local-and-interchange",
+          "url": "https://www2.city.kyoto.lg.jp/kotsu/webguide/ja/tika/pop_howtochange_line.html",
+          "observedResponseSha256": "b2cefbd0e831707ebf987d7bb5bd1b71c6bfa42638960645a4d6b495e6f2c134"
+        }
+      ]
+    },
+    {
+      "factId": "kyoto-metro-東西線-local-outbound",
+      "kind": "service",
+      "sourceActionId": "rail:kyoto-metro:local-and-interchange",
+      "sourceUrl": "https://www2.city.kyoto.lg.jp/kotsu/webguide/ja/tika/tika_route_info.html",
+      "observedResponseSha256": "7c888ae2cc8e5a4e4aa47fb7d0a40fbeae659d56d81100c6f5ffc81d96abd51a",
+      "locator": "Official guide identifies six-car ordinary services to Rokujizo and Uzumasa Tenjingawa separately from four-car Keihan through trains; retain T01-T17 municipal sequence only, no Keihan branch union. The displayed variation-selector glyph at Nagitsuji resolves to exact S12 station name 椥辻 with same operator/line. Official Karasuma-Oike interchange guide corroborates shared operator component across these lines; no self-transfer edge is created.",
+      "line": "東西線",
+      "operator": "京都市",
+      "mode": "metro",
+      "serviceClass": "普通",
+      "direction": "outbound",
+      "callingStations": [
+        "六地蔵",
+        "石田",
+        "醍醐",
+        "小野",
+        "椥辻",
+        "東野",
+        "山科",
+        "御陵",
+        "蹴上",
+        "東山",
+        "三条京阪",
+        "京都市役所前",
+        "烏丸御池",
+        "二条城前",
+        "二条",
+        "西大路御池",
+        "太秦天神川"
+      ],
+      "callingComponents": [
+        {
+          "name": "六地蔵",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "石田",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "醍醐",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "小野",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "椥辻",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "東野",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "山科",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "御陵",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "蹴上",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "東山",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "三条京阪",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "京都市役所前",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "烏丸御池",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "二条城前",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "二条",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "西大路御池",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "太秦天神川",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_NAMED_ORDINARY_SERVICE_AND_ORDERED_STOPS_WITH_EXACT_S12_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:kyoto-metro:local-and-interchange",
+          "url": "https://www2.city.kyoto.lg.jp/kotsu/webguide/ja/tika/pop_howtochange_line.html",
+          "observedResponseSha256": "b2cefbd0e831707ebf987d7bb5bd1b71c6bfa42638960645a4d6b495e6f2c134"
+        }
+      ]
+    },
+    {
+      "factId": "kyoto-metro-東西線-local-inbound",
+      "kind": "service",
+      "sourceActionId": "rail:kyoto-metro:local-and-interchange",
+      "sourceUrl": "https://www2.city.kyoto.lg.jp/kotsu/webguide/ja/tika/tika_route_info.html",
+      "observedResponseSha256": "7c888ae2cc8e5a4e4aa47fb7d0a40fbeae659d56d81100c6f5ffc81d96abd51a",
+      "locator": "Official guide identifies six-car ordinary services to Rokujizo and Uzumasa Tenjingawa separately from four-car Keihan through trains; retain T01-T17 municipal sequence only, no Keihan branch union. The displayed variation-selector glyph at Nagitsuji resolves to exact S12 station name 椥辻 with same operator/line. Official Karasuma-Oike interchange guide corroborates shared operator component across these lines; no self-transfer edge is created.",
+      "line": "東西線",
+      "operator": "京都市",
+      "mode": "metro",
+      "serviceClass": "普通",
+      "direction": "inbound",
+      "callingStations": [
+        "太秦天神川",
+        "西大路御池",
+        "二条",
+        "二条城前",
+        "烏丸御池",
+        "京都市役所前",
+        "三条京阪",
+        "東山",
+        "蹴上",
+        "御陵",
+        "山科",
+        "東野",
+        "椥辻",
+        "小野",
+        "醍醐",
+        "石田",
+        "六地蔵"
+      ],
+      "callingComponents": [
+        {
+          "name": "太秦天神川",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "西大路御池",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "二条",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "二条城前",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "烏丸御池",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "京都市役所前",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "三条京阪",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "東山",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "蹴上",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "御陵",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "山科",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "東野",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "椥辻",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "小野",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "醍醐",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "石田",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "六地蔵",
+          "line": "東西線",
+          "operator": "京都市",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_NAMED_ORDINARY_SERVICE_AND_ORDERED_STOPS_WITH_EXACT_S12_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:kyoto-metro:local-and-interchange",
+          "url": "https://www2.city.kyoto.lg.jp/kotsu/webguide/ja/tika/pop_howtochange_line.html",
+          "observedResponseSha256": "b2cefbd0e831707ebf987d7bb5bd1b71c6bfa42638960645a4d6b495e6f2c134"
+        }
+      ]
+    },
+    {
+      "factId": "mm21-みなとみらい21線-local-outbound",
+      "kind": "service",
+      "sourceActionId": "rail:mm21:local-and-interchange",
+      "sourceUrl": "https://www.mm21railway.co.jp/info/img/route_map/sec_station_img.png",
+      "observedResponseSha256": "55b2b85ae5acfd6ae89e28a469e6165ed47b16a59c043e153e543fbad873717a",
+      "locator": "Current official landing links service-specific stop diagram. Visually reviewed bottom grey local/all-stop row, six stations Yokohama to Motomachi-Chukagai. Other express and reserved S-TRAIN rows and all running times excluded. Existing reviewed Yokohama interchange joins the national graph.",
+      "line": "みなとみらい21線",
+      "operator": "横浜高速鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "横浜",
+        "新高島",
+        "みなとみらい",
+        "馬車道",
+        "日本大通り",
+        "元町・中華街"
+      ],
+      "callingComponents": [
+        {
+          "name": "横浜",
+          "line": "みなとみらい21線",
+          "operator": "横浜高速鉄道",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新高島",
+          "line": "みなとみらい21線",
+          "operator": "横浜高速鉄道",
+          "mode": "private_rail"
+        },
+        {
+          "name": "みなとみらい",
+          "line": "みなとみらい21線",
+          "operator": "横浜高速鉄道",
+          "mode": "private_rail"
+        },
+        {
+          "name": "馬車道",
+          "line": "みなとみらい21線",
+          "operator": "横浜高速鉄道",
+          "mode": "private_rail"
+        },
+        {
+          "name": "日本大通り",
+          "line": "みなとみらい21線",
+          "operator": "横浜高速鉄道",
+          "mode": "private_rail"
+        },
+        {
+          "name": "元町・中華街",
+          "line": "みなとみらい21線",
+          "operator": "横浜高速鉄道",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_NAMED_ORDINARY_SERVICE_AND_ORDERED_STOPS_WITH_EXACT_S12_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "mm21-みなとみらい21線-local-inbound",
+      "kind": "service",
+      "sourceActionId": "rail:mm21:local-and-interchange",
+      "sourceUrl": "https://www.mm21railway.co.jp/info/img/route_map/sec_station_img.png",
+      "observedResponseSha256": "55b2b85ae5acfd6ae89e28a469e6165ed47b16a59c043e153e543fbad873717a",
+      "locator": "Current official landing links service-specific stop diagram. Visually reviewed bottom grey local/all-stop row, six stations Yokohama to Motomachi-Chukagai. Other express and reserved S-TRAIN rows and all running times excluded. Existing reviewed Yokohama interchange joins the national graph.",
+      "line": "みなとみらい21線",
+      "operator": "横浜高速鉄道",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "元町・中華街",
+        "日本大通り",
+        "馬車道",
+        "みなとみらい",
+        "新高島",
+        "横浜"
+      ],
+      "callingComponents": [
+        {
+          "name": "元町・中華街",
+          "line": "みなとみらい21線",
+          "operator": "横浜高速鉄道",
+          "mode": "private_rail"
+        },
+        {
+          "name": "日本大通り",
+          "line": "みなとみらい21線",
+          "operator": "横浜高速鉄道",
+          "mode": "private_rail"
+        },
+        {
+          "name": "馬車道",
+          "line": "みなとみらい21線",
+          "operator": "横浜高速鉄道",
+          "mode": "private_rail"
+        },
+        {
+          "name": "みなとみらい",
+          "line": "みなとみらい21線",
+          "operator": "横浜高速鉄道",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新高島",
+          "line": "みなとみらい21線",
+          "operator": "横浜高速鉄道",
+          "mode": "private_rail"
+        },
+        {
+          "name": "横浜",
+          "line": "みなとみらい21線",
+          "operator": "横浜高速鉄道",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_NAMED_ORDINARY_SERVICE_AND_ORDERED_STOPS_WITH_EXACT_S12_IDENTITY",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "kyoto-municipal-jr-kintetsu-reviewed-interchange",
+      "kind": "transfer",
+      "sourceActionId": "rail:kyoto-metro:local-and-interchange",
+      "sourceUrl": "https://www2.city.kyoto.lg.jp/kotsu/tikadia/img/map/sta/pdf/k11map.pdf",
+      "observedResponseSha256": "e33a60e0e1c64b754904636b9f2571f2fd0152dc3d5552e97e19a2e74014360f",
+      "locator": "Station page current map dated 2026-08-07. Visual review traces central concourse to JR underground east gate and southern public passage toward named JR Hachijo/Kintetsu entrances; municipal Kyoto component connects separately to JR West conventional and Kintetsu Kyoto. No proximity inference and no direct JR-Kintetsu edge inferred.",
+      "components": [
+        {
+          "name": "京都",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "京都",
+          "line": "東海道線",
+          "operator": "西日本旅客鉄道",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "京都",
+          "line": "京都線",
+          "operator": "近畿日本鉄道",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_NAMED_PASSAGE_AND_DIRECTION_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "shijo-karasuma-reviewed-interchange",
+      "kind": "transfer",
+      "sourceActionId": "rail:kyoto-metro:local-and-interchange",
+      "sourceUrl": "https://www2.city.kyoto.lg.jp/kotsu/tikadia/hyperdia/menu0219.htm",
+      "observedResponseSha256": "c32446f93ea668c26bd6b7f1b255a01969a7cba6710dfbe94b6c58cabdac5659",
+      "locator": "Official station guide explicitly names the underground connecting passage to Hankyu Karasuma and its stair-lift path. Bind different station names to their reviewed operator identities; no passage time or continuous operating-hours claim.",
+      "components": [
+        {
+          "name": "四条",
+          "line": "烏丸線",
+          "operator": "京都市",
+          "mode": "metro"
+        },
+        {
+          "name": "烏丸",
+          "line": "京都線",
+          "operator": "阪急電鉄",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_NAMED_PASSAGE_AND_DIRECTION_REVIEW",
+      "hubScopeComplete": false
+    }
+  ]
+}

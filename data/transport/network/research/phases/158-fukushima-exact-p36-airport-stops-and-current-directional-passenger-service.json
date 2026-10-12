@@ -1,0 +1,399 @@
+{
+  "phaseId": "158-fukushima-exact-p36-airport-stops-and-current-directional-passenger-service",
+  "strategy": [
+    "LICENSED_P36_EXACT_SINGLE_OPERATOR_STOP_IDENTITY",
+    "CURRENT_ACTUAL_DIRECTIONAL_CALLS_WITH_BOARDING_RESTRICTIONS",
+    "CURRENT_PUBLIC_AIRPORT_TERMINAL_FRONTAGE",
+    "EXPLICIT_INDEPENDENT_CARRIER_RAIL_INTERCHANGE",
+    "RESTRICTIVE_AND_INACCESSIBLE_SOURCE_ALTERNATIVES"
+  ],
+  "completedActionIds": [
+    "bus:fukushima-kotsu:current-airport-three-call-directional-trips",
+    "airport:fukushima-building:current-public-domestic-lobby-bus-frontage",
+    "hub:carrier-platform:koriyama-public-west-terminal-rail-interchange",
+    "reference:spal:koriyama-restricted-floor-map",
+    "reference:koriyama-city:restricted-website-transport-alternative",
+    "reference:jr-bus-kanto:restricted-koriyama-stop-data"
+  ],
+  "facts": [
+    {
+      "factId": "fukushima-airport-current-airport-bound-actual-three-call-trip",
+      "kind": "service",
+      "sourceActionId": "bus:fukushima-kotsu:current-airport-three-call-directional-trips",
+      "sourceUrl": "https://www.fukushima-koutu.co.jp/express/line/data/06-time-revision.pdf",
+      "observedResponseSha256": "de61796c331f0410f4552ba915496bdf4d1a163c704bbce104b8712f996f531d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:fukushima-kotsu:current-airport-three-call-directional-trips",
+          "url": "https://www.fukushima-koutu.co.jp/express/line/06.html",
+          "observedResponseSha256": "5aa97d866cd358b89d0d0ec4ac88581fd69fa5d07347c0dce19309e7e3f02a68"
+        },
+        {
+          "sourceActionId": "airport:fukushima-building:current-public-domestic-lobby-bus-frontage",
+          "url": "https://fks-ab.co.jp/limo/",
+          "observedResponseSha256": "a251ba5e8d3c47035a480c1bf085168973e77b4231f31a7484a058eb8a162138"
+        }
+      ],
+      "locator": "Independently viewed first daily actual trip row in each direction of March 29-October 24 2026 PDF, covering October 1. Current carrier HTML independently supplies every-day designation and exact boarding/alighting restrictions. Outbound station and industrial-estate stops are pickup only; return both are dropoff only. Exclude Taiwan Tuesday/Friday trip. No inferred reverse, short local journey, clocks, fare, frequency, table artwork or real-time connection guarantee. Flight cancellations may cancel corresponding bus; return departure can change with arrival delays.",
+      "line": "郡山・福島空港リムジンバス",
+      "operator": "福島交通株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "空港リムジンバス",
+      "direction": "airport-bound",
+      "callingStations": [
+        "郡山駅前",
+        "中央工業団地",
+        "福島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "郡山駅前",
+          "operator": "福島交通（株）",
+          "line": "p36-stop:P36-23_07:kbs150",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_07:kbs150",
+            "recordSha256": "4cb1604876f32f534d3a759191a93503fce8c07b12e98acfe5c12dd30b30ce59",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact licensed P36 single-operator road-stop representative is independently matched to current Fukushima Kotsu airport service name and directional pickup/dropoff role. P36 historical identity date remains explicit; actual March 29-October 24 2026 service supplies current operation. No P11 north/south gate substitution, co-located joint-operator merge or conversion of representative coordinates to precise bay/door geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "福島交通（株）",
+              "currentOperatorName": "福島交通株式会社",
+              "currentStopName": "郡山駅前",
+              "url": "https://www.fukushima-koutu.co.jp/express/line/06.html",
+              "observedResponseSha256": "5aa97d866cd358b89d0d0ec4ac88581fd69fa5d07347c0dce19309e7e3f02a68"
+            }
+          }
+        },
+        {
+          "name": "中央工業団地",
+          "operator": "福島交通（株）",
+          "line": "p36-stop:P36-23_07:kbs169",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_07:kbs169",
+            "recordSha256": "66b851bffc9763de053d4f3650ff443f3c9a7b261f06fb1b4ae814c5d56b4a32",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact licensed P36 single-operator road-stop representative is independently matched to current Fukushima Kotsu airport service name and directional pickup/dropoff role. P36 historical identity date remains explicit; actual March 29-October 24 2026 service supplies current operation. No P11 north/south gate substitution, co-located joint-operator merge or conversion of representative coordinates to precise bay/door geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "福島交通（株）",
+              "currentOperatorName": "福島交通株式会社",
+              "currentStopName": "中央工業団地",
+              "url": "https://www.fukushima-koutu.co.jp/express/line/06.html",
+              "observedResponseSha256": "5aa97d866cd358b89d0d0ec4ac88581fd69fa5d07347c0dce19309e7e3f02a68"
+            }
+          }
+        },
+        {
+          "name": "福島空港",
+          "operator": "福島交通（株）",
+          "line": "p36-stop:P36-23_07:kbs188",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_07:kbs188",
+            "recordSha256": "fc41f51115b031b7f46ea8585a184348fffd22c5295aa4d574a83be21cc656aa",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact licensed P36 single-operator road-stop representative is independently matched to current Fukushima Kotsu airport service name and directional pickup/dropoff role. P36 historical identity date remains explicit; actual March 29-October 24 2026 service supplies current operation. No P11 north/south gate substitution, co-located joint-operator merge or conversion of representative coordinates to precise bay/door geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "福島交通（株）",
+              "currentOperatorName": "福島交通株式会社",
+              "currentStopName": "福島空港",
+              "url": "https://www.fukushima-koutu.co.jp/express/line/06.html",
+              "observedResponseSha256": "5aa97d866cd358b89d0d0ec4ac88581fd69fa5d07347c0dce19309e7e3f02a68"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_DIRECTIONAL_TRIPS_AND_P36_EXACT_OPERATOR_STOPS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_MARCH_29_OCTOBER_24_2026_DAILY_TRIP_SUBJECT_TO_FLIGHT_OPERATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fukushima-airport-current-station-bound-actual-three-call-trip",
+      "kind": "service",
+      "sourceActionId": "bus:fukushima-kotsu:current-airport-three-call-directional-trips",
+      "sourceUrl": "https://www.fukushima-koutu.co.jp/express/line/data/06-time-revision.pdf",
+      "observedResponseSha256": "de61796c331f0410f4552ba915496bdf4d1a163c704bbce104b8712f996f531d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:fukushima-kotsu:current-airport-three-call-directional-trips",
+          "url": "https://www.fukushima-koutu.co.jp/express/line/06.html",
+          "observedResponseSha256": "5aa97d866cd358b89d0d0ec4ac88581fd69fa5d07347c0dce19309e7e3f02a68"
+        },
+        {
+          "sourceActionId": "airport:fukushima-building:current-public-domestic-lobby-bus-frontage",
+          "url": "https://fks-ab.co.jp/limo/",
+          "observedResponseSha256": "a251ba5e8d3c47035a480c1bf085168973e77b4231f31a7484a058eb8a162138"
+        }
+      ],
+      "locator": "Independently viewed first daily actual trip row in each direction of March 29-October 24 2026 PDF, covering October 1. Current carrier HTML independently supplies every-day designation and exact boarding/alighting restrictions. Outbound station and industrial-estate stops are pickup only; return both are dropoff only. Exclude Taiwan Tuesday/Friday trip. No inferred reverse, short local journey, clocks, fare, frequency, table artwork or real-time connection guarantee. Flight cancellations may cancel corresponding bus; return departure can change with arrival delays.",
+      "line": "郡山・福島空港リムジンバス",
+      "operator": "福島交通株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "空港リムジンバス",
+      "direction": "station-bound",
+      "callingStations": [
+        "福島空港",
+        "中央工業団地",
+        "郡山駅前"
+      ],
+      "callingComponents": [
+        {
+          "name": "福島空港",
+          "operator": "福島交通（株）",
+          "line": "p36-stop:P36-23_07:kbs188",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_07:kbs188",
+            "recordSha256": "fc41f51115b031b7f46ea8585a184348fffd22c5295aa4d574a83be21cc656aa",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact licensed P36 single-operator road-stop representative is independently matched to current Fukushima Kotsu airport service name and directional pickup/dropoff role. P36 historical identity date remains explicit; actual March 29-October 24 2026 service supplies current operation. No P11 north/south gate substitution, co-located joint-operator merge or conversion of representative coordinates to precise bay/door geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "福島交通（株）",
+              "currentOperatorName": "福島交通株式会社",
+              "currentStopName": "福島空港",
+              "url": "https://www.fukushima-koutu.co.jp/express/line/06.html",
+              "observedResponseSha256": "5aa97d866cd358b89d0d0ec4ac88581fd69fa5d07347c0dce19309e7e3f02a68"
+            }
+          }
+        },
+        {
+          "name": "中央工業団地",
+          "operator": "福島交通（株）",
+          "line": "p36-stop:P36-23_07:kbs169",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_07:kbs169",
+            "recordSha256": "66b851bffc9763de053d4f3650ff443f3c9a7b261f06fb1b4ae814c5d56b4a32",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact licensed P36 single-operator road-stop representative is independently matched to current Fukushima Kotsu airport service name and directional pickup/dropoff role. P36 historical identity date remains explicit; actual March 29-October 24 2026 service supplies current operation. No P11 north/south gate substitution, co-located joint-operator merge or conversion of representative coordinates to precise bay/door geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "福島交通（株）",
+              "currentOperatorName": "福島交通株式会社",
+              "currentStopName": "中央工業団地",
+              "url": "https://www.fukushima-koutu.co.jp/express/line/06.html",
+              "observedResponseSha256": "5aa97d866cd358b89d0d0ec4ac88581fd69fa5d07347c0dce19309e7e3f02a68"
+            }
+          }
+        },
+        {
+          "name": "郡山駅前",
+          "operator": "福島交通（株）",
+          "line": "p36-stop:P36-23_07:kbs150",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_07:kbs150",
+            "recordSha256": "4cb1604876f32f534d3a759191a93503fce8c07b12e98acfe5c12dd30b30ce59",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact licensed P36 single-operator road-stop representative is independently matched to current Fukushima Kotsu airport service name and directional pickup/dropoff role. P36 historical identity date remains explicit; actual March 29-October 24 2026 service supplies current operation. No P11 north/south gate substitution, co-located joint-operator merge or conversion of representative coordinates to precise bay/door geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "福島交通（株）",
+              "currentOperatorName": "福島交通株式会社",
+              "currentStopName": "郡山駅前",
+              "url": "https://www.fukushima-koutu.co.jp/express/line/06.html",
+              "observedResponseSha256": "5aa97d866cd358b89d0d0ec4ac88581fd69fa5d07347c0dce19309e7e3f02a68"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_DIRECTIONAL_TRIPS_AND_P36_EXACT_OPERATOR_STOPS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_MARCH_29_OCTOBER_24_2026_DAILY_TRIP_SUBJECT_TO_FLIGHT_OPERATION_NOT_REALTIME"
+    },
+    {
+      "factId": "fukushima-airport-current-domestic-public-lobby-to-bus-frontage",
+      "kind": "transfer",
+      "sourceActionId": "airport:fukushima-building:current-public-domestic-lobby-bus-frontage",
+      "sourceUrl": "https://fks-ab.co.jp/wp-content/uploads/2022/04/floor1-map-2025.png",
+      "observedResponseSha256": "9e5a1ddda619beeb81283a4939740d69924446ee1acd3936c7007216d0e6df96",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:fukushima-building:current-public-domestic-lobby-bus-frontage",
+          "url": "https://fks-ab.co.jp/floor-map1/",
+          "observedResponseSha256": "ea8b16de2fdbdb6680d2b87529cde1f6e9283dbb21753c05321e76e4cf080025"
+        },
+        {
+          "sourceActionId": "airport:fukushima-building:current-public-domestic-lobby-bus-frontage",
+          "url": "https://fks-ab.co.jp/limo/",
+          "observedResponseSha256": "a251ba5e8d3c47035a480c1bf085168973e77b4231f31a7484a058eb8a162138"
+        },
+        {
+          "sourceActionId": "bus:fukushima-kotsu:current-airport-three-call-directional-trips",
+          "url": "https://www.fukushima-koutu.co.jp/express/line/06.html",
+          "observedResponseSha256": "5aa97d866cd358b89d0d0ec4ac88581fd69fa5d07347c0dce19309e7e3f02a68"
+        }
+      ],
+      "locator": "Current airport floor page links 2025 first-floor diagram, individually viewed: domestic public arrival lobby opens through public front doors to bus frontage. Current airport and carrier airport-bus pages corroborate continuing passenger service at exact same-name P36 stop. Keep whole-airport to road-stop representative connection; do not copy floor artwork or assert precise door coordinates, airside access, guaranteed flight waiting or universal accessible routing.",
+      "components": [
+        {
+          "name": "福島空港",
+          "operator": "airport-facility:cf03_00028",
+          "line": "airport:cf03_00028",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00028",
+            "requirementId": "review:official-airport:福島",
+            "expectedRequirementName": "福島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport floor page links 2025 first-floor diagram, individually viewed: domestic public arrival lobby opens through public front doors to bus frontage. Current airport and carrier airport-bus pages corroborate continuing passenger service at exact same-name P36 stop. Keep whole-airport to road-stop representative connection; do not copy floor artwork or assert precise door coordinates, airside access, guaranteed flight waiting or universal accessible routing."
+          }
+        },
+        {
+          "name": "福島空港",
+          "operator": "福島交通（株）",
+          "line": "p36-stop:P36-23_07:kbs188",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_07:kbs188",
+            "recordSha256": "fc41f51115b031b7f46ea8585a184348fffd22c5295aa4d574a83be21cc656aa",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact licensed P36 single-operator road-stop representative is independently matched to current Fukushima Kotsu airport service name and directional pickup/dropoff role. P36 historical identity date remains explicit; actual March 29-October 24 2026 service supplies current operation. No P11 north/south gate substitution, co-located joint-operator merge or conversion of representative coordinates to precise bay/door geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "福島交通（株）",
+              "currentOperatorName": "福島交通株式会社",
+              "currentStopName": "福島空港",
+              "url": "https://www.fukushima-koutu.co.jp/express/line/06.html",
+              "observedResponseSha256": "5aa97d866cd358b89d0d0ec4ac88581fd69fa5d07347c0dce19309e7e3f02a68"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PUBLIC_TERMINAL_FLOOR_AND_INDEPENDENT_ACTIVE_AIRPORT_STOP",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "koriyama-jr-east-public-west-terminal-to-current-airport-bus-component",
+      "kind": "transfer",
+      "sourceActionId": "hub:carrier-platform:koriyama-public-west-terminal-rail-interchange",
+      "sourceUrl": "https://www.highwaybus.com/gp/info/busStopInfoDetail?lineId=790&stationCd=488",
+      "observedResponseSha256": "6aad8df9a6c60d0d364f6f084ee308858b7f8d5702f8fafc678dca4d7fb817df",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:fukushima-kotsu:current-airport-three-call-directional-trips",
+          "url": "https://www.fukushima-koutu.co.jp/route/platform/koriyama.html",
+          "observedResponseSha256": "9383a3cf670a10474529c85557d5215753a04276e9e1ce39090bda65e2dec903"
+        },
+        {
+          "sourceActionId": "bus:fukushima-kotsu:current-airport-three-call-directional-trips",
+          "url": "https://www.fukushima-koutu.co.jp/route/platform/images/koriyama-map.png",
+          "observedResponseSha256": "fb2f7e3d46fafb5f10a25286f79dc9b10bb7268800cd10ce1cc6cdea7a9cb942"
+        },
+        {
+          "sourceActionId": "bus:fukushima-kotsu:current-airport-three-call-directional-trips",
+          "url": "https://www.fukushima-koutu.co.jp/express/line/06.html",
+          "observedResponseSha256": "5aa97d866cd358b89d0d0ec4ac88581fd69fa5d07347c0dce19309e7e3f02a68"
+        },
+        {
+          "sourceActionId": "airport:fukushima-building:current-public-domestic-lobby-bus-frontage",
+          "url": "https://fks-ab.co.jp/limo/",
+          "observedResponseSha256": "a251ba5e8d3c47035a480c1bf085168973e77b4231f31a7484a058eb8a162138"
+        }
+      ],
+      "locator": "Carrier-operated public stop guide explicitly places bus terminal outside JR Koriyama west exit and describes railway interchange, with bay 4. Independently current Fukushima Kotsu guide assigns airport bus to that bay. Preserve coarse whole-station public landside transfer to exact single-operator P36 road-stop representative; existing S12 rail anchor is JR East Tohoku Shinkansen Koriyama in Fukushima, not same-name JR West Kansai-line Koriyama in Nara. No specific unviewed internal gate, stair, lift, crossing geometry, transfer time, platform-equivalence or universal accessibility claim. Restricted S-PAL/municipal/JR Bus Kanto materials and failed JR maps supply no production fact.",
+      "components": [
+        {
+          "name": "郡山",
+          "operator": "東日本旅客鉄道",
+          "line": "東北新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "郡山駅前",
+          "operator": "福島交通（株）",
+          "line": "p36-stop:P36-23_07:kbs150",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "roadStopIdentity": {
+            "dataset": "P36-23",
+            "stopRecordId": "P36-23_07:kbs150",
+            "recordSha256": "4cb1604876f32f534d3a759191a93503fce8c07b12e98acfe5c12dd30b30ce59",
+            "method": "EXACT_P36_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "OPERATOR_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_PRECISE_NAVIGATION",
+            "currentPassengerAccessReview": "Exact licensed P36 single-operator road-stop representative is independently matched to current Fukushima Kotsu airport service name and directional pickup/dropoff role. P36 historical identity date remains explicit; actual March 29-October 24 2026 service supplies current operation. No P11 north/south gate substitution, co-located joint-operator merge or conversion of representative coordinates to precise bay/door geometry.",
+            "currentOperatorEvidence": {
+              "recordOperator": "福島交通（株）",
+              "currentOperatorName": "福島交通株式会社",
+              "currentStopName": "郡山駅前",
+              "url": "https://www.fukushima-koutu.co.jp/express/line/06.html",
+              "observedResponseSha256": "5aa97d866cd358b89d0d0ec4ac88581fd69fa5d07347c0dce19309e7e3f02a68"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CARRIER_PLATFORM_RAIL_INTERCHANGE_AND_CURRENT_AIRPORT_CARRIER_BAY",
+      "hubScopeComplete": false
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "phaseId": "125-four-current-exact-component-passenger-connections",
+  "strategy": [
+    "CURRENT_PUBLIC_PASSAGE_AND_DEDICATED_GATE_REVIEW",
+    "EXACT_OPERATOR_LINE_COMPONENTS",
+    "RESTRICTIVE_MAP_REFERENCE_EXCLUDED"
+  ],
+  "completedActionIds": [
+    "hub:yurikamome:toyosu-current-public-approach",
+    "hub:metro:toyosu-current-exits-sixb-seven",
+    "hub:seibu:musashisakai-current-dedicated-jr-gate",
+    "hub:jr-east:musashisakai-and-totsuka-current-concourses",
+    "hub:osaka-metro:takaida-current-exit-two-jr-connection",
+    "hub:yokohama:totsuka-current-public-underground-access",
+    "hub:yokohama:navi-totsuka-restrictive-map-rights-review"
+  ],
+  "facts": [
+    {
+      "factId": "toyosu-reviewed-current-physical-interchange",
+      "kind": "transfer",
+      "sourceActionId": "hub:yurikamome:toyosu-current-public-approach",
+      "sourceUrl": "https://www.yurikamome.co.jp/station-timetable/station_jp_Part16.pdf",
+      "observedResponseSha256": "026fe94e25137093891191e5832caa91036f737f5affe451d7cd5ba280253e6a",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:yurikamome:toyosu-current-public-approach",
+          "url": "https://www.yurikamome.co.jp/station-timetable/u-16.html",
+          "observedResponseSha256": "fb0e61b357c210d8da2dcdc72ce293d612c267e745b71896ccd07554efb3b4c0"
+        },
+        {
+          "sourceActionId": "hub:metro:toyosu-current-exits-sixb-seven",
+          "url": "https://www.tokyometro.jp/station/toyosu/index.html",
+          "observedResponseSha256": "e8c190368dd861529fa025f6c5038b448845e2a1c38d32dd13ab62b7ba561a41"
+        },
+        {
+          "sourceActionId": "hub:metro:toyosu-current-exits-sixb-seven",
+          "url": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_toyosu_all.jpg",
+          "observedResponseSha256": "d60bd7af104a7bd092c4d981e8a9f45a1b3acf906fec9ec45d4294a9f0b6527b"
+        },
+        {
+          "sourceActionId": "hub:metro:toyosu-current-exits-sixb-seven",
+          "url": "https://www.tokyometro.jp/station/exit.json",
+          "observedResponseSha256": "04b017ea557d6dbaa388cdf49e4c0cd08a5afd56f69c58cdca008bf51193ecfc"
+        }
+      ],
+      "locator": "Current-linked operator diagram individually viewed: elevated platforms join gate concourse; exits 1A and 2B explicitly signposted toward Yurakucho subway. Metro current exit index separately identifies Toyosu Yurikamome at exits 6b/7, both not closed or time-limited in that index; December 2024 currently linked Metro diagram shows both used platform faces joined to B1 concourse and these exits. Retain only coarse bidirectional public surface interchange; do not equate exit numbers across operators or use closed Metro platform faces 2/3.",
+      "components": [
+        {
+          "name": "豊洲",
+          "operator": "ゆりかもめ",
+          "line": "東京臨海新交通臨海線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "豊洲",
+          "operator": "東京地下鉄",
+          "line": "8号線有楽町線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_DIAGRAM_AND_EXPLICIT_NAMED_PASSENGER_CONNECTION",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "musashisakai-reviewed-current-physical-interchange",
+      "kind": "transfer",
+      "sourceActionId": "hub:seibu:musashisakai-current-dedicated-jr-gate",
+      "sourceUrl": "https://www.seiburailway.jp/railway/station/image/SW01_1.png",
+      "observedResponseSha256": "d0a9003619bac5877e544b59071a4244bbb26f95e2651a36106aaa8b08018068",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:seibu:musashisakai-current-dedicated-jr-gate",
+          "url": "https://www.seiburailway.jp/railway/station/musashi-sakai/",
+          "observedResponseSha256": "827e7ed6da4ccda2c84a2de04c98b83c9c0d40f5391cf53230e10f20db8a129c"
+        },
+        {
+          "sourceActionId": "hub:jr-east:musashisakai-and-totsuka-current-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/1528.html",
+          "observedResponseSha256": "48c02aa13c452b023b4995595799ccc4947abb2ce9e1d7cbe4aef374b7c7479f"
+        },
+        {
+          "sourceActionId": "hub:jr-east:musashisakai-and-totsuka-current-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/1528_1f-2f.png",
+          "observedResponseSha256": "519fc13c19a14033f9deb267878593c20051dc70e33cc3f8bec7391e1cb9a19e"
+        },
+        {
+          "sourceActionId": "hub:jr-east:musashisakai-and-totsuka-current-concourses",
+          "url": "https://www.jreast.co.jp/estation/station/info.aspx?StationCd=1528",
+          "observedResponseSha256": "88560d4b901105560fc2f1540dc33dea1cf75cc835a71e5a1c20763fd69fa5f6"
+        }
+      ],
+      "locator": "September 1 2026 Seibu diagram and August 2026 JR diagram individually viewed: Seibu 2F island connects to 1F dedicated JR interchange gate; both JR Chuo platform faces connect to the matching Seibu interchange concourse. Current JR gate listing explicitly retains Seibu interchange gate. This is a ticket-controlled inter-operator relation, not free fare or through operation. Exclude JR nonowa gate opening-hour shortcut.",
+      "components": [
+        {
+          "name": "武蔵境",
+          "operator": "西武鉄道",
+          "line": "多摩川線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "武蔵境",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_DIAGRAM_AND_EXPLICIT_NAMED_PASSENGER_CONNECTION",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "totsuka-reviewed-current-physical-interchange",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-east:musashisakai-and-totsuka-current-concourses",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/1057_b1-2f.png",
+      "observedResponseSha256": "f06ff85d4855d850275cf241ea137b2712859f3d4a6a03a34385bfd52995ed57",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-east:musashisakai-and-totsuka-current-concourses",
+          "url": "https://www.jreast.co.jp/estation/stations/1057.html",
+          "observedResponseSha256": "6caff17fe854af0282acb8605f61935cb86601b8afb8243cca82d383aba878bb"
+        },
+        {
+          "sourceActionId": "hub:yokohama:totsuka-current-public-underground-access",
+          "url": "https://www.city.yokohama.lg.jp/totsuka/madoguchi-shisetsu/kuyakusho/annai/access-parking.html",
+          "observedResponseSha256": "3d899eae2ecfb983ceae2e17e5d625c4cc65722a03f32367a7318ea7418ed625"
+        }
+      ],
+      "locator": "Currently linked October 2023 JR diagram individually viewed: both Tokaido station platform islands connect by stairs to B1 underground gate; public side explicitly labels two stairs toward Yokohama municipal Blue Line. September 28 2026 independent municipal access page corroborates the JR underground and municipal subway public route. Retain this bidirectional station passage only, no route inside ward office or retail premises, no all-hours or step-free claim. Navi-hosted restricted diagram is discovery-only and not a source of this fact.",
+      "components": [
+        {
+          "name": "戸塚",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "戸塚",
+          "operator": "横浜市",
+          "line": "1号線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_DIAGRAM_AND_EXPLICIT_NAMED_PASSENGER_CONNECTION",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "takaida-reviewed-current-physical-interchange",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka-metro:takaida-current-exit-two-jr-connection",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/C22_%E9%AB%98%E4%BA%95%E7%94%B0_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "4d325f98963d38c74e5fa68f5a48e08a73d9643bd7c77d5c8f10e6dce1f65b8a",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka-metro:takaida-current-exit-two-jr-connection",
+          "url": "https://subway.osakametro.co.jp/station_guide/C/c22/",
+          "observedResponseSha256": "31ee9a665145f093fd4f36a8463296990e09fc9c518949ea67585bf80f0e3119"
+        },
+        {
+          "sourceActionId": "hub:osaka-metro:takaida-current-exit-two-jr-connection",
+          "url": "https://subway.osakametro.co.jp/station_guide/C/c22/map.php",
+          "observedResponseSha256": "c2a9e12bc9ce3afe05f26e4650ba34260cf6240c72a042697a8d39a64f6d3e3b"
+        }
+      ],
+      "locator": "Current-linked Osaka Metro station diagram individually viewed: island platform stairs join gate concourse; public exit 2 stairway is explicitly labeled JR Osaka Higashi line. Current operator exit directory identifies exit 2 with JR Takaida-Chuo. This supports the coarse public entrance connection without a coordinate-distance inference; excludes unrelated JR Kansai-line Takaida, Lux Building elevator hours and any accessibility guarantee.",
+      "components": [
+        {
+          "name": "高井田",
+          "operator": "大阪市高速電気軌道",
+          "line": "4号線(中央線)",
+          "mode": "metro"
+        },
+        {
+          "name": "高井田中央",
+          "operator": "西日本旅客鉄道",
+          "line": "おおさか東線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_DIAGRAM_AND_EXPLICIT_NAMED_PASSENGER_CONNECTION",
+      "hubScopeComplete": false
+    }
+  ]
+}

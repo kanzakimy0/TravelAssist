@@ -1,0 +1,1561 @@
+{
+  "phaseId": "043-keio-local-branches-and-jr-gateways",
+  "strategy": [
+    "KEIO_MAIN_VERSUS_NEW_LINE_AND_BRANCH_LOCALS",
+    "EXPLICIT_JR_GATEWAY_PAIR_REVIEW",
+    "private_rail"
+  ],
+  "completedActionIds": [
+    "private:keio:branch-local"
+  ],
+  "facts": [
+    {
+      "factId": "keio-0-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Keio main tracks bypass Hatsudai and Hatagaya, which are on the separate New Line. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "京王線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "新宿",
+        "笹塚",
+        "代田橋",
+        "明大前",
+        "下高井戸",
+        "桜上水",
+        "上北沢",
+        "八幡山",
+        "芦花公園",
+        "千歳烏山",
+        "仙川",
+        "つつじヶ丘",
+        "柴崎",
+        "国領",
+        "布田",
+        "調布",
+        "西調布",
+        "飛田給",
+        "武蔵野台",
+        "多磨霊園",
+        "東府中",
+        "府中",
+        "分倍河原",
+        "中河原",
+        "聖蹟桜ヶ丘",
+        "百草園",
+        "高幡不動",
+        "南平",
+        "平山城址公園",
+        "長沼",
+        "北野",
+        "京王八王子"
+      ],
+      "callingComponents": [
+        {
+          "name": "新宿",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "笹塚",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "代田橋",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "明大前",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下高井戸",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桜上水",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上北沢",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "八幡山",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "芦花公園",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千歳烏山",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "仙川",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "つつじヶ丘",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "柴崎",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "国領",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "布田",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "調布",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西調布",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "飛田給",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "武蔵野台",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "多磨霊園",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東府中",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "府中",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "分倍河原",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中河原",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "聖蹟桜ヶ丘",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "百草園",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高幡不動",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南平",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "平山城址公園",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "長沼",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "北野",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王八王子",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-0-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Keio main tracks bypass Hatsudai and Hatagaya, which are on the separate New Line. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "京王線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "京王八王子",
+        "北野",
+        "長沼",
+        "平山城址公園",
+        "南平",
+        "高幡不動",
+        "百草園",
+        "聖蹟桜ヶ丘",
+        "中河原",
+        "分倍河原",
+        "府中",
+        "東府中",
+        "多磨霊園",
+        "武蔵野台",
+        "飛田給",
+        "西調布",
+        "調布",
+        "布田",
+        "国領",
+        "柴崎",
+        "つつじヶ丘",
+        "仙川",
+        "千歳烏山",
+        "芦花公園",
+        "八幡山",
+        "上北沢",
+        "桜上水",
+        "下高井戸",
+        "明大前",
+        "代田橋",
+        "笹塚",
+        "新宿"
+      ],
+      "callingComponents": [
+        {
+          "name": "京王八王子",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "北野",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "長沼",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "平山城址公園",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南平",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高幡不動",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "百草園",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "聖蹟桜ヶ丘",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中河原",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "分倍河原",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "府中",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東府中",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "多磨霊園",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "武蔵野台",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "飛田給",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西調布",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "調布",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "布田",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "国領",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "柴崎",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "つつじヶ丘",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "仙川",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千歳烏山",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "芦花公園",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "八幡山",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "上北沢",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桜上水",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下高井戸",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "明大前",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "代田橋",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "笹塚",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新宿",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-1-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Separate Keio New Line section Shinjuku-Hatsudai-Hatagaya-Sasazuka; not inserted into the main-track local pattern. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "京王新線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "新宿",
+        "初台",
+        "幡ヶ谷",
+        "笹塚"
+      ],
+      "callingComponents": [
+        {
+          "name": "新宿",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "初台",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "幡ヶ谷",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "笹塚",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-1-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Separate Keio New Line section Shinjuku-Hatsudai-Hatagaya-Sasazuka; not inserted into the main-track local pattern. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "京王新線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "笹塚",
+        "幡ヶ谷",
+        "初台",
+        "新宿"
+      ],
+      "callingComponents": [
+        {
+          "name": "笹塚",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "幡ヶ谷",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "初台",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新宿",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-2-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Inokashira local row only, excluding express skips. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "井の頭線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "渋谷",
+        "神泉",
+        "駒場東大前",
+        "池ノ上",
+        "下北沢",
+        "新代田",
+        "東松原",
+        "明大前",
+        "永福町",
+        "西永福",
+        "浜田山",
+        "高井戸",
+        "富士見ヶ丘",
+        "久我山",
+        "三鷹台",
+        "井の頭公園",
+        "吉祥寺"
+      ],
+      "callingComponents": [
+        {
+          "name": "渋谷",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "神泉",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "駒場東大前",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "池ノ上",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下北沢",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新代田",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東松原",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "明大前",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "永福町",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西永福",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "浜田山",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高井戸",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "富士見ヶ丘",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "久我山",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三鷹台",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "井の頭公園",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "吉祥寺",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-2-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Inokashira local row only, excluding express skips. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "井の頭線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "吉祥寺",
+        "井の頭公園",
+        "三鷹台",
+        "久我山",
+        "富士見ヶ丘",
+        "高井戸",
+        "浜田山",
+        "西永福",
+        "永福町",
+        "明大前",
+        "東松原",
+        "新代田",
+        "下北沢",
+        "池ノ上",
+        "駒場東大前",
+        "神泉",
+        "渋谷"
+      ],
+      "callingComponents": [
+        {
+          "name": "吉祥寺",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "井の頭公園",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "三鷹台",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "久我山",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "富士見ヶ丘",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高井戸",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "浜田山",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "西永福",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "永福町",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "明大前",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東松原",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新代田",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下北沢",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "池ノ上",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "駒場東大前",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "神泉",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "渋谷",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-3-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Chofu-Hashimoto branch; junction explicitly included. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "相模原線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "調布",
+        "京王多摩川",
+        "京王稲田堤",
+        "京王よみうりランド",
+        "稲城",
+        "若葉台",
+        "京王永山",
+        "京王多摩センター",
+        "京王堀之内",
+        "南大沢",
+        "多摩境",
+        "橋本"
+      ],
+      "callingComponents": [
+        {
+          "name": "調布",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王多摩川",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王稲田堤",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王よみうりランド",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "稲城",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "若葉台",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王永山",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王多摩センター",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王堀之内",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南大沢",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "多摩境",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "橋本",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-3-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Chofu-Hashimoto branch; junction explicitly included. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "相模原線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "橋本",
+        "多摩境",
+        "南大沢",
+        "京王堀之内",
+        "京王多摩センター",
+        "京王永山",
+        "若葉台",
+        "稲城",
+        "京王よみうりランド",
+        "京王稲田堤",
+        "京王多摩川",
+        "調布"
+      ],
+      "callingComponents": [
+        {
+          "name": "橋本",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "多摩境",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南大沢",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王堀之内",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王多摩センター",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王永山",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "若葉台",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "稲城",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王よみうりランド",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王稲田堤",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王多摩川",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "調布",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-4-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Kitano-Takaosanguchi branch. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "高尾線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "北野",
+        "京王片倉",
+        "山田",
+        "めじろ台",
+        "狭間",
+        "高尾",
+        "高尾山口"
+      ],
+      "callingComponents": [
+        {
+          "name": "北野",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王片倉",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "山田",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "めじろ台",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "狭間",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高尾",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高尾山口",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-4-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Kitano-Takaosanguchi branch. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "高尾線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "高尾山口",
+        "高尾",
+        "狭間",
+        "めじろ台",
+        "山田",
+        "京王片倉",
+        "北野"
+      ],
+      "callingComponents": [
+        {
+          "name": "高尾山口",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高尾",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "狭間",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "めじろ台",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "山田",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "京王片倉",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "北野",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-5-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Separate Higashi-Fuchu-Fuchu-keiba-seimonmae local shuttle; event-day limited-express overlay excluded. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "競馬場線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "東府中",
+        "府中競馬正門前"
+      ],
+      "callingComponents": [
+        {
+          "name": "東府中",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "府中競馬正門前",
+          "operator": "京王電鉄",
+          "line": "競馬場線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-5-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Separate Higashi-Fuchu-Fuchu-keiba-seimonmae local shuttle; event-day limited-express overlay excluded. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "競馬場線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "府中競馬正門前",
+        "東府中"
+      ],
+      "callingComponents": [
+        {
+          "name": "府中競馬正門前",
+          "operator": "京王電鉄",
+          "line": "競馬場線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東府中",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-6-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Separate Takahatafudo-Tama-dobutsukoen local shuttle. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "動物園線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "高幡不動",
+        "多摩動物公園"
+      ],
+      "callingComponents": [
+        {
+          "name": "高幡不動",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "多摩動物公園",
+          "operator": "京王電鉄",
+          "line": "動物園線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-6-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/assets/pdf/train/station/rosenzu.pdf",
+      "observedResponseSha256": "821282d72f64bca866064cb4c7a36b0323466fe60a922dd422ce86dd5bfbf328",
+      "locator": "Currently linked official route/service diagram page 1; grey local calling row only. Separate Takahatafudo-Tama-dobutsukoen local shuttle. Official station index exposes accessible Sasazuka spelling 笹塚 alongside 笹塚; use the explicitly published visible old-form spelling matching independent S12 station 003806. No timetable time or single through-train claim across branches.",
+      "line": "動物園線",
+      "operator": "京王電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "多摩動物公園",
+        "高幡不動"
+      ],
+      "callingComponents": [
+        {
+          "name": "多摩動物公園",
+          "operator": "京王電鉄",
+          "line": "動物園線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高幡不動",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "OFFICIAL_GREY_LOCAL_ROW_BRANCH_AND_NEW_LINE_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "keio-jr-interchange-新宿",
+      "kind": "transfer",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/train/station/",
+      "observedResponseSha256": "1257f6035df79566509b15737b90c6e032fc6652fbf15ff10fd639eb3289434f",
+      "locator": "Official station interchange list at 新宿: JR線、小田急線、東京メトロ丸の内線、都営新宿線、都営大江戸線. Review only the Keio/JR pair with independently identified same-name components; other operator pairs and nearby differently named stations are not inferred.",
+      "components": [
+        {
+          "name": "新宿",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新宿",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_INTERCHANGE_LIST_AND_EXACT_COMPONENT_PAIR",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "keio-jr-interchange-渋谷",
+      "kind": "transfer",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/train/station/",
+      "observedResponseSha256": "1257f6035df79566509b15737b90c6e032fc6652fbf15ff10fd639eb3289434f",
+      "locator": "Official station interchange list at 渋谷: JR線、半蔵門線、銀座線、副都心線、東横線、田園都市線. Review only the Keio/JR pair with independently identified same-name components; other operator pairs and nearby differently named stations are not inferred.",
+      "components": [
+        {
+          "name": "渋谷",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "渋谷",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_INTERCHANGE_LIST_AND_EXACT_COMPONENT_PAIR",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "keio-jr-interchange-分倍河原",
+      "kind": "transfer",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/train/station/",
+      "observedResponseSha256": "1257f6035df79566509b15737b90c6e032fc6652fbf15ff10fd639eb3289434f",
+      "locator": "Official station interchange list at 分倍河原: JR南武線. Review only the Keio/JR pair with independently identified same-name components; other operator pairs and nearby differently named stations are not inferred.",
+      "components": [
+        {
+          "name": "分倍河原",
+          "operator": "京王電鉄",
+          "line": "京王線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "分倍河原",
+          "operator": "東日本旅客鉄道",
+          "line": "南武線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_INTERCHANGE_LIST_AND_EXACT_COMPONENT_PAIR",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "keio-jr-interchange-吉祥寺",
+      "kind": "transfer",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/train/station/",
+      "observedResponseSha256": "1257f6035df79566509b15737b90c6e032fc6652fbf15ff10fd639eb3289434f",
+      "locator": "Official station interchange list at 吉祥寺: JR中央線. Review only the Keio/JR pair with independently identified same-name components; other operator pairs and nearby differently named stations are not inferred.",
+      "components": [
+        {
+          "name": "吉祥寺",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "吉祥寺",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_INTERCHANGE_LIST_AND_EXACT_COMPONENT_PAIR",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "keio-jr-interchange-橋本",
+      "kind": "transfer",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/train/station/",
+      "observedResponseSha256": "1257f6035df79566509b15737b90c6e032fc6652fbf15ff10fd639eb3289434f",
+      "locator": "Official station interchange list at 橋本: JR横浜線、JR相模線. Review only the Keio/JR pair with independently identified same-name components; other operator pairs and nearby differently named stations are not inferred.",
+      "components": [
+        {
+          "name": "橋本",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "橋本",
+          "operator": "東日本旅客鉄道",
+          "line": "横浜線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_INTERCHANGE_LIST_AND_EXACT_COMPONENT_PAIR",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "keio-jr-interchange-高尾",
+      "kind": "transfer",
+      "sourceActionId": "private:keio:branch-local",
+      "sourceUrl": "https://www.keio.co.jp/train/station/",
+      "observedResponseSha256": "1257f6035df79566509b15737b90c6e032fc6652fbf15ff10fd639eb3289434f",
+      "locator": "Official station interchange list at 高尾: JR中央線. Review only the Keio/JR pair with independently identified same-name components; other operator pairs and nearby differently named stations are not inferred.",
+      "components": [
+        {
+          "name": "高尾",
+          "operator": "京王電鉄",
+          "line": "高尾線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高尾",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_INTERCHANGE_LIST_AND_EXACT_COMPONENT_PAIR",
+      "hubScopeComplete": false
+    }
+  ]
+}

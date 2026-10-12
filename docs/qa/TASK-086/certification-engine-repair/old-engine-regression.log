@@ -1,0 +1,32 @@
+✖ reviewed JR East minimal service facts are certifiable without a raw reuse license (4.3479ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 180.9362
+
+✖ failing tests:
+
+test at I:\CodexWorktrees\TravelAssist-TASK086-PublicationRecovery\tests\task-086-certification-engine-repair.test.mjs:10:1
+✖ reviewed JR East minimal service facts are certifiable without a raw reuse license (4.3479ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + 'REVIEW_REQUIRED'
+  - 'CERTIFIED'
+
+      at TestContext.<anonymous> (file:///I:/CodexWorktrees/TravelAssist-TASK086-PublicationRecovery/tests/task-086-certification-engine-repair.test.mjs:11:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'REVIEW_REQUIRED',
+    expected: 'CERTIFIED',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

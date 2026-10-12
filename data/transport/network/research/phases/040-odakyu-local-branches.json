@@ -1,0 +1,1139 @@
+{
+  "phaseId": "040-odakyu-local-branches",
+  "strategy": [
+    "ODAKYU_BLUE_LOCAL_STOPPING_ROWS",
+    "SEPARATE_BRANCHES_AND_ODAWARA_OPERATOR_BOUNDARY",
+    "private_rail"
+  ],
+  "completedActionIds": [],
+  "facts": [
+    {
+      "factId": "odakyu-1-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:odakyu:local",
+      "sourceUrl": "https://www.odakyu.jp/station/img/railmap.jpg?202504",
+      "observedResponseSha256": "9003983c799b4b8ca193d64016bfdb36f0d15e5ee685cd7f8f5f3dc46d957e7c",
+      "locator": "Official stopping diagram printed 2025-04-01: trace the blue local stopping row only. Odawara, Enoshima and Tama branches are separate; branch junctions Sagami-Ono and Shin-Yurigaoka are explicitly shown. Local sections do not assert one through-running train over all branches. Stops beyond Odawara belong to Odakyu Hakone and are not silently assigned to Odakyu.",
+      "line": "小田原線",
+      "operator": "小田急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "新宿",
+        "南新宿",
+        "参宮橋",
+        "代々木八幡",
+        "代々木上原",
+        "東北沢",
+        "下北沢",
+        "世田谷代田",
+        "梅ヶ丘",
+        "豪徳寺",
+        "経堂",
+        "千歳船橋",
+        "祖師ヶ谷大蔵",
+        "成城学園前",
+        "喜多見",
+        "狛江",
+        "和泉多摩川",
+        "登戸",
+        "向ヶ丘遊園",
+        "生田",
+        "読売ランド前",
+        "百合ヶ丘",
+        "新百合ヶ丘",
+        "柿生",
+        "鶴川",
+        "玉川学園前",
+        "町田",
+        "相模大野",
+        "小田急相模原",
+        "相武台前",
+        "座間",
+        "海老名",
+        "厚木",
+        "本厚木",
+        "愛甲石田",
+        "伊勢原",
+        "鶴巻温泉",
+        "東海大学前",
+        "秦野",
+        "渋沢",
+        "新松田",
+        "開成",
+        "栢山",
+        "富水",
+        "螢田",
+        "足柄",
+        "小田原"
+      ],
+      "callingComponents": [
+        {
+          "name": "新宿",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南新宿",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "参宮橋",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "代々木八幡",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "代々木上原",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東北沢",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下北沢",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "世田谷代田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "梅ヶ丘",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "豪徳寺",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "経堂",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千歳船橋",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "祖師ヶ谷大蔵",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "成城学園前",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "喜多見",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "狛江",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "和泉多摩川",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "登戸",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "向ヶ丘遊園",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "生田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "読売ランド前",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "百合ヶ丘",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新百合ヶ丘",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "柿生",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鶴川",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "玉川学園前",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "町田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "相模大野",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小田急相模原",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "相武台前",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "座間",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "海老名",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "厚木",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "本厚木",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "愛甲石田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "伊勢原",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鶴巻温泉",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東海大学前",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "秦野",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "渋沢",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新松田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "開成",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "栢山",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "富水",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "螢田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "足柄",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小田原",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_LOCAL_STOPPING_ROW_AND_BRANCH_JUNCTION_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "odakyu-1-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:odakyu:local",
+      "sourceUrl": "https://www.odakyu.jp/station/img/railmap.jpg?202504",
+      "observedResponseSha256": "9003983c799b4b8ca193d64016bfdb36f0d15e5ee685cd7f8f5f3dc46d957e7c",
+      "locator": "Official stopping diagram printed 2025-04-01: trace the blue local stopping row only. Odawara, Enoshima and Tama branches are separate; branch junctions Sagami-Ono and Shin-Yurigaoka are explicitly shown. Local sections do not assert one through-running train over all branches. Stops beyond Odawara belong to Odakyu Hakone and are not silently assigned to Odakyu.",
+      "line": "小田原線",
+      "operator": "小田急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "小田原",
+        "足柄",
+        "螢田",
+        "富水",
+        "栢山",
+        "開成",
+        "新松田",
+        "渋沢",
+        "秦野",
+        "東海大学前",
+        "鶴巻温泉",
+        "伊勢原",
+        "愛甲石田",
+        "本厚木",
+        "厚木",
+        "海老名",
+        "座間",
+        "相武台前",
+        "小田急相模原",
+        "相模大野",
+        "町田",
+        "玉川学園前",
+        "鶴川",
+        "柿生",
+        "新百合ヶ丘",
+        "百合ヶ丘",
+        "読売ランド前",
+        "生田",
+        "向ヶ丘遊園",
+        "登戸",
+        "和泉多摩川",
+        "狛江",
+        "喜多見",
+        "成城学園前",
+        "祖師ヶ谷大蔵",
+        "千歳船橋",
+        "経堂",
+        "豪徳寺",
+        "梅ヶ丘",
+        "世田谷代田",
+        "下北沢",
+        "東北沢",
+        "代々木上原",
+        "代々木八幡",
+        "参宮橋",
+        "南新宿",
+        "新宿"
+      ],
+      "callingComponents": [
+        {
+          "name": "小田原",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "足柄",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "螢田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "富水",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "栢山",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "開成",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新松田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "渋沢",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "秦野",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東海大学前",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鶴巻温泉",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "伊勢原",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "愛甲石田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "本厚木",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "厚木",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "海老名",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "座間",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "相武台前",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小田急相模原",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "相模大野",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "町田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "玉川学園前",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鶴川",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "柿生",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新百合ヶ丘",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "百合ヶ丘",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "読売ランド前",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "生田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "向ヶ丘遊園",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "登戸",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "和泉多摩川",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "狛江",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "喜多見",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "成城学園前",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "祖師ヶ谷大蔵",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "千歳船橋",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "経堂",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "豪徳寺",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "梅ヶ丘",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "世田谷代田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "下北沢",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東北沢",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "代々木上原",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "代々木八幡",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "参宮橋",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南新宿",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新宿",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_LOCAL_STOPPING_ROW_AND_BRANCH_JUNCTION_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "odakyu-2-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:odakyu:local",
+      "sourceUrl": "https://www.odakyu.jp/station/img/railmap.jpg?202504",
+      "observedResponseSha256": "9003983c799b4b8ca193d64016bfdb36f0d15e5ee685cd7f8f5f3dc46d957e7c",
+      "locator": "Official stopping diagram printed 2025-04-01: trace the blue local stopping row only. Odawara, Enoshima and Tama branches are separate; branch junctions Sagami-Ono and Shin-Yurigaoka are explicitly shown. Local sections do not assert one through-running train over all branches.",
+      "line": "江ノ島線",
+      "operator": "小田急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "相模大野",
+        "東林間",
+        "中央林間",
+        "南林間",
+        "鶴間",
+        "大和",
+        "桜ヶ丘",
+        "高座渋谷",
+        "長後",
+        "湘南台",
+        "六会日大前",
+        "善行",
+        "藤沢本町",
+        "藤沢",
+        "本鵠沼",
+        "鵠沼海岸",
+        "片瀬江ノ島"
+      ],
+      "callingComponents": [
+        {
+          "name": "相模大野",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東林間",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中央林間",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南林間",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鶴間",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大和",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桜ヶ丘",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高座渋谷",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "長後",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "湘南台",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "六会日大前",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "善行",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "藤沢本町",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "藤沢",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "本鵠沼",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鵠沼海岸",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "片瀬江ノ島",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_LOCAL_STOPPING_ROW_AND_BRANCH_JUNCTION_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "odakyu-2-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:odakyu:local",
+      "sourceUrl": "https://www.odakyu.jp/station/img/railmap.jpg?202504",
+      "observedResponseSha256": "9003983c799b4b8ca193d64016bfdb36f0d15e5ee685cd7f8f5f3dc46d957e7c",
+      "locator": "Official stopping diagram printed 2025-04-01: trace the blue local stopping row only. Odawara, Enoshima and Tama branches are separate; branch junctions Sagami-Ono and Shin-Yurigaoka are explicitly shown. Local sections do not assert one through-running train over all branches.",
+      "line": "江ノ島線",
+      "operator": "小田急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "片瀬江ノ島",
+        "鵠沼海岸",
+        "本鵠沼",
+        "藤沢",
+        "藤沢本町",
+        "善行",
+        "六会日大前",
+        "湘南台",
+        "長後",
+        "高座渋谷",
+        "桜ヶ丘",
+        "大和",
+        "鶴間",
+        "南林間",
+        "中央林間",
+        "東林間",
+        "相模大野"
+      ],
+      "callingComponents": [
+        {
+          "name": "片瀬江ノ島",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鵠沼海岸",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "本鵠沼",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "藤沢",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "藤沢本町",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "善行",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "六会日大前",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "湘南台",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "長後",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "高座渋谷",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "桜ヶ丘",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大和",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "鶴間",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "南林間",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中央林間",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東林間",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "相模大野",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_LOCAL_STOPPING_ROW_AND_BRANCH_JUNCTION_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "odakyu-3-local-outbound",
+      "kind": "service",
+      "sourceActionId": "private:odakyu:local",
+      "sourceUrl": "https://www.odakyu.jp/station/img/railmap.jpg?202504",
+      "observedResponseSha256": "9003983c799b4b8ca193d64016bfdb36f0d15e5ee685cd7f8f5f3dc46d957e7c",
+      "locator": "Official stopping diagram printed 2025-04-01: trace the blue local stopping row only. Odawara, Enoshima and Tama branches are separate; branch junctions Sagami-Ono and Shin-Yurigaoka are explicitly shown. Local sections do not assert one through-running train over all branches.",
+      "line": "多摩線",
+      "operator": "小田急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "新百合ヶ丘",
+        "五月台",
+        "栗平",
+        "黒川",
+        "はるひ野",
+        "小田急永山",
+        "小田急多摩センター",
+        "唐木田"
+      ],
+      "callingComponents": [
+        {
+          "name": "新百合ヶ丘",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "五月台",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "栗平",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "黒川",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "はるひ野",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小田急永山",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小田急多摩センター",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "唐木田",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_LOCAL_STOPPING_ROW_AND_BRANCH_JUNCTION_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "odakyu-3-local-inbound",
+      "kind": "service",
+      "sourceActionId": "private:odakyu:local",
+      "sourceUrl": "https://www.odakyu.jp/station/img/railmap.jpg?202504",
+      "observedResponseSha256": "9003983c799b4b8ca193d64016bfdb36f0d15e5ee685cd7f8f5f3dc46d957e7c",
+      "locator": "Official stopping diagram printed 2025-04-01: trace the blue local stopping row only. Odawara, Enoshima and Tama branches are separate; branch junctions Sagami-Ono and Shin-Yurigaoka are explicitly shown. Local sections do not assert one through-running train over all branches.",
+      "line": "多摩線",
+      "operator": "小田急電鉄",
+      "mode": "private_rail",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "唐木田",
+        "小田急多摩センター",
+        "小田急永山",
+        "はるひ野",
+        "黒川",
+        "栗平",
+        "五月台",
+        "新百合ヶ丘"
+      ],
+      "callingComponents": [
+        {
+          "name": "唐木田",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小田急多摩センター",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小田急永山",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "はるひ野",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "黒川",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "栗平",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "五月台",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新百合ヶ丘",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "VISUAL_LOCAL_STOPPING_ROW_AND_BRANCH_JUNCTION_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    }
+  ]
+}

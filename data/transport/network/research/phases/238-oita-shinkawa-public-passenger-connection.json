@@ -1,0 +1,99 @@
+{
+  "phaseId": "238-oita-shinkawa-public-passenger-connection",
+  "strategy": [
+    "EXACT_NATIVE_DIRECTION_CURRENT_OPERATOR_POLE_MAP",
+    "GSI_CORROBORATED_PUBLIC_ROADSIDE_AND_PASSENGER_FRONTAGE",
+    "ONE_DIRECTED_WALK_ONLY"
+  ],
+  "completedActionIds": [
+    "transfer:oita:shinkawa-reviewed-public-connection-238:pole-map",
+    "transfer:oita:shinkawa-reviewed-public-connection-238:arrival-pole5",
+    "transfer:oita:shinkawa-reviewed-public-connection-238:passenger-facility",
+    "transfer:oita:shinkawa-reviewed-public-connection-238:open-frontage",
+    "transfer:oita:shinkawa-reviewed-public-connection-238:gsi-road-frontage"
+  ],
+  "facts": [
+    {
+      "factId": "shinkawa-arrival-pole5-to-departure-pole1-public-connection-238",
+      "kind": "transfer",
+      "sourceActionId": "transfer:oita:shinkawa-reviewed-public-connection-238:pole-map",
+      "sourceUrl": "https://www.oitakotsu.co.jp/rosenzu/noriba_shinkawa.pdf?1623205556854=",
+      "observedResponseSha256": "d7e18c45f875d101d0628025cc8d00e3d49ef630a9fa6684abcf93735e982acd",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:oitakotsu:licensed-niagemachi-airport-return-section",
+          "url": "https://data.bodik.jp/dataset/09f3116a-418d-42be-9bd5-4d395c7b3467/resource/899d5ccc-75ee-48a8-bc96-e241a6a0c0cd/download/gtfs04_oitakotsu.zip",
+          "observedResponseSha256": "981d5d85acbb3539725550eab79a2bc0fd22d8d88a0928a8f51fc47551643e3e"
+        },
+        {
+          "sourceActionId": "transfer:oita:shinkawa-reviewed-public-connection-238:arrival-pole5",
+          "url": "https://wp.oitakotsu.co.jp/wp-content/uploads/jidousha/airport/pdf/01_2_20261001_20261024.pdf?v=100412815",
+          "observedResponseSha256": "2995848a404f22ac6db5e4ad35df2b695d0ada0f9e082a02ed605f5a7ef7563f"
+        },
+        {
+          "sourceActionId": "transfer:oita:shinkawa-reviewed-public-connection-238:passenger-facility",
+          "url": "https://www.oitakotsu.co.jp/bus/airport/maps/map.php?TB_iframe=true&height=600&placeValuesBeforeTB_=savedValues&tei=%E6%96%B0%E5%B7%9D&width=900",
+          "observedResponseSha256": "5cef0e6bbf1bcc1d2e5e8f5e9c4e6603ead79f0353df427b4d3d1b8e5f00f3a4"
+        },
+        {
+          "sourceActionId": "transfer:oita:shinkawa-reviewed-public-connection-238:open-frontage",
+          "url": "https://www.oitakotsu.co.jp/bus/airport/p/206.jpg",
+          "observedResponseSha256": "1cc858a9884a55cbfc59927dab46ec4739822943da3dab4256e8480664100b78"
+        },
+        {
+          "sourceActionId": "transfer:oita:shinkawa-reviewed-public-connection-238:gsi-road-frontage",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/226904/105377.jpg",
+          "observedResponseSha256": "0927bc37cea72b090677343b01043f43846227188fe7626b9e4aa94be11e9223"
+        }
+      ],
+      "locator": "Arrival pole5 passenger roadside to the east signalized crossing on the west leg of the Route22 junction. Operator map puts pole5 on the south roadside and draws the zebra crossing east of it. GSI shows the corresponding road edge and marked intersection context. South to north across that marked Route22 crossing. Operator passenger stop map explicitly depicts the signalized zebra crossing. GSI corroborates its physical intersection setting. West along the north roadside to the Shinkawa BC west-end open passenger frontage and pole1. Operator map places the ticket-office/BC and pole1 in this frontage; its linked named ticket-office photograph shows the public passenger facade and open apron. The GSI tile supplies continuous physical street/frontage context around the BC building. Coarse component relationship only. Unknown image capture date; native GTFS point is not a surveyed pole. No parking lot traversal, parking arrows, exact internal curb, walking time or accessibility claim.",
+      "components": [
+        {
+          "name": "新川",
+          "operator": "大分交通",
+          "line": "gtfs:oitakotsu-airport:route:51",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:oitakotsu-airport",
+            "stopId": "87 0",
+            "sourceArchiveSha256": "981d5d85acbb3539725550eab79a2bc0fd22d8d88a0928a8f51fc47551643e3e",
+            "recordSha256": "aa0294205621701d926b71bdfc22c4619e17c2b4e1566871cdb5b48f9d212739",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current airport-origin Airliner route X timetable ending at 新川バスセンター⑤, combined with the exact GTFS active route51 trip and operator pole diagram, binds stop87 0 to pole5; stop remains alighting-only on this direction."
+          }
+        },
+        {
+          "name": "新川",
+          "operator": "大分交通",
+          "line": "gtfs:oitakotsu-airport:route:50",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:oitakotsu-airport",
+            "stopId": "87 5",
+            "sourceArchiveSha256": "981d5d85acbb3539725550eab79a2bc0fd22d8d88a0928a8f51fc47551643e3e",
+            "recordSha256": "b2380c5f7eb0d667195b3d1f865d2fc49d6d168d0ba5789d7784319e0176de78",
+            "expectedPlatformCode": "1",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact native platform_code1 and operator airport map pole1; full active20261002 route50 trip a6abae94-d38b-4fa6-8308-ffbfbb788875 boards at87 5 and allows alighting only at airport2032 0."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXACT_NATIVE_DIRECTION_CURRENT_OPERATOR_POLE_BINDING_AND_PUBLIC_CROSSING_PLUS_GSI_AND_OPERATOR_PASSENGER_FRONTAGE",
+      "hubScopeComplete": false,
+      "gsiAttribution": "国土地理院 全国最新写真（シームレス）",
+      "captureDate": "UNKNOWN"
+    }
+  ],
+  "notes": [
+    "Requires revised unpublished227 full-parent route50 package, not the old section2-10.",
+    "Only87 0 arrival→87 5 boarding. No reverse transfer, new service fact, parking traversal, native-coordinate-as-pole or exact internal curb claim.",
+    "GSI captureDateUNKNOWN; all source artwork remains private."
+  ]
+}

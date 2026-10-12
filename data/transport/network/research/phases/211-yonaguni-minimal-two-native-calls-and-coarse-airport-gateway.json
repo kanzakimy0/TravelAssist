@@ -1,0 +1,93 @@
+{
+  "phaseId": "211-yonaguni-minimal-two-native-calls-and-coarse-airport-gateway",
+  "strategy": [
+    "REUSE_EXISTING_C28_AIRPORT_IDENTITY_AND_TWO_WAY_FLIGHTS",
+    "EXACT_CC_BY_4_0_SAME_ARCHIVE_GTFS_REUSE",
+    "TWO_ADJACENT_CALL_SECTIONS_FROM_ONE_ACTIVE_29_CALL_PARENT",
+    "COARSE_WHOLE_AIRPORT_PUBLIC_GATEWAY_TO_EXACT_NATIVE_S2690"
+  ],
+  "completedActionIds": [
+    "bus:yonaguni:ottop-ccby-current-full-airport-loop",
+    "airport:yonaguni:current-public-bus-and-airport-map"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "yonaguni-airport-minimal-package.json",
+      "packageSha256": "a2a1d7dcc29f246eefa8fbf8971b115a235a4ec26dcc07b71c3985e4ecf23892",
+      "sourceActionId": "bus:yonaguni:ottop-ccby-current-full-airport-loop",
+      "reviewedServiceDate": "20261002",
+      "archiveSha256": "9965512c2152f22d575126827729e750a4f038e65c7d8a418109c42bbfd55222"
+    }
+  ],
+  "facts": [
+    {
+      "factId": "yonaguni-coarse-public-airport-gateway-to-native-s2690",
+      "kind": "transfer",
+      "sourceActionId": "airport:yonaguni:current-public-bus-and-airport-map",
+      "sourceUrl": "https://welcome-yonaguni.jp/news/4193/",
+      "observedResponseSha256": "3e58d83be8addb4eaeb9659b0e2431f7180a4194e5dd792d9c44de3ce9559a90",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:yonaguni:current-public-bus-and-airport-map",
+          "url": "https://www.town.yonaguni.okinawa.jp/docs/2018042400199/",
+          "observedResponseSha256": "1d59ad710aeea071533cf8f301f6db4902e12fdce97ffe0b370cd4d47d042a90"
+        },
+        {
+          "sourceActionId": "airport:yonaguni:current-public-bus-and-airport-map",
+          "url": "https://welcome-yonaguni.jp/wp-content/uploads/2026/06/yonaguni_bus_2026.jpg",
+          "observedResponseSha256": "28c93f667385e9239162208201b5adc22676ca692869178e1c1138ae2a9b0b16"
+        },
+        {
+          "sourceActionId": "bus:yonaguni:ottop-ccby-current-full-airport-loop",
+          "url": "https://api3.ottop.org/download/gtfs/ooXuXei4op7y/7000020473821",
+          "observedResponseSha256": "9965512c2152f22d575126827729e750a4f038e65c7d8a418109c42bbfd55222"
+        }
+      ],
+      "locator": "Current access notice (2026-04-01 timetable revision) says airport access by the free life-route bus has improved. Current 2026 timetable identifies a plane-marked 空港 bus call within the published runs. The municipal page links the 2026 bus timetable and route map. The current tourism notice describes airport access by the free bus. Bind the exact licensed native GTFS S2690 to the whole C28 airport facility only; no door, curb, stand, platform or walking-path detail is asserted.",
+      "components": [
+        {
+          "name": "与那国空港",
+          "operator": "airport-facility:cf03_00066",
+          "line": "airport:cf03_00066",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00066",
+            "requirementId": "review:transport-node:ca0d622e-7e31-5927-b5f7-b0350e8ee661",
+            "expectedRequirementName": "与那国",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Coarse whole-airport public gateway only. Current tourism access notice says airport access by the free bus has improved; the current April 2026 timetable marks an airport call; the exact S2690 is independently bound by the licensed active GTFS trip. Do not claim a terminal door, exact stop frontage, curb, bay, platform, walking route, accessibility or proximity."
+          }
+        },
+        {
+          "name": "空港",
+          "operator": "与那国町",
+          "line": "gtfs:yonaguni-ottop-airport:route:893",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:yonaguni-ottop-airport",
+            "stopId": "S2690",
+            "sourceArchiveSha256": "9965512c2152f22d575126827729e750a4f038e65c7d8a418109c42bbfd55222",
+            "recordSha256": "0038269f6c76e67e1fbe22d6037ed7360d73be16caa719eaf29bac98b5b7fbaa",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Exact GTFS native S2690 from current active passenger bus service. Interchange is coarse whole-airport gateway; no coordinate or same-name-only join."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_AIRPORT_ACCESS_NOTICE_AND_AIRPORT_MARKED_BUS_GUIDE_PLUS_EXACT_ACTIVE_LICENSED_STOP",
+      "hubScopeComplete": false
+    }
+  ],
+  "scope": "Only two exact adjacent licensed native GTFS sections: S2690→S2680 from parent calls 0–1 and S2680→S2690 from calls 27–28, plus two directed coarse whole-airport gateway relations to exact S2690. Existing C28 airport and current bidirectional flight-to-national evidence are reused. No other bus stop, exact terminal passage, curb, clock, fare, walking time, accessibility or geometry."
+}

@@ -1,0 +1,318 @@
+{
+  "phaseId": "116-hyakuri-iwakuni-official-name-equivalence-and-naha-flight-pairs",
+  "strategy": [
+    "EXPLICIT_GOVERNMENT_FORMAL_PUBLIC_AIRPORT_NAME_BINDING",
+    "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_ENDPOINT_REVIEW",
+    "REJECT_UNREVIEWED_ALIAS_OR_SURFACE_ACCESS_INFERENCE"
+  ],
+  "completedActionIds": [
+    "flight:naha-airport:ibaraki-iwakuni-directional-pairs",
+    "airport:mlit:hyakuri-iwakuni-explicit-public-name-review"
+  ],
+  "facts": [
+    {
+      "factId": "naha-october-2026-bc532",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:ibaraki-iwakuni-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json",
+      "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:ibaraki-iwakuni-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        },
+        {
+          "sourceActionId": "airport:mlit:hyakuri-iwakuni-explicit-public-name-review",
+          "url": "https://www.cab.mlit.go.jp/tcab/airport/list/ibaraki.html",
+          "observedResponseSha256": "8dc313dafaa2e5d454b01c5a6ae10a6ba6ba5348f855ec0771bf3925ea1e67af"
+        }
+      ],
+      "locator": "Naha Airport depart_flight_schedule independently reviewed row BC532 explicitly OKA to IBR; both special-date/operator remarks blank. October 1-31 2026 source period separately bound. Government naming evidence resolves this public airport to the exact formal airfield record; historical report frequencies and military area access are excluded.",
+      "line": "茨城・那覇国内線",
+      "operator": "スカイマーク",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "BC532",
+      "reviewedAirportPublicNames": [
+        "那覇空港",
+        "茨城空港"
+      ],
+      "direction": "那覇空港→百里飛行場",
+      "callingStations": [
+        "那覇空港",
+        "百里飛行場"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 independent Naha Airport schedule explicitly identifies Naha OKA. Formal name is separately bound to exact C28 airport reference. Whole-airport identity only; no military-area access, passenger terminal-door, surface transfer or live availability inference."
+          }
+        },
+        {
+          "name": "百里飛行場",
+          "operator": "airport-facility:cf03_00003",
+          "line": "airport:cf03_00003",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00003",
+            "requirementId": "review:official-airport:百里",
+            "expectedRequirementName": "百里",
+            "method": "REVIEWED_EXPLICIT_AIRFIELD_PUBLIC_NAME_ALIAS",
+            "officialNameEvidence": {
+              "officialName": "百里飛行場",
+              "requirementName": "百里",
+              "publicName": "茨城空港",
+              "equivalenceKind": "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME",
+              "locator": "Tokyo CAB current airport heading explicitly pairs Hyakuri airfield with Ibaraki Airport.",
+              "url": "https://www.cab.mlit.go.jp/tcab/airport/list/ibaraki.html",
+              "observedResponseSha256": "8dc313dafaa2e5d454b01c5a6ae10a6ba6ba5348f855ec0771bf3925ea1e67af"
+            },
+            "currentPassengerAccessReview": "Current October 2026 independent Naha Airport schedule explicitly identifies Ibaraki IBR. Formal name is separately bound to exact C28 airport reference. Whole-airport identity only; no military-area access, passenger terminal-door, surface transfer or live availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_DIRECTIONAL_FLIGHT_AND_EXPLICIT_GOVERNMENT_FORMAL_PUBLIC_NAME",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-bc531",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:ibaraki-iwakuni-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json",
+      "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:ibaraki-iwakuni-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        },
+        {
+          "sourceActionId": "airport:mlit:hyakuri-iwakuni-explicit-public-name-review",
+          "url": "https://www.cab.mlit.go.jp/tcab/airport/list/ibaraki.html",
+          "observedResponseSha256": "8dc313dafaa2e5d454b01c5a6ae10a6ba6ba5348f855ec0771bf3925ea1e67af"
+        }
+      ],
+      "locator": "Naha Airport arrival_flight_schedule independently reviewed row BC531 explicitly IBR to OKA; both special-date/operator remarks blank. October 1-31 2026 source period separately bound. Government naming evidence resolves this public airport to the exact formal airfield record; historical report frequencies and military area access are excluded.",
+      "line": "茨城・那覇国内線",
+      "operator": "スカイマーク",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "BC531",
+      "reviewedAirportPublicNames": [
+        "那覇空港",
+        "茨城空港"
+      ],
+      "direction": "百里飛行場→那覇空港",
+      "callingStations": [
+        "百里飛行場",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "百里飛行場",
+          "operator": "airport-facility:cf03_00003",
+          "line": "airport:cf03_00003",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00003",
+            "requirementId": "review:official-airport:百里",
+            "expectedRequirementName": "百里",
+            "method": "REVIEWED_EXPLICIT_AIRFIELD_PUBLIC_NAME_ALIAS",
+            "officialNameEvidence": {
+              "officialName": "百里飛行場",
+              "requirementName": "百里",
+              "publicName": "茨城空港",
+              "equivalenceKind": "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME",
+              "locator": "Tokyo CAB current airport heading explicitly pairs Hyakuri airfield with Ibaraki Airport.",
+              "url": "https://www.cab.mlit.go.jp/tcab/airport/list/ibaraki.html",
+              "observedResponseSha256": "8dc313dafaa2e5d454b01c5a6ae10a6ba6ba5348f855ec0771bf3925ea1e67af"
+            },
+            "currentPassengerAccessReview": "Current October 2026 independent Naha Airport schedule explicitly identifies Ibaraki IBR. Formal name is separately bound to exact C28 airport reference. Whole-airport identity only; no military-area access, passenger terminal-door, surface transfer or live availability inference."
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 independent Naha Airport schedule explicitly identifies Naha OKA. Formal name is separately bound to exact C28 airport reference. Whole-airport identity only; no military-area access, passenger terminal-door, surface transfer or live availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_DIRECTIONAL_FLIGHT_AND_EXPLICIT_GOVERNMENT_FORMAL_PUBLIC_NAME",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-nh1268",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:ibaraki-iwakuni-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/depart_flight_schedule.json",
+      "observedResponseSha256": "71b8f8b0d8baae9ef2d8344df8f2526da2397204e345b60930327c0aadd1afd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:ibaraki-iwakuni-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        },
+        {
+          "sourceActionId": "airport:mlit:hyakuri-iwakuni-explicit-public-name-review",
+          "url": "https://www.mlit.go.jp/koku/content/001725445.pdf",
+          "observedResponseSha256": "5e34a879a270f8dfc78218f2f4e47bae60d73db26619a9613970222c179ea414"
+        }
+      ],
+      "locator": "Naha Airport depart_flight_schedule independently reviewed row NH1268 explicitly OKA to IWK; both special-date/operator remarks blank. October 1-31 2026 source period separately bound. Government naming evidence resolves this public airport to the exact formal airfield record; historical report frequencies and military area access are excluded.",
+      "line": "岩国・那覇国内線",
+      "operator": "全日本空輸",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NH1268",
+      "reviewedAirportPublicNames": [
+        "那覇空港",
+        "岩国錦帯橋空港"
+      ],
+      "direction": "那覇空港→岩国飛行場",
+      "callingStations": [
+        "那覇空港",
+        "岩国飛行場"
+      ],
+      "callingComponents": [
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 independent Naha Airport schedule explicitly identifies Naha OKA. Formal name is separately bound to exact C28 airport reference. Whole-airport identity only; no military-area access, passenger terminal-door, surface transfer or live availability inference."
+          }
+        },
+        {
+          "name": "岩国飛行場",
+          "operator": "airport-facility:cf03_00101",
+          "line": "airport:cf03_00101",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00101",
+            "requirementId": "review:official-airport:岩国",
+            "expectedRequirementName": "岩国",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "岩国飛行場",
+              "requirementName": "岩国",
+              "publicName": "岩国錦帯橋空港",
+              "equivalenceKind": "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME",
+              "locator": "MLIT-published Iwakuni airport council report PDF p3, opening sentence, explicitly labels formal name and public nickname.",
+              "url": "https://www.mlit.go.jp/koku/content/001725445.pdf",
+              "observedResponseSha256": "5e34a879a270f8dfc78218f2f4e47bae60d73db26619a9613970222c179ea414"
+            },
+            "currentPassengerAccessReview": "Current October 2026 independent Naha Airport schedule explicitly identifies Iwakuni Kintaikyo IWK. Formal name is separately bound to exact C28 airport reference. Whole-airport identity only; no military-area access, passenger terminal-door, surface transfer or live availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_DIRECTIONAL_FLIGHT_AND_EXPLICIT_GOVERNMENT_FORMAL_PUBLIC_NAME",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "naha-october-2026-nh1267",
+      "kind": "service",
+      "sourceActionId": "flight:naha-airport:ibaraki-iwakuni-directional-pairs",
+      "sourceUrl": "https://www.naha-airport.co.jp/common/json/arrival_flight_schedule.json",
+      "observedResponseSha256": "bd1bf04fd867d5b95a1661e32ee51c8e787e2484a8e1e9a63c81e979570e7533",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "flight:naha-airport:ibaraki-iwakuni-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        },
+        {
+          "sourceActionId": "airport:mlit:hyakuri-iwakuni-explicit-public-name-review",
+          "url": "https://www.mlit.go.jp/koku/content/001725445.pdf",
+          "observedResponseSha256": "5e34a879a270f8dfc78218f2f4e47bae60d73db26619a9613970222c179ea414"
+        }
+      ],
+      "locator": "Naha Airport arrival_flight_schedule independently reviewed row NH1267 explicitly IWK to OKA; both special-date/operator remarks blank. October 1-31 2026 source period separately bound. Government naming evidence resolves this public airport to the exact formal airfield record; historical report frequencies and military area access are excluded.",
+      "line": "岩国・那覇国内線",
+      "operator": "全日本空輸",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "reviewedFlightCode": "NH1267",
+      "reviewedAirportPublicNames": [
+        "那覇空港",
+        "岩国錦帯橋空港"
+      ],
+      "direction": "岩国飛行場→那覇空港",
+      "callingStations": [
+        "岩国飛行場",
+        "那覇空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "岩国飛行場",
+          "operator": "airport-facility:cf03_00101",
+          "line": "airport:cf03_00101",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00101",
+            "requirementId": "review:official-airport:岩国",
+            "expectedRequirementName": "岩国",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "岩国飛行場",
+              "requirementName": "岩国",
+              "publicName": "岩国錦帯橋空港",
+              "equivalenceKind": "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME",
+              "locator": "MLIT-published Iwakuni airport council report PDF p3, opening sentence, explicitly labels formal name and public nickname.",
+              "url": "https://www.mlit.go.jp/koku/content/001725445.pdf",
+              "observedResponseSha256": "5e34a879a270f8dfc78218f2f4e47bae60d73db26619a9613970222c179ea414"
+            },
+            "currentPassengerAccessReview": "Current October 2026 independent Naha Airport schedule explicitly identifies Iwakuni Kintaikyo IWK. Formal name is separately bound to exact C28 airport reference. Whole-airport identity only; no military-area access, passenger terminal-door, surface transfer or live availability inference."
+          }
+        },
+        {
+          "name": "那覇空港",
+          "operator": "airport-facility:cf03_00088",
+          "line": "airport:cf03_00088",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00088",
+            "requirementId": "review:transport-node:506992d3-3d82-5e3a-9572-c3ab0c5269c4",
+            "expectedRequirementName": "那覇",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 independent Naha Airport schedule explicitly identifies Naha OKA. Formal name is separately bound to exact C28 airport reference. Whole-airport identity only; no military-area access, passenger terminal-door, surface transfer or live availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_DIRECTIONAL_FLIGHT_AND_EXPLICIT_GOVERNMENT_FORMAL_PUBLIC_NAME",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_RELATION_NOT_REALTIME"
+    }
+  ]
+}

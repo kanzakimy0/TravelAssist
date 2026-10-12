@@ -1,0 +1,106 @@
+{
+  "task": "TASK-083-A",
+  "scope": "CANONICAL_OWNER_CORRECTION",
+  "status": "PASS",
+  "baseDevelopSha": "5b951195698d3e421f34a9922393b454412fa4bb",
+  "reauthorizedAt": "2026-09-30T12:58:43Z",
+  "membershipCount": 100,
+  "membershipAndOrderUnchanged": true,
+  "masterCodesAndBindingsUnchanged": true,
+  "changedRecords": [
+    {
+      "internalId": "poi:e202dd40-4017-5b70-b5db-a8f3092bb3ca",
+      "fields": [
+        "lifecycle",
+        "sourceRefs",
+        "revision"
+      ]
+    },
+    {
+      "internalId": "poi:6814946e-289b-5931-8f0f-e397e0073627",
+      "fields": [
+        "sourceRefs",
+        "revision"
+      ]
+    },
+    {
+      "internalId": "poi:1f4f9320-e27e-5ab5-9adb-e9e13a78b254",
+      "fields": [
+        "lifecycle",
+        "sourceRefs",
+        "revision"
+      ]
+    },
+    {
+      "internalId": "poi:dd955a9f-ad96-5d8f-9bfc-87ef3e4eea32",
+      "fields": [
+        "sourceRefs",
+        "revision"
+      ]
+    },
+    {
+      "internalId": "poi:208288db-abad-5e91-ab74-4a74d6a6cd68",
+      "fields": [
+        "lifecycle",
+        "sourceRefs",
+        "revision"
+      ]
+    }
+  ],
+  "unaffectedRecordsByteEquivalent": 95,
+  "unchangedArtifacts": [
+    {
+      "path": "data/poi/canonical/pilot-100/sample-manifest.v1.json",
+      "sha256": "6d6187e53f6235abc757795896b8ba441736ce078e1e5b3e0c70df14c4709d51"
+    },
+    {
+      "path": "src/shared/data/master-code-registry.v1.json",
+      "sha256": "360605996a55f7fd7302033f4bd541597d92215861112f4a89fe66e55f131305"
+    },
+    {
+      "path": "data/poi/canonical/pilot-100/admission-results.v1.jsonl",
+      "sha256": "6b452e6a84fe337ee31ba545315ed81b11ff676781ec9bdcaa716925b59007c7"
+    },
+    {
+      "path": "src/shared/data/canonical-poi-pilot100.feature43-trusted-baseline.v1.json",
+      "sha256": "5f7d0882bbb16c97eb857b7a86120adf39061ed815e22a73ba76746cd270ee79"
+    },
+    {
+      "path": "data/poi/full/manifests/current-candidate-review.v1.json",
+      "sha256": "5b95257ee62c83f14183b729bb2179ace2e98733a11361f0b442d79380457d66"
+    }
+  ],
+  "supportingManifest": {
+    "path": "data/poi/canonical/pilot-100/sample-manifest.v1.json",
+    "previousDeclaredSha256": "77e239e0b5092f38e85f1d4e7035cf2ece2956128b5c01dbabdffc11b08d2c82",
+    "actualLfSha256": "6d6187e53f6235abc757795896b8ba441736ce078e1e5b3e0c70df14c4709d51",
+    "reconstructedCrlfSha256": "77e239e0b5092f38e85f1d4e7035cf2ece2956128b5c01dbabdffc11b08d2c82",
+    "correctedDeclaredSha256": "6d6187e53f6235abc757795896b8ba441736ce078e1e5b3e0c70df14c4709d51",
+    "status": "PASS"
+  },
+  "runtimeManifest": {
+    "path": "src/shared/data/canonical-poi-pilot100.runtime-manifest.v1.json",
+    "sha256": "b4f714078d2780324f9e98fbaf58001177040dbc30d9693e7bfef1019d6643df",
+    "datasetRevision": "task-083-a-pilot100-owner-adjudication-v2",
+    "datasetSha256": "0a91f0ec36c193b4a95c15dcad01338286ea91afb5003f3e1abdf7c7a9366ad5",
+    "datasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af"
+  },
+  "accessAdjudication": {
+    "path": "src/shared/data/canonical-poi-pilot100.access-adjudication.v1.json",
+    "revision": "task-083-a-access-adjudication-20260930-v1",
+    "sha256": "b80ae442d6a5fe883e9491fce6d242c7edce1d4c119e03975a1df43fd0be3d85",
+    "finalDecisions": 5,
+    "unresolvedOwnerDecisions": 0,
+    "assessmentExclusions": [
+      "poi:1f4f9320-e27e-5ab5-9adb-e9e13a78b254",
+      "poi:208288db-abad-5e91-ab74-4a74d6a6cd68",
+      "poi:e202dd40-4017-5b70-b5db-a8f3092bb3ca",
+      "poi:dd955a9f-ad96-5d8f-9bfc-87ef3e4eea32",
+      "poi:6814946e-289b-5931-8f0f-e397e0073627"
+    ],
+    "remainingAssessmentRecords": 95
+  },
+  "transportArtifactsChanged": 0,
+  "task085ReplayExecuted": false,
+  "qualityGateReceipt": "Final head, PR and merged-develop run are recorded in the correction PR body; no self-referential commit hash in generated files."
+}

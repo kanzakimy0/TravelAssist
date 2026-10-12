@@ -1,0 +1,46 @@
+{
+  "task": "TASK-084-B",
+  "scope": "LOCAL_AMENDMENT_REVIEW_VALIDATION",
+  "manifestSha256": "b4ad2259b986ab34b7326c15fe5f0d80f4f5a08160c012cdb787c0ede1fb375a",
+  "semanticNodeTests": {
+    "passed": 12,
+    "failed": 0
+  },
+  "deterministicRebuild": "PASS",
+  "resume": "PASS",
+  "selectedRailBatchRerun": "PASS",
+  "corruptionDetection": "PASS",
+  "amendmentFailBeforeWrite": "PASS",
+  "nationalMasterStatus": "REWORK_IN_PROGRESS",
+  "exactHeadQualityGate": "MUST_VERIFY_REMOTE_RUN_AFTER_PUSH",
+  "inputLineEndingPortability": "LF_CANONICAL_BYTES",
+  "airportBoundaryTests": [
+    "999 EXCLUDED",
+    "1000 ELIGIBLE",
+    "null UNKNOWN",
+    "inactive OVERRIDES"
+  ],
+  "hubBoundaryRegressions": [
+    "Osaka-Umeda 7 distinct components",
+    "Skytree 5 distinct components",
+    "Nerima multiline",
+    "JR Noda and Hanshin Noda separated",
+    "Senboku historical operator flagged",
+    "Tokyo and regional city coverage increased; Osaka baseline preserved",
+    "All proposed T0 components scoped for review",
+    "Kamiiida municipal metro stays separate from Meitetsu",
+    "Official Tokyu served lines supplement S12 without changing component IDs",
+    "Musashi-Kosugi explicit internal-passage identity; one valid count; Tokyu separate",
+    "Tokyo/Ikebukuro source-group duplicates resolved with official evidence",
+    "All final v1 lineage targets active after identity resolution",
+    "15 original pending boundaries carry official evidence",
+    "269 original high-tier gaps individually screened; 45 newly scoped; 224 explicitly open"
+  ],
+  "identityFailureGuards": [
+    "Second numeric value rejected",
+    "Operator mismatch rejected",
+    "Missing source candidate rejected",
+    "Missing official evidence rejected",
+    "Caller source records preserved"
+  ]
+}

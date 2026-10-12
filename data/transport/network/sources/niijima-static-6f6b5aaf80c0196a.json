@@ -1,0 +1,41 @@
+{
+  "kind": "REVIEWED_OFFICIAL_PUBLIC_FACILITY_BUS_INPUT",
+  "source": {
+    "sourceId": "transport-source:086:6d19091aa239d30c5ed25f619baf6a11",
+    "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/niijima/niijima_service",
+    "contentSha256": "90e95fa1ae01b1dd756f0a93c97b345461c7df9b5e1465e06d2376c78007b5de",
+    "evidenceContentSha256": "f1fd7c6096d9ec2c95909b8d36315885435d24bae1c678fec04adc95a5a76115",
+    "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+    "observedAt": "2026-10-03T04:50:28.849688+00:00",
+    "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+    "rawPayloadRetained": false,
+    "derivedDataAllowed": true,
+    "redistributionAllowed": true,
+    "metricPersistenceAllowed": false,
+    "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+    "rightsReview": {
+      "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+      "termsUrl": "https://central-air.co.jp/privacy-policy.html",
+      "reason": "Carrier own public schedule HTML explicitly loads schedule.js which names this exact public hosted CSV. Extract only two independent planned airport directions, service date and flight codes. Google hosting is not an open license; airline copyright retained, no raw CSV/JS/timetable/clocks publication and no actual-flight/booking guarantee. Previous failed PDF not retried."
+    },
+    "attribution": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/niijima/niijima_service; operator factual topology; reviewed 2026-10-03T04:50:28.849688+00:00"
+  },
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:b60296b2f5670c11d41933d06ce005a7",
+      "sourceId": "transport-source:086:6d19091aa239d30c5ed25f619baf6a11",
+      "sourceSha256": "90e95fa1ae01b1dd756f0a93c97b345461c7df9b5e1465e06d2376c78007b5de",
+      "record": {
+        "kind": "REVIEWED_CURRENT_OFFICIAL_AIRPORT",
+        "factId": "transport-evidence:086:b60296b2f5670c11d41933d06ce005a7",
+        "sourceActionId": "niijima:private:air",
+        "sourceUrl": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/niijima/niijima_service",
+        "observedResponseSha256": "f1fd7c6096d9ec2c95909b8d36315885435d24bae1c678fec04adc95a5a76115",
+        "name": "新島空港",
+        "carrier": "新中央航空株式会社"
+      },
+      "recordSha256": "2ad37d9d204dc2e6a7cb1930522e3bd059a6366db42f10ecc9c11adce6d7d924",
+      "locator": "Private bounded independent official source semantic review; no coordinate-based access inference"
+    }
+  ]
+}

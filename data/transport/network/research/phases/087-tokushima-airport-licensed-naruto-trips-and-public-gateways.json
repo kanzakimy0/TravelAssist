@@ -1,0 +1,203 @@
+{
+  "phaseId": "087-tokushima-airport-licensed-naruto-trips-and-public-gateways",
+  "strategy": [
+    "LICENSED_CURRENT_TOKUBUS_AIRPORT_PURPOSE_SELECTED_TRIPS",
+    "PRESERVE_INDEPENDENT_DIRECTION_ORDERS_AND_REPEATED_CALLS",
+    "EXPLICIT_OFFICIAL_AIRFIELD_NAME_CORRESPONDENCE",
+    "CURRENT_JR_AND_AIRPORT_PUBLIC_PASSAGES"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "tokubus-naruto-airport.json",
+      "packageSha256": "1adca8dfc12b2d3d7d3b87bccc686033b3499590960f72596e70b2ba6618c134",
+      "sourceActionId": "bus:tokubus:licensed-current-naruto-airport-trips"
+    }
+  ],
+  "completedActionIds": [
+    "bus:tokubus:licensed-current-naruto-airport-trips",
+    "hub:tokushima:current-jr-gtfs-public-forecourt",
+    "airport:tokushima:current-airfield-name-and-local-bus-passages"
+  ],
+  "facts": [
+    {
+      "factId": "tokushima-jr-public-forecourt-to-gtfs-3_16",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokushima:current-jr-gtfs-public-forecourt",
+      "sourceUrl": "https://www.tokubus.co.jp/themes/default/pdf/kaisei260401/e6_busstop_tokushimastation.pdf",
+      "observedResponseSha256": "fc62762aafe2f076165b0f45b21b280ec001f49a8fbe41a45df984bc483b2d78",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokushima:current-jr-gtfs-public-forecourt",
+          "url": "https://www.tokubus.co.jp/routebus/diagram.html",
+          "observedResponseSha256": "777af5c875cb041df87896f64cf384291d4a14d0c3c34264abd5c73d17626618"
+        }
+      ],
+      "locator": "The operator current linked station diagram dated 20260401 explicitly labels JR Tokushima station exit, the public crossing to Narutoline bay 16, and the distinct local-bus alighting frontage on the west public sidewalk next to Amico. Bind exact licensed departure component 3_16 and alighting-only component 3_31 independently to JR Tokushima Kotoku Line through those depicted public pedestrian connections. The raw blank arrival platform is preserved; stop suffix 31 is not a public bay number. Do not merge the departure and arrival identities, infer a transfer from distance, or assert live platform, walking duration or accessibility.",
+      "components": [
+        {
+          "name": "徳島",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "徳島駅前",
+          "operator": "徳島バス",
+          "line": "gtfs:tokubus-naruto-airport:route:1001",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tokubus-naruto-airport",
+            "stopId": "3_16",
+            "sourceArchiveSha256": "d71d6bb1743a77bb21f2d044e9ddca326cf0859b281ebc4fae57eef338ef36da",
+            "recordSha256": "169f3d00f6c23b13553ba7613774cfac7462801ebaa28a6d59007dee8eb85df1",
+            "expectedPlatformCode": "16",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The operator current linked station diagram dated 20260401 explicitly labels JR Tokushima station exit, the public crossing to Narutoline bay 16, and the distinct local-bus alighting frontage on the west public sidewalk next to Amico. Bind exact licensed departure component 3_16 and alighting-only component 3_31 independently to JR Tokushima Kotoku Line through those depicted public pedestrian connections. The raw blank arrival platform is preserved; stop suffix 31 is not a public bay number. Do not merge the departure and arrival identities, infer a transfer from distance, or assert live platform, walking duration or accessibility."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_FORECOURT_AND_EXACT_GTFS_PLATFORM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokushima-jr-public-forecourt-to-gtfs-3_31",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokushima:current-jr-gtfs-public-forecourt",
+      "sourceUrl": "https://www.tokubus.co.jp/themes/default/pdf/kaisei260401/e6_busstop_tokushimastation.pdf",
+      "observedResponseSha256": "fc62762aafe2f076165b0f45b21b280ec001f49a8fbe41a45df984bc483b2d78",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokushima:current-jr-gtfs-public-forecourt",
+          "url": "https://www.tokubus.co.jp/routebus/diagram.html",
+          "observedResponseSha256": "777af5c875cb041df87896f64cf384291d4a14d0c3c34264abd5c73d17626618"
+        }
+      ],
+      "locator": "The operator current linked station diagram dated 20260401 explicitly labels JR Tokushima station exit, the public crossing to Narutoline bay 16, and the distinct local-bus alighting frontage on the west public sidewalk next to Amico. Bind exact licensed departure component 3_16 and alighting-only component 3_31 independently to JR Tokushima Kotoku Line through those depicted public pedestrian connections. The raw blank arrival platform is preserved; stop suffix 31 is not a public bay number. Do not merge the departure and arrival identities, infer a transfer from distance, or assert live platform, walking duration or accessibility.",
+      "components": [
+        {
+          "name": "徳島",
+          "operator": "四国旅客鉄道",
+          "line": "高徳線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "徳島駅前（降車専用）",
+          "operator": "徳島バス",
+          "line": "gtfs:tokubus-naruto-airport:route:1001",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tokubus-naruto-airport",
+            "stopId": "3_31",
+            "sourceArchiveSha256": "d71d6bb1743a77bb21f2d044e9ddca326cf0859b281ebc4fae57eef338ef36da",
+            "recordSha256": "b6215003f5a2417611c21d082271131c7da23addcf7f7d6b46832524527afa96",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The operator current linked station diagram dated 20260401 explicitly labels JR Tokushima station exit, the public crossing to Narutoline bay 16, and the distinct local-bus alighting frontage on the west public sidewalk next to Amico. Bind exact licensed departure component 3_16 and alighting-only component 3_31 independently to JR Tokushima Kotoku Line through those depicted public pedestrian connections. The raw blank arrival platform is preserved; stop suffix 31 is not a public bay number. Do not merge the departure and arrival identities, infer a transfer from distance, or assert live platform, walking duration or accessibility."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_FORECOURT_AND_EXACT_GTFS_PLATFORM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokushima-airfield-public-terminal-to-naruto-gtfs-94_2",
+      "kind": "transfer",
+      "sourceActionId": "airport:tokushima:current-airfield-name-and-local-bus-passages",
+      "sourceUrl": "https://www.tokushima-airport.co.jp/app/wp-content/themes/tokushima-airport/image/rosen/rosen_map2026.jpg",
+      "observedResponseSha256": "7842e7128680ce9ea012e6d4bb7bcdc82314ccce225fc48e7eea04b24a90e5d0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:tokushima:current-airfield-name-and-local-bus-passages",
+          "url": "https://www.tokushima-airport.co.jp/outline/",
+          "observedResponseSha256": "7e13e22842efcbdfeb8675bf6204d78f19cc5a482d43752f9baffd19148c2904"
+        },
+        {
+          "sourceActionId": "airport:tokushima:current-airfield-name-and-local-bus-passages",
+          "url": "https://www.tokushima-airport.co.jp/access/rosen/",
+          "observedResponseSha256": "dc6761cc5bf0e772c356b6c4f85373137fde55a521436d6b48ec4df291f4e2b4"
+        },
+        {
+          "sourceActionId": "airport:tokushima:current-airfield-name-and-local-bus-passages",
+          "url": "https://www.tokushima-airport.co.jp/floor/1f/",
+          "observedResponseSha256": "c1255877c37c1eae99219df3fa5e724ff7f1ee5ea65aafaa235c859ad970caca"
+        },
+        {
+          "sourceActionId": "airport:tokushima:current-airfield-name-and-local-bus-passages",
+          "url": "https://www.tokushima-airport.co.jp/app/wp-content/themes/tokushima-airport/image/floor/floor_1f_20260515.jpg",
+          "observedResponseSha256": "c673b609963ab13880bedc2da94dd179f359156a4cb7e39fee65eacae5281305"
+        }
+      ],
+      "locator": "The current airport overview explicitly identifies the official name 徳島飛行場 and public name 徳島阿波おどり空港, binding the exact C28 reference facility to the original 徳島 airport requirement. Its current bus map labels local-bus bay 2 on the terminal frontage; its first-floor map depicts public arrival/check-in entrances connecting to that frontage. The airport local-bus access page names Tokushima Bus and both Naruto/Tokushima directions. Bind the licensed 94_2 component used with pickup/drop 0/0 in both actual selected trips to the whole-airport facility. Preserve raw platform 2 metadata, but do not claim every alighting event occurs at that precise point; the map separately depicts an alighting frontage. No proximity edge, invented entrance coordinate, live platform, walking time or accessibility guarantee is asserted.",
+      "components": [
+        {
+          "name": "徳島飛行場",
+          "operator": "airport-facility:cf03_00055",
+          "line": "airport:cf03_00055",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00055",
+            "requirementId": "review:official-airport:徳島",
+            "expectedRequirementName": "徳島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "徳島飛行場",
+              "publicName": "徳島阿波おどり空港",
+              "requirementName": "徳島",
+              "url": "https://www.tokushima-airport.co.jp/outline/",
+              "observedResponseSha256": "7e13e22842efcbdfeb8675bf6204d78f19cc5a482d43752f9baffd19148c2904"
+            },
+            "currentPassengerAccessReview": "The current airport overview explicitly identifies the official name 徳島飛行場 and public name 徳島阿波おどり空港, binding the exact C28 reference facility to the original 徳島 airport requirement. Its current bus map labels local-bus bay 2 on the terminal frontage; its first-floor map depicts public arrival/check-in entrances connecting to that frontage. The airport local-bus access page names Tokushima Bus and both Naruto/Tokushima directions. Bind the licensed 94_2 component used with pickup/drop 0/0 in both actual selected trips to the whole-airport facility. Preserve raw platform 2 metadata, but do not claim every alighting event occurs at that precise point; the map separately depicts an alighting frontage. No proximity edge, invented entrance coordinate, live platform, walking time or accessibility guarantee is asserted."
+          }
+        },
+        {
+          "name": "徳島阿波おどり空港",
+          "operator": "徳島バス",
+          "line": "gtfs:tokubus-naruto-airport:route:1001",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tokubus-naruto-airport",
+            "stopId": "94_2",
+            "sourceArchiveSha256": "d71d6bb1743a77bb21f2d044e9ddca326cf0859b281ebc4fae57eef338ef36da",
+            "recordSha256": "7ccf6830c961ec215b6193a38ba5f3a5cb6d1bdcda9b753505951b58934da067",
+            "expectedPlatformCode": "2",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "The current airport overview explicitly identifies the official name 徳島飛行場 and public name 徳島阿波おどり空港, binding the exact C28 reference facility to the original 徳島 airport requirement. Its current bus map labels local-bus bay 2 on the terminal frontage; its first-floor map depicts public arrival/check-in entrances connecting to that frontage. The airport local-bus access page names Tokushima Bus and both Naruto/Tokushima directions. Bind the licensed 94_2 component used with pickup/drop 0/0 in both actual selected trips to the whole-airport facility. Preserve raw platform 2 metadata, but do not claim every alighting event occurs at that precise point; the map separately depicts an alighting frontage. No proximity edge, invented entrance coordinate, live platform, walking time or accessibility guarantee is asserted."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_AIRFIELD_NAME_AND_PUBLIC_TERMINAL_PASSAGE",
+      "hubScopeComplete": false
+    }
+  ]
+}

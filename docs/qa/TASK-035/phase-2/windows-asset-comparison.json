@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "status": "FAIL_BOTH_BASELINE_AND_CANDIDATE",
+  "purpose": "Narrow diagnostic only, not a complete baseline run and not a retry-to-green",
+  "baseline": {
+    "sha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+    "worktreeClean": true,
+    "status": "FAIL",
+    "logSha256": "f6580dfdd0dadc36e1d5d2541e171ddf945ef09d5aa3ef6a31fddd74c8050896"
+  },
+  "candidate": {
+    "checkoutSha": "4396e2f91547b4f0801ba9638be7a4cf17a255ab",
+    "trackedWorktreeClean": false,
+    "status": "FAIL",
+    "logSha256": "3d5e4dad3e1a387d4b9aa7d06ef416359cbb3d39c72ae36faa82a98c404fb2f8",
+    "note": "development diagnostic; metadata changed during remainder of run, not final-head acceptance"
+  },
+  "node": "v24.18.0",
+  "platform": "win32",
+  "baselineCounts": {
+    "tests": 165,
+    "pass": 164,
+    "fail": 1
+  },
+  "candidateCounts": {
+    "tests": 165,
+    "pass": 164,
+    "fail": 1
+  },
+  "sharedFailure": "tests/task-013-1-asset-variants.test.mjs:80 nightly --dry-run child hits unchanged30000ms timeout",
+  "hostedComparison": "Both candidate Linux assets jobs PASS; exact develop Linux baseline assets PASS",
+  "disposition": "Existing same-machine resource/environment limitation; no timeout increase/assertion change/data correction"
+}

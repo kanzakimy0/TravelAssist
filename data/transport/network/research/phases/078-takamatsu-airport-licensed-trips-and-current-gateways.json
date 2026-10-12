@@ -1,0 +1,248 @@
+{
+  "phaseId": "078-takamatsu-airport-licensed-trips-and-current-gateways",
+  "strategy": [
+    "LICENSED_CURRENT_BUS_GTFS_SELECTED_ACTUAL_TRIPS",
+    "DISTINCT_BOARDING_ALIGHTING_IDENTITIES",
+    "CURRENT_RAIL_AND_AIRPORT_PUBLIC_PASSAGES"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "kotoden-airport.json",
+      "packageSha256": "3bd0834271ecef25ffa5ae41f478552f5cc7beeb1d8a1739989b9cf7a4b13979",
+      "sourceActionId": "bus:kotoden:licensed-current-airport-trips"
+    }
+  ],
+  "completedActionIds": [
+    "bus:kotoden:licensed-current-airport-trips",
+    "hub:takamatsu:current-station-bus-gateway",
+    "airport:takamatsu:current-terminal-bus-passages"
+  ],
+  "facts": [
+    {
+      "factId": "takamatsu-jr-public-forecourt-to-gtfs-019003",
+      "kind": "transfer",
+      "sourceActionId": "hub:takamatsu:current-station-bus-gateway",
+      "sourceUrl": "https://www.kotoden.co.jp/publichtm/bus/information_c/image/image1.jpg",
+      "observedResponseSha256": "275a15e96410e5182b1bf020a1f8f254c2349e32271e794343deba41b738f61c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:takamatsu:current-station-bus-gateway",
+          "url": "https://www.kotoden.co.jp/publichtm/bus/information_c/takamatsu-annai.html",
+          "observedResponseSha256": "f7c2c4c2d9520179692ebe6ff318267feae1abbcf25ceeb81d343de68e577f10"
+        },
+        {
+          "sourceActionId": "hub:takamatsu:current-station-bus-gateway",
+          "url": "https://www.kotoden.co.jp/publichtm/bus/limousine/index.html",
+          "observedResponseSha256": "a0bcea9e4109e0eec49bba11e920b10fa96c86ef2021e069e8714be079aeebda"
+        }
+      ],
+      "locator": "Current operator terminal diagram explicitly shows JR Takamatsu Station public forecourt connected to bus boarding point 3 and alighting point 6 along the public terminal perimeter. Bind exact licensed GTFS 019003 separately, preserving its original platform code and one-way service boarding rules. Current airport service page confirms departure at stop 3. Do not collapse other same-name bus platforms or assert transfer time/accessibility.",
+      "components": [
+        {
+          "name": "高松",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高松駅",
+          "operator": "ことでんバス",
+          "line": "gtfs:kotoden-airport:route:005500",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:kotoden-airport",
+            "stopId": "019003",
+            "sourceArchiveSha256": "6c2b1c419d05b9aa3a34439509a3f038a1c516603c405275f31603fdb54b2de6",
+            "recordSha256": "aa54747e28bf971fdc5b7fe260bccc980d36a87c26886961d1cf88b8f0a6f5e9",
+            "expectedPlatformCode": "3",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current operator terminal diagram explicitly shows JR Takamatsu Station public forecourt connected to bus boarding point 3 and alighting point 6 along the public terminal perimeter. Bind exact licensed GTFS 019003 separately, preserving its original platform code and one-way service boarding rules. Current airport service page confirms departure at stop 3. Do not collapse other same-name bus platforms or assert transfer time/accessibility."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_PUBLIC_FORECOURT_AND_EXACT_LICENSED_GTFS_PLATFORM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "takamatsu-jr-public-forecourt-to-gtfs-019006",
+      "kind": "transfer",
+      "sourceActionId": "hub:takamatsu:current-station-bus-gateway",
+      "sourceUrl": "https://www.kotoden.co.jp/publichtm/bus/information_c/image/image1.jpg",
+      "observedResponseSha256": "275a15e96410e5182b1bf020a1f8f254c2349e32271e794343deba41b738f61c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:takamatsu:current-station-bus-gateway",
+          "url": "https://www.kotoden.co.jp/publichtm/bus/information_c/takamatsu-annai.html",
+          "observedResponseSha256": "f7c2c4c2d9520179692ebe6ff318267feae1abbcf25ceeb81d343de68e577f10"
+        },
+        {
+          "sourceActionId": "hub:takamatsu:current-station-bus-gateway",
+          "url": "https://www.kotoden.co.jp/publichtm/bus/limousine/index.html",
+          "observedResponseSha256": "a0bcea9e4109e0eec49bba11e920b10fa96c86ef2021e069e8714be079aeebda"
+        }
+      ],
+      "locator": "Current operator terminal diagram explicitly shows JR Takamatsu Station public forecourt connected to bus boarding point 3 and alighting point 6 along the public terminal perimeter. Bind exact licensed GTFS 019006 separately, preserving its original platform code and one-way service boarding rules. Current airport service page confirms departure at stop 3. Do not collapse other same-name bus platforms or assert transfer time/accessibility.",
+      "components": [
+        {
+          "name": "高松",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高松駅",
+          "operator": "ことでんバス",
+          "line": "gtfs:kotoden-airport:route:005500",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:kotoden-airport",
+            "stopId": "019006",
+            "sourceArchiveSha256": "6c2b1c419d05b9aa3a34439509a3f038a1c516603c405275f31603fdb54b2de6",
+            "recordSha256": "94831979f1ff12beb76ada0f0a4e593cfa7d6087feb796e621915c70dbbcf2dc",
+            "expectedPlatformCode": "6",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current operator terminal diagram explicitly shows JR Takamatsu Station public forecourt connected to bus boarding point 3 and alighting point 6 along the public terminal perimeter. Bind exact licensed GTFS 019006 separately, preserving its original platform code and one-way service boarding rules. Current airport service page confirms departure at stop 3. Do not collapse other same-name bus platforms or assert transfer time/accessibility."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_PUBLIC_FORECOURT_AND_EXACT_LICENSED_GTFS_PLATFORM",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "takamatsu-airport-public-terminal-to-gtfs-019102",
+      "kind": "transfer",
+      "sourceActionId": "airport:takamatsu:current-terminal-bus-passages",
+      "sourceUrl": "https://www.takamatsu-airport.com/assets/images/guide/infomap_2504.png?t=260126",
+      "observedResponseSha256": "06127bd523063de5e6e7b4e10e4a8f25f101b921eec4359f0be2e0926b99ed15",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:takamatsu:current-terminal-bus-passages",
+          "url": "https://www.takamatsu-airport.com/access/bus/",
+          "observedResponseSha256": "fdc9ceaba6a7731963c39fd51a799a0cd0cd28ae37cccbe070043967363974b6"
+        }
+      ],
+      "locator": "Current airport access page identifies Kotoden city services at boarding stop 2; the currently linked curbside diagram separately marks the bus alighting zone and passenger terminal entrances on the same public terminal frontage. Bind licensed GTFS 019102 to the independent whole-airport C28 facility; preserve distinct arrival/departure stop identities and original pickup/drop-off restrictions. No platform is inferred from the stop-ID suffix, no terminal entrance coordinate or walking-time precision is claimed.",
+      "components": [
+        {
+          "name": "高松空港",
+          "operator": "airport-facility:cf03_00054",
+          "line": "airport:cf03_00054",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00054",
+            "requirementId": "review:transport-node:67ba26ec-c598-51d8-ac9a-9b1a86bb5c51",
+            "expectedRequirementName": "高松",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport access page identifies Kotoden city services at boarding stop 2; the currently linked curbside diagram separately marks the bus alighting zone and passenger terminal entrances on the same public terminal frontage. Bind licensed GTFS 019102 to the independent whole-airport C28 facility; preserve distinct arrival/departure stop identities and original pickup/drop-off restrictions. No platform is inferred from the stop-ID suffix, no terminal entrance coordinate or walking-time precision is claimed."
+          }
+        },
+        {
+          "name": "高松空港",
+          "operator": "ことでんバス",
+          "line": "gtfs:kotoden-airport:route:005500",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:kotoden-airport",
+            "stopId": "019102",
+            "sourceArchiveSha256": "6c2b1c419d05b9aa3a34439509a3f038a1c516603c405275f31603fdb54b2de6",
+            "recordSha256": "cf35d3bf563fdac302f68dfaf5435e6057b3462199cfcd8d0ef070560cd34c92",
+            "expectedPlatformCode": "2",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current airport access page identifies Kotoden city services at boarding stop 2; the currently linked curbside diagram separately marks the bus alighting zone and passenger terminal entrances on the same public terminal frontage. Bind licensed GTFS 019102 to the independent whole-airport C28 facility; preserve distinct arrival/departure stop identities and original pickup/drop-off restrictions. No platform is inferred from the stop-ID suffix, no terminal entrance coordinate or walking-time precision is claimed."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_CURBSIDE_PASSAGES_AND_DISTINCT_GTFS_POINTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "takamatsu-airport-public-terminal-to-gtfs-019105",
+      "kind": "transfer",
+      "sourceActionId": "airport:takamatsu:current-terminal-bus-passages",
+      "sourceUrl": "https://www.takamatsu-airport.com/assets/images/guide/infomap_2504.png?t=260126",
+      "observedResponseSha256": "06127bd523063de5e6e7b4e10e4a8f25f101b921eec4359f0be2e0926b99ed15",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:takamatsu:current-terminal-bus-passages",
+          "url": "https://www.takamatsu-airport.com/access/bus/",
+          "observedResponseSha256": "fdc9ceaba6a7731963c39fd51a799a0cd0cd28ae37cccbe070043967363974b6"
+        }
+      ],
+      "locator": "Current airport access page identifies Kotoden city services at boarding stop 2; the currently linked curbside diagram separately marks the bus alighting zone and passenger terminal entrances on the same public terminal frontage. Bind licensed GTFS 019105 to the independent whole-airport C28 facility; preserve distinct arrival/departure stop identities and original pickup/drop-off restrictions. No platform is inferred from the stop-ID suffix, no terminal entrance coordinate or walking-time precision is claimed.",
+      "components": [
+        {
+          "name": "高松空港",
+          "operator": "airport-facility:cf03_00054",
+          "line": "airport:cf03_00054",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00054",
+            "requirementId": "review:transport-node:67ba26ec-c598-51d8-ac9a-9b1a86bb5c51",
+            "expectedRequirementName": "高松",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current airport access page identifies Kotoden city services at boarding stop 2; the currently linked curbside diagram separately marks the bus alighting zone and passenger terminal entrances on the same public terminal frontage. Bind licensed GTFS 019105 to the independent whole-airport C28 facility; preserve distinct arrival/departure stop identities and original pickup/drop-off restrictions. No platform is inferred from the stop-ID suffix, no terminal entrance coordinate or walking-time precision is claimed."
+          }
+        },
+        {
+          "name": "高松空港",
+          "operator": "ことでんバス",
+          "line": "gtfs:kotoden-airport:route:005500",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:kotoden-airport",
+            "stopId": "019105",
+            "sourceArchiveSha256": "6c2b1c419d05b9aa3a34439509a3f038a1c516603c405275f31603fdb54b2de6",
+            "recordSha256": "848c7d1f79c78c9dc26afcc782bfe3340a1f03f10801aed6bc2527f1e5256e2f",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current airport access page identifies Kotoden city services at boarding stop 2; the currently linked curbside diagram separately marks the bus alighting zone and passenger terminal entrances on the same public terminal frontage. Bind licensed GTFS 019105 to the independent whole-airport C28 facility; preserve distinct arrival/departure stop identities and original pickup/drop-off restrictions. No platform is inferred from the stop-ID suffix, no terminal entrance coordinate or walking-time precision is claimed."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_CURBSIDE_PASSAGES_AND_DISTINCT_GTFS_POINTS",
+      "hubScopeComplete": false
+    }
+  ]
+}

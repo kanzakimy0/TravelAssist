@@ -1,0 +1,596 @@
+{
+  "phaseId": "167-matsuyama-airport-current-public-passage-shiokaze-chain",
+  "strategy": [
+    "FULL_ORIGINAL_CONTINUOUS_SCOPE",
+    "EXACT_P11_S12_AND_REUSED_CACHE",
+    "REJECTED_LOWCOST_EXTRACTION_REVIEWED_ACTUAL_COLUMNS",
+    "CURRENT2026_PUBLIC_PEDESTRIAN_PASSAGE",
+    "EXISTING_UTAZU_NATIONAL_ANCHOR"
+  ],
+  "completedActionIds": [
+    "bus:iyotetsu:matsuyama-airport-actual-direct-sections",
+    "rail:jr-shikoku:matsuyama-shiokaze-independent-4m-1m-national-chain",
+    "public:matsuyama-city:current-station-public-passage",
+    "public:matsuyama-airport:current-arrival-lobby-limousine-frontage"
+  ],
+  "facts": [
+    {
+      "factId": "matsuyama-core-airport-bus-city-bound",
+      "kind": "service",
+      "sourceActionId": "bus:iyotetsu:matsuyama-airport-actual-direct-sections",
+      "sourceUrl": "https://www.iyotetsu.co.jp/railbus/limousine/airport/202610/timetable.pdf?",
+      "observedResponseSha256": "63a3404944ac5bf465308fbcf94db72f90809a384721b80b40d0fa799fdec18d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:iyotetsu:matsuyama-airport-actual-direct-sections",
+          "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+          "observedResponseSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606"
+        },
+        {
+          "sourceActionId": "bus:iyotetsu:matsuyama-airport-actual-direct-sections",
+          "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/202610/timetable.pdf?",
+          "observedResponseSha256": "63a3404944ac5bf465308fbcf94db72f90809a384721b80b40d0fa799fdec18d"
+        }
+      ],
+      "callingStations": [
+        "松山空港",
+        "JR松山駅前"
+      ],
+      "callingComponents": [
+        {
+          "name": "松山空港",
+          "operator": "伊予鉄バス（株）",
+          "line": "p11-stop:P11-22_38:bs1215",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_38:bs1215",
+            "recordSha256": "fccefe2eca43210f2640d6dafdf8c77923c3c56ac972c860aa5a97c8a15636c7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact IYOTETSU roadstop name/operator, independentlycorroborated bycurrentlimousinecalls. Historic松山空港線 suppliesidentityonly. JRrailbuildingrelocation is separatelymodeledbyS12-25/currentJRmap andpublicpassage; no relocatedrailcoordinatecopiedtoP11busbay. Coarseforecourtcomponentonly.",
+            "currentOperatorEvidence": {
+              "recordOperator": "伊予鉄バス（株）",
+              "currentOperatorName": "伊予鉄バス株式会社",
+              "currentStopName": "松山空港",
+              "historicalRoute": "松山空港線",
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+              "observedResponseSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606"
+            }
+          }
+        },
+        {
+          "name": "JR松山駅前",
+          "operator": "伊予鉄バス（株）",
+          "line": "p11-stop:P11-22_38:bs1120",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_38:bs1120",
+            "recordSha256": "d4331dbd3d0d6597cdbd063b918d98622caa363037f46f2e0f7f8315a4bf330f",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact IYOTETSU roadstop name/operator, independentlycorroborated bycurrentlimousinecalls. Historic松山空港線 suppliesidentityonly. JRrailbuildingrelocation is separatelymodeledbyS12-25/currentJRmap andpublicpassage; no relocatedrailcoordinatecopiedtoP11busbay. Coarseforecourtcomponentonly.",
+            "currentOperatorEvidence": {
+              "recordOperator": "伊予鉄バス（株）",
+              "currentOperatorName": "伊予鉄バス株式会社",
+              "currentStopName": "JR松山駅前",
+              "historicalRoute": "松山空港線",
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+              "observedResponseSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "松山空港リムジンバス",
+      "operator": "伊予鉄バス株式会社",
+      "direction": "city-bound",
+      "serviceClass": "空港リムジンバス",
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_FIRST_ROW_CONTIGUOUS_TWO_CALL_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER1_24_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "locator": "Independently viewed current firstactual rows: airporttoJRfirsttwo calls, JRtoairportlasttwo calls. Exclude othercitycallsoutsidecontinuoussection, respectairportonlypickup/dropoff. Airportdeparturefollowsflightarrival; no retainedclocks/frequency or connectionpromise."
+    },
+    {
+      "factId": "matsuyama-core-airport-bus-airport-bound",
+      "kind": "service",
+      "sourceActionId": "bus:iyotetsu:matsuyama-airport-actual-direct-sections",
+      "sourceUrl": "https://www.iyotetsu.co.jp/railbus/limousine/airport/202610/timetable.pdf?",
+      "observedResponseSha256": "63a3404944ac5bf465308fbcf94db72f90809a384721b80b40d0fa799fdec18d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:iyotetsu:matsuyama-airport-actual-direct-sections",
+          "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+          "observedResponseSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606"
+        },
+        {
+          "sourceActionId": "bus:iyotetsu:matsuyama-airport-actual-direct-sections",
+          "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/202610/timetable.pdf?",
+          "observedResponseSha256": "63a3404944ac5bf465308fbcf94db72f90809a384721b80b40d0fa799fdec18d"
+        }
+      ],
+      "callingStations": [
+        "JR松山駅前",
+        "松山空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "JR松山駅前",
+          "operator": "伊予鉄バス（株）",
+          "line": "p11-stop:P11-22_38:bs1120",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_38:bs1120",
+            "recordSha256": "d4331dbd3d0d6597cdbd063b918d98622caa363037f46f2e0f7f8315a4bf330f",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact IYOTETSU roadstop name/operator, independentlycorroborated bycurrentlimousinecalls. Historic松山空港線 suppliesidentityonly. JRrailbuildingrelocation is separatelymodeledbyS12-25/currentJRmap andpublicpassage; no relocatedrailcoordinatecopiedtoP11busbay. Coarseforecourtcomponentonly.",
+            "currentOperatorEvidence": {
+              "recordOperator": "伊予鉄バス（株）",
+              "currentOperatorName": "伊予鉄バス株式会社",
+              "currentStopName": "JR松山駅前",
+              "historicalRoute": "松山空港線",
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+              "observedResponseSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606"
+            }
+          }
+        },
+        {
+          "name": "松山空港",
+          "operator": "伊予鉄バス（株）",
+          "line": "p11-stop:P11-22_38:bs1215",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_38:bs1215",
+            "recordSha256": "fccefe2eca43210f2640d6dafdf8c77923c3c56ac972c860aa5a97c8a15636c7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact IYOTETSU roadstop name/operator, independentlycorroborated bycurrentlimousinecalls. Historic松山空港線 suppliesidentityonly. JRrailbuildingrelocation is separatelymodeledbyS12-25/currentJRmap andpublicpassage; no relocatedrailcoordinatecopiedtoP11busbay. Coarseforecourtcomponentonly.",
+            "currentOperatorEvidence": {
+              "recordOperator": "伊予鉄バス（株）",
+              "currentOperatorName": "伊予鉄バス株式会社",
+              "currentStopName": "松山空港",
+              "historicalRoute": "松山空港線",
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+              "observedResponseSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "松山空港リムジンバス",
+      "operator": "伊予鉄バス株式会社",
+      "direction": "airport-bound",
+      "serviceClass": "空港リムジンバス",
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_FIRST_ROW_CONTIGUOUS_TWO_CALL_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER1_24_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "locator": "Independently viewed current firstactual rows: airporttoJRfirsttwo calls, JRtoairportlasttwo calls. Exclude othercitycallsoutsidecontinuoussection, respectairportonlypickup/dropoff. Airportdeparturefollowsflightarrival; no retainedclocks/frequency or connectionpromise."
+    },
+    {
+      "factId": "matsuyama-core-shiokaze-4M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-shikoku:matsuyama-shiokaze-independent-4m-1m-national-chain",
+      "sourceUrl": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/uwajima_matsuyama.pdf",
+      "observedResponseSha256": "1fd5258b1f419235a2bdbbdd00081a7ddf5702963744bc99f056596d3fedadab",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-shikoku:matsuyama-shiokaze-independent-4m-1m-national-chain",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/uwajima_matsuyama.pdf",
+          "observedResponseSha256": "1fd5258b1f419235a2bdbbdd00081a7ddf5702963744bc99f056596d3fedadab"
+        }
+      ],
+      "callingStations": [
+        "松山",
+        "伊予北条",
+        "今治",
+        "壬生川",
+        "伊予西条",
+        "新居浜",
+        "伊予三島",
+        "川之江",
+        "観音寺",
+        "高瀬",
+        "詫間",
+        "多度津",
+        "丸亀",
+        "宇多津"
+      ],
+      "callingComponents": [
+        {
+          "name": "松山",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "伊予北条",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "今治",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "壬生川",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "伊予西条",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新居浜",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "伊予三島",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "川之江",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "観音寺",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高瀬",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "詫間",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "多度津",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "丸亀",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "宇多津",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "line": "しおかぜ・松山宇多津連絡",
+      "operator": "四国旅客鉄道",
+      "direction": "utazu-bound",
+      "serviceClass": "しおかぜ",
+      "serviceNumber": "4M",
+      "reviewMethod": "ROOT_VISUAL_EXACT_INDEPENDENT_COLUMNS_AFTER_EXTRACTION_QUALITY_FAILURE",
+      "serviceState": "active",
+      "serviceStateScope": "MARCH14_2026_PUBLISHED_SERVICE_CURRENT_OCTOBER2_NOT_REALTIME",
+      "locator": "4M exactcontiguouscolumn reviewed. BothcallsNyugawa/Takuma;4McallsTakase,1Mpasses. AdjacentIshizuchiand2Mexcluded. Allactualorderedlimitedexpresscallswithinstatedsection retained; no clocks, artwork, approximate reverse or airportconnection guarantee."
+    },
+    {
+      "factId": "matsuyama-core-shiokaze-1M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-shikoku:matsuyama-shiokaze-independent-4m-1m-national-chain",
+      "sourceUrl": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/uwajima_matsuyama.pdf",
+      "observedResponseSha256": "1fd5258b1f419235a2bdbbdd00081a7ddf5702963744bc99f056596d3fedadab",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-shikoku:matsuyama-shiokaze-independent-4m-1m-national-chain",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/jikoku/uwajima_matsuyama.pdf",
+          "observedResponseSha256": "1fd5258b1f419235a2bdbbdd00081a7ddf5702963744bc99f056596d3fedadab"
+        }
+      ],
+      "callingStations": [
+        "宇多津",
+        "丸亀",
+        "多度津",
+        "詫間",
+        "観音寺",
+        "川之江",
+        "伊予三島",
+        "新居浜",
+        "伊予西条",
+        "壬生川",
+        "今治",
+        "伊予北条",
+        "松山"
+      ],
+      "callingComponents": [
+        {
+          "name": "宇多津",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "丸亀",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "多度津",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "詫間",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "観音寺",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "川之江",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "伊予三島",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新居浜",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "伊予西条",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "壬生川",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "今治",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "伊予北条",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "松山",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "line": "しおかぜ・松山宇多津連絡",
+      "operator": "四国旅客鉄道",
+      "direction": "matsuyama-bound",
+      "serviceClass": "しおかぜ",
+      "serviceNumber": "1M",
+      "reviewMethod": "ROOT_VISUAL_EXACT_INDEPENDENT_COLUMNS_AFTER_EXTRACTION_QUALITY_FAILURE",
+      "serviceState": "active",
+      "serviceStateScope": "MARCH14_2026_PUBLISHED_SERVICE_CURRENT_OCTOBER2_NOT_REALTIME",
+      "locator": "1M exactcontiguouscolumn reviewed. BothcallsNyugawa/Takuma;4McallsTakase,1Mpasses. AdjacentIshizuchiand2Mexcluded. Allactualorderedlimitedexpresscallswithinstatedsection retained; no clocks, artwork, approximate reverse or airportconnection guarantee."
+    },
+    {
+      "factId": "matsuyama-core-airport-public-arrival-limousine-frontage",
+      "kind": "transfer",
+      "sourceActionId": "public:matsuyama-airport:current-arrival-lobby-limousine-frontage",
+      "sourceUrl": "https://www.matsuyama-airport.co.jp/assets/pdf/floormap/map_ja.pdf",
+      "observedResponseSha256": "51bd6e08bfbae01210b31c70f08eba7dd17fa52877731fbec6c58e701286d826",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "public:matsuyama-airport:current-arrival-lobby-limousine-frontage",
+          "url": "https://www.matsuyama-airport.co.jp/floormap/terminal.html",
+          "observedResponseSha256": "f57607c040339e8d2f63ce7664f8de83e37fd5ee7cd958dd8b90a7ad10555097"
+        },
+        {
+          "sourceActionId": "bus:iyotetsu:matsuyama-airport-actual-direct-sections",
+          "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+          "observedResponseSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606"
+        },
+        {
+          "sourceActionId": "bus:iyotetsu:matsuyama-airport-actual-direct-sections",
+          "url": "https://www.iyotetsu.co.jp/railbus/limousine/map/noriba.html?noriba=airport",
+          "observedResponseSha256": "447e928e244f62edcf9b69d1880604aca7488ac657a9b324df4d9e5faeb9f820"
+        }
+      ],
+      "components": [
+        {
+          "name": "松山空港",
+          "operator": "airport-facility:cf03_00053",
+          "line": "airport:cf03_00053",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00053",
+            "requirementId": "review:transport-node:9df3dd1d-5a8e-5a68-b6bc-407d8bf070dc",
+            "expectedRequirementName": "松山",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Viewedcurrentofficial1Fmap: publicarrivallobbyexits and explicitlylabelledlimousinebusfrontage, distinctfromlocalbus. CurrentcarrierP11roadcomponent, no airside or precisegeometry."
+          }
+        },
+        {
+          "name": "松山空港",
+          "operator": "伊予鉄バス（株）",
+          "line": "p11-stop:P11-22_38:bs1215",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_38:bs1215",
+            "recordSha256": "fccefe2eca43210f2640d6dafdf8c77923c3c56ac972c860aa5a97c8a15636c7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact IYOTETSU roadstop name/operator, independentlycorroborated bycurrentlimousinecalls. Historic松山空港線 suppliesidentityonly. JRrailbuildingrelocation is separatelymodeledbyS12-25/currentJRmap andpublicpassage; no relocatedrailcoordinatecopiedtoP11busbay. Coarseforecourtcomponentonly.",
+            "currentOperatorEvidence": {
+              "recordOperator": "伊予鉄バス（株）",
+              "currentOperatorName": "伊予鉄バス株式会社",
+              "currentStopName": "松山空港",
+              "historicalRoute": "松山空港線",
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+              "observedResponseSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_OFFICIAL_PUBLIC_LOBBY_EXITS_AND_LIMOUSINE_AREA",
+      "hubScopeComplete": false,
+      "locator": "Current1Fofficialmapexplicitlyconnectsordinarypublicarrivallobbyexits tolimousinefrontage; securebaggageareas excluded. Local/regionalbusareas areseparate; no coordinate-basedwalk, copyofmap or walkingtime."
+    },
+    {
+      "factId": "matsuyama-core-jr-current-public-passage-airport-bus6",
+      "kind": "transfer",
+      "sourceActionId": "public:matsuyama-city:current-station-public-passage",
+      "sourceUrl": "https://www.city.matsuyama.ehime.jp/shisei/machizukuri/matsuyamaeki/machidukuri/koujiosirase/kasetsutsuro.html",
+      "observedResponseSha256": "d7526accbcb6010319b5cd7eee866a09e831612f6e7e625a9b961bf52ae4cd89",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "public:matsuyama-city:current-station-public-passage",
+          "url": "https://www.city.matsuyama.ehime.jp/shisei/machizukuri/matsuyamaeki/machidukuri/koujiosirase/kasetsutsuro.images/ichizu.png",
+          "observedResponseSha256": "9fca26ef09e237b5fd44406066a69031dba7b420d24606e8620f50bce37cf6e8"
+        },
+        {
+          "sourceActionId": "rail:jr-shikoku:matsuyama-shiokaze-independent-4m-1m-national-chain",
+          "url": "https://www.jr-shikoku.co.jp/01_trainbus/kakueki/matsuyama/images/kounai.gif",
+          "observedResponseSha256": "5317054bf7e5c86d6e07e8e30960dace75f88c025b14b56d0aee6a7084e5e3d9"
+        },
+        {
+          "sourceActionId": "bus:iyotetsu:matsuyama-airport-actual-direct-sections",
+          "url": "https://www.iyotetsu.co.jp/railbus/limousine/map/noriba.html?noriba=jr",
+          "observedResponseSha256": "80af73b9dccfd8e372af50f0346b3de664da8068142311ed03c76ffab5bd4dba"
+        },
+        {
+          "sourceActionId": "bus:iyotetsu:matsuyama-airport-actual-direct-sections",
+          "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+          "observedResponseSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606"
+        }
+      ],
+      "components": [
+        {
+          "name": "松山",
+          "operator": "四国旅客鉄道",
+          "line": "予讃線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "JR松山駅前",
+          "operator": "伊予鉄バス（株）",
+          "line": "p11-stop:P11-22_38:bs1120",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_38:bs1120",
+            "recordSha256": "d4331dbd3d0d6597cdbd063b918d98622caa363037f46f2e0f7f8315a4bf330f",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact IYOTETSU roadstop name/operator, independentlycorroborated bycurrentlimousinecalls. Historic松山空港線 suppliesidentityonly. JRrailbuildingrelocation is separatelymodeledbyS12-25/currentJRmap andpublicpassage; no relocatedrailcoordinatecopiedtoP11busbay. Coarseforecourtcomponentonly.",
+            "currentOperatorEvidence": {
+              "recordOperator": "伊予鉄バス（株）",
+              "currentOperatorName": "伊予鉄バス株式会社",
+              "currentStopName": "JR松山駅前",
+              "historicalRoute": "松山空港線",
+              "url": "https://www.iyotetsu.co.jp/railbus/limousine/airport/?t=202610",
+              "observedResponseSha256": "248799e609b0a996d797ed99593d9315c508c76c9bdcde5a5d21cb7fa6dae606"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_MUNICIPAL_PEDESTRIAN_PASSAGE_JR_PUBLIC_CONCOURSE_AND_CARRIER_STOP_REVIEW",
+      "hubScopeComplete": false,
+      "locator": "CurrentSeptember2026citynotice explicitlyopensnorthpedestrianpassageto eastforecourt/underpass; viewedlocationmap. CurrentJRmap separatespublicconcourseandgates frompaidplatforms; currentcarrier specifiesforecourtJR6. Coarsepubliccomponentrelationonly; no obsolete2024oldbuildingentry, futurebusplaza, cyclingpath, proximity-derivededge, precisegeometry or walkingtime."
+    }
+  ]
+}

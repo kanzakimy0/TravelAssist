@@ -1,0 +1,641 @@
+{
+  "phaseId": "213-miyakejima-independent-public-interface-village-bus-and-nca-chain",
+  "strategy": [
+    "ORIGINAL_AIRPORT_SAME_ID_ADMISSION",
+    "TWO_EXACT_NATIVE_P11_IDENTITIES",
+    "INDEPENDENT_CURRENT_ORDINARY_ADJACENT_BUS_DIRECTIONS",
+    "INDEPENDENT_CURRENT_NCA_DIRECTIONS",
+    "LICENSED_PHYSICAL_PUBLIC_CROSSING_WITH_GOVERNMENT_NAMED_STOP",
+    "EXISTING_CHOFU_NATIONAL_ANCHOR"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "government:c28:airport-identities",
+    "bus:miyakejima:current-village-independent-airport-kamagata-sections",
+    "airport:miyakejima:current-nca-independent-chofu-directions",
+    "airport:miyakejima:independent-government-native-stop-public-forecourt"
+  ],
+  "facts": [
+    {
+      "factId": "miyake-village-airport-adjacent-independent-0",
+      "kind": "service",
+      "sourceActionId": "bus:miyakejima:current-village-independent-airport-kamagata-sections",
+      "sourceUrl": "https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/koutsuu/files/1.7.1.pdf",
+      "observedResponseSha256": "f66425ec5b8eca0aa87c3d8f53c73b49447a1d35f55d46d0c85da85ece964f26",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:miyakejima:current-village-independent-airport-kamagata-sections",
+          "url": "https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/koutsuu/bus.html",
+          "observedResponseSha256": "ce2691ae2a5545e5b51ed3fe274011dd72a6d28275b7accec6bdadefe543ef5f"
+        }
+      ],
+      "operator": "三宅村",
+      "line": "三宅村営バス",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "村営定期路線バス",
+      "direction": "左回り（坪田→神着→伊豆→伊ヶ谷→阿古→坪田）",
+      "serviceState": "active",
+      "serviceStateScope": "Current municipal publication still links2019July1 revised schedule and explicitly states both ordinary routes operate daily. Fifth regular column independently selected in each direction. No calendar2026 revision claim, clock persistence or timed flight connection guarantee. Excludes weekday-only clinic blank and1130 ferry diversion; charter reservation clause not applicable.",
+      "parentCallingStations": [
+        "高校前",
+        "郷野",
+        "坪田",
+        "旧坪田小学校前",
+        "大永井",
+        "御嶽神社前",
+        "釜方",
+        "空港前",
+        "企業課前",
+        "沖ヶ平",
+        "三池",
+        "三池園地",
+        "御子敷",
+        "三七山",
+        "赤場暁",
+        "椎取神社前",
+        "釜の尻",
+        "美茂井",
+        "三ノ輪",
+        "ナダード",
+        "土佐",
+        "湯舟グラウンド前",
+        "焼場",
+        "神着",
+        "門の原",
+        "警察署前",
+        "支庁前",
+        "友地",
+        "みやけ保育園前",
+        "姉川神社前",
+        "三宅小中学校前",
+        "大久保浜",
+        "三宅小中学校前",
+        "保健所前",
+        "阿知原",
+        "伊豆",
+        "薬師前",
+        "伊豆岬入口",
+        "西原",
+        "伊ヶ谷",
+        "伊ヶ谷港",
+        "岡庭",
+        "鉄砲場",
+        "夕景浜",
+        "鉄砲場",
+        "阿古",
+        "二島",
+        "錆ヶ浜",
+        "錆ヶ浜港入口",
+        "阿古郵便局前",
+        "釜根",
+        "富賀神社前",
+        "薄木",
+        "粟辺坂上",
+        "粟辺",
+        "新澪池",
+        "角屋敷",
+        "東山",
+        "大路池",
+        "農林合同庁舎前",
+        "高校前",
+        "郷野",
+        "坪田",
+        "旧坪田小学校前",
+        "大永井",
+        "御嶽神社前",
+        "釜方",
+        "空港前",
+        "企業課前",
+        "沖ヶ平",
+        "三池"
+      ],
+      "sectionStartIndex": 6,
+      "callingStations": [
+        "釜方",
+        "空港前"
+      ],
+      "callingComponents": [
+        {
+          "name": "釜方",
+          "operator": "三宅村",
+          "line": "p11-stop:P11-22_13:bs44",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs44",
+            "recordSha256": "cd4b091cacc8aa5779956cebc12122f341858af6054ef915d7c8295c2cde9744",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator native P11 representative for current ordinary village bus. The independently printed left/right fifth regular columns each call the selected adjacent釜方/空港前 interval. No weekday clinic/ferry branch or opposite-pole coordinate collapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "三宅村",
+              "currentOperatorName": "三宅村",
+              "currentStopName": "釜方",
+              "historicalRoute": "三宅村営バス",
+              "url": "https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/koutsuu/bus.html",
+              "observedResponseSha256": "ce2691ae2a5545e5b51ed3fe274011dd72a6d28275b7accec6bdadefe543ef5f"
+            }
+          }
+        },
+        {
+          "name": "空港前",
+          "operator": "三宅村",
+          "line": "p11-stop:P11-22_13:bs40",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs40",
+            "recordSha256": "295e8e719cc743b33fabe5ac2f6ddce76445b6b1feb0f232ea03834cc2cca389",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator native P11 representative for current ordinary village bus. The independently printed left/right fifth regular columns each call the selected adjacent釜方/空港前 interval. No weekday clinic/ferry branch or opposite-pole coordinate collapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "三宅村",
+              "currentOperatorName": "三宅村",
+              "currentStopName": "空港前",
+              "historicalRoute": "三宅村営バス",
+              "url": "https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/koutsuu/bus.html",
+              "observedResponseSha256": "ce2691ae2a5545e5b51ed3fe274011dd72a6d28275b7accec6bdadefe543ef5f"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Left-hand independently published counterclockwise table, fifth regular service, first釜方 row followed immediately by空港前; parent indices6→7."
+    },
+    {
+      "factId": "miyake-village-airport-adjacent-independent-1",
+      "kind": "service",
+      "sourceActionId": "bus:miyakejima:current-village-independent-airport-kamagata-sections",
+      "sourceUrl": "https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/koutsuu/files/1.7.1.pdf",
+      "observedResponseSha256": "f66425ec5b8eca0aa87c3d8f53c73b49447a1d35f55d46d0c85da85ece964f26",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:miyakejima:current-village-independent-airport-kamagata-sections",
+          "url": "https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/koutsuu/bus.html",
+          "observedResponseSha256": "ce2691ae2a5545e5b51ed3fe274011dd72a6d28275b7accec6bdadefe543ef5f"
+        }
+      ],
+      "operator": "三宅村",
+      "line": "三宅村営バス",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "村営定期路線バス",
+      "direction": "右回り（坪田→阿古→伊ヶ谷→伊豆→神着→坪田）",
+      "serviceState": "active",
+      "serviceStateScope": "Current municipal publication still links2019July1 revised schedule and explicitly states both ordinary routes operate daily. Fifth regular column independently selected in each direction. No calendar2026 revision claim, clock persistence or timed flight connection guarantee. Excludes weekday-only clinic blank and1130 ferry diversion; charter reservation clause not applicable.",
+      "parentCallingStations": [
+        "三池",
+        "沖ヶ平",
+        "企業課前",
+        "空港前",
+        "釜方",
+        "御嶽神社前",
+        "大永井",
+        "旧坪田小学校前",
+        "坪田",
+        "郷野",
+        "高校前",
+        "農林合同庁舎前",
+        "大路池",
+        "東山",
+        "角屋敷",
+        "新澪池",
+        "粟辺",
+        "粟辺坂上",
+        "薄木",
+        "富賀神社前",
+        "釜根",
+        "阿古郵便局前",
+        "錆ヶ浜港入口",
+        "錆ヶ浜",
+        "二島",
+        "阿古",
+        "鉄砲場",
+        "夕景浜",
+        "鉄砲場",
+        "岡庭",
+        "伊ヶ谷",
+        "伊ヶ谷港",
+        "西原",
+        "伊豆岬入口",
+        "薬師前",
+        "伊豆",
+        "阿知原",
+        "保健所前",
+        "三宅小中学校前",
+        "大久保浜",
+        "三宅小中学校前",
+        "姉川神社前",
+        "みやけ保育園前",
+        "友地",
+        "支庁前",
+        "警察署前",
+        "門の原",
+        "神着",
+        "焼場",
+        "湯舟グラウンド前",
+        "土佐",
+        "ナダード",
+        "三ノ輪",
+        "美茂井",
+        "釜の尻",
+        "椎取神社前",
+        "赤場暁",
+        "三七山",
+        "御子敷",
+        "三池園地",
+        "三池",
+        "沖ヶ平",
+        "企業課前",
+        "空港前",
+        "釜方",
+        "御嶽神社前",
+        "大永井",
+        "旧坪田小学校前",
+        "坪田",
+        "郷野",
+        "高校前"
+      ],
+      "sectionStartIndex": 3,
+      "callingStations": [
+        "空港前",
+        "釜方"
+      ],
+      "callingComponents": [
+        {
+          "name": "空港前",
+          "operator": "三宅村",
+          "line": "p11-stop:P11-22_13:bs40",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs40",
+            "recordSha256": "295e8e719cc743b33fabe5ac2f6ddce76445b6b1feb0f232ea03834cc2cca389",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator native P11 representative for current ordinary village bus. The independently printed left/right fifth regular columns each call the selected adjacent釜方/空港前 interval. No weekday clinic/ferry branch or opposite-pole coordinate collapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "三宅村",
+              "currentOperatorName": "三宅村",
+              "currentStopName": "空港前",
+              "historicalRoute": "三宅村営バス",
+              "url": "https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/koutsuu/bus.html",
+              "observedResponseSha256": "ce2691ae2a5545e5b51ed3fe274011dd72a6d28275b7accec6bdadefe543ef5f"
+            }
+          }
+        },
+        {
+          "name": "釜方",
+          "operator": "三宅村",
+          "line": "p11-stop:P11-22_13:bs44",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs44",
+            "recordSha256": "cd4b091cacc8aa5779956cebc12122f341858af6054ef915d7c8295c2cde9744",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator native P11 representative for current ordinary village bus. The independently printed left/right fifth regular columns each call the selected adjacent釜方/空港前 interval. No weekday clinic/ferry branch or opposite-pole coordinate collapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "三宅村",
+              "currentOperatorName": "三宅村",
+              "currentStopName": "釜方",
+              "historicalRoute": "三宅村営バス",
+              "url": "https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/koutsuu/bus.html",
+              "observedResponseSha256": "ce2691ae2a5545e5b51ed3fe274011dd72a6d28275b7accec6bdadefe543ef5f"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Right-hand independently published clockwise table, fifth regular service, first空港前 row followed immediately by釜方; parent indices3→4."
+    },
+    {
+      "factId": "miyake-nca-independent-direction-0",
+      "kind": "service",
+      "sourceActionId": "airport:miyakejima:current-nca-independent-chofu-directions",
+      "sourceUrl": "https://central-air.co.jp/.assets/2026-10%E4%B8%89%E5%AE%85%E5%B3%B6%E3%83%BBMiyakejima.pdf",
+      "observedResponseSha256": "a7faa5c8bde917df7100a2997530015604cc7b93c6b23e083b5687ffd1b92eb1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:miyakejima:current-nca-independent-chofu-directions",
+          "url": "https://central-air.co.jp/schedule-fee.html",
+          "observedResponseSha256": "6b9dc9e67c4072c112e05eceff7ac3c198b2b70b9f71b803ce57265df6d06806"
+        },
+        {
+          "sourceActionId": "airport:miyakejima:current-nca-independent-chofu-directions",
+          "url": "https://central-air.co.jp/guide-access.html",
+          "observedResponseSha256": "8fe83ddd0e871d0b182aa170cf84e896f80edf3fcb376e6a7dba018a4faad0f9"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+          "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+        },
+        {
+          "sourceActionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/miyakejima/miyakejima_service",
+          "observedResponseSha256": "60fab3d717662a6e0c419ab13fe5ee35780656b28ade73524b4ccc4c898f606b"
+        }
+      ],
+      "operator": "新中央航空株式会社",
+      "line": "調布・三宅島国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "RJTF-MYE",
+      "serviceState": "active",
+      "serviceStateScope": "Carrier current October2026 own timetable uses A pattern on each listed date including October3. Two independently printed carrier directions401 and402 support minimum static airport relation. No clocks, flight availability or reservation confirmation persisted.",
+      "callingStations": [
+        "調布飛行場",
+        "三宅島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "調布飛行場",
+          "operator": "airport-facility:cf03_00029",
+          "line": "airport:cf03_00029",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00029",
+            "requirementId": "review:official-airport:調布",
+            "expectedRequirementName": "調布",
+            "method": "REVIEWED_EXACT_CURRENT_OFFICIAL_AIRFIELD_NAME",
+            "officialNameEvidence": {
+              "officialName": "調布飛行場",
+              "requirementName": "調布",
+              "publicName": "調布飛行場",
+              "equivalenceKind": "EXACT_PRIMARY_CURRENT_FORMAL_NAME",
+              "locator": "Tokyo port bureau current Chofu airfield access/facility pages explicitly name the passenger facility 調布飛行場; original required name調布 plus exact飛行場 suffix. No invented 空港 public alias.",
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+              "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+            },
+            "currentPassengerAccessReview": "Current government access names Odakyu調40 from Keio Chofu north bay14, airfield bus stop zero-minute terminal access. Root-reviewed facility diagram places bus pole on public terminal/front-carpark access outside airfield. C28 remains airport reference point only."
+          }
+        },
+        {
+          "name": "三宅島空港",
+          "operator": "airport-facility:cf03_00034",
+          "line": "airport:cf03_00034",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00034",
+            "requirementId": "review:official-airport:三宅島",
+            "expectedRequirementName": "三宅島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independent government airport material and NCA October2026 own flight table establish passenger airport; whole-airport public surface relation independently corroborated to exact P11空港前 using government bus locator and visible marked public crossing/forecourt. Not airside, curb coordinates or step-free navigation."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Carrier October2026 Miyakejima page1 patternA independently lists401 調布→三宅島; exact original C28 airport suffix identity, existing HOLD requirement unchanged."
+    },
+    {
+      "factId": "miyake-nca-independent-direction-1",
+      "kind": "service",
+      "sourceActionId": "airport:miyakejima:current-nca-independent-chofu-directions",
+      "sourceUrl": "https://central-air.co.jp/.assets/2026-10%E4%B8%89%E5%AE%85%E5%B3%B6%E3%83%BBMiyakejima.pdf",
+      "observedResponseSha256": "a7faa5c8bde917df7100a2997530015604cc7b93c6b23e083b5687ffd1b92eb1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:miyakejima:current-nca-independent-chofu-directions",
+          "url": "https://central-air.co.jp/schedule-fee.html",
+          "observedResponseSha256": "6b9dc9e67c4072c112e05eceff7ac3c198b2b70b9f71b803ce57265df6d06806"
+        },
+        {
+          "sourceActionId": "airport:miyakejima:current-nca-independent-chofu-directions",
+          "url": "https://central-air.co.jp/guide-access.html",
+          "observedResponseSha256": "8fe83ddd0e871d0b182aa170cf84e896f80edf3fcb376e6a7dba018a4faad0f9"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+          "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+        },
+        {
+          "sourceActionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/miyakejima/miyakejima_service",
+          "observedResponseSha256": "60fab3d717662a6e0c419ab13fe5ee35780656b28ade73524b4ccc4c898f606b"
+        }
+      ],
+      "operator": "新中央航空株式会社",
+      "line": "調布・三宅島国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "MYE-RJTF",
+      "serviceState": "active",
+      "serviceStateScope": "Carrier current October2026 own timetable uses A pattern on each listed date including October3. Two independently printed carrier directions401 and402 support minimum static airport relation. No clocks, flight availability or reservation confirmation persisted.",
+      "callingStations": [
+        "三宅島空港",
+        "調布飛行場"
+      ],
+      "callingComponents": [
+        {
+          "name": "三宅島空港",
+          "operator": "airport-facility:cf03_00034",
+          "line": "airport:cf03_00034",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00034",
+            "requirementId": "review:official-airport:三宅島",
+            "expectedRequirementName": "三宅島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independent government airport material and NCA October2026 own flight table establish passenger airport; whole-airport public surface relation independently corroborated to exact P11空港前 using government bus locator and visible marked public crossing/forecourt. Not airside, curb coordinates or step-free navigation."
+          }
+        },
+        {
+          "name": "調布飛行場",
+          "operator": "airport-facility:cf03_00029",
+          "line": "airport:cf03_00029",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00029",
+            "requirementId": "review:official-airport:調布",
+            "expectedRequirementName": "調布",
+            "method": "REVIEWED_EXACT_CURRENT_OFFICIAL_AIRFIELD_NAME",
+            "officialNameEvidence": {
+              "officialName": "調布飛行場",
+              "requirementName": "調布",
+              "publicName": "調布飛行場",
+              "equivalenceKind": "EXACT_PRIMARY_CURRENT_FORMAL_NAME",
+              "locator": "Tokyo port bureau current Chofu airfield access/facility pages explicitly name the passenger facility 調布飛行場; original required name調布 plus exact飛行場 suffix. No invented 空港 public alias.",
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+              "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+            },
+            "currentPassengerAccessReview": "Current government access names Odakyu調40 from Keio Chofu north bay14, airfield bus stop zero-minute terminal access. Root-reviewed facility diagram places bus pole on public terminal/front-carpark access outside airfield. C28 remains airport reference point only."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Carrier October2026 Miyakejima page1 patternA independently lists402 三宅島→調布; exact existing official Chofu airfield identity reused."
+    },
+    {
+      "factId": "miyake-independent-public-airport-road-stop-interface",
+      "kind": "transfer",
+      "sourceActionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+      "sourceUrl": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232695/104654.jpg",
+      "observedResponseSha256": "3ea81b3a25ade63830abcd496a28321859dca19e303056172aba865b620bba1e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/miyakejima/miyakejima_service",
+          "observedResponseSha256": "60fab3d717662a6e0c419ab13fe5ee35780656b28ade73524b4ccc4c898f606b"
+        },
+        {
+          "sourceActionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/documents/d/kouwan/33436_miyakejimaairport-map",
+          "observedResponseSha256": "9e1af29bb8a727c4f9561369e7ed85dc2669b6111af4bcdf71d5ad086f6484bb"
+        },
+        {
+          "sourceActionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+          "url": "https://www.sangyo-rodo1.metro.tokyo.lg.jp/tourism/accessible/islands/miyakejima-access.html",
+          "observedResponseSha256": "689b878d7d1a6c7dd8f72e71c1da311dbeeb6ab4f729589022268b67f3ee997a"
+        },
+        {
+          "sourceActionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+          "url": "https://www.islandaccess.metro.tokyo.lg.jp/stations/miyakejima_airport/",
+          "observedResponseSha256": "41799134e2bf72847d667704f0b36bb40eb7d0629d7828b092919b9ea963e306"
+        },
+        {
+          "sourceActionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+          "url": "https://www.soumu.metro.tokyo.lg.jp/14miyake/miyakehp/kankousasshi0603.pdf",
+          "observedResponseSha256": "60034e94f18e48384b8837b25c5bcb42b4b13ad7a8980a4cb3f37e0016605502"
+        },
+        {
+          "sourceActionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+          "url": "https://tokyogrown.jp/en/visitors/tokyoshorttrip/vol04/",
+          "observedResponseSha256": "7b2272c0b0eff37cf02a83c8ca5605f6eed25b7831a1c30eb73464f7b3c61a14"
+        },
+        {
+          "sourceActionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/232695/104655.jpg",
+          "observedResponseSha256": "c1bf9a86e946437fae77dc4a97d878a8d4f0f83f4869ba233055e5a0bb3f3d3b"
+        },
+        {
+          "sourceActionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+          "url": "https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html",
+          "observedResponseSha256": "5388d2854a05f3e7b41cb980ecfb2de75b315de68e0d9c94b9334c11e580739e"
+        },
+        {
+          "sourceActionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+          "url": "https://maps.gsi.go.jp/development/ichiran.html",
+          "observedResponseSha256": "a1032939c4f6673c0bd309ec9055103f102b93fbb2c692c494cb149f5a7b2151"
+        },
+        {
+          "sourceActionId": "bus:miyakejima:current-village-independent-airport-kamagata-sections",
+          "url": "https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/koutsuu/bus.html",
+          "observedResponseSha256": "ce2691ae2a5545e5b51ed3fe274011dd72a6d28275b7accec6bdadefe543ef5f"
+        },
+        {
+          "sourceActionId": "bus:miyakejima:current-village-independent-airport-kamagata-sections",
+          "url": "https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/koutsuu/files/1.7.1.pdf",
+          "observedResponseSha256": "f66425ec5b8eca0aa87c3d8f53c73b49447a1d35f55d46d0c85da85ece964f26"
+        }
+      ],
+      "components": [
+        {
+          "name": "三宅島空港",
+          "operator": "airport-facility:cf03_00034",
+          "line": "airport:cf03_00034",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00034",
+            "requirementId": "review:official-airport:三宅島",
+            "expectedRequirementName": "三宅島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current independent government airport material and NCA October2026 own flight table establish passenger airport; whole-airport public surface relation independently corroborated to exact P11空港前 using government bus locator and visible marked public crossing/forecourt. Not airside, curb coordinates or step-free navigation."
+          }
+        },
+        {
+          "name": "空港前",
+          "operator": "三宅村",
+          "line": "p11-stop:P11-22_13:bs40",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs40",
+            "recordSha256": "295e8e719cc743b33fabe5ac2f6ddce76445b6b1feb0f232ea03834cc2cca389",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator native P11 representative for current ordinary village bus. The independently printed left/right fifth regular columns each call the selected adjacent釜方/空港前 interval. No weekday clinic/ferry branch or opposite-pole coordinate collapse.",
+            "currentOperatorEvidence": {
+              "recordOperator": "三宅村",
+              "currentOperatorName": "三宅村",
+              "currentStopName": "空港前",
+              "historicalRoute": "三宅村営バス",
+              "url": "https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/koutsuu/bus.html",
+              "observedResponseSha256": "ce2691ae2a5545e5b51ed3fe274011dd72a6d28275b7accec6bdadefe543ef5f"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "INDEPENDENT_OFFICIAL_NAMED_STOP_PLUS_LICENSED_PHYSICAL_PUBLIC_CROSSING_AND_TERMINAL_FORECOURT",
+      "hubScopeComplete": false,
+      "locator": "Tokyo Miyake branch2024March booklet printed119/physical122 independently names public road bus stop7空港前. Exact same-operator P11 bs40 projects to north tile pixel40.67,111.53 at marked public-road crossing; north/south GSI imagery visibly connects airport-side public forecourt/parking to terminal public frontage corroborated by airport outline and passenger access survey. Whole-airport ↔ representative public bus-stop walking relation only. Image capture dates unknown; booklet publication date and retrieval date do not assert current surveyed layout. No precise curb, distance, minutes, accessibility, airside or proximity-only join.",
+      "physicalEvidenceReview": {
+        "captureDate": null,
+        "bookletPublished": "2024-03",
+        "gsiAttribution": "出典：国土地理院 地理院タイル（写真）; minimum derived topology observation",
+        "coordinateUse": "Native stop representative locates the independently named component; connection derives from marked crossing/public forecourt observation, not nearest-coordinate inference"
+      }
+    }
+  ],
+  "scope": "Only original Miyakejima airport HOLD upgrade, two exact P11 stops空港前/釜方, two adjacent bus rides, two independent NCA flight relations and two public walking edges. No full-island bus expansion or企業課前 node admission."
+}

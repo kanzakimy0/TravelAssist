@@ -1,0 +1,316 @@
+{
+  "scope": "Completed original-scope airport212/213 and exact rail corrections214; correction does not close the rail global root. Pending independent research never counts as completed.",
+  "packages": [
+    {
+      "iteration": 213,
+      "closedRootIds": [
+        "root:airport:review:official-airport:三宅島"
+      ],
+      "receiptPath": ".cache/task-086/tokyo-islands-next/miyake-chain213-evidence-review.json",
+      "receiptSha256": "f09e5f591f616c80b0cc1744ddf3a4f19fac01c2be9605a8b19fa6a549224985",
+      "receipt": {
+        "status": "SOURCE_AND_IDENTITY_PACKET_PREPARED_PENDING_FROZEN_BASE_PRODUCTION_PREFLIGHT",
+        "phaseId": "213-miyakejima-independent-public-interface-village-bus-and-nca-chain",
+        "phaseSha256": "ec74ae5432ccdcecdab421fc5d5d02bd31434229f287f1722396838202d3bab2",
+        "actionsSha256": "8109efd33bac2e7cb9d3d6b1e01eb419bbaf6f9e673b0491fe2ca17896a9cecb",
+        "facts": [
+          {
+            "factId": "miyake-village-airport-adjacent-independent-0",
+            "kind": "service",
+            "observedResponseSha256": "f66425ec5b8eca0aa87c3d8f53c73b49447a1d35f55d46d0c85da85ece964f26",
+            "corroboratingRefs": 1
+          },
+          {
+            "factId": "miyake-village-airport-adjacent-independent-1",
+            "kind": "service",
+            "observedResponseSha256": "f66425ec5b8eca0aa87c3d8f53c73b49447a1d35f55d46d0c85da85ece964f26",
+            "corroboratingRefs": 1
+          },
+          {
+            "factId": "miyake-nca-independent-direction-0",
+            "kind": "service",
+            "observedResponseSha256": "a7faa5c8bde917df7100a2997530015604cc7b93c6b23e083b5687ffd1b92eb1",
+            "corroboratingRefs": 4
+          },
+          {
+            "factId": "miyake-nca-independent-direction-1",
+            "kind": "service",
+            "observedResponseSha256": "a7faa5c8bde917df7100a2997530015604cc7b93c6b23e083b5687ffd1b92eb1",
+            "corroboratingRefs": 4
+          },
+          {
+            "factId": "miyake-independent-public-airport-road-stop-interface",
+            "kind": "transfer",
+            "observedResponseSha256": "3ea81b3a25ade63830abcd496a28321859dca19e303056172aba865b620bba1e",
+            "corroboratingRefs": 11
+          }
+        ],
+        "counts": {
+          "proposedBusRideEdges": 2,
+          "proposedFlightEdges": 2,
+          "proposedPublicWalkEdges": 2,
+          "newP11Nodes": 2,
+          "existingAirportAdmissionUpgrades": 1,
+          "addedAirportFacilities": 0
+        },
+        "selectedBusParentLengths": [
+          71,
+          71
+        ],
+        "originalAirport": {
+          "admission": "HOLD",
+          "evidencePath": "data/transport/nodes/task-084-b-v2-amendment-review/airport-planning-candidates.jsonl",
+          "evidenceSha256": "ac921c3e6a9edf17ccf639f7fa80400fd542f82286baca675a058a96fc520af7",
+          "kind": "airport",
+          "name": "三宅島",
+          "nodeId": "transport-node:086:9611639e09abf09c6dbcd98e2d87ee04",
+          "reason": "V2_HIGH_TIER_OR_NATIONAL_SERVICE_DISCOVERY_OBLIGATION",
+          "requirementId": "review:official-airport:三宅島",
+          "tier": "T3"
+        },
+        "existingChofu": {
+          "name": "調布飛行場",
+          "operator": "airport-facility:cf03_00029",
+          "line": "airport:cf03_00029",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00029",
+            "requirementId": "review:official-airport:調布",
+            "expectedRequirementName": "調布",
+            "method": "REVIEWED_EXACT_CURRENT_OFFICIAL_AIRFIELD_NAME",
+            "officialNameEvidence": {
+              "officialName": "調布飛行場",
+              "requirementName": "調布",
+              "publicName": "調布飛行場",
+              "equivalenceKind": "EXACT_PRIMARY_CURRENT_FORMAL_NAME",
+              "locator": "Tokyo port bureau current Chofu airfield access/facility pages explicitly name the passenger facility 調布飛行場; original required name調布 plus exact飛行場 suffix. No invented 空港 public alias.",
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+              "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+            },
+            "currentPassengerAccessReview": "Current government access names Odakyu調40 from Keio Chofu north bay14, airfield bus stop zero-minute terminal access. Root-reviewed facility diagram places bus pole on public terminal/front-carpark access outside airfield. C28 remains airport reference point only."
+          }
+        },
+        "visualReview": [
+          "Village bus current cached page1: both independent fifth regular columns,2019July1 version",
+          "NCA own October2026 page1: opposite401/402 independently listed",
+          "Tokyo government booklet physical122/printed119 exact stop7空港前 and airport",
+          "Government airport outline public parking and terminal",
+          "Both GSI north/south tiles marked crossing/public road and connected public forecourt"
+        ],
+        "rightsLimits": [
+          {
+            "actionId": "bus:miyakejima:current-village-independent-airport-kamagata-sections",
+            "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+            "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+            "termsUrl": "https://www.vill.miyake.tokyo.jp/kurashi/seikatsu_kankyou/koutsuu/bus.html",
+            "observedAt": "2026-10-03T04:07:14.008284+00:00",
+            "rawReuseClaimed": false,
+            "reason": "Municipality own ordinary daily bus page and its currently linked2019July1 timetable reviewed separately from P11. Copyright retained; no open license or raw timetable permission claimed. Keep only independently structured adjacent call order/operator/public scheduled service/direction and exact source metadata. No clocks, fare tables, layouts or prose published. Charter reservation clause belongs to separate charter section, not ordinary two daily routes. The prohibited tourism-association bus page/FAQ is excluded."
+          },
+          {
+            "actionId": "airport:miyakejima:current-nca-independent-chofu-directions",
+            "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+            "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+            "termsUrl": "https://central-air.co.jp/privacy-policy.html",
+            "observedAt": "2026-10-03T03:39:20.377339+00:00",
+            "rawReuseClaimed": false,
+            "reason": "Reuse the independently reviewed carrier own-source minimum-fact approach used in phase196, with this distinct October2026 Miyakejima response hash. Only carrier/endpoints/direction/current month relation retained. No raw PDF, photo, clock, seat guarantee or automatic booking; carrier privacy/ordinary copyright remains, no open license asserted."
+          },
+          {
+            "actionId": "airport:miyakejima:independent-government-native-stop-public-forecourt",
+            "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+            "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+            "termsUrl": "https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html",
+            "observedAt": "2026-10-03T04:06:19.852426+00:00",
+            "rawReuseClaimed": false,
+            "reason": "Source-specific minimum public physical interface facts only. GSI aerial photograph tiles reviewed under published GSI content terms/PDL1.0 and tile-use rules; source attribution retained, no surveyed curb/accessibility/current capture-date claim. Independently published Tokyo Miyake branch2024March booklet, public airport outline, current passenger material and Tokyo Development Foundation own page corroborate ordinary bus/airport public access. Their prose/artwork/photos are not republished and GSI permission is not inherited by those publications. The prohibited tourism association source is excluded."
+          }
+        ],
+        "freshness": {
+          "busSourceVersion": "2019-07-01 still currently linked",
+          "busServiceStatus": "Current municipal page explicitly daily two ordinary routes",
+          "bookletPublication": "2024-03",
+          "gsiCaptureDate": null,
+          "currentFlightMonth": "2026-10"
+        },
+        "excluded": [
+          "Tourism-association FAQ/bus-page prohibited reuse",
+          "Early ferry special bus/1130 ferry diversion",
+          "Weekday-only clinic call not served by selected fifth columns",
+          "No2/3 restriction conversion or conditional booking contract",
+          "No full-gate or national path success claim before actual frozen preflight"
+        ],
+        "newHttpRequests": 0,
+        "sharedWrites": 0,
+        "productionPreflightExecuted": false
+      }
+    },
+    {
+      "iteration": 214,
+      "closedRootIds": [],
+      "receiptPath": ".cache/task-086/jr-timetable-rights/correction-production-private/implementation-handoff-service-access-merged.json",
+      "receiptSha256": "88298132982de0d8cf1414f3ee7e715f9a160ef0623b874f79e334bb734f1dee",
+      "receipt": {
+        "status": "PRIVATE_MERGED_READY_ROOT_REVIEW_NO_FULL_REPLAY_RUN",
+        "createdAt": "2026-10-03T12:50:28.314759+00:00",
+        "patch": {
+          "file": "production-integration-service-access-merged.patch",
+          "sha256": "6d24330d1f7e1fa46388d0ef796c6fede7271fac7635dd3078056677f8c2d019",
+          "lines": 1169
+        },
+        "applyOnlyTheseFiles": [
+          {
+            "path": "tools/transport/task-086-pattern-corrections.mjs",
+            "beforeSha256": null,
+            "proposedSha256": "000f94a76b5f79bb29875b2fedbaa1f23bc88ed8ff249705d84b0665f04e9c53"
+          },
+          {
+            "path": "tools/transport/task-086-remediate.mjs",
+            "beforeSha256": "a0175d6f6f3dfa227fa381d0c4c992a409e66603f644789aa4a09d3b81dd39a6",
+            "proposedSha256": "911d0e8c931e4d0415c7c82c49724866b9e0b87e955496889d625482734aa4c3"
+          },
+          {
+            "path": "tools/transport/task-086-acceptance-inputs.mjs",
+            "beforeSha256": "d79a80f71a994a7d29e37d69dbfb86569b75e918c4f6c6def46958076570a434",
+            "proposedSha256": "4e69c9f8c1f20990a7b6c3e6721651576d3c56fd9c188b6d5e6b607fa1408248"
+          },
+          {
+            "path": "tools/transport/task-086-verify.mjs",
+            "beforeSha256": "e9365d6e329fcc40b2dfb70fb21fe9aa6ac4fb6b194f8698e2aa3c255c1dc42b",
+            "proposedSha256": "e3d945f3f413b50c4dee6c51bfea5f8f9511843949946998550526fa40d4b42f"
+          },
+          {
+            "path": "tests/task-086-b-pattern-corrections.test.mjs",
+            "beforeSha256": null,
+            "proposedSha256": "d05f323cda10a3eb5f0217e2c142e550b9809aa65807833aefd84d99ad4d6e2c"
+          },
+          {
+            "path": "tests/fixtures/task-086-pattern-corrections-fixture.mjs",
+            "beforeSha256": null,
+            "proposedSha256": "e90633fc86380ddae424e63ae937786866f59c84069b2a71275e7db187e6c831"
+          }
+        ],
+        "copiedModelBatchesSourcesAreUnmodifiedTestDependencies": "Do not apply other tools copies.",
+        "actualCandidate": {
+          "phaseFile": "inputs/phase214-private.json",
+          "actionsFile": "inputs/actions214-private.jsonl",
+          "correctionManifest": "inputs/pattern-corrections.v1.json",
+          "immutableArchive": "inputs/pattern-correction-archive.v1.json",
+          "review": "inputs/pattern-correction-review.v1.json",
+          "phaseId": "214-independent-static-rail-source-corrections",
+          "newPatterns": 3,
+          "newNodes": 2,
+          "newEdges": 37,
+          "retiredOldPatterns": 3,
+          "retiredOldEdges": 27,
+          "affectedBidirectionalWitnesses": 28,
+          "original403patternAnd2521nodeAuditRetained": true,
+          "secondary375patternAnd2421nodeAuditRetained": true,
+          "historicalPhasesUnchanged": true
+        },
+        "validation": {
+          "focusedTestsPassed": 43,
+          "actual212BidirectionalWitnesses": 28,
+          "actualCounts": {
+            "newNodes": 2,
+            "newPatterns": 3,
+            "newEdges": 37,
+            "retiredPatterns": 3,
+            "retiredEdges": 27
+          },
+          "actualReceiptSha256": "8356ee294817915d57addaa7a393ad6076aea08e0b6bce9bfec044401ee4d288",
+          "testLogSha256": "4e5d937fba270d72282c83578c07cbc1722d674499f20d0f61a0b22a12ed07de",
+          "compatibilityResultHash": "9ae0916704c14c152b1972496ace6b76cec871d6779763223e5a941bc65803b2",
+          "sharedFullReplayRuns": 0,
+          "isolatedFullReplayRuns": 0,
+          "preparedRunner": "run-isolated-full-history-prepared.mjs",
+          "syntaxChecks": "PASS",
+          "testedModelIsProvidedSubmissionCandidate": "Root later Prettier model change is not represented as tested here. Root will run final combined114+43."
+        },
+        "productionMechanics": [
+          "Optional correction document absent: existing graph behavior and review results unchanged. New helper registered in generator fingerprint list.",
+          "Validate exact3legacyallowlist, immutablefact/pattern/edge hashes, originalspec citations, source-specific action/nativehashes and exactsuccessor fact before skipping only retiredfacts in replay. Originalphase files remain unchanged.",
+          "New independent sourceactions are per provider; no last-rightsFinding from anotherprovider is reused.",
+          "Final check revalidates allstaticinputbindings/actions; demands exact runtime fact/native-response/source-descriptor hash; strictgeneratePattern reproduces every replacement edge; allnewandoldcalls admitted andnationalbothways.",
+          "Originalsource andmajorrail review IDsets remain exact. Only these3retired IDs get explicit auditedcorrection outcomes; everyother lostpattern fails unchanged. An explicit rapid requirement rejects localcorrection.",
+          "Emit pattern-correction-audit.json with originalIDs and archivedhashes; raworiginalarchive remains staticallybound researchinput. No oldrapid service is declaredproven.",
+          "All static correctionbindings are included in actualinput manifest hashes; no generated/self/globalreview loops. Newfocusedtest registered in verifier."
+        ],
+        "rootNextSteps": [
+          "Independently approve exactsource semantic combination; tests prove contractbehavior, not historicalservice truth.",
+          "Review/apply only six listed code/testfiles; register phase/actions and three static researchcorrectionfiles using exact intendedpaths frommanifest. Keep originalphase032/170 unchanged.",
+          "Update relevantglobalreview inputbindings to include correctionmanifest/archive/review static files while preserving all403/2521 and375/2421 IDs. Sourceglobal gap stillOPEN whiletwoSonicfacts unresolved.",
+          "Run isolated fullhistorical replay/requiredregression beforecanonical publication. This private work didnotrun the entirewriter; specifically watch retiredhistoricalbatchgroups and baselinepreservationchecks that assume oldactivecounts.",
+          "If finalphaseID/sourcefacts/actions/reviewbytes change, regenerate manifest andactualprivateproof; do not reuse stalehashes."
+        ],
+        "limitations": [
+          "Actuallegacyfact/edge records are retained privately/asresearchaudit, not raw timetable response redistribution. Publicunitfixtures are synthetic and self-contained.",
+          "No special exemption, threshold reduction, emptyN/A, userpermission requirement, or remainingSonic closure was introduced.",
+          "All 28 affected paths were checked in the in-memory replacement graph. Fullcorecompletion is not claimed."
+        ],
+        "metrics": {
+          "newHttpRequests": 0,
+          "canonicalWrites": 0,
+          "sharedCodeChangedByThisAgent": false
+        },
+        "oldValidatedHandoffPreserved": {
+          "path": "implementation-handoff-private.json",
+          "sha256": "b1d1e0988d472c37e6f74d5cb353de6607586243e272ddab6d877a9fee4af536"
+        },
+        "mergedBase": [
+          {
+            "path": "tools/transport/task-086-batches.mjs",
+            "newBaseSha256": "31022aa4fd879e2d88b68677b6bc5084ae1eafc49b1725eb611635121d950674",
+            "mergedSha256": "31022aa4fd879e2d88b68677b6bc5084ae1eafc49b1725eb611635121d950674"
+          },
+          {
+            "path": "tools/transport/task-086-condition-evidence.mjs",
+            "newBaseSha256": "c76c4b66b7fe33daadc737e4833258909105c37148978204f82e04401b2881b8",
+            "mergedSha256": "c76c4b66b7fe33daadc737e4833258909105c37148978204f82e04401b2881b8"
+          },
+          {
+            "path": "tools/transport/task-086-model.mjs",
+            "newBaseSha256": "98738106e54c18910697e9f80bf5fc6bc8fe3069bd4a1ecfd0aff2eebc170641",
+            "mergedSha256": "98738106e54c18910697e9f80bf5fc6bc8fe3069bd4a1ecfd0aff2eebc170641"
+          },
+          {
+            "path": "tools/transport/task-086-remediate.mjs",
+            "newBaseSha256": "a0175d6f6f3dfa227fa381d0c4c992a409e66603f644789aa4a09d3b81dd39a6",
+            "mergedSha256": "13fdb22791e56b0e983dd7040f6bd6dd8f60042db32b1d172733ca59ca3cae99"
+          },
+          {
+            "path": "tools/transport/task-086-run.mjs",
+            "newBaseSha256": "a7fb78a9fdffb65d0aaf507ac1c4339e917c9a66a31beaa5c9f7b291bc69bc2c",
+            "mergedSha256": "a7fb78a9fdffb65d0aaf507ac1c4339e917c9a66a31beaa5c9f7b291bc69bc2c"
+          },
+          {
+            "path": "tools/transport/task-086-service-access-contract.mjs",
+            "newBaseSha256": "b91b267d216956e18656b5a5405d4aff09627fdc5d53a4e93497065d991bdf4f",
+            "mergedSha256": "b91b267d216956e18656b5a5405d4aff09627fdc5d53a4e93497065d991bdf4f"
+          },
+          {
+            "path": "tools/transport/task-086-stage.mjs",
+            "newBaseSha256": "66eadb407c788428cf9c5894f27690a6fd575704f2ca7f5e421613ad4b2ea7d5",
+            "mergedSha256": "66eadb407c788428cf9c5894f27690a6fd575704f2ca7f5e421613ad4b2ea7d5"
+          }
+        ],
+        "globalReviewUpdate": "global-review-binding-update-private.json",
+        "historicalAudit": "merged-historical-preservation-review.json",
+        "integrationRisks": [
+          "Origin1038/63patterns/1339edges/88receipts/10iterations contains none of the3retired patterns or27edges, so immutable origin preservation is compatible.",
+          "Three later batches (9,3,15 edges) must leave active manifest receipts; physical old files may remain unreferenced archival material. Do not count all directory files as active batches.",
+          "Correction delta is+2necessarynodes,+10netedges,0netpatterns; other phase213 additions count separately. Existing phase032/170 bytes remain unchanged.",
+          "No fullhistorical replay run. Strict graph reproduction may expose historical dependencies or global static review hash changes; preserve failures and repair explicitly.",
+          "Native source semantic combination remains root evidence review; 43tests do not grant source rights or establish historical truth.",
+          "Old rapid is explicitly retired; newlocal does not prove oldrapid. Any explicitoriginalrapid requirement still rejects correction.",
+          "Root currently formatting sharedmodel: final combined proof must reference final code fingerprints, not this prior private modelhash."
+        ]
+      }
+    }
+  ],
+  "phase212Preservation": "phase214-preservation-212.json",
+  "tokenCount": null,
+  "billedCost": null,
+  "modelCacheHitCount": null
+}

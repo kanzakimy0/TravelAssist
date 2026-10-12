@@ -1,0 +1,118 @@
+{
+  "phaseId": "133-hakkei-and-motoyawata-missing-public-connections",
+  "strategy": [
+    "T1_REMAINING_EXACT_COMPONENT_PAIRS",
+    "FACILITY_OWNER_ALTERNATIVE_TO_INACCESSIBLE_OPERATOR_PAGE",
+    "POST_2019_HAKKEI_CURRENT_CONNECTION"
+  ],
+  "completedActionIds": [
+    "hub:seaside:kanazawahakkei-current-keikyu-concourse",
+    "hub:keikyu:kanazawahakkei-current-elevated-gate-review",
+    "hub:jrtk:motoyawata-current-designated-public-passage",
+    "hub:jr-east:motoyawata-current-central-gate-approach"
+  ],
+  "facts": [
+    {
+      "factId": "kanazawahakkei-keikyu-seaside-current-reviewed-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:seaside:kanazawahakkei-current-keikyu-concourse",
+      "sourceUrl": "https://www.seasideline.co.jp/station_guide/kanazawa_hakkei/asset/img/station_yard_img.gif",
+      "observedResponseSha256": "8a10f69976f50fd5dfeaca2682d8a4f71bc446faa1c29e95cb72c57c14d67489",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:seaside:kanazawahakkei-current-keikyu-concourse",
+          "url": "https://www.seasideline.co.jp/station_guide/kanazawa_hakkei/",
+          "observedResponseSha256": "7702f1cdee3a740af0f3ead52008789c7e6f27928286c27a7e0ee5b59d252a06"
+        },
+        {
+          "sourceActionId": "hub:keikyu:kanazawahakkei-current-elevated-gate-review",
+          "url": "https://www.keikyu.co.jp/ride/kakueki/KK50.html",
+          "observedResponseSha256": "59aa531696807025b866cc4df8ae8bfc222cbc02b4a160f94590e8cf7eb2378b"
+        },
+        {
+          "sourceActionId": "hub:keikyu:kanazawahakkei-current-elevated-gate-review",
+          "url": "https://www.keikyu.co.jp/ride/kakueki/img/KK50_im01.png",
+          "observedResponseSha256": "0aafad64bcc925fd3c2f8b92fb37e833ae79310fa3da993f3d0c509c48db87bd"
+        }
+      ],
+      "locator": "Current station-linked Seaside diagram explicitly connects its platform/gate to public concourse leading to Keikyu Kanazawa-Hakkei gate. January 2025 Keikyu map independently shows both platform islands reaching elevated gate and east-west free passage toward Seaside Line. Current post-2019 connection only, not former separate station location. All cited diagrams individually viewed and hash-matched. Coarse bidirectional relation only; no fare, walking time or universal accessible-route claim.",
+      "components": [
+        {
+          "name": "金沢八景",
+          "operator": "京浜急行電鉄",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "金沢八景",
+          "operator": "横浜シーサイドライン",
+          "line": "金沢シーサイドライン",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_DESIGNATED_PUBLIC_PASSAGE_AND_SEPARATE_IDENTITIES",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "motoyawata-jr-toei-current-reviewed-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jrtk:motoyawata-current-designated-public-passage",
+      "sourceUrl": "https://shapo.jrtk.jp/photo/21549-2400.jpg",
+      "observedResponseSha256": "5ff0c4ce2e68089689e1cde61d5f8e06f9c6ada6dfc252674a29dc5d2c2485f3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jrtk:motoyawata-current-designated-public-passage",
+          "url": "https://shapo.jrtk.jp/motoyawata/shop/floor.jsp?fid=2fs",
+          "observedResponseSha256": "48c31fdf765aaee63092705ecd787ebfca4ad169be44c50e8f75ae2894bdd9b8"
+        },
+        {
+          "sourceActionId": "hub:jr-east:motoyawata-current-central-gate-approach",
+          "url": "https://www.jreast.co.jp/estation/stations/1560.html",
+          "observedResponseSha256": "c73761205b3d9c21d985c2fbf96781c617eb97b07f7d58879daa4a4a7a898efb"
+        },
+        {
+          "sourceActionId": "hub:jr-east:motoyawata-current-central-gate-approach",
+          "url": "https://www.jreast.co.jp/estation/stations/img/floormap/1560_1f-3f.png",
+          "observedResponseSha256": "af14a4e13774d8d7feae55373aadb2aa46f8855f230bcb42deca462e699ae6a4"
+        }
+      ],
+      "locator": "Current facility-owner 2F map explicitly shows designated public yellow passage from JR Motoyawata central-gate concourse to Toei Shinjuku direction. Diagram legend distinguishes this train-service-period passage from time-limited shop aisles; no all-hours assertion. Current July 2025 JR diagram confirms both platform faces join central gate. This repairs JR-to-Toei, not the already reviewed Toei-to-Keisei pair in phase112; inaccessible Toei protection shell is not evidence. All cited diagrams individually viewed and hash-matched. Coarse bidirectional relation only; no fare, walking time or universal accessible-route claim.",
+      "components": [
+        {
+          "name": "本八幡",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "本八幡",
+          "operator": "東京都",
+          "line": "10号線新宿線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_DESIGNATED_PUBLIC_PASSAGE_AND_SEPARATE_IDENTITIES",
+      "hubScopeComplete": false
+    }
+  ]
+}

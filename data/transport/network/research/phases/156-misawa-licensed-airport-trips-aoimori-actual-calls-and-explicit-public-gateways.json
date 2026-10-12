@@ -1,0 +1,388 @@
+{
+  "phaseId": "156-misawa-licensed-airport-trips-aoimori-actual-calls-and-explicit-public-gateways",
+  "strategy": [
+    "DATASET_SPECIFIC_CC_BY_4_0_AND_ACTUAL_ASYMMETRIC_TRIPS",
+    "EXACT_S12_AOIMORI_COMPONENTS_NOT_SAME_NAME_NISHITETSU",
+    "INDEPENDENT_CURRENT_TRAIN_SUBSEQUENCES",
+    "CURRENT_CIVIL_TERMINAL_WITH_CONSTRUCTION_SCOPE_REVIEW",
+    "CURRENT_PUBLIC_STATION_BAY_AND_TWO_GATE_CONNECTIONS",
+    "PRIMARY_MLIT_FORMAL_AIRFIELD_CIVIL_TERMINAL_IDENTITY"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "towada-misawa-airport.json",
+      "packageSha256": "96c0e784957775e476bcbba1b5393543ac9e63e8b3f3b0748bbd655f03a11ba5",
+      "sourceActionId": "bus:towada:licensed-october-misawa-airport-actual-trips"
+    }
+  ],
+  "completedActionIds": [
+    "bus:towada:licensed-october-misawa-airport-actual-trips",
+    "rail:aoimori:current-hachinohe-misawa-directional-local-calls",
+    "hub:towada:current-misawa-west-terminal-bay-three",
+    "hub:misawa-city:current-station-public-stairs-and-west-bus-terminal",
+    "airport:misawa-building:current-bus-frontage-and-construction-scope",
+    "hub:hachinohe-city:current-public-concourse-two-rail-gates",
+    "reference:misawa-city:licensed-community-bus-alternative-reviewed",
+    "airport:mlit-hachinohe:misawa-airfield-civil-terminal-name-equivalence"
+  ],
+  "facts": [
+    {
+      "factId": "aoimori-563M-current-five-call-hachinohe-misawa-subsequence",
+      "kind": "service",
+      "sourceActionId": "rail:aoimori:current-hachinohe-misawa-directional-local-calls",
+      "sourceUrl": "https://aoimorirailway.com/wp/wp-content/uploads/2026/02/0f951ef187d76bf6b2020e91c8c28e342.pdf",
+      "observedResponseSha256": "e5a22e0c3ccf1114d7964b713808ceebc77b576ed77b4780137b81fafe2d9df3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:aoimori:current-hachinohe-misawa-directional-local-calls",
+          "url": "https://aoimorirailway.com/%E6%99%82%E5%88%BB%E8%A1%A8",
+          "observedResponseSha256": "e578f6cd0741753f587043ef0174e507dbf4370a87d547cb6bd492cdd703c495"
+        },
+        {
+          "sourceActionId": "rail:aoimori:current-hachinohe-misawa-directional-local-calls",
+          "url": "https://aoimorirailway.com/lang_jp/station_list/misawa/",
+          "observedResponseSha256": "3809943d48516a384ea45cd776e54474b826c084affd14b5b55f9a0e78a00a42"
+        },
+        {
+          "sourceActionId": "rail:aoimori:current-hachinohe-misawa-directional-local-calls",
+          "url": "https://aoimorirailway.com/lang_jp/station_list/hachinohe/",
+          "observedResponseSha256": "9b6f004b64e472102b83a578d30c7b9cb52c69bf8bb3bbf24f4ac4be18b48f11"
+        }
+      ],
+      "locator": "Individually read actual 563M column in current March 14 2026 full operator timetable. Retain contiguous five-call Hachinohe/Misawa subsequence only; this is not asserted to be the full train route. All five calls occur in this independently read column, not inferred reverse or station-list adjacency. Preserve same-name separation from Fukuoka Nishitetsu and closed Towada railway. No clocks, frequencies, fare, source table or timed bus connection retained.",
+      "line": "青い森鉄道線",
+      "operator": "青い森鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "reviewedTrainCode": "563M",
+      "direction": "misawa-bound",
+      "callingStations": [
+        "八戸",
+        "陸奥市川",
+        "下田",
+        "向山",
+        "三沢"
+      ],
+      "callingComponents": [
+        {
+          "name": "八戸",
+          "operator": "青い森鉄道",
+          "line": "青い森鉄道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "陸奥市川",
+          "operator": "青い森鉄道",
+          "line": "青い森鉄道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "下田",
+          "operator": "青い森鉄道",
+          "line": "青い森鉄道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "向山",
+          "operator": "青い森鉄道",
+          "line": "青い森鉄道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三沢",
+          "operator": "青い森鉄道",
+          "line": "青い森鉄道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_TRAIN_CONTIGUOUS_CALL_SUBSEQUENCE",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_MARCH_14_2026_TIMETABLE_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "aoimori-560M-current-five-call-hachinohe-misawa-subsequence",
+      "kind": "service",
+      "sourceActionId": "rail:aoimori:current-hachinohe-misawa-directional-local-calls",
+      "sourceUrl": "https://aoimorirailway.com/wp/wp-content/uploads/2026/02/0f951ef187d76bf6b2020e91c8c28e342.pdf",
+      "observedResponseSha256": "e5a22e0c3ccf1114d7964b713808ceebc77b576ed77b4780137b81fafe2d9df3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:aoimori:current-hachinohe-misawa-directional-local-calls",
+          "url": "https://aoimorirailway.com/%E6%99%82%E5%88%BB%E8%A1%A8",
+          "observedResponseSha256": "e578f6cd0741753f587043ef0174e507dbf4370a87d547cb6bd492cdd703c495"
+        },
+        {
+          "sourceActionId": "rail:aoimori:current-hachinohe-misawa-directional-local-calls",
+          "url": "https://aoimorirailway.com/lang_jp/station_list/misawa/",
+          "observedResponseSha256": "3809943d48516a384ea45cd776e54474b826c084affd14b5b55f9a0e78a00a42"
+        },
+        {
+          "sourceActionId": "rail:aoimori:current-hachinohe-misawa-directional-local-calls",
+          "url": "https://aoimorirailway.com/lang_jp/station_list/hachinohe/",
+          "observedResponseSha256": "9b6f004b64e472102b83a578d30c7b9cb52c69bf8bb3bbf24f4ac4be18b48f11"
+        }
+      ],
+      "locator": "Individually read actual 560M column in current March 14 2026 full operator timetable. Retain contiguous five-call Hachinohe/Misawa subsequence only; this is not asserted to be the full train route. All five calls occur in this independently read column, not inferred reverse or station-list adjacency. Preserve same-name separation from Fukuoka Nishitetsu and closed Towada railway. No clocks, frequencies, fare, source table or timed bus connection retained.",
+      "line": "青い森鉄道線",
+      "operator": "青い森鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "reviewedTrainCode": "560M",
+      "direction": "hachinohe-bound",
+      "callingStations": [
+        "三沢",
+        "向山",
+        "下田",
+        "陸奥市川",
+        "八戸"
+      ],
+      "callingComponents": [
+        {
+          "name": "三沢",
+          "operator": "青い森鉄道",
+          "line": "青い森鉄道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "向山",
+          "operator": "青い森鉄道",
+          "line": "青い森鉄道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "下田",
+          "operator": "青い森鉄道",
+          "line": "青い森鉄道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "陸奥市川",
+          "operator": "青い森鉄道",
+          "line": "青い森鉄道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "八戸",
+          "operator": "青い森鉄道",
+          "line": "青い森鉄道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_TRAIN_CONTIGUOUS_CALL_SUBSEQUENCE",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_MARCH_14_2026_TIMETABLE_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "misawa-airfield-current-civil-terminal-to-licensed-airport-shuttle-stop",
+      "kind": "transfer",
+      "sourceActionId": "airport:misawa-building:current-bus-frontage-and-construction-scope",
+      "sourceUrl": "https://misawa-airport.co.jp/wp-content/themes/misawa-airport/images/20_bus_img4_1.png",
+      "observedResponseSha256": "724459ab13a467cd70b8afc9f2362bd00756af91096731512d9a06beed093eb5",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:misawa-building:current-bus-frontage-and-construction-scope",
+          "url": "https://misawa-airport.co.jp/access/bus/",
+          "observedResponseSha256": "c9589f518e02520b934bb13a861797d456e27357d879c5e84c246b44fc7426ce"
+        },
+        {
+          "sourceActionId": "airport:misawa-building:current-bus-frontage-and-construction-scope",
+          "url": "https://misawa-airport.co.jp/service/",
+          "observedResponseSha256": "87a399dc969248fb61a9e0271bf30242747b38f78b668284995559f4d39059ca"
+        },
+        {
+          "sourceActionId": "airport:misawa-building:current-bus-frontage-and-construction-scope",
+          "url": "https://misawa-airport.co.jp/wp-content/themes/misawa-airport/images/23_facility_img1.png",
+          "observedResponseSha256": "da41db30e21b9111909fa68c32d64d2e2fc8e2a7893256075b116f85d18e18c9"
+        },
+        {
+          "sourceActionId": "airport:misawa-building:current-bus-frontage-and-construction-scope",
+          "url": "https://misawa-airport.co.jp/info/",
+          "observedResponseSha256": "f1919494bb887dd53f62ea147f9a4d93c23df693770615f5a7c67628e42626d8"
+        },
+        {
+          "sourceActionId": "airport:misawa-building:current-bus-frontage-and-construction-scope",
+          "url": "https://misawa-airport.co.jp/wp-content/themes/misawa-airport/pdf/202607construction_notice.pdf",
+          "observedResponseSha256": "2f44c3a0a00618cf7f4cc2dfe2c61054bbc68ab001d5d02cc1560d43d7ccb80f"
+        },
+        {
+          "sourceActionId": "bus:towada:licensed-october-misawa-airport-actual-trips",
+          "url": "https://api.gtfs-data.jp/v2/organizations/towadakankodentetsu/feeds/toutetsu_airport_line/files/feed.zip?uid=179cec35-fb53-4d9b-8f91-ef7203a44fa8",
+          "observedResponseSha256": "ad05f644d863cde05badb4d1a9c609e90695f406633f3b086ada5cf8e6e0658e"
+        },
+        {
+          "sourceActionId": "airport:mlit-hachinohe:misawa-airfield-civil-terminal-name-equivalence",
+          "url": "https://www.pa.thr.mlit.go.jp/hachinohe/070/020/20200101135000.html",
+          "observedResponseSha256": "388c49157127730ebcbe5b18a19d29f902b93d4e6324b6b4b5d769b1ed5f0ff0"
+        }
+      ],
+      "locator": "Current airport shuttle guide explicitly identifies passenger boarding/alighting outside to the left of the civil terminal. Current landside floor guide joins public arrival lobby to terminal exits. July 2026 government construction notice closes the arrival-side crosswalk to parking lot 1, not all terminal frontage; departure-side crossing is explicitly retained. No path through that closed crosswalk is asserted. Exact licensed active trip stop 6400_01 is the terminal shuttle stop, not MiBus, nearby airport road stop or military airside facility. Keep whole-airport coarse passenger connection, not guaranteed transfer time or universal step-free path.",
+      "components": [
+        {
+          "name": "三沢飛行場",
+          "operator": "airport-facility:cf03_00021",
+          "line": "airport:cf03_00021",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00021",
+            "requirementId": "review:official-airport:三沢",
+            "expectedRequirementName": "三沢",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRFIELD_SUFFIX",
+            "officialNameEvidence": {
+              "officialName": "三沢飛行場",
+              "requirementName": "三沢",
+              "publicName": "三沢空港",
+              "url": "https://www.pa.thr.mlit.go.jp/hachinohe/070/020/20200101135000.html",
+              "observedResponseSha256": "388c49157127730ebcbe5b18a19d29f902b93d4e6324b6b4b5d769b1ed5f0ff0",
+              "locator": "MLIT original overview explicitly identifies Misawa Airport as the civil terminal area of Misawa Airfield outside the military base. Source date September 2020 preserved; current access independently reviewed."
+            },
+            "currentPassengerAccessReview": "Current airport shuttle guide explicitly identifies passenger boarding/alighting outside to the left of the civil terminal. Current landside floor guide joins public arrival lobby to terminal exits. July 2026 government construction notice closes the arrival-side crosswalk to parking lot 1, not all terminal frontage; departure-side crossing is explicitly retained. No path through that closed crosswalk is asserted. Exact licensed active trip stop 6400_01 is the terminal shuttle stop, not MiBus, nearby airport road stop or military airside facility. Keep whole-airport coarse passenger connection, not guaranteed transfer time or universal step-free path."
+          }
+        },
+        {
+          "name": "三沢空港前",
+          "operator": "十和田観光電鉄",
+          "line": "gtfs:towada-misawa-airport:route:31",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:towada-misawa-airport",
+            "stopId": "6400_01",
+            "sourceArchiveSha256": "ad05f644d863cde05badb4d1a9c609e90695f406633f3b086ada5cf8e6e0658e",
+            "recordSha256": "dab15e33d7721086c985539b5d4ad6901396efcfd097f695e65fc5f5b86e0952",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current airport shuttle guide explicitly identifies passenger boarding/alighting outside to the left of the civil terminal. Current landside floor guide joins public arrival lobby to terminal exits. July 2026 government construction notice closes the arrival-side crosswalk to parking lot 1, not all terminal frontage; departure-side crossing is explicitly retained. No path through that closed crosswalk is asserted. Exact licensed active trip stop 6400_01 is the terminal shuttle stop, not MiBus, nearby airport road stop or military airside facility. Keep whole-airport coarse passenger connection, not guaranteed transfer time or universal step-free path."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_CIVIL_TERMINAL_PASSENGER_FRONTAGE_AND_REVIEWED_CONSTRUCTION_SCOPE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "misawa-aoimori-current-public-west-exit-to-exact-airport-bus-stop",
+      "kind": "transfer",
+      "sourceActionId": "hub:towada:current-misawa-west-terminal-bay-three",
+      "sourceUrl": "https://www.toutetsu.co.jp/img/hachinohe-noriba.pdf",
+      "observedResponseSha256": "09a0ab950df66b707c8d1c1dee9bfda49ab4f82e1f9ef846b4d26d4d592ba501",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:towada:current-misawa-west-terminal-bay-three",
+          "url": "https://www.toutetsu.co.jp/jikoku.html",
+          "observedResponseSha256": "3f9bcd1eef00b922bfe35b31e18caa1223f36edca59615c8c2e11ad3a7034714"
+        },
+        {
+          "sourceActionId": "hub:misawa-city:current-station-public-stairs-and-west-bus-terminal",
+          "url": "https://www.city.misawa.lg.jp/index.cfm/12,39251,44,html",
+          "observedResponseSha256": "484634d4949af0c58f8903188abd475169e4c5fb37e6aec3e85bcd2041354078"
+        },
+        {
+          "sourceActionId": "hub:misawa-city:current-station-public-stairs-and-west-bus-terminal",
+          "url": "https://www.city.misawa.lg.jp/index.cfm/12,39251,c,html/39251/Barrier-free-map.pdf",
+          "observedResponseSha256": "a8e7ebce23f8f386f7ceb12f84d20bb84dd629d072c270c528966167774c5a56"
+        },
+        {
+          "sourceActionId": "rail:aoimori:current-hachinohe-misawa-directional-local-calls",
+          "url": "https://aoimorirailway.com/lang_jp/station_list/misawa/",
+          "observedResponseSha256": "3809943d48516a384ea45cd776e54474b826c084affd14b5b55f9a0e78a00a42"
+        },
+        {
+          "sourceActionId": "bus:towada:licensed-october-misawa-airport-actual-trips",
+          "url": "https://api.gtfs-data.jp/v2/organizations/towadakankodentetsu/feeds/toutetsu_airport_line/files/feed.zip?uid=179cec35-fb53-4d9b-8f91-ef7203a44fa8",
+          "observedResponseSha256": "ad05f644d863cde05badb4d1a9c609e90695f406633f3b086ada5cf8e6e0658e"
+        }
+      ],
+      "locator": "Current carrier guide page 2 explicitly locates airport shuttle boarding/alighting at Misawa west terminal bay 3. Current city March 2026 booklet (December 2025 survey) pages 3-4 shows the exact Aoimori second-floor gate to public stairs/lifts, first-floor public exit and west terminal bay 3. Licensed actual trip stop 6434_03 is the matched component; preserve blank GTFS platform_code rather than inventing a code from the displayed number. No east-side MiBus or closed Towada railway join. Nighttime retail/plaza closure is not treated as closure of the public station passage; rail and bus operating hours are not inferred.",
+      "components": [
+        {
+          "name": "三沢",
+          "operator": "青い森鉄道",
+          "line": "青い森鉄道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三沢駅",
+          "operator": "十和田観光電鉄",
+          "line": "gtfs:towada-misawa-airport:route:31",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:towada-misawa-airport",
+            "stopId": "6434_03",
+            "sourceArchiveSha256": "ad05f644d863cde05badb4d1a9c609e90695f406633f3b086ada5cf8e6e0658e",
+            "recordSha256": "3003f16351bc7243eea318f067f039066551d805b616c01b0d71598bd3b00f80",
+            "expectedPlatformCode": "3",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current carrier guide page 2 explicitly locates airport shuttle boarding/alighting at Misawa west terminal bay 3. Current city March 2026 booklet (December 2025 survey) pages 3-4 shows the exact Aoimori second-floor gate to public stairs/lifts, first-floor public exit and west terminal bay 3. Licensed actual trip stop 6434_03 is the matched component; preserve blank GTFS platform_code rather than inventing a code from the displayed number. No east-side MiBus or closed Towada railway join. Nighttime retail/plaza closure is not treated as closure of the public station passage; rail and bus operating hours are not inferred."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_CARRIER_EXACT_BAY_AND_MUNICIPAL_PUBLIC_FLOOR_CONNECTION",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hachinohe-current-public-concourse-shinkansen-to-aoimori-gates",
+      "kind": "transfer",
+      "sourceActionId": "hub:hachinohe-city:current-public-concourse-two-rail-gates",
+      "sourceUrl": "https://www.city.hachinohe.aomori.jp/section/public_transport/project/docs/R5toolrack_hachinohe_1.pdf",
+      "observedResponseSha256": "47e1816ee8fac9e802ce978b5ecab6eb5ba26c484c3087d4af5b1f98b3101320",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:hachinohe-city:current-public-concourse-two-rail-gates",
+          "url": "https://www.city.hachinohe.aomori.jp/section/public_transport/project/toolrack.html",
+          "observedResponseSha256": "cd7e83575ff090f6dff38676759b74c83d1c93d4c2a83bbb5c7951cd15517ddc"
+        },
+        {
+          "sourceActionId": "rail:aoimori:current-hachinohe-misawa-directional-local-calls",
+          "url": "https://aoimorirailway.com/lang_jp/station_list/hachinohe/",
+          "observedResponseSha256": "9b6f004b64e472102b83a578d30c7b9cb52c69bf8bb3bbf24f4ac4be18b48f11"
+        }
+      ],
+      "locator": "Current municipal transport-authority index links the R5 terminal guide. Individually viewed gate panel explicitly places the Tohoku Shinkansen gate and conventional JR Hachinohe/Aoimori gate on the public east-west concourse; current Aoimori station page independently confirms active station identity. Retain ordinary public-concourse interchange with separate fares/gates, not same paid area or an invented through-service. Source year remains R5, no claim of a newly surveyed 2026 floor map. No raw artwork, fare, route map, walking time or universally accessible path retained.",
+      "components": [
+        {
+          "name": "八戸",
+          "operator": "東日本旅客鉄道",
+          "line": "東北新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "八戸",
+          "operator": "青い森鉄道",
+          "line": "青い森鉄道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_LINKED_MUNICIPAL_GATE_PANEL_AND_ACTIVE_RAIL_COMPONENT",
+      "hubScopeComplete": false
+    }
+  ]
+}

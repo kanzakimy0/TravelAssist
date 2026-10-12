@@ -1,0 +1,88 @@
+{
+  "phaseId": "241-unzen-information-public-crossing",
+  "strategy": [
+    "ONLY_ORIGINAL_INFORMATION_CENTER_TWO_ROOTS",
+    "EXACT_LICENSED_NATIVE_COMPONENTS_NO_POLE_COLLAPSE",
+    "ONLY_NECESSARY_INBOUND_TO_OUTBOUND_PUBLIC_CROSSING",
+    "TERMINAL_ROOTS_NOT_CLAIMED_CLOSED"
+  ],
+  "facts": [
+    {
+      "factId": "unzen-info-two-direction-public-crossing-private",
+      "kind": "transfer",
+      "sourceActionId": "transfer:nagasaki:unzen-info-public-crossing-private",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=130.2617,32.7382,130.2632,32.7396",
+      "observedResponseSha256": "c97ab0c686c829e83d8eb40921d118a282ed07e9305ad1002cb544622fe67f60",
+      "rightsBindingSchemaVersion": 1,
+      "rightsBinding": {
+        "license": "ODbL 1.0",
+        "attribution": "© OpenStreetMap contributors",
+        "shareAlikeRequired": true,
+        "shareAlikeScope": "Only this OSM-derived transfer topology fact/edge if distributed as part of a derived database; provide attribution and make that derived database available under ODbL 1.0. This does not apply to unrelated network records."
+      },
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:nagasaki:unzen-info-public-crossing-private:current-facility-access",
+          "url": "https://unzenvc.com/access.html",
+          "observedResponseSha256": "599f97cf36323a6ca26c5e74c9641b965295fd227cc11bdeaba05df06a21fca6"
+        },
+        {
+          "sourceActionId": "transfer:nagasaki:unzen-info-public-crossing-private:gsi-observed-public-approaches",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/225926/105817.jpg",
+          "observedResponseSha256": "a312d6efb1b2d66e8309a4684f64de75c681e84f9b78b9c4ec37137095dc387b"
+        },
+        {
+          "sourceActionId": "transfer:nagasaki:unzen-info-public-crossing-private:gsi-observed-public-approaches",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/225926/105818.jpg",
+          "observedResponseSha256": "c5431c47077eafa85e1dbea33b908ef497075c898f022d4b9d88a2efbc38dd95"
+        }
+      ],
+      "components": [
+        {
+          "name": "雲仙お山の情報館",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:50",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "888185_01",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "90cb9c83b85f5b098279adc91e0eca59a1502f7b858e5d302d91045b8cdd7ea3",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "PRIVATE SEMANTIC CANDIDATE, not accepted by a graph test. Exact licensed Keneibus native stops 888185_01 and 888185_05 remain distinct with original pickup/drop-off restrictions. Current own visitor-center access explicitly identifies Keneibus passenger access at 雲仙お山の情報館. The native northern inbound point is on the main-center west roadside, the southern outbound point on the east roadside, checked against original GSI imagery without changing coordinates. A real public west sidewalk 777418688 connects at node7254667233 through zebra-crossing way1373862569/node12720209359 to east sidewalk777418689 at node7254667226. The single necessary inbound-to-outbound walking fact concerns this public street-side component passage only; no OSM pole equivalence, distance snap, building passage, historic terminal reuse, navigation geometry, duration or accessibility claim. Own access text does not itself identify separate poles; independent review must assess combined native roadside identity and observed public approaches."
+          }
+        },
+        {
+          "name": "雲仙お山の情報館",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:50",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "888185_05",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "bcd61cfaea797709685eaf2de642d7330a7720a0f17b69722b0d76eb785949af",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "PRIVATE SEMANTIC CANDIDATE, not accepted by a graph test. Exact licensed Keneibus native stops 888185_01 and 888185_05 remain distinct with original pickup/drop-off restrictions. Current own visitor-center access explicitly identifies Keneibus passenger access at 雲仙お山の情報館. The native northern inbound point is on the main-center west roadside, the southern outbound point on the east roadside, checked against original GSI imagery without changing coordinates. A real public west sidewalk 777418688 connects at node7254667233 through zebra-crossing way1373862569/node12720209359 to east sidewalk777418689 at node7254667226. The single necessary inbound-to-outbound walking fact concerns this public street-side component passage only; no OSM pole equivalence, distance snap, building passage, historic terminal reuse, navigation geometry, duration or accessibility claim. Own access text does not itself identify separate poles; independent review must assess combined native roadside identity and observed public approaches."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXACT_NATIVE_ROADSIDE_COMPONENTS_WITH_EXPLICIT_PUBLIC_CROSSING_PRIVATE_REVIEW",
+      "hubScopeComplete": false,
+      "locator": "PRIVATE SEMANTIC CANDIDATE, not accepted by a graph test. Exact licensed Keneibus native stops 888185_01 and 888185_05 remain distinct with original pickup/drop-off restrictions. Current own visitor-center access explicitly identifies Keneibus passenger access at 雲仙お山の情報館. The native northern inbound point is on the main-center west roadside, the southern outbound point on the east roadside, checked against original GSI imagery without changing coordinates. A real public west sidewalk 777418688 connects at node7254667233 through zebra-crossing way1373862569/node12720209359 to east sidewalk777418689 at node7254667226. The single necessary inbound-to-outbound walking fact concerns this public street-side component passage only; no OSM pole equivalence, distance snap, building passage, historic terminal reuse, navigation geometry, duration or accessibility claim. Own access text does not itself identify separate poles; independent review must assess combined native roadside identity and observed public approaches."
+    }
+  ],
+  "completedActionIds": [
+    "transfer:nagasaki:unzen-info-public-crossing-private",
+    "transfer:nagasaki:unzen-info-public-crossing-private:current-facility-access",
+    "transfer:nagasaki:unzen-info-public-crossing-private:gsi-observed-public-approaches"
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "phaseId": "140-four-current-public-hub-connections-and-tram-source-review",
+  "strategy": [
+    "REMAINING_HUB_COMPONENTS_WITH_CONNECTED_ANCHORS",
+    "INDEPENDENT_OPERATOR_PUBLIC_PASSAGE_EVIDENCE",
+    "RESTRICTED_TRAM_SOURCES_TRIGGER_ALTERNATIVE_DISCOVERY"
+  ],
+  "completedActionIds": [
+    "hub:jr-west:shin-nagata-and-hosono-current-public-passages",
+    "hub:osaka-metro:sekime-seiku-current-exit-one-keihan-connection",
+    "hub:seibu:higashi-hanno-current-public-jr-concourse",
+    "hub:kumamoto-tram:restricted-official-source-alternative-review",
+    "hub:kagoshima-tram:restricted-official-source-alternative-review"
+  ],
+  "facts": [
+    {
+      "factId": "shin-nagata-current-jr-municipal-public-entrances",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-west:shin-nagata-and-hosono-current-public-passages",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0610602_24d7e70f-0735-4a61-bb51-6ebf04d78267.pdf",
+      "observedResponseSha256": "609f759a6486045fac3256a671fd0db13deee4306c93cf0cfb32b7ed36d47ea4",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-west:shin-nagata-and-hosono-current-public-passages",
+          "url": "https://eki.jr-odekake.net/premises?id=0610602",
+          "observedResponseSha256": "a1e2b4cf8b90cd94e06df4c2dc0da596d80073b92613f19b3f5e007c1fd55a85"
+        }
+      ],
+      "locator": "Current-linked June 1 2025 JR plan: platforms 1/2 connect to gate and public approach, with separately labeled city-subway and Kaigan-line station stairs. The exact municipal S12 physical component includes Yamate/Seishin/Kaigan line references; use this reviewed component relation, not automatic through running. Diagram individually viewed and response hash matched; no fare, walking time, precise pedestrian geometry, all-hours or accessibility guarantee.",
+      "components": [
+        {
+          "name": "新長田",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新長田",
+          "operator": "神戸市",
+          "line": "山手線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_EXPLICIT_PUBLIC_PASSAGE_AND_SEPARATE_LICENSED_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "hosono-shin-hosono-current-two-f-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-west:shin-nagata-and-hosono-current-public-passages",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0610902_77c4bcdf-06f1-456f-9beb-8425f7b11a06.pdf",
+      "observedResponseSha256": "3adc09ee22c5a0850a6d5e5a7cb45a00002ed0788b25dbb9c452728067013a1b",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-west:shin-nagata-and-hosono-current-public-passages",
+          "url": "https://eki.jr-odekake.net/premises?id=0610902",
+          "observedResponseSha256": "625b30837599becb7c23c4a5eb5fc259ea7d64774cb3e431e3780f702b1a4b83"
+        }
+      ],
+      "locator": "Current-linked December 19 2022 JR plan: both Katamachi platforms join 2F gate, then the explicitly drawn free passage toward Kintetsu Shin-Hosono. This is a real labeled public passenger connection across two different station names, excluding commercial Garden City access as the transfer proof. Diagram individually viewed and response hash matched; no fare, walking time, precise pedestrian geometry, all-hours or accessibility guarantee.",
+      "components": [
+        {
+          "name": "祝園",
+          "operator": "西日本旅客鉄道",
+          "line": "片町線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新祝園",
+          "operator": "近畿日本鉄道",
+          "line": "京都線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_EXPLICIT_PUBLIC_PASSAGE_AND_SEPARATE_LICENSED_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "sekime-seiku-current-exit-one-to-keihan",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka-metro:sekime-seiku-current-exit-one-keihan-connection",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/I17_%E9%96%A2%E7%9B%AE%E6%88%90%E8%82%B2_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "d8ed0848ca781771fb8f8568d61c50c3b5427375f029bb5d8965fc6eaefeb656",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka-metro:sekime-seiku-current-exit-one-keihan-connection",
+          "url": "https://subway.osakametro.co.jp/station_guide/I/i17/index.php",
+          "observedResponseSha256": "94d320cf09dae08bcddbfbfd8068b9e225af711f75a91444674c19055049a36b"
+        }
+      ],
+      "locator": "Current-linked I17 plan joins both Imazatosuji platforms through concourse and gate to exit 1, explicitly labeled Keihan Sekime. The station page independently lists Keihan as transfer railway. Do not confuse Sekime-Takadono or infer a new rail service. Diagram individually viewed and response hash matched; no fare, walking time, precise pedestrian geometry, all-hours or accessibility guarantee.",
+      "components": [
+        {
+          "name": "関目成育",
+          "operator": "大阪市高速電気軌道",
+          "line": "8号線(今里筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "関目",
+          "operator": "京阪電気鉄道",
+          "line": "京阪本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_EXPLICIT_PUBLIC_PASSAGE_AND_SEPARATE_LICENSED_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "higashi-hanno-current-seibu-jr-public-bridge",
+      "kind": "transfer",
+      "sourceActionId": "hub:seibu:higashi-hanno-current-public-jr-concourse",
+      "sourceUrl": "https://www.seiburailway.jp/railway/station/image/SI27.png",
+      "observedResponseSha256": "52692bf7b6191861e6b06a64f94b0d34ceb4e990fe1211766ce6cd686d587b2b",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:seibu:higashi-hanno-current-public-jr-concourse",
+          "url": "https://www.seiburailway.jp/railway/station/higashi-hanno/",
+          "observedResponseSha256": "e2b28a0a64dce6b1932d47d08e3937650eff978882d09ba38b46f04cc8b849fb"
+        }
+      ],
+      "locator": "Current-linked February 6 2026 SI27 plan shows the Seibu single platform stairs to the 2F gate and public cross-station bridge. Separate JR Hachiko gate and stairs are marked on that same public bridge. Retain exact Seibu/JR components and a coarse physical transfer, not same-name collapse or through service. Diagram individually viewed and response hash matched; no fare, walking time, precise pedestrian geometry, all-hours or accessibility guarantee.",
+      "components": [
+        {
+          "name": "東飯能",
+          "operator": "西武鉄道",
+          "line": "池袋線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "東飯能",
+          "operator": "東日本旅客鉄道",
+          "line": "八高線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_EXPLICIT_PUBLIC_PASSAGE_AND_SEPARATE_LICENSED_COMPONENTS",
+      "hubScopeComplete": false
+    }
+  ]
+}

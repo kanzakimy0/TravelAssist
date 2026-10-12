@@ -1,0 +1,47 @@
+{
+  "kind": "REVIEWED_OFFICIAL_PUBLIC_FACILITY_BUS_INPUT",
+  "source": {
+    "sourceId": "transport-source:086:e6b551c44dbab1b4b99e2ba79f38bde1",
+    "url": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+    "contentSha256": "4c907cdda9ad39f3c3178368f356a9e0a8bb05c83b094789f91c5c18fbc00241",
+    "evidenceContentSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd",
+    "evidenceFingerprintScope": "RAW_RESPONSE_BYTES",
+    "observedAt": "2026-10-03T19:39:58.085688+00:00",
+    "rightsClass": "TOPOLOGY_FACT_ONLY_ALLOWED",
+    "rawPayloadRetained": false,
+    "derivedDataAllowed": true,
+    "redistributionAllowed": true,
+    "metricPersistenceAllowed": false,
+    "rightsDecision": "MINIMUM_NONEXPRESSIVE_FACTS_ONLY",
+    "rightsReview": {
+      "scope": "MINIMAL_NONEXPRESSIVE_TOPOLOGY_FACTS",
+      "termsUrl": "https://www.town.kikai.lg.jp/densan/sangyo/kokokuboshu/kesaiyoko/chosakuken.html",
+      "reason": "Municipal own published current route and minimum independent adjacent calling facts; original2024 operator existing-stop rename document hosted by municipality. Retain minimum nonexpressive names/order/operation replacement and site-reference semantics only. No raw PDF, clock, diagram, imagery, expressive prose or blanket open-license claim. Native P04 facility data has separately bound CC BY4 rights; that license does not cover municipal source payloads."
+    },
+    "attribution": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf; operator factual topology; reviewed 2026-10-03T19:39:58.085688+00:00"
+  },
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:39d39ae20a10dfd694b27639125ca2df",
+      "sourceId": "transport-source:086:e6b551c44dbab1b4b99e2ba79f38bde1",
+      "sourceSha256": "4c907cdda9ad39f3c3178368f356a9e0a8bb05c83b094789f91c5c18fbc00241",
+      "record": {
+        "kind": "REVIEWED_EXISTING_STOP_RENAME",
+        "factId": "kikai:226:REVIEWED_EXISTING_STOP_RENAME",
+        "sourceActionId": "kikai:226:current-municipal-service-and-historical-component",
+        "sourceUrl": "https://www.town.kikai.lg.jp/kikaku/documents/r6kotsukaigisiryo.pdf",
+        "observedResponseSha256": "c9237f0968f04aa6ee9978a820b910bf8412ff75f1560829cd3886bec67fffcd",
+        "oldStopName": "病院前",
+        "newStopName": "旧病院前",
+        "originalFacilityName": "喜界徳洲会病院",
+        "existingStopRenamed": true,
+        "newHospitalStopSeparate": true,
+        "effectiveDate": "2024-12-01",
+        "physicalRelation": "EXISTING_STOP_RENAME_AFTER_FACILITY_RELOCATION",
+        "locator": "Page3 資料1-1, existing stop renamed; new hospital stop separately introduced. Visually reviewed."
+      },
+      "recordSha256": "e3a8894cbede2ed10e8dce81546f832b3fe4c6c74b12e49eea3d47e0020e96bd",
+      "locator": "Source-bound minimum independent historical component/current service fact"
+    }
+  ]
+}

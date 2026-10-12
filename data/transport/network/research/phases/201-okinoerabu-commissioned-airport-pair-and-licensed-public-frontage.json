@@ -1,0 +1,331 @@
+{
+  "phaseId": "201-okinoerabu-commissioned-airport-pair-and-licensed-public-frontage",
+  "strategy": [
+    "ORIGINAL_REQUIRED_AIRPORT",
+    "NATIVE_P11_COMMISSIONING_DISTINCT_FROM_CARRIER",
+    "TWO_INDEPENDENT_ADJACENT_CALLS",
+    "LICENSED_PRIMARY_PHYSICAL_COMPLEX_WITH_CURRENT_OFFICIAL_CORROBORATION",
+    "EXISTING_NATIONAL_AIR_CHAIN"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+    "airport:okinoerabu:licensed-physical-frontage-current-official-corroboration"
+  ],
+  "facts": [
+    {
+      "factId": "okinoerabu-current-independent-adjacent-0",
+      "kind": "service",
+      "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+      "sourceUrl": "https://okinoerabubus.org/wp-content/uploads/2026/04/schedule_202604.pdf",
+      "observedResponseSha256": "c42784af777ee8fc251600bedbc74520296583dbe84c191e7e5bbdf9d384a793",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+          "url": "https://okinoerabubus.org/wp-content/uploads/2026/04/schedule_202604.pdf",
+          "observedResponseSha256": "c42784af777ee8fc251600bedbc74520296583dbe84c191e7e5bbdf9d384a793"
+        },
+        {
+          "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+          "url": "https://okinoerabubus.org/scheduled/timetable/",
+          "observedResponseSha256": "dd84e343d59e06b4d0ec907461bd2c79a7010b2b83255e8b5b0fafdf04b8d614"
+        },
+        {
+          "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+          "url": "https://www.town.china.lg.jp/soshiki/1001/6/743.html",
+          "observedResponseSha256": "6096920ce7ae679efd8bed68dec7e7c6d5141a85a65f9372416e488165a801eb"
+        },
+        {
+          "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+          "url": "https://okinoerabubus.org/wp-content/uploads/2026/07/沖永良部デマンドバス停位置図260313.pdf",
+          "observedResponseSha256": "b5f4f7ab4109d3be8ed9e1a7d55b131562ef85645fd214360297f440dfc0baad"
+        }
+      ],
+      "operator": "沖永良部バス企業団",
+      "line": "沖永良部空港線",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "kunigami-to-airport",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current operator-linked202604 publication; airport timetable effective2025-10-15. Ordinary airport-line columns in both directions, not afternoon demand branches. Static topology only; operation subject to carrier conditions, no guarantee or live availability.",
+      "callingStations": [
+        "国頭",
+        "沖永良部空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "国頭",
+          "operator": "和泊町・知名町",
+          "line": "p11-stop:P11-22_46:bs20",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs20",
+            "recordSha256": "175de74a143c830d170e7fda5737385fc45cd0f44986003c37615e7846a9f229",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historical common municipal stop component retained. Current China town government confirms China/Wadomari commissioned service to Okinoerabu Bus Enterprise. Actual carrier is fact.operator, not a rename of municipal owner. Current operator stop-map marks airport029 andKunigami, and independently printed airport-line directions call these consecutively. Representative road-stop identity only; no separate opposite-side platform/pole merge or precise-navigation assertion.",
+            "currentOperatorEvidence": {
+              "recordOperator": "和泊町・知名町",
+              "currentOperatorName": "和泊町・知名町",
+              "currentStopName": "国頭",
+              "historicalRoute": "空港線・知名・国頭線",
+              "url": "https://www.town.china.lg.jp/soshiki/1001/6/743.html",
+              "observedResponseSha256": "6096920ce7ae679efd8bed68dec7e7c6d5141a85a65f9372416e488165a801eb"
+            }
+          }
+        },
+        {
+          "name": "沖永良部空港",
+          "operator": "和泊町・知名町",
+          "line": "p11-stop:P11-22_46:bs19",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs19",
+            "recordSha256": "9e3781c3303a657cfa224fd003623e713ed96c32aca92ab94dc517d2e7e19487",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historical common municipal stop component retained. Current China town government confirms China/Wadomari commissioned service to Okinoerabu Bus Enterprise. Actual carrier is fact.operator, not a rename of municipal owner. Current operator stop-map marks airport029 andKunigami, and independently printed airport-line directions call these consecutively. Representative road-stop identity only; no separate opposite-side platform/pole merge or precise-navigation assertion.",
+            "currentOperatorEvidence": {
+              "recordOperator": "和泊町・知名町",
+              "currentOperatorName": "和泊町・知名町",
+              "currentStopName": "沖永良部空港",
+              "historicalRoute": "空港線・知名・国頭線",
+              "url": "https://www.town.china.lg.jp/soshiki/1001/6/743.html",
+              "observedResponseSha256": "6096920ce7ae679efd8bed68dec7e7c6d5141a85a65f9372416e488165a801eb"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "schedule_202604.pdf page3 upper空港行 block actual7:35知名-origin column final two calls国頭8:29→空港8:33. Adjacent calls, no skipped intermediate. Current full-name airport stop-map corroborates short table label空港.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clock/fare/frequency metrics persisted."
+    },
+    {
+      "factId": "okinoerabu-current-independent-adjacent-1",
+      "kind": "service",
+      "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+      "sourceUrl": "https://okinoerabubus.org/wp-content/uploads/2026/04/schedule_202604.pdf",
+      "observedResponseSha256": "c42784af777ee8fc251600bedbc74520296583dbe84c191e7e5bbdf9d384a793",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+          "url": "https://okinoerabubus.org/wp-content/uploads/2026/04/schedule_202604.pdf",
+          "observedResponseSha256": "c42784af777ee8fc251600bedbc74520296583dbe84c191e7e5bbdf9d384a793"
+        },
+        {
+          "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+          "url": "https://okinoerabubus.org/scheduled/timetable/",
+          "observedResponseSha256": "dd84e343d59e06b4d0ec907461bd2c79a7010b2b83255e8b5b0fafdf04b8d614"
+        },
+        {
+          "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+          "url": "https://www.town.china.lg.jp/soshiki/1001/6/743.html",
+          "observedResponseSha256": "6096920ce7ae679efd8bed68dec7e7c6d5141a85a65f9372416e488165a801eb"
+        },
+        {
+          "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+          "url": "https://okinoerabubus.org/wp-content/uploads/2026/07/沖永良部デマンドバス停位置図260313.pdf",
+          "observedResponseSha256": "b5f4f7ab4109d3be8ed9e1a7d55b131562ef85645fd214360297f440dfc0baad"
+        }
+      ],
+      "operator": "沖永良部バス企業団",
+      "line": "沖永良部空港線",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "airport-to-kunigami",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Current operator-linked202604 publication; airport timetable effective2025-10-15. Ordinary airport-line columns in both directions, not afternoon demand branches. Static topology only; operation subject to carrier conditions, no guarantee or live availability.",
+      "callingStations": [
+        "沖永良部空港",
+        "国頭"
+      ],
+      "callingComponents": [
+        {
+          "name": "沖永良部空港",
+          "operator": "和泊町・知名町",
+          "line": "p11-stop:P11-22_46:bs19",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs19",
+            "recordSha256": "9e3781c3303a657cfa224fd003623e713ed96c32aca92ab94dc517d2e7e19487",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historical common municipal stop component retained. Current China town government confirms China/Wadomari commissioned service to Okinoerabu Bus Enterprise. Actual carrier is fact.operator, not a rename of municipal owner. Current operator stop-map marks airport029 andKunigami, and independently printed airport-line directions call these consecutively. Representative road-stop identity only; no separate opposite-side platform/pole merge or precise-navigation assertion.",
+            "currentOperatorEvidence": {
+              "recordOperator": "和泊町・知名町",
+              "currentOperatorName": "和泊町・知名町",
+              "currentStopName": "沖永良部空港",
+              "historicalRoute": "空港線・知名・国頭線",
+              "url": "https://www.town.china.lg.jp/soshiki/1001/6/743.html",
+              "observedResponseSha256": "6096920ce7ae679efd8bed68dec7e7c6d5141a85a65f9372416e488165a801eb"
+            }
+          }
+        },
+        {
+          "name": "国頭",
+          "operator": "和泊町・知名町",
+          "line": "p11-stop:P11-22_46:bs20",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs20",
+            "recordSha256": "175de74a143c830d170e7fda5737385fc45cd0f44986003c37615e7846a9f229",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historical common municipal stop component retained. Current China town government confirms China/Wadomari commissioned service to Okinoerabu Bus Enterprise. Actual carrier is fact.operator, not a rename of municipal owner. Current operator stop-map marks airport029 andKunigami, and independently printed airport-line directions call these consecutively. Representative road-stop identity only; no separate opposite-side platform/pole merge or precise-navigation assertion.",
+            "currentOperatorEvidence": {
+              "recordOperator": "和泊町・知名町",
+              "currentOperatorName": "和泊町・知名町",
+              "currentStopName": "国頭",
+              "historicalRoute": "空港線・知名・国頭線",
+              "url": "https://www.town.china.lg.jp/soshiki/1001/6/743.html",
+              "observedResponseSha256": "6096920ce7ae679efd8bed68dec7e7c6d5141a85a65f9372416e488165a801eb"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "schedule_202604.pdf page3 lower空港発 block actual9:25-origin column first two calls空港9:25→国頭9:29; independent ordered column, not reverse of upper service. Clocks used privately only to select actual service.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clock/fare/frequency metrics persisted."
+    },
+    {
+      "factId": "okinoerabu-public-terminal-continuous-frontage-to-bus-bay",
+      "kind": "transfer",
+      "sourceActionId": "airport:okinoerabu:licensed-physical-frontage-current-official-corroboration",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Okinoerabu-bus-poncho.jpg",
+      "observedResponseSha256": "a1b0045178f90242d479e31e03f8d39b2d510122b01502d2e251efd92f60c763",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:okinoerabu:licensed-physical-frontage-current-official-corroboration",
+          "url": "https://www.pref.kagoshima.jp/suisuinavi/documents/76150_20250718095618-1.pdf",
+          "observedResponseSha256": "68f7e634d0ad1fc35fe94b3a30569e1f32ac53c338ec366b52cc84b3f7799b27"
+        },
+        {
+          "sourceActionId": "airport:okinoerabu:licensed-physical-frontage-current-official-corroboration",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Okinoerabu-bus-poncho.jpg",
+          "observedResponseSha256": "a1b0045178f90242d479e31e03f8d39b2d510122b01502d2e251efd92f60c763"
+        },
+        {
+          "sourceActionId": "airport:okinoerabu:licensed-physical-frontage-current-official-corroboration",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Okinoerabu-airport2206a.jpg",
+          "observedResponseSha256": "38f917eeefd5aaed274223ed7b7ca9aef5b25c4950373dd4381fe3eec4373b2d"
+        },
+        {
+          "sourceActionId": "airport:okinoerabu:licensed-physical-frontage-current-official-corroboration",
+          "url": "https://commons.wikimedia.org/wiki/File:Okinoerabu-bus-poncho.jpg",
+          "observedResponseSha256": "a491181326350b75e4bb93be8218dcbe21cac23dca0b4a8d93e687d6868bf154"
+        },
+        {
+          "sourceActionId": "airport:okinoerabu:licensed-physical-frontage-current-official-corroboration",
+          "url": "https://commons.wikimedia.org/wiki/File:Okinoerabu-airport2206a.jpg",
+          "observedResponseSha256": "02a4e29a8700261e23b167505cdbc8aa27cfc5db39dc2520b8c61e4aa741de5f"
+        },
+        {
+          "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+          "url": "https://okinoerabubus.org/wp-content/uploads/2026/04/schedule_202604.pdf",
+          "observedResponseSha256": "c42784af777ee8fc251600bedbc74520296583dbe84c191e7e5bbdf9d384a793"
+        },
+        {
+          "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+          "url": "https://okinoerabubus.org/scheduled/timetable/",
+          "observedResponseSha256": "dd84e343d59e06b4d0ec907461bd2c79a7010b2b83255e8b5b0fafdf04b8d614"
+        },
+        {
+          "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+          "url": "https://www.town.china.lg.jp/soshiki/1001/6/743.html",
+          "observedResponseSha256": "6096920ce7ae679efd8bed68dec7e7c6d5141a85a65f9372416e488165a801eb"
+        },
+        {
+          "sourceActionId": "bus:okinoerabu:current-municipal-commissioned-airport-kunigami-pair",
+          "url": "https://okinoerabubus.org/wp-content/uploads/2026/07/沖永良部デマンドバス停位置図260313.pdf",
+          "observedResponseSha256": "b5f4f7ab4109d3be8ed9e1a7d55b131562ef85645fd214360297f440dfc0baad"
+        },
+        {
+          "sourceActionId": "flight:naha-airport:seven-current-island-directional-pairs",
+          "url": "https://www.naha-airport.co.jp/common/json/date_range.json",
+          "observedResponseSha256": "8578e055bc06f231f0c18fc0939cbcaec58a6e4faf2935306c1911bb079adeb4"
+        }
+      ],
+      "components": [
+        {
+          "name": "沖永良部空港",
+          "operator": "airport-facility:cf03_00056",
+          "line": "airport:cf03_00056",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00056",
+            "requirementId": "review:official-airport:沖永良部",
+            "expectedRequirementName": "沖永良部",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport-published departure and arrival records independently confirm this exact named passenger airport. C28 reference point identifies the whole airport only; no terminal-door, surface-transfer or live operational status inference."
+          }
+        },
+        {
+          "name": "沖永良部空港",
+          "operator": "和泊町・知名町",
+          "line": "p11-stop:P11-22_46:bs19",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs19",
+            "recordSha256": "9e3781c3303a657cfa224fd003623e713ed96c32aca92ab94dc517d2e7e19487",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historical common municipal stop component retained. Current China town government confirms China/Wadomari commissioned service to Okinoerabu Bus Enterprise. Actual carrier is fact.operator, not a rename of municipal owner. Current operator stop-map marks airport029 andKunigami, and independently printed airport-line directions call these consecutively. Representative road-stop identity only; no separate opposite-side platform/pole merge or precise-navigation assertion.",
+            "currentOperatorEvidence": {
+              "recordOperator": "和泊町・知名町",
+              "currentOperatorName": "和泊町・知名町",
+              "currentStopName": "沖永良部空港",
+              "historicalRoute": "空港線・知名・国頭線",
+              "url": "https://www.town.china.lg.jp/soshiki/1001/6/743.html",
+              "observedResponseSha256": "6096920ce7ae679efd8bed68dec7e7c6d5141a85a65f9372416e488165a801eb"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "reviewMethod": "LICENSED_PRIMARY_PHYSICAL_COMPLEX_WITH_CURRENT_OFFICIAL_CORROBORATION",
+      "locator": "Narutora own June26 2022 photo explicitly captioned沖永良部空港バス乗り場 shows named沖永良部バス at markedバス curb, its boarding side on the continuous paved terminal frontage with tactile strip leading to public glazed doors. June25 exterior photo identifies the same whole-airport building and public doors; currently published prefectural facility guide page10 corroborates the same doors/canopy/frontage and terminal public accessibility. Current operator March2026stop-map identifiesairport029 and current independently directional airport services. Coarse whole-airport to exact municipal representative airport bus-stop relation only; no distance join, airside path, numbered-pole inference, exact coordinate, wheelchair guarantee or claim of new2026 photography."
+    }
+  ],
+  "scope": "Only originalOkinoerabuairport plus2necessaryP11 representatives;2ride2walk edges. No adjacent lines or otherisland nodes."
+}

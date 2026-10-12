@@ -1,0 +1,305 @@
+{
+  "phaseId": "098-okayama-current-okaden-nonstop-trips-and-p11-gateway",
+  "strategy": [
+    "CURRENT_ACTUAL_OKADEN_TRIPS_DISTINCT_FROM_JOINT_P11_STOP_IDENTITY",
+    "SEPARATE_DIRECTIONS_AND_NONSTOP_CLASS",
+    "EXPLICIT_CURRENT_PUBLIC_TERMINAL_AND_JR_WEST_PASSAGES"
+  ],
+  "completedActionIds": [
+    "bus:okaden:current-october-direct-airport-trips",
+    "transfer:okayama:jr-west-public-airport-bus-passage"
+  ],
+  "facts": [
+    {
+      "factId": "okayama-okaden-current-nonstop-outbound",
+      "kind": "service",
+      "sourceActionId": "bus:okaden:current-october-direct-airport-trips",
+      "sourceUrl": "https://okayama-kido.co.jp/bus/wp-content/uploads/R8.9.1-10.24%E7%A9%BA%E6%B8%AF%E3%83%AA%E3%83%A0%E3%82%B8%E3%83%B3%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8.pdf",
+      "observedResponseSha256": "29388feadb895ede3e83e2b9a867ebb2a290f92b7bd7a853e471779d9be9e8da",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:okaden:current-october-direct-airport-trips",
+          "url": "https://okayama-kido.co.jp/bus/kuukou.html",
+          "observedResponseSha256": "840cf01e6885320c79bef5aab211f2186ac1f6023c0aef0bda4fc9b8800ca0f0"
+        }
+      ],
+      "locator": "Visually reviewed official operator October 1-24 2026 PDF. Upper table: second Okaden non-stop row, marked every day; intermediate three columns show pass-through arrows. Retain only this two-call topology, no clock values, fare or entire timetable. Each direction independently observed; local/limited-express calls and discontinued Mori-no-Machi extension are not inferred.",
+      "line": "岡山桃太郎空港リムジンバス",
+      "operator": "岡山電気軌道株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "ノンストップ",
+      "direction": "岡山駅西口→岡山桃太郎空港",
+      "callingStations": [
+        "岡山駅西口",
+        "岡山桃太郎空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "岡山駅西口",
+          "operator": "岡山電気軌道（株）・中鉄バス（株）",
+          "line": "p11-stop:P11-22_33:bs3726",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_33:bs3726",
+            "recordSha256": "fc62cd85d9f0355271518bf88de977fadb03929ea08fb6516402fdf5a91c3221",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historical joint Okaden/Chutetsu road-stop component, independently reviewed against current operator page, October 2026 timetable and both boarding diagrams. Current joint operator stop identity is preserved; selected actual service operator is separately Okaden. Exclude standalone Okaden local-stop bs3725 and the Kurashiki joint component bs2908. P11 representative coordinates are not boarding-bay coordinates; no proximity transfer or historical current-service inference.",
+            "currentOperatorEvidence": {
+              "recordOperator": "岡山電気軌道（株）・中鉄バス（株）",
+              "currentOperatorName": "岡山電気軌道株式会社・中鉄バス株式会社",
+              "currentStopName": "岡山駅西口",
+              "historicalRoute": "岡山桃太郎空港リムジンバス　岡山駅～岡山桃太郎空港線",
+              "url": "https://okayama-kido.co.jp/bus/kuukou.html",
+              "observedResponseSha256": "840cf01e6885320c79bef5aab211f2186ac1f6023c0aef0bda4fc9b8800ca0f0"
+            }
+          }
+        },
+        {
+          "name": "岡山桃太郎空港",
+          "operator": "岡山電気軌道（株）・中鉄バス（株）",
+          "line": "p11-stop:P11-22_33:bs2907",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_33:bs2907",
+            "recordSha256": "ef10dfcbc47f3f2042f9e3a5929284fa60eb7b91608a49d36737d7012cb50546",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historical joint Okaden/Chutetsu road-stop component, independently reviewed against current operator page, October 2026 timetable and both boarding diagrams. Current joint operator stop identity is preserved; selected actual service operator is separately Okaden. Exclude standalone Okaden local-stop bs3725 and the Kurashiki joint component bs2908. P11 representative coordinates are not boarding-bay coordinates; no proximity transfer or historical current-service inference.",
+            "currentOperatorEvidence": {
+              "recordOperator": "岡山電気軌道（株）・中鉄バス（株）",
+              "currentOperatorName": "岡山電気軌道株式会社・中鉄バス株式会社",
+              "currentStopName": "岡山桃太郎空港",
+              "historicalRoute": "岡山桃太郎空港リムジンバス　岡山駅～岡山桃太郎空港線",
+              "url": "https://okayama-kido.co.jp/bus/kuukou.html",
+              "observedResponseSha256": "840cf01e6885320c79bef5aab211f2186ac1f6023c0aef0bda4fc9b8800ca0f0"
+            }
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECTIONAL_NONSTOP_TRIP",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OCTOBER_2026_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "okayama-okaden-current-nonstop-inbound",
+      "kind": "service",
+      "sourceActionId": "bus:okaden:current-october-direct-airport-trips",
+      "sourceUrl": "https://okayama-kido.co.jp/bus/wp-content/uploads/R8.9.1-10.24%E7%A9%BA%E6%B8%AF%E3%83%AA%E3%83%A0%E3%82%B8%E3%83%B3%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8.pdf",
+      "observedResponseSha256": "29388feadb895ede3e83e2b9a867ebb2a290f92b7bd7a853e471779d9be9e8da",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:okaden:current-october-direct-airport-trips",
+          "url": "https://okayama-kido.co.jp/bus/kuukou.html",
+          "observedResponseSha256": "840cf01e6885320c79bef5aab211f2186ac1f6023c0aef0bda4fc9b8800ca0f0"
+        }
+      ],
+      "locator": "Visually reviewed official operator October 1-24 2026 PDF. Lower table: first Okaden row, non-stop and every day; intermediate three columns show pass-through arrows. Retain only this two-call topology, no clock values, fare or entire timetable. Each direction independently observed; local/limited-express calls and discontinued Mori-no-Machi extension are not inferred.",
+      "line": "岡山桃太郎空港リムジンバス",
+      "operator": "岡山電気軌道株式会社",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "serviceClass": "ノンストップ",
+      "direction": "岡山桃太郎空港→岡山駅西口",
+      "callingStations": [
+        "岡山桃太郎空港",
+        "岡山駅西口"
+      ],
+      "callingComponents": [
+        {
+          "name": "岡山桃太郎空港",
+          "operator": "岡山電気軌道（株）・中鉄バス（株）",
+          "line": "p11-stop:P11-22_33:bs2907",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_33:bs2907",
+            "recordSha256": "ef10dfcbc47f3f2042f9e3a5929284fa60eb7b91608a49d36737d7012cb50546",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historical joint Okaden/Chutetsu road-stop component, independently reviewed against current operator page, October 2026 timetable and both boarding diagrams. Current joint operator stop identity is preserved; selected actual service operator is separately Okaden. Exclude standalone Okaden local-stop bs3725 and the Kurashiki joint component bs2908. P11 representative coordinates are not boarding-bay coordinates; no proximity transfer or historical current-service inference.",
+            "currentOperatorEvidence": {
+              "recordOperator": "岡山電気軌道（株）・中鉄バス（株）",
+              "currentOperatorName": "岡山電気軌道株式会社・中鉄バス株式会社",
+              "currentStopName": "岡山桃太郎空港",
+              "historicalRoute": "岡山桃太郎空港リムジンバス　岡山駅～岡山桃太郎空港線",
+              "url": "https://okayama-kido.co.jp/bus/kuukou.html",
+              "observedResponseSha256": "840cf01e6885320c79bef5aab211f2186ac1f6023c0aef0bda4fc9b8800ca0f0"
+            }
+          }
+        },
+        {
+          "name": "岡山駅西口",
+          "operator": "岡山電気軌道（株）・中鉄バス（株）",
+          "line": "p11-stop:P11-22_33:bs3726",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_33:bs3726",
+            "recordSha256": "fc62cd85d9f0355271518bf88de977fadb03929ea08fb6516402fdf5a91c3221",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historical joint Okaden/Chutetsu road-stop component, independently reviewed against current operator page, October 2026 timetable and both boarding diagrams. Current joint operator stop identity is preserved; selected actual service operator is separately Okaden. Exclude standalone Okaden local-stop bs3725 and the Kurashiki joint component bs2908. P11 representative coordinates are not boarding-bay coordinates; no proximity transfer or historical current-service inference.",
+            "currentOperatorEvidence": {
+              "recordOperator": "岡山電気軌道（株）・中鉄バス（株）",
+              "currentOperatorName": "岡山電気軌道株式会社・中鉄バス株式会社",
+              "currentStopName": "岡山駅西口",
+              "historicalRoute": "岡山桃太郎空港リムジンバス　岡山駅～岡山桃太郎空港線",
+              "url": "https://okayama-kido.co.jp/bus/kuukou.html",
+              "observedResponseSha256": "840cf01e6885320c79bef5aab211f2186ac1f6023c0aef0bda4fc9b8800ca0f0"
+            }
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_OPERATOR_INDEPENDENT_DIRECTIONAL_NONSTOP_TRIP",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_OCTOBER_2026_STATIC_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "okayama-current-public-terminal-joint-limousine-stop",
+      "kind": "transfer",
+      "sourceActionId": "bus:okaden:current-october-direct-airport-trips",
+      "sourceUrl": "https://okayama-kido.co.jp/bus/wp-content/uploads/img_noriba2-1-1.jpg",
+      "observedResponseSha256": "8e086eed740a763fb9e747dcf5cfeb8880a6877b2e5c77a2cbc1b33d782d51db",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:okaden:current-october-direct-airport-trips",
+          "url": "https://okayama-kido.co.jp/bus/kuukou.html",
+          "observedResponseSha256": "840cf01e6885320c79bef5aab211f2186ac1f6023c0aef0bda4fc9b8800ca0f0"
+        },
+        {
+          "sourceActionId": "bus:okaden:current-october-direct-airport-trips",
+          "url": "https://okayama-kido.co.jp/bus/wp-content/uploads/R8.9.1-10.24%E7%A9%BA%E6%B8%AF%E3%83%AA%E3%83%A0%E3%82%B8%E3%83%B3%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8.pdf",
+          "observedResponseSha256": "29388feadb895ede3e83e2b9a867ebb2a290f92b7bd7a853e471779d9be9e8da"
+        }
+      ],
+      "locator": "Current-linked operator boarding diagram visually reviewed: first-floor public domestic/international doors and continuous terminal sidewalk lead to airport boarding position 2. Exact P11 joint Okayama service component only. Whole C28 airport is not a bus bay coordinate and no same-name or proximity inference is used.",
+      "components": [
+        {
+          "name": "岡山空港",
+          "operator": "airport-facility:cf03_00075",
+          "line": "airport:cf03_00075",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00075",
+            "requirementId": "review:transport-node:24748886-6f8a-54a1-a3a9-2120cb37c7f5",
+            "expectedRequirementName": "岡山",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Okaden operator boarding map was visually reviewed: airport first-floor domestic and international public doors open onto a continuous sidewalk serving joint Okayama station bus component at position 2. C28 remains whole Okayama airport reference point, not a precise bus bay or terminal door. No proximity link, walking duration or accessibility claim."
+          }
+        },
+        {
+          "name": "岡山桃太郎空港",
+          "operator": "岡山電気軌道（株）・中鉄バス（株）",
+          "line": "p11-stop:P11-22_33:bs2907",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_33:bs2907",
+            "recordSha256": "ef10dfcbc47f3f2042f9e3a5929284fa60eb7b91608a49d36737d7012cb50546",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historical joint Okaden/Chutetsu road-stop component, independently reviewed against current operator page, October 2026 timetable and both boarding diagrams. Current joint operator stop identity is preserved; selected actual service operator is separately Okaden. Exclude standalone Okaden local-stop bs3725 and the Kurashiki joint component bs2908. P11 representative coordinates are not boarding-bay coordinates; no proximity transfer or historical current-service inference.",
+            "currentOperatorEvidence": {
+              "recordOperator": "岡山電気軌道（株）・中鉄バス（株）",
+              "currentOperatorName": "岡山電気軌道株式会社・中鉄バス株式会社",
+              "currentStopName": "岡山桃太郎空港",
+              "historicalRoute": "岡山桃太郎空港リムジンバス　岡山駅～岡山桃太郎空港線",
+              "url": "https://okayama-kido.co.jp/bus/kuukou.html",
+              "observedResponseSha256": "840cf01e6885320c79bef5aab211f2186ac1f6023c0aef0bda4fc9b8800ca0f0"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_OPERATOR_PUBLIC_TERMINAL_BOARDING_MAP",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "okayama-shinkansen-public-west-passage-joint-airport-bus",
+      "kind": "transfer",
+      "sourceActionId": "transfer:okayama:jr-west-public-airport-bus-passage",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0650608_215bfe14-24a7-4098-9c4a-afb3c33ffcaa.pdf",
+      "observedResponseSha256": "0d2acdf717f045604347e7d092d71585dbd2e9303330a87f279e37e1018d202e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:okaden:current-october-direct-airport-trips",
+          "url": "https://okayama-kido.co.jp/bus/kuukou.html",
+          "observedResponseSha256": "840cf01e6885320c79bef5aab211f2186ac1f6023c0aef0bda4fc9b8800ca0f0"
+        },
+        {
+          "sourceActionId": "bus:okaden:current-october-direct-airport-trips",
+          "url": "https://okayama-kido.co.jp/bus/wp-content/uploads/img_noriba21-1-1.jpg",
+          "observedResponseSha256": "9dc43216ef217a2fc3dbb2cd8120a3928610fa9f4c2fb31bd6c6108097712a14"
+        },
+        {
+          "sourceActionId": "transfer:okayama:jr-west-public-airport-bus-passage",
+          "url": "https://eki.jr-odekake.net/premises?id=0650608",
+          "observedResponseSha256": "8b5801a975fad77d290759974767470677c642f5c1bbb0f641a815f156f1c450"
+        }
+      ],
+      "locator": "Visually reviewed current-linked August 20 2026 JR station map pages 1-2: Shinkansen gate B opens onto public passage toward west exit and bus centre, with public vertical access. Operator map independently identifies position 21 and pedestrian connections within that centre. Bind existing JR Sanyo Shinkansen component to the joint P11 airport-service stop; no conventional-rail identity promotion, paid-area shortcut, distance/time or accessibility guarantee.",
+      "components": [
+        {
+          "name": "岡山",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "岡山駅西口",
+          "operator": "岡山電気軌道（株）・中鉄バス（株）",
+          "line": "p11-stop:P11-22_33:bs3726",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_33:bs3726",
+            "recordSha256": "fc62cd85d9f0355271518bf88de977fadb03929ea08fb6516402fdf5a91c3221",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historical joint Okaden/Chutetsu road-stop component, independently reviewed against current operator page, October 2026 timetable and both boarding diagrams. Current joint operator stop identity is preserved; selected actual service operator is separately Okaden. Exclude standalone Okaden local-stop bs3725 and the Kurashiki joint component bs2908. P11 representative coordinates are not boarding-bay coordinates; no proximity transfer or historical current-service inference.",
+            "currentOperatorEvidence": {
+              "recordOperator": "岡山電気軌道（株）・中鉄バス（株）",
+              "currentOperatorName": "岡山電気軌道株式会社・中鉄バス株式会社",
+              "currentStopName": "岡山駅西口",
+              "historicalRoute": "岡山桃太郎空港リムジンバス　岡山駅～岡山桃太郎空港線",
+              "url": "https://okayama-kido.co.jp/bus/kuukou.html",
+              "observedResponseSha256": "840cf01e6885320c79bef5aab211f2186ac1f6023c0aef0bda4fc9b8800ca0f0"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_JR_PUBLIC_PASSAGE_AND_OPERATOR_BOARDING_MAP",
+      "hubScopeComplete": false
+    }
+  ]
+}

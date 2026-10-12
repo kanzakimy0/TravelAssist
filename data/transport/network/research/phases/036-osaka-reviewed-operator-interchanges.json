@@ -1,0 +1,907 @@
+{
+  "phaseId": "036-osaka-reviewed-operator-interchanges",
+  "strategy": [
+    "OSAKA_EXPLICIT_INTERCHANGE_LISTS",
+    "T0_T1_COMPONENT_AND_ALTERNATE_NAME_MAP_REVIEW",
+    "transfer"
+  ],
+  "completedActionIds": [
+    "hub:osaka:metro-private"
+  ],
+  "facts": [
+    {
+      "factId": "osaka-interchange-m11",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/M/m11/index.php",
+      "observedResponseSha256": "f5212b1586d6030b6d3eda1ccf038a8792393d3bedfc62ce2904dbace3461c8a",
+      "locator": "Official 乗り換え路線 list for 江坂: 北大阪急行線(相互直通). Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "江坂",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "江坂",
+          "operator": "北大阪急行電鉄",
+          "line": "南北線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-m17",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/M/m17/index.php",
+      "observedResponseSha256": "98bfcebfca3753c6ca48902ab71bd78411b67161638029b437d14021b3732ebb",
+      "locator": "Official 乗り換え路線 list for 淀屋橋: 京阪線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "淀屋橋",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "淀屋橋",
+          "operator": "京阪電気鉄道",
+          "line": "京阪本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-m20",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/M/m20/index.php",
+      "observedResponseSha256": "af3d17f16b6e47531a98d327bfb2de68ba782208003be5e47a38792118c0b835",
+      "locator": "Official 乗り換え路線 list for なんば: Y15 なんば 四つ橋線, S16 なんば 千日前線, JR線, 阪神線, 近鉄線, 南海線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "難波",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "難波",
+          "operator": "南海電気鉄道",
+          "line": "南海本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-m23",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/M/m23/index.php",
+      "observedResponseSha256": "eeb5015e7075d263ebb35d84af920e6bf25a185827a44f2ef0b9f7d76887fc03",
+      "locator": "Official 乗り換え路線 list for 天王寺: T27 天王寺 谷町線, いまざとライナー, JR線, 近鉄線, 阪堺線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "天王寺",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "天王寺",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-m26",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/M/m26/index.php",
+      "observedResponseSha256": "4fed4fa6f1f3f9afa594a4e502fabfa41a98f7b45137a9cf4b536a4ed32002c5",
+      "locator": "Official 乗り換え路線 list for 長居: いまざとライナー, JR線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "長居",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "長居",
+          "operator": "西日本旅客鉄道",
+          "line": "阪和線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-m30",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/M/m30/index.php",
+      "observedResponseSha256": "dcb01c1f5690e847bb9d3892596cfb66de5490d85d0a4bafe8c6c587b9ccfb3f",
+      "locator": "Official 乗り換え路線 list for なかもず: 南海線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "中百舌鳥",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "中百舌鳥",
+          "operator": "南海電気鉄道",
+          "line": "高野線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-t18",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/T/t18/index.php",
+      "observedResponseSha256": "c4580b4c66a928617df805b1d99e95568e0292ef65e18c993269cc7d5454b54f",
+      "locator": "Official 乗り換え路線 list for 天神橋筋六丁目: K11 天神橋筋六丁目 堺筋線, 阪急線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "天神橋筋六丁目",
+          "operator": "大阪市高速電気軌道",
+          "line": "2号線(谷町線)",
+          "mode": "metro"
+        },
+        {
+          "name": "天神橋筋六丁目",
+          "operator": "阪急電鉄",
+          "line": "千里線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-t22",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/T/t22/index.php",
+      "observedResponseSha256": "9bbb971b29cac2ac4c4a887cc6d8aa9761b0afe2057a294933645ec40b3d5cd9",
+      "locator": "Official 乗り換え路線 list for 天満橋: 京阪線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "天満橋",
+          "operator": "大阪市高速電気軌道",
+          "line": "2号線(谷町線)",
+          "mode": "metro"
+        },
+        {
+          "name": "天満橋",
+          "operator": "京阪電気鉄道",
+          "line": "京阪本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-c13",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/C/c13/index.php",
+      "observedResponseSha256": "ff955559348d6a7f05cb9601a078a611bc49835367b464993b5d5c2e70e7e5ab",
+      "locator": "Official 乗り換え路線 list for 弁天町: JR線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "弁天町",
+          "operator": "大阪市高速電気軌道",
+          "line": "4号線(中央線)",
+          "mode": "metro"
+        },
+        {
+          "name": "弁天町",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-c14",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/C/c14/index.php",
+      "observedResponseSha256": "2e202191826637a22cba2b142e5db023a61a3bc897a4618fe7505dc9b007810c",
+      "locator": "Official 乗り換え路線 list for 九条: 阪神線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "九条",
+          "operator": "大阪市高速電気軌道",
+          "line": "4号線(中央線)",
+          "mode": "metro"
+        },
+        {
+          "name": "九条",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-c19",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/C/c19/index.php",
+      "observedResponseSha256": "324a52d4f3bc5bba001f2cc4aa0e97ef491087f209ddb76fdb2a7b5986580f09",
+      "locator": "Official 乗り換え路線 list for 森ノ宮: N20 森ノ宮 長堀鶴見緑地線, JR線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "森ノ宮",
+          "operator": "大阪市高速電気軌道",
+          "line": "4号線(中央線)",
+          "mode": "metro"
+        },
+        {
+          "name": "森ノ宮",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-c23",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/C/c23/index.php",
+      "observedResponseSha256": "5184d8fb14af83d6cfa2bedee154f3daa12f0824c35be9826b810878e2b3ad63",
+      "locator": "Official 乗り換え路線 list for 長田: 近鉄線(相互直通). Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "長田",
+          "operator": "大阪市高速電気軌道",
+          "line": "4号線(中央線)",
+          "mode": "metro"
+        },
+        {
+          "name": "長田",
+          "operator": "近畿日本鉄道",
+          "line": "けいはんな線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-s15",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/S/s15/index.php",
+      "observedResponseSha256": "27015172e1a3c8c750732f0e32be570d3179e313a7c2871be972dc994bd9c665",
+      "locator": "Official 乗り換え路線 list for 桜川: 阪神線, 南海線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "桜川",
+          "operator": "大阪市高速電気軌道",
+          "line": "5号線(千日前線)",
+          "mode": "metro"
+        },
+        {
+          "name": "桜川",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-s19",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/S/s19/index.php",
+      "observedResponseSha256": "654520a72faae8a3c4280197c191d3bd62b652862842ea83be517659555cffd0",
+      "locator": "Official 乗り換え路線 list for 鶴橋: JR線, 近鉄線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "鶴橋",
+          "operator": "大阪市高速電気軌道",
+          "line": "5号線(千日前線)",
+          "mode": "metro"
+        },
+        {
+          "name": "鶴橋",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鶴橋",
+          "operator": "近畿日本鉄道",
+          "line": "大阪線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-k14",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/K/k14/index.php",
+      "observedResponseSha256": "52f6d9d5f9b05c499f6d033e32ec649895d61821d8c727853b7d8459bdb9bd88",
+      "locator": "Official 乗り換え路線 list for 北浜: 京阪線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "北浜",
+          "operator": "大阪市高速電気軌道",
+          "line": "6号線(堺筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "北浜",
+          "operator": "京阪電気鉄道",
+          "line": "京阪本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-k20",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/K/k20/index.php",
+      "observedResponseSha256": "453995bdf0d198ece0181c25fca5354bfd1ace2f476893175a4e83a3f7823110",
+      "locator": "Official 乗り換え路線 list for 天下茶屋: 南海線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "天下茶屋",
+          "operator": "大阪市高速電気軌道",
+          "line": "6号線(堺筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "天下茶屋",
+          "operator": "南海電気鉄道",
+          "line": "南海本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-n11",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/N/n11/index.php",
+      "observedResponseSha256": "ad95ba8b1c7dfd0ce9e0bb0f86ace91fb09053e0b45f5e52a23a2cf10acf3780",
+      "locator": "Official 乗り換え路線 list for 大正: JR線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "大正",
+          "operator": "大阪市高速電気軌道",
+          "line": "7号線(長堀鶴見緑地線)",
+          "mode": "metro"
+        },
+        {
+          "name": "大正",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-n19",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/N/n19/index.php",
+      "observedResponseSha256": "d1abf14dab7ae4e3c71c4c36469ecc3248d2c872d73defeea59cad98497a1670",
+      "locator": "Official 乗り換え路線 list for 玉造: JR線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "玉造",
+          "operator": "大阪市高速電気軌道",
+          "line": "7号線(長堀鶴見緑地線)",
+          "mode": "metro"
+        },
+        {
+          "name": "玉造",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-n22",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/N/n22/index.php",
+      "observedResponseSha256": "46ddbb30364e8100bd18ceb9e4fb4cc0e85e070c6b3473656b224227e8fec867",
+      "locator": "Official 乗り換え路線 list for 京橋: JR線, 京阪線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "京橋",
+          "operator": "大阪市高速電気軌道",
+          "line": "7号線(長堀鶴見緑地線)",
+          "mode": "metro"
+        },
+        {
+          "name": "京橋",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "京橋",
+          "operator": "京阪電気鉄道",
+          "line": "京阪本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-interchange-i19",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/I/i19/index.php",
+      "observedResponseSha256": "65be292e2f1a66526661fec092056c9aefb0f580b279f1c80d267e1dc217bf70",
+      "locator": "Official 乗り換え路線 list for 鴫野: JR線. Bind only explicitly listed other operators to independently resolved same-name Osaka station components. Name/distance coincidence without an official listed operator is excluded, notably Nakatsu and Hirano. Star pairs only; no journey duration or onboard through-service asserted.",
+      "components": [
+        {
+          "name": "鴫野",
+          "operator": "大阪市高速電気軌道",
+          "line": "8号線(今里筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "鴫野",
+          "operator": "西日本旅客鉄道",
+          "line": "片町線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_TRANSFER_TABLE_AND_EXACT_STATION_COMPONENT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-map-interchange-m16",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/M16_%E6%A2%85%E7%94%B0_%E6%A7%8B%E5%86%85%E5%9B%B3_1.pdf",
+      "observedResponseSha256": "e6fe7be1651bbfe3e6fe8f4923fb00ab687cec9d9c8b7ef44fd4113bc02e2df2",
+      "locator": "M16 map and station interchange list show north exits toward Hankyu, south concourse toward Hanshin, JR exits 3A/7/8/18 and connected passages toward Higashi-Umeda/Nishi-Umeda. Review identifies the current Osaka-Umeda company components at the displayed locations; the map shortens those names to Umeda. No connection to nearby Hankyu Nakatsu is inferred.",
+      "components": [
+        {
+          "name": "梅田",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "大阪梅田",
+          "operator": "阪急電鉄",
+          "line": "神戸線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大阪梅田",
+          "operator": "阪神電気鉄道",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大阪",
+          "operator": "西日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東梅田",
+          "operator": "大阪市高速電気軌道",
+          "line": "2号線(谷町線)",
+          "mode": "metro"
+        },
+        {
+          "name": "西梅田",
+          "operator": "大阪市高速電気軌道",
+          "line": "3号線(四つ橋線)",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUAL_OFFICIAL_CONCOURSE_AND_NAMED_OPERATOR_ENTRANCE_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-map-interchange-m20",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/M20_%E3%81%AA%E3%82%93%E3%81%B0_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "e270c19b2f06a321c8cee2b4ef7eefb61a791b7285be5bed53dfd74fbb8dce88",
+      "locator": "M20/Y15/S16 map traces public concourse from Metro to the shared Kintetsu/Hanshin Osaka-Namba entrance and toward OCAT/JR-Namba via exit 30. South Nankai Namba link is separately covered by the explicit station transfer list. Each retained pair is a physical access path, without transfer time claim.",
+      "components": [
+        {
+          "name": "難波",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "大阪難波",
+          "operator": "近畿日本鉄道",
+          "line": "難波線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大阪難波",
+          "operator": "阪神電気鉄道",
+          "line": "阪神なんば線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "JR難波",
+          "operator": "西日本旅客鉄道",
+          "line": "関西線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUAL_OFFICIAL_CONCOURSE_AND_NAMED_OPERATOR_ENTRANCE_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "osaka-map-interchange-m23",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka:metro-private",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/M23_%E5%A4%A9%E7%8E%8B%E5%AF%BA_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "c7a05c976c7b83007526d91da9bb20256bb6d3a5b1d46354a692242ac4e3ad6e",
+      "locator": "M23/T27 map shows east-gate exit 4 and west-gate exit 9 toward Kintetsu Abenobashi platforms/station at Abeno Harukas. This binds the independently identified Osaka-Abenobashi component; no generic name alias or proximity transfer is generated.",
+      "components": [
+        {
+          "name": "天王寺",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "大阪阿部野橋",
+          "operator": "近畿日本鉄道",
+          "line": "南大阪線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUAL_OFFICIAL_CONCOURSE_AND_NAMED_OPERATOR_ENTRANCE_REVIEW",
+      "hubScopeComplete": false
+    }
+  ]
+}

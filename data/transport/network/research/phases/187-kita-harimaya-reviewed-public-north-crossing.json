@@ -1,0 +1,66 @@
+{
+  "phaseId": "187-kita-harimaya-reviewed-public-north-crossing",
+  "strategy": [
+    "ORIGINAL_REQUIRED_BUS_DIRECTION_ROOTS",
+    "OPERATOR_EXPLICIT_PUBLIC_CROSSING",
+    "PRESERVE_DISTINCT_NATIVE_POLES_AND_BOARDING"
+  ],
+  "completedActionIds": [
+    "transfer:tosaden:kita-harimaya-public-north-crossing"
+  ],
+  "facts": [
+    {
+      "factId": "kita-harimaya-west-alighting-to-east-boarding-public-crossing",
+      "kind": "transfer",
+      "sourceActionId": "transfer:tosaden:kita-harimaya-public-north-crossing",
+      "sourceUrl": "https://www.tosaden.co.jp/download/?fid=11725&id=2445&t=LD",
+      "observedResponseSha256": "48f30f3438d5497f83b2c9a3322bb0449d24a76d8592c5b161952f1f46d61d83",
+      "corroboratingEvidence": [],
+      "components": [
+        {
+          "name": "北はりまや橋",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_A",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3905_01",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "d888ad70d2d8b157183905102de75841acd550c927e777b9a7a6df4dd395fb51",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current operator airport-access map, dated20260201 and still linked from its airport page, separately marks west-side 北はりまや橋 alighting and east-side 北はりまや橋 boarding. Its enlarged はりまや橋 inset explicitly depicts the public crossing on the north arm of the junction, reached from these marked curb sides. Review only coarse public walking between these two explicitly named directional points via that crossing. Exact licensed airport-feed3905_01 is west alighting-only and3905_02 east boarding-only. Coordinates corroborate the depicted sides, never create the relation. No opposite-service reversal, pole collapse, direct road crossing outside the pictured crossing, geometry, duration or step-free claim."
+          }
+        },
+        {
+          "name": "北はりまや橋",
+          "operator": "とさでん交通株式会社",
+          "line": "gtfs:tosaden-airport:route:空港連絡バス_B",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:tosaden-airport",
+            "stopId": "3905_02",
+            "sourceArchiveSha256": "c6c8f6b4c2f8639349591aea1d8473285be62ca5ffbb5dcdc5c6efefec6ab4ee",
+            "recordSha256": "da0de156d03f08568958cf6bf7d522aa068d3153568b5f0f6f9338a266f9cd1c",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current operator airport-access map, dated20260201 and still linked from its airport page, separately marks west-side 北はりまや橋 alighting and east-side 北はりまや橋 boarding. Its enlarged はりまや橋 inset explicitly depicts the public crossing on the north arm of the junction, reached from these marked curb sides. Review only coarse public walking between these two explicitly named directional points via that crossing. Exact licensed airport-feed3905_01 is west alighting-only and3905_02 east boarding-only. Coordinates corroborate the depicted sides, never create the relation. No opposite-service reversal, pole collapse, direct road crossing outside the pictured crossing, geometry, duration or step-free claim."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OPERATOR_DIAGRAM_PUBLIC_CROSSING_DISTINCT_DIRECTIONAL_STOPS",
+      "hubScopeComplete": false,
+      "locator": "Current operator airport-access map, dated20260201 and still linked from its airport page, separately marks west-side 北はりまや橋 alighting and east-side 北はりまや橋 boarding. Its enlarged はりまや橋 inset explicitly depicts the public crossing on the north arm of the junction, reached from these marked curb sides. Review only coarse public walking between these two explicitly named directional points via that crossing. Exact licensed airport-feed3905_01 is west alighting-only and3905_02 east boarding-only. Coordinates corroborate the depicted sides, never create the relation. No opposite-service reversal, pole collapse, direct road crossing outside the pictured crossing, geometry, duration or step-free claim."
+    }
+  ]
+}

@@ -1,0 +1,1743 @@
+{
+  "phaseId": "035-nagoya-metro-loop-and-gateway",
+  "strategy": [
+    "NAGOYA_OPERATOR_LOCAL_STATIONS",
+    "MEIJO_LOOP_MEIKO_BRANCH_AND_JR_GATEWAY",
+    "metro"
+  ],
+  "completedActionIds": [
+    "metro:nagoya:local"
+  ],
+  "facts": [
+    {
+      "factId": "nagoya-H-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/",
+      "observedResponseSha256": "4a7a532f756c832cebb37f6803768bd64c559063e3d2801f2f68ae533bbf4c6d",
+      "locator": "Official numbered operating-line station list with current route map cross-check. M01-M28 is one complete circular lap, including M28-M01 closure; E01-E07 is a separate Meiko section. The web layout displays the second half of M in reverse columns, so reviewed station numbers/route trace determine calling order. Local service stays within Nagoya Transportation Bureau; no Meitetsu through-service claim.",
+      "line": "1号線東山線",
+      "operator": "名古屋市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "高畑",
+        "八田",
+        "岩塚",
+        "中村公園",
+        "中村日赤",
+        "本陣",
+        "亀島",
+        "名古屋",
+        "伏見",
+        "栄",
+        "新栄町",
+        "千種",
+        "今池",
+        "池下",
+        "覚王山",
+        "本山",
+        "東山公園",
+        "星ヶ丘",
+        "一社",
+        "上社",
+        "本郷",
+        "藤が丘"
+      ],
+      "callingComponents": [
+        {
+          "name": "高畑",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "八田",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "岩塚",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "中村公園",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "中村日赤",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "本陣",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "亀島",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "名古屋",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "伏見",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "栄",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "新栄町",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "千種",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "今池",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "池下",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "覚王山",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "本山",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "東山公園",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "星ヶ丘",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "一社",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "上社",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "本郷",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "藤が丘",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "NUMBERED_OFFICIAL_LOCAL_STATIONS_WITH_VISUAL_LOOP_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-H-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/",
+      "observedResponseSha256": "4a7a532f756c832cebb37f6803768bd64c559063e3d2801f2f68ae533bbf4c6d",
+      "locator": "Official numbered operating-line station list with current route map cross-check. M01-M28 is one complete circular lap, including M28-M01 closure; E01-E07 is a separate Meiko section. The web layout displays the second half of M in reverse columns, so reviewed station numbers/route trace determine calling order. Local service stays within Nagoya Transportation Bureau; no Meitetsu through-service claim.",
+      "line": "1号線東山線",
+      "operator": "名古屋市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "藤が丘",
+        "本郷",
+        "上社",
+        "一社",
+        "星ヶ丘",
+        "東山公園",
+        "本山",
+        "覚王山",
+        "池下",
+        "今池",
+        "千種",
+        "新栄町",
+        "栄",
+        "伏見",
+        "名古屋",
+        "亀島",
+        "本陣",
+        "中村日赤",
+        "中村公園",
+        "岩塚",
+        "八田",
+        "高畑"
+      ],
+      "callingComponents": [
+        {
+          "name": "藤が丘",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "本郷",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "上社",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "一社",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "星ヶ丘",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "東山公園",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "本山",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "覚王山",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "池下",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "今池",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "千種",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "新栄町",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "栄",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "伏見",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "名古屋",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "亀島",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "本陣",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "中村日赤",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "中村公園",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "岩塚",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "八田",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "高畑",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "NUMBERED_OFFICIAL_LOCAL_STATIONS_WITH_VISUAL_LOOP_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-M-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/",
+      "observedResponseSha256": "4a7a532f756c832cebb37f6803768bd64c559063e3d2801f2f68ae533bbf4c6d",
+      "locator": "Official numbered operating-line station list with current route map cross-check. M01-M28 is one complete circular lap, including M28-M01 closure; E01-E07 is a separate Meiko section. The web layout displays the second half of M in reverse columns, so reviewed station numbers/route trace determine calling order. Local service stays within Nagoya Transportation Bureau; no Meitetsu through-service claim.",
+      "line": "名城線環状運転",
+      "operator": "名古屋市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "金山",
+        "東別院",
+        "上前津",
+        "矢場町",
+        "栄",
+        "久屋大通",
+        "名古屋城",
+        "名城公園",
+        "黒川",
+        "志賀本通",
+        "平安通",
+        "大曽根",
+        "ナゴヤドーム前矢田",
+        "砂田橋",
+        "茶屋ヶ坂",
+        "自由ヶ丘",
+        "本山",
+        "名古屋大学",
+        "八事日赤",
+        "八事",
+        "総合リハビリセンター",
+        "瑞穂運動場東",
+        "新瑞橋",
+        "妙音通",
+        "堀田",
+        "熱田神宮伝馬町",
+        "熱田神宮西",
+        "西高蔵",
+        "金山"
+      ],
+      "callingComponents": [
+        {
+          "name": "金山",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "東別院",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "上前津",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "矢場町",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "栄",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "久屋大通",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "名古屋城",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "名城公園",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "黒川",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "志賀本通",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "平安通",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "大曽根",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "ナゴヤドーム前矢田",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "砂田橋",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "茶屋ヶ坂",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "自由ヶ丘",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "本山",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "名古屋大学",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "八事日赤",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "八事",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "総合リハビリセンター",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "瑞穂運動場東",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "新瑞橋",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "妙音通",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "堀田",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "熱田神宮伝馬町",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "熱田神宮西",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "西高蔵",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "金山",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "NUMBERED_OFFICIAL_LOCAL_STATIONS_WITH_VISUAL_LOOP_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-M-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/",
+      "observedResponseSha256": "4a7a532f756c832cebb37f6803768bd64c559063e3d2801f2f68ae533bbf4c6d",
+      "locator": "Official numbered operating-line station list with current route map cross-check. M01-M28 is one complete circular lap, including M28-M01 closure; E01-E07 is a separate Meiko section. The web layout displays the second half of M in reverse columns, so reviewed station numbers/route trace determine calling order. Local service stays within Nagoya Transportation Bureau; no Meitetsu through-service claim.",
+      "line": "名城線環状運転",
+      "operator": "名古屋市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "金山",
+        "西高蔵",
+        "熱田神宮西",
+        "熱田神宮伝馬町",
+        "堀田",
+        "妙音通",
+        "新瑞橋",
+        "瑞穂運動場東",
+        "総合リハビリセンター",
+        "八事",
+        "八事日赤",
+        "名古屋大学",
+        "本山",
+        "自由ヶ丘",
+        "茶屋ヶ坂",
+        "砂田橋",
+        "ナゴヤドーム前矢田",
+        "大曽根",
+        "平安通",
+        "志賀本通",
+        "黒川",
+        "名城公園",
+        "名古屋城",
+        "久屋大通",
+        "栄",
+        "矢場町",
+        "上前津",
+        "東別院",
+        "金山"
+      ],
+      "callingComponents": [
+        {
+          "name": "金山",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "西高蔵",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "熱田神宮西",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "熱田神宮伝馬町",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "堀田",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "妙音通",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "新瑞橋",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "瑞穂運動場東",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "総合リハビリセンター",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "八事",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "八事日赤",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "名古屋大学",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "本山",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "自由ヶ丘",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "茶屋ヶ坂",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "砂田橋",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "ナゴヤドーム前矢田",
+          "operator": "名古屋市",
+          "line": "4号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "大曽根",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "平安通",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "志賀本通",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "黒川",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "名城公園",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "名古屋城",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "久屋大通",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "栄",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "矢場町",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "上前津",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "東別院",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "金山",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "NUMBERED_OFFICIAL_LOCAL_STATIONS_WITH_VISUAL_LOOP_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-E-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/",
+      "observedResponseSha256": "4a7a532f756c832cebb37f6803768bd64c559063e3d2801f2f68ae533bbf4c6d",
+      "locator": "Official numbered operating-line station list with current route map cross-check. M01-M28 is one complete circular lap, including M28-M01 closure; E01-E07 is a separate Meiko section. The web layout displays the second half of M in reverse columns, so reviewed station numbers/route trace determine calling order. Local service stays within Nagoya Transportation Bureau; no Meitetsu through-service claim.",
+      "line": "2号線名港線",
+      "operator": "名古屋市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "金山",
+        "日比野",
+        "六番町",
+        "東海通",
+        "港区役所",
+        "築地口",
+        "名古屋港"
+      ],
+      "callingComponents": [
+        {
+          "name": "金山",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        },
+        {
+          "name": "日比野",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        },
+        {
+          "name": "六番町",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        },
+        {
+          "name": "東海通",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        },
+        {
+          "name": "港区役所",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        },
+        {
+          "name": "築地口",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        },
+        {
+          "name": "名古屋港",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "NUMBERED_OFFICIAL_LOCAL_STATIONS_WITH_VISUAL_LOOP_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-E-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/",
+      "observedResponseSha256": "4a7a532f756c832cebb37f6803768bd64c559063e3d2801f2f68ae533bbf4c6d",
+      "locator": "Official numbered operating-line station list with current route map cross-check. M01-M28 is one complete circular lap, including M28-M01 closure; E01-E07 is a separate Meiko section. The web layout displays the second half of M in reverse columns, so reviewed station numbers/route trace determine calling order. Local service stays within Nagoya Transportation Bureau; no Meitetsu through-service claim.",
+      "line": "2号線名港線",
+      "operator": "名古屋市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "名古屋港",
+        "築地口",
+        "港区役所",
+        "東海通",
+        "六番町",
+        "日比野",
+        "金山"
+      ],
+      "callingComponents": [
+        {
+          "name": "名古屋港",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        },
+        {
+          "name": "築地口",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        },
+        {
+          "name": "港区役所",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        },
+        {
+          "name": "東海通",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        },
+        {
+          "name": "六番町",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        },
+        {
+          "name": "日比野",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        },
+        {
+          "name": "金山",
+          "operator": "名古屋市",
+          "line": "2号線名港線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "NUMBERED_OFFICIAL_LOCAL_STATIONS_WITH_VISUAL_LOOP_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-T-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/",
+      "observedResponseSha256": "4a7a532f756c832cebb37f6803768bd64c559063e3d2801f2f68ae533bbf4c6d",
+      "locator": "Official numbered operating-line station list with current route map cross-check. M01-M28 is one complete circular lap, including M28-M01 closure; E01-E07 is a separate Meiko section. The web layout displays the second half of M in reverse columns, so reviewed station numbers/route trace determine calling order. Local service stays within Nagoya Transportation Bureau; no Meitetsu through-service claim.",
+      "line": "3号線鶴舞線",
+      "operator": "名古屋市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "上小田井",
+        "庄内緑地公園",
+        "庄内通",
+        "浄心",
+        "浅間町",
+        "丸の内",
+        "伏見",
+        "大須観音",
+        "上前津",
+        "鶴舞",
+        "荒畑",
+        "御器所",
+        "川名",
+        "いりなか",
+        "八事",
+        "塩釜口",
+        "植田",
+        "原",
+        "平針",
+        "赤池"
+      ],
+      "callingComponents": [
+        {
+          "name": "上小田井",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "庄内緑地公園",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "庄内通",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "浄心",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "浅間町",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "丸の内",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "伏見",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "大須観音",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "上前津",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "鶴舞",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "荒畑",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "御器所",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "川名",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "いりなか",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "八事",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "塩釜口",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "植田",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "原",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "平針",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "赤池",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "NUMBERED_OFFICIAL_LOCAL_STATIONS_WITH_VISUAL_LOOP_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-T-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/",
+      "observedResponseSha256": "4a7a532f756c832cebb37f6803768bd64c559063e3d2801f2f68ae533bbf4c6d",
+      "locator": "Official numbered operating-line station list with current route map cross-check. M01-M28 is one complete circular lap, including M28-M01 closure; E01-E07 is a separate Meiko section. The web layout displays the second half of M in reverse columns, so reviewed station numbers/route trace determine calling order. Local service stays within Nagoya Transportation Bureau; no Meitetsu through-service claim.",
+      "line": "3号線鶴舞線",
+      "operator": "名古屋市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "赤池",
+        "平針",
+        "原",
+        "植田",
+        "塩釜口",
+        "八事",
+        "いりなか",
+        "川名",
+        "御器所",
+        "荒畑",
+        "鶴舞",
+        "上前津",
+        "大須観音",
+        "伏見",
+        "丸の内",
+        "浅間町",
+        "浄心",
+        "庄内通",
+        "庄内緑地公園",
+        "上小田井"
+      ],
+      "callingComponents": [
+        {
+          "name": "赤池",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "平針",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "原",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "植田",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "塩釜口",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "八事",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "いりなか",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "川名",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "御器所",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "荒畑",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "鶴舞",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "上前津",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "大須観音",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "伏見",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "丸の内",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "浅間町",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "浄心",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "庄内通",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "庄内緑地公園",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        },
+        {
+          "name": "上小田井",
+          "operator": "名古屋市",
+          "line": "3号線鶴舞線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "NUMBERED_OFFICIAL_LOCAL_STATIONS_WITH_VISUAL_LOOP_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-S-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/",
+      "observedResponseSha256": "4a7a532f756c832cebb37f6803768bd64c559063e3d2801f2f68ae533bbf4c6d",
+      "locator": "Official numbered operating-line station list with current route map cross-check. M01-M28 is one complete circular lap, including M28-M01 closure; E01-E07 is a separate Meiko section. The web layout displays the second half of M in reverse columns, so reviewed station numbers/route trace determine calling order. Local service stays within Nagoya Transportation Bureau; no Meitetsu through-service claim.",
+      "line": "6号線桜通線",
+      "operator": "名古屋市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "太閤通",
+        "名古屋",
+        "国際センター",
+        "丸の内",
+        "久屋大通",
+        "高岳",
+        "車道",
+        "今池",
+        "吹上",
+        "御器所",
+        "桜山",
+        "瑞穂区役所",
+        "瑞穂運動場西",
+        "新瑞橋",
+        "桜本町",
+        "鶴里",
+        "野並",
+        "鳴子北",
+        "相生山",
+        "神沢",
+        "徳重"
+      ],
+      "callingComponents": [
+        {
+          "name": "太閤通",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "名古屋",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "国際センター",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "丸の内",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "久屋大通",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "高岳",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "車道",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "今池",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "吹上",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "御器所",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "桜山",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "瑞穂区役所",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "瑞穂運動場西",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "新瑞橋",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "桜本町",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "鶴里",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "野並",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "鳴子北",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "相生山",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "神沢",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "徳重",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "NUMBERED_OFFICIAL_LOCAL_STATIONS_WITH_VISUAL_LOOP_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-S-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/",
+      "observedResponseSha256": "4a7a532f756c832cebb37f6803768bd64c559063e3d2801f2f68ae533bbf4c6d",
+      "locator": "Official numbered operating-line station list with current route map cross-check. M01-M28 is one complete circular lap, including M28-M01 closure; E01-E07 is a separate Meiko section. The web layout displays the second half of M in reverse columns, so reviewed station numbers/route trace determine calling order. Local service stays within Nagoya Transportation Bureau; no Meitetsu through-service claim.",
+      "line": "6号線桜通線",
+      "operator": "名古屋市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "徳重",
+        "神沢",
+        "相生山",
+        "鳴子北",
+        "野並",
+        "鶴里",
+        "桜本町",
+        "新瑞橋",
+        "瑞穂運動場西",
+        "瑞穂区役所",
+        "桜山",
+        "御器所",
+        "吹上",
+        "今池",
+        "車道",
+        "高岳",
+        "久屋大通",
+        "丸の内",
+        "国際センター",
+        "名古屋",
+        "太閤通"
+      ],
+      "callingComponents": [
+        {
+          "name": "徳重",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "神沢",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "相生山",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "鳴子北",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "野並",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "鶴里",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "桜本町",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "新瑞橋",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "瑞穂運動場西",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "瑞穂区役所",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "桜山",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "御器所",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "吹上",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "今池",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "車道",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "高岳",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "久屋大通",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "丸の内",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "国際センター",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "名古屋",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        },
+        {
+          "name": "太閤通",
+          "operator": "名古屋市",
+          "line": "6号線桜通線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "NUMBERED_OFFICIAL_LOCAL_STATIONS_WITH_VISUAL_LOOP_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-K-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/",
+      "observedResponseSha256": "4a7a532f756c832cebb37f6803768bd64c559063e3d2801f2f68ae533bbf4c6d",
+      "locator": "Official numbered operating-line station list with current route map cross-check. M01-M28 is one complete circular lap, including M28-M01 closure; E01-E07 is a separate Meiko section. The web layout displays the second half of M in reverse columns, so reviewed station numbers/route trace determine calling order. Local service stays within Nagoya Transportation Bureau; no Meitetsu through-service claim.",
+      "line": "上飯田線",
+      "operator": "名古屋市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "上飯田",
+        "平安通"
+      ],
+      "callingComponents": [
+        {
+          "name": "上飯田",
+          "operator": "名古屋市",
+          "line": "上飯田線",
+          "mode": "metro"
+        },
+        {
+          "name": "平安通",
+          "operator": "名古屋市",
+          "line": "上飯田線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "NUMBERED_OFFICIAL_LOCAL_STATIONS_WITH_VISUAL_LOOP_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-K-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/subway/",
+      "observedResponseSha256": "4a7a532f756c832cebb37f6803768bd64c559063e3d2801f2f68ae533bbf4c6d",
+      "locator": "Official numbered operating-line station list with current route map cross-check. M01-M28 is one complete circular lap, including M28-M01 closure; E01-E07 is a separate Meiko section. The web layout displays the second half of M in reverse columns, so reviewed station numbers/route trace determine calling order. Local service stays within Nagoya Transportation Bureau; no Meitetsu through-service claim.",
+      "line": "上飯田線",
+      "operator": "名古屋市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "平安通",
+        "上飯田"
+      ],
+      "callingComponents": [
+        {
+          "name": "平安通",
+          "operator": "名古屋市",
+          "line": "上飯田線",
+          "mode": "metro"
+        },
+        {
+          "name": "上飯田",
+          "operator": "名古屋市",
+          "line": "上飯田線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "NUMBERED_OFFICIAL_LOCAL_STATIONS_WITH_VISUAL_LOOP_BRANCH_REVIEW",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nagoya-jr-metro-private-concourse",
+      "kind": "transfer",
+      "sourceActionId": "metro:nagoya:local",
+      "sourceUrl": "https://railway.jr-central.co.jp/station-guide/shinkansen/nagoya/_img/nagoya_250408.gif",
+      "observedResponseSha256": "6eb9a29dca939ef34689b041c100e7a4b463c6959e20024960c89148ba2601fa",
+      "locator": "JR Central current linked 2025-04-08 Nagoya station map: conventional platforms join Shinkansen via north/south transfer gates; JR central/north gates connect central passage to the marked Higashiyama/Sakuradori subway entrances and Meitetsu/Kintetsu Nagoya entrances toward Sakura-dori/Hirokoji. Star pairs from the JR conventional component are reviewed; no N-by-N expansion, duration or through train asserted.",
+      "components": [
+        {
+          "name": "名古屋",
+          "operator": "東海旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "名古屋",
+          "operator": "東海旅客鉄道",
+          "line": "東海道新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "名古屋",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "名鉄名古屋",
+          "operator": "名古屋鉄道",
+          "line": "名古屋本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "近鉄名古屋",
+          "operator": "近畿日本鉄道",
+          "line": "名古屋線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUAL_OFFICIAL_TRANSFER_GATES_AND_NAMED_STATION_ENTRANCES",
+      "hubScopeComplete": false
+    }
+  ]
+}

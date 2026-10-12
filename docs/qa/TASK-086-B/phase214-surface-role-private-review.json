@@ -1,0 +1,93 @@
+{
+  "status": "PASS_PRIVATE_MINIMAL_OFFSITE_SURFACE_ROLE_REPAIR",
+  "files": [
+    {
+      "path": "tools/transport/task-086-model.mjs",
+      "oldSha256": "929eaeea6e9a93084ca1e97f4e5c7bb99f9861cb181b0f9a84f231ee728d4a9a",
+      "newSha256": "4900017d6fec17417aaab2aacb149bc99c9886dda545001e4e5395944009cbb2",
+      "candidate": ".cache/task-086/surface-regression214-private/tools/transport/task-086-model.mjs"
+    },
+    {
+      "path": "tests/task-086-b-autonomous-remediation.test.mjs",
+      "oldSha256": "bbed18fdb5459de236cb566ca417639d9c812e066d1138596baeb5f20ecd2d7a",
+      "newSha256": "8c1282e9992c6361b97c3cbc67c0c8d1a7817cac80d7a8368e348d29fdacdc6d",
+      "candidate": ".cache/task-086/surface-regression214-private/tests/task-086-b-autonomous-remediation.test.mjs"
+    }
+  ],
+  "rootCause": "Optimized ground-ride witness candidate set admitted every ride endpoint, losing original explicit mode / legacy bus_stop classification.",
+  "repair": "Restore old isSurfaceNode semantics only when adding offsite candidates. Preserve admitted graph traversal, genuine both-direction ride evidence, different airport gateways and all boarding/conditions. Airport itself is not an offsite witness.",
+  "classification": "Supported explicit surface mode takes precedence. Only absent/null mode with nodeKind bus_stop uses bus fallback. Explicit flight/ferry or mode-less port/generic tourism facility cannot substitute. This preserves pre-change nullish-mode compatibility exactly.",
+  "fixtureChanges": [
+    "Existing two-walk positive becomes explicit two-walk negative, followed by actual two-direction fixed-guideway positive.",
+    "Legacy bus_stop positive now has actual outgoing/incoming local_bus segments; separate two-walk negative added. Original HOLD/ferry_port/other_tourism_transport/explicitflight/flight-edge/ferry-edge negatives retained."
+  ],
+  "tests": {
+    "targeted": {
+      "path": "targeted-two.tap",
+      "sha256": "0946699e27f4f3a4bb24694935b4bf7ed50b8bc7ddbd4ec7fa882392efda0087",
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "durationMs": 113.4744
+    },
+    "existingAccessAndModel114": {
+      "path": "access-model114.tap",
+      "sha256": "b234d94fbaa344ec221f5cb3534b7ff565aa9634fd7adb3adb99eca68460ab39",
+      "tests": 114,
+      "pass": 114,
+      "fail": 0,
+      "durationMs": 449.1333
+    },
+    "unpatchedModelWithStrengthenedFixtures": {
+      "path": "unpatched-regression-demonstration.tap",
+      "sha256": "87e1da513bc522c54845770668e9543199ad688d2649324578f9e752343d678c",
+      "tests": 2,
+      "pass": 1,
+      "fail": 1,
+      "durationMs": 133.7839
+    }
+  },
+  "frozen211": {
+    "airports": 86,
+    "witnessPresenceUnchanged": true,
+    "defaultDeficitDifference": {
+      "removed": [],
+      "added": [],
+      "changed": []
+    },
+    "witnessPathsValid": true,
+    "tierUnchanged": true,
+    "corridorsUnchanged": true,
+    "inputHashes": {
+      "node-downstream-admission.jsonl": "4edfaa64c2433f5c187c1f904f74a2b741eb61f66b3a543c602f9a2f5abecd53",
+      "service-patterns.jsonl": "b3a49ed7e97b56185c90820b1106355d38f1b4dd764a11e86d68a93339177734",
+      "transport-node-edges.jsonl": "bed7bd706d1e61965e309bec1d82744cca452c4ccd9529a7e5d2ddfef1faea5f",
+      "required-backbone-inventory.json": "598b74646a2c2b39098a397be7de4ee977ea8c9534f90e8706212ba2567390af",
+      "connectivity-audit.json": "a89762e276886e0ed2a615b4e1e721ca45473f0df34f3d3c4acf44dc8727ce32",
+      "corridor-query-results.json": "d85be92d3130454463c8b8d94e2c8ca419cf7891106b5edf6a6602bf3a478f68",
+      "source-rights.json": "03b598bdf394354f35700e1a06f944bded1e3e7b2e8958c6f9528d7125d446f2",
+      "topology-evidence.jsonl": "7c2338fe9fd7acae3a461984c77162db1e835dc89e8a7c319dc01a8e0f892778",
+      "sources/source-review.json": "bcec368b32e9da053c489b047736d7179dc16f4dac52be0a0fceff3f09185f74",
+      "hub-component-review-state.jsonl": "ae5efbd79d45fd7e3453ead498eff3989cc05a16342d6dc8edb88b66ca50aef5",
+      "final-acceptance-gate.json": "a1ed5130cd01ad0d7c4aacf1ab98015f7d23b0e8b86783a9eba3671c97f01623",
+      "research/global-review.v1.json": "793f8b56ffc78a332113f8bc5605c59e537b05da8e473a25dba7f1ffa4a6b403",
+      "manifest.json": "dafa09c0c525b8cd188b70b9c2a171f59ff06188d2758182b56eea6a0f619676"
+    },
+    "inputBytesUnchanged": true,
+    "inMemoryInputsUnchanged": true,
+    "timings": {
+      "oldMs": 1082.6343000000002,
+      "newMs": 1111.634,
+      "ratio": 1.0267862379752792,
+      "deltaMs": 28.999699999999848,
+      "method": "One old then one new on private commit4d040627d snapshot, with every input byte hash equal to original211 benchmark. Includes new full registry validation; no historical replay extrapolation."
+    },
+    "report": "surface-role-frozen211-comparison.json",
+    "persistedCountsCaveat": "Raw audit includes preexisting global obligation rows before normal remediation postprocessing; raw old-vs-new comparison is exact. No canonical reopening/closure inferred."
+  },
+  "odBoundary": "South Daito OD remains a separate private prototype. Future typed OD may use original airport facility as one endpoint, but its offsite office must be admitted and explicitly mode demand_shared_taxi. This repair does not import OD or alter its gate interpretation.",
+  "canonicalWrites": 0,
+  "newHttpRequests": 0,
+  "fullHistoricalReplayRun": false,
+  "globalThresholdChanges": false
+}

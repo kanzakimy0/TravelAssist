@@ -1,0 +1,400 @@
+{
+  "status": "EXACT_NATIVE_EXTRACTION_ORDER_REBIND_FULL_REBUILD_PENDING",
+  "identityHash": "59f273cfe14080b6177baa8e5e072752aee36ffdd2b161fec6abcc3bf1c96371",
+  "oldAction": {
+    "actionId": "government:p11:reviewed-airport-bus-identities",
+    "affectedDeficits": [
+      "DISCONNECTED_T1",
+      "AIRPORT_SURFACE_GAP"
+    ],
+    "attempts": [
+      {
+        "attempt": 1,
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "outcome": "SOURCE_FOUND",
+        "requestSha256": "b2ebf38fbb2cfa682d0a08b0048ba229e702ff444d2a9d67a5987232c1226931",
+        "sources": [
+          {
+            "bytes": 9031560,
+            "contentSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1",
+            "contentType": "application/zip",
+            "finalUrl": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+            "purpose": "topology",
+            "rawPayloadRetained": true,
+            "retainedPath": "data/transport/network/sources/raw/mlit-p11-22.zip",
+            "status": 200,
+            "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip"
+          },
+          {
+            "bytes": 179604,
+            "contentSha256": "977643a3566f2e625503dda8b2a8d17c7a836e7e531f48ce8786872c466d50f4",
+            "contentType": "text/html; charset=UTF-8",
+            "finalUrl": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html",
+            "purpose": "topology",
+            "rawPayloadRetained": false,
+            "status": 200,
+            "url": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html"
+          },
+          {
+            "bytes": 27978,
+            "contentSha256": "1590737f1c14a9a09a458f02df62050a3cfd25fd70807dfdc8a1880260e05f6d",
+            "contentType": "text/html; charset=UTF-8",
+            "finalUrl": "https://nlftp.mlit.go.jp/ksj/other/agreement.html",
+            "purpose": "terms",
+            "rawPayloadRetained": false,
+            "status": 200,
+            "url": "https://nlftp.mlit.go.jp/ksj/other/agreement.html"
+          }
+        ]
+      }
+    ],
+    "automaticNetworkExecution": true,
+    "events": [
+      {
+        "eventSha256": "c909d4387f5ba0f179642ef3601a6cad14a2cb049c57b937244a745d075699b6",
+        "nextAction": "REVIEW_RESPONSE_AND_TERMS",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "previousEventSha256": null,
+        "previousState": "PENDING_RESEARCH",
+        "result": "REQUESTING_PRIMARY_EVIDENCE",
+        "state": "RESEARCHING"
+      },
+      {
+        "eventSha256": "3cd0005787db775cea1225a8e993b71963f7352870979dfcd34e9a8fac2ca45e",
+        "nextAction": "REVIEW_MINIMUM_FACT_AND_TERMS_SCOPE",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "previousEventSha256": "c909d4387f5ba0f179642ef3601a6cad14a2cb049c57b937244a745d075699b6",
+        "previousState": "RESEARCHING",
+        "result": "SOURCE_FOUND",
+        "state": "SOURCE_FOUND"
+      },
+      {
+        "eventSha256": "3a7f5b84ff20e92555b9b178e75b70c32aa3c22a4dc7784e3981bdb21796aa1a",
+        "nextAction": "EXTRACT_AND_BIND_MINIMAL_FACTS",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "previousEventSha256": "3cd0005787db775cea1225a8e993b71963f7352870979dfcd34e9a8fac2ca45e",
+        "previousState": "SOURCE_FOUND",
+        "result": "RAW_PERSISTENCE_ALLOWED",
+        "state": "RIGHTS_REVIEWED"
+      },
+      {
+        "eventSha256": "66f0554348e0246a9310566b9749da9a85cc35991c30bc66bd9d2ccd4a4f9664",
+        "nextAction": "FOLLOW_REMAINING_PRIORITIZED_DEFICITS",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "phaseId": "096-komatsu-municipal-direct-bus-and-reviewed-p11-gateway",
+        "phaseSha256": "98ad1415891b12b06ee2b00a6add2450c792f16e52c05b6868e696bd3ed931da",
+        "previousEventSha256": "3a7f5b84ff20e92555b9b178e75b70c32aa3c22a4dc7784e3981bdb21796aa1a",
+        "previousState": "RIGHTS_REVIEWED",
+        "result": "FACTS_BOUND_ADMITTED_AND_GRAPH_REPLAYED",
+        "state": "INGESTED"
+      }
+    ],
+    "extractedFacts": [
+      "amakusa-government-public-airport-shuttle-gateway",
+      "amakusa-shuttle-airport-to-horikiri",
+      "amakusa-shuttle-horikiri-to-airport",
+      "chofu-north-public-bus-frontage-to-existing-keio",
+      "chofu-public-terminal-frontage-to-route40",
+      "chofu40-static-airfield-to-chofu-north",
+      "chofu40-static-chofu-north-to-airfield",
+      "monbetsu-hokumon-ordinary-inbound-airport-deviation-section",
+      "monbetsu-hokumon-ordinary-outbound-airport-deviation-section",
+      "monbetsu-public-airport-to-exact-hokumon-terminal-stop",
+      "okadama-hokto-airport-to-city-2026-10-02",
+      "okadama-hokto-city-to-airport-2026-10-02",
+      "okadama-public-terminal-frontage-to-airport-liner-stop",
+      "okadama-sapporo-frontage-bus-stop-to-existing-jr-sapporo",
+      "p11-identities:06a16deb147f6c899e0721d7bdd707a14eee1efc48b5cf81b2a431d50fc061aa",
+      "p11-identities:0757efd379e591eee880ec90ed57e016119b18f4839120798858ebc689a0eac1",
+      "p11-identities:0ec507d438c540409784679bcfe69be341c8b42ba773da8ec471d0fabe51d41f",
+      "p11-identities:104299c90f6757f09c53087e2bee1a5ba1a2c6da805bf796dc861b77b7310834",
+      "p11-identities:155a9f3259033538db36dcc8c179422e87e297c2ccc9d810debcb53737d239db",
+      "p11-identities:21bbcd8b0e30ea1b96d16fd0fcf4002252ee069f94f7140a62078d74f3c6eb86",
+      "p11-identities:27c15e041443dc1ef14b4349897b25266ba1a36eac55f2a0ad8fdfa08252d7f2",
+      "p11-identities:2f7e68e86ac35376f001361f5795c2465470293cad8c1c9cddea581a5b0b6819",
+      "p11-identities:330276b912d32ab1f0f9f09082bf344d6413ed027b1b287ad715e007f092d9d9",
+      "p11-identities:39bea20e01ff91b732f511f03ae860159196bf6fc3eaa92e818d1fa644234efc",
+      "p11-identities:3a4281a1f3ae8cb9ca8e85c4a3899ae92d53fde0c4524877932d3a12793dd278",
+      "p11-identities:3e850b62e2f2c9b5d9c08567fb34981e9b6f8e22a72b711267725f2fd5de4c60",
+      "p11-identities:49cb19b1fa74d6ff2da98ded42767f10a85f09fc3d89ccd0b3fcbbbd13edd7f6",
+      "p11-identities:5502cdacc44dfc86dd2e2cf0379f9135c44c693a29e1185d7994842e9914a248",
+      "p11-identities:60eb72eca93d718951e383a5719e26c7da6dcc2ba791e2af36335145bfd8eea4",
+      "p11-identities:7692deebd289e873fdd4f4bdd3a5522a0a81a2b34e037b6c45ae931f0147ac50",
+      "p11-identities:7926fcc18a1883cba9ebbeb1f29ec2536a9f7cc5c6377c4018ce67218c8fe7c0",
+      "p11-identities:79b4b56da64e59b2c3163ecd2288abd76bee6006faeb024700044846d6f97e6b",
+      "p11-identities:7a743500ac5c9b4b93a5c12e4b237a17715787a8c457ced2d9712dc9796ec7f0",
+      "p11-identities:7cc9aa9ff6a1f4235b0003d690db920cc45177b560096e845bafa07e95583b6a",
+      "p11-identities:89a1e1a6e2007d94afb8b657033f2d081c47c158b08c61a5c2f17ad2deebe50d",
+      "p11-identities:8c2f715a81b435e594c7d040ced53e8ec68dc1081cb6b582fddaa696d4eb53d9",
+      "p11-identities:8eb7cbc059e729292f61ce3f201c92db9799c56f875be18f368e1ca27b7a00e8",
+      "p11-identities:99ecf3279c8f0a75e70e73132a5fa9bd13dd851f9e672d7a7ce5394069e1f1be",
+      "p11-identities:a1bef09c327db464c838d0897e99dec41fe6648c00efe44add0e1dec4d8c2829",
+      "p11-identities:b0ffa5a0aeb3fe5507c7b5d1a27d170c58f3605bc7f7c1f456cd4f114567e2bb",
+      "p11-identities:b1d54330abcefaf060bfccafcf0670e22ff25f51a615879d00c18c014e51a361",
+      "p11-identities:b53edf3897ea357398f866574ce846dcc947cfa5ed1e22790453db48a0c3a512",
+      "p11-identities:bb652377df4bcc9839c0ace7b367530e8d03242ea24fda2d97891a7f8b52aadb",
+      "p11-identities:bc1720ffa10a808c53f03fe8aa0cdeee59b783bf043daa227750fd5d89cc8266",
+      "p11-identities:c631d3c52097ef72f26cdb2545928516190aaf696e1362e6ffb019fbb155ce77",
+      "p11-identities:cb371ec82bc7b7166f5e591977a63633ff639dbdb7e98ffad94401c9405bcf4e",
+      "p11-identities:ce46ece41813810a9d5e72fb1c681fc4a718ef775fbca976541875ee00b0ad03",
+      "p11-identities:db95806c4f3192a3eef9a9676a1898ee1d3238a3926f4dbe319b3ca8c36d4deb",
+      "p11-identities:f532cf9c9f4fd5f84ab374a7a5885a4dd280bfc536d5f04ec7527a7f1ecbfcd9",
+      "p11-identities:f5af71e79b5a2350ff22846dc39473e9eaa74e820056fc107864746633f9205a"
+    ],
+    "mode": "bus",
+    "nextAction": "FOLLOW_REMAINING_PRIORITIZED_DEFICITS",
+    "priority": 1,
+    "result": "FACTS_BOUND_ADMITTED_AND_GRAPH_REPLAYED",
+    "rightsFindings": [
+      {
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "rawReuseClaimed": true,
+        "reason": "The dataset-specific page explicitly permits 2022 bus-stop open data under the current MLIT download terms, now PDL1.0 effective 2026-03-23. Preserve attribution, transformed-by notice and limitations. The excluded 2010 edition is noncommercial and is not acquired. This 2022 source combines same-operator, same-name stops on the same road and separates operators; coordinates represent a historical stop component, not a platform. No route order, current service, physical transfer or accessibility is inferred. Only explicitly reviewed feature IDs will be extracted and current operator/service evidence is mandatory.",
+        "rightsClass": "RAW_PERSISTENCE_ALLOWED",
+        "termsUrl": "https://nlftp.mlit.go.jp/ksj/other/agreement.html"
+      }
+    ],
+    "sourcesChecked": [
+      {
+        "attempt": 1,
+        "bytes": 9031560,
+        "contentSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1",
+        "contentType": "application/zip",
+        "finalUrl": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "purpose": "topology",
+        "rawPayloadRetained": true,
+        "retainedPath": "data/transport/network/sources/raw/mlit-p11-22.zip",
+        "status": 200,
+        "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip"
+      },
+      {
+        "attempt": 1,
+        "bytes": 179604,
+        "contentSha256": "977643a3566f2e625503dda8b2a8d17c7a836e7e531f48ce8786872c466d50f4",
+        "contentType": "text/html; charset=UTF-8",
+        "finalUrl": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "purpose": "topology",
+        "rawPayloadRetained": false,
+        "status": 200,
+        "url": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html"
+      },
+      {
+        "attempt": 1,
+        "bytes": 27978,
+        "contentSha256": "1590737f1c14a9a09a458f02df62050a3cfd25fd70807dfdc8a1880260e05f6d",
+        "contentType": "text/html; charset=UTF-8",
+        "finalUrl": "https://nlftp.mlit.go.jp/ksj/other/agreement.html",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "purpose": "terms",
+        "rawPayloadRetained": false,
+        "status": 200,
+        "url": "https://nlftp.mlit.go.jp/ksj/other/agreement.html"
+      }
+    ],
+    "state": "INGESTED"
+  },
+  "newAction": {
+    "actionId": "government:p11:reviewed-airport-bus-identities",
+    "affectedDeficits": [
+      "DISCONNECTED_T1",
+      "AIRPORT_SURFACE_GAP"
+    ],
+    "attempts": [
+      {
+        "attempt": 1,
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "outcome": "SOURCE_FOUND",
+        "requestSha256": "b2ebf38fbb2cfa682d0a08b0048ba229e702ff444d2a9d67a5987232c1226931",
+        "sources": [
+          {
+            "bytes": 9031560,
+            "contentSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1",
+            "contentType": "application/zip",
+            "finalUrl": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+            "purpose": "topology",
+            "rawPayloadRetained": true,
+            "retainedPath": "data/transport/network/sources/raw/mlit-p11-22.zip",
+            "status": 200,
+            "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip"
+          },
+          {
+            "bytes": 179604,
+            "contentSha256": "977643a3566f2e625503dda8b2a8d17c7a836e7e531f48ce8786872c466d50f4",
+            "contentType": "text/html; charset=UTF-8",
+            "finalUrl": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html",
+            "purpose": "topology",
+            "rawPayloadRetained": false,
+            "status": 200,
+            "url": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html"
+          },
+          {
+            "bytes": 27978,
+            "contentSha256": "1590737f1c14a9a09a458f02df62050a3cfd25fd70807dfdc8a1880260e05f6d",
+            "contentType": "text/html; charset=UTF-8",
+            "finalUrl": "https://nlftp.mlit.go.jp/ksj/other/agreement.html",
+            "purpose": "terms",
+            "rawPayloadRetained": false,
+            "status": 200,
+            "url": "https://nlftp.mlit.go.jp/ksj/other/agreement.html"
+          }
+        ]
+      }
+    ],
+    "automaticNetworkExecution": true,
+    "events": [
+      {
+        "eventSha256": "c909d4387f5ba0f179642ef3601a6cad14a2cb049c57b937244a745d075699b6",
+        "nextAction": "REVIEW_RESPONSE_AND_TERMS",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "previousEventSha256": null,
+        "previousState": "PENDING_RESEARCH",
+        "result": "REQUESTING_PRIMARY_EVIDENCE",
+        "state": "RESEARCHING"
+      },
+      {
+        "eventSha256": "3cd0005787db775cea1225a8e993b71963f7352870979dfcd34e9a8fac2ca45e",
+        "nextAction": "REVIEW_MINIMUM_FACT_AND_TERMS_SCOPE",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "previousEventSha256": "c909d4387f5ba0f179642ef3601a6cad14a2cb049c57b937244a745d075699b6",
+        "previousState": "RESEARCHING",
+        "result": "SOURCE_FOUND",
+        "state": "SOURCE_FOUND"
+      },
+      {
+        "eventSha256": "3a7f5b84ff20e92555b9b178e75b70c32aa3c22a4dc7784e3981bdb21796aa1a",
+        "nextAction": "EXTRACT_AND_BIND_MINIMAL_FACTS",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "previousEventSha256": "3cd0005787db775cea1225a8e993b71963f7352870979dfcd34e9a8fac2ca45e",
+        "previousState": "SOURCE_FOUND",
+        "result": "RAW_PERSISTENCE_ALLOWED",
+        "state": "RIGHTS_REVIEWED"
+      },
+      {
+        "eventSha256": "66f0554348e0246a9310566b9749da9a85cc35991c30bc66bd9d2ccd4a4f9664",
+        "nextAction": "FOLLOW_REMAINING_PRIORITIZED_DEFICITS",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "phaseId": "096-komatsu-municipal-direct-bus-and-reviewed-p11-gateway",
+        "phaseSha256": "98ad1415891b12b06ee2b00a6add2450c792f16e52c05b6868e696bd3ed931da",
+        "previousEventSha256": "3a7f5b84ff20e92555b9b178e75b70c32aa3c22a4dc7784e3981bdb21796aa1a",
+        "previousState": "RIGHTS_REVIEWED",
+        "result": "FACTS_BOUND_ADMITTED_AND_GRAPH_REPLAYED",
+        "state": "INGESTED"
+      }
+    ],
+    "extractedFacts": [
+      "amakusa-government-public-airport-shuttle-gateway",
+      "amakusa-shuttle-airport-to-horikiri",
+      "amakusa-shuttle-horikiri-to-airport",
+      "chofu-north-public-bus-frontage-to-existing-keio",
+      "chofu-public-terminal-frontage-to-route40",
+      "chofu40-static-airfield-to-chofu-north",
+      "chofu40-static-chofu-north-to-airfield",
+      "monbetsu-hokumon-ordinary-inbound-airport-deviation-section",
+      "monbetsu-hokumon-ordinary-outbound-airport-deviation-section",
+      "monbetsu-public-airport-to-exact-hokumon-terminal-stop",
+      "okadama-hokto-airport-to-city-2026-10-02",
+      "okadama-hokto-city-to-airport-2026-10-02",
+      "okadama-public-terminal-frontage-to-airport-liner-stop",
+      "okadama-sapporo-frontage-bus-stop-to-existing-jr-sapporo",
+      "p11-identities:06a16deb147f6c899e0721d7bdd707a14eee1efc48b5cf81b2a431d50fc061aa",
+      "p11-identities:0757efd379e591eee880ec90ed57e016119b18f4839120798858ebc689a0eac1",
+      "p11-identities:0ec507d438c540409784679bcfe69be341c8b42ba773da8ec471d0fabe51d41f",
+      "p11-identities:104299c90f6757f09c53087e2bee1a5ba1a2c6da805bf796dc861b77b7310834",
+      "p11-identities:155a9f3259033538db36dcc8c179422e87e297c2ccc9d810debcb53737d239db",
+      "p11-identities:21bbcd8b0e30ea1b96d16fd0fcf4002252ee069f94f7140a62078d74f3c6eb86",
+      "p11-identities:27c15e041443dc1ef14b4349897b25266ba1a36eac55f2a0ad8fdfa08252d7f2",
+      "p11-identities:2f7e68e86ac35376f001361f5795c2465470293cad8c1c9cddea581a5b0b6819",
+      "p11-identities:330276b912d32ab1f0f9f09082bf344d6413ed027b1b287ad715e007f092d9d9",
+      "p11-identities:39bea20e01ff91b732f511f03ae860159196bf6fc3eaa92e818d1fa644234efc",
+      "p11-identities:3a4281a1f3ae8cb9ca8e85c4a3899ae92d53fde0c4524877932d3a12793dd278",
+      "p11-identities:3e850b62e2f2c9b5d9c08567fb34981e9b6f8e22a72b711267725f2fd5de4c60",
+      "p11-identities:49cb19b1fa74d6ff2da98ded42767f10a85f09fc3d89ccd0b3fcbbbd13edd7f6",
+      "p11-identities:5502cdacc44dfc86dd2e2cf0379f9135c44c693a29e1185d7994842e9914a248",
+      "p11-identities:59f273cfe14080b6177baa8e5e072752aee36ffdd2b161fec6abcc3bf1c96371",
+      "p11-identities:60eb72eca93d718951e383a5719e26c7da6dcc2ba791e2af36335145bfd8eea4",
+      "p11-identities:7692deebd289e873fdd4f4bdd3a5522a0a81a2b34e037b6c45ae931f0147ac50",
+      "p11-identities:7926fcc18a1883cba9ebbeb1f29ec2536a9f7cc5c6377c4018ce67218c8fe7c0",
+      "p11-identities:79b4b56da64e59b2c3163ecd2288abd76bee6006faeb024700044846d6f97e6b",
+      "p11-identities:7a743500ac5c9b4b93a5c12e4b237a17715787a8c457ced2d9712dc9796ec7f0",
+      "p11-identities:7cc9aa9ff6a1f4235b0003d690db920cc45177b560096e845bafa07e95583b6a",
+      "p11-identities:89a1e1a6e2007d94afb8b657033f2d081c47c158b08c61a5c2f17ad2deebe50d",
+      "p11-identities:8c2f715a81b435e594c7d040ced53e8ec68dc1081cb6b582fddaa696d4eb53d9",
+      "p11-identities:8eb7cbc059e729292f61ce3f201c92db9799c56f875be18f368e1ca27b7a00e8",
+      "p11-identities:99ecf3279c8f0a75e70e73132a5fa9bd13dd851f9e672d7a7ce5394069e1f1be",
+      "p11-identities:a1bef09c327db464c838d0897e99dec41fe6648c00efe44add0e1dec4d8c2829",
+      "p11-identities:b0ffa5a0aeb3fe5507c7b5d1a27d170c58f3605bc7f7c1f456cd4f114567e2bb",
+      "p11-identities:b1d54330abcefaf060bfccafcf0670e22ff25f51a615879d00c18c014e51a361",
+      "p11-identities:b53edf3897ea357398f866574ce846dcc947cfa5ed1e22790453db48a0c3a512",
+      "p11-identities:bb652377df4bcc9839c0ace7b367530e8d03242ea24fda2d97891a7f8b52aadb",
+      "p11-identities:bc1720ffa10a808c53f03fe8aa0cdeee59b783bf043daa227750fd5d89cc8266",
+      "p11-identities:c631d3c52097ef72f26cdb2545928516190aaf696e1362e6ffb019fbb155ce77",
+      "p11-identities:cb371ec82bc7b7166f5e591977a63633ff639dbdb7e98ffad94401c9405bcf4e",
+      "p11-identities:ce46ece41813810a9d5e72fb1c681fc4a718ef775fbca976541875ee00b0ad03",
+      "p11-identities:db95806c4f3192a3eef9a9676a1898ee1d3238a3926f4dbe319b3ca8c36d4deb",
+      "p11-identities:f532cf9c9f4fd5f84ab374a7a5885a4dd280bfc536d5f04ec7527a7f1ecbfcd9",
+      "p11-identities:f5af71e79b5a2350ff22846dc39473e9eaa74e820056fc107864746633f9205a"
+    ],
+    "mode": "bus",
+    "nextAction": "FOLLOW_REMAINING_PRIORITIZED_DEFICITS",
+    "priority": 1,
+    "result": "FACTS_BOUND_ADMITTED_AND_GRAPH_REPLAYED",
+    "rightsFindings": [
+      {
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "rawReuseClaimed": true,
+        "reason": "The dataset-specific page explicitly permits 2022 bus-stop open data under the current MLIT download terms, now PDL1.0 effective 2026-03-23. Preserve attribution, transformed-by notice and limitations. The excluded 2010 edition is noncommercial and is not acquired. This 2022 source combines same-operator, same-name stops on the same road and separates operators; coordinates represent a historical stop component, not a platform. No route order, current service, physical transfer or accessibility is inferred. Only explicitly reviewed feature IDs will be extracted and current operator/service evidence is mandatory.",
+        "rightsClass": "RAW_PERSISTENCE_ALLOWED",
+        "termsUrl": "https://nlftp.mlit.go.jp/ksj/other/agreement.html"
+      }
+    ],
+    "sourcesChecked": [
+      {
+        "attempt": 1,
+        "bytes": 9031560,
+        "contentSha256": "e74da3736c56ddeb1f47c18d6e5f373f40fa7f3c7d695593029e8ac7a7f790d1",
+        "contentType": "application/zip",
+        "finalUrl": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "purpose": "topology",
+        "rawPayloadRetained": true,
+        "retainedPath": "data/transport/network/sources/raw/mlit-p11-22.zip",
+        "status": 200,
+        "url": "https://nlftp.mlit.go.jp/ksj/gml/data/P11/P11-22/P11-22_GML.zip"
+      },
+      {
+        "attempt": 1,
+        "bytes": 179604,
+        "contentSha256": "977643a3566f2e625503dda8b2a8d17c7a836e7e531f48ce8786872c466d50f4",
+        "contentType": "text/html; charset=UTF-8",
+        "finalUrl": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "purpose": "topology",
+        "rawPayloadRetained": false,
+        "status": 200,
+        "url": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-P11-v3_0.html"
+      },
+      {
+        "attempt": 1,
+        "bytes": 27978,
+        "contentSha256": "1590737f1c14a9a09a458f02df62050a3cfd25fd70807dfdc8a1880260e05f6d",
+        "contentType": "text/html; charset=UTF-8",
+        "finalUrl": "https://nlftp.mlit.go.jp/ksj/other/agreement.html",
+        "observedAt": "2026-10-01T12:04:58.730Z",
+        "purpose": "terms",
+        "rawPayloadRetained": false,
+        "status": 200,
+        "url": "https://nlftp.mlit.go.jp/ksj/other/agreement.html"
+      }
+    ],
+    "state": "INGESTED"
+  },
+  "oldActionsSha256": "bd1951da420cbb8573fbd62fa26fc9eafdfb31d3fe7b8c3eca30d8780a5dccfd",
+  "newActionsSha256": "4d1ec27bcbcc21cd8c85f23988da72a2df569a04083a6545e5ce79191131eecf",
+  "reviewBindings": [
+    "source:national-stopping-patterns",
+    "service:shinkansen-continuity",
+    "service:major-rail-private-metro"
+  ]
+}

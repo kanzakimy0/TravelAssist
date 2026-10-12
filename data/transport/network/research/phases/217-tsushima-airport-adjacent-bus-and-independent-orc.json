@@ -1,0 +1,478 @@
+{
+  "phaseId": "217-tsushima-airport-adjacent-bus-and-independent-orc",
+  "strategy": [
+    "ORIGINAL_REQUIRED_ONLY",
+    "EXACT_NATIVE_P11",
+    "SEPARATE_ACTUAL_DIRECTIONS",
+    "MINIMUM_INDEPENDENT_FACTS"
+  ],
+  "completedActionIds": [
+    "bus:tsushima:independent-city-table-omitted-airport-entrance",
+    "airport:tsushima:independent-nagasaki-actual-orc",
+    "transfer:tsushima:independent-public-terminal-bus-interface"
+  ],
+  "facts": [
+    {
+      "factId": "tsushima-airport-entrance-direction-0",
+      "kind": "service",
+      "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+      "sourceUrl": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/20260731-.pdf",
+      "observedResponseSha256": "3f83a147ca76bb8a18ea2fe844f138a05bcc1a2d3ed2db903a1c21b667dc6f23",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+          "url": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/20260731-.pdf",
+          "observedResponseSha256": "3f83a147ca76bb8a18ea2fe844f138a05bcc1a2d3ed2db903a1c21b667dc6f23"
+        },
+        {
+          "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+          "url": "https://tsushima-busan.or.kr/?b_uid=98376&board_id=qna&folder=bbs&page=view&s_key=&s_value=",
+          "observedResponseSha256": "100bb3c57d82fa603d23a50068d6c17dc7abae0eb52166080ea7eb4796d0867b"
+        },
+        {
+          "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+          "url": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/chiikikoukyoukoutuukeikakugaiyou1.pdf",
+          "observedResponseSha256": "cfbeac63908567e9384a4bbd8db03eb25a91c2d487008c70fe5ae26204a92e5c"
+        },
+        {
+          "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+          "url": "https://www.city.tsushima.nagasaki.jp/gyousei/soshiki/shimadukuri/chiiki/koukyoukoutu/6536.html",
+          "observedResponseSha256": "fdd8f26f705449bdf51ec8b1c05b514b1c42ff5ada268308b79085401be2b315"
+        },
+        {
+          "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+          "url": "https://tsushima-busan.or.kr/?folder=sub&page=sub0101",
+          "observedResponseSha256": "384c19d0e3c0192cbfca2fe6ea142c683590afde8c655e38117dc6bc3408ed60"
+        }
+      ],
+      "operator": "対馬交通（株）",
+      "line": "対馬空港線・空港接続区間",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "airport-entrance-to-airport",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Static directional local service. Current municipality-linked July2026 operator table provides independent trips;2023 reply and municipal route7 identify omitted entrance call. No clocks/fares or guaranteed operation. Direction-specific poles exist; their individual geometries and interchange are not modeled by this named-stop representative. National witnesses start/end here without an opposite-pole transfer.",
+      "callingStations": [
+        "空港入口",
+        "対馬やまねこ空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "空港入口",
+          "operator": "対馬交通（株）",
+          "line": "p11-stop:P11-22_42:bs730",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs730",
+            "recordSha256": "cfef6f5a16066c14f8e86904ab4c981ff1d9eed4d1a19d0244cfcbdd7b733f8a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 named road-stop representative; not a physical directional pole. Public office reply distinguishes opposing poles: no walk, cross-road transfer, precise platform coordinate, or station-exit location inferred. Different bus directions separately source-bound.",
+            "currentOperatorEvidence": {
+              "recordOperator": "対馬交通（株）",
+              "currentOperatorName": "対馬交通（株）",
+              "currentStopName": "空港入口",
+              "historicalRoute": "縦貫線・仁位線・赤島線・犬吠線・空港線・ケ※知線・病院線・高校線",
+              "url": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/20260731-.pdf",
+              "observedResponseSha256": "3f83a147ca76bb8a18ea2fe844f138a05bcc1a2d3ed2db903a1c21b667dc6f23"
+            }
+          }
+        },
+        {
+          "name": "対馬やまねこ空港",
+          "operator": "対馬交通（株）",
+          "line": "p11-stop:P11-22_42:bs723",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs723",
+            "recordSha256": "ef2f49600b96cfd7d8a2f4efd3ac4c0554972565119feb6c8af7cf623ed64cc7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 named road-stop representative; not a physical directional pole. Public office reply distinguishes opposing poles: no walk, cross-road transfer, precise platform coordinate, or station-exit location inferred. Different bus directions separately source-bound.",
+            "currentOperatorEvidence": {
+              "recordOperator": "対馬交通（株）",
+              "currentOperatorName": "対馬交通（株）",
+              "currentStopName": "対馬やまねこ空港",
+              "historicalRoute": "縦貫線・仁位線・赤島線・犬吠線・空港線・ケ※知線・病院線・高校線",
+              "url": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/20260731-.pdf",
+              "observedResponseSha256": "3f83a147ca76bb8a18ea2fe844f138a05bcc1a2d3ed2db903a1c21b667dc6f23"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Municipality published operator table physical2 rows7/8 independently records airport-bound route7 from hospital. Municipal route7 definition hospital via airport entrance to airport plus official reply confirms entrance stops despite omitted clock column. No reverse-trip invention.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clocks, fares, frequencies or guaranteed operation persisted."
+    },
+    {
+      "factId": "tsushima-airport-entrance-direction-1",
+      "kind": "service",
+      "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+      "sourceUrl": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/20260731-.pdf",
+      "observedResponseSha256": "3f83a147ca76bb8a18ea2fe844f138a05bcc1a2d3ed2db903a1c21b667dc6f23",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+          "url": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/20260731-.pdf",
+          "observedResponseSha256": "3f83a147ca76bb8a18ea2fe844f138a05bcc1a2d3ed2db903a1c21b667dc6f23"
+        },
+        {
+          "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+          "url": "https://tsushima-busan.or.kr/?b_uid=98376&board_id=qna&folder=bbs&page=view&s_key=&s_value=",
+          "observedResponseSha256": "100bb3c57d82fa603d23a50068d6c17dc7abae0eb52166080ea7eb4796d0867b"
+        },
+        {
+          "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+          "url": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/chiikikoukyoukoutuukeikakugaiyou1.pdf",
+          "observedResponseSha256": "cfbeac63908567e9384a4bbd8db03eb25a91c2d487008c70fe5ae26204a92e5c"
+        },
+        {
+          "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+          "url": "https://www.city.tsushima.nagasaki.jp/gyousei/soshiki/shimadukuri/chiiki/koukyoukoutu/6536.html",
+          "observedResponseSha256": "fdd8f26f705449bdf51ec8b1c05b514b1c42ff5ada268308b79085401be2b315"
+        },
+        {
+          "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+          "url": "https://tsushima-busan.or.kr/?folder=sub&page=sub0101",
+          "observedResponseSha256": "384c19d0e3c0192cbfca2fe6ea142c683590afde8c655e38117dc6bc3408ed60"
+        }
+      ],
+      "operator": "対馬交通（株）",
+      "line": "対馬空港線・空港接続区間",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "airport-to-airport-entrance",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "Static directional local service. Current municipality-linked July2026 operator table provides independent trips;2023 reply and municipal route7 identify omitted entrance call. No clocks/fares or guaranteed operation. Direction-specific poles exist; their individual geometries and interchange are not modeled by this named-stop representative. National witnesses start/end here without an opposite-pole transfer.",
+      "callingStations": [
+        "対馬やまねこ空港",
+        "空港入口"
+      ],
+      "callingComponents": [
+        {
+          "name": "対馬やまねこ空港",
+          "operator": "対馬交通（株）",
+          "line": "p11-stop:P11-22_42:bs723",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs723",
+            "recordSha256": "ef2f49600b96cfd7d8a2f4efd3ac4c0554972565119feb6c8af7cf623ed64cc7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 named road-stop representative; not a physical directional pole. Public office reply distinguishes opposing poles: no walk, cross-road transfer, precise platform coordinate, or station-exit location inferred. Different bus directions separately source-bound.",
+            "currentOperatorEvidence": {
+              "recordOperator": "対馬交通（株）",
+              "currentOperatorName": "対馬交通（株）",
+              "currentStopName": "対馬やまねこ空港",
+              "historicalRoute": "縦貫線・仁位線・赤島線・犬吠線・空港線・ケ※知線・病院線・高校線",
+              "url": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/20260731-.pdf",
+              "observedResponseSha256": "3f83a147ca76bb8a18ea2fe844f138a05bcc1a2d3ed2db903a1c21b667dc6f23"
+            }
+          }
+        },
+        {
+          "name": "空港入口",
+          "operator": "対馬交通（株）",
+          "line": "p11-stop:P11-22_42:bs730",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs730",
+            "recordSha256": "cfef6f5a16066c14f8e86904ab4c981ff1d9eed4d1a19d0244cfcbdd7b733f8a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 named road-stop representative; not a physical directional pole. Public office reply distinguishes opposing poles: no walk, cross-road transfer, precise platform coordinate, or station-exit location inferred. Different bus directions separately source-bound.",
+            "currentOperatorEvidence": {
+              "recordOperator": "対馬交通（株）",
+              "currentOperatorName": "対馬交通（株）",
+              "currentStopName": "空港入口",
+              "historicalRoute": "縦貫線・仁位線・赤島線・犬吠線・空港線・ケ※知線・病院線・高校線",
+              "url": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/20260731-.pdf",
+              "observedResponseSha256": "3f83a147ca76bb8a18ea2fe844f138a05bcc1a2d3ed2db903a1c21b667dc6f23"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Municipality published operator table physical5 independently records airport-origin runs. Representative-office reply explicitly gives airport then airport entrance; municipal route7 identifies intermediate entrance.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS; no clocks, fares, frequencies or guaranteed operation persisted."
+    },
+    {
+      "factId": "tsushima-orc-independent-direction-0",
+      "kind": "service",
+      "sourceActionId": "airport:tsushima:independent-nagasaki-actual-orc",
+      "sourceUrl": "https://nagasaki-airport.jp/flight/timetable/",
+      "observedResponseSha256": "a430492e075081ad57f8f64ea17dfba7d10a202703efbdf34a1f1b21173b4712",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:tsushima:independent-nagasaki-actual-orc",
+          "url": "https://nagasaki-airport.jp/flight/timetable/",
+          "observedResponseSha256": "a430492e075081ad57f8f64ea17dfba7d10a202703efbdf34a1f1b21173b4712"
+        }
+      ],
+      "operator": "ORC",
+      "line": "長崎・対馬国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "NGS-TSJ",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_2026_OCTOBER_01_TO_24_STATIC_RELATION_NOT_REALTIME",
+      "callingStations": [
+        "長崎空港",
+        "対馬空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "長崎空港",
+          "operator": "airport-facility:cf03_00001",
+          "line": "airport:cf03_00001",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00001",
+            "requirementId": "review:transport-node:948a4f5d-b386-5d98-84ab-af69c9818a84",
+            "expectedRequirementName": "長崎",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Reuse admitted Nagasaki airport and its existing national public connections. No new interchange assertion."
+          }
+        },
+        {
+          "name": "対馬空港",
+          "operator": "airport-facility:cf03_00042",
+          "line": "airport:cf03_00042",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00042",
+            "requirementId": "review:transport-node:39e6b0c8-2983-5164-8f62-1c99a5441665",
+            "expectedRequirementName": "対馬",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "C28 exact airport reference. Independent current municipality bus publication, municipal airport bus pole photograph, firsthand terminal exit report, and Nagasaki Airport own current actual ORC flight table support passenger use. Coarse whole airport only; no precise door coordinate."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "対馬",
+          "canonicalAirportName": "対馬空港",
+          "referencePointId": "cf03_00042"
+        },
+        {
+          "sourceName": "長崎",
+          "canonicalAirportName": "長崎空港",
+          "referencePointId": "cf03_00001"
+        }
+      ],
+      "locator": "Cached Nagasaki Airport ownOctober1–24 table separate 長崎発→対馬着 ORC51 with explicit ORC equipment/crew note. No reversed flight or codeshare duplication."
+    },
+    {
+      "factId": "tsushima-orc-independent-direction-1",
+      "kind": "service",
+      "sourceActionId": "airport:tsushima:independent-nagasaki-actual-orc",
+      "sourceUrl": "https://nagasaki-airport.jp/flight/timetable/",
+      "observedResponseSha256": "a430492e075081ad57f8f64ea17dfba7d10a202703efbdf34a1f1b21173b4712",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:tsushima:independent-nagasaki-actual-orc",
+          "url": "https://nagasaki-airport.jp/flight/timetable/",
+          "observedResponseSha256": "a430492e075081ad57f8f64ea17dfba7d10a202703efbdf34a1f1b21173b4712"
+        }
+      ],
+      "operator": "ORC",
+      "line": "長崎・対馬国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "TSJ-NGS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_2026_OCTOBER_01_TO_24_STATIC_RELATION_NOT_REALTIME",
+      "callingStations": [
+        "対馬空港",
+        "長崎空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "対馬空港",
+          "operator": "airport-facility:cf03_00042",
+          "line": "airport:cf03_00042",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00042",
+            "requirementId": "review:transport-node:39e6b0c8-2983-5164-8f62-1c99a5441665",
+            "expectedRequirementName": "対馬",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "C28 exact airport reference. Independent current municipality bus publication, municipal airport bus pole photograph, firsthand terminal exit report, and Nagasaki Airport own current actual ORC flight table support passenger use. Coarse whole airport only; no precise door coordinate."
+          }
+        },
+        {
+          "name": "長崎空港",
+          "operator": "airport-facility:cf03_00001",
+          "line": "airport:cf03_00001",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00001",
+            "requirementId": "review:transport-node:948a4f5d-b386-5d98-84ab-af69c9818a84",
+            "expectedRequirementName": "長崎",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Reuse admitted Nagasaki airport and its existing national public connections. No new interchange assertion."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewedAirportCodeBindings": [
+        {
+          "sourceName": "対馬",
+          "canonicalAirportName": "対馬空港",
+          "referencePointId": "cf03_00042"
+        },
+        {
+          "sourceName": "長崎",
+          "canonicalAirportName": "長崎空港",
+          "referencePointId": "cf03_00001"
+        }
+      ],
+      "locator": "Cached Nagasaki Airport ownOctober1–24 table separate 対馬発→長崎着 ORC52 with explicit ORC equipment/crew note. No reversed flight or codeshare duplication."
+    },
+    {
+      "factId": "tsushima-terminal-public-exit-named-bus",
+      "kind": "transfer",
+      "sourceActionId": "transfer:tsushima:independent-public-terminal-bus-interface",
+      "sourceUrl": "https://bewave.jp/iki-tsushima/access/tsushima-airport.html",
+      "observedResponseSha256": "84c981f3a428ab743961007ee7088ecb7954f4ca4ce67b7698326d90b7dcd854",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:tsushima:independent-public-terminal-bus-interface",
+          "url": "https://bewave.jp/iki-tsushima/access/tsushima-airport.html",
+          "observedResponseSha256": "84c981f3a428ab743961007ee7088ecb7954f4ca4ce67b7698326d90b7dcd854"
+        },
+        {
+          "sourceActionId": "transfer:tsushima:independent-public-terminal-bus-interface",
+          "url": "https://bewave.jp/company/",
+          "observedResponseSha256": "53c62af505a32f9b2b9f64239796c3095a3d2a6edb5e9072a5c137688a15a852"
+        },
+        {
+          "sourceActionId": "transfer:tsushima:independent-public-terminal-bus-interface",
+          "url": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/chiikikoukyoukoutuukeikakugaiyou1.pdf",
+          "observedResponseSha256": "cfbeac63908567e9384a4bbd8db03eb25a91c2d487008c70fe5ae26204a92e5c"
+        },
+        {
+          "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+          "url": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/20260731-.pdf",
+          "observedResponseSha256": "3f83a147ca76bb8a18ea2fe844f138a05bcc1a2d3ed2db903a1c21b667dc6f23"
+        },
+        {
+          "sourceActionId": "bus:tsushima:independent-city-table-omitted-airport-entrance",
+          "url": "https://tsushima-busan.or.kr/?b_uid=98376&board_id=qna&folder=bbs&page=view&s_key=&s_value=",
+          "observedResponseSha256": "100bb3c57d82fa603d23a50068d6c17dc7abae0eb52166080ea7eb4796d0867b"
+        }
+      ],
+      "components": [
+        {
+          "name": "対馬空港",
+          "operator": "airport-facility:cf03_00042",
+          "line": "airport:cf03_00042",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00042",
+            "requirementId": "review:transport-node:39e6b0c8-2983-5164-8f62-1c99a5441665",
+            "expectedRequirementName": "対馬",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "C28 exact airport reference. Independent current municipality bus publication, municipal airport bus pole photograph, firsthand terminal exit report, and Nagasaki Airport own current actual ORC flight table support passenger use. Coarse whole airport only; no precise door coordinate."
+          }
+        },
+        {
+          "name": "対馬やまねこ空港",
+          "operator": "対馬交通（株）",
+          "line": "p11-stop:P11-22_42:bs723",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_42:bs723",
+            "recordSha256": "ef2f49600b96cfd7d8a2f4efd3ac4c0554972565119feb6c8af7cf623ed64cc7",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same-operator P11 named road-stop representative; not a physical directional pole. Public office reply distinguishes opposing poles: no walk, cross-road transfer, precise platform coordinate, or station-exit location inferred. Different bus directions separately source-bound.",
+            "currentOperatorEvidence": {
+              "recordOperator": "対馬交通（株）",
+              "currentOperatorName": "対馬交通（株）",
+              "currentStopName": "対馬やまねこ空港",
+              "historicalRoute": "縦貫線・仁位線・赤島線・犬吠線・空港線・ケ※知線・病院線・高校線",
+              "url": "https://www.city.tsushima.nagasaki.jp/material/files/group/65/20260731-.pdf",
+              "observedResponseSha256": "3f83a147ca76bb8a18ea2fe844f138a05bcc1a2d3ed2db903a1c21b667dc6f23"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "reviewMethod": "INDEPENDENT_FIRSTHAND_PUBLIC_EXIT_WITH_MUNICIPAL_NAMED_STOP_CORROBORATION",
+      "locator": "Independent travel company firsthand2021 report describes public terminal exit and bus stop outside same exit. Municipal2024 plan physical35 independently photographs named airport bus pole. Coarse public landside interchange, not security-area re-entry or precise doorway.",
+      "publicAccessReview": "General public landside terminal entrance and named bus stop. No road-proximity-only inference, airport apron access, dedicated hotel/customer service, or wheelchair accessibility claim."
+    }
+  ],
+  "scope": {
+    "status": "ROOT_AND_INDEPENDENT_REVIEWED_BOUNDED_FACTS",
+    "originalAirport": "review:transport-node:39e6b0c8-2983-5164-8f62-1c99a5441665",
+    "newNecessaryStops": 2,
+    "expectedDirectedEdges": 6,
+    "physicalPoleTransferClaim": false
+  }
+}

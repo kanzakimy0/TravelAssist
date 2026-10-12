@@ -1,0 +1,684 @@
+{
+  "phaseId": "115-five-kagoshima-island-airports-prefectural-actual-carriers",
+  "strategy": [
+    "INDEPENDENT_CURRENT_AIRPORT_DIRECTIONAL_RELATIONS",
+    "PREFECTURAL_ACTUAL_CARRIER_REVIEW_WITH_EXPLICIT_SNAPSHOT_DATES",
+    "EXCLUDE_CODESHARE_AND_SURFACE_INFERENCES"
+  ],
+  "completedActionIds": [
+    "flight:kagoshima-airport:five-current-island-directional-pairs",
+    "airport:kagoshima-prefecture:five-island-actual-carrier-review"
+  ],
+  "facts": [
+    {
+      "factId": "kagoshima-october-2026-tne-d",
+      "kind": "service",
+      "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+      "sourceUrl": "https://www.koj-ab.co.jp/flight/monthly/tne_d.html",
+      "observedResponseSha256": "74cc97937a0c1fbed9bafab4ce6bac27816c117182bcfa4fd4ffafcb6660118d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/tane-kyoyokitei2.html",
+          "observedResponseSha256": "241a28c5781b25e33dab7c991a03e69e6292eaf0a92041e1ef23942136693196"
+        },
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ap01/chiiki/kumage/chiiki/documents/127405_20260327232612-1.pdf",
+          "observedResponseSha256": "bc1ec6180fcbf4f08b500f6d3b0007a79e503a6b0eabbed52d76df4570242f8c"
+        },
+        {
+          "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+          "url": "https://www.koj-ab.co.jp/flight/monthly/tne_a.html",
+          "observedResponseSha256": "687252d30bb342e3293b1961dfa1dfbb3f8140899edd85b6e544609aec818833"
+        }
+      ],
+      "locator": "Current airport-owned October 1-24 2026 departure page independently confirms the selected directed route. PDF p5 printed p48; report published March 2026, route table at 2025-12-31 explicitly binds JAC to both directions. Current May 2026 prefectural airport service page and current October airport rows corroborate operation. Seasonal Osaka service excluded. Current monthly tables and government carrier-route descriptions are combined at static route level; no frequency, clock, equipment or complete timetable retained. ANA codeshare rows do not create separate edges.",
+      "line": "種子島・鹿児島国内線",
+      "operator": "日本エアコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "鹿児島空港→種子島空港",
+      "callingStations": [
+        "鹿児島空港",
+        "種子島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        },
+        {
+          "name": "種子島空港",
+          "operator": "airport-facility:cf03_00047",
+          "line": "airport:cf03_00047",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00047",
+            "requirementId": "review:transport-node:ad51382d-7bfc-54da-9496-9d5d86a7bbfe",
+            "expectedRequirementName": "種子島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_RELATION_WITH_PREFECTURAL_ACTUAL_CARRIER",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_ROUTE_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "kagoshima-october-2026-tne-a",
+      "kind": "service",
+      "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+      "sourceUrl": "https://www.koj-ab.co.jp/flight/monthly/tne_a.html",
+      "observedResponseSha256": "687252d30bb342e3293b1961dfa1dfbb3f8140899edd85b6e544609aec818833",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/tane-kyoyokitei2.html",
+          "observedResponseSha256": "241a28c5781b25e33dab7c991a03e69e6292eaf0a92041e1ef23942136693196"
+        },
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ap01/chiiki/kumage/chiiki/documents/127405_20260327232612-1.pdf",
+          "observedResponseSha256": "bc1ec6180fcbf4f08b500f6d3b0007a79e503a6b0eabbed52d76df4570242f8c"
+        },
+        {
+          "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+          "url": "https://www.koj-ab.co.jp/flight/monthly/tne_d.html",
+          "observedResponseSha256": "74cc97937a0c1fbed9bafab4ce6bac27816c117182bcfa4fd4ffafcb6660118d"
+        }
+      ],
+      "locator": "Current airport-owned October 1-24 2026 arrival page independently confirms the selected directed route. PDF p5 printed p48; report published March 2026, route table at 2025-12-31 explicitly binds JAC to both directions. Current May 2026 prefectural airport service page and current October airport rows corroborate operation. Seasonal Osaka service excluded. Current monthly tables and government carrier-route descriptions are combined at static route level; no frequency, clock, equipment or complete timetable retained. ANA codeshare rows do not create separate edges.",
+      "line": "種子島・鹿児島国内線",
+      "operator": "日本エアコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "種子島空港→鹿児島空港",
+      "callingStations": [
+        "種子島空港",
+        "鹿児島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "種子島空港",
+          "operator": "airport-facility:cf03_00047",
+          "line": "airport:cf03_00047",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00047",
+            "requirementId": "review:transport-node:ad51382d-7bfc-54da-9496-9d5d86a7bbfe",
+            "expectedRequirementName": "種子島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        },
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_RELATION_WITH_PREFECTURAL_ACTUAL_CARRIER",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_ROUTE_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "kagoshima-october-2026-kum-d",
+      "kind": "service",
+      "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+      "sourceUrl": "https://www.koj-ab.co.jp/flight/monthly/kum_d.html",
+      "observedResponseSha256": "15d852d54dccc24236017b927ce8af339af456a9309766e94d3ffed487f72fa4",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/yaku-kyoyokitei2.html",
+          "observedResponseSha256": "5cd3de5bd2fee083dc36f705406119a7c1e033f7a3e4858d958eb197f7c31561"
+        },
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ap01/chiiki/kumage/chiiki/documents/127405_20260327232612-1.pdf",
+          "observedResponseSha256": "bc1ec6180fcbf4f08b500f6d3b0007a79e503a6b0eabbed52d76df4570242f8c"
+        },
+        {
+          "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+          "url": "https://www.koj-ab.co.jp/flight/monthly/kum_a.html",
+          "observedResponseSha256": "9cfb9d2e31e1d8eb7b7ebff3bbcb5a5eea81614eba95c4a84ac852edb8e84b3e"
+        }
+      ],
+      "locator": "Current airport-owned October 1-24 2026 departure page independently confirms the selected directed route. PDF p5 printed p48 and current May 2026 prefectural airport service section 4(4)-(5) bind JAC to the route. Current monthly tables and government carrier-route descriptions are combined at static route level; no frequency, clock, equipment or complete timetable retained. ANA codeshare rows do not create separate edges.",
+      "line": "屋久島・鹿児島国内線",
+      "operator": "日本エアコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "鹿児島空港→屋久島空港",
+      "callingStations": [
+        "鹿児島空港",
+        "屋久島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        },
+        {
+          "name": "屋久島空港",
+          "operator": "airport-facility:cf03_00048",
+          "line": "airport:cf03_00048",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00048",
+            "requirementId": "review:transport-node:e498a8df-df5a-5533-8cc0-7289ef679061",
+            "expectedRequirementName": "屋久島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_RELATION_WITH_PREFECTURAL_ACTUAL_CARRIER",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_ROUTE_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "kagoshima-october-2026-kum-a",
+      "kind": "service",
+      "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+      "sourceUrl": "https://www.koj-ab.co.jp/flight/monthly/kum_a.html",
+      "observedResponseSha256": "9cfb9d2e31e1d8eb7b7ebff3bbcb5a5eea81614eba95c4a84ac852edb8e84b3e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/yaku-kyoyokitei2.html",
+          "observedResponseSha256": "5cd3de5bd2fee083dc36f705406119a7c1e033f7a3e4858d958eb197f7c31561"
+        },
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ap01/chiiki/kumage/chiiki/documents/127405_20260327232612-1.pdf",
+          "observedResponseSha256": "bc1ec6180fcbf4f08b500f6d3b0007a79e503a6b0eabbed52d76df4570242f8c"
+        },
+        {
+          "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+          "url": "https://www.koj-ab.co.jp/flight/monthly/kum_d.html",
+          "observedResponseSha256": "15d852d54dccc24236017b927ce8af339af456a9309766e94d3ffed487f72fa4"
+        }
+      ],
+      "locator": "Current airport-owned October 1-24 2026 arrival page independently confirms the selected directed route. PDF p5 printed p48 and current May 2026 prefectural airport service section 4(4)-(5) bind JAC to the route. Current monthly tables and government carrier-route descriptions are combined at static route level; no frequency, clock, equipment or complete timetable retained. ANA codeshare rows do not create separate edges.",
+      "line": "屋久島・鹿児島国内線",
+      "operator": "日本エアコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "屋久島空港→鹿児島空港",
+      "callingStations": [
+        "屋久島空港",
+        "鹿児島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "屋久島空港",
+          "operator": "airport-facility:cf03_00048",
+          "line": "airport:cf03_00048",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00048",
+            "requirementId": "review:transport-node:e498a8df-df5a-5533-8cc0-7289ef679061",
+            "expectedRequirementName": "屋久島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        },
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_RELATION_WITH_PREFECTURAL_ACTUAL_CARRIER",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_ROUTE_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "kagoshima-october-2026-asj-d",
+      "kind": "service",
+      "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+      "sourceUrl": "https://www.koj-ab.co.jp/flight/monthly/asj_d.html",
+      "observedResponseSha256": "2ac3a9e7cb8b2e6fdf132f787c0d0eb5d6da8c364000bcc4e980c83494e6efb8",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/ama-kyoyokitei2.html",
+          "observedResponseSha256": "3d3aa7221cebfd7fe72185fbf0ba6cf9147b2c7f209ae12e0b8dbf4a38963bcc"
+        },
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/aq01/chiiki/oshima/chiiki/zeniki/gaikyou/documents/127876_20260423151440-1.pdf",
+          "observedResponseSha256": "fd8fd0f3be8174a35e66ab67ebf3c6e23d2b38a55b36debbc7207920d8a420b3"
+        },
+        {
+          "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+          "url": "https://www.koj-ab.co.jp/flight/monthly/asj_a.html",
+          "observedResponseSha256": "568eaa465089d3934c74fb165fca3994f17fff3b7c33f6332cab9d5770b16a2c"
+        }
+      ],
+      "locator": "Current airport-owned October 1-24 2026 departure page independently confirms the selected directed route. Current monthly airport rows SKY381 outward and SKY382 inward independently identify Skymark; prefectural report p3/p5 corroborates actual carrier. Malformed Naha ASJ arrival data is not used. Current monthly tables and government carrier-route descriptions are combined at static route level; no frequency, clock, equipment or complete timetable retained. ANA codeshare rows do not create separate edges.",
+      "line": "奄美・鹿児島国内線",
+      "operator": "スカイマーク",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "鹿児島空港→奄美空港",
+      "callingStations": [
+        "鹿児島空港",
+        "奄美空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        },
+        {
+          "name": "奄美空港",
+          "operator": "airport-facility:cf03_00098",
+          "line": "airport:cf03_00098",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00098",
+            "requirementId": "review:transport-node:32b1a4f3-8e41-5a10-9ac5-ce2d7ab08e03",
+            "expectedRequirementName": "奄美",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_RELATION_WITH_PREFECTURAL_ACTUAL_CARRIER",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_ROUTE_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "kagoshima-october-2026-asj-a",
+      "kind": "service",
+      "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+      "sourceUrl": "https://www.koj-ab.co.jp/flight/monthly/asj_a.html",
+      "observedResponseSha256": "568eaa465089d3934c74fb165fca3994f17fff3b7c33f6332cab9d5770b16a2c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/ama-kyoyokitei2.html",
+          "observedResponseSha256": "3d3aa7221cebfd7fe72185fbf0ba6cf9147b2c7f209ae12e0b8dbf4a38963bcc"
+        },
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/aq01/chiiki/oshima/chiiki/zeniki/gaikyou/documents/127876_20260423151440-1.pdf",
+          "observedResponseSha256": "fd8fd0f3be8174a35e66ab67ebf3c6e23d2b38a55b36debbc7207920d8a420b3"
+        },
+        {
+          "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+          "url": "https://www.koj-ab.co.jp/flight/monthly/asj_d.html",
+          "observedResponseSha256": "2ac3a9e7cb8b2e6fdf132f787c0d0eb5d6da8c364000bcc4e980c83494e6efb8"
+        }
+      ],
+      "locator": "Current airport-owned October 1-24 2026 arrival page independently confirms the selected directed route. Current monthly airport rows SKY381 outward and SKY382 inward independently identify Skymark; prefectural report p3/p5 corroborates actual carrier. Malformed Naha ASJ arrival data is not used. Current monthly tables and government carrier-route descriptions are combined at static route level; no frequency, clock, equipment or complete timetable retained. ANA codeshare rows do not create separate edges.",
+      "line": "奄美・鹿児島国内線",
+      "operator": "スカイマーク",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "奄美空港→鹿児島空港",
+      "callingStations": [
+        "奄美空港",
+        "鹿児島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "奄美空港",
+          "operator": "airport-facility:cf03_00098",
+          "line": "airport:cf03_00098",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00098",
+            "requirementId": "review:transport-node:32b1a4f3-8e41-5a10-9ac5-ce2d7ab08e03",
+            "expectedRequirementName": "奄美",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        },
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_RELATION_WITH_PREFECTURAL_ACTUAL_CARRIER",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_ROUTE_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "kagoshima-october-2026-kkx-d",
+      "kind": "service",
+      "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+      "sourceUrl": "https://www.koj-ab.co.jp/flight/monthly/kkx_d.html",
+      "observedResponseSha256": "5626daa55eabf0c11fb23a13e209d0bb0a8acabe54a461596e1b1c18ecd7b9d6",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/ki-kyoyokitei2.html",
+          "observedResponseSha256": "d7e417ff28f3e41953b0695a2cd73aed054489852d041ed5eb47cb74b55da418"
+        },
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/aq01/chiiki/oshima/chiiki/zeniki/gaikyou/documents/127876_20260423151440-1.pdf",
+          "observedResponseSha256": "fd8fd0f3be8174a35e66ab67ebf3c6e23d2b38a55b36debbc7207920d8a420b3"
+        },
+        {
+          "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+          "url": "https://www.koj-ab.co.jp/flight/monthly/kkx_a.html",
+          "observedResponseSha256": "568eccc47c22eac0ca333f079440cd1f5e00e6e307f93c3beb734eb4740dc939"
+        }
+      ],
+      "locator": "Current airport-owned October 1-24 2026 departure page independently confirms the selected directed route. Prefectural airport service section 4(4)-(5) identifies JAC as the sole carrier and Kagoshima route; 2026 report p3/p5 corroborates both directions. Current monthly tables and government carrier-route descriptions are combined at static route level; no frequency, clock, equipment or complete timetable retained. ANA codeshare rows do not create separate edges.",
+      "line": "喜界・鹿児島国内線",
+      "operator": "日本エアコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "鹿児島空港→喜界空港",
+      "callingStations": [
+        "鹿児島空港",
+        "喜界空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        },
+        {
+          "name": "喜界空港",
+          "operator": "airport-facility:cf03_00086",
+          "line": "airport:cf03_00086",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00086",
+            "requirementId": "review:official-airport:喜界",
+            "expectedRequirementName": "喜界",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_RELATION_WITH_PREFECTURAL_ACTUAL_CARRIER",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_ROUTE_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "kagoshima-october-2026-kkx-a",
+      "kind": "service",
+      "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+      "sourceUrl": "https://www.koj-ab.co.jp/flight/monthly/kkx_a.html",
+      "observedResponseSha256": "568eccc47c22eac0ca333f079440cd1f5e00e6e307f93c3beb734eb4740dc939",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/ki-kyoyokitei2.html",
+          "observedResponseSha256": "d7e417ff28f3e41953b0695a2cd73aed054489852d041ed5eb47cb74b55da418"
+        },
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/aq01/chiiki/oshima/chiiki/zeniki/gaikyou/documents/127876_20260423151440-1.pdf",
+          "observedResponseSha256": "fd8fd0f3be8174a35e66ab67ebf3c6e23d2b38a55b36debbc7207920d8a420b3"
+        },
+        {
+          "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+          "url": "https://www.koj-ab.co.jp/flight/monthly/kkx_d.html",
+          "observedResponseSha256": "5626daa55eabf0c11fb23a13e209d0bb0a8acabe54a461596e1b1c18ecd7b9d6"
+        }
+      ],
+      "locator": "Current airport-owned October 1-24 2026 arrival page independently confirms the selected directed route. Prefectural airport service section 4(4)-(5) identifies JAC as the sole carrier and Kagoshima route; 2026 report p3/p5 corroborates both directions. Current monthly tables and government carrier-route descriptions are combined at static route level; no frequency, clock, equipment or complete timetable retained. ANA codeshare rows do not create separate edges.",
+      "line": "喜界・鹿児島国内線",
+      "operator": "日本エアコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "喜界空港→鹿児島空港",
+      "callingStations": [
+        "喜界空港",
+        "鹿児島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "喜界空港",
+          "operator": "airport-facility:cf03_00086",
+          "line": "airport:cf03_00086",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00086",
+            "requirementId": "review:official-airport:喜界",
+            "expectedRequirementName": "喜界",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        },
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_RELATION_WITH_PREFECTURAL_ACTUAL_CARRIER",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_ROUTE_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "kagoshima-october-2026-tkn-d",
+      "kind": "service",
+      "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+      "sourceUrl": "https://www.koj-ab.co.jp/flight/monthly/tkn_d.html",
+      "observedResponseSha256": "65cd4363a85fff3d2a17d2674af8387398e43afc64d6fefed2ccd8639b015f57",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/toku-kyoyokitei2.html",
+          "observedResponseSha256": "ad6a73472940207ced56e12e27da14392f0a2779228902b80b5861ce26ef5e65"
+        },
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/aq01/chiiki/oshima/chiiki/zeniki/gaikyou/documents/127876_20260423151440-1.pdf",
+          "observedResponseSha256": "fd8fd0f3be8174a35e66ab67ebf3c6e23d2b38a55b36debbc7207920d8a420b3"
+        },
+        {
+          "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+          "url": "https://www.koj-ab.co.jp/flight/monthly/tkn_a.html",
+          "observedResponseSha256": "bc3243bb942dd447df8c5cf699fef4ddf3a4b1e8265360a86ecd62cac27bfcfc"
+        }
+      ],
+      "locator": "Current airport-owned October 1-24 2026 departure page independently confirms the selected directed route. July 2026 prefectural airport service section 4 lists JAC and J-AIR separately; 2026 regional report p3/p5 explicitly binds JAC to the Kagoshima round-trip route. Preserve route relationship only: do not attribute a specific mixed JAL-marketed flight number to JAC. Current monthly tables and government carrier-route descriptions are combined at static route level; no frequency, clock, equipment or complete timetable retained. ANA codeshare rows do not create separate edges.",
+      "line": "徳之島・鹿児島国内線",
+      "operator": "日本エアコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "鹿児島空港→徳之島空港",
+      "callingStations": [
+        "鹿児島空港",
+        "徳之島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        },
+        {
+          "name": "徳之島空港",
+          "operator": "airport-facility:cf03_00085",
+          "line": "airport:cf03_00085",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00085",
+            "requirementId": "review:official-airport:徳之島",
+            "expectedRequirementName": "徳之島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_RELATION_WITH_PREFECTURAL_ACTUAL_CARRIER",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_ROUTE_RELATION_NOT_REALTIME"
+    },
+    {
+      "factId": "kagoshima-october-2026-tkn-a",
+      "kind": "service",
+      "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+      "sourceUrl": "https://www.koj-ab.co.jp/flight/monthly/tkn_a.html",
+      "observedResponseSha256": "bc3243bb942dd447df8c5cf699fef4ddf3a4b1e8265360a86ecd62cac27bfcfc",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/toku-kyoyokitei2.html",
+          "observedResponseSha256": "ad6a73472940207ced56e12e27da14392f0a2779228902b80b5861ce26ef5e65"
+        },
+        {
+          "sourceActionId": "airport:kagoshima-prefecture:five-island-actual-carrier-review",
+          "url": "https://www.pref.kagoshima.jp/aq01/chiiki/oshima/chiiki/zeniki/gaikyou/documents/127876_20260423151440-1.pdf",
+          "observedResponseSha256": "fd8fd0f3be8174a35e66ab67ebf3c6e23d2b38a55b36debbc7207920d8a420b3"
+        },
+        {
+          "sourceActionId": "flight:kagoshima-airport:five-current-island-directional-pairs",
+          "url": "https://www.koj-ab.co.jp/flight/monthly/tkn_d.html",
+          "observedResponseSha256": "65cd4363a85fff3d2a17d2674af8387398e43afc64d6fefed2ccd8639b015f57"
+        }
+      ],
+      "locator": "Current airport-owned October 1-24 2026 arrival page independently confirms the selected directed route. July 2026 prefectural airport service section 4 lists JAC and J-AIR separately; 2026 regional report p3/p5 explicitly binds JAC to the Kagoshima round-trip route. Preserve route relationship only: do not attribute a specific mixed JAL-marketed flight number to JAC. Current monthly tables and government carrier-route descriptions are combined at static route level; no frequency, clock, equipment or complete timetable retained. ANA codeshare rows do not create separate edges.",
+      "line": "徳之島・鹿児島国内線",
+      "operator": "日本エアコミューター",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "徳之島空港→鹿児島空港",
+      "callingStations": [
+        "徳之島空港",
+        "鹿児島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "徳之島空港",
+          "operator": "airport-facility:cf03_00085",
+          "line": "airport:cf03_00085",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00085",
+            "requirementId": "review:official-airport:徳之島",
+            "expectedRequirementName": "徳之島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        },
+        {
+          "name": "鹿児島空港",
+          "operator": "airport-facility:cf03_00045",
+          "line": "airport:cf03_00045",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00045",
+            "requirementId": "review:transport-node:5e6bcff1-037a-5e81-804a-88ef3eba96c4",
+            "expectedRequirementName": "鹿児島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current October 2026 airport directional schedules and prefectural airport facility/service records corroborate this exact named passenger airport. C28 reference point identifies the whole facility only; no surface path, terminal-door or real-time availability inference."
+          }
+        }
+      ],
+      "reviewMethod": "CURRENT_INDEPENDENT_AIRPORT_DIRECTIONAL_RELATION_WITH_PREFECTURAL_ACTUAL_CARRIER",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2026_STATIC_ROUTE_RELATION_NOT_REALTIME"
+    }
+  ]
+}

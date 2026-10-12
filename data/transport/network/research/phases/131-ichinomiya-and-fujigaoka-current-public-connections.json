@@ -1,0 +1,113 @@
+{
+  "phaseId": "131-ichinomiya-and-fujigaoka-current-public-connections",
+  "strategy": [
+    "T1_INTERCHANGE_COMPONENT_PRIORITY",
+    "BILATERAL_LINIMO_METRO_CURRENT_CORRESPONDENCE",
+    "RESTRICTED_MISHIMA_SOURCE_CONTINUES_ALTERNATIVE_RESEARCH"
+  ],
+  "completedActionIds": [
+    "hub:meitetsu:ichinomiya-current-public-jr-north-approach",
+    "hub:linimo:fujigaoka-current-metro-interchange",
+    "hub:nagoya:fujigaoka-current-linimo-public-exits",
+    "hub:izuhakone:mishima-current-transfer-faq-restrictive-terms"
+  ],
+  "facts": [
+    {
+      "factId": "ichinomiya-jr-meitetsu-current-reviewed-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:meitetsu:ichinomiya-current-public-jr-north-approach",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/guidance/barrier_free/data1/data/__icsFiles/afieldfile/2026/06/03/ichinomiya.jpg",
+      "observedResponseSha256": "f14a86caddbc290da22f9bacce50df63b2acd0f2cd8fea6050836da71c7c8edb",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:meitetsu:ichinomiya-current-public-jr-north-approach",
+          "url": "https://www.meitetsu.co.jp/train/station_info/line10/station/1228.html",
+          "observedResponseSha256": "50570b16be8eded15ffa77668447922aa6082b95889bc5423bc6846e3749232d"
+        }
+      ],
+      "locator": "Current-linked June 2026 Meitetsu diagram shows both Nagoya-mainline platform islands joining north gate by depicted stairs and public 1F corridor explicitly directed toward JR Owari-Ichinomiya. Retain outside-ticket pedestrian relation, excluding parking/retail-only gates and uPLAT interiors. Cited primary diagrams individually viewed and hash-matched. Coarse bidirectional passenger connection only; no fare, walking-time or accessible-route claim.",
+      "components": [
+        {
+          "name": "尾張一宮",
+          "operator": "東海旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "名鉄一宮",
+          "operator": "名古屋鉄道",
+          "line": "名古屋本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_PASSAGES_AND_LICENSED_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "fujigaoka-metro-linimo-current-reviewed-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:nagoya:fujigaoka-current-linimo-public-exits",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/datas/eki_campus_files/H22_Fujigaoka.gif",
+      "observedResponseSha256": "7329ea300a5c727a9b4a4aa01ac4e0230b1a9b6b5685ac6cbed808809ca2e4ca",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:nagoya:fujigaoka-current-linimo-public-exits",
+          "url": "https://www.kotsu.city.nagoya.jp/rp/subway/station_campus.html?name=%E8%97%A4%E3%81%8C%E4%B8%98",
+          "observedResponseSha256": "4430803e0a7239f78037e99097bf9d85fe175c9edfcf6703ce25ca6ec610a53b"
+        },
+        {
+          "sourceActionId": "hub:nagoya:fujigaoka-current-linimo-public-exits",
+          "url": "https://www.kotsu.city.nagoya.jp/datas/station_campus.json",
+          "observedResponseSha256": "f3a422a4d97172e9c2b8480096229496b950002c4aabc9531afe733503dd353a"
+        },
+        {
+          "sourceActionId": "hub:linimo:fujigaoka-current-metro-interchange",
+          "url": "https://www.linimo.jp/station/2018030611485318.html",
+          "observedResponseSha256": "717e16a4047fc135082bac2b130b6ba4cc9e6e7ef2e3561aa21f88daf7b2fc93"
+        },
+        {
+          "sourceActionId": "hub:linimo:fujigaoka-current-metro-interchange",
+          "url": "https://www.linimo.jp/station/images/2018030611485318_34.jpg",
+          "observedResponseSha256": "ee9d30eede448bd3e18021a33cbc798badb08605f82cba5156d77ec1982badeb"
+        }
+      ],
+      "locator": "Current Nagoya campus index and diagram show both Higashiyama platforms joining north/south gates and ground exits 2/3 marked toward Linimo. Linimo current station page independently confirms Higashiyama interchange; its individually viewed diagram joins B2 platform through B1 gate to surface entrances. Preserve separate Nagoya-city and Aichi-Rapid components, excluding same-named Tokyu station. Cited primary diagrams individually viewed and hash-matched. Coarse bidirectional passenger connection only; no fare, walking-time or accessible-route claim.",
+      "components": [
+        {
+          "name": "藤が丘",
+          "operator": "名古屋市",
+          "line": "1号線東山線",
+          "mode": "metro"
+        },
+        {
+          "name": "藤が丘",
+          "operator": "愛知高速交通",
+          "line": "東部丘陵線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_PASSAGES_AND_LICENSED_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    }
+  ]
+}

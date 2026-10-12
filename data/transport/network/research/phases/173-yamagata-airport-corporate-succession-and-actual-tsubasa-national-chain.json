@@ -1,0 +1,955 @@
+{
+  "phaseId": "173-yamagata-airport-corporate-succession-and-actual-tsubasa-national-chain",
+  "strategy": [
+    "ORIGINAL_AIRPORT",
+    "EXACT_P11_WITH_PRIMARY_CORPORATE_SUCCESSION",
+    "ACTUAL_ASYMMETRIC_BUS_RESTRICTIONS",
+    "ACTUAL_TSUBASA_COLUMNS",
+    "S12_PHYSICAL_COMPONENTS",
+    "EXISTING_FUKUSHIMA_ANCHOR"
+  ],
+  "completedActionIds": [
+    "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+    "rail:jr-east:yamagata-tsubasa-154m-8195m-october2-national-chain"
+  ],
+  "facts": [
+    {
+      "factId": "yamagata-airport-airport-bound",
+      "kind": "service",
+      "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+      "sourceUrl": "https://www.yamagatakotsu.jp/post-10.html",
+      "observedResponseSha256": "8c308adbaae7016b0e9171bcd24e9122b8892d1a39f55a7b01bc003feaddc3b3",
+      "serviceDate": "2026-10-02",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+          "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+          "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+        },
+        {
+          "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+          "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+          "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899"
+        },
+        {
+          "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+          "url": "https://www.yamagata-airport.co.jp/img/main/access/liner/liner_01/2026route.png?202604=",
+          "observedResponseSha256": "f17963c81f9aafaa0ec44126b21b06813dbdc12bc0c63f55c4d7ee79afdd425a"
+        }
+      ],
+      "callingStations": [
+        "山交ビル",
+        "JR山形駅東口",
+        "南高前バス停",
+        "県庁前",
+        "山形空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "山交ビル",
+          "operator": "山交バス（株）",
+          "line": "p11-stop:P11-22_06:bs2143",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_06:bs2143",
+            "recordSha256": "fcfb1e416fc32150da464ec8faade049675cb72597a481589209eee84e7e7f8b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+            "currentOperatorSuccessionReview": {
+              "method": "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP",
+              "recordOperator": "山交バス（株）",
+              "predecessorLegalNames": [
+                "山交ハイヤー株式会社",
+                "山交バス株式会社"
+              ],
+              "currentLegalName": "山形交通株式会社",
+              "effectiveDate": "2026-04-01",
+              "reviewedForServiceDate": "2026-10-02",
+              "physicalStopContinuityReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+              "evidence": {
+                "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+                "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+                "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899",
+                "predecessorLegalNames": [
+                  "山交ハイヤー株式会社",
+                  "山交バス株式会社"
+                ],
+                "currentLegalName": "山形交通株式会社",
+                "effectiveDate": "2026-04-01",
+                "locator": "Official successor March19 absorption andApril1rename notice, corroboratedcurrentoperator/airportlisting"
+              }
+            },
+            "currentOperatorEvidence": {
+              "recordOperator": "山交バス（株）",
+              "currentOperatorName": "山形交通株式会社",
+              "currentStopName": "山交ビル",
+              "historicalRoute": "千歳公園～柏倉線",
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            }
+          }
+        },
+        {
+          "name": "JR山形駅東口",
+          "operator": "山交ハイヤー（株）",
+          "line": "p11-stop:P11-22_06:bs2130",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_06:bs2130",
+            "recordSha256": "387c57d6d413400f431f3b0132d1e395a78fba2fbb5f9a918c1155329f298deb",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+            "currentOperatorSuccessionReview": {
+              "method": "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP",
+              "recordOperator": "山交ハイヤー（株）",
+              "predecessorLegalNames": [
+                "山交ハイヤー株式会社",
+                "山交バス株式会社"
+              ],
+              "currentLegalName": "山形交通株式会社",
+              "effectiveDate": "2026-04-01",
+              "reviewedForServiceDate": "2026-10-02",
+              "physicalStopContinuityReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+              "evidence": {
+                "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+                "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+                "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899",
+                "predecessorLegalNames": [
+                  "山交ハイヤー株式会社",
+                  "山交バス株式会社"
+                ],
+                "currentLegalName": "山形交通株式会社",
+                "effectiveDate": "2026-04-01",
+                "locator": "Official successor March19 absorption andApril1rename notice, corroboratedcurrentoperator/airportlisting"
+              }
+            },
+            "currentOperatorEvidence": {
+              "recordOperator": "山交ハイヤー（株）",
+              "currentOperatorName": "山形交通株式会社",
+              "currentStopName": "JR山形駅東口",
+              "historicalRoute": "空港シャトル",
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            }
+          }
+        },
+        {
+          "name": "南高前バス停",
+          "operator": "山交ハイヤー（株）",
+          "line": "p11-stop:P11-22_06:bs2188",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_06:bs2188",
+            "recordSha256": "23bd51a355344d6784bf82bd8e708f3b38bb5f9f6d75aa7ad03a09250b53cfc2",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+            "currentOperatorSuccessionReview": {
+              "method": "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP",
+              "recordOperator": "山交ハイヤー（株）",
+              "predecessorLegalNames": [
+                "山交ハイヤー株式会社",
+                "山交バス株式会社"
+              ],
+              "currentLegalName": "山形交通株式会社",
+              "effectiveDate": "2026-04-01",
+              "reviewedForServiceDate": "2026-10-02",
+              "physicalStopContinuityReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+              "evidence": {
+                "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+                "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+                "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899",
+                "predecessorLegalNames": [
+                  "山交ハイヤー株式会社",
+                  "山交バス株式会社"
+                ],
+                "currentLegalName": "山形交通株式会社",
+                "effectiveDate": "2026-04-01",
+                "locator": "Official successor March19 absorption andApril1rename notice, corroboratedcurrentoperator/airportlisting"
+              }
+            },
+            "currentOperatorEvidence": {
+              "recordOperator": "山交ハイヤー（株）",
+              "currentOperatorName": "山形交通株式会社",
+              "currentStopName": "南高前バス停",
+              "historicalRoute": "空港シャトル",
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            }
+          }
+        },
+        {
+          "name": "県庁前",
+          "operator": "山交ハイヤー（株）",
+          "line": "p11-stop:P11-22_06:bs2219",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_06:bs2219",
+            "recordSha256": "42ca96c5691c91e91cdd3cf809018f67a95fc9b98a2989bff6298e916bbdec45",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+            "currentOperatorSuccessionReview": {
+              "method": "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP",
+              "recordOperator": "山交ハイヤー（株）",
+              "predecessorLegalNames": [
+                "山交ハイヤー株式会社",
+                "山交バス株式会社"
+              ],
+              "currentLegalName": "山形交通株式会社",
+              "effectiveDate": "2026-04-01",
+              "reviewedForServiceDate": "2026-10-02",
+              "physicalStopContinuityReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+              "evidence": {
+                "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+                "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+                "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899",
+                "predecessorLegalNames": [
+                  "山交ハイヤー株式会社",
+                  "山交バス株式会社"
+                ],
+                "currentLegalName": "山形交通株式会社",
+                "effectiveDate": "2026-04-01",
+                "locator": "Official successor March19 absorption andApril1rename notice, corroboratedcurrentoperator/airportlisting"
+              }
+            },
+            "currentOperatorEvidence": {
+              "recordOperator": "山交ハイヤー（株）",
+              "currentOperatorName": "山形交通株式会社",
+              "currentStopName": "県庁前",
+              "historicalRoute": "空港シャトル",
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            }
+          }
+        },
+        {
+          "name": "山形空港",
+          "operator": "山交ハイヤー（株）",
+          "line": "p11-stop:P11-22_06:bs1638",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_06:bs1638",
+            "recordSha256": "3243dd979f62aa3a29e9773ad155ecb95a36610328e7426a7e3d5458d0e40e92",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+            "currentOperatorSuccessionReview": {
+              "method": "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP",
+              "recordOperator": "山交ハイヤー（株）",
+              "predecessorLegalNames": [
+                "山交ハイヤー株式会社",
+                "山交バス株式会社"
+              ],
+              "currentLegalName": "山形交通株式会社",
+              "effectiveDate": "2026-04-01",
+              "reviewedForServiceDate": "2026-10-02",
+              "physicalStopContinuityReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+              "evidence": {
+                "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+                "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+                "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899",
+                "predecessorLegalNames": [
+                  "山交ハイヤー株式会社",
+                  "山交バス株式会社"
+                ],
+                "currentLegalName": "山形交通株式会社",
+                "effectiveDate": "2026-04-01",
+                "locator": "Official successor March19 absorption andApril1rename notice, corroboratedcurrentoperator/airportlisting"
+              }
+            },
+            "currentOperatorEvidence": {
+              "recordOperator": "山交ハイヤー（株）",
+              "currentOperatorName": "山形交通株式会社",
+              "currentStopName": "山形空港",
+              "historicalRoute": "空港シャトル",
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "山形空港シャトル",
+      "operator": "山形交通株式会社",
+      "direction": "airport-bound",
+      "serviceClass": "空港シャトル",
+      "reviewMethod": "INDEPENDENT_ACTUAL_ASYMMETRIC_ROWS_EXCLUSIVE_BOARD_ALIGHT_AND_PRIMARY_SUCCESSION",
+      "serviceState": "active",
+      "serviceStateScope": "MARCH29_OCTOBER24_2026_FROZEN_OCTOBER2_NOT_REALTIME",
+      "locator": "Actualfivecalls eachdirection; cityboundYamakoBuildingbeforeJR, outboundafterYamakoBuildingJRthenNanko. EntireoutboundincludedbecauseYamakoBuildingisnecessaryinboundcallandrequiresactualboardingpath. Exactpublished乗/降 restrictions, no city-onlyride, noflightcancellation/connectionguarantee."
+    },
+    {
+      "factId": "yamagata-airport-city-bound",
+      "kind": "service",
+      "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+      "sourceUrl": "https://www.yamagatakotsu.jp/post-10.html",
+      "observedResponseSha256": "8c308adbaae7016b0e9171bcd24e9122b8892d1a39f55a7b01bc003feaddc3b3",
+      "serviceDate": "2026-10-02",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+          "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+          "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+        },
+        {
+          "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+          "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+          "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899"
+        },
+        {
+          "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+          "url": "https://www.yamagata-airport.co.jp/img/main/access/liner/liner_01/2026route.png?202604=",
+          "observedResponseSha256": "f17963c81f9aafaa0ec44126b21b06813dbdc12bc0c63f55c4d7ee79afdd425a"
+        }
+      ],
+      "callingStations": [
+        "山形空港",
+        "県庁前",
+        "南高前バス停",
+        "山交ビル",
+        "JR山形駅東口"
+      ],
+      "callingComponents": [
+        {
+          "name": "山形空港",
+          "operator": "山交ハイヤー（株）",
+          "line": "p11-stop:P11-22_06:bs1638",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_06:bs1638",
+            "recordSha256": "3243dd979f62aa3a29e9773ad155ecb95a36610328e7426a7e3d5458d0e40e92",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+            "currentOperatorSuccessionReview": {
+              "method": "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP",
+              "recordOperator": "山交ハイヤー（株）",
+              "predecessorLegalNames": [
+                "山交ハイヤー株式会社",
+                "山交バス株式会社"
+              ],
+              "currentLegalName": "山形交通株式会社",
+              "effectiveDate": "2026-04-01",
+              "reviewedForServiceDate": "2026-10-02",
+              "physicalStopContinuityReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+              "evidence": {
+                "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+                "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+                "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899",
+                "predecessorLegalNames": [
+                  "山交ハイヤー株式会社",
+                  "山交バス株式会社"
+                ],
+                "currentLegalName": "山形交通株式会社",
+                "effectiveDate": "2026-04-01",
+                "locator": "Official successor March19 absorption andApril1rename notice, corroboratedcurrentoperator/airportlisting"
+              }
+            },
+            "currentOperatorEvidence": {
+              "recordOperator": "山交ハイヤー（株）",
+              "currentOperatorName": "山形交通株式会社",
+              "currentStopName": "山形空港",
+              "historicalRoute": "空港シャトル",
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            }
+          }
+        },
+        {
+          "name": "県庁前",
+          "operator": "山交ハイヤー（株）",
+          "line": "p11-stop:P11-22_06:bs2219",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_06:bs2219",
+            "recordSha256": "42ca96c5691c91e91cdd3cf809018f67a95fc9b98a2989bff6298e916bbdec45",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+            "currentOperatorSuccessionReview": {
+              "method": "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP",
+              "recordOperator": "山交ハイヤー（株）",
+              "predecessorLegalNames": [
+                "山交ハイヤー株式会社",
+                "山交バス株式会社"
+              ],
+              "currentLegalName": "山形交通株式会社",
+              "effectiveDate": "2026-04-01",
+              "reviewedForServiceDate": "2026-10-02",
+              "physicalStopContinuityReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+              "evidence": {
+                "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+                "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+                "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899",
+                "predecessorLegalNames": [
+                  "山交ハイヤー株式会社",
+                  "山交バス株式会社"
+                ],
+                "currentLegalName": "山形交通株式会社",
+                "effectiveDate": "2026-04-01",
+                "locator": "Official successor March19 absorption andApril1rename notice, corroboratedcurrentoperator/airportlisting"
+              }
+            },
+            "currentOperatorEvidence": {
+              "recordOperator": "山交ハイヤー（株）",
+              "currentOperatorName": "山形交通株式会社",
+              "currentStopName": "県庁前",
+              "historicalRoute": "空港シャトル",
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            }
+          }
+        },
+        {
+          "name": "南高前バス停",
+          "operator": "山交ハイヤー（株）",
+          "line": "p11-stop:P11-22_06:bs2188",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_06:bs2188",
+            "recordSha256": "23bd51a355344d6784bf82bd8e708f3b38bb5f9f6d75aa7ad03a09250b53cfc2",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+            "currentOperatorSuccessionReview": {
+              "method": "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP",
+              "recordOperator": "山交ハイヤー（株）",
+              "predecessorLegalNames": [
+                "山交ハイヤー株式会社",
+                "山交バス株式会社"
+              ],
+              "currentLegalName": "山形交通株式会社",
+              "effectiveDate": "2026-04-01",
+              "reviewedForServiceDate": "2026-10-02",
+              "physicalStopContinuityReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+              "evidence": {
+                "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+                "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+                "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899",
+                "predecessorLegalNames": [
+                  "山交ハイヤー株式会社",
+                  "山交バス株式会社"
+                ],
+                "currentLegalName": "山形交通株式会社",
+                "effectiveDate": "2026-04-01",
+                "locator": "Official successor March19 absorption andApril1rename notice, corroboratedcurrentoperator/airportlisting"
+              }
+            },
+            "currentOperatorEvidence": {
+              "recordOperator": "山交ハイヤー（株）",
+              "currentOperatorName": "山形交通株式会社",
+              "currentStopName": "南高前バス停",
+              "historicalRoute": "空港シャトル",
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            }
+          }
+        },
+        {
+          "name": "山交ビル",
+          "operator": "山交バス（株）",
+          "line": "p11-stop:P11-22_06:bs2143",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_06:bs2143",
+            "recordSha256": "fcfb1e416fc32150da464ec8faade049675cb72597a481589209eee84e7e7f8b",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+            "currentOperatorSuccessionReview": {
+              "method": "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP",
+              "recordOperator": "山交バス（株）",
+              "predecessorLegalNames": [
+                "山交ハイヤー株式会社",
+                "山交バス株式会社"
+              ],
+              "currentLegalName": "山形交通株式会社",
+              "effectiveDate": "2026-04-01",
+              "reviewedForServiceDate": "2026-10-02",
+              "physicalStopContinuityReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+              "evidence": {
+                "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+                "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+                "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899",
+                "predecessorLegalNames": [
+                  "山交ハイヤー株式会社",
+                  "山交バス株式会社"
+                ],
+                "currentLegalName": "山形交通株式会社",
+                "effectiveDate": "2026-04-01",
+                "locator": "Official successor March19 absorption andApril1rename notice, corroboratedcurrentoperator/airportlisting"
+              }
+            },
+            "currentOperatorEvidence": {
+              "recordOperator": "山交バス（株）",
+              "currentOperatorName": "山形交通株式会社",
+              "currentStopName": "山交ビル",
+              "historicalRoute": "千歳公園～柏倉線",
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            }
+          }
+        },
+        {
+          "name": "JR山形駅東口",
+          "operator": "山交ハイヤー（株）",
+          "line": "p11-stop:P11-22_06:bs2130",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_06:bs2130",
+            "recordSha256": "387c57d6d413400f431f3b0132d1e395a78fba2fbb5f9a918c1155329f298deb",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+            "currentOperatorSuccessionReview": {
+              "method": "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP",
+              "recordOperator": "山交ハイヤー（株）",
+              "predecessorLegalNames": [
+                "山交ハイヤー株式会社",
+                "山交バス株式会社"
+              ],
+              "currentLegalName": "山形交通株式会社",
+              "effectiveDate": "2026-04-01",
+              "reviewedForServiceDate": "2026-10-02",
+              "physicalStopContinuityReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+              "evidence": {
+                "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+                "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+                "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899",
+                "predecessorLegalNames": [
+                  "山交ハイヤー株式会社",
+                  "山交バス株式会社"
+                ],
+                "currentLegalName": "山形交通株式会社",
+                "effectiveDate": "2026-04-01",
+                "locator": "Official successor March19 absorption andApril1rename notice, corroboratedcurrentoperator/airportlisting"
+              }
+            },
+            "currentOperatorEvidence": {
+              "recordOperator": "山交ハイヤー（株）",
+              "currentOperatorName": "山形交通株式会社",
+              "currentStopName": "JR山形駅東口",
+              "historicalRoute": "空港シャトル",
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "山形空港シャトル",
+      "operator": "山形交通株式会社",
+      "direction": "city-bound",
+      "serviceClass": "空港シャトル",
+      "reviewMethod": "INDEPENDENT_ACTUAL_ASYMMETRIC_ROWS_EXCLUSIVE_BOARD_ALIGHT_AND_PRIMARY_SUCCESSION",
+      "serviceState": "active",
+      "serviceStateScope": "MARCH29_OCTOBER24_2026_FROZEN_OCTOBER2_NOT_REALTIME",
+      "locator": "Actualfivecalls eachdirection; cityboundYamakoBuildingbeforeJR, outboundafterYamakoBuildingJRthenNanko. EntireoutboundincludedbecauseYamakoBuildingisnecessaryinboundcallandrequiresactualboardingpath. Exactpublished乗/降 restrictions, no city-onlyride, noflightcancellation/connectionguarantee."
+    },
+    {
+      "factId": "yamagata-core-tsubasa-154M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-east:yamagata-tsubasa-154m-8195m-october2-national-chain",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/030/030191.html",
+      "observedResponseSha256": "e7e7d22768e0cb308697dbe2cb2fafe8c2cfedbda4224b607db881cf4c899cfd",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-east:yamagata-tsubasa-154m-8195m-october2-national-chain",
+          "url": "https://timetables.jreast.co.jp/2610/train/030/030191.html",
+          "observedResponseSha256": "e7e7d22768e0cb308697dbe2cb2fafe8c2cfedbda4224b607db881cf4c899cfd"
+        }
+      ],
+      "callingStations": [
+        "山形",
+        "かみのやま温泉",
+        "赤湯",
+        "高畠",
+        "米沢",
+        "福島"
+      ],
+      "callingComponents": [
+        {
+          "name": "山形",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "かみのやま温泉",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "赤湯",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高畠",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "米沢",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "福島",
+          "operator": "東日本旅客鉄道",
+          "line": "東北新幹線",
+          "mode": "shinkansen"
+        }
+      ],
+      "mode": "shinkansen",
+      "purpose": "intercity",
+      "line": "山形新幹線・つばさ",
+      "operator": "東日本旅客鉄道",
+      "direction": "fukushima-bound",
+      "serviceClass": "つばさ",
+      "serviceNumber": "154M",
+      "reviewMethod": "INDEPENDENT_ACTUAL_TSUBASA_COLUMN_OCTOBER2_AND_EXPLICIT_PHYSICAL_COMPONENTS",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER2_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "locator": "ActualOctober2 calendar and154M column, excluding154B. Sixcontiguouscalls 山形→かみのやま温泉→赤湯→高畠→米沢→福島. Fukushima154Mactualplatform14 throughjoin establishesexistingShinkansenphysicalcomponent. Retainonlytrain/date locator andorderedtopology, no clocks. ExactOuconventionalcomponents andFukushimaTohokuShinkansenactualthroughplatform14; noinventedhubtransfer, YAMABIKOcolumnor148Mskippedcall."
+    },
+    {
+      "factId": "yamagata-core-tsubasa-8195M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-east:yamagata-tsubasa-154m-8195m-october2-national-chain",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/020/022711.html",
+      "observedResponseSha256": "9fe988834f9f04e66b44396a2863a512e38d5e7b6985e2b2603956b0f4b30dd4",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-east:yamagata-tsubasa-154m-8195m-october2-national-chain",
+          "url": "https://timetables.jreast.co.jp/2610/train/020/022711.html",
+          "observedResponseSha256": "9fe988834f9f04e66b44396a2863a512e38d5e7b6985e2b2603956b0f4b30dd4"
+        }
+      ],
+      "callingStations": [
+        "福島",
+        "米沢",
+        "高畠",
+        "赤湯",
+        "かみのやま温泉",
+        "山形"
+      ],
+      "callingComponents": [
+        {
+          "name": "福島",
+          "operator": "東日本旅客鉄道",
+          "line": "東北新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "米沢",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高畠",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "赤湯",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "かみのやま温泉",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "山形",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "shinkansen",
+      "purpose": "intercity",
+      "line": "山形新幹線・つばさ",
+      "operator": "東日本旅客鉄道",
+      "direction": "yamagata-bound",
+      "serviceClass": "つばさ",
+      "serviceNumber": "8195M",
+      "reviewMethod": "INDEPENDENT_ACTUAL_TSUBASA_COLUMN_OCTOBER2_AND_EXPLICIT_PHYSICAL_COMPONENTS",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER2_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "locator": "Independent8195Mcolumn October2explicitoperationlist. Sixcalls 福島→米沢→高畠→赤湯→かみのやま温泉→山形. Fukushimaactualplatform14 separatesfrom8195B; sourceprovidesbothdirectionalservices notsyntheticreverse. No rawcalendar/timetablecopy. ExactOuconventionalcomponents andFukushimaTohokuShinkansenactualthroughplatform14; noinventedhubtransfer, YAMABIKOcolumnor148Mskippedcall."
+    },
+    {
+      "factId": "yamagata-airport-public-front-door-bay3",
+      "kind": "transfer",
+      "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+      "sourceUrl": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+      "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c",
+      "serviceDate": "2026-10-02",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+          "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+          "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+        },
+        {
+          "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+          "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+          "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899"
+        },
+        {
+          "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+          "url": "https://www.yamagata-airport.co.jp/img/main/access/liner/liner_01/2026route.png?202604=",
+          "observedResponseSha256": "f17963c81f9aafaa0ec44126b21b06813dbdc12bc0c63f55c4d7ee79afdd425a"
+        }
+      ],
+      "components": [
+        {
+          "name": "山形空港",
+          "operator": "airport-facility:cf03_00026",
+          "line": "airport:cf03_00026",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00026",
+            "requirementId": "review:transport-node:717612ec-e655-5ac0-855a-d2afaf8ab1c0",
+            "expectedRequirementName": "山形",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current FDA airport guide and separately reviewed summer-2026 direct directional flights corroborate the named passenger airport. C28 whole-airport identity only; generic access listings do not create a ground transfer, terminal-door coordinate, clock, or real-time availability claim."
+          }
+        },
+        {
+          "name": "山形空港",
+          "operator": "山交ハイヤー（株）",
+          "line": "p11-stop:P11-22_06:bs1638",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_06:bs1638",
+            "recordSha256": "3243dd979f62aa3a29e9773ad155ecb95a36610328e7426a7e3d5458d0e40e92",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+            "currentOperatorSuccessionReview": {
+              "method": "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP",
+              "recordOperator": "山交ハイヤー（株）",
+              "predecessorLegalNames": [
+                "山交ハイヤー株式会社",
+                "山交バス株式会社"
+              ],
+              "currentLegalName": "山形交通株式会社",
+              "effectiveDate": "2026-04-01",
+              "reviewedForServiceDate": "2026-10-02",
+              "physicalStopContinuityReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+              "evidence": {
+                "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+                "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+                "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899",
+                "predecessorLegalNames": [
+                  "山交ハイヤー株式会社",
+                  "山交バス株式会社"
+                ],
+                "currentLegalName": "山形交通株式会社",
+                "effectiveDate": "2026-04-01",
+                "locator": "Official successor March19 absorption andApril1rename notice, corroboratedcurrentoperator/airportlisting"
+              }
+            },
+            "currentOperatorEvidence": {
+              "recordOperator": "山交ハイヤー（株）",
+              "currentOperatorName": "山形交通株式会社",
+              "currentStopName": "山形空港",
+              "historicalRoute": "空港シャトル",
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_EXPLICIT_PUBLIC_FRONT_ENTRANCE_STAND3",
+      "hubScopeComplete": false,
+      "locator": "Airport explicitly正面玄関前③ departurelocation; samepublicfrontagearrivalrelation, notcoordinateproximity, noairsidewalk."
+    },
+    {
+      "factId": "yamagata-jr-east-public-station-pool-current-airport-bus",
+      "kind": "transfer",
+      "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+      "sourceUrl": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+      "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c",
+      "serviceDate": "2026-10-02",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+          "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+          "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+        },
+        {
+          "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+          "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+          "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899"
+        },
+        {
+          "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+          "url": "https://www.yamagata-airport.co.jp/img/main/access/liner/liner_01/2026route.png?202604=",
+          "observedResponseSha256": "f17963c81f9aafaa0ec44126b21b06813dbdc12bc0c63f55c4d7ee79afdd425a"
+        }
+      ],
+      "components": [
+        {
+          "name": "JR山形駅東口",
+          "operator": "山交ハイヤー（株）",
+          "line": "p11-stop:P11-22_06:bs2130",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_06:bs2130",
+            "recordSha256": "387c57d6d413400f431f3b0132d1e395a78fba2fbb5f9a918c1155329f298deb",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+            "currentOperatorSuccessionReview": {
+              "method": "PRIMARY_CORPORATE_SUCCESSION_SAME_PUBLIC_STOP",
+              "recordOperator": "山交ハイヤー（株）",
+              "predecessorLegalNames": [
+                "山交ハイヤー株式会社",
+                "山交バス株式会社"
+              ],
+              "currentLegalName": "山形交通株式会社",
+              "effectiveDate": "2026-04-01",
+              "reviewedForServiceDate": "2026-10-02",
+              "physicalStopContinuityReview": "Exact historicalnativeP11operatorstop, explicitcurrentairport samepublicfacility/name/route andcorporatesuccessionnotice. 山交ビルnativehistoricalroute千歳公園～柏倉線kept, currentairportcallindependentlybound; noinventedhistoricroute. Ownairportfullname labelsresolvecurrentoperatorabbreviations, nochangeofphysicalidentity.",
+              "evidence": {
+                "sourceActionId": "bus:yamagata:current-airport-chain-reviewed-corporate-succession",
+                "url": "https://www.yamagatakotsu.jp/recruit/2026/03/post_10.html",
+                "observedResponseSha256": "33650ab1cc6924bff52a03356fefee88fa9d9a17156cfe24a37f76d8ec775899",
+                "predecessorLegalNames": [
+                  "山交ハイヤー株式会社",
+                  "山交バス株式会社"
+                ],
+                "currentLegalName": "山形交通株式会社",
+                "effectiveDate": "2026-04-01",
+                "locator": "Official successor March19 absorption andApril1rename notice, corroboratedcurrentoperator/airportlisting"
+              }
+            },
+            "currentOperatorEvidence": {
+              "recordOperator": "山交ハイヤー（株）",
+              "currentOperatorName": "山形交通株式会社",
+              "currentStopName": "JR山形駅東口",
+              "historicalRoute": "空港シャトル",
+              "url": "https://www.yamagata-airport.co.jp/access/liner_01.html",
+              "observedResponseSha256": "b82424ad477452c266d20a3ef2b3f71122168469c6d6e2be67998f2ac3f0e64c"
+            }
+          }
+        },
+        {
+          "name": "山形",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_EXPLICIT_JR_EAST_PUBLIC_STATION_POOL_AND_DIRECTIONAL_FRONTAGE_GUIDE",
+      "hubScopeComplete": false,
+      "locator": "Airportguide explicitlyJR山形駅東口バスプール3番; own2026directionalmap showsoutboundbay3andreturnJRstationfrontage atsameEastpublicstationapproach. Coarsepublicstationconnection only, exactP11sameoperatorroadcomponent notplatformcoordinates; no unverifiedfreefaregate/geometry/accessibilityclaim."
+    }
+  ]
+}

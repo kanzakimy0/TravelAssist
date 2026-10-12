@@ -16,6 +16,12 @@ The repository-wide historical Markdown set does not currently pass Prettier. Th
 
 An unreviewed pull request can therefore test code but cannot access a deployment credential or trigger an external deployment.
 
+## Pull request and merge governance
+
+Pushes to `feature/**` may automatically create a pull request, but that pull request must be Draft. No repository workflow may merge a pull request or treat merely being non-Draft as approval. A successful **Quality gate** check is required before merge, followed by user review and explicit authorization to merge. Turning a Draft PR ready for review is not merge authorization.
+
+Repository Rulesets or branch protection must enforce this independently of workflow text. A repository administrator should configure **Settings → Rules → Rulesets → develop** to require a pull request before merging, require the **Quality gate / Install, test and build** status check, block force pushes, and restrict deletions. Review any bypass actors and prevent GitHub Actions from bypassing human acceptance. These GitHub settings are a manual administrator action; this repository change does not alter them through an API.
+
 ## Trusted release rehearsal
 
 `.github/workflows/release-rehearsal.yml` is manual and local-only. It is permitted to run only when the workflow ref is `develop`. Its first job checks out `develop` without persisted credentials and requires the operator's full SHA to equal that exact checked-out head. Only that verified SHA proceeds to the build and smoke job.

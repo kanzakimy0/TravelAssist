@@ -1,0 +1,73 @@
+{
+  "phaseId": "129-oshiage-skytree-current-public-surface-connection",
+  "strategy": [
+    "FINAL_T0_HUB_COMPONENT_PRIORITY",
+    "CURRENT_GATE_RELOCATION_CORROBORATION",
+    "RESTRICTED_TOBU_ALTERNATIVE_METRO_AND_MUNICIPAL_SOURCE"
+  ],
+  "completedActionIds": [
+    "hub:metro:oshiage-current-a3-surface-approach",
+    "hub:sumida:skytree-current-gates-and-public-street-approach",
+    "hub:solamachi:current-floor-map-restrictive-terms-review",
+    "hub:skytree:current-access-restrictive-terms-review",
+    "hub:tobu:skytree-new-gate-restrictive-primary-review"
+  ],
+  "facts": [
+    {
+      "factId": "oshiage-skytree-current-a3-public-surface-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:metro:oshiage-current-a3-surface-approach",
+      "sourceUrl": "https://www.tokyometro.jp/station/oshiage/yardmap/index_print.html",
+      "observedResponseSha256": "750ae21f369d5c7ac9be10feaf635b013c8e6cf9d2644626b52d69afe8ee9d64",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:metro:oshiage-current-a3-surface-approach",
+          "url": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_oshiage_all.jpg",
+          "observedResponseSha256": "2c34af85ca086d9b4f83f28a594e340c692724c13bc5f553ea8b5bdf21ddf348"
+        },
+        {
+          "sourceActionId": "hub:sumida:skytree-current-gates-and-public-street-approach",
+          "url": "https://www.city.sumida.lg.jp/matizukuri/matizukuri_suisin/zigyoubetu/oshi_nari_keikaku/junbikaigi.html",
+          "observedResponseSha256": "a7ac819edd2ff7ceb90924b62e808a0e6d29d9af6a482f59ce60aa742ddd12a7"
+        },
+        {
+          "sourceActionId": "hub:sumida:skytree-current-gates-and-public-street-approach",
+          "url": "https://www.city.sumida.lg.jp/matizukuri/matizukuri_suisin/zigyoubetu/oshi_nari_keikaku/junbikaigi.images/kaijouakusesu1.png",
+          "observedResponseSha256": "b6249cdb751bf08eff2b63a56ee65c4ca175047b7e8940d7145fead4f26fb955"
+        },
+        {
+          "sourceActionId": "hub:sumida:skytree-current-gates-and-public-street-approach",
+          "url": "https://www.city.sumida.lg.jp/matizukuri/matizukuri_suisin/zigyoubetu/tetsudo_rittaika/sinnhomusiyoukaisi.html",
+          "observedResponseSha256": "f5a1c1bdd1f54cf6b1916b4f9cad96f69905fae07914ce1ad86c1d443f4468e7"
+        }
+      ],
+      "locator": "Current Metro exit guide explicitly lists Tokyo Skytree station at public exit A3. Individually viewed current-linked September 2024 diagram joins Hanzomon platforms via gates to the public concourse and A3 stairs. FY2026 municipal access page and diagram corroborate the street approach, excluding shopping interiors. Municipal project notice independently confirms new east and retained west gates both reach both direction platforms since December 7 2025; former east gate/down platform are not used. Preserve the distinct Oshiage and Tokyo Skytree station identities and only a coarse bidirectional pedestrian interchange. No old-gate geometry, walking time, fare equivalence, direct rail service or all-hours/accessibility assertion.",
+      "components": [
+        {
+          "name": "押上",
+          "operator": "東京地下鉄",
+          "line": "11号線半蔵門線",
+          "mode": "metro"
+        },
+        {
+          "name": "とうきょうスカイツリー",
+          "operator": "東武鉄道",
+          "line": "伊勢崎線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_METRO_EXIT_DIRECTORY_AND_MUNICIPAL_GATE_TRANSITION",
+      "hubScopeComplete": false
+    }
+  ]
+}

@@ -1,0 +1,4737 @@
+{
+  "schemaVersion": "1.0.0",
+  "auditedDevelopSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+  "legacyPrHeadSha": "f157f23ba1b93def006c2703ea8f42dcd9266c01",
+  "taskPublicationSha": "4fbbe4a12626b41ddcad15cc9ebf9440698192fc",
+  "semantics": "Static source selection/binding only; no execution PASS implied",
+  "workflowSources": [
+    {
+      "path": ".github/workflows/auto-create-pr.yml",
+      "blobSha": "1ec6c6febc8d59cda3dd15fc7306080f4ade5d6f",
+      "sourceSha256": "553111da3998c83dffa2e5f6016f04e675388f387a1f1fffc2f2c5e1fdb83e92",
+      "sourceLines": [
+        {
+          "line": 1,
+          "text": "name: Auto-create feature pull requests"
+        },
+        {
+          "line": 2,
+          "text": ""
+        },
+        {
+          "line": 3,
+          "text": "on:"
+        },
+        {
+          "line": 4,
+          "text": "  push:"
+        },
+        {
+          "line": 5,
+          "text": "    branches:"
+        },
+        {
+          "line": 6,
+          "text": "      - \"feature/**\""
+        },
+        {
+          "line": 7,
+          "text": ""
+        },
+        {
+          "line": 8,
+          "text": "permissions:"
+        },
+        {
+          "line": 9,
+          "text": "  contents: read"
+        },
+        {
+          "line": 10,
+          "text": "  pull-requests: write"
+        },
+        {
+          "line": 11,
+          "text": ""
+        },
+        {
+          "line": 12,
+          "text": "concurrency:"
+        },
+        {
+          "line": 13,
+          "text": "  group: auto-create-pr-${{ github.ref_name }}"
+        },
+        {
+          "line": 14,
+          "text": "  cancel-in-progress: false"
+        },
+        {
+          "line": 15,
+          "text": ""
+        },
+        {
+          "line": 16,
+          "text": "jobs:"
+        },
+        {
+          "line": 17,
+          "text": "  create-draft:"
+        },
+        {
+          "line": 18,
+          "text": "    name: Create draft feature pull request"
+        },
+        {
+          "line": 19,
+          "text": "    runs-on: ubuntu-latest"
+        },
+        {
+          "line": 20,
+          "text": "    steps:"
+        },
+        {
+          "line": 21,
+          "text": "      - name: Create pull request when needed"
+        },
+        {
+          "line": 22,
+          "text": "        env:"
+        },
+        {
+          "line": 23,
+          "text": "          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}"
+        },
+        {
+          "line": 24,
+          "text": "          HEAD_BRANCH: ${{ github.ref_name }}"
+        },
+        {
+          "line": 25,
+          "text": "          HEAD_SHA: ${{ github.sha }}"
+        },
+        {
+          "line": 26,
+          "text": "        shell: bash"
+        },
+        {
+          "line": 27,
+          "text": "        run: |"
+        },
+        {
+          "line": 28,
+          "text": "          set -euo pipefail"
+        },
+        {
+          "line": 29,
+          "text": ""
+        },
+        {
+          "line": 30,
+          "text": "          pr_url=\"$("
+        },
+        {
+          "line": 31,
+          "text": "            gh pr list \\"
+        },
+        {
+          "line": 32,
+          "text": "              --repo \"$GITHUB_REPOSITORY\" \\"
+        },
+        {
+          "line": 33,
+          "text": "              --base develop \\"
+        },
+        {
+          "line": 34,
+          "text": "              --head \"$HEAD_BRANCH\" \\"
+        },
+        {
+          "line": 35,
+          "text": "              --state open \\"
+        },
+        {
+          "line": 36,
+          "text": "              --limit 1 \\"
+        },
+        {
+          "line": 37,
+          "text": "              --json url \\"
+        },
+        {
+          "line": 38,
+          "text": "              --jq '.[0].url // empty'"
+        },
+        {
+          "line": 39,
+          "text": "          )\""
+        },
+        {
+          "line": 40,
+          "text": ""
+        },
+        {
+          "line": 41,
+          "text": "          if [[ -z \"$pr_url\" ]]; then"
+        },
+        {
+          "line": 42,
+          "text": "            encoded_head=\"${HEAD_BRANCH//\\//%2F}\""
+        },
+        {
+          "line": 43,
+          "text": "            pr_title=\"$("
+        },
+        {
+          "line": 44,
+          "text": "              gh api \\"
+        },
+        {
+          "line": 45,
+          "text": "                \"repos/$GITHUB_REPOSITORY/compare/develop...$encoded_head\" \\"
+        },
+        {
+          "line": 46,
+          "text": "                --jq '.commits[0].commit.message | split(\"\\n\")[0]'"
+        },
+        {
+          "line": 47,
+          "text": "            )\""
+        },
+        {
+          "line": 48,
+          "text": ""
+        },
+        {
+          "line": 49,
+          "text": "            if [[ -z \"$pr_title\" ]]; then"
+        },
+        {
+          "line": 50,
+          "text": "              pr_title=\"Merge $HEAD_BRANCH into develop\""
+        },
+        {
+          "line": 51,
+          "text": "            fi"
+        },
+        {
+          "line": 52,
+          "text": ""
+        },
+        {
+          "line": 53,
+          "text": "            printf -v pr_body \\"
+        },
+        {
+          "line": 54,
+          "text": "              'This pull request was created automatically after a push to `%s`.\\n\\nBase: `develop`  \\nHead commit: `%s`' \\"
+        },
+        {
+          "line": 55,
+          "text": "              \"$HEAD_BRANCH\" \\"
+        },
+        {
+          "line": 56,
+          "text": "              \"$HEAD_SHA\""
+        },
+        {
+          "line": 57,
+          "text": ""
+        },
+        {
+          "line": 58,
+          "text": "            pr_url=\"$("
+        },
+        {
+          "line": 59,
+          "text": "              gh pr create \\"
+        },
+        {
+          "line": 60,
+          "text": "                --repo \"$GITHUB_REPOSITORY\" \\"
+        },
+        {
+          "line": 61,
+          "text": "                --base develop \\"
+        },
+        {
+          "line": 62,
+          "text": "                --head \"$HEAD_BRANCH\" \\"
+        },
+        {
+          "line": 63,
+          "text": "                --draft \\"
+        },
+        {
+          "line": 64,
+          "text": "                --title \"$pr_title\" \\"
+        },
+        {
+          "line": 65,
+          "text": "                --body \"$pr_body\""
+        },
+        {
+          "line": 66,
+          "text": "            )\""
+        },
+        {
+          "line": 67,
+          "text": "            echo \"Created $pr_url\""
+        },
+        {
+          "line": 68,
+          "text": "          else"
+        },
+        {
+          "line": 69,
+          "text": "            echo \"Using existing $pr_url\""
+        },
+        {
+          "line": 70,
+          "text": "          fi"
+        },
+        {
+          "line": 71,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/quality-gate.yml",
+      "blobSha": "e0d2c42f54194a8c44009a30bc1547cdbe13e778",
+      "sourceSha256": "d377b59ddb6d147a54d1b982ece03962c1d8bc98803d05bee8f4fc6b700f4ccc",
+      "sourceLines": [
+        {
+          "line": 1,
+          "text": "name: Quality gate"
+        },
+        {
+          "line": 2,
+          "text": ""
+        },
+        {
+          "line": 3,
+          "text": "on:"
+        },
+        {
+          "line": 4,
+          "text": "  pull_request:"
+        },
+        {
+          "line": 5,
+          "text": "  push:"
+        },
+        {
+          "line": 6,
+          "text": "    branches: [develop]"
+        },
+        {
+          "line": 7,
+          "text": "  workflow_dispatch:"
+        },
+        {
+          "line": 8,
+          "text": "    inputs:"
+        },
+        {
+          "line": 9,
+          "text": "      task086FinalCloseout:"
+        },
+        {
+          "line": 10,
+          "text": "        description: Verify the frozen TASK-086 published artifacts and retain rebuild proof"
+        },
+        {
+          "line": 11,
+          "text": "        type: boolean"
+        },
+        {
+          "line": 12,
+          "text": "        default: false"
+        },
+        {
+          "line": 13,
+          "text": "      expectedHead:"
+        },
+        {
+          "line": 14,
+          "text": "        description: Optional exact branch SHA expected for publication recovery"
+        },
+        {
+          "line": 15,
+          "text": "        type: string"
+        },
+        {
+          "line": 16,
+          "text": "        default: \"\""
+        },
+        {
+          "line": 17,
+          "text": "      validationTimeoutMinutes:"
+        },
+        {
+          "line": 18,
+          "text": "        description: Bounded budget for the expanded frozen-data regression"
+        },
+        {
+          "line": 19,
+          "text": "        type: choice"
+        },
+        {
+          "line": 20,
+          "text": "        options: [\"35\", \"90\"]"
+        },
+        {
+          "line": 21,
+          "text": "        default: \"35\""
+        },
+        {
+          "line": 22,
+          "text": ""
+        },
+        {
+          "line": 23,
+          "text": "permissions:"
+        },
+        {
+          "line": 24,
+          "text": "  contents: read"
+        },
+        {
+          "line": 25,
+          "text": ""
+        },
+        {
+          "line": 26,
+          "text": "concurrency:"
+        },
+        {
+          "line": 27,
+          "text": "  group: quality-${{ github.workflow }}-${{ github.ref }}"
+        },
+        {
+          "line": 28,
+          "text": "  cancel-in-progress: true"
+        },
+        {
+          "line": 29,
+          "text": ""
+        },
+        {
+          "line": 30,
+          "text": "jobs:"
+        },
+        {
+          "line": 31,
+          "text": "  verify:"
+        },
+        {
+          "line": 32,
+          "text": "    if: ${{ !(inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop') }}"
+        },
+        {
+          "line": 33,
+          "text": "    name: Install, test and build"
+        },
+        {
+          "line": 34,
+          "text": "    runs-on: ubuntu-latest"
+        },
+        {
+          "line": 35,
+          "text": "    timeout-minutes: ${{ fromJSON(inputs.validationTimeoutMinutes || '35') }}"
+        },
+        {
+          "line": 36,
+          "text": "    steps:"
+        },
+        {
+          "line": 37,
+          "text": "      - name: Check out the exact event revision"
+        },
+        {
+          "line": 38,
+          "text": "        uses: actions/checkout@v4"
+        },
+        {
+          "line": 39,
+          "text": "        with:"
+        },
+        {
+          "line": 40,
+          "text": "          fetch-depth: 0"
+        },
+        {
+          "line": 41,
+          "text": "          persist-credentials: false"
+        },
+        {
+          "line": 42,
+          "text": ""
+        },
+        {
+          "line": 43,
+          "text": "      - name: Use repository Node version"
+        },
+        {
+          "line": 44,
+          "text": "        uses: actions/setup-node@v4"
+        },
+        {
+          "line": 45,
+          "text": "        with:"
+        },
+        {
+          "line": 46,
+          "text": "          node-version-file: .nvmrc"
+        },
+        {
+          "line": 47,
+          "text": "          cache: npm"
+        },
+        {
+          "line": 48,
+          "text": ""
+        },
+        {
+          "line": 49,
+          "text": "      - name: Record branch HEAD and actual checkout revision"
+        },
+        {
+          "line": 50,
+          "text": "        run: node tools/qa/ci-revision.mjs"
+        },
+        {
+          "line": 51,
+          "text": ""
+        },
+        {
+          "line": 52,
+          "text": "      - name: Install locked dependencies"
+        },
+        {
+          "line": 53,
+          "text": "        run: npm ci"
+        },
+        {
+          "line": 54,
+          "text": ""
+        },
+        {
+          "line": 55,
+          "text": "      - name: Validate local deployment contract"
+        },
+        {
+          "line": 56,
+          "text": "        run: npm run deploy:validate:local"
+        },
+        {
+          "line": 57,
+          "text": ""
+        },
+        {
+          "line": 58,
+          "text": "      - name: Run repository tests"
+        },
+        {
+          "line": 59,
+          "text": "        env:"
+        },
+        {
+          "line": 60,
+          "text": "          TASK086_VERIFY_PUBLISHED: ${{ inputs.task086FinalCloseout && '1' || '0' }}"
+        },
+        {
+          "line": 61,
+          "text": "          TASK086_REBUILD_RECEIPT: ${{ inputs.task086FinalCloseout && format('{0}/task086-deterministic-rebuild.json', runner.temp) || '' }}"
+        },
+        {
+          "line": 62,
+          "text": "        run: node --import ./tests/register-route-ts.mjs --test \"tests/*.test.mjs\""
+        },
+        {
+          "line": 63,
+          "text": ""
+        },
+        {
+          "line": 64,
+          "text": "      - name: Retain final-closeout revision and deterministic proof"
+        },
+        {
+          "line": 65,
+          "text": "        if: always() && inputs.task086FinalCloseout"
+        },
+        {
+          "line": 66,
+          "text": "        uses: actions/upload-artifact@v4"
+        },
+        {
+          "line": 67,
+          "text": "        with:"
+        },
+        {
+          "line": 68,
+          "text": "          name: task086-final-closeout-${{ github.sha }}"
+        },
+        {
+          "line": 69,
+          "text": "          path: |"
+        },
+        {
+          "line": 70,
+          "text": "            .artifacts/ci/revision.json"
+        },
+        {
+          "line": 71,
+          "text": "            ${{ runner.temp }}/task086-deterministic-rebuild.json"
+        },
+        {
+          "line": 72,
+          "text": "          if-no-files-found: error"
+        },
+        {
+          "line": 73,
+          "text": "          include-hidden-files: true"
+        },
+        {
+          "line": 74,
+          "text": ""
+        },
+        {
+          "line": 75,
+          "text": "      - name: Lint"
+        },
+        {
+          "line": 76,
+          "text": "        run: npm run lint"
+        },
+        {
+          "line": 77,
+          "text": ""
+        },
+        {
+          "line": 78,
+          "text": "      - name: Typecheck"
+        },
+        {
+          "line": 79,
+          "text": "        run: npm run typecheck"
+        },
+        {
+          "line": 80,
+          "text": ""
+        },
+        {
+          "line": 81,
+          "text": "      - name: Check formatting"
+        },
+        {
+          "line": 82,
+          "text": "        run: npm run format:check:deploy"
+        },
+        {
+          "line": 83,
+          "text": ""
+        },
+        {
+          "line": 84,
+          "text": "      - name: Build and audit standalone artifact"
+        },
+        {
+          "line": 85,
+          "text": "        run: npm run deploy:build:local"
+        },
+        {
+          "line": 86,
+          "text": ""
+        },
+        {
+          "line": 87,
+          "text": "      - name: Verify artifact again before use"
+        },
+        {
+          "line": 88,
+          "text": "        run: npm run deploy:verify-artifact"
+        },
+        {
+          "line": 89,
+          "text": ""
+        },
+        {
+          "line": 90,
+          "text": "      - name: Check whitespace"
+        },
+        {
+          "line": 91,
+          "text": "        run: git diff --check"
+        },
+        {
+          "line": 92,
+          "text": ""
+        },
+        {
+          "line": 93,
+          "text": "  regression:"
+        },
+        {
+          "line": 94,
+          "text": "    name: Full Node regression / ${{ matrix.lane }}"
+        },
+        {
+          "line": 95,
+          "text": "    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}"
+        },
+        {
+          "line": 96,
+          "text": "    runs-on: ubuntu-latest"
+        },
+        {
+          "line": 97,
+          "text": "    timeout-minutes: 35"
+        },
+        {
+          "line": 98,
+          "text": "    strategy:"
+        },
+        {
+          "line": 99,
+          "text": "      fail-fast: false"
+        },
+        {
+          "line": 100,
+          "text": "      matrix:"
+        },
+        {
+          "line": 101,
+          "text": "        lane: [assets, regression-0, regression-1, regression-2, regression-3]"
+        },
+        {
+          "line": 102,
+          "text": "    steps:"
+        },
+        {
+          "line": 103,
+          "text": "      - uses: actions/checkout@v4"
+        },
+        {
+          "line": 104,
+          "text": "        with:"
+        },
+        {
+          "line": 105,
+          "text": "          fetch-depth: 0"
+        },
+        {
+          "line": 106,
+          "text": "          persist-credentials: false"
+        },
+        {
+          "line": 107,
+          "text": "      - uses: actions/setup-node@v4"
+        },
+        {
+          "line": 108,
+          "text": "        with:"
+        },
+        {
+          "line": 109,
+          "text": "          node-version-file: .nvmrc"
+        },
+        {
+          "line": 110,
+          "text": "          cache: npm"
+        },
+        {
+          "line": 111,
+          "text": "      - name: Verify and record actual event checkout"
+        },
+        {
+          "line": 112,
+          "text": "        env:"
+        },
+        {
+          "line": 113,
+          "text": "          EXPECTED_HEAD: ${{ inputs.expectedHead }}"
+        },
+        {
+          "line": 114,
+          "text": "        run: |"
+        },
+        {
+          "line": 115,
+          "text": "          test -z \"$EXPECTED_HEAD\" || test \"$(git rev-parse HEAD)\" = \"$EXPECTED_HEAD\""
+        },
+        {
+          "line": 116,
+          "text": "          node tools/qa/ci-revision.mjs"
+        },
+        {
+          "line": 117,
+          "text": "      - run: npm ci"
+        },
+        {
+          "line": 118,
+          "text": "      - run: node tools/qa/task-086-regression-lanes.mjs ${{ matrix.lane }}"
+        },
+        {
+          "line": 119,
+          "text": "      - uses: actions/upload-artifact@v4"
+        },
+        {
+          "line": 120,
+          "text": "        if: always()"
+        },
+        {
+          "line": 121,
+          "text": "        with:"
+        },
+        {
+          "line": 122,
+          "text": "          name: task086-regression-${{ matrix.lane }}-${{ github.sha }}"
+        },
+        {
+          "line": 123,
+          "text": "          path: |"
+        },
+        {
+          "line": 124,
+          "text": "            .artifacts/ci/"
+        },
+        {
+          "line": 125,
+          "text": "          if-no-files-found: error"
+        },
+        {
+          "line": 126,
+          "text": "          include-hidden-files: true"
+        },
+        {
+          "line": 127,
+          "text": "          retention-days: 3"
+        },
+        {
+          "line": 128,
+          "text": ""
+        },
+        {
+          "line": 129,
+          "text": "  graph:"
+        },
+        {
+          "line": 130,
+          "text": "    name: Clean graph / ${{ matrix.lane }}"
+        },
+        {
+          "line": 131,
+          "text": "    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}"
+        },
+        {
+          "line": 132,
+          "text": "    runs-on: ubuntu-latest"
+        },
+        {
+          "line": 133,
+          "text": "    timeout-minutes: 45"
+        },
+        {
+          "line": 134,
+          "text": "    strategy:"
+        },
+        {
+          "line": 135,
+          "text": "      fail-fast: false"
+        },
+        {
+          "line": 136,
+          "text": "      matrix:"
+        },
+        {
+          "line": 137,
+          "text": "        lane: [first, second]"
+        },
+        {
+          "line": 138,
+          "text": "    steps:"
+        },
+        {
+          "line": 139,
+          "text": "      - uses: actions/checkout@v4"
+        },
+        {
+          "line": 140,
+          "text": "        with:"
+        },
+        {
+          "line": 141,
+          "text": "          fetch-depth: 0"
+        },
+        {
+          "line": 142,
+          "text": "          persist-credentials: false"
+        },
+        {
+          "line": 143,
+          "text": "      - uses: actions/setup-node@v4"
+        },
+        {
+          "line": 144,
+          "text": "        with:"
+        },
+        {
+          "line": 145,
+          "text": "          node-version-file: .nvmrc"
+        },
+        {
+          "line": 146,
+          "text": "          cache: npm"
+        },
+        {
+          "line": 147,
+          "text": "      - name: Verify and record actual event checkout"
+        },
+        {
+          "line": 148,
+          "text": "        env:"
+        },
+        {
+          "line": 149,
+          "text": "          EXPECTED_HEAD: ${{ inputs.expectedHead }}"
+        },
+        {
+          "line": 150,
+          "text": "        run: |"
+        },
+        {
+          "line": 151,
+          "text": "          test -z \"$EXPECTED_HEAD\" || test \"$(git rev-parse HEAD)\" = \"$EXPECTED_HEAD\""
+        },
+        {
+          "line": 152,
+          "text": "          node tools/qa/ci-revision.mjs"
+        },
+        {
+          "line": 153,
+          "text": "      - run: npm ci"
+        },
+        {
+          "line": 154,
+          "text": "      - run: timeout --signal=TERM --kill-after=30s 2400s node tools/transport/task-086-validation.mjs ${{ matrix.lane }} .artifacts/task086-lanes"
+        },
+        {
+          "line": 155,
+          "text": "      - uses: actions/upload-artifact@v4"
+        },
+        {
+          "line": 156,
+          "text": "        if: always()"
+        },
+        {
+          "line": 157,
+          "text": "        with:"
+        },
+        {
+          "line": 158,
+          "text": "          name: task086-graph-${{ matrix.lane }}-${{ github.sha }}"
+        },
+        {
+          "line": 159,
+          "text": "          path: |"
+        },
+        {
+          "line": 160,
+          "text": "            .artifacts/ci/revision.json"
+        },
+        {
+          "line": 161,
+          "text": "            .artifacts/task086-lanes/"
+        },
+        {
+          "line": 162,
+          "text": "          if-no-files-found: error"
+        },
+        {
+          "line": 163,
+          "text": "          include-hidden-files: true"
+        },
+        {
+          "line": 164,
+          "text": "          retention-days: 3"
+        },
+        {
+          "line": 165,
+          "text": ""
+        },
+        {
+          "line": 166,
+          "text": "  extraction:"
+        },
+        {
+          "line": 167,
+          "text": "    name: Retained raw source reproduction"
+        },
+        {
+          "line": 168,
+          "text": "    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}"
+        },
+        {
+          "line": 169,
+          "text": "    runs-on: ubuntu-latest"
+        },
+        {
+          "line": 170,
+          "text": "    timeout-minutes: 25"
+        },
+        {
+          "line": 171,
+          "text": "    steps:"
+        },
+        {
+          "line": 172,
+          "text": "      - uses: actions/checkout@v4"
+        },
+        {
+          "line": 173,
+          "text": "        with:"
+        },
+        {
+          "line": 174,
+          "text": "          fetch-depth: 0"
+        },
+        {
+          "line": 175,
+          "text": "          persist-credentials: false"
+        },
+        {
+          "line": 176,
+          "text": "      - uses: actions/setup-node@v4"
+        },
+        {
+          "line": 177,
+          "text": "        with:"
+        },
+        {
+          "line": 178,
+          "text": "          node-version-file: .nvmrc"
+        },
+        {
+          "line": 179,
+          "text": "          cache: npm"
+        },
+        {
+          "line": 180,
+          "text": "      - name: Verify and record actual event checkout"
+        },
+        {
+          "line": 181,
+          "text": "        env:"
+        },
+        {
+          "line": 182,
+          "text": "          EXPECTED_HEAD: ${{ inputs.expectedHead }}"
+        },
+        {
+          "line": 183,
+          "text": "        run: |"
+        },
+        {
+          "line": 184,
+          "text": "          test -z \"$EXPECTED_HEAD\" || test \"$(git rev-parse HEAD)\" = \"$EXPECTED_HEAD\""
+        },
+        {
+          "line": 185,
+          "text": "          node tools/qa/ci-revision.mjs"
+        },
+        {
+          "line": 186,
+          "text": "      - run: npm ci"
+        },
+        {
+          "line": 187,
+          "text": "      - run: timeout --signal=TERM --kill-after=30s 1200s node tools/transport/task-086-validation.mjs extract .artifacts/task086-lanes"
+        },
+        {
+          "line": 188,
+          "text": "      - uses: actions/upload-artifact@v4"
+        },
+        {
+          "line": 189,
+          "text": "        if: always()"
+        },
+        {
+          "line": 190,
+          "text": "        with:"
+        },
+        {
+          "line": 191,
+          "text": "          name: task086-extraction-${{ github.sha }}"
+        },
+        {
+          "line": 192,
+          "text": "          path: |"
+        },
+        {
+          "line": 193,
+          "text": "            .artifacts/ci/revision.json"
+        },
+        {
+          "line": 194,
+          "text": "            .artifacts/task086-lanes/"
+        },
+        {
+          "line": 195,
+          "text": "          if-no-files-found: error"
+        },
+        {
+          "line": 196,
+          "text": "          include-hidden-files: true"
+        },
+        {
+          "line": 197,
+          "text": "          retention-days: 3"
+        },
+        {
+          "line": 198,
+          "text": ""
+        },
+        {
+          "line": 199,
+          "text": "  resume:"
+        },
+        {
+          "line": 200,
+          "text": "    name: Stable complete graph resume"
+        },
+        {
+          "line": 201,
+          "text": "    needs: graph"
+        },
+        {
+          "line": 202,
+          "text": "    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}"
+        },
+        {
+          "line": 203,
+          "text": "    runs-on: ubuntu-latest"
+        },
+        {
+          "line": 204,
+          "text": "    timeout-minutes: 45"
+        },
+        {
+          "line": 205,
+          "text": "    steps:"
+        },
+        {
+          "line": 206,
+          "text": "      - uses: actions/checkout@v4"
+        },
+        {
+          "line": 207,
+          "text": "        with:"
+        },
+        {
+          "line": 208,
+          "text": "          fetch-depth: 0"
+        },
+        {
+          "line": 209,
+          "text": "          persist-credentials: false"
+        },
+        {
+          "line": 210,
+          "text": "      - uses: actions/setup-node@v4"
+        },
+        {
+          "line": 211,
+          "text": "        with:"
+        },
+        {
+          "line": 212,
+          "text": "          node-version-file: .nvmrc"
+        },
+        {
+          "line": 213,
+          "text": "          cache: npm"
+        },
+        {
+          "line": 214,
+          "text": "      - name: Verify and record actual event checkout"
+        },
+        {
+          "line": 215,
+          "text": "        env:"
+        },
+        {
+          "line": 216,
+          "text": "          EXPECTED_HEAD: ${{ inputs.expectedHead }}"
+        },
+        {
+          "line": 217,
+          "text": "        run: |"
+        },
+        {
+          "line": 218,
+          "text": "          test -z \"$EXPECTED_HEAD\" || test \"$(git rev-parse HEAD)\" = \"$EXPECTED_HEAD\""
+        },
+        {
+          "line": 219,
+          "text": "          node tools/qa/ci-revision.mjs"
+        },
+        {
+          "line": 220,
+          "text": "      - run: npm ci"
+        },
+        {
+          "line": 221,
+          "text": "      - uses: actions/download-artifact@v4"
+        },
+        {
+          "line": 222,
+          "text": "        with:"
+        },
+        {
+          "line": 223,
+          "text": "          name: task086-graph-first-${{ github.sha }}"
+        },
+        {
+          "line": 224,
+          "text": "          path: .artifacts"
+        },
+        {
+          "line": 225,
+          "text": "      - run: timeout --signal=TERM --kill-after=30s 2400s node tools/transport/task-086-validation.mjs resume .artifacts/task086-lanes"
+        },
+        {
+          "line": 226,
+          "text": "      - uses: actions/upload-artifact@v4"
+        },
+        {
+          "line": 227,
+          "text": "        if: always()"
+        },
+        {
+          "line": 228,
+          "text": "        with:"
+        },
+        {
+          "line": 229,
+          "text": "          name: task086-resume-${{ github.sha }}"
+        },
+        {
+          "line": 230,
+          "text": "          path: |"
+        },
+        {
+          "line": 231,
+          "text": "            .artifacts/ci/revision.json"
+        },
+        {
+          "line": 232,
+          "text": "            .artifacts/task086-lanes/"
+        },
+        {
+          "line": 233,
+          "text": "          if-no-files-found: error"
+        },
+        {
+          "line": 234,
+          "text": "          include-hidden-files: true"
+        },
+        {
+          "line": 235,
+          "text": "          retention-days: 3"
+        },
+        {
+          "line": 236,
+          "text": ""
+        },
+        {
+          "line": 237,
+          "text": "  proof:"
+        },
+        {
+          "line": 238,
+          "text": "    name: Deterministic, recovery and published-artifact proof"
+        },
+        {
+          "line": 239,
+          "text": "    needs: [graph, extraction, resume]"
+        },
+        {
+          "line": 240,
+          "text": "    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}"
+        },
+        {
+          "line": 241,
+          "text": "    runs-on: ubuntu-latest"
+        },
+        {
+          "line": 242,
+          "text": "    timeout-minutes: 25"
+        },
+        {
+          "line": 243,
+          "text": "    steps:"
+        },
+        {
+          "line": 244,
+          "text": "      - uses: actions/checkout@v4"
+        },
+        {
+          "line": 245,
+          "text": "        with:"
+        },
+        {
+          "line": 246,
+          "text": "          fetch-depth: 0"
+        },
+        {
+          "line": 247,
+          "text": "          persist-credentials: false"
+        },
+        {
+          "line": 248,
+          "text": "      - uses: actions/setup-node@v4"
+        },
+        {
+          "line": 249,
+          "text": "        with:"
+        },
+        {
+          "line": 250,
+          "text": "          node-version-file: .nvmrc"
+        },
+        {
+          "line": 251,
+          "text": "          cache: npm"
+        },
+        {
+          "line": 252,
+          "text": "      - name: Verify and record actual event checkout"
+        },
+        {
+          "line": 253,
+          "text": "        env:"
+        },
+        {
+          "line": 254,
+          "text": "          EXPECTED_HEAD: ${{ inputs.expectedHead }}"
+        },
+        {
+          "line": 255,
+          "text": "        run: |"
+        },
+        {
+          "line": 256,
+          "text": "          test -z \"$EXPECTED_HEAD\" || test \"$(git rev-parse HEAD)\" = \"$EXPECTED_HEAD\""
+        },
+        {
+          "line": 257,
+          "text": "          node tools/qa/ci-revision.mjs"
+        },
+        {
+          "line": 258,
+          "text": "      - run: npm ci"
+        },
+        {
+          "line": 259,
+          "text": "      - uses: actions/download-artifact@v4"
+        },
+        {
+          "line": 260,
+          "text": "        with:"
+        },
+        {
+          "line": 261,
+          "text": "          pattern: task086-graph-*-${{ github.sha }}"
+        },
+        {
+          "line": 262,
+          "text": "          merge-multiple: true"
+        },
+        {
+          "line": 263,
+          "text": "          path: .artifacts"
+        },
+        {
+          "line": 264,
+          "text": "      - uses: actions/download-artifact@v4"
+        },
+        {
+          "line": 265,
+          "text": "        with:"
+        },
+        {
+          "line": 266,
+          "text": "          name: task086-resume-${{ github.sha }}"
+        },
+        {
+          "line": 267,
+          "text": "          path: .artifacts"
+        },
+        {
+          "line": 268,
+          "text": "      - uses: actions/download-artifact@v4"
+        },
+        {
+          "line": 269,
+          "text": "        with:"
+        },
+        {
+          "line": 270,
+          "text": "          name: task086-extraction-${{ github.sha }}"
+        },
+        {
+          "line": 271,
+          "text": "          path: .artifacts"
+        },
+        {
+          "line": 272,
+          "text": "      - name: Execute original rebuild regression with complete exact-head lane receipts"
+        },
+        {
+          "line": 273,
+          "text": "        env:"
+        },
+        {
+          "line": 274,
+          "text": "          TASK086_VERIFIED_LANES_DIR: ${{ github.workspace }}/.artifacts/task086-lanes"
+        },
+        {
+          "line": 275,
+          "text": "          TASK086_VERIFY_PUBLISHED: \"1\""
+        },
+        {
+          "line": 276,
+          "text": "          TASK086_REBUILD_RECEIPT: ${{ github.workspace }}/.artifacts/task086-lanes/deterministic-recovery-proof.json"
+        },
+        {
+          "line": 277,
+          "text": "        run: node tools/qa/task-086-regression-lanes.mjs rebuild"
+        },
+        {
+          "line": 278,
+          "text": "      - uses: actions/upload-artifact@v4"
+        },
+        {
+          "line": 279,
+          "text": "        if: always()"
+        },
+        {
+          "line": 280,
+          "text": "        with:"
+        },
+        {
+          "line": 281,
+          "text": "          name: task086-proof-${{ github.sha }}"
+        },
+        {
+          "line": 282,
+          "text": "          path: |"
+        },
+        {
+          "line": 283,
+          "text": "            .artifacts/ci/"
+        },
+        {
+          "line": 284,
+          "text": "            .artifacts/task086-lanes/*.receipt.json"
+        },
+        {
+          "line": 285,
+          "text": "            .artifacts/task086-lanes/deterministic-recovery-proof.json"
+        },
+        {
+          "line": 286,
+          "text": "          if-no-files-found: error"
+        },
+        {
+          "line": 287,
+          "text": "          include-hidden-files: true"
+        },
+        {
+          "line": 288,
+          "text": "          retention-days: 3"
+        },
+        {
+          "line": 289,
+          "text": ""
+        },
+        {
+          "line": 290,
+          "text": "  quality:"
+        },
+        {
+          "line": 291,
+          "text": "    name: Lint, types, formatting and build"
+        },
+        {
+          "line": 292,
+          "text": "    if: ${{ inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop' }}"
+        },
+        {
+          "line": 293,
+          "text": "    runs-on: ubuntu-latest"
+        },
+        {
+          "line": 294,
+          "text": "    timeout-minutes: 25"
+        },
+        {
+          "line": 295,
+          "text": "    steps:"
+        },
+        {
+          "line": 296,
+          "text": "      - uses: actions/checkout@v4"
+        },
+        {
+          "line": 297,
+          "text": "        with:"
+        },
+        {
+          "line": 298,
+          "text": "          fetch-depth: 0"
+        },
+        {
+          "line": 299,
+          "text": "          persist-credentials: false"
+        },
+        {
+          "line": 300,
+          "text": "      - uses: actions/setup-node@v4"
+        },
+        {
+          "line": 301,
+          "text": "        with:"
+        },
+        {
+          "line": 302,
+          "text": "          node-version-file: .nvmrc"
+        },
+        {
+          "line": 303,
+          "text": "          cache: npm"
+        },
+        {
+          "line": 304,
+          "text": "      - name: Verify and record actual event checkout"
+        },
+        {
+          "line": 305,
+          "text": "        env:"
+        },
+        {
+          "line": 306,
+          "text": "          EXPECTED_HEAD: ${{ inputs.expectedHead }}"
+        },
+        {
+          "line": 307,
+          "text": "        run: |"
+        },
+        {
+          "line": 308,
+          "text": "          test -z \"$EXPECTED_HEAD\" || test \"$(git rev-parse HEAD)\" = \"$EXPECTED_HEAD\""
+        },
+        {
+          "line": 309,
+          "text": "          node tools/qa/ci-revision.mjs"
+        },
+        {
+          "line": 310,
+          "text": "      - run: npm ci"
+        },
+        {
+          "line": 311,
+          "text": "      - run: npm run deploy:validate:local"
+        },
+        {
+          "line": 312,
+          "text": "      - run: npm run lint"
+        },
+        {
+          "line": 313,
+          "text": "      - run: npm run typecheck"
+        },
+        {
+          "line": 314,
+          "text": "      - run: npm run format:check:deploy"
+        },
+        {
+          "line": 315,
+          "text": "      - run: npm run deploy:build:local"
+        },
+        {
+          "line": 316,
+          "text": "      - run: npm run deploy:verify-artifact"
+        },
+        {
+          "line": 317,
+          "text": "      - run: git diff --check"
+        },
+        {
+          "line": 318,
+          "text": "      - uses: actions/upload-artifact@v4"
+        },
+        {
+          "line": 319,
+          "text": "        if: always()"
+        },
+        {
+          "line": 320,
+          "text": "        with:"
+        },
+        {
+          "line": 321,
+          "text": "          name: task086-quality-${{ github.sha }}"
+        },
+        {
+          "line": 322,
+          "text": "          path: |"
+        },
+        {
+          "line": 323,
+          "text": "            .artifacts/ci/revision.json"
+        },
+        {
+          "line": 324,
+          "text": "          if-no-files-found: error"
+        },
+        {
+          "line": 325,
+          "text": "          include-hidden-files: true"
+        },
+        {
+          "line": 326,
+          "text": "          retention-days: 3"
+        },
+        {
+          "line": 327,
+          "text": ""
+        },
+        {
+          "line": 328,
+          "text": "  closeout-quality-gate:"
+        },
+        {
+          "line": 329,
+          "text": "    name: TASK086 exact-head Quality Gate"
+        },
+        {
+          "line": 330,
+          "text": "    needs: [regression, graph, extraction, resume, proof, quality]"
+        },
+        {
+          "line": 331,
+          "text": "    if: ${{ always() && (inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop') }}"
+        },
+        {
+          "line": 332,
+          "text": "    runs-on: ubuntu-latest"
+        },
+        {
+          "line": 333,
+          "text": "    timeout-minutes: 5"
+        },
+        {
+          "line": 334,
+          "text": "    steps:"
+        },
+        {
+          "line": 335,
+          "text": "      - uses: actions/download-artifact@v4"
+        },
+        {
+          "line": 336,
+          "text": "        if: ${{ needs.proof.result == 'success' }}"
+        },
+        {
+          "line": 337,
+          "text": "        with:"
+        },
+        {
+          "line": 338,
+          "text": "          name: task086-proof-${{ github.sha }}"
+        },
+        {
+          "line": 339,
+          "text": "          path: .artifacts"
+        },
+        {
+          "line": 340,
+          "text": "      - uses: actions/download-artifact@v4"
+        },
+        {
+          "line": 341,
+          "text": "        if: ${{ needs.regression.result == 'success' }}"
+        },
+        {
+          "line": 342,
+          "text": "        with:"
+        },
+        {
+          "line": 343,
+          "text": "          pattern: task086-regression-*-${{ github.sha }}"
+        },
+        {
+          "line": 344,
+          "text": "          merge-multiple: true"
+        },
+        {
+          "line": 345,
+          "text": "          path: .artifacts/ci"
+        },
+        {
+          "line": 346,
+          "text": "      - name: Fail closed unless every required lane completed"
+        },
+        {
+          "line": 347,
+          "text": "        env:"
+        },
+        {
+          "line": 348,
+          "text": "          RESULTS: ${{ toJSON(needs) }}"
+        },
+        {
+          "line": 349,
+          "text": "          EXPECTED_HEAD: ${{ inputs.expectedHead }}"
+        },
+        {
+          "line": 350,
+          "text": "        run: |"
+        },
+        {
+          "line": 351,
+          "text": "          python3 - <<'PY'"
+        },
+        {
+          "line": 352,
+          "text": "          import json,os"
+        },
+        {
+          "line": 353,
+          "text": "          needs=json.loads(os.environ['RESULTS'])"
+        },
+        {
+          "line": 354,
+          "text": "          assert all(v['result']=='success' for v in needs.values()),needs"
+        },
+        {
+          "line": 355,
+          "text": "          expected=os.environ.get('EXPECTED_HEAD')"
+        },
+        {
+          "line": 356,
+          "text": "          assert not expected or expected==os.environ['GITHUB_SHA']"
+        },
+        {
+          "line": 357,
+          "text": "          from pathlib import Path"
+        },
+        {
+          "line": 358,
+          "text": "          import hashlib"
+        },
+        {
+          "line": 359,
+          "text": "          proof=json.loads(Path('.artifacts/task086-lanes/deterministic-recovery-proof.json').read_text())"
+        },
+        {
+          "line": 360,
+          "text": "          binding=proof['binding']"
+        },
+        {
+          "line": 361,
+          "text": "          assert proof['status']=='PASS'"
+        },
+        {
+          "line": 362,
+          "text": "          assert binding['checkoutSha']==os.environ['GITHUB_SHA']"
+        },
+        {
+          "line": 363,
+          "text": "          assert binding['runId']==os.environ['GITHUB_RUN_ID']"
+        },
+        {
+          "line": 364,
+          "text": "          assert binding['runAttempt']==os.environ['GITHUB_RUN_ATTEMPT']"
+        },
+        {
+          "line": 365,
+          "text": "          checks=['fullDeterministicRebuild','resumeChecksumSkip','exceptionProofInputPreserved','publishedArtifactComparison','resumeCorruptionInvalidation']"
+        },
+        {
+          "line": 366,
+          "text": "          assert all(proof.get(k)=='PASS' for k in checks)"
+        },
+        {
+          "line": 367,
+          "text": "          inventory=json.loads(Path('.artifacts/ci/regression-inventory.json').read_text())"
+        },
+        {
+          "line": 368,
+          "text": "          assert sorted(sum(inventory['lanes'].values(),[]))==inventory['files']"
+        },
+        {
+          "line": 369,
+          "text": "          assert len(set(inventory['files']))==inventory['fileCount']"
+        },
+        {
+          "line": 370,
+          "text": "          receipt={'status':'PASS_CLOSEOUT_PUBLICATION_RECOVERY','expectedBranchHead':expected or os.environ['GITHUB_SHA'],'actualCheckoutSha':binding['checkoutSha'],'checkoutEquality':True,'runId':os.environ['GITHUB_RUN_ID'],'runAttempt':os.environ['GITHUB_RUN_ATTEMPT'],'event':os.environ['GITHUB_EVENT_NAME'],'branch':os.environ['GITHUB_REF_NAME'],'qualityGateUrl':os.environ['GITHUB_SERVER_URL']+'/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID'],'inputCodeSha256':binding['inputCodeSha256'],'proofInputSha256':binding['proofInputSha256'],'fullRegressionFiles':inventory['fileCount'],'requiredLaneResults':needs,'deterministicRecoveryChecks':{k:proof[k] for k in checks},'publishedArtifactCount':len(proof['coreArtifactHashes']),'batchCount':proof['batchCount'],'certificationBlockersUnchanged':251,'executionBlockers':0,'wbs':'B / 阻塞'}"
+        },
+        {
+          "line": 371,
+          "text": "          receipt['binding']=binding"
+        },
+        {
+          "line": 372,
+          "text": "          receipt['coreArtifactHashes']=proof['coreArtifactHashes']"
+        },
+        {
+          "line": 373,
+          "text": "          receipt['deterministicRecoveryProofSha256']=hashlib.sha256(Path('.artifacts/task086-lanes/deterministic-recovery-proof.json').read_bytes()).hexdigest()"
+        },
+        {
+          "line": 374,
+          "text": "          receipt['regressionInventory']=inventory"
+        },
+        {
+          "line": 375,
+          "text": "          eligibility=json.loads(Path('.artifacts/ci/routing-eligibility-receipt.json').read_text())"
+        },
+        {
+          "line": 376,
+          "text": "          assert eligibility['status']=='PASS'"
+        },
+        {
+          "line": 377,
+          "text": "          assert eligibility['checkoutSha']==os.environ['GITHUB_SHA']"
+        },
+        {
+          "line": 378,
+          "text": "          assert eligibility['runId']==os.environ['GITHUB_RUN_ID']"
+        },
+        {
+          "line": 379,
+          "text": "          assert eligibility['runAttempt']==os.environ['GITHUB_RUN_ATTEMPT']"
+        },
+        {
+          "line": 380,
+          "text": "          assert eligibility['terminalRoots']==251 and eligibility['pendingRoots']==0"
+        },
+        {
+          "line": 381,
+          "text": "          assert eligibility['failClosedBoundary']=='PASS'"
+        },
+        {
+          "line": 382,
+          "text": "          engine=json.loads(Path('.artifacts/ci/certification-engine-repair-receipt.json').read_text())"
+        },
+        {
+          "line": 383,
+          "text": "          assert engine['status']=='PASS'"
+        },
+        {
+          "line": 384,
+          "text": "          assert engine['checkoutSha']==os.environ['GITHUB_SHA']"
+        },
+        {
+          "line": 385,
+          "text": "          assert engine['runId']==os.environ['GITHUB_RUN_ID']"
+        },
+        {
+          "line": 386,
+          "text": "          assert engine['runAttempt']==os.environ['GITHUB_RUN_ATTEMPT']"
+        },
+        {
+          "line": 387,
+          "text": "          assert engine['inputSha256']==eligibility['inputSha256']"
+        },
+        {
+          "line": 388,
+          "text": "          assert engine['entireQuarantineCount']==11556"
+        },
+        {
+          "line": 389,
+          "text": "          assert engine['tokyoUeno']=='PASS_FORMAL_EXPORT_BOTH_DIRECTIONS'"
+        },
+        {
+          "line": 390,
+          "text": "          assert engine['eightZeroIntegrityChecks']=='PASS'"
+        },
+        {
+          "line": 391,
+          "text": "          receipt['certificationEngineRepair']=engine"
+        },
+        {
+          "line": 392,
+          "text": "          receipt['certificationEngineRepairReceiptSha256']=hashlib.sha256(Path('.artifacts/ci/certification-engine-repair-receipt.json').read_bytes()).hexdigest()"
+        },
+        {
+          "line": 393,
+          "text": "          receipt['status']='PASS_CERTIFICATION_ENGINE_REPAIR_AND_FULL_RECERTIFICATION'"
+        },
+        {
+          "line": 394,
+          "text": "          receipt['historicalCertificationRoots']=receipt.pop('certificationBlockersUnchanged')"
+        },
+        {
+          "line": 395,
+          "text": "          receipt['pendingCertificationRoots']=0"
+        },
+        {
+          "line": 396,
+          "text": "          receipt['wbs']='B / 待审查（exact-head technical gate PASS; authorized normal merge pending）'"
+        },
+        {
+          "line": 397,
+          "text": "          receipt['eligibility']=eligibility"
+        },
+        {
+          "line": 398,
+          "text": "          receipt['eligibilityReceiptSha256']=hashlib.sha256(Path('.artifacts/ci/routing-eligibility-receipt.json').read_bytes()).hexdigest()"
+        },
+        {
+          "line": 399,
+          "text": "          output=Path('.artifacts/ci/closeout-publication-final-receipt.json')"
+        },
+        {
+          "line": 400,
+          "text": "          output.write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\\n')"
+        },
+        {
+          "line": 401,
+          "text": "          print(json.dumps({k:receipt[k] for k in ['status','actualCheckoutSha','fullRegressionFiles','batchCount','executionBlockers','qualityGateUrl']}))"
+        },
+        {
+          "line": 402,
+          "text": "          PY"
+        },
+        {
+          "line": 403,
+          "text": "      - uses: actions/upload-artifact@v4"
+        },
+        {
+          "line": 404,
+          "text": "        with:"
+        },
+        {
+          "line": 405,
+          "text": "          name: task086-final-exact-head-${{ github.sha }}"
+        },
+        {
+          "line": 406,
+          "text": "          path: .artifacts/ci/closeout-publication-final-receipt.json"
+        },
+        {
+          "line": 407,
+          "text": "          if-no-files-found: error"
+        },
+        {
+          "line": 408,
+          "text": "          include-hidden-files: true"
+        },
+        {
+          "line": 409,
+          "text": "          retention-days: 30"
+        },
+        {
+          "line": 410,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "path": ".github/workflows/release-rehearsal.yml",
+      "blobSha": "9902e3454da4d65db76be4a87e49a23c1b52efb7",
+      "sourceSha256": "6528c1f3052094ec9c21f742757a61c979450ac30d9eed0a9d6e74e4b579e1a0",
+      "sourceLines": [
+        {
+          "line": 1,
+          "text": "name: Trusted local release rehearsal"
+        },
+        {
+          "line": 2,
+          "text": ""
+        },
+        {
+          "line": 3,
+          "text": "on:"
+        },
+        {
+          "line": 4,
+          "text": "  workflow_dispatch:"
+        },
+        {
+          "line": 5,
+          "text": "    inputs:"
+        },
+        {
+          "line": 6,
+          "text": "      commit_sha:"
+        },
+        {
+          "line": 7,
+          "text": "        description: Exact current develop commit to rehearse"
+        },
+        {
+          "line": 8,
+          "text": "        required: true"
+        },
+        {
+          "line": 9,
+          "text": "        type: string"
+        },
+        {
+          "line": 10,
+          "text": ""
+        },
+        {
+          "line": 11,
+          "text": "permissions:"
+        },
+        {
+          "line": 12,
+          "text": "  contents: read"
+        },
+        {
+          "line": 13,
+          "text": ""
+        },
+        {
+          "line": 14,
+          "text": "concurrency:"
+        },
+        {
+          "line": 15,
+          "text": "  group: release-rehearsal-development"
+        },
+        {
+          "line": 16,
+          "text": "  cancel-in-progress: false"
+        },
+        {
+          "line": 17,
+          "text": ""
+        },
+        {
+          "line": 18,
+          "text": "jobs:"
+        },
+        {
+          "line": 19,
+          "text": "  trust-gate:"
+        },
+        {
+          "line": 20,
+          "text": "    name: Verify trusted develop revision"
+        },
+        {
+          "line": 21,
+          "text": "    if: github.ref == 'refs/heads/develop'"
+        },
+        {
+          "line": 22,
+          "text": "    runs-on: ubuntu-latest"
+        },
+        {
+          "line": 23,
+          "text": "    timeout-minutes: 5"
+        },
+        {
+          "line": 24,
+          "text": "    outputs:"
+        },
+        {
+          "line": 25,
+          "text": "      trusted_sha: ${{ steps.revision.outputs.trusted_sha }}"
+        },
+        {
+          "line": 26,
+          "text": "    steps:"
+        },
+        {
+          "line": 27,
+          "text": "      - name: Check out develop without persisted credentials"
+        },
+        {
+          "line": 28,
+          "text": "        uses: actions/checkout@v4"
+        },
+        {
+          "line": 29,
+          "text": "        with:"
+        },
+        {
+          "line": 30,
+          "text": "          ref: develop"
+        },
+        {
+          "line": 31,
+          "text": "          fetch-depth: 0"
+        },
+        {
+          "line": 32,
+          "text": "          persist-credentials: false"
+        },
+        {
+          "line": 33,
+          "text": ""
+        },
+        {
+          "line": 34,
+          "text": "      - name: Require the exact current develop SHA"
+        },
+        {
+          "line": 35,
+          "text": "        id: revision"
+        },
+        {
+          "line": 36,
+          "text": "        env:"
+        },
+        {
+          "line": 37,
+          "text": "          REQUESTED_SHA: ${{ inputs.commit_sha }}"
+        },
+        {
+          "line": 38,
+          "text": "        shell: bash"
+        },
+        {
+          "line": 39,
+          "text": "        run: |"
+        },
+        {
+          "line": 40,
+          "text": "          set -euo pipefail"
+        },
+        {
+          "line": 41,
+          "text": "          if [[ ! \"$REQUESTED_SHA\" =~ ^[0-9a-f]{40}$ ]]; then"
+        },
+        {
+          "line": 42,
+          "text": "            echo \"Requested revision is not a full commit SHA.\" >&2"
+        },
+        {
+          "line": 43,
+          "text": "            exit 1"
+        },
+        {
+          "line": 44,
+          "text": "          fi"
+        },
+        {
+          "line": 45,
+          "text": "          trusted_sha=\"$(git rev-parse HEAD)\""
+        },
+        {
+          "line": 46,
+          "text": "          if [[ \"$REQUESTED_SHA\" != \"$trusted_sha\" ]]; then"
+        },
+        {
+          "line": 47,
+          "text": "            echo \"Requested revision is not the current trusted develop head.\" >&2"
+        },
+        {
+          "line": 48,
+          "text": "            exit 1"
+        },
+        {
+          "line": 49,
+          "text": "          fi"
+        },
+        {
+          "line": 50,
+          "text": "          echo \"trusted_sha=$trusted_sha\" >> \"$GITHUB_OUTPUT\""
+        },
+        {
+          "line": 51,
+          "text": ""
+        },
+        {
+          "line": 52,
+          "text": "  rehearse:"
+        },
+        {
+          "line": 53,
+          "text": "    name: Build and smoke exact trusted artifact"
+        },
+        {
+          "line": 54,
+          "text": "    needs: trust-gate"
+        },
+        {
+          "line": 55,
+          "text": "    runs-on: ubuntu-latest"
+        },
+        {
+          "line": 56,
+          "text": "    timeout-minutes: 35"
+        },
+        {
+          "line": 57,
+          "text": "    steps:"
+        },
+        {
+          "line": 58,
+          "text": "      - name: Check out the verified revision"
+        },
+        {
+          "line": 59,
+          "text": "        uses: actions/checkout@v4"
+        },
+        {
+          "line": 60,
+          "text": "        with:"
+        },
+        {
+          "line": 61,
+          "text": "          ref: ${{ needs.trust-gate.outputs.trusted_sha }}"
+        },
+        {
+          "line": 62,
+          "text": "          fetch-depth: 0"
+        },
+        {
+          "line": 63,
+          "text": "          persist-credentials: false"
+        },
+        {
+          "line": 64,
+          "text": ""
+        },
+        {
+          "line": 65,
+          "text": "      - name: Use repository Node version"
+        },
+        {
+          "line": 66,
+          "text": "        uses: actions/setup-node@v4"
+        },
+        {
+          "line": 67,
+          "text": "        with:"
+        },
+        {
+          "line": 68,
+          "text": "          node-version-file: .nvmrc"
+        },
+        {
+          "line": 69,
+          "text": "          cache: npm"
+        },
+        {
+          "line": 70,
+          "text": ""
+        },
+        {
+          "line": 71,
+          "text": "      - name: Install locked dependencies"
+        },
+        {
+          "line": 72,
+          "text": "        run: npm ci"
+        },
+        {
+          "line": 73,
+          "text": ""
+        },
+        {
+          "line": 74,
+          "text": "      - name: Run the same quality gates"
+        },
+        {
+          "line": 75,
+          "text": "        run: |"
+        },
+        {
+          "line": 76,
+          "text": "          npm run deploy:validate:local"
+        },
+        {
+          "line": 77,
+          "text": "          node --import ./tests/register-route-ts.mjs --test \"tests/*.test.mjs\""
+        },
+        {
+          "line": 78,
+          "text": "          npm run lint"
+        },
+        {
+          "line": 79,
+          "text": "          npm run typecheck"
+        },
+        {
+          "line": 80,
+          "text": "          npm run format:check:deploy"
+        },
+        {
+          "line": 81,
+          "text": ""
+        },
+        {
+          "line": 82,
+          "text": "      - name: Build, audit, start and smoke the standalone release"
+        },
+        {
+          "line": 83,
+          "text": "        run: npm run deploy:rehearse:local"
+        },
+        {
+          "line": 84,
+          "text": ""
+        },
+        {
+          "line": 85,
+          "text": "      - name: Upload the audited local artifact"
+        },
+        {
+          "line": 86,
+          "text": "        uses: actions/upload-artifact@v4"
+        },
+        {
+          "line": 87,
+          "text": "        with:"
+        },
+        {
+          "line": 88,
+          "text": "          name: travelassist-${{ needs.trust-gate.outputs.trusted_sha }}"
+        },
+        {
+          "line": 89,
+          "text": "          path: .artifacts/task-025/releases/${{ needs.trust-gate.outputs.trusted_sha }}"
+        },
+        {
+          "line": 90,
+          "text": "          if-no-files-found: error"
+        },
+        {
+          "line": 91,
+          "text": "          retention-days: 3"
+        },
+        {
+          "line": 92,
+          "text": ""
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "pr-ordinary",
+      "workflow": ".github/workflows/quality-gate.yml",
+      "event": "pull_request",
+      "condition": "head_ref != feature/b-transport-node-mobility-backbone; default PR activity types; no path filter",
+      "jobs": [
+        "verify"
+      ],
+      "selection": "top-level-node",
+      "checkout": "default event merge ref; branchHeadSha can differ from eventSha/checkoutSha",
+      "proofMode": "serial verifyRebuild; VERIFY_PUBLISHED=0; no proof artifact retention in verify"
+    },
+    {
+      "id": "pr-backbone",
+      "workflow": ".github/workflows/quality-gate.yml",
+      "event": "pull_request",
+      "condition": "head_ref == feature/b-transport-node-mobility-backbone",
+      "jobs": [
+        "regression",
+        "graph",
+        "extraction",
+        "resume",
+        "proof",
+        "quality",
+        "closeout-quality-gate"
+      ],
+      "selection": "partition-union",
+      "checkout": "default event merge ref, not necessarily exact branch head",
+      "proofMode": "two graphs, extraction, resume, published/corruption proof, aggregate"
+    },
+    {
+      "id": "push-develop",
+      "workflow": ".github/workflows/quality-gate.yml",
+      "event": "push",
+      "condition": "refs/heads/develop only",
+      "jobs": [
+        "regression",
+        "graph",
+        "extraction",
+        "resume",
+        "proof",
+        "quality",
+        "closeout-quality-gate"
+      ],
+      "selection": "partition-union",
+      "checkout": "event SHA; live branch can subsequently advance",
+      "proofMode": "full lane receipts with event/run/attempt binding"
+    },
+    {
+      "id": "manual-full",
+      "workflow": ".github/workflows/quality-gate.yml",
+      "event": "workflow_dispatch",
+      "condition": "task086FinalCloseout=true OR selected ref is develop/backbone",
+      "jobs": [
+        "regression",
+        "graph",
+        "extraction",
+        "resume",
+        "proof",
+        "quality",
+        "closeout-quality-gate"
+      ],
+      "selection": "partition-union",
+      "checkout": "event SHA; optional expectedHead equality enforced",
+      "proofMode": "full lane receipts; full-lane timeouts hard-coded"
+    },
+    {
+      "id": "manual-ordinary",
+      "workflow": ".github/workflows/quality-gate.yml",
+      "event": "workflow_dispatch",
+      "condition": "task086FinalCloseout=false AND ref neither develop nor backbone",
+      "jobs": [
+        "verify"
+      ],
+      "selection": "top-level-node",
+      "checkout": "event SHA; verify does not enforce expectedHead",
+      "proofMode": "serial verifier; validationTimeoutMinutes applies here"
+    },
+    {
+      "id": "manual-release",
+      "workflow": ".github/workflows/release-rehearsal.yml",
+      "event": "workflow_dispatch",
+      "condition": "ref develop AND commit_sha equals current develop at trust-gate",
+      "jobs": [
+        "trust-gate",
+        "rehearse"
+      ],
+      "selection": "top-level-node",
+      "checkout": "explicit trusted_sha",
+      "proofMode": "serial Node plus standalone local smoke; not external deploy"
+    },
+    {
+      "id": "push-feature-automation",
+      "workflow": ".github/workflows/auto-create-pr.yml",
+      "event": "push",
+      "condition": "feature/**",
+      "jobs": [
+        "create-draft"
+      ],
+      "selection": "none",
+      "checkout": null,
+      "proofMode": "administrative automation; no tests"
+    },
+    {
+      "id": "push-audit-docs",
+      "workflow": null,
+      "event": "push",
+      "condition": "docs/b-wbs-9-1-phase1-audit-20261006",
+      "jobs": [],
+      "selection": "none",
+      "checkout": null,
+      "proofMode": "no matching push workflow at audited SHA"
+    }
+  ],
+  "selector": {
+    "path": "tools/qa/task-086-regression-lanes.mjs",
+    "blobSha": "335a04caf7ad5bfeec3516e63889284135a4c5c5",
+    "method": "independent source-reviewed transcription; existing runner not imported/executed",
+    "directory": "tests",
+    "recursive": false,
+    "suffix": ".test.mjs",
+    "order": "JavaScript lexical sort",
+    "specialCondition": "inputs.task086FinalCloseout || github.head_ref == 'feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/feature/b-transport-node-mobility-backbone' || github.ref == 'refs/heads/develop'",
+    "assetsRule": "^tests/task-013",
+    "rebuildRule": "tests/task-086-b-rebuild.test.mjs",
+    "remainingRule": "sorted remaining files round-robin index % 4",
+    "files": [
+      "tests/browser-trip-save.test.mjs",
+      "tests/bulk-booking.test.mjs",
+      "tests/detail-card-actions.test.mjs",
+      "tests/detail-compact-board.test.mjs",
+      "tests/detail-overview-locations.test.mjs",
+      "tests/planner-artwork.test.mjs",
+      "tests/planner-audit-fixes.test.mjs",
+      "tests/planner-audit-regressions.test.mjs",
+      "tests/planner-concept-refinement.test.mjs",
+      "tests/planner-local-integration.test.mjs",
+      "tests/planner-meal-booking-refinement.test.mjs",
+      "tests/planner-quick-menu-design.test.mjs",
+      "tests/planner-range-enrichment.test.mjs",
+      "tests/planner-responsive-density.test.mjs",
+      "tests/planner-route-board.test.mjs",
+      "tests/planner-sight-timeline.test.mjs",
+      "tests/planner-status-stack.test.mjs",
+      "tests/planner-track-actions.test.mjs",
+      "tests/planner-working-plan.test.mjs",
+      "tests/poi-remaining-review.test.mjs",
+      "tests/pr-governance.test.mjs",
+      "tests/task-007-background.test.mjs",
+      "tests/task-007-calendar.test.mjs",
+      "tests/task-007-info-popover.test.mjs",
+      "tests/task-008-planner.test.mjs",
+      "tests/task-0081-map-booking.test.mjs",
+      "tests/task-0082-visuals.test.mjs",
+      "tests/task-0083-interactions.test.mjs",
+      "tests/task-010-b-global-logo-navigation.test.mjs",
+      "tests/task-010-navigation.test.mjs",
+      "tests/task-011-trip-detail-workspace.test.mjs",
+      "tests/task-012-planner-v05.test.mjs",
+      "tests/task-013-1-asset-variants.test.mjs",
+      "tests/task-013-2-core-generation-manifest.test.mjs",
+      "tests/task-013-3-1-japan-destination-closure.test.mjs",
+      "tests/task-013-3-japan-destination-resolution.test.mjs",
+      "tests/task-013-assets.test.mjs",
+      "tests/task-015-db-foundation.test.mjs",
+      "tests/task-016-user-profile.test.mjs",
+      "tests/task-018-authentication.test.mjs",
+      "tests/task-019-trip-plan.test.mjs",
+      "tests/task-022-ekiworld-routing.test.mjs",
+      "tests/task-022-route-contract.test.mjs",
+      "tests/task-022-routing-boundary.test.mjs",
+      "tests/task-023-planner-route-integration.test.mjs",
+      "tests/task-024-main-shell.test.mjs",
+      "tests/task-025-2-concept-fidelity.test.mjs",
+      "tests/task-025-2-coral-palette.test.mjs",
+      "tests/task-025-2-v11.test.mjs",
+      "tests/task-025-environment-deployment.test.mjs",
+      "tests/task-036-planning-contracts.test.mjs",
+      "tests/task-037-planning-contract-soak.test.mjs",
+      "tests/task-041-region-graph-pilot.test.mjs",
+      "tests/task-042-preference-schema.test.mjs",
+      "tests/task-043-master-code-registry.test.mjs",
+      "tests/task-044-companion-schema.test.mjs",
+      "tests/task-045-preference-api.test.mjs",
+      "tests/task-045-region-master-code-integration.test.mjs",
+      "tests/task-046-preference-contract.test.mjs",
+      "tests/task-047-companion-api.test.mjs",
+      "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+      "tests/task-048-trip-persistence-model.test.mjs",
+      "tests/task-049-trip-library-api.test.mjs",
+      "tests/task-050-a-poi-schema.test.mjs",
+      "tests/task-050-profile-api.test.mjs",
+      "tests/task-051-a-planner-store.test.mjs",
+      "tests/task-052-account-deletion.test.mjs",
+      "tests/task-053-preference-presets.test.mjs",
+      "tests/task-054-personal-center-migration.test.mjs",
+      "tests/task-055-private-boundaries.test.mjs",
+      "tests/task-055-test-runner.test.mjs",
+      "tests/task-060-profile-ui.test.mjs",
+      "tests/task-061-trip-library-live.test.mjs",
+      "tests/task-062-schema-union.test.mjs",
+      "tests/task-063-engine-apply.test.mjs",
+      "tests/task-064-runtime-rollback.test.mjs",
+      "tests/task-065-engine-certification.test.mjs",
+      "tests/task-067-main-system-state.test.mjs",
+      "tests/task-068-candidate-enrichment.test.mjs",
+      "tests/task-068-corpus-combination.test.mjs",
+      "tests/task-070-p0-evidence-review.test.mjs",
+      "tests/task-076-ai-runtime.test.mjs",
+      "tests/task-081-a-poi-detail-api.test.mjs",
+      "tests/task-082-a-poi-edge-graph.test.mjs",
+      "tests/task-082-personal-ai-history.test.mjs",
+      "tests/task-083-a-poi-runtime.test.mjs",
+      "tests/task-083-canonical-owner-correction.test.mjs",
+      "tests/task-084-a-canonical100-boundary.test.mjs",
+      "tests/task-084-a-real-pilot100.test.mjs",
+      "tests/task-084-a-recommendation-scoring.test.mjs",
+      "tests/task-084-v2-amendment.test.mjs",
+      "tests/task-086-aguni-capability.test.mjs",
+      "tests/task-086-airport-selector-preflight.test.mjs",
+      "tests/task-086-b-autonomous-remediation.test.mjs",
+      "tests/task-086-b-ci-revision.test.mjs",
+      "tests/task-086-b-derived-gtfs.test.mjs",
+      "tests/task-086-b-gtfs-sections.test.mjs",
+      "tests/task-086-b-mobility-backbone.test.mjs",
+      "tests/task-086-b-p11-succession.test.mjs",
+      "tests/task-086-b-pattern-corrections.test.mjs",
+      "tests/task-086-b-rebuild.test.mjs",
+      "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+      "tests/task-086-b-selected-gtfs.test.mjs",
+      "tests/task-086-b-sonic-corrections.test.mjs",
+      "tests/task-086-b-stage-closeout.test.mjs",
+      "tests/task-086-certification-engine-repair.test.mjs",
+      "tests/task-086-conditional-query-cache.test.mjs",
+      "tests/task-086-context-registry.test.mjs",
+      "tests/task-086-dynamic-od-evidence-order.test.mjs",
+      "tests/task-086-dynamic-od.test.mjs",
+      "tests/task-086-facility-registry.test.mjs",
+      "tests/task-086-final-closeout.test.mjs",
+      "tests/task-086-fixed-phone-reception.test.mjs",
+      "tests/task-086-gtfs-agency-subset.test.mjs",
+      "tests/task-086-hamayuso-qualified.test.mjs",
+      "tests/task-086-hateruma-air-passenger.test.mjs",
+      "tests/task-086-historical-facility-stop.test.mjs",
+      "tests/task-086-iwami-fixed-flight.test.mjs",
+      "tests/task-086-licensed-package-date-binding.test.mjs",
+      "tests/task-086-native-facility.test.mjs",
+      "tests/task-086-noto-dynamic-od.test.mjs",
+      "tests/task-086-od-production-pipeline.test.mjs",
+      "tests/task-086-od-registry.test.mjs",
+      "tests/task-086-od-seed-lifecycle.test.mjs",
+      "tests/task-086-okushiri-capability.test.mjs",
+      "tests/task-086-onboard-applicability.test.mjs",
+      "tests/task-086-onboard-request.test.mjs",
+      "tests/task-086-phase-header-preflight.test.mjs",
+      "tests/task-086-public-conditional-applicability.test.mjs",
+      "tests/task-086-publication-recovery.test.mjs",
+      "tests/task-086-qualified-hotel.test.mjs",
+      "tests/task-086-readmittable-closeout.test.mjs",
+      "tests/task-086-retained-cross-package-transfer.test.mjs",
+      "tests/task-086-rights-binding.test.mjs",
+      "tests/task-086-service-access-contract.test.mjs",
+      "tests/task-086-service-access-pipeline.test.mjs",
+      "tests/task-088-a-trusted-baseline.test.mjs",
+      "tests/trip-preparation.test.mjs",
+      "tests/trip-status-personal-center-followup.test.mjs",
+      "tests/wbs-4-17-trip-contract.test.mjs",
+      "tests/wbs-4-21-rule-feasibility.test.mjs",
+      "tests/wbs-5-10-trip-library.test.mjs",
+      "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+      "tests/wbs-5-3-auth-callback.test.mjs",
+      "tests/wbs-5-3-auth-user-flow.test.mjs",
+      "tests/wbs-5-5-preferences.test.mjs",
+      "tests/wbs-5-6-companions.test.mjs",
+      "tests/wbs-5-7-mobility-preference.test.mjs",
+      "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+      "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+      "tests/wbs-5.4-v2.test.mjs",
+      "tests/wbs-9-12-personal-center-qa.test.mjs"
+    ],
+    "lanes": {
+      "assets": [
+        "tests/task-013-1-asset-variants.test.mjs",
+        "tests/task-013-2-core-generation-manifest.test.mjs",
+        "tests/task-013-3-1-japan-destination-closure.test.mjs",
+        "tests/task-013-3-japan-destination-resolution.test.mjs",
+        "tests/task-013-assets.test.mjs"
+      ],
+      "regression-0": [
+        "tests/browser-trip-save.test.mjs",
+        "tests/detail-overview-locations.test.mjs",
+        "tests/planner-concept-refinement.test.mjs",
+        "tests/planner-range-enrichment.test.mjs",
+        "tests/planner-status-stack.test.mjs",
+        "tests/pr-governance.test.mjs",
+        "tests/task-008-planner.test.mjs",
+        "tests/task-010-b-global-logo-navigation.test.mjs",
+        "tests/task-015-db-foundation.test.mjs",
+        "tests/task-022-ekiworld-routing.test.mjs",
+        "tests/task-024-main-shell.test.mjs",
+        "tests/task-025-environment-deployment.test.mjs",
+        "tests/task-042-preference-schema.test.mjs",
+        "tests/task-045-region-master-code-integration.test.mjs",
+        "tests/task-048-trip-persistence-model.test.mjs",
+        "tests/task-051-a-planner-store.test.mjs",
+        "tests/task-055-private-boundaries.test.mjs",
+        "tests/task-062-schema-union.test.mjs",
+        "tests/task-067-main-system-state.test.mjs",
+        "tests/task-076-ai-runtime.test.mjs",
+        "tests/task-083-a-poi-runtime.test.mjs",
+        "tests/task-084-a-recommendation-scoring.test.mjs",
+        "tests/task-086-b-autonomous-remediation.test.mjs",
+        "tests/task-086-b-mobility-backbone.test.mjs",
+        "tests/task-086-b-selected-gtfs.test.mjs",
+        "tests/task-086-conditional-query-cache.test.mjs",
+        "tests/task-086-facility-registry.test.mjs",
+        "tests/task-086-hamayuso-qualified.test.mjs",
+        "tests/task-086-licensed-package-date-binding.test.mjs",
+        "tests/task-086-od-registry.test.mjs",
+        "tests/task-086-onboard-request.test.mjs",
+        "tests/task-086-qualified-hotel.test.mjs",
+        "tests/task-086-service-access-contract.test.mjs",
+        "tests/trip-status-personal-center-followup.test.mjs",
+        "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+        "tests/wbs-5-6-companions.test.mjs",
+        "tests/wbs-5.4-v2.test.mjs"
+      ],
+      "regression-1": [
+        "tests/bulk-booking.test.mjs",
+        "tests/planner-artwork.test.mjs",
+        "tests/planner-local-integration.test.mjs",
+        "tests/planner-responsive-density.test.mjs",
+        "tests/planner-track-actions.test.mjs",
+        "tests/task-007-background.test.mjs",
+        "tests/task-0081-map-booking.test.mjs",
+        "tests/task-010-navigation.test.mjs",
+        "tests/task-016-user-profile.test.mjs",
+        "tests/task-022-route-contract.test.mjs",
+        "tests/task-025-2-concept-fidelity.test.mjs",
+        "tests/task-036-planning-contracts.test.mjs",
+        "tests/task-043-master-code-registry.test.mjs",
+        "tests/task-046-preference-contract.test.mjs",
+        "tests/task-049-trip-library-api.test.mjs",
+        "tests/task-052-account-deletion.test.mjs",
+        "tests/task-055-test-runner.test.mjs",
+        "tests/task-063-engine-apply.test.mjs",
+        "tests/task-068-candidate-enrichment.test.mjs",
+        "tests/task-081-a-poi-detail-api.test.mjs",
+        "tests/task-083-canonical-owner-correction.test.mjs",
+        "tests/task-084-v2-amendment.test.mjs",
+        "tests/task-086-b-ci-revision.test.mjs",
+        "tests/task-086-b-p11-succession.test.mjs",
+        "tests/task-086-b-sonic-corrections.test.mjs",
+        "tests/task-086-context-registry.test.mjs",
+        "tests/task-086-final-closeout.test.mjs",
+        "tests/task-086-hateruma-air-passenger.test.mjs",
+        "tests/task-086-native-facility.test.mjs",
+        "tests/task-086-od-seed-lifecycle.test.mjs",
+        "tests/task-086-phase-header-preflight.test.mjs",
+        "tests/task-086-readmittable-closeout.test.mjs",
+        "tests/task-086-service-access-pipeline.test.mjs",
+        "tests/wbs-4-17-trip-contract.test.mjs",
+        "tests/wbs-5-3-auth-callback.test.mjs",
+        "tests/wbs-5-7-mobility-preference.test.mjs",
+        "tests/wbs-9-12-personal-center-qa.test.mjs"
+      ],
+      "regression-2": [
+        "tests/detail-card-actions.test.mjs",
+        "tests/planner-audit-fixes.test.mjs",
+        "tests/planner-meal-booking-refinement.test.mjs",
+        "tests/planner-route-board.test.mjs",
+        "tests/planner-working-plan.test.mjs",
+        "tests/task-007-calendar.test.mjs",
+        "tests/task-0082-visuals.test.mjs",
+        "tests/task-011-trip-detail-workspace.test.mjs",
+        "tests/task-018-authentication.test.mjs",
+        "tests/task-022-routing-boundary.test.mjs",
+        "tests/task-025-2-coral-palette.test.mjs",
+        "tests/task-037-planning-contract-soak.test.mjs",
+        "tests/task-044-companion-schema.test.mjs",
+        "tests/task-047-companion-api.test.mjs",
+        "tests/task-050-a-poi-schema.test.mjs",
+        "tests/task-053-preference-presets.test.mjs",
+        "tests/task-060-profile-ui.test.mjs",
+        "tests/task-064-runtime-rollback.test.mjs",
+        "tests/task-068-corpus-combination.test.mjs",
+        "tests/task-082-a-poi-edge-graph.test.mjs",
+        "tests/task-084-a-canonical100-boundary.test.mjs",
+        "tests/task-086-aguni-capability.test.mjs",
+        "tests/task-086-b-derived-gtfs.test.mjs",
+        "tests/task-086-b-pattern-corrections.test.mjs",
+        "tests/task-086-b-stage-closeout.test.mjs",
+        "tests/task-086-dynamic-od-evidence-order.test.mjs",
+        "tests/task-086-fixed-phone-reception.test.mjs",
+        "tests/task-086-historical-facility-stop.test.mjs",
+        "tests/task-086-noto-dynamic-od.test.mjs",
+        "tests/task-086-okushiri-capability.test.mjs",
+        "tests/task-086-public-conditional-applicability.test.mjs",
+        "tests/task-086-retained-cross-package-transfer.test.mjs",
+        "tests/task-088-a-trusted-baseline.test.mjs",
+        "tests/wbs-4-21-rule-feasibility.test.mjs",
+        "tests/wbs-5-3-auth-user-flow.test.mjs",
+        "tests/wbs-5-8-attraction-activity-preference.test.mjs"
+      ],
+      "regression-3": [
+        "tests/detail-compact-board.test.mjs",
+        "tests/planner-audit-regressions.test.mjs",
+        "tests/planner-quick-menu-design.test.mjs",
+        "tests/planner-sight-timeline.test.mjs",
+        "tests/poi-remaining-review.test.mjs",
+        "tests/task-007-info-popover.test.mjs",
+        "tests/task-0083-interactions.test.mjs",
+        "tests/task-012-planner-v05.test.mjs",
+        "tests/task-019-trip-plan.test.mjs",
+        "tests/task-023-planner-route-integration.test.mjs",
+        "tests/task-025-2-v11.test.mjs",
+        "tests/task-041-region-graph-pilot.test.mjs",
+        "tests/task-045-preference-api.test.mjs",
+        "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+        "tests/task-050-profile-api.test.mjs",
+        "tests/task-054-personal-center-migration.test.mjs",
+        "tests/task-061-trip-library-live.test.mjs",
+        "tests/task-065-engine-certification.test.mjs",
+        "tests/task-070-p0-evidence-review.test.mjs",
+        "tests/task-082-personal-ai-history.test.mjs",
+        "tests/task-084-a-real-pilot100.test.mjs",
+        "tests/task-086-airport-selector-preflight.test.mjs",
+        "tests/task-086-b-gtfs-sections.test.mjs",
+        "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+        "tests/task-086-certification-engine-repair.test.mjs",
+        "tests/task-086-dynamic-od.test.mjs",
+        "tests/task-086-gtfs-agency-subset.test.mjs",
+        "tests/task-086-iwami-fixed-flight.test.mjs",
+        "tests/task-086-od-production-pipeline.test.mjs",
+        "tests/task-086-onboard-applicability.test.mjs",
+        "tests/task-086-publication-recovery.test.mjs",
+        "tests/task-086-rights-binding.test.mjs",
+        "tests/trip-preparation.test.mjs",
+        "tests/wbs-5-10-trip-library.test.mjs",
+        "tests/wbs-5-5-preferences.test.mjs",
+        "tests/wbs-5-9-dining-accommodation-budget.test.mjs"
+      ],
+      "rebuild": [
+        "tests/task-086-b-rebuild.test.mjs"
+      ]
+    },
+    "counts": {
+      "assets": 5,
+      "regression-0": 37,
+      "regression-1": 37,
+      "regression-2": 36,
+      "regression-3": 36,
+      "rebuild": 1
+    },
+    "unionEqualsTopLevelSelection": true,
+    "disjointPrimaryLanes": true,
+    "nodeArgs": [
+      "--import",
+      "./tests/register-route-ts.mjs",
+      "--test",
+      "--test-concurrency=1"
+    ],
+    "processTimeoutMs": {
+      "regression": 1500000,
+      "rebuild": 900000
+    },
+    "workflowTimeoutMinutes": {
+      "regression": 35,
+      "graph": 45,
+      "extraction": 25,
+      "resume": 45,
+      "proof": 25,
+      "quality": 25,
+      "aggregate": 5
+    }
+  },
+  "indirectExecution": [
+    {
+      "from": "tests/task-019-trip-plan.test.mjs",
+      "to": "tests/task-019-projection.cases.mjs",
+      "condition": "spawnSync Node --conditions=react-server --import ./tests/register-planner-ts.mjs --test; localEnv applied"
+    },
+    {
+      "from": "tests/poi-remaining-review.test.mjs",
+      "to": "tests/poi-remaining-review.test.py",
+      "condition": "Node wrapper subprocess; python/python3 available"
+    },
+    {
+      "from": "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+      "to": "tests/python/task_086_selected_gtfs_trailing_fields.py",
+      "condition": "Node wrapper subprocess; PYTHON override or python/python3"
+    },
+    {
+      "from": "tests/task-086-hateruma-air-passenger.test.mjs",
+      "to": "tests/task-086-hateruma-abr.test.py",
+      "condition": "execFileSync; TASK086_PYTHON override or literal python; PYTHONUTF8=1"
+    }
+  ],
+  "entryPoints": [
+    {
+      "id": "npm:test:trip-plan",
+      "source": "package.json",
+      "name": "test:trip-plan",
+      "command": "node --test tests/task-019-trip-plan.test.mjs",
+      "selectedPaths": [
+        "tests/task-019-trip-plan.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:ai-runtime",
+      "source": "package.json",
+      "name": "test:ai-runtime",
+      "command": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test tests/task-076-ai-runtime.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-076-ai-runtime.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:ai-runtime:bundle",
+      "source": "package.json",
+      "name": "test:ai-runtime:bundle",
+      "command": "node tests/task-076-ai-client-bundle.mjs",
+      "selectedPaths": [
+        "tests/task-076-ai-client-bundle.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:trip-plan:runtime",
+      "source": "package.json",
+      "name": "test:trip-plan:runtime",
+      "command": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-019-trip-plan.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-planner-ts.mjs",
+        "tests/task-019-trip-plan.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:deploy:validate",
+      "source": "package.json",
+      "name": "deploy:validate",
+      "command": "node --import ./tests/register-route-ts.mjs tools/deploy/environment-check.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/deploy/environment-check.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:deploy:validate:local",
+      "source": "package.json",
+      "name": "deploy:validate:local",
+      "command": "node --import ./tests/register-route-ts.mjs tools/deploy/environment-check.mjs --local",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/deploy/environment-check.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:deploy:build:local",
+      "source": "package.json",
+      "name": "deploy:build:local",
+      "command": "node --import ./tests/register-route-ts.mjs tools/deploy/build-artifact.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/deploy/build-artifact.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:deploy:verify-artifact",
+      "source": "package.json",
+      "name": "deploy:verify-artifact",
+      "command": "node --import ./tests/register-route-ts.mjs tools/deploy/verify-artifact.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/deploy/verify-artifact.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:deploy:rehearse:local",
+      "source": "package.json",
+      "name": "deploy:rehearse:local",
+      "command": "node --import ./tests/register-route-ts.mjs tools/deploy/rehearse.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/deploy/rehearse.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:deployment",
+      "source": "package.json",
+      "name": "test:deployment",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-025-environment-deployment.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-025-environment-deployment.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:format:check:deploy",
+      "source": "package.json",
+      "name": "format:check:deploy",
+      "command": "prettier --check \"src/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \"tools/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \"tests/**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\" \".github/**/*.{yml,yaml,md}\" \"docs/deployment/**/*.md\" \"*.{ts,mjs,json}\"",
+      "selectedPaths": [],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:db:start",
+      "source": "package.json",
+      "name": "db:start",
+      "command": "node tools/db/local.mjs start",
+      "selectedPaths": [
+        "tools/db/local.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:db:stop",
+      "source": "package.json",
+      "name": "db:stop",
+      "command": "node tools/db/local.mjs stop",
+      "selectedPaths": [
+        "tools/db/local.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:db:status",
+      "source": "package.json",
+      "name": "db:status",
+      "command": "node tools/db/local.mjs status",
+      "selectedPaths": [
+        "tools/db/local.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:db:reset",
+      "source": "package.json",
+      "name": "db:reset",
+      "command": "node tools/db/local.mjs reset",
+      "selectedPaths": [
+        "tools/db/local.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:db:types",
+      "source": "package.json",
+      "name": "db:types",
+      "command": "node tools/db/local.mjs types",
+      "selectedPaths": [
+        "tools/db/local.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:db-foundation",
+      "source": "package.json",
+      "name": "test:db-foundation",
+      "command": "node --test tests/task-015-db-foundation.test.mjs",
+      "selectedPaths": [
+        "tests/task-015-db-foundation.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:routing",
+      "source": "package.json",
+      "name": "test:routing",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-022-route-contract.test.mjs tests/task-022-ekiworld-routing.test.mjs tests/task-022-routing-boundary.test.mjs tests/task-023-planner-route-integration.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-022-ekiworld-routing.test.mjs",
+        "tests/task-022-route-contract.test.mjs",
+        "tests/task-022-routing-boundary.test.mjs",
+        "tests/task-023-planner-route-integration.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:planning-contracts",
+      "source": "package.json",
+      "name": "test:planning-contracts",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-036-planning-contracts.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-036-planning-contracts.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:planning-soak",
+      "source": "package.json",
+      "name": "test:planning-soak",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-037-planning-contract-soak.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-037-planning-contract-soak.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:poi-contracts",
+      "source": "package.json",
+      "name": "test:poi-contracts",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-050-a-poi-schema.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-050-a-poi-schema.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:poi-edge-graph",
+      "source": "package.json",
+      "name": "test:poi-edge-graph",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-082-a-poi-edge-graph.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-082-a-poi-edge-graph.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:poi-recommendation",
+      "source": "package.json",
+      "name": "test:poi-recommendation",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-084-a-recommendation-scoring.test.mjs tests/task-084-a-canonical100-boundary.test.mjs tests/task-084-a-real-pilot100.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-084-a-canonical100-boundary.test.mjs",
+        "tests/task-084-a-real-pilot100.test.mjs",
+        "tests/task-084-a-recommendation-scoring.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:qa:poi-recommendation",
+      "source": "package.json",
+      "name": "qa:poi-recommendation",
+      "command": "node --import ./tests/register-route-ts.mjs tools/qa/task-084-recommendation-runtime.mjs --check",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/qa/task-084-recommendation-runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:qa:poi-recommendation:real-pilot",
+      "source": "package.json",
+      "name": "qa:poi-recommendation:real-pilot",
+      "command": "node --import ./tests/register-route-ts.mjs tools/qa/task-084-real-pilot100.mjs --check",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/qa/task-084-real-pilot100.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:qa:poi-edge-pilot",
+      "source": "package.json",
+      "name": "qa:poi-edge-pilot",
+      "command": "node --import ./tests/register-route-ts.mjs tools/qa/task-082-poi-edge-pilot.mjs --check",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/qa/task-082-poi-edge-pilot.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:qa:planning-soak",
+      "source": "package.json",
+      "name": "qa:planning-soak",
+      "command": "node --import ./tests/register-route-ts.mjs tools/qa/planning-contract-fuzz.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/qa/planning-contract-fuzz.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:qa:region-graph-pilot",
+      "source": "package.json",
+      "name": "qa:region-graph-pilot",
+      "command": "node --import ./tests/register-route-ts.mjs tools/qa/region-graph-pilot.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/qa/region-graph-pilot.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:region-graph-pilot",
+      "source": "package.json",
+      "name": "test:region-graph-pilot",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-041-region-graph-pilot.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-041-region-graph-pilot.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:qa:region-master-code-integration",
+      "source": "package.json",
+      "name": "qa:region-master-code-integration",
+      "command": "node --import ./tests/register-route-ts.mjs tools/qa/region-master-code-integration.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/qa/region-master-code-integration.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:region-master-code-integration",
+      "source": "package.json",
+      "name": "test:region-master-code-integration",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-045-region-master-code-integration.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-045-region-master-code-integration.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:qa:pr352-delta-revalidation",
+      "source": "package.json",
+      "name": "qa:pr352-delta-revalidation",
+      "command": "node --import ./tests/register-route-ts.mjs tools/qa/pr352-develop-sync-delta-revalidation.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/qa/pr352-develop-sync-delta-revalidation.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:pr352-delta-revalidation",
+      "source": "package.json",
+      "name": "test:pr352-delta-revalidation",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:qa:master-code-registry",
+      "source": "package.json",
+      "name": "qa:master-code-registry",
+      "command": "node --import ./tests/register-route-ts.mjs tools/qa/master-code-registry.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tools/qa/master-code-registry.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:master-code-registry",
+      "source": "package.json",
+      "name": "test:master-code-registry",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-043-master-code-registry.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-043-master-code-registry.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:japan-destinations:close",
+      "source": "package.json",
+      "name": "assets:japan-destinations:close",
+      "command": "node tools/assets/close-japan-destination-evidence.mjs",
+      "selectedPaths": [
+        "tools/assets/close-japan-destination-evidence.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:japan-destination-closure",
+      "source": "package.json",
+      "name": "test:japan-destination-closure",
+      "command": "node --test tests/task-013-3-1-japan-destination-closure.test.mjs",
+      "selectedPaths": [
+        "tests/task-013-3-1-japan-destination-closure.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:japan-destinations",
+      "source": "package.json",
+      "name": "assets:japan-destinations",
+      "command": "node tools/assets/resolve-japan-destinations.mjs",
+      "selectedPaths": [
+        "tools/assets/resolve-japan-destinations.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:japan-destinations:validate",
+      "source": "package.json",
+      "name": "assets:japan-destinations:validate",
+      "command": "node tools/assets/validate-japan-destination-resolution.mjs",
+      "selectedPaths": [
+        "tools/assets/validate-japan-destination-resolution.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:japan-destinations",
+      "source": "package.json",
+      "name": "test:japan-destinations",
+      "command": "node --test tests/task-013-3-japan-destination-resolution.test.mjs",
+      "selectedPaths": [
+        "tests/task-013-3-japan-destination-resolution.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:core-manifest",
+      "source": "package.json",
+      "name": "assets:core-manifest",
+      "command": "node tools/assets/build-core-generation-manifest.mjs",
+      "selectedPaths": [
+        "tools/assets/build-core-generation-manifest.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:core-batches",
+      "source": "package.json",
+      "name": "assets:core-batches",
+      "command": "node tools/assets/export-core-generation-batches.mjs",
+      "selectedPaths": [
+        "tools/assets/export-core-generation-batches.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:core-estimate",
+      "source": "package.json",
+      "name": "assets:core-estimate",
+      "command": "node tools/assets/estimate-core-generation-cost.mjs",
+      "selectedPaths": [
+        "tools/assets/estimate-core-generation-cost.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:core-validate",
+      "source": "package.json",
+      "name": "assets:core-validate",
+      "command": "node tools/assets/validate-core-generation-manifest.mjs",
+      "selectedPaths": [
+        "tools/assets/validate-core-generation-manifest.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:core-generation",
+      "source": "package.json",
+      "name": "test:core-generation",
+      "command": "node --test tests/task-013-2-core-generation-manifest.test.mjs",
+      "selectedPaths": [
+        "tests/task-013-2-core-generation-manifest.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:catalog",
+      "source": "package.json",
+      "name": "assets:catalog",
+      "command": "node tools/assets/build-full-catalog.mjs",
+      "selectedPaths": [
+        "tools/assets/build-full-catalog.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:derive",
+      "source": "package.json",
+      "name": "assets:derive",
+      "command": "node tools/assets/generate-asset-derivatives.mjs",
+      "selectedPaths": [
+        "tools/assets/generate-asset-derivatives.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:verify-variants",
+      "source": "package.json",
+      "name": "assets:verify-variants",
+      "command": "node tools/assets/verify-asset-derivatives.mjs",
+      "selectedPaths": [
+        "tools/assets/verify-asset-derivatives.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:review",
+      "source": "package.json",
+      "name": "assets:review",
+      "command": "node tools/assets/generate-variant-review.mjs",
+      "selectedPaths": [
+        "tools/assets/generate-variant-review.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:nightly",
+      "source": "package.json",
+      "name": "assets:nightly",
+      "command": "node tools/assets/run-assets-nightly.mjs",
+      "selectedPaths": [
+        "tools/assets/run-assets-nightly.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:nightly:resume",
+      "source": "package.json",
+      "name": "assets:nightly:resume",
+      "command": "node tools/assets/run-assets-nightly.mjs --resume",
+      "selectedPaths": [
+        "tools/assets/run-assets-nightly.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:asset-variants",
+      "source": "package.json",
+      "name": "test:asset-variants",
+      "command": "node --test tests/task-013-1-asset-variants.test.mjs",
+      "selectedPaths": [
+        "tests/task-013-1-asset-variants.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:inventory",
+      "source": "package.json",
+      "name": "assets:inventory",
+      "command": "node tools/assets/inventory-assets.mjs",
+      "selectedPaths": [
+        "tools/assets/inventory-assets.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:validate",
+      "source": "package.json",
+      "name": "assets:validate",
+      "command": "node tools/assets/validate-asset-library.mjs",
+      "selectedPaths": [
+        "tools/assets/validate-asset-library.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:assets:index",
+      "source": "package.json",
+      "name": "assets:index",
+      "command": "node tools/assets/generate-asset-index.mjs",
+      "selectedPaths": [
+        "tools/assets/generate-asset-index.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:assets",
+      "source": "package.json",
+      "name": "test:assets",
+      "command": "node --test tests/task-013-assets.test.mjs",
+      "selectedPaths": [
+        "tests/task-013-assets.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:dev",
+      "source": "package.json",
+      "name": "dev",
+      "command": "next dev",
+      "selectedPaths": [],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:build",
+      "source": "package.json",
+      "name": "build",
+      "command": "next build",
+      "selectedPaths": [],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:start",
+      "source": "package.json",
+      "name": "start",
+      "command": "next start",
+      "selectedPaths": [],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:lint",
+      "source": "package.json",
+      "name": "lint",
+      "command": "eslint .",
+      "selectedPaths": [],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:typecheck",
+      "source": "package.json",
+      "name": "typecheck",
+      "command": "next typegen && tsc --noEmit",
+      "selectedPaths": [],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:format",
+      "source": "package.json",
+      "name": "format",
+      "command": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\"",
+      "selectedPaths": [],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:format:check",
+      "source": "package.json",
+      "name": "format:check",
+      "command": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,css,md}\"",
+      "selectedPaths": [],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:preferences",
+      "source": "package.json",
+      "name": "test:preferences",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-042-preference-schema.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-042-preference-schema.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:preferences:db",
+      "source": "package.json",
+      "name": "test:preferences:db",
+      "command": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-042-preference-schema.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-planner-ts.mjs",
+        "tests/task-042-preference-schema.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:companions",
+      "source": "package.json",
+      "name": "test:companions",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-044-companion-schema.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-044-companion-schema.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:companions:db",
+      "source": "package.json",
+      "name": "test:companions:db",
+      "command": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-044-companion-schema.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-planner-ts.mjs",
+        "tests/task-044-companion-schema.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:preference-api",
+      "source": "package.json",
+      "name": "test:preference-api",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-045-preference-api.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-045-preference-api.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:preference-api:local",
+      "source": "package.json",
+      "name": "test:preference-api:local",
+      "command": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-045-preference-api.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-planner-ts.mjs",
+        "tests/task-045-preference-api.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:companion-api",
+      "source": "package.json",
+      "name": "test:companion-api",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-047-companion-api.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-047-companion-api.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:companion-api:local",
+      "source": "package.json",
+      "name": "test:companion-api:local",
+      "command": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-047-companion-api.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-planner-ts.mjs",
+        "tests/task-047-companion-api.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:trip-persistence",
+      "source": "package.json",
+      "name": "test:trip-persistence",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-048-trip-persistence-model.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-048-trip-persistence-model.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:trip-persistence:db",
+      "source": "package.json",
+      "name": "test:trip-persistence:db",
+      "command": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-048-trip-persistence-model.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-planner-ts.mjs",
+        "tests/task-048-trip-persistence-model.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:trip-library-api",
+      "source": "package.json",
+      "name": "test:trip-library-api",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-049-trip-library-api.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-049-trip-library-api.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:trip-library-api:local",
+      "source": "package.json",
+      "name": "test:trip-library-api:local",
+      "command": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-049-trip-library-api.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-planner-ts.mjs",
+        "tests/task-049-trip-library-api.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:profile-api",
+      "source": "package.json",
+      "name": "test:profile-api",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-050-profile-api.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-050-profile-api.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:profile-api:local",
+      "source": "package.json",
+      "name": "test:profile-api:local",
+      "command": "node --conditions=react-server --import ./tests/register-planner-ts.mjs --test tests/task-050-profile-api.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-planner-ts.mjs",
+        "tests/task-050-profile-api.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:preference-contract",
+      "source": "package.json",
+      "name": "test:preference-contract",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-046-preference-contract.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-046-preference-contract.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:preference-contract:local",
+      "source": "package.json",
+      "name": "test:preference-contract:local",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-046-preference-contract.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-046-preference-contract.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:account-deletion",
+      "source": "package.json",
+      "name": "test:account-deletion",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-052-account-deletion.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-052-account-deletion.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:account-deletion:local",
+      "source": "package.json",
+      "name": "test:account-deletion:local",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-052-account-deletion.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-052-account-deletion.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:preference-presets",
+      "source": "package.json",
+      "name": "test:preference-presets",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-053-preference-presets.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-053-preference-presets.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:preference-presets:local",
+      "source": "package.json",
+      "name": "test:preference-presets:local",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-053-preference-presets.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-053-preference-presets.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:personal-center-migration",
+      "source": "package.json",
+      "name": "test:personal-center-migration",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-054-personal-center-migration.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-054-personal-center-migration.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:personal-center-migration:local",
+      "source": "package.json",
+      "name": "test:personal-center-migration:local",
+      "command": "node --conditions=react-server --import ./tests/register-route-ts.mjs --test tests/task-054-personal-center-migration.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-054-personal-center-migration.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:personal-center-migration:replay",
+      "source": "package.json",
+      "name": "test:personal-center-migration:replay",
+      "command": "node --import ./tests/register-route-ts.mjs tests/task-054-personal-center-replay.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-054-personal-center-replay.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:personal-center",
+      "source": "package.json",
+      "name": "test:personal-center",
+      "command": "node tools/qa/personal-center-tests.mjs",
+      "selectedPaths": [
+        "tools/qa/personal-center-tests.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:personal-center:local",
+      "source": "package.json",
+      "name": "test:personal-center:local",
+      "command": "node tools/qa/personal-center-tests.mjs --local",
+      "selectedPaths": [
+        "tools/qa/personal-center-tests.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:personal-center:e2e",
+      "source": "package.json",
+      "name": "test:personal-center:e2e",
+      "command": "node tools/qa/personal-center-e2e.mjs",
+      "selectedPaths": [
+        "tools/qa/personal-center-e2e.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:profile-ui",
+      "source": "package.json",
+      "name": "test:profile-ui",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-060-profile-ui.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-060-profile-ui.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:profile-ui:local",
+      "source": "package.json",
+      "name": "test:profile-ui:local",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-060-profile-ui.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-060-profile-ui.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:trip-library-ui",
+      "source": "package.json",
+      "name": "test:trip-library-ui",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-061-trip-library-live.test.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-061-trip-library-live.test.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    },
+    {
+      "id": "npm:test:trip-library-ui:local",
+      "source": "package.json",
+      "name": "test:trip-library-ui:local",
+      "command": "node --import ./tests/register-route-ts.mjs --test tests/task-061-trip-library-live.runtime.mjs",
+      "selectedPaths": [
+        "tests/register-route-ts.mjs",
+        "tests/task-061-trip-library-live.runtime.mjs"
+      ],
+      "executionStatus": "NOT_EXECUTED"
+    }
+  ],
+  "existingPersonalCenterAggregate": {
+    "harness": "tools/qa/personal-center-tests.mjs",
+    "inventory": "docs/qa/TASK-055/test-inventory.json",
+    "selection": "suites.filter(execution.mode === (argv --local ? local : non-local))",
+    "suites": [
+      {
+        "file": "tests/personal-center-followup.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/task-010-b-global-logo-navigation.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-010-b-global-logo-navigation.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-016-client-bundle.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "tests/task-016-client-bundle.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-016-user-profile.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-016-user-profile.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-016-user-profile.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-016-user-profile.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-018-authentication.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-018-authentication.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-018-authentication.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-018-authentication.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-018-client-bundle.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "tests/task-018-client-bundle.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-042-preference-schema.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-042-preference-schema.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-042-preference-schema.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-042-preference-schema.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-044-companion-schema.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-044-companion-schema.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-044-companion-schema.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-044-companion-schema.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-045-preference-api.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-045-preference-api.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-045-preference-api.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-045-preference-api.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-046-preference-contract.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-046-preference-contract.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-046-preference-contract.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-046-preference-contract.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-047-companion-api.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-047-companion-api.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-047-companion-api.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-047-companion-api.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-048-trip-persistence-model.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-048-trip-persistence-model.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-048-trip-persistence-model.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-048-trip-persistence-model.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-049-trip-library-api.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-049-trip-library-api.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-049-trip-library-api.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-049-trip-library-api.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-050-profile-api.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-planner-ts.mjs",
+          "--test",
+          "tests/task-050-profile-api.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-050-profile-api.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-050-profile-api.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-052-account-deletion.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-052-account-deletion.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-052-account-deletion.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-052-account-deletion.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-053-preference-presets.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-053-preference-presets.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-053-preference-presets.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-053-preference-presets.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-054-personal-center-migration.runtime.mjs",
+        "mode": "local",
+        "nodeArgs": [
+          "--conditions=react-server",
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-054-personal-center-migration.runtime.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-054-personal-center-migration.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-054-personal-center-migration.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-054-personal-center-replay.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/task-055-private-boundaries.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-055-private-boundaries.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/task-055-test-runner.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/task-055-test-runner.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/trip-status-personal-center-followup.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/trip-status-personal-center-followup.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/wbs-5-10-trip-library.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-10-trip-library.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-10-trip-library.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/wbs-5-20-personal-center-responsive-states.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-20-personal-center-responsive-states.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/wbs-5-3-auth-callback.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-3-auth-callback.runtime.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-3-auth-callback.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-3-auth-callback.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/wbs-5-3-auth-navigation.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-3-auth-surfaces.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-3-auth-user-flow.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-3-auth-user-flow.runtime.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-3-auth-user-flow.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-3-auth-user-flow.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/wbs-5-3-login-layout.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-3-logout-style.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-5-preferences.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-5-preferences.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-5-preferences.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/wbs-5-6-companions.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-6-companions.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-6-companions.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/wbs-5-7-mobility-preference.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-7-mobility-preference.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-7-mobility-preference.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/wbs-5-8-attraction-activity-preference.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-8-attraction-activity-preference.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/wbs-5-9-dining-accommodation-budget.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5-9-dining-accommodation-budget.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/wbs-5.4-v2.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-5.4-v2.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-5.4-v2.test.mjs"
+        ]
+      },
+      {
+        "file": "tests/wbs-9-12-personal-center-qa.browser.mjs",
+        "mode": "excluded",
+        "nodeArgs": null
+      },
+      {
+        "file": "tests/wbs-9-12-personal-center-qa.test.mjs",
+        "mode": "non-local",
+        "nodeArgs": [
+          "--import",
+          "./tests/register-route-ts.mjs",
+          "--test",
+          "tests/wbs-9-12-personal-center-qa.test.mjs"
+        ]
+      }
+    ],
+    "ciInvokesAggregate": false,
+    "localPrerequisites": [
+      "exclusive local Supabase/Docker",
+      "existing .next/BUILD_ID",
+      "free ports 3000/3001",
+      "explicit CODEX_PLAYWRIGHT_PATH",
+      "generated DB type equality; cleanup and zero-skip assertions"
+    ],
+    "e2eHarness": "tools/qa/personal-center-e2e.mjs",
+    "e2eTarget": "tests/task-059-personal-center-e2e.runtime.mjs",
+    "browserChoices": [
+      "edge",
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "e2eCiSelected": false
+  },
+  "proofChain": {
+    "graph": [
+      "first",
+      "second"
+    ],
+    "extraction": "extract",
+    "resumeNeeds": [
+      "graph"
+    ],
+    "proofNeeds": [
+      "graph",
+      "extraction",
+      "resume"
+    ],
+    "aggregateNeeds": [
+      "regression",
+      "graph",
+      "extraction",
+      "resume",
+      "proof",
+      "quality"
+    ],
+    "sources": [
+      "tools/transport/task-086-validation.mjs",
+      "tools/transport/task-086-validation-lanes.mjs",
+      "tools/transport/task-086-verify.mjs",
+      "tools/qa/ci-revision.mjs",
+      ".github/workflows/quality-gate.yml"
+    ],
+    "binding": [
+      "checkoutSha",
+      "runId",
+      "runAttempt",
+      "inputCodeSha256",
+      "proofInputSha256",
+      "nodeVersion",
+      "platform"
+    ],
+    "validations": [
+      "manifest inputHashes/generatorHashes versus published bytes",
+      "first/second artifact equality and resume CHECKSUM_SKIP",
+      "retained raw extraction reproduction",
+      "independent proof-input preservation",
+      "published artifact comparison",
+      "resume corruption invalidation",
+      "aggregate all needs success and event/run/attempt equality",
+      "eligibility and engine receipts bound to same SHA/run/attempt/input",
+      "regression union and distinct file count"
+    ],
+    "artifacts": [
+      {
+        "producer": "graph[first,second]",
+        "name": "task086-graph-<lane>-<github.sha>",
+        "consumer": "resume uses first; proof uses both",
+        "retentionDays": 3
+      },
+      {
+        "producer": "extraction",
+        "name": "task086-extraction-<github.sha>",
+        "consumer": "proof",
+        "retentionDays": 3
+      },
+      {
+        "producer": "resume",
+        "name": "task086-resume-<github.sha>",
+        "consumer": "proof",
+        "retentionDays": 3
+      },
+      {
+        "producer": "regression[5 lanes]",
+        "name": "task086-regression-<lane>-<github.sha>",
+        "consumer": "closeout gate, merge-multiple",
+        "retentionDays": 3
+      },
+      {
+        "producer": "proof",
+        "name": "task086-proof-<github.sha>",
+        "consumer": "closeout gate",
+        "retentionDays": 3
+      },
+      {
+        "producer": "closeout-quality-gate",
+        "name": "task086-final-exact-head-<github.sha>",
+        "consumer": "human audit",
+        "retentionDays": 30
+      }
+    ],
+    "caution": "exact-head job label means GITHUB_SHA/event checkout; PR merge-ref is not necessarily branch head. Gate reads shared regression-inventory.json and trusts needs success; it does not independently compare every lane log/receipt digest."
+  },
+  "gaps": [
+    {
+      "id": "G1",
+      "finding": "npm test absent; old PR loader/exact-string governance assertions need redesign",
+      "source": "package.json"
+    },
+    {
+      "id": "G2",
+      "finding": "top-level Node selector is not all repository tests; Python selftests/runtime/browser excluded or unproven",
+      "files": [
+        "tests/task-016-user-profile.runtime.mjs",
+        "tests/task-018-authentication.runtime.mjs",
+        "tests/task-019-trip-plan.runtime.mjs",
+        "tests/task-042-preference-schema.runtime.mjs",
+        "tests/task-044-companion-schema.runtime.mjs",
+        "tests/task-045-preference-api.runtime.mjs",
+        "tests/task-046-preference-contract.runtime.mjs",
+        "tests/task-047-companion-api.runtime.mjs",
+        "tests/task-048-trip-persistence-model.runtime.mjs",
+        "tests/task-049-trip-library-api.runtime.mjs",
+        "tests/task-050-profile-api.runtime.mjs",
+        "tests/task-052-account-deletion.runtime.mjs",
+        "tests/task-053-preference-presets.runtime.mjs",
+        "tests/task-054-personal-center-migration.runtime.mjs",
+        "tests/task-059-personal-center-e2e.runtime.mjs",
+        "tests/task-060-profile-ui.runtime.mjs",
+        "tests/task-061-trip-library-live.runtime.mjs",
+        "tests/task-062-trip-plan-coexistence.runtime.mjs",
+        "tests/task-063-engine-apply.runtime.mjs",
+        "tests/task-064-runtime-rollback.runtime.mjs",
+        "tests/task-065-engine-certification.runtime.mjs",
+        "tests/task-084-b-n02-candidates.test.py",
+        "tests/task-084-b-phase2.test.py",
+        "tests/wbs-5-3-auth-callback.runtime.mjs",
+        "tests/wbs-5-3-auth-user-flow.runtime.mjs",
+        "tools/transport/task-084-v2-amendment-selftest.py",
+        "tools/transport/task-084-v2-rail-selftest.py"
+      ]
+    },
+    {
+      "id": "G3",
+      "finding": "ordinary PR/release include serial heavy rebuild, but not full published/lane receipt chain",
+      "source": ".github/workflows/quality-gate.yml"
+    },
+    {
+      "id": "G4",
+      "finding": "verify ignores expectedHead input. Its artifact step requires task086FinalCloseout, which makes the job itself ineligible",
+      "source": ".github/workflows/quality-gate.yml"
+    },
+    {
+      "id": "G5",
+      "finding": "Node pinned to major 24; no setup-python step; browser/DB prerequisites not centrally modeled",
+      "source": ".nvmrc"
+    },
+    {
+      "id": "G6",
+      "finding": "local aliases/Personal Center aggregate overlap CI-selected tests; alternative-entry duplication differs from duplicate execution inside lane union",
+      "source": "tools/qa/personal-center-tests.mjs"
+    },
+    {
+      "id": "G7",
+      "finding": "script/source names cannot certify offline/no-write behavior; children, scratch outputs and heavy verification must be modeled",
+      "source": "tools/transport/task-086-verify.mjs"
+    }
+  ],
+  "overlap": {
+    "primaryLaneDuplicates": [],
+    "npmAliasesOverlappingCi": [
+      "npm:test:trip-plan",
+      "npm:test:ai-runtime",
+      "npm:test:deployment",
+      "npm:test:db-foundation",
+      "npm:test:routing",
+      "npm:test:planning-contracts",
+      "npm:test:planning-soak",
+      "npm:test:poi-contracts",
+      "npm:test:poi-edge-graph",
+      "npm:test:poi-recommendation",
+      "npm:test:region-graph-pilot",
+      "npm:test:region-master-code-integration",
+      "npm:test:pr352-delta-revalidation",
+      "npm:test:master-code-registry",
+      "npm:test:japan-destination-closure",
+      "npm:test:japan-destinations",
+      "npm:test:core-generation",
+      "npm:test:asset-variants",
+      "npm:test:assets",
+      "npm:test:preferences",
+      "npm:test:companions",
+      "npm:test:preference-api",
+      "npm:test:companion-api",
+      "npm:test:trip-persistence",
+      "npm:test:trip-library-api",
+      "npm:test:profile-api",
+      "npm:test:preference-contract",
+      "npm:test:account-deletion",
+      "npm:test:preference-presets",
+      "npm:test:personal-center-migration",
+      "npm:test:profile-ui",
+      "npm:test:trip-library-ui"
+    ],
+    "nestedFocusedReplay": {
+      "source": "tools/transport/task-086-verify.mjs",
+      "condition": "publish=true / TASK086_PUBLISH_VALIDATION=1; not set in reviewed CI",
+      "note": "focused subprocess tests duplicate primary selection only in this publish mode"
+    }
+  },
+  "coverageSets": {
+    "directTests": [
+      "tests/browser-trip-save.test.mjs",
+      "tests/bulk-booking.test.mjs",
+      "tests/detail-card-actions.test.mjs",
+      "tests/detail-compact-board.test.mjs",
+      "tests/detail-overview-locations.test.mjs",
+      "tests/planner-artwork.test.mjs",
+      "tests/planner-audit-fixes.test.mjs",
+      "tests/planner-audit-regressions.test.mjs",
+      "tests/planner-concept-refinement.test.mjs",
+      "tests/planner-local-integration.test.mjs",
+      "tests/planner-meal-booking-refinement.test.mjs",
+      "tests/planner-quick-menu-design.test.mjs",
+      "tests/planner-range-enrichment.test.mjs",
+      "tests/planner-responsive-density.test.mjs",
+      "tests/planner-route-board.test.mjs",
+      "tests/planner-sight-timeline.test.mjs",
+      "tests/planner-status-stack.test.mjs",
+      "tests/planner-track-actions.test.mjs",
+      "tests/planner-working-plan.test.mjs",
+      "tests/poi-remaining-review.test.mjs",
+      "tests/pr-governance.test.mjs",
+      "tests/task-007-background.test.mjs",
+      "tests/task-007-calendar.test.mjs",
+      "tests/task-007-info-popover.test.mjs",
+      "tests/task-008-planner.test.mjs",
+      "tests/task-0081-map-booking.test.mjs",
+      "tests/task-0082-visuals.test.mjs",
+      "tests/task-0083-interactions.test.mjs",
+      "tests/task-010-b-global-logo-navigation.test.mjs",
+      "tests/task-010-navigation.test.mjs",
+      "tests/task-011-trip-detail-workspace.test.mjs",
+      "tests/task-012-planner-v05.test.mjs",
+      "tests/task-013-1-asset-variants.test.mjs",
+      "tests/task-013-2-core-generation-manifest.test.mjs",
+      "tests/task-013-3-1-japan-destination-closure.test.mjs",
+      "tests/task-013-3-japan-destination-resolution.test.mjs",
+      "tests/task-013-assets.test.mjs",
+      "tests/task-015-db-foundation.test.mjs",
+      "tests/task-016-user-profile.test.mjs",
+      "tests/task-018-authentication.test.mjs",
+      "tests/task-019-trip-plan.test.mjs",
+      "tests/task-022-ekiworld-routing.test.mjs",
+      "tests/task-022-route-contract.test.mjs",
+      "tests/task-022-routing-boundary.test.mjs",
+      "tests/task-023-planner-route-integration.test.mjs",
+      "tests/task-024-main-shell.test.mjs",
+      "tests/task-025-2-concept-fidelity.test.mjs",
+      "tests/task-025-2-coral-palette.test.mjs",
+      "tests/task-025-2-v11.test.mjs",
+      "tests/task-025-environment-deployment.test.mjs",
+      "tests/task-036-planning-contracts.test.mjs",
+      "tests/task-037-planning-contract-soak.test.mjs",
+      "tests/task-041-region-graph-pilot.test.mjs",
+      "tests/task-042-preference-schema.test.mjs",
+      "tests/task-043-master-code-registry.test.mjs",
+      "tests/task-044-companion-schema.test.mjs",
+      "tests/task-045-preference-api.test.mjs",
+      "tests/task-045-region-master-code-integration.test.mjs",
+      "tests/task-046-preference-contract.test.mjs",
+      "tests/task-047-companion-api.test.mjs",
+      "tests/task-047-pr352-develop-sync-delta-revalidation.test.mjs",
+      "tests/task-048-trip-persistence-model.test.mjs",
+      "tests/task-049-trip-library-api.test.mjs",
+      "tests/task-050-a-poi-schema.test.mjs",
+      "tests/task-050-profile-api.test.mjs",
+      "tests/task-051-a-planner-store.test.mjs",
+      "tests/task-052-account-deletion.test.mjs",
+      "tests/task-053-preference-presets.test.mjs",
+      "tests/task-054-personal-center-migration.test.mjs",
+      "tests/task-055-private-boundaries.test.mjs",
+      "tests/task-055-test-runner.test.mjs",
+      "tests/task-060-profile-ui.test.mjs",
+      "tests/task-061-trip-library-live.test.mjs",
+      "tests/task-062-schema-union.test.mjs",
+      "tests/task-063-engine-apply.test.mjs",
+      "tests/task-064-runtime-rollback.test.mjs",
+      "tests/task-065-engine-certification.test.mjs",
+      "tests/task-067-main-system-state.test.mjs",
+      "tests/task-068-candidate-enrichment.test.mjs",
+      "tests/task-068-corpus-combination.test.mjs",
+      "tests/task-070-p0-evidence-review.test.mjs",
+      "tests/task-076-ai-runtime.test.mjs",
+      "tests/task-081-a-poi-detail-api.test.mjs",
+      "tests/task-082-a-poi-edge-graph.test.mjs",
+      "tests/task-082-personal-ai-history.test.mjs",
+      "tests/task-083-a-poi-runtime.test.mjs",
+      "tests/task-083-canonical-owner-correction.test.mjs",
+      "tests/task-084-a-canonical100-boundary.test.mjs",
+      "tests/task-084-a-real-pilot100.test.mjs",
+      "tests/task-084-a-recommendation-scoring.test.mjs",
+      "tests/task-084-v2-amendment.test.mjs",
+      "tests/task-086-aguni-capability.test.mjs",
+      "tests/task-086-airport-selector-preflight.test.mjs",
+      "tests/task-086-b-autonomous-remediation.test.mjs",
+      "tests/task-086-b-ci-revision.test.mjs",
+      "tests/task-086-b-derived-gtfs.test.mjs",
+      "tests/task-086-b-gtfs-sections.test.mjs",
+      "tests/task-086-b-mobility-backbone.test.mjs",
+      "tests/task-086-b-p11-succession.test.mjs",
+      "tests/task-086-b-pattern-corrections.test.mjs",
+      "tests/task-086-b-rebuild.test.mjs",
+      "tests/task-086-b-selected-gtfs-trailing-fields.test.mjs",
+      "tests/task-086-b-selected-gtfs.test.mjs",
+      "tests/task-086-b-sonic-corrections.test.mjs",
+      "tests/task-086-b-stage-closeout.test.mjs",
+      "tests/task-086-certification-engine-repair.test.mjs",
+      "tests/task-086-conditional-query-cache.test.mjs",
+      "tests/task-086-context-registry.test.mjs",
+      "tests/task-086-dynamic-od-evidence-order.test.mjs",
+      "tests/task-086-dynamic-od.test.mjs",
+      "tests/task-086-facility-registry.test.mjs",
+      "tests/task-086-final-closeout.test.mjs",
+      "tests/task-086-fixed-phone-reception.test.mjs",
+      "tests/task-086-gtfs-agency-subset.test.mjs",
+      "tests/task-086-hamayuso-qualified.test.mjs",
+      "tests/task-086-hateruma-air-passenger.test.mjs",
+      "tests/task-086-historical-facility-stop.test.mjs",
+      "tests/task-086-iwami-fixed-flight.test.mjs",
+      "tests/task-086-licensed-package-date-binding.test.mjs",
+      "tests/task-086-native-facility.test.mjs",
+      "tests/task-086-noto-dynamic-od.test.mjs",
+      "tests/task-086-od-production-pipeline.test.mjs",
+      "tests/task-086-od-registry.test.mjs",
+      "tests/task-086-od-seed-lifecycle.test.mjs",
+      "tests/task-086-okushiri-capability.test.mjs",
+      "tests/task-086-onboard-applicability.test.mjs",
+      "tests/task-086-onboard-request.test.mjs",
+      "tests/task-086-phase-header-preflight.test.mjs",
+      "tests/task-086-public-conditional-applicability.test.mjs",
+      "tests/task-086-publication-recovery.test.mjs",
+      "tests/task-086-qualified-hotel.test.mjs",
+      "tests/task-086-readmittable-closeout.test.mjs",
+      "tests/task-086-retained-cross-package-transfer.test.mjs",
+      "tests/task-086-rights-binding.test.mjs",
+      "tests/task-086-service-access-contract.test.mjs",
+      "tests/task-086-service-access-pipeline.test.mjs",
+      "tests/task-088-a-trusted-baseline.test.mjs",
+      "tests/trip-preparation.test.mjs",
+      "tests/trip-status-personal-center-followup.test.mjs",
+      "tests/wbs-4-17-trip-contract.test.mjs",
+      "tests/wbs-4-21-rule-feasibility.test.mjs",
+      "tests/wbs-5-10-trip-library.test.mjs",
+      "tests/wbs-5-20-personal-center-responsive-states.test.mjs",
+      "tests/wbs-5-3-auth-callback.test.mjs",
+      "tests/wbs-5-3-auth-user-flow.test.mjs",
+      "tests/wbs-5-5-preferences.test.mjs",
+      "tests/wbs-5-6-companions.test.mjs",
+      "tests/wbs-5-7-mobility-preference.test.mjs",
+      "tests/wbs-5-8-attraction-activity-preference.test.mjs",
+      "tests/wbs-5-9-dining-accommodation-budget.test.mjs",
+      "tests/wbs-5.4-v2.test.mjs",
+      "tests/wbs-9-12-personal-center-qa.test.mjs"
+    ],
+    "indirectTests": [
+      "tests/poi-remaining-review.test.py",
+      "tests/python/task_086_selected_gtfs_trailing_fields.py",
+      "tests/task-019-projection.cases.mjs",
+      "tests/task-086-hateruma-abr.test.py"
+    ],
+    "notProvenSelectedTests": [
+      "tests/task-016-user-profile.runtime.mjs",
+      "tests/task-018-authentication.runtime.mjs",
+      "tests/task-019-trip-plan.runtime.mjs",
+      "tests/task-042-preference-schema.runtime.mjs",
+      "tests/task-044-companion-schema.runtime.mjs",
+      "tests/task-045-preference-api.runtime.mjs",
+      "tests/task-046-preference-contract.runtime.mjs",
+      "tests/task-047-companion-api.runtime.mjs",
+      "tests/task-048-trip-persistence-model.runtime.mjs",
+      "tests/task-049-trip-library-api.runtime.mjs",
+      "tests/task-050-profile-api.runtime.mjs",
+      "tests/task-052-account-deletion.runtime.mjs",
+      "tests/task-053-preference-presets.runtime.mjs",
+      "tests/task-054-personal-center-migration.runtime.mjs",
+      "tests/task-059-personal-center-e2e.runtime.mjs",
+      "tests/task-060-profile-ui.runtime.mjs",
+      "tests/task-061-trip-library-live.runtime.mjs",
+      "tests/task-062-trip-plan-coexistence.runtime.mjs",
+      "tests/task-063-engine-apply.runtime.mjs",
+      "tests/task-064-runtime-rollback.runtime.mjs",
+      "tests/task-065-engine-certification.runtime.mjs",
+      "tests/task-084-b-n02-candidates.test.py",
+      "tests/task-084-b-phase2.test.py",
+      "tests/wbs-5-3-auth-callback.runtime.mjs",
+      "tests/wbs-5-3-auth-user-flow.runtime.mjs",
+      "tools/transport/task-084-v2-amendment-selftest.py",
+      "tools/transport/task-084-v2-rail-selftest.py"
+    ]
+  },
+  "executionStatus": "NOT_EXECUTED",
+  "unresolvedEntryPaths": []
+}

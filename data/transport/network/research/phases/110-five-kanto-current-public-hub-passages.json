@@ -1,0 +1,226 @@
+{
+  "phaseId": "110-five-kanto-current-public-hub-passages",
+  "strategy": [
+    "CURRENT_LINKED_DIAGRAMS_WITH_EXPLICIT_PASSENGER_CONNECTIONS",
+    "EXCLUDE_CLOSED_AND_TIME_LIMITED_ALTERNATIVE_GATES",
+    "INDEPENDENT_OPERATOR_COMPONENTS"
+  ],
+  "completedActionIds": [
+    "hub:jr-east:kawagoe-kitaasaka-current-public-transfers",
+    "hub:metro:ningyocho-suitengumae-current-open-public-paths",
+    "hub:tokyu:mizonokuchi-current-jr-public-deck",
+    "hub:keio:nagayama-current-odakyu-public-passage"
+  ],
+  "facts": [
+    {
+      "factId": "kawagoe-reviewed-current-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-east:kawagoe-kitaasaka-current-public-transfers",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/0525_1f-2f.png",
+      "observedResponseSha256": "baa93d92ea9f2d547f0157895b0bca1fab32db850b0de4a6514f5b77b80c6e4e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-east:kawagoe-kitaasaka-current-public-transfers",
+          "url": "https://www.jreast.co.jp/estation/stations/525.html",
+          "observedResponseSha256": "83a0b34f5ed01a7a0e04549eb94ce2039983381c2e2c9975781d11da8194082e"
+        }
+      ],
+      "locator": "September 2025 JR diagram: JR platforms 3-6 connect via stairs to the 2F gate/public concourse, whose east end explicitly points to the Tobu Tojo boarding area. This is a public outside-gate interchange, not a shared paid area. Individually visually reviewed. Minimum physical relation only; no raw diagram, precise walking duration or universal accessibility claim.",
+      "components": [
+        {
+          "name": "川越",
+          "operator": "東日本旅客鉄道",
+          "line": "川越線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "川越",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_LINKED_OPERATOR_PUBLIC_CONNECTION",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "kitaasaka-asakadai-reviewed-current-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-east:kawagoe-kitaasaka-current-public-transfers",
+      "sourceUrl": "https://www.jreast.co.jp/estation/stations/img/floormap/0550_1f-2f.png",
+      "observedResponseSha256": "f1c89f80196762460a5abc23904a504fcec0dfaced7f7b8bf7cc1d827b68d48f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-east:kawagoe-kitaasaka-current-public-transfers",
+          "url": "https://www.jreast.co.jp/estation/stations/550.html",
+          "observedResponseSha256": "89a7ff235e8409e3bbbc4eb8361c3e361c0341c03a4c6ba11b680170a196ecb9"
+        }
+      ],
+      "locator": "Current-linked June 2023 JR diagram: 2F Musashino platforms connect down to the 1F gate and east public exit explicitly signed to Tobu Tojo Asakadai. Different station names are not merged. Individually visually reviewed. Minimum physical relation only; no raw diagram, precise walking duration or universal accessibility claim.",
+      "components": [
+        {
+          "name": "北朝霞",
+          "operator": "東日本旅客鉄道",
+          "line": "武蔵野線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "朝霞台",
+          "operator": "東武鉄道",
+          "line": "東上本線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_LINKED_OPERATOR_PUBLIC_CONNECTION",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "ningyocho-suitengumae-open-surface-reviewed-current-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:metro:ningyocho-suitengumae-current-open-public-paths",
+      "sourceUrl": "https://www.tokyometro.jp/station/yardmap_img/figure_yardmap_ningyocho_all.jpg",
+      "observedResponseSha256": "0038fb0ab41cd1e1d4cd93ea187a4f9e1a8013fc2478af6de25bb82bcc44ae61",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:metro:ningyocho-suitengumae-current-open-public-paths",
+          "url": "https://www.tokyometro.jp/station/ningyocho/index.html",
+          "observedResponseSha256": "b0bb9a739676ea9ccc4a0c3fe02d79fdc742f2f0dbb5a6cdda238d8c3beba6b1"
+        }
+      ],
+      "locator": "Current-linked November 2025 combined diagram explicitly marks a two-direction surface transfer between Ningyocho A2 and Suitengumae 8. Exclude A1 (closed) and the depicted A1-7 alternative. No underground connection or same-station identity is inferred. Individually visually reviewed. Minimum physical relation only; no raw diagram, precise walking duration or universal accessibility claim.",
+      "components": [
+        {
+          "name": "人形町",
+          "operator": "東京地下鉄",
+          "line": "2号線日比谷線",
+          "mode": "metro"
+        },
+        {
+          "name": "水天宮前",
+          "operator": "東京地下鉄",
+          "line": "11号線半蔵門線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_LINKED_OPERATOR_PUBLIC_CONNECTION",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "mizonokuchi-musashimizonokuchi-reviewed-current-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:tokyu:mizonokuchi-current-jr-public-deck",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/station_map/image/map_mizonokuchi_floor_3.jpg",
+      "observedResponseSha256": "1d2ee609458f30dc2b65b87be48897980b227279b9aba0a34f808c22f16a7b4d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:tokyu:mizonokuchi-current-jr-public-deck",
+          "url": "https://www.tokyu.co.jp/area/mizonokuchi/station/",
+          "observedResponseSha256": "f1d3259fe68dc4443d50b9bace17a37d875d0a530c2e308fbba2dc646ae07a2d"
+        },
+        {
+          "sourceActionId": "hub:tokyu:mizonokuchi-current-jr-public-deck",
+          "url": "https://www.tokyu.co.jp/railway/station_map/image/map_mizonokuchi_3d_3.jpg",
+          "observedResponseSha256": "0fd3b45ce30960ac9daee0a13b186ec27b989efe18f10a8fe709967442ca41ec"
+        }
+      ],
+      "locator": "March 28 2026 Tokyu floor plan shows the regular front gate, east public entrance and north-south free passage on the pedestrian deck leading directly to JR Musashi-mizonokuchi. Isometric map independently shows platform access to the regular gate. Exclude weekday-only IC temporary gate and do not claim a shared paid zone. Individually visually reviewed. Minimum physical relation only; no raw diagram, precise walking duration or universal accessibility claim.",
+      "components": [
+        {
+          "name": "溝の口",
+          "operator": "東急電鉄",
+          "line": "田園都市線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "武蔵溝ノ口",
+          "operator": "東日本旅客鉄道",
+          "line": "南武線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_LINKED_OPERATOR_PUBLIC_CONNECTION",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "nagayama-keio-odakyu-reviewed-current-public-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:keio:nagayama-current-odakyu-public-passage",
+      "sourceUrl": "https://www.keio.co.jp/train/station/ko40_keio-nagayama/images/station_map.png",
+      "observedResponseSha256": "f1940974f696bce337f24beccb0399683abd60b5cca22514387450074628e44d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:keio:nagayama-current-odakyu-public-passage",
+          "url": "https://www.keio.co.jp/train/station/ko40_keio-nagayama/",
+          "observedResponseSha256": "a9ddb2000d7577b49689ae0d16418f7778c93d02beb5686f0cf8ac1f91c9c80f"
+        }
+      ],
+      "locator": "Current-linked March 2025 Keio map shows both platform access paths to the 2F gate and the adjoining public concourse explicitly signed toward Odakyu. Retain the separate Keio and Odakyu components; no through service or paid-area equivalence. Individually visually reviewed. Minimum physical relation only; no raw diagram, precise walking duration or universal accessibility claim.",
+      "components": [
+        {
+          "name": "京王永山",
+          "operator": "京王電鉄",
+          "line": "相模原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "小田急永山",
+          "operator": "小田急電鉄",
+          "line": "多摩線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_CURRENT_LINKED_OPERATOR_PUBLIC_CONNECTION",
+      "hubScopeComplete": false
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "status": "PAUSED_BY_USER_AFTER_PHASE244_VALIDATION",
+  "requestedAt": "2026-10-04T00:41:14.325354+00:00",
+  "scopeId": "TASK086-FULL-ORIGINAL-PHASE244-v2",
+  "branchHead": "406d31f0a6b52f321b79fa4694f985709288407f",
+  "publishedIteration": 244,
+  "registeredThrough": 244,
+  "taskComplete": false,
+  "automaticContinuationAllowed": false,
+  "ordinaryWorkRemaining": true,
+  "newSourceAcquisitionAuthorizedWithinOriginalTaskButPaused": true,
+  "manifestCounts": {
+    "admitted": 4061,
+    "edges": 9408,
+    "hold": 0,
+    "iterations": 244,
+    "lines": 391,
+    "rejected": 0,
+    "required": 4061,
+    "servicePatterns": 836
+  },
+  "stageStatus": "CORE_STAGE_FAILED",
+  "stageReportSha256": "d1a543381df49abf5cf55a28317b4d3f82ac243d6ca917569c42ba2abec01c37",
+  "preservationProofSha256": "350b8241d31860a7cf1bbd1cf871663ae958f40918ad3d7fd807fea77d60d66b",
+  "replayElapsedSeconds": 2128.7172945000348,
+  "openRootIds": [
+    "root:direction:component:2c4972bea167f5eb11e9",
+    "root:direction:component:4516374f05cda3a3809f",
+    "root:direction:component:662a9755abeab5d52770",
+    "root:direction:component:91378025a59875422ee5",
+    "root:direction:component:bcb8e18cee0bb3319142",
+    "root:direction:component:cdb5939683ed546563ce",
+    "root:obligation:service:major-rail-private-metro",
+    "root:obligation:service:shinkansen-continuity",
+    "root:obligation:source:national-stopping-patterns"
+  ],
+  "technicalBlocker": "After the successful 244 graph replay, three legitimate global-review action-input bindings were refreshed. The saved manifest remains bound to the pre-refresh global-review file, so current-input hash check and deterministic rebuild proof are stale. No extra replay was started after the pause request.",
+  "pendingPrivateOnly": [
+    ".cache/task-086/airports7/registration245-246-private/batch245-246.json",
+    ".cache/task-086/nagasaki-hasami-arita-next/migration-candidate.patch",
+    ".cache/task-086/nagasaki-unzen-pair-private/terminal-plan-next/terminal-plan-frontage-review-v5.json"
+  ],
+  "resumeFirstAction": "On explicit resume, inspect this pause receipt and current worktree; repair current-input binding by normal generator/rebuild flow, verify 244 technical gate, then preflight private 245-246 candidates. Do not repeat unchanged source requests."
+}

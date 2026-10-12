@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "mode": "BASELINE",
+  "status": "PASS_VERIFIED_HISTORICAL_RUN",
+  "checkoutSha": "4888b4d507ee75d4f6b9914eb1a8d5661813f64b",
+  "runId": "37422119153",
+  "runAttempt": "1",
+  "url": "https://github.com/kanzakimy0/TravelAssist/actions/runs/37422119153",
+  "event": "push",
+  "revisionKind": "BRANCH_EXACT_HEAD",
+  "environment": {
+    "node": "v24.21.0",
+    "platform": "linux",
+    "runnerImage": "ubuntu-24.04 / 20260927.320.1",
+    "python": "preinstalled python/python3; exact invoked version not recorded by old workflow",
+    "comparability": "Python-version equality UNVERIFIED; do not claim an identical-environment differential"
+  },
+  "inputCodeSha256": "0fa74aa47b3910ea9821bbf883116789954129d7d56e2eb4b617dde9f644ef2e",
+  "checkedInputs": 516,
+  "inventoryFiles": 152,
+  "inventorySha256": "dbea4ac0418f49aba303dabd55a73760ff9541ccb4150c91994df762332578a1",
+  "requiredJobs": [
+    "Lint, types, formatting and build",
+    "Clean graph / first",
+    "Clean graph / second",
+    "Retained raw source reproduction",
+    "Stable complete graph resume",
+    "Deterministic, recovery and published-artifact proof",
+    "TASK086 exact-head Quality Gate",
+    "Full Node regression / assets",
+    "Full Node regression / regression-0",
+    "Full Node regression / regression-1",
+    "Full Node regression / regression-2",
+    "Full Node regression / regression-3"
+  ],
+  "notApplicable": ["ordinary verify (split full-lane event)"],
+  "regressions": [
+    {
+      "lane": "assets",
+      "selectedFiles": 5,
+      "counts": {
+        "tests": 165,
+        "suites": 0,
+        "pass": 165,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "logSha256": "3ac3eecde2283199d33a4879c9b1627a491bf4a469b4c3f9160308be712e7ef5",
+      "elapsedMs": 41503
+    },
+    {
+      "lane": "regression-0",
+      "selectedFiles": 37,
+      "counts": {
+        "tests": 1153,
+        "suites": 0,
+        "pass": 1153,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "logSha256": "d3ac80e45fcbb38ea6515d94b0216aa76f2b9d6c4665870b4794ab2be002ebd5",
+      "elapsedMs": 34356
+    },
+    {
+      "lane": "regression-1",
+      "selectedFiles": 37,
+      "counts": {
+        "tests": 1158,
+        "suites": 0,
+        "pass": 1158,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "logSha256": "e44856b48c6b8b88b16eab11f3fdf209d4fc2d18a396466bf36b1e4fe0136917",
+      "elapsedMs": 90141
+    },
+    {
+      "lane": "regression-2",
+      "selectedFiles": 36,
+      "counts": {
+        "tests": 862,
+        "suites": 0,
+        "pass": 862,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "logSha256": "bfc56c1d0274e22ca3503ab2856325f6dc0f6483fd18d8725c4d7f04765e2d47",
+      "elapsedMs": 16561
+    },
+    {
+      "lane": "regression-3",
+      "selectedFiles": 36,
+      "counts": {
+        "tests": 548,
+        "suites": 0,
+        "pass": 548,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "logSha256": "c8d480cbe2767c0cd5ece3b1f8ccaf6edb3bd642851d47d6607643d29061a728",
+      "elapsedMs": 81084
+    },
+    {
+      "lane": "rebuild",
+      "selectedFiles": 1,
+      "counts": {
+        "tests": 1,
+        "suites": 0,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "logSha256": "d1f353e6ada3b19ab37e1724cf5ba6c57a950b1c3cdedd58e961a29784e3ab85",
+      "elapsedMs": 2717
+    }
+  ],
+  "laneReceipts": [
+    {
+      "lane": "first",
+      "sha256": "c9aba723814acda77e9684d5b9f796b749dec7d865f222345d34d821b652f4d9",
+      "status": "PASS"
+    },
+    {
+      "lane": "second",
+      "sha256": "ceb626dce54ddd38bfb00724cf945ccea2f145aa05a47beee94defd50995c71e",
+      "status": "PASS"
+    },
+    {
+      "lane": "extract",
+      "sha256": "de3ad531c90fe7e1f60385cead90bb4ea01df455701e4d073a7e5d25be0abad1",
+      "status": "PASS"
+    },
+    {
+      "lane": "resume",
+      "sha256": "0a792959168086a06edfd73da475a8779a315b15afb80ca0a76d6d28c41ba0a0",
+      "status": "PASS"
+    },
+    {
+      "lane": "corruption",
+      "sha256": "04bc12faaa2a9af66397f16a3ce853d3ea85f4a6c5c01b3cc41c82e1d110da69",
+      "status": "PASS"
+    }
+  ],
+  "logSha256": "ed4b2f4d8e526756ba52e9f361cd127952d28c590e2465660aa425b5da6ee7b7",
+  "proofSha256": "29d2997762df65ccdf9a92bbb9cf9e29e8b63db4c8c23f205e68a073180b07d3",
+  "finalReceiptSha256": "2bfdae5a8c58874ed3050c7675e66f9444983c44794708f1a15784ed6ea48a48",
+  "note": "Historical runner lacks per-file event receipts. Exact argv/selection/file hashes, lane log hashes and successful runner summaries verified; cases counted only once from each final footer. Input values not copied."
+}

@@ -18,6 +18,10 @@ import {
   generateArtifacts,
 } from "./enrich-candidates.mjs";
 import {
+  LIVE_REGISTRY_PATH,
+  readFrozenMasterCodeRegistry,
+} from "./frozen-master-code-registry.mjs";
+import {
   parsePoiFeatureSetV1,
   parsePoiVisitProfileV1,
 } from "../../src/shared/contracts/planning/validation.ts";
@@ -163,7 +167,11 @@ export function load(root = ROOT, cache) {
   );
   for (const [path, sha256] of Object.entries(population.identityHashes))
     assert(
-      hash(read(root, path)) === sha256,
+      hash(
+        path === LIVE_REGISTRY_PATH
+          ? readFrozenMasterCodeRegistry(root)
+          : read(root, path),
+      ) === sha256,
       "Frozen identity/Registry corruption",
     );
   assert(

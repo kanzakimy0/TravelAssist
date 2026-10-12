@@ -1,0 +1,312 @@
+{
+  "phaseId": "207-tokunoshima-ordinary-native-airport-asama-and-coarse-public-gateway",
+  "strategy": [
+    "TWO_INDEPENDENT_ADJACENT_ORDINARY_SERVICE_DIRECTIONS",
+    "CURRENT_AIRPORT_SPECIFIC_PUBLIC_BUS_ACCESS",
+    "EXACT_P11_C28_IDENTITIES"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "government:c28:airport-identities",
+    "bus:tokunoshima:ordinary-native-airport-asama-two-directions",
+    "airport:tokunoshima:prefecture-explicit-public-bus-gateway"
+  ],
+  "facts": [
+    {
+      "factId": "tokunoshima-ordinary-airport-to-asama",
+      "kind": "service",
+      "sourceActionId": "bus:tokunoshima:ordinary-native-airport-asama-two-directions",
+      "sourceUrl": "https://www.sogorikuun.com/bus_time/",
+      "observedResponseSha256": "dd95b2e937f92594e18429a9d27e34e6cd785dcfbeb1f346df889e1e509e4dd3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:tokunoshima:ordinary-native-airport-asama-two-directions",
+          "url": "https://www.sogorikuun.com/bus_time/",
+          "observedResponseSha256": "dd95b2e937f92594e18429a9d27e34e6cd785dcfbeb1f346df889e1e509e4dd3"
+        },
+        {
+          "sourceActionId": "bus:tokunoshima:ordinary-native-airport-asama-two-directions",
+          "url": "https://www.sogorikuun.com/bus_stop/images/img_busstop.jpg?20200601=",
+          "observedResponseSha256": "a7efe61d211eb2d0de187216ed9ebcf3cae95f5046b123beb41162fc16e7358d"
+        },
+        {
+          "sourceActionId": "bus:tokunoshima:ordinary-native-airport-asama-two-directions",
+          "url": "https://www.sogorikuun.com/bus_stop/",
+          "observedResponseSha256": "4873af4f75580ead3b8dd2587ac0ac4e8489952935c3256672758dac766cf4dc"
+        },
+        {
+          "sourceActionId": "airport:tokunoshima:prefecture-explicit-public-bus-gateway",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/toku-kyoyokitei2.html",
+          "observedResponseSha256": "f323217ad43fffbcccc7ed1d706508ee02665b9646cfaa434ce6d536eb9cd5cd"
+        }
+      ],
+      "operator": "徳之島総合陸運株式会社",
+      "line": "大船住宅～花徳・平土野～空港",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "airport-to-asama",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_2020_03_29_ORDINARY_REVISION_WITH_2026_07_14_PREFECTURAL_AIRPORT_ACCESS_CORROBORATION; topology snapshot only, not a2026 timetable revision or guaranteed dispatch.",
+      "callingStations": [
+        "空港",
+        "浅間"
+      ],
+      "callingComponents": [
+        {
+          "name": "空港",
+          "operator": "徳之島総合陸運（株）",
+          "line": "p11-stop:P11-22_46:bs91",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs91",
+            "recordSha256": "42ef05cb26a0f2d84622d6561c0067d1a1101b14edff73d7e396f1b143bdf037",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-published ordinary blue operator airport route serves this exact named operator stop; full stop map places 空港 and 浅間 as adjacent calls. Separate actual arriving/departing airport tables establish both service directions. P11 represents same-road same-operator stop, not an exact pole/curb;2024 demand branches excluded.",
+            "currentOperatorEvidence": {
+              "recordOperator": "徳之島総合陸運（株）",
+              "currentOperatorName": "徳之島総合陸運株式会社",
+              "currentStopName": "空港",
+              "historicalRoute": "大船住宅～花徳・平土野～空港",
+              "url": "https://www.sogorikuun.com/bus_stop/images/img_busstop.jpg?20200601=",
+              "observedResponseSha256": "a7efe61d211eb2d0de187216ed9ebcf3cae95f5046b123beb41162fc16e7358d"
+            }
+          }
+        },
+        {
+          "name": "浅間",
+          "operator": "徳之島総合陸運（株）",
+          "line": "p11-stop:P11-22_46:bs93",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs93",
+            "recordSha256": "72ef24b313b2be9928fcf918323b9dfba0dc33fcd856821d04d28b0974c5a405",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-published ordinary blue operator airport route serves this exact named operator stop; full stop map places 空港 and 浅間 as adjacent calls. Separate actual arriving/departing airport tables establish both service directions. P11 represents same-road same-operator stop, not an exact pole/curb;2024 demand branches excluded.",
+            "currentOperatorEvidence": {
+              "recordOperator": "徳之島総合陸運（株）",
+              "currentOperatorName": "徳之島総合陸運株式会社",
+              "currentStopName": "浅間",
+              "historicalRoute": "大船住宅～花徳・平土野～空港",
+              "url": "https://www.sogorikuun.com/bus_stop/images/img_busstop.jpg?20200601=",
+              "observedResponseSha256": "a7efe61d211eb2d0de187216ed9ebcf3cae95f5046b123beb41162fc16e7358d"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_OPPOSITE_ORDINARY_SERVICE_TABLES_PLUS_COMPLETE_STOP_MAP_ADJACENT_PAIR",
+      "locator": "Current operator table revision2020-03-29: second ordinary table 空港～平土野～亀津, actual rows with Airport populated. Independently visually reviewed full stop map blue 大船住宅～花徳・平土野～空港 route establishes consecutive calls 空港 and 浅間; ordinary stop markers with no pickup/dropoff exception marked. Separate opposite table is the direction evidence; this is not a reverse-edge inference. Timetable summary skips minor labels, so map supplies all-stop adjacency; no direct Airport-Hetono edge. Demand/shared sections2024 are excluded.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS_NO_CLOCKS_FARES_FREQUENCY_OR_RUNTIME_GUARANTEE",
+      "sourceAttribution": "徳之島総合陸運株式会社; independently reviewed minimum adjacent ordinary-route topology facts; source timetable revision2020-03-29 still published on observed2026-10-03."
+    },
+    {
+      "factId": "tokunoshima-ordinary-asama-to-airport",
+      "kind": "service",
+      "sourceActionId": "bus:tokunoshima:ordinary-native-airport-asama-two-directions",
+      "sourceUrl": "https://www.sogorikuun.com/bus_time/",
+      "observedResponseSha256": "dd95b2e937f92594e18429a9d27e34e6cd785dcfbeb1f346df889e1e509e4dd3",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:tokunoshima:ordinary-native-airport-asama-two-directions",
+          "url": "https://www.sogorikuun.com/bus_time/",
+          "observedResponseSha256": "dd95b2e937f92594e18429a9d27e34e6cd785dcfbeb1f346df889e1e509e4dd3"
+        },
+        {
+          "sourceActionId": "bus:tokunoshima:ordinary-native-airport-asama-two-directions",
+          "url": "https://www.sogorikuun.com/bus_stop/images/img_busstop.jpg?20200601=",
+          "observedResponseSha256": "a7efe61d211eb2d0de187216ed9ebcf3cae95f5046b123beb41162fc16e7358d"
+        },
+        {
+          "sourceActionId": "bus:tokunoshima:ordinary-native-airport-asama-two-directions",
+          "url": "https://www.sogorikuun.com/bus_stop/",
+          "observedResponseSha256": "4873af4f75580ead3b8dd2587ac0ac4e8489952935c3256672758dac766cf4dc"
+        },
+        {
+          "sourceActionId": "airport:tokunoshima:prefecture-explicit-public-bus-gateway",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/toku-kyoyokitei2.html",
+          "observedResponseSha256": "f323217ad43fffbcccc7ed1d706508ee02665b9646cfaa434ce6d536eb9cd5cd"
+        }
+      ],
+      "operator": "徳之島総合陸運株式会社",
+      "line": "大船住宅～花徳・平土野～空港",
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "direction": "asama-to-airport",
+      "serviceClass": "local",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_2020_03_29_ORDINARY_REVISION_WITH_2026_07_14_PREFECTURAL_AIRPORT_ACCESS_CORROBORATION; topology snapshot only, not a2026 timetable revision or guaranteed dispatch.",
+      "callingStations": [
+        "浅間",
+        "空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "浅間",
+          "operator": "徳之島総合陸運（株）",
+          "line": "p11-stop:P11-22_46:bs93",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs93",
+            "recordSha256": "72ef24b313b2be9928fcf918323b9dfba0dc33fcd856821d04d28b0974c5a405",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-published ordinary blue operator airport route serves this exact named operator stop; full stop map places 空港 and 浅間 as adjacent calls. Separate actual arriving/departing airport tables establish both service directions. P11 represents same-road same-operator stop, not an exact pole/curb;2024 demand branches excluded.",
+            "currentOperatorEvidence": {
+              "recordOperator": "徳之島総合陸運（株）",
+              "currentOperatorName": "徳之島総合陸運株式会社",
+              "currentStopName": "浅間",
+              "historicalRoute": "大船住宅～花徳・平土野～空港",
+              "url": "https://www.sogorikuun.com/bus_stop/images/img_busstop.jpg?20200601=",
+              "observedResponseSha256": "a7efe61d211eb2d0de187216ed9ebcf3cae95f5046b123beb41162fc16e7358d"
+            }
+          }
+        },
+        {
+          "name": "空港",
+          "operator": "徳之島総合陸運（株）",
+          "line": "p11-stop:P11-22_46:bs91",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs91",
+            "recordSha256": "42ef05cb26a0f2d84622d6561c0067d1a1101b14edff73d7e396f1b143bdf037",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-published ordinary blue operator airport route serves this exact named operator stop; full stop map places 空港 and 浅間 as adjacent calls. Separate actual arriving/departing airport tables establish both service directions. P11 represents same-road same-operator stop, not an exact pole/curb;2024 demand branches excluded.",
+            "currentOperatorEvidence": {
+              "recordOperator": "徳之島総合陸運（株）",
+              "currentOperatorName": "徳之島総合陸運株式会社",
+              "currentStopName": "空港",
+              "historicalRoute": "大船住宅～花徳・平土野～空港",
+              "url": "https://www.sogorikuun.com/bus_stop/images/img_busstop.jpg?20200601=",
+              "observedResponseSha256": "a7efe61d211eb2d0de187216ed9ebcf3cae95f5046b123beb41162fc16e7358d"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "reviewMethod": "INDEPENDENT_OPPOSITE_ORDINARY_SERVICE_TABLES_PLUS_COMPLETE_STOP_MAP_ADJACENT_PAIR",
+      "locator": "Current operator table revision2020-03-29: first ordinary table 亀津～平土野～空港, actual rows with Airport populated. Independently visually reviewed full stop map blue 大船住宅～花徳・平土野～空港 route establishes consecutive calls 空港 and 浅間; ordinary stop markers with no pickup/dropoff exception marked. Separate opposite table is the direction evidence; this is not a reverse-edge inference. Timetable summary skips minor labels, so map supplies all-stop adjacency; no direct Airport-Hetono edge. Demand/shared sections2024 are excluded.",
+      "scheduleScope": "UNRESOLVED_DYNAMIC_FIELDS_NO_CLOCKS_FARES_FREQUENCY_OR_RUNTIME_GUARANTEE",
+      "sourceAttribution": "徳之島総合陸運株式会社; independently reviewed minimum adjacent ordinary-route topology facts; source timetable revision2020-03-29 still published on observed2026-10-03."
+    },
+    {
+      "factId": "tokunoshima-coarse-public-airport-to-native-ordinary-stop",
+      "kind": "transfer",
+      "sourceActionId": "airport:tokunoshima:prefecture-explicit-public-bus-gateway",
+      "sourceUrl": "https://www.pref.kagoshima.jp/ah09/aerodromes/toku-kyoyokitei2.html",
+      "observedResponseSha256": "f323217ad43fffbcccc7ed1d706508ee02665b9646cfaa434ce6d536eb9cd5cd",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:tokunoshima:prefecture-explicit-public-bus-gateway",
+          "url": "https://www.pref.kagoshima.jp/ah09/aerodromes/toku-kyoyokitei2.html",
+          "observedResponseSha256": "f323217ad43fffbcccc7ed1d706508ee02665b9646cfaa434ce6d536eb9cd5cd"
+        },
+        {
+          "sourceActionId": "bus:tokunoshima:ordinary-native-airport-asama-two-directions",
+          "url": "https://www.sogorikuun.com/bus_time/",
+          "observedResponseSha256": "dd95b2e937f92594e18429a9d27e34e6cd785dcfbeb1f346df889e1e509e4dd3"
+        },
+        {
+          "sourceActionId": "bus:tokunoshima:ordinary-native-airport-asama-two-directions",
+          "url": "https://www.sogorikuun.com/bus_stop/images/img_busstop.jpg?20200601=",
+          "observedResponseSha256": "a7efe61d211eb2d0de187216ed9ebcf3cae95f5046b123beb41162fc16e7358d"
+        },
+        {
+          "sourceActionId": "bus:tokunoshima:ordinary-native-airport-asama-two-directions",
+          "url": "https://www.sogorikuun.com/bus_stop/",
+          "observedResponseSha256": "4873af4f75580ead3b8dd2587ac0ac4e8489952935c3256672758dac766cf4dc"
+        }
+      ],
+      "components": [
+        {
+          "name": "徳之島空港",
+          "operator": "airport-facility:cf03_00085",
+          "line": "airport:cf03_00085",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00085",
+            "requirementId": "review:official-airport:徳之島",
+            "expectedRequirementName": "徳之島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Prefectural airport-specific services page updated2026-07-14 explicitly lists bus access from Kametsu in section4(8); current operator ordinary tables show actual airport arrivals and departures. Coarse whole-airport public relation to exact native operator airport stop only. No C28 reference-point relocation, terminal-door, curb, route geometry or accessibility claim."
+          }
+        },
+        {
+          "name": "空港",
+          "operator": "徳之島総合陸運（株）",
+          "line": "p11-stop:P11-22_46:bs91",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_46:bs91",
+            "recordSha256": "42ef05cb26a0f2d84622d6561c0067d1a1101b14edff73d7e396f1b143bdf037",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Current-published ordinary blue operator airport route serves this exact named operator stop; full stop map places 空港 and 浅間 as adjacent calls. Separate actual arriving/departing airport tables establish both service directions. P11 represents same-road same-operator stop, not an exact pole/curb;2024 demand branches excluded.",
+            "currentOperatorEvidence": {
+              "recordOperator": "徳之島総合陸運（株）",
+              "currentOperatorName": "徳之島総合陸運株式会社",
+              "currentStopName": "空港",
+              "historicalRoute": "大船住宅～花徳・平土野～空港",
+              "url": "https://www.sogorikuun.com/bus_stop/images/img_busstop.jpg?20200601=",
+              "observedResponseSha256": "a7efe61d211eb2d0de187216ed9ebcf3cae95f5046b123beb41162fc16e7358d"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "hubScopeComplete": false,
+      "reviewMethod": "CURRENT_PREFECTURAL_AIRPORT_SPECIFIC_BUS_ACCESS_WITH_INDEPENDENT_ORDINARY_ARRIVAL_DEPARTURE",
+      "locator": "Prefectural page 徳之島空港が提供するサービスの内容, updated2026-07-14, section4(8) explicitly identifies bus airport access from Kametsu. Operator independently publishes actual airport-arriving and airport-departing ordinary service at native P11 空港. Public whole-facility gateway↔exact same-operator airport stop representative only; not a coordinate join, terminal door/curb/pole merge, navigation route, duration or accessible path.",
+      "sourceAttribution": "鹿児島県; minimum independent public-airport bus-access relation only. Operator ordinary service corroboration separately attributed."
+    }
+  ],
+  "scope": "Only two native ordinary bus stops and two independent adjacent directed service segments plus coarse airport access. No2024 demand branch, timetable clocks, new flight or precise curb/door asserted.",
+  "metrics": {
+    "busRideEdges": 2,
+    "publicAccessEdges": 2,
+    "newP11Identities": 2,
+    "newFlightEdges": 0,
+    "newHttpRequests": 0
+  }
+}

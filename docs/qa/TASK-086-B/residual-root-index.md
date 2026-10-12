@@ -1,0 +1,49 @@
+# TASK-086-B 剩余唯一根因
+
+{"uniqueOpenRoots": 43, "airportRoots": 9, "busDirectionRoots": 34, "globalReviewRoots": 0}
+
+| 稳定ID | 分类 | 原始要求数 | 关联检查数 |
+| --- | --- | ---: | ---: |
+| root:airport:review:official-airport:奥尻 | D | 1 | 4 |
+| root:airport:review:official-airport:北大東 | C | 1 | 1 |
+| root:airport:review:official-airport:波照間 | D | 1 | 4 |
+| root:airport:review:official-airport:能登 | D | 1 | 4 |
+| root:airport:review:official-airport:石見 | D | 1 | 4 |
+| root:airport:review:official-airport:粟国 | D | 1 | 4 |
+| root:airport:review:official-airport:喜界 | C | 1 | 1 |
+| root:airport:review:official-airport:新島 | D | 1 | 4 |
+| root:airport:review:official-airport:与論 | C | 1 | 1 |
+| root:direction:component:0eec614b8788f64d5865 | C | 1 | 2 |
+| root:direction:component:16a062275f80ed78de4f | C | 1 | 3 |
+| root:direction:component:1df548bb4e218199d61c | C | 1 | 2 |
+| root:direction:component:2bc8a56898a9b4562ce4 | C | 1 | 2 |
+| root:direction:component:2c4972bea167f5eb11e9 | C | 1 | 3 |
+| root:direction:component:4516374f05cda3a3809f | C | 1 | 3 |
+| root:direction:component:514a9f9a62f4a7141eed | C | 1 | 2 |
+| root:direction:component:5d42c52843362adeeefc | C | 1 | 6 |
+| root:direction:component:66248fdc74557aa870e1 | C | 1 | 2 |
+| root:direction:component:662a9755abeab5d52770 | C | 1 | 3 |
+| root:direction:component:80754831e83c494feb89 | C | 1 | 2 |
+| root:direction:component:8b3872e6b881562cd0d6 | C | 1 | 2 |
+| root:direction:component:91378025a59875422ee5 | C | 1 | 3 |
+| root:direction:component:afb2cb0bf36f8d4a6a36 | C | 1 | 3 |
+| root:direction:component:bcb8e18cee0bb3319142 | C | 1 | 3 |
+| root:direction:component:cdb5939683ed546563ce | C | 1 | 3 |
+| root:direction:component:cddcc8716667f5755c61 | C | 1 | 2 |
+| root:direction:component:faf3533cb63b374599af | C | 1 | 7 |
+| root:direction:component:fdf6f950ce1043cbc77b | C | 1 | 6 |
+| root:direction:component:174e3b9ee8a707b5777a | C | 0 | 2 |
+| root:direction:component:19b37aa06417df5c2a2a | C | 0 | 2 |
+| root:direction:component:1f120e0f81eda8366810 | C | 0 | 2 |
+| root:direction:component:378b2fdd553adb85a099 | C | 0 | 2 |
+| root:direction:component:52430131496520d97183 | C | 0 | 2 |
+| root:direction:component:718e5d5303f96101c20a | C | 0 | 2 |
+| root:direction:component:76dd24e1b29403b10045 | C | 0 | 2 |
+| root:direction:component:87461a69eec33b698037 | C | 0 | 2 |
+| root:direction:component:8ce9ccabe03db0c99551 | C | 0 | 2 |
+| root:direction:component:9d725da987529aa4da94 | C | 0 | 2 |
+| root:direction:component:ae83f00b93a3cdd4f7af | C | 0 | 2 |
+| root:direction:component:b287b15eca53565264ff | C | 0 | 2 |
+| root:direction:component:c6e77b230e3f1db965c6 | C | 0 | 2 |
+| root:direction:component:c8bb060e9ef64f956d18 | C | 0 | 3 |
+| root:direction:component:ffce88d4d3f84df13e09 | C | 0 | 2 |

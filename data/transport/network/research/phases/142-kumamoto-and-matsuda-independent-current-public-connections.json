@@ -1,0 +1,116 @@
+{
+  "phaseId": "142-kumamoto-and-matsuda-independent-current-public-connections",
+  "strategy": [
+    "EXECUTE_ORIGINAL_PENDING_KUMAMOTO_ACTION",
+    "LAWFUL_MUNICIPAL_ALTERNATIVE_TO_RESTRICTED_TRAM_SOURCE",
+    "DISTINGUISH_EXISTING_CROSSWALK_FROM_PROPOSED_DECK"
+  ],
+  "completedActionIds": [
+    "hub:kumamoto",
+    "hub:kumamoto-city:current-station-and-tram-shirakawa-frontage",
+    "hub:matsuda-town:existing-station-crosswalk-and-current-south-passage",
+    "hub:odakyu:shin-matsuda-current-north-gate-to-jr-transfer-area"
+  ],
+  "facts": [
+    {
+      "factId": "kumamoto-current-jr-shirakawa-tram-public-forecourt",
+      "kind": "transfer",
+      "sourceActionId": "hub:kumamoto",
+      "sourceUrl": "https://www.jrkyushu.co.jp/railway/station/__icsFiles/afieldfile/2025/03/31/kumamotoeki_kounaizu20250401.pdf",
+      "observedResponseSha256": "fe2062decbecac1b590193678d870f2b0b4f7bfffa483c6551c299be10007aea",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:kumamoto",
+          "url": "https://www.jrkyushu.co.jp/railway/station/1191555_1601.html",
+          "observedResponseSha256": "75557844f02ceae4cfce923319d71ee1a143a0ac9131b18c8d8bc0b16de33f21"
+        },
+        {
+          "sourceActionId": "hub:kumamoto-city:current-station-and-tram-shirakawa-frontage",
+          "url": "https://www.city.kumamoto.jp/kiji00349390/5_49390_375400_up_ZGMQCC5P.pdf",
+          "observedResponseSha256": "481f17593f0e22487decbf7590dede6fc591fc3c89e5a4aa87af37015be9a378"
+        },
+        {
+          "sourceActionId": "hub:kumamoto-city:current-station-and-tram-shirakawa-frontage",
+          "url": "https://www.city.kumamoto.jp/kiji00349390/index.html",
+          "observedResponseSha256": "6427fb1f56dacd13a956a0fd84ed91f43db0fe687216bfb54db2217b7d63e195"
+        },
+        {
+          "sourceActionId": "hub:kumamoto-city:current-station-and-tram-shirakawa-frontage",
+          "url": "https://www.city.kumamoto.jp/kiji00342814/index.html",
+          "observedResponseSha256": "68995c28998113b76d63154594ce18fc4973fb77822c5d727b78f6435077b7ad"
+        }
+      ],
+      "locator": "Individually viewed current JR April 2025 plan joins conventional platforms through gate to Shirakawa east public exit explicitly signed toward tram facilities. Current-linked municipal plan printed p56 independently enumerates station-to-Shirakawa-square and Kumamoto-ekimae-tram-to-same-square connecting portions; p67 names/maps the exact passenger facilities. City completion record confirms forecourt completed in 2021. Bind existing licensed JR Kagoshima conventional component and exact municipal tram component; do not encode proposed accessibility upgrades, tram entry into JR concourse, limited retail paths or restricted bureau content.",
+      "components": [
+        {
+          "name": "熊本",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "熊本駅前",
+          "operator": "熊本市",
+          "line": "幹線",
+          "mode": "tram"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_JR_GATE_AND_EXPLICIT_MUNICIPAL_FACILITY_ROAD_CONNECTION_TABLE",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "shin-matsuda-jr-matsuda-existing-public-crosswalk",
+      "kind": "transfer",
+      "sourceActionId": "hub:matsuda-town:existing-station-crosswalk-and-current-south-passage",
+      "sourceUrl": "https://town.matsuda.kanagawa.jp/uploaded/life/32589_101722_misc.pdf",
+      "observedResponseSha256": "6e8db2d73b10b0f60417b2407a84949b071b3188632c563cc744592c58b66fc5",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:matsuda-town:existing-station-crosswalk-and-current-south-passage",
+          "url": "https://town.matsuda.kanagawa.jp/soshiki/10/tosikeikaku-eki-kousoukeikaku.html",
+          "observedResponseSha256": "a9ecf730ee84e7e127e2b25f0ad2541aff2d8a7873476b0fc897baae0433c0e2"
+        },
+        {
+          "sourceActionId": "hub:matsuda-town:existing-station-crosswalk-and-current-south-passage",
+          "url": "https://town.matsuda.kanagawa.jp/soshiki/10/ekimae-tyoudoutouriyou202609.html",
+          "observedResponseSha256": "e8d283ebf47cf6802901e01d33b8bb917f89cf557ff41c28183fb7fbe807d18b"
+        },
+        {
+          "sourceActionId": "hub:odakyu:shin-matsuda-current-north-gate-to-jr-transfer-area",
+          "url": "https://www.odakyu.jp/station/data/o5oaa10000000lkz-img/shin_matsuda_all.jpg",
+          "observedResponseSha256": "3c516d6a437852a554d6cb84153e782c015db24ce83725178bd502a3e41ca80f"
+        },
+        {
+          "sourceActionId": "hub:odakyu:shin-matsuda-current-north-gate-to-jr-transfer-area",
+          "url": "https://www.odakyu.jp/station/shin_matsuda/",
+          "observedResponseSha256": "c432db18830b5efd4a905183819da4b066770ba71df311046c72d7efed01a670"
+        }
+      ],
+      "locator": "Current-linked municipal plan existing-condition text printed p11 explicitly identifies station-to-station movement via crosswalk, and p18 locates interchange at Odakyu north/JR south. September 9 2026 notice confirms current town-owned JR south passage, restricting motor vehicles. Independent current Odakyu October 25 2025 plan connects both platform groups via internal bridge to north public gate; station page identifies JR Gotemba as transfer. Retain coarse at-grade public passenger relation with exact separate components; no proposed elevated deck, planned free passage, pedestrian safety rating or universal accessibility claim.",
+      "components": [
+        {
+          "name": "新松田",
+          "operator": "小田急電鉄",
+          "line": "小田原線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "松田",
+          "operator": "東海旅客鉄道",
+          "line": "御殿場線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_MUNICIPAL_EXISTING_CROSSWALK_AND_OPERATOR_PUBLIC_GATE",
+      "hubScopeComplete": false
+    }
+  ]
+}

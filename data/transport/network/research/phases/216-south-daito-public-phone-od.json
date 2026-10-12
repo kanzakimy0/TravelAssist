@@ -1,0 +1,165 @@
+{
+  "phaseId": "south-daito-public-phone-private",
+  "strategy": [
+    "SOURCE_BOUND_PUBLIC_PHONE_DYNAMIC_OD",
+    "EXACT_P05_NAMED_PUBLIC_FACILITY",
+    "PRESERVE_DEFAULT_DENIAL_AND_ALL_GATES"
+  ],
+  "completedActionIds": [
+    "od:south-daito:public-visitor-phone:20261001"
+  ],
+  "facts": [
+    {
+      "factId": "south-daito-phone:p05:22:47:P05_858>review:official-airport:南大東",
+      "kind": "dynamic_od",
+      "locator": "Official PUBLIC_VISITOR village office and airport bidirectional OD pair; no intermediate calling sequence",
+      "endpointIdentityAnchors": [
+        "p05:22:47:P05_858",
+        "review:official-airport:南大東"
+      ],
+      "sourceActionId": "od:south-daito:public-visitor-phone:20261001",
+      "sourceUrl": "https://corp.okinawa-cellular.jp/newsrelease/1790386424/",
+      "observedResponseSha256": "203ad059d620d8e10a6143ccb9327c352f5faf1821cc8189378c96b1eae62595",
+      "operator": "南大東村",
+      "endpointNames": [
+        "南大東村役場",
+        "南大東空港"
+      ],
+      "accessTerms": {
+        "audience": "PUBLIC",
+        "profile": "PUBLIC_VISITOR",
+        "channel": "PHONE",
+        "minimumLeadMinutes": 30,
+        "receptionStart": "07:00",
+        "receptionEnd": "18:00",
+        "serviceStart": "08:00",
+        "serviceEnd": "17:00",
+        "validFrom": "2026-10-01",
+        "validTo": "2027-01-31",
+        "plannedEnd": true,
+        "timeZone": "Asia/Tokyo",
+        "operatingDays": "DAILY",
+        "payment": "CASH",
+        "dispatchGuarantee": false
+      },
+      "conditionObservations": [
+        {
+          "conditionId": "visitor-phone-release",
+          "sourceActionId": "od:south-daito:public-visitor-phone:20261001",
+          "sourceUrl": "https://corp.okinawa-cellular.jp/newsrelease/1790386424/",
+          "observedResponseSha256": "203ad059d620d8e10a6143ccb9327c352f5faf1821cc8189378c96b1eae62595",
+          "locator": "Visitor service row, dates, operating/reception times, payment, authority; no guarantee asserted",
+          "claims": {
+            "audience": "PUBLIC",
+            "profile": "PUBLIC_VISITOR",
+            "channel": "PHONE",
+            "receptionStart": "07:00",
+            "receptionEnd": "18:00",
+            "serviceStart": "08:00",
+            "serviceEnd": "17:00",
+            "validFrom": "2026-10-01",
+            "validTo": "2027-01-31",
+            "plannedEnd": true,
+            "timeZone": "Asia/Tokyo",
+            "operatingDays": "DAILY",
+            "payment": "CASH",
+            "dispatchGuarantee": false
+          }
+        },
+        {
+          "conditionId": "visitor-phone-minimum-lead",
+          "sourceActionId": "od:south-daito:public-visitor-phone:20261001",
+          "sourceUrl": "https://corp.okinawa-cellular.jp/userfiles/images/f_lhxf7iua62dq/f_ulxm7c3km50h/f_yj3p8hl50pcm/oyego2p4zhpe.png",
+          "observedResponseSha256": "8ade112e6e266aed613bc40938ecb31435d03e6434b2d840f2403845e782b362",
+          "locator": "Personally reviewed visitor row PHONE at least 30 minutes before pickup",
+          "claims": {
+            "minimumLeadMinutes": 30
+          }
+        }
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "od:south-daito:public-visitor-phone:20261001",
+          "url": "https://corp.okinawa-cellular.jp/userfiles/images/f_lhxf7iua62dq/f_ulxm7c3km50h/f_yj3p8hl50pcm/oyego2p4zhpe.png",
+          "observedResponseSha256": "8ade112e6e266aed613bc40938ecb31435d03e6434b2d840f2403845e782b362"
+        }
+      ]
+    },
+    {
+      "factId": "south-daito-phone:review:official-airport:南大東>p05:22:47:P05_858",
+      "kind": "dynamic_od",
+      "locator": "Official PUBLIC_VISITOR village office and airport bidirectional OD pair; no intermediate calling sequence",
+      "endpointIdentityAnchors": [
+        "review:official-airport:南大東",
+        "p05:22:47:P05_858"
+      ],
+      "sourceActionId": "od:south-daito:public-visitor-phone:20261001",
+      "sourceUrl": "https://corp.okinawa-cellular.jp/newsrelease/1790386424/",
+      "observedResponseSha256": "203ad059d620d8e10a6143ccb9327c352f5faf1821cc8189378c96b1eae62595",
+      "operator": "南大東村",
+      "endpointNames": [
+        "南大東空港",
+        "南大東村役場"
+      ],
+      "accessTerms": {
+        "audience": "PUBLIC",
+        "profile": "PUBLIC_VISITOR",
+        "channel": "PHONE",
+        "minimumLeadMinutes": 30,
+        "receptionStart": "07:00",
+        "receptionEnd": "18:00",
+        "serviceStart": "08:00",
+        "serviceEnd": "17:00",
+        "validFrom": "2026-10-01",
+        "validTo": "2027-01-31",
+        "plannedEnd": true,
+        "timeZone": "Asia/Tokyo",
+        "operatingDays": "DAILY",
+        "payment": "CASH",
+        "dispatchGuarantee": false
+      },
+      "conditionObservations": [
+        {
+          "conditionId": "visitor-phone-release",
+          "sourceActionId": "od:south-daito:public-visitor-phone:20261001",
+          "sourceUrl": "https://corp.okinawa-cellular.jp/newsrelease/1790386424/",
+          "observedResponseSha256": "203ad059d620d8e10a6143ccb9327c352f5faf1821cc8189378c96b1eae62595",
+          "locator": "Visitor service row, dates, operating/reception times, payment, authority; no guarantee asserted",
+          "claims": {
+            "audience": "PUBLIC",
+            "profile": "PUBLIC_VISITOR",
+            "channel": "PHONE",
+            "receptionStart": "07:00",
+            "receptionEnd": "18:00",
+            "serviceStart": "08:00",
+            "serviceEnd": "17:00",
+            "validFrom": "2026-10-01",
+            "validTo": "2027-01-31",
+            "plannedEnd": true,
+            "timeZone": "Asia/Tokyo",
+            "operatingDays": "DAILY",
+            "payment": "CASH",
+            "dispatchGuarantee": false
+          }
+        },
+        {
+          "conditionId": "visitor-phone-minimum-lead",
+          "sourceActionId": "od:south-daito:public-visitor-phone:20261001",
+          "sourceUrl": "https://corp.okinawa-cellular.jp/userfiles/images/f_lhxf7iua62dq/f_ulxm7c3km50h/f_yj3p8hl50pcm/oyego2p4zhpe.png",
+          "observedResponseSha256": "8ade112e6e266aed613bc40938ecb31435d03e6434b2d840f2403845e782b362",
+          "locator": "Personally reviewed visitor row PHONE at least 30 minutes before pickup",
+          "claims": {
+            "minimumLeadMinutes": 30
+          }
+        }
+      ],
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "od:south-daito:public-visitor-phone:20261001",
+          "url": "https://corp.okinawa-cellular.jp/userfiles/images/f_lhxf7iua62dq/f_ulxm7c3km50h/f_yj3p8hl50pcm/oyego2p4zhpe.png",
+          "observedResponseSha256": "8ade112e6e266aed613bc40938ecb31435d03e6434b2d840f2403845e782b362"
+        }
+      ]
+    }
+  ]
+}

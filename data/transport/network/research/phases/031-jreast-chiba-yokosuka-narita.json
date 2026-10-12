@@ -1,0 +1,1333 @@
+{
+  "phaseId": "031-jreast-chiba-yokosuka-narita",
+  "strategy": [
+    "JR_EAST_EXACT_ACTUAL_TRAIN_COLUMNS",
+    "CHIBA_YOKOSUKA_NARITA_GATEWAY",
+    "rail"
+  ],
+  "completedActionIds": ["rail:jr-east:chiba-yokosuka"],
+  "facts": [
+    {
+      "factId": "kanto-482B",
+      "sourceActionId": "rail:jr-east:chiba-yokosuka",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/165/168841.html",
+      "line": "中央・総武線各駅停車",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "expectedTrainCode": "482B",
+      "direction": "eastbound",
+      "reviewedTableColumns": 1,
+      "reviewedColumnIndex": 0,
+      "kind": "service",
+      "callingStations": [
+        "三鷹",
+        "吉祥寺",
+        "西荻窪",
+        "荻窪",
+        "阿佐ケ谷",
+        "高円寺",
+        "中野",
+        "東中野",
+        "大久保",
+        "新宿",
+        "代々木",
+        "千駄ケ谷",
+        "信濃町",
+        "四ツ谷",
+        "市ケ谷",
+        "飯田橋",
+        "水道橋",
+        "御茶ノ水",
+        "秋葉原",
+        "浅草橋",
+        "両国",
+        "錦糸町",
+        "亀戸",
+        "平井",
+        "新小岩",
+        "小岩",
+        "市川",
+        "本八幡",
+        "下総中山",
+        "西船橋",
+        "船橋",
+        "東船橋",
+        "津田沼",
+        "幕張本郷",
+        "幕張",
+        "新検見川",
+        "稲毛",
+        "西千葉",
+        "千葉"
+      ],
+      "observedResponseSha256": "f6271799d73efb891de7fa9ca543669a28961012056968954052ecc5f4b46b08",
+      "locator": "Actual train table column 1/1; 普通 482B; explicit call rows only, no blank-cell inheritance",
+      "reviewMethod": "PARSED_ACTUAL_TRAIN_EXPLICIT_COLUMN_CALL_ROWS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_SNAPSHOT_NOT_REALTIME",
+      "callingComponents": [
+        {
+          "name": "三鷹",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "吉祥寺",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西荻窪",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "荻窪",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "阿佐ヶ谷",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "阿佐ケ谷",
+            "stationCode": "003574",
+            "review": "Explicit operator/line/station-code binding; only the recorded Japanese character-width or small-ke spelling difference is accepted."
+          }
+        },
+        {
+          "name": "高円寺",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "中野",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東中野",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大久保",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新宿",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "代々木",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "千駄ヶ谷",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "千駄ケ谷",
+            "stationCode": "003767",
+            "review": "Explicit operator/line/station-code binding; only the recorded Japanese character-width or small-ke spelling difference is accepted."
+          }
+        },
+        {
+          "name": "信濃町",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "四ツ谷",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "市ヶ谷",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "市ケ谷",
+            "stationCode": "003685",
+            "review": "Explicit operator/line/station-code binding; only the recorded Japanese character-width or small-ke spelling difference is accepted."
+          }
+        },
+        {
+          "name": "飯田橋",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "水道橋",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "御茶ノ水",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "秋葉原",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "浅草橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "両国",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "錦糸町",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "亀戸",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "平井",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新小岩",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "小岩",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "市川",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "本八幡",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "下総中山",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西船橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "船橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東船橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "津田沼",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "幕張本郷",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "幕張",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新検見川",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "稲毛",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西千葉",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "千葉",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        }
+      ]
+    },
+    {
+      "factId": "kanto-485B",
+      "sourceActionId": "rail:jr-east:chiba-yokosuka",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/170/171451.html",
+      "line": "中央・総武線各駅停車",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "expectedTrainCode": "485B",
+      "direction": "westbound",
+      "reviewedTableColumns": 1,
+      "reviewedColumnIndex": 0,
+      "kind": "service",
+      "callingStations": [
+        "千葉",
+        "西千葉",
+        "稲毛",
+        "新検見川",
+        "幕張",
+        "幕張本郷",
+        "津田沼",
+        "東船橋",
+        "船橋",
+        "西船橋",
+        "下総中山",
+        "本八幡",
+        "市川",
+        "小岩",
+        "新小岩",
+        "平井",
+        "亀戸",
+        "錦糸町",
+        "両国",
+        "浅草橋",
+        "秋葉原",
+        "御茶ノ水",
+        "水道橋",
+        "飯田橋",
+        "市ケ谷",
+        "四ツ谷",
+        "信濃町",
+        "千駄ケ谷",
+        "代々木",
+        "新宿",
+        "大久保",
+        "東中野",
+        "中野",
+        "高円寺",
+        "阿佐ケ谷",
+        "荻窪",
+        "西荻窪",
+        "吉祥寺",
+        "三鷹"
+      ],
+      "observedResponseSha256": "eb26662d8b410c720438828f718822a9315696f3296ac102c596d07c0b577c2c",
+      "locator": "Actual train table column 1/1; 普通 485B; explicit call rows only, no blank-cell inheritance",
+      "reviewMethod": "PARSED_ACTUAL_TRAIN_EXPLICIT_COLUMN_CALL_ROWS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_SNAPSHOT_NOT_REALTIME",
+      "callingComponents": [
+        {
+          "name": "千葉",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西千葉",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "稲毛",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新検見川",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "幕張",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "幕張本郷",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "津田沼",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東船橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "船橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西船橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "下総中山",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "本八幡",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "市川",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "小岩",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新小岩",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "平井",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "亀戸",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "錦糸町",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "両国",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "浅草橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "秋葉原",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "御茶ノ水",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "水道橋",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "飯田橋",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "市ヶ谷",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "市ケ谷",
+            "stationCode": "003685",
+            "review": "Explicit operator/line/station-code binding; only the recorded Japanese character-width or small-ke spelling difference is accepted."
+          }
+        },
+        {
+          "name": "四ツ谷",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "信濃町",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "千駄ヶ谷",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "千駄ケ谷",
+            "stationCode": "003767",
+            "review": "Explicit operator/line/station-code binding; only the recorded Japanese character-width or small-ke spelling difference is accepted."
+          }
+        },
+        {
+          "name": "代々木",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新宿",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大久保",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東中野",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "中野",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "高円寺",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "阿佐ヶ谷",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "阿佐ケ谷",
+            "stationCode": "003574",
+            "review": "Explicit operator/line/station-code binding; only the recorded Japanese character-width or small-ke spelling difference is accepted."
+          }
+        },
+        {
+          "name": "荻窪",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西荻窪",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "吉祥寺",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "三鷹",
+          "operator": "東日本旅客鉄道",
+          "line": "中央線",
+          "mode": "conventional_rail"
+        }
+      ]
+    },
+    {
+      "factId": "kanto-1250S",
+      "sourceActionId": "rail:jr-east:chiba-yokosuka",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/160/163891.html",
+      "line": "横須賀線",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "expectedTrainCode": "1250S",
+      "direction": "northbound",
+      "reviewedTableColumns": 3,
+      "reviewedColumnIndex": 0,
+      "kind": "service",
+      "callingStations": [
+        "久里浜",
+        "衣笠",
+        "横須賀",
+        "田浦",
+        "東逗子",
+        "逗子",
+        "鎌倉",
+        "北鎌倉",
+        "大船",
+        "戸塚",
+        "東戸塚",
+        "保土ケ谷",
+        "横浜",
+        "新川崎",
+        "武蔵小杉",
+        "西大井",
+        "品川",
+        "新橋",
+        "東京"
+      ],
+      "observedResponseSha256": "22c4d1b69731a532eb23e9a05f230a1479fe14ae24455e65079e02c86ab70a25",
+      "locator": "Actual train table column 1/3; 普通 1250S; explicit call rows only, no blank-cell inheritance",
+      "reviewMethod": "PARSED_ACTUAL_TRAIN_EXPLICIT_COLUMN_CALL_ROWS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_SNAPSHOT_NOT_REALTIME",
+      "callingComponents": [
+        {
+          "name": "久里浜",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "衣笠",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "横須賀",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "田浦",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東逗子",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "逗子",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鎌倉",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "北鎌倉",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大船",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "戸塚",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東戸塚",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "保土ヶ谷",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "保土ケ谷",
+            "stationCode": "004685",
+            "review": "Explicit operator/line/station-code binding; only the recorded Japanese character-width or small-ke spelling difference is accepted."
+          }
+        },
+        {
+          "name": "横浜",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新川崎",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "武蔵小杉",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西大井",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "品川",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新橋",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東京",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ]
+    },
+    {
+      "factId": "kanto-1251F",
+      "sourceActionId": "rail:jr-east:chiba-yokosuka",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/160/163891.html",
+      "line": "総武線快速",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "快速",
+      "expectedTrainCode": "1251F",
+      "direction": "eastbound",
+      "reviewedTableColumns": 3,
+      "reviewedColumnIndex": 1,
+      "kind": "service",
+      "callingStations": [
+        "東京",
+        "新日本橋",
+        "馬喰町",
+        "錦糸町",
+        "新小岩",
+        "市川",
+        "船橋",
+        "津田沼",
+        "稲毛",
+        "千葉"
+      ],
+      "observedResponseSha256": "22c4d1b69731a532eb23e9a05f230a1479fe14ae24455e65079e02c86ab70a25",
+      "locator": "Actual train table column 2/3; 快速 1251F; explicit call rows only, no blank-cell inheritance",
+      "reviewMethod": "PARSED_ACTUAL_TRAIN_EXPLICIT_COLUMN_CALL_ROWS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_SNAPSHOT_NOT_REALTIME",
+      "callingComponents": [
+        {
+          "name": "東京",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新日本橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "馬喰町",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "錦糸町",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新小岩",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "市川",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "船橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "津田沼",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "稲毛",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "千葉",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        }
+      ]
+    },
+    {
+      "factId": "kanto-4251F",
+      "sourceActionId": "rail:jr-east:chiba-yokosuka",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/160/163891.html",
+      "line": "成田線空港快速",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "快速",
+      "expectedTrainCode": "4251F",
+      "direction": "outbound",
+      "reviewedTableColumns": 3,
+      "reviewedColumnIndex": 2,
+      "kind": "service",
+      "callingStations": [
+        "千葉",
+        "都賀",
+        "四街道",
+        "物井",
+        "佐倉",
+        "酒々井",
+        "成田",
+        "空港第２ビル",
+        "成田空港"
+      ],
+      "observedResponseSha256": "22c4d1b69731a532eb23e9a05f230a1479fe14ae24455e65079e02c86ab70a25",
+      "locator": "Actual train table column 3/3; 快速 4251F; explicit call rows only, no blank-cell inheritance",
+      "reviewMethod": "PARSED_ACTUAL_TRAIN_EXPLICIT_COLUMN_CALL_ROWS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_SNAPSHOT_NOT_REALTIME",
+      "callingComponents": [
+        {
+          "name": "千葉",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "都賀",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "四街道",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "物井",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "佐倉",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "酒々井",
+          "operator": "東日本旅客鉄道",
+          "line": "成田線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "成田",
+          "operator": "東日本旅客鉄道",
+          "line": "成田線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "空港第2ビル",
+          "operator": "東日本旅客鉄道",
+          "line": "成田線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_DIGIT_WIDTH",
+            "sourceName": "空港第２ビル",
+            "stationCode": "003173",
+            "review": "Explicit operator/line/station-code binding; only the recorded Japanese character-width or small-ke spelling difference is accepted."
+          }
+        },
+        {
+          "name": "成田空港",
+          "operator": "東日本旅客鉄道",
+          "line": "成田線",
+          "mode": "conventional_rail"
+        }
+      ]
+    },
+    {
+      "factId": "kanto-2191S",
+      "sourceActionId": "rail:jr-east:chiba-yokosuka",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/110/114851.html",
+      "line": "横須賀線",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "expectedTrainCode": "2191S",
+      "direction": "southbound",
+      "reviewedTableColumns": 3,
+      "reviewedColumnIndex": 2,
+      "kind": "service",
+      "callingStations": [
+        "東京",
+        "新橋",
+        "品川",
+        "西大井",
+        "武蔵小杉",
+        "新川崎",
+        "横浜",
+        "保土ケ谷",
+        "東戸塚",
+        "戸塚",
+        "大船",
+        "北鎌倉",
+        "鎌倉",
+        "逗子",
+        "東逗子",
+        "田浦",
+        "横須賀",
+        "衣笠",
+        "久里浜"
+      ],
+      "observedResponseSha256": "5098f38a2a2bcfc16cc13f089c26c6edd42a514284489d2ea6c017a60f4f15e4",
+      "locator": "Actual train table column 3/3; 普通 2191S; explicit call rows only, no blank-cell inheritance",
+      "reviewMethod": "PARSED_ACTUAL_TRAIN_EXPLICIT_COLUMN_CALL_ROWS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_SNAPSHOT_NOT_REALTIME",
+      "callingComponents": [
+        {
+          "name": "東京",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新橋",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "品川",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "西大井",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "武蔵小杉",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新川崎",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "横浜",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "保土ヶ谷",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_SMALL_KE",
+            "sourceName": "保土ケ谷",
+            "stationCode": "004685",
+            "review": "Explicit operator/line/station-code binding; only the recorded Japanese character-width or small-ke spelling difference is accepted."
+          }
+        },
+        {
+          "name": "東戸塚",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "戸塚",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大船",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "北鎌倉",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "鎌倉",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "逗子",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東逗子",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "田浦",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "横須賀",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "衣笠",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "久里浜",
+          "operator": "東日本旅客鉄道",
+          "line": "横須賀線",
+          "mode": "conventional_rail"
+        }
+      ]
+    },
+    {
+      "factId": "kanto-2190F",
+      "sourceActionId": "rail:jr-east:chiba-yokosuka",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/110/114851.html",
+      "line": "総武線快速",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "快速",
+      "expectedTrainCode": "2190F",
+      "direction": "westbound",
+      "reviewedTableColumns": 3,
+      "reviewedColumnIndex": 1,
+      "kind": "service",
+      "callingStations": [
+        "千葉",
+        "稲毛",
+        "津田沼",
+        "船橋",
+        "市川",
+        "新小岩",
+        "錦糸町",
+        "馬喰町",
+        "新日本橋",
+        "東京"
+      ],
+      "observedResponseSha256": "5098f38a2a2bcfc16cc13f089c26c6edd42a514284489d2ea6c017a60f4f15e4",
+      "locator": "Actual train table column 2/3; 快速 2190F; explicit call rows only, no blank-cell inheritance",
+      "reviewMethod": "PARSED_ACTUAL_TRAIN_EXPLICIT_COLUMN_CALL_ROWS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_SNAPSHOT_NOT_REALTIME",
+      "callingComponents": [
+        {
+          "name": "千葉",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "稲毛",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "津田沼",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "船橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "市川",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新小岩",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "錦糸町",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "馬喰町",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新日本橋",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東京",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        }
+      ]
+    },
+    {
+      "factId": "kanto-5262F",
+      "sourceActionId": "rail:jr-east:chiba-yokosuka",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/110/114431.html",
+      "line": "成田線空港快速",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "快速",
+      "expectedTrainCode": "5262F",
+      "direction": "inbound",
+      "reviewedTableColumns": 2,
+      "reviewedColumnIndex": 0,
+      "kind": "service",
+      "callingStations": [
+        "成田空港",
+        "空港第２ビル",
+        "成田",
+        "酒々井",
+        "佐倉",
+        "物井",
+        "四街道",
+        "都賀",
+        "千葉"
+      ],
+      "observedResponseSha256": "6823bd21cc5532ab6659843396bd9b36c6003a48bebebff764dacb5203a39059",
+      "locator": "Actual train table column 1/2; 快速 5262F; explicit call rows only, no blank-cell inheritance",
+      "reviewMethod": "PARSED_ACTUAL_TRAIN_EXPLICIT_COLUMN_CALL_ROWS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_SNAPSHOT_NOT_REALTIME",
+      "callingComponents": [
+        {
+          "name": "成田空港",
+          "operator": "東日本旅客鉄道",
+          "line": "成田線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "空港第2ビル",
+          "operator": "東日本旅客鉄道",
+          "line": "成田線",
+          "mode": "conventional_rail",
+          "nameVariantReview": {
+            "kind": "JAPANESE_DIGIT_WIDTH",
+            "sourceName": "空港第２ビル",
+            "stationCode": "003173",
+            "review": "Explicit operator/line/station-code binding; only the recorded Japanese character-width or small-ke spelling difference is accepted."
+          }
+        },
+        {
+          "name": "成田",
+          "operator": "東日本旅客鉄道",
+          "line": "成田線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "酒々井",
+          "operator": "東日本旅客鉄道",
+          "line": "成田線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "佐倉",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "物井",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "四街道",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "都賀",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "千葉",
+          "operator": "東日本旅客鉄道",
+          "line": "総武線",
+          "mode": "conventional_rail"
+        }
+      ]
+    }
+  ]
+}

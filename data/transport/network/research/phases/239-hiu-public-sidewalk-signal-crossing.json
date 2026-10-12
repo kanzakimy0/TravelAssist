@@ -1,0 +1,107 @@
+{
+  "phaseId": "239-hiu-public-sidewalk-signal-crossing",
+  "strategy": [
+    "EXACT_LICENSED_GTFS_NATIVE_COMPONENTS",
+    "PRESERVE_DIRECTIONAL_PICKUP_DROPOFF",
+    "CURRENT_OPERATOR_POLE_AND_DIRECTION_BINDING",
+    "CITY_DESCRIBED_PUBLIC_SIDEWALK_AND_SIGNAL_CROSSING",
+    "GSI_PDL1_POSITION_CORROBORATION",
+    "ONE_DIRECTED_TRANSFER_EDGE",
+    "NO_NEW_NODES",
+    "NO_SERVICE_REVERSAL"
+  ],
+  "completedActionIds": [
+    "transfer:hiu:municipal-public-sidewalk-and-signal-crossing",
+    "transfer:hiu:current-keneibus-directional-poles",
+    "transfer:hiu:gsi-pdl1-position-corroboration",
+    "transfer:hiu:current-city-publication-index",
+    "transfer:hiu:city-copyright-policy"
+  ],
+  "facts": [
+    {
+      "factId": "hiu-007070-pole1-to-pole5-signal-crossing",
+      "kind": "transfer",
+      "sourceActionId": "transfer:hiu:municipal-public-sidewalk-and-signal-crossing",
+      "sourceUrl": "https://www.city.sasebo.lg.jp/documents/38531/2teireisiryou.pdf",
+      "observedResponseSha256": "6ecebed21fa32fa9abf4ff59453636a0a28bbd2edfdc91f9490923b1310af294",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "transfer:hiu:current-keneibus-directional-poles",
+          "url": "https://www.keneibus.jp/cellular/highway/sasebo/index.html",
+          "observedResponseSha256": "239eae37e57cfc0be43aba76c6aa30efca3b743087c90f757a3ab1fc72a88463"
+        },
+        {
+          "sourceActionId": "transfer:hiu:gsi-pdl1-position-corroboration",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/225558/105453.jpg",
+          "observedResponseSha256": "0859099ddb9a3564bdfd8575d9cdbbfbfe6c30a59bf0f3b382d0367c8492c3fe"
+        },
+        {
+          "sourceActionId": "transfer:hiu:gsi-pdl1-position-corroboration",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/225559/105453.jpg",
+          "observedResponseSha256": "8e584aa47eb4753c831fd5e0b4de3411c43fd5c72ae7c6aa65f2efd9d0971071"
+        },
+        {
+          "sourceActionId": "transfer:hiu:gsi-pdl1-position-corroboration",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/225558/105454.jpg",
+          "observedResponseSha256": "ea4a156aeb4c651163a41c1204f1395be7b639f2bb4f26ab7a64ff9c3fd0e8cd"
+        },
+        {
+          "sourceActionId": "transfer:hiu:gsi-pdl1-position-corroboration",
+          "url": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/18/225559/105454.jpg",
+          "observedResponseSha256": "23598bf1fd1449da6848ea5cdc60699a3aff999e5561b868bede86bb2684303c"
+        },
+        {
+          "sourceActionId": "transfer:hiu:current-city-publication-index",
+          "url": "https://www.city.sasebo.lg.jp/kyouiku/kyouik/6teireikyouikuiinnkaigijiroku.html",
+          "observedResponseSha256": "741ecc549578425a909b71ce61961cd4aa35a2aee57389f1e38949083b210b32"
+        },
+        {
+          "sourceActionId": "transfer:hiu:city-copyright-policy",
+          "url": "https://www.city.sasebo.lg.jp/chosakuken/index.html",
+          "observedResponseSha256": "64f6d37930921a115e950b71f3cbb779bcfe0450f563cbea603ee28f0aa96ddb"
+        }
+      ],
+      "components": [
+        {
+          "name": "日宇駅前",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:10",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "887070_01",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "697182def1815b760acc4bc4eb8098a0bd286d3472113141b1972df6be9d42a8",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Licensed native stop 887070_01; official current Keneibus highway page identifies 日宇駅前 internal code 007070, pole 1 on the 佐世保行 service. Exact active calls permit drop-off (drop_off_type=0) and prohibit boarding (pickup_type=1). This is an operator-stop representative, not a precise platform/curb assertion."
+          }
+        },
+        {
+          "name": "日宇駅前",
+          "operator": "長崎県交通局",
+          "line": "gtfs:nagasaki-bus:route:10",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:nagasaki-bus",
+            "stopId": "887070_05",
+            "sourceArchiveSha256": "add5981eb3444be32570b26785c845be582b3458fac2b3ac9830351feb0148fc",
+            "recordSha256": "4e7ab442e68a2e8ddad01f54dcb80e0b57d9e9224c1d4696ea71637ea159b9ea",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Licensed native stop 887070_05; same current operator page identifies 日宇駅前 code 007070, pole 5 on the reverse 長崎行 service. Exact active calls permit boarding (pickup_type=0) and prohibit drop-off (drop_off_type=1). Kept distinct from pole 1."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ]
+      ],
+      "reviewMethod": "EXACT_LICENSED_GTFS_DIRECTIONAL_COMPONENTS_PLUS_CURRENT_OPERATOR_POLES_AND_CITY_PUBLIC_WALK_ROUTE",
+      "hubScopeComplete": false,
+      "locator": "佐世保市2025-02-25教育委員会資料 pp.78,80: city-authored prose describes walking along the 国道 sidewalk and identifies the 国道 crossing at 日宇駅前; page 80 describes the walk continuing on sidewalk and crossing at the 日宇駅前 signal. Facts only; third-party map artwork/geometry on p.78 excluded. Current Keneibus route page identifies 日宇駅前 code 007070, pole 1 in the 佐世保行 section and pole 5 in the reverse 長崎行 section; exact native GTFS stop records 887070_01 and _05 and active 2026-10-02 service patterns preserve arrival-only at _01 and boarding-only at _05. GSI PDL1.0 aerials (four cached z18 tiles, capture date unknown) visually correlate exact GTFS representative coordinates to the same Route 35/Hiu Station street corridor and the signalized intersection; no door, pole-side curb, accessibility or time claim. This is a coarse public-street connection supported by city walking description, current exact operator service-role records and position context; no OSM identity join or distance-only connection."
+    }
+  ]
+}

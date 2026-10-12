@@ -1,0 +1,99 @@
+{
+  "phaseId": "048-haneda-fukuoka-airport-rail-gateways",
+  "strategy": [
+    "C28_INDEPENDENT_AIRPORT_IDENTITY",
+    "CURRENT_EXPLICIT_TERMINAL_ACCESS",
+    "airport"
+  ],
+  "completedActionIds": [
+    "government:c28:airport-identities",
+    "airport:haneda:rail-access",
+    "airport:fukuoka:metro-access"
+  ],
+  "facts": [
+    {
+      "factId": "airport-haneda-rail-gateway",
+      "kind": "transfer",
+      "sourceActionId": "airport:haneda:rail-access",
+      "sourceUrl": "https://www.tokyo-haneda.com/access/train/index.html",
+      "observedResponseSha256": "3499b2dd20f6b93abba803e52f3b6c9dab61596f68deed7af4d15b4f0a4d9d25",
+      "locator": "Official airport access guide identifies Keikyu rail access under T1/T2 at B1F and describes both departure and arrival access. Connect the whole-airport gateway to the reviewed Keikyu T1/T2 physical station only. No airport-internal travel time, T3 shortcut or airline service implied.",
+      "components": [
+        {
+          "name": "東京国際空港",
+          "operator": "airport-facility:cf03_00030",
+          "line": "airport:cf03_00030",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00030",
+            "requirementId": "review:transport-node:d6306795-4a39-5875-968e-838efb6f5f73",
+            "expectedRequirementName": "東京国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Official airport access guide identifies Keikyu rail access under T1/T2 at B1F and describes both departure and arrival access. Connect the whole-airport gateway to the reviewed Keikyu T1/T2 physical station only. No airport-internal travel time, T3 shortcut or airline service implied."
+          }
+        },
+        {
+          "name": "羽田空港第1・第2ターミナル",
+          "operator": "京浜急行電鉄",
+          "line": "空港線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "INDEPENDENT_C28_IDENTITY_PLUS_CURRENT_PRIMARY_TERMINAL_STATION_ACCESS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "airport-fukuoka-rail-gateway",
+      "kind": "transfer",
+      "sourceActionId": "airport:fukuoka:metro-access",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/eki/stations/kuko.php",
+      "observedResponseSha256": "12bbee78c877d4b7e284462a749720af259e3c8bcb382dbdbc526b028d66ab01",
+      "locator": "Official subway station guide explicitly lists airport-building to concourse elevators and airport-building/ground to concourse escalators in both directions. Connect the airport gateway to this domestic-terminal metro entrance only; no international-terminal shuttle or walking shortcut implied.",
+      "components": [
+        {
+          "name": "福岡空港",
+          "operator": "airport-facility:cf03_00083",
+          "line": "airport:cf03_00083",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00083",
+            "requirementId": "review:transport-node:f09225e8-a5e2-5fef-82a5-69aa13156cdd",
+            "expectedRequirementName": "福岡",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Official subway station guide explicitly lists airport-building to concourse elevators and airport-building/ground to concourse escalators in both directions. Connect the airport gateway to this domestic-terminal metro entrance only; no international-terminal shuttle or walking shortcut implied."
+          }
+        },
+        {
+          "name": "福岡空港",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "INDEPENDENT_C28_IDENTITY_PLUS_CURRENT_PRIMARY_TERMINAL_STATION_ACCESS",
+      "hubScopeComplete": false
+    }
+  ]
+}

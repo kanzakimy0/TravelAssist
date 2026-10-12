@@ -1,0 +1,705 @@
+{
+  "phaseId": "034-fukuoka-metro-and-jr-gateway",
+  "strategy": [
+    "FUKUOKA_METRO_LOCAL_SERVICE",
+    "OFFICIAL_JR_INTERCHANGE_ROUTE",
+    "metro"
+  ],
+  "completedActionIds": [
+    "metro:fukuoka:local"
+  ],
+  "facts": [
+    {
+      "factId": "airport-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:fukuoka:local",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/schedule/index.php",
+      "observedResponseSha256": "252302c62b3bc45aa1e1f9bd92ae0c2825fc194fcfe368284e1fd7db77f9e761",
+      "locator": "Official current ordered stations and station timetable directions for ordinary all-station service within this operator section. Separate lines/branches are not unioned; no continuation onto another operator is asserted.",
+      "line": "1号線(空港線)",
+      "operator": "福岡市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "姪浜",
+        "室見",
+        "藤崎",
+        "西新",
+        "唐人町",
+        "大濠公園",
+        "赤坂",
+        "天神",
+        "中洲川端",
+        "祇園",
+        "博多",
+        "東比恵",
+        "福岡空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "姪浜",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "室見",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "藤崎",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "西新",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "唐人町",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "大濠公園",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "赤坂",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "天神",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "中洲川端",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "祇園",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "博多",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "東比恵",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "福岡空港",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        }
+      ],
+      "reviewedStationNames": [],
+      "reviewMethod": "OFFICIAL_OPERATING_LINE_STATIONS_AND_TIMETABLE_DIRECTIONS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "airport-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:fukuoka:local",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/schedule/index.php",
+      "observedResponseSha256": "252302c62b3bc45aa1e1f9bd92ae0c2825fc194fcfe368284e1fd7db77f9e761",
+      "locator": "Official current ordered stations and station timetable directions for ordinary all-station service within this operator section. Separate lines/branches are not unioned; no continuation onto another operator is asserted.",
+      "line": "1号線(空港線)",
+      "operator": "福岡市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "福岡空港",
+        "東比恵",
+        "博多",
+        "祇園",
+        "中洲川端",
+        "天神",
+        "赤坂",
+        "大濠公園",
+        "唐人町",
+        "西新",
+        "藤崎",
+        "室見",
+        "姪浜"
+      ],
+      "callingComponents": [
+        {
+          "name": "福岡空港",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "東比恵",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "博多",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "祇園",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "中洲川端",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "天神",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "赤坂",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "大濠公園",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "唐人町",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "西新",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "藤崎",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "室見",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "姪浜",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        }
+      ],
+      "reviewedStationNames": [],
+      "reviewMethod": "OFFICIAL_OPERATING_LINE_STATIONS_AND_TIMETABLE_DIRECTIONS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "hakozaki-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:fukuoka:local",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/schedule/index.php",
+      "observedResponseSha256": "252302c62b3bc45aa1e1f9bd92ae0c2825fc194fcfe368284e1fd7db77f9e761",
+      "locator": "Official current ordered stations and station timetable directions for ordinary all-station service within this operator section. Separate lines/branches are not unioned; no continuation onto another operator is asserted.",
+      "line": "2号線(箱崎線)",
+      "operator": "福岡市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "中洲川端",
+        "呉服町",
+        "千代県庁口",
+        "馬出九大病院前",
+        "箱崎宮前",
+        "箱崎九大前",
+        "貝塚"
+      ],
+      "callingComponents": [
+        {
+          "name": "中洲川端",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        },
+        {
+          "name": "呉服町",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        },
+        {
+          "name": "千代県庁口",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        },
+        {
+          "name": "馬出九大病院前",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        },
+        {
+          "name": "箱崎宮前",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        },
+        {
+          "name": "箱崎九大前",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        },
+        {
+          "name": "貝塚",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        }
+      ],
+      "reviewedStationNames": [],
+      "reviewMethod": "OFFICIAL_OPERATING_LINE_STATIONS_AND_TIMETABLE_DIRECTIONS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "hakozaki-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:fukuoka:local",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/schedule/index.php",
+      "observedResponseSha256": "252302c62b3bc45aa1e1f9bd92ae0c2825fc194fcfe368284e1fd7db77f9e761",
+      "locator": "Official current ordered stations and station timetable directions for ordinary all-station service within this operator section. Separate lines/branches are not unioned; no continuation onto another operator is asserted.",
+      "line": "2号線(箱崎線)",
+      "operator": "福岡市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "貝塚",
+        "箱崎九大前",
+        "箱崎宮前",
+        "馬出九大病院前",
+        "千代県庁口",
+        "呉服町",
+        "中洲川端"
+      ],
+      "callingComponents": [
+        {
+          "name": "貝塚",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        },
+        {
+          "name": "箱崎九大前",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        },
+        {
+          "name": "箱崎宮前",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        },
+        {
+          "name": "馬出九大病院前",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        },
+        {
+          "name": "千代県庁口",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        },
+        {
+          "name": "呉服町",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        },
+        {
+          "name": "中洲川端",
+          "operator": "福岡市",
+          "line": "2号線(箱崎線)",
+          "mode": "metro"
+        }
+      ],
+      "reviewedStationNames": [],
+      "reviewMethod": "OFFICIAL_OPERATING_LINE_STATIONS_AND_TIMETABLE_DIRECTIONS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nanakuma-local-outbound",
+      "kind": "service",
+      "sourceActionId": "metro:fukuoka:local",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/schedule/index.php",
+      "observedResponseSha256": "252302c62b3bc45aa1e1f9bd92ae0c2825fc194fcfe368284e1fd7db77f9e761",
+      "locator": "Official current ordered stations and station timetable directions for ordinary all-station service within this operator section. Separate lines/branches are not unioned; no continuation onto another operator is asserted.",
+      "line": "3号線(七隈線)",
+      "operator": "福岡市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "outbound",
+      "callingStations": [
+        "橋本",
+        "次郎丸",
+        "賀茂",
+        "野芥",
+        "梅林",
+        "福大前",
+        "七隈",
+        "金山",
+        "茶山",
+        "別府",
+        "六本松",
+        "桜坂",
+        "薬院大通",
+        "薬院",
+        "渡辺通",
+        "天神南",
+        "櫛田神社前",
+        "博多"
+      ],
+      "callingComponents": [
+        {
+          "name": "橋本",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "次郎丸",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "賀茂",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "野芥",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "梅林",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "福大前",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "七隈",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "金山",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "茶山",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "別府",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "六本松",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "桜坂",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "薬院大通",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "薬院",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "渡辺通",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "天神南",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "櫛田神社前",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "博多",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        }
+      ],
+      "reviewedStationNames": [],
+      "reviewMethod": "OFFICIAL_OPERATING_LINE_STATIONS_AND_TIMETABLE_DIRECTIONS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "nanakuma-local-inbound",
+      "kind": "service",
+      "sourceActionId": "metro:fukuoka:local",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/schedule/index.php",
+      "observedResponseSha256": "252302c62b3bc45aa1e1f9bd92ae0c2825fc194fcfe368284e1fd7db77f9e761",
+      "locator": "Official current ordered stations and station timetable directions for ordinary all-station service within this operator section. Separate lines/branches are not unioned; no continuation onto another operator is asserted.",
+      "line": "3号線(七隈線)",
+      "operator": "福岡市",
+      "mode": "metro",
+      "serviceClass": "各駅停車",
+      "direction": "inbound",
+      "callingStations": [
+        "博多",
+        "櫛田神社前",
+        "天神南",
+        "渡辺通",
+        "薬院",
+        "薬院大通",
+        "桜坂",
+        "六本松",
+        "別府",
+        "茶山",
+        "金山",
+        "七隈",
+        "福大前",
+        "梅林",
+        "野芥",
+        "賀茂",
+        "次郎丸",
+        "橋本"
+      ],
+      "callingComponents": [
+        {
+          "name": "博多",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "櫛田神社前",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "天神南",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "渡辺通",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "薬院",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "薬院大通",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "桜坂",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "六本松",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "別府",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "茶山",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "金山",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "七隈",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "福大前",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "梅林",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "野芥",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "賀茂",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "次郎丸",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        },
+        {
+          "name": "橋本",
+          "operator": "福岡市",
+          "line": "3号線(七隈線)",
+          "mode": "metro"
+        }
+      ],
+      "reviewedStationNames": [],
+      "reviewMethod": "OFFICIAL_OPERATING_LINE_STATIONS_AND_TIMETABLE_DIRECTIONS",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_STATIC_LOCAL_SERVICE_NOT_REALTIME"
+    },
+    {
+      "factId": "fukuoka-jr-gateway",
+      "kind": "transfer",
+      "sourceActionId": "metro:fukuoka:local",
+      "sourceUrl": "https://subway.city.fukuoka.lg.jp/eki/stations/hakata.php",
+      "observedResponseSha256": "c7ceb6748156eaa06dad85d2e0fd3c7c66f0780290d0b7416cfde95db9b69a92",
+      "locator": "Official Hakata station barrier-free table explicitly connects platform and concourse to ground JR concourse via central entrance elevator/escalator. Physical bidirectional Metro to JR Kyushu conventional interchange only; existing separately reviewed JR transfer gates reach Shinkansen.",
+      "components": [
+        {
+          "name": "博多",
+          "operator": "福岡市",
+          "line": "1号線(空港線)",
+          "mode": "metro"
+        },
+        {
+          "name": "博多",
+          "operator": "九州旅客鉄道",
+          "line": "鹿児島線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_EXPLICIT_INTERCHANGE_AND_ACCESSIBLE_CONCOURSE_ROUTE",
+      "hubScopeComplete": false
+    }
+  ]
+}

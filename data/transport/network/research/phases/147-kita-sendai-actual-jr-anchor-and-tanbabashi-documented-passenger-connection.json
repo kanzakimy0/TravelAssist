@@ -1,0 +1,239 @@
+{
+  "phaseId": "147-kita-sendai-actual-jr-anchor-and-tanbabashi-documented-passenger-connection",
+  "strategy": [
+    "INDEPENDENT_ACTUAL_DIRECTIONAL_JR_ANCHOR_SECTIONS",
+    "CURRENT_SIGNED_PUBLIC_JR_EXIT",
+    "MUNICIPAL_DOCUMENTED_EXISTING_INTEROPERATOR_PASSAGE"
+  ],
+  "completedActionIds": [
+    "rail:jr-east:senzan-current-actual-kita-sendai-anchor-sections",
+    "hub:sendai:kita-sendai-current-south-one-jr-connection",
+    "hub:kyoto-city:tanbabashi-documented-dedicated-operator-connection",
+    "hub:kyoto-culture:kuretake-current-two-operator-west-exit-access"
+  ],
+  "facts": [
+    {
+      "factId": "senzan-4821M-current-sendai-kita-sendai-three-call-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-east:senzan-current-actual-kita-sendai-anchor-sections",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/090/090071.html",
+      "observedResponseSha256": "e1d006ff5545d5f01155e5406ad1fe7489cc1894943e6249d886730ef95d2c16",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-east:senzan-current-actual-kita-sendai-anchor-sections",
+          "url": "https://timetables.jreast.co.jp/timetable/list0572.html",
+          "observedResponseSha256": "a45e7f3793d0c6927f7f5b4a40d058203141131248253db21965affb295fe350"
+        }
+      ],
+      "locator": "Independently reviewed October 2026 actual ordinary 4821M train. Select the explicit contiguous three-call section; parent call order independently read in full. No reverse inference, clock values, platform numbers, frequencies or timetable layout retained.",
+      "line": "仙山線・仙台北仙台区間",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "reviewedTrainCode": "4821M",
+      "direction": "westbound",
+      "parentCallingStations": [
+        "仙台",
+        "東照宮",
+        "北仙台",
+        "北山",
+        "東北福祉大前",
+        "国見",
+        "葛岡",
+        "陸前落合",
+        "愛子",
+        "陸前白沢",
+        "熊ケ根",
+        "作並",
+        "山寺",
+        "高瀬",
+        "楯山",
+        "羽前千歳",
+        "北山形",
+        "山形"
+      ],
+      "sectionStartIndex": 0,
+      "callingStations": [
+        "仙台",
+        "東照宮",
+        "北仙台"
+      ],
+      "callingComponents": [
+        {
+          "name": "仙台",
+          "operator": "東日本旅客鉄道",
+          "line": "仙山線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東照宮",
+          "operator": "東日本旅客鉄道",
+          "line": "仙山線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "北仙台",
+          "operator": "東日本旅客鉄道",
+          "line": "仙山線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_TRAIN_INDEPENDENT_CONTIGUOUS_THREE_CALL_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_STATIC_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "senzan-1820M-current-sendai-kita-sendai-three-call-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-east:senzan-current-actual-kita-sendai-anchor-sections",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/090/090141.html",
+      "observedResponseSha256": "4255606ed276b457b81b8306fb84fcfaee1e7d2225f21510be6291b1f65dedc1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-east:senzan-current-actual-kita-sendai-anchor-sections",
+          "url": "https://timetables.jreast.co.jp/timetable/list0572.html",
+          "observedResponseSha256": "a45e7f3793d0c6927f7f5b4a40d058203141131248253db21965affb295fe350"
+        }
+      ],
+      "locator": "Independently reviewed October 2026 actual ordinary 1820M train. Select the explicit contiguous three-call section; parent call order independently read in full. No reverse inference, clock values, platform numbers, frequencies or timetable layout retained.",
+      "line": "仙山線・仙台北仙台区間",
+      "operator": "東日本旅客鉄道",
+      "mode": "conventional_rail",
+      "serviceClass": "普通",
+      "reviewedTrainCode": "1820M",
+      "direction": "eastbound",
+      "parentCallingStations": [
+        "愛子",
+        "陸前落合",
+        "葛岡",
+        "国見",
+        "東北福祉大前",
+        "北山",
+        "北仙台",
+        "東照宮",
+        "仙台"
+      ],
+      "sectionStartIndex": 6,
+      "callingStations": [
+        "北仙台",
+        "東照宮",
+        "仙台"
+      ],
+      "callingComponents": [
+        {
+          "name": "北仙台",
+          "operator": "東日本旅客鉄道",
+          "line": "仙山線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "東照宮",
+          "operator": "東日本旅客鉄道",
+          "line": "仙山線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "仙台",
+          "operator": "東日本旅客鉄道",
+          "line": "仙山線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_ACTUAL_TRAIN_INDEPENDENT_CONTIGUOUS_THREE_CALL_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "PUBLISHED_OCTOBER_2026_STATIC_TRAIN_NOT_REALTIME"
+    },
+    {
+      "factId": "kita-sendai-current-south-one-jr-namboku-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:sendai:kita-sendai-current-south-one-jr-connection",
+      "sourceUrl": "https://www.kotsu.city.sendai.jp/assets/img/subway/station/kita-sendai/N06_kitasendai_24.pdf",
+      "observedResponseSha256": "c18f16ab500562cb6f78c246deb5685ed3d81a3e89f2fe8f9cfa5cd3e6081daf",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:sendai:kita-sendai-current-south-one-jr-connection",
+          "url": "https://www.kotsu.city.sendai.jp/subway/station/list/kita-sendai/",
+          "observedResponseSha256": "6e2f78dc7614bd665816708f9c65b2fc2d3a1f803f00fdce7b42cc59fdff54c2"
+        }
+      ],
+      "locator": "Current-linked N06 plan individually viewed and hash matched. Both Namboku platform directions connect through gate to ordinary public corridor and south exit 1, explicitly signed JR Kita-Sendai; inset confirms JR station approach. Preserve licensed Senzan and municipal Namboku components. No proximity-only merge, walking-time, fare or accessibility promise.",
+      "components": [
+        {
+          "name": "北仙台",
+          "operator": "東日本旅客鉄道",
+          "line": "仙山線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "北仙台",
+          "operator": "仙台市",
+          "line": "南北線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_OFFICIAL_SIGNED_PUBLIC_EXIT_AND_EXACT_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tanbabashi-municipal-dedicated-second-floor-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:kyoto-city:tanbabashi-documented-dedicated-operator-connection",
+      "sourceUrl": "https://www.city.kyoto.lg.jp/templates/shingikai_kekka/cmsfiles/contents/0000177/177690/7.pdf",
+      "observedResponseSha256": "945bfdc633317ea90d86e24f2917c1dd9af95c33a0b104287eccdf8850c7fd48",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:kyoto-city:tanbabashi-documented-dedicated-operator-connection",
+          "url": "https://www.city.kyoto.lg.jp/bunshi/cmsfiles/contents/0000315/315985/moshikomisho.pdf",
+          "observedResponseSha256": "09bb3d25228862d31fd0afa3dd8cbc5b58c074d1d17074a8af5b7ec86bae705b"
+        },
+        {
+          "sourceActionId": "hub:kyoto-city:tanbabashi-documented-dedicated-operator-connection",
+          "url": "https://www.city.kyoto.lg.jp/bunshi/page/0000315985.html",
+          "observedResponseSha256": "79287cda4e623a658ccca0c922cca29b86df7eb40305c58adedcf6e795fcf53b"
+        },
+        {
+          "sourceActionId": "hub:kyoto-culture:kuretake-current-two-operator-west-exit-access",
+          "url": "https://www.kyoto-ongeibun.jp/kuretake/access/",
+          "observedResponseSha256": "75e3b7b47c4bd1b986942401bf2075ccd43d94e01b931c1d36edb68509d0d073"
+        }
+      ],
+      "locator": "Municipal historical existing-infrastructure audit, printed page 4 row 2, individually viewed: dedicated second-floor passage between Kintetsu gate and Keihan south gate. Municipal 2023 event-access sheet page 2 independently directs Kintetsu passengers along the Keihan connection to west exit. Current venue page confirms continuing access from the same two named rail-station west exits. Preserve source dates; no assertion that historical report was produced in 2026. Retain only coarse existing bidirectional passenger connection, not report distances, times, crowding, artwork, quoted directions or accessibility guarantees.",
+      "components": [
+        {
+          "name": "丹波橋",
+          "operator": "京阪電気鉄道",
+          "line": "京阪本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "近鉄丹波橋",
+          "operator": "近畿日本鉄道",
+          "line": "京都線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "MUNICIPAL_EXISTING_DEDICATED_PASSAGE_AND_SEPARATE_ACCESS_CORROBORATION",
+      "hubScopeComplete": false
+    }
+  ]
+}

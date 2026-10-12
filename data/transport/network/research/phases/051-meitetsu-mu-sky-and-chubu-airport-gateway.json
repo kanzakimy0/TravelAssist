@@ -1,0 +1,153 @@
+{
+  "phaseId": "051-meitetsu-mu-sky-and-chubu-airport-gateway",
+  "strategy": [
+    "MEITETSU_ACTUAL_DIRECTIONAL_MU_SKY_COLUMNS",
+    "C28_CURRENT_AIRPORT_ACCESS",
+    "private_rail"
+  ],
+  "completedActionIds": [
+    "private:meitetsu:mu-sky-airport-gateway"
+  ],
+  "facts": [
+    {
+      "factId": "meitetsu-mu-sky-14-airport",
+      "kind": "service",
+      "sourceActionId": "private:meitetsu:mu-sky-airport-gateway",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/02/25/20260314_TA_W1.pdf",
+      "observedResponseSha256": "22b77f7fcddd946100227b347f1524dd2aa835d2b64bd8f1c991d789b37c50d9",
+      "locator": "Current weekday timetable PDF page 4 (printed 73), actual Mu Sky train 14 column. Retain only the Meitetsu Nagoya to/from airport section; all intervening rows checked, with pass symbols excluded. Repeated station arrival/departure rows collapsed. Train 14 is airportbound; train 11 is Nagoyabound. No inferred reversal, clock times or full timetable retained.",
+      "line": "ミュースカイ・名鉄名古屋中部国際空港",
+      "operator": "名古屋鉄道",
+      "mode": "private_rail",
+      "serviceClass": "ミュースカイ",
+      "direction": "airportbound",
+      "trainCode": "14",
+      "callingStations": [
+        "名鉄名古屋",
+        "金山",
+        "神宮前",
+        "中部国際空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "名鉄名古屋",
+          "operator": "名古屋鉄道",
+          "line": "名古屋本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "金山",
+          "operator": "名古屋鉄道",
+          "line": "名古屋本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "神宮前",
+          "operator": "名古屋鉄道",
+          "line": "常滑線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中部国際空港",
+          "operator": "名古屋鉄道",
+          "line": "空港線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_PDF_ACTUAL_TRAIN_COLUMN_WITH_ALL_INTERMEDIATE_ROWS_REVIEWED",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "meitetsu-mu-sky-11-airport",
+      "kind": "service",
+      "sourceActionId": "private:meitetsu:mu-sky-airport-gateway",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/timetable/__icsFiles/afieldfile/2026/06/22/kai_20260314_TA_W2.pdf",
+      "observedResponseSha256": "6195fe213c89930bfa9c9066ef4c633fd91180471c94c292b051afc1cda86412",
+      "locator": "Current weekday timetable PDF page 4 (printed 89), actual Mu Sky train 11 column. Retain only the Meitetsu Nagoya to/from airport section; all intervening rows checked, with pass symbols excluded. Repeated station arrival/departure rows collapsed. Train 14 is airportbound; train 11 is Nagoyabound. No inferred reversal, clock times or full timetable retained.",
+      "line": "ミュースカイ・名鉄名古屋中部国際空港",
+      "operator": "名古屋鉄道",
+      "mode": "private_rail",
+      "serviceClass": "ミュースカイ",
+      "direction": "nagoyabound",
+      "trainCode": "11",
+      "callingStations": [
+        "中部国際空港",
+        "神宮前",
+        "金山",
+        "名鉄名古屋"
+      ],
+      "callingComponents": [
+        {
+          "name": "中部国際空港",
+          "operator": "名古屋鉄道",
+          "line": "空港線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "神宮前",
+          "operator": "名古屋鉄道",
+          "line": "常滑線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "金山",
+          "operator": "名古屋鉄道",
+          "line": "名古屋本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "名鉄名古屋",
+          "operator": "名古屋鉄道",
+          "line": "名古屋本線",
+          "mode": "private_rail"
+        }
+      ],
+      "reviewMethod": "CURRENT_PDF_ACTUAL_TRAIN_COLUMN_WITH_ALL_INTERMEDIATE_ROWS_REVIEWED",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "chubu-airport-meitetsu-gateway",
+      "kind": "transfer",
+      "sourceActionId": "private:meitetsu:mu-sky-airport-gateway",
+      "sourceUrl": "https://www.meitetsu.co.jp/train/centrair/station_2012/index.html",
+      "observedResponseSha256": "3ef8e38eb0b50cded87ebe1026ee24bc292d150137525a8245f20703417c920f",
+      "locator": "Current Meitetsu airport-station guide explicitly identifies the station gates from the airport Access Plaza and paths to platforms. Whole-airport gateway to the named Meitetsu physical station, with no terminal-internal shortcut or transfer duration.",
+      "components": [
+        {
+          "name": "中部国際空港",
+          "operator": "airport-facility:cf03_00095",
+          "line": "airport:cf03_00095",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00095",
+            "requirementId": "review:transport-node:1c76f8ae-8313-5c29-9fb7-9a7acca1efd1",
+            "expectedRequirementName": "中部国際",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current Meitetsu airport-station guide explicitly identifies the station gates from the airport Access Plaza and paths to platforms. Whole-airport gateway to the named Meitetsu physical station, with no terminal-internal shortcut or transfer duration."
+          }
+        },
+        {
+          "name": "中部国際空港",
+          "operator": "名古屋鉄道",
+          "line": "空港線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "INDEPENDENT_C28_AND_CURRENT_OPERATOR_AIRPORT_ACCESS",
+      "hubScopeComplete": false
+    }
+  ]
+}

@@ -1,0 +1,585 @@
+{
+  "phaseId": "229-hateruma-flight-passenger-shuttle",
+  "strategy": [
+    "ORIGINAL_C28_AIRPORT_HOLD_UPGRADE",
+    "TWO_CURRENT_VISIBLE_FLIGHT_DIRECTIONS_ON_PUBLISHED_DATE",
+    "EXACT_ABR_DUAL_ARCHIVE_MUNICIPAL_PUBLIC_PARK_PARCEL",
+    "TWO_INDEPENDENT_NONSTOP_FLIGHT_USER_SHUTTLES",
+    "NO_RESERVATION_DEFAULT_AND_PUBLIC_DENIAL_WITH_REVIEWED_QUALIFICATION"
+  ],
+  "completedActionIds": [
+    "hateruma229:bus",
+    "hateruma229:air",
+    "hateruma:municipal-park-identity",
+    "hateruma229:rules-static",
+    "hateruma229:calendar-static",
+    "hateruma229:abr-terms",
+    "hateruma229:abr-raw-master",
+    "hateruma229:abr-raw-position"
+  ],
+  "facts": [
+    {
+      "factId": "hateruma229-current-flight-0",
+      "kind": "service",
+      "sourceActionId": "hateruma229:air",
+      "sourceUrl": "https://www.dai1air.com/ishigaki/",
+      "observedResponseSha256": "3f6dd03e4d60be27c296f48646249a47fbc03ee8ae1464628db988b91eea951d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hateruma229:air",
+          "url": "https://www.dai1air.com/ishigaki/images/diagram/calendar202610HTR.png",
+          "observedResponseSha256": "4957c8704cb042597f59ea7ff6afb8c2688f4c609cd51ae899bff224e3f6d265"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://ishigaki-airport.co.jp/iat/pressrelease/20230301_22003_rev1.pdf",
+          "observedResponseSha256": "c19df994d3cc0d4801c59494e8e08d21d70b606542beaf2035d53e3478b2e9a5"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://www.ishigaki-airport.co.jp/iat/recruitment/companyprofile_ishigakiairterminal_1.pdf",
+          "observedResponseSha256": "9e5284202dd07352a147f30cae53ec3a872ecb56c1f55e9f944d7359a37a630b"
+        }
+      ],
+      "operator": "第一航空株式会社",
+      "line": "石垣・波照間旅客航空",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "ISG-HTR",
+      "serviceState": "active",
+      "reviewedServiceDate": "20261005",
+      "flightNumberPublication": "NOT_PUBLISHED",
+      "visibleScheduleOnly": true,
+      "ignoredHtmlCommentSchedules": true,
+      "operatingCalendarEvidenceRef": "transport-evidence:086:2ac94ec31094348942f1b2ada21f9dc3",
+      "callingStations": [
+        "新石垣空港",
+        "波照間空港"
+      ],
+      "sourceCallingNames": [
+        "石垣",
+        "波照間"
+      ],
+      "callingComponents": [
+        {
+          "name": "新石垣空港",
+          "operator": "airport-facility:cf03_00064",
+          "line": "airport:cf03_00064",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00064",
+            "requirementId": "review:transport-node:95363cc3-5ee1-588c-b00a-555abd5bb8c7",
+            "expectedRequirementName": "石垣",
+            "method": "REVIEWED_EXACT_OFFICIAL_NEW_AIRPORT_PREFIX",
+            "currentPassengerAccessReview": "Current airport public map explicitly connects domestic central exit via continuous exterior passenger walkway to Karry frontage, separate from Azuma frontage. Exact licensed Karry S5393 terminal stop has blank platform, unchanged. The 2023 airport release explicitly names the current formal New Ishigaki facility; company profile page 6 separately confirms old airport closure and new airport/terminal opening in 2013. Bind C28 cf03_00064 and exclude the closed former airport. No name-only merge, coordinate-derived transfer, invented bay, walking time or accessibility claim.",
+            "officialNameEvidence": {
+              "observedResponseSha256": "c19df994d3cc0d4801c59494e8e08d21d70b606542beaf2035d53e3478b2e9a5",
+              "officialName": "新石垣空港",
+              "publicName": "石垣空港",
+              "requirementName": "石垣",
+              "url": "https://ishigaki-airport.co.jp/iat/pressrelease/20230301_22003_rev1.pdf"
+            },
+            "predecessorClosureEvidence": {
+              "closedPredecessorExcluded": true,
+              "closedPredecessorName": "石垣空港",
+              "closureYear": 2013,
+              "currentReferencePointId": "cf03_00064",
+              "observedResponseSha256": "9e5284202dd07352a147f30cae53ec3a872ecb56c1f55e9f944d7359a37a630b",
+              "url": "https://www.ishigaki-airport.co.jp/iat/recruitment/companyprofile_ishigakiairterminal_1.pdf"
+            }
+          }
+        },
+        {
+          "name": "波照間空港",
+          "operator": "airport-facility:cf03_00065",
+          "line": "airport:cf03_00065",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00065",
+            "requirementId": "review:official-airport:波照間",
+            "expectedRequirementName": "波照間",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Carrier current visible passenger flights independently identify Hateruma airport. Town current shuttle page explicitly describes airport and park boarding/alighting points at shelters etc. Whole airport passenger gateway only; no coordinates-derived walk or exact curb/door claim."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "serviceStateScope": "Two independently visible carrier directions on a personally reviewed actual published October5 service date. No flight numbers published, no schedule comments used, no live operation or timed-connection guarantee.",
+      "locator": "Carrier current visible Ishigaki–Hateruma section plus exact October2026 original calendar; no timetable clocks in public facts."
+    },
+    {
+      "factId": "hateruma229-current-flight-1",
+      "kind": "service",
+      "sourceActionId": "hateruma229:air",
+      "sourceUrl": "https://www.dai1air.com/ishigaki/",
+      "observedResponseSha256": "3f6dd03e4d60be27c296f48646249a47fbc03ee8ae1464628db988b91eea951d",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hateruma229:air",
+          "url": "https://www.dai1air.com/ishigaki/images/diagram/calendar202610HTR.png",
+          "observedResponseSha256": "4957c8704cb042597f59ea7ff6afb8c2688f4c609cd51ae899bff224e3f6d265"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://ishigaki-airport.co.jp/iat/pressrelease/20230301_22003_rev1.pdf",
+          "observedResponseSha256": "c19df994d3cc0d4801c59494e8e08d21d70b606542beaf2035d53e3478b2e9a5"
+        },
+        {
+          "sourceActionId": "airport:ishigaki:current-terminal-and-formal-name-review",
+          "url": "https://www.ishigaki-airport.co.jp/iat/recruitment/companyprofile_ishigakiairterminal_1.pdf",
+          "observedResponseSha256": "9e5284202dd07352a147f30cae53ec3a872ecb56c1f55e9f944d7359a37a630b"
+        }
+      ],
+      "operator": "第一航空株式会社",
+      "line": "石垣・波照間旅客航空",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "HTR-ISG",
+      "serviceState": "active",
+      "reviewedServiceDate": "20261005",
+      "flightNumberPublication": "NOT_PUBLISHED",
+      "visibleScheduleOnly": true,
+      "ignoredHtmlCommentSchedules": true,
+      "operatingCalendarEvidenceRef": "transport-evidence:086:2ac94ec31094348942f1b2ada21f9dc3",
+      "callingStations": [
+        "波照間空港",
+        "新石垣空港"
+      ],
+      "sourceCallingNames": [
+        "波照間",
+        "石垣"
+      ],
+      "callingComponents": [
+        {
+          "name": "波照間空港",
+          "operator": "airport-facility:cf03_00065",
+          "line": "airport:cf03_00065",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00065",
+            "requirementId": "review:official-airport:波照間",
+            "expectedRequirementName": "波照間",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Carrier current visible passenger flights independently identify Hateruma airport. Town current shuttle page explicitly describes airport and park boarding/alighting points at shelters etc. Whole airport passenger gateway only; no coordinates-derived walk or exact curb/door claim."
+          }
+        },
+        {
+          "name": "新石垣空港",
+          "operator": "airport-facility:cf03_00064",
+          "line": "airport:cf03_00064",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00064",
+            "requirementId": "review:transport-node:95363cc3-5ee1-588c-b00a-555abd5bb8c7",
+            "expectedRequirementName": "石垣",
+            "method": "REVIEWED_EXACT_OFFICIAL_NEW_AIRPORT_PREFIX",
+            "currentPassengerAccessReview": "Current airport public map explicitly connects domestic central exit via continuous exterior passenger walkway to Karry frontage, separate from Azuma frontage. Exact licensed Karry S5393 terminal stop has blank platform, unchanged. The 2023 airport release explicitly names the current formal New Ishigaki facility; company profile page 6 separately confirms old airport closure and new airport/terminal opening in 2013. Bind C28 cf03_00064 and exclude the closed former airport. No name-only merge, coordinate-derived transfer, invented bay, walking time or accessibility claim.",
+            "officialNameEvidence": {
+              "observedResponseSha256": "c19df994d3cc0d4801c59494e8e08d21d70b606542beaf2035d53e3478b2e9a5",
+              "officialName": "新石垣空港",
+              "publicName": "石垣空港",
+              "requirementName": "石垣",
+              "url": "https://ishigaki-airport.co.jp/iat/pressrelease/20230301_22003_rev1.pdf"
+            },
+            "predecessorClosureEvidence": {
+              "closedPredecessorExcluded": true,
+              "closedPredecessorName": "石垣空港",
+              "closureYear": 2013,
+              "currentReferencePointId": "cf03_00064",
+              "observedResponseSha256": "9e5284202dd07352a147f30cae53ec3a872ecb56c1f55e9f944d7359a37a630b",
+              "url": "https://www.ishigaki-airport.co.jp/iat/recruitment/companyprofile_ishigakiairterminal_1.pdf"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "serviceStateScope": "Two independently visible carrier directions on a personally reviewed actual published October5 service date. No flight numbers published, no schedule comments used, no live operation or timed-connection guarantee.",
+      "locator": "Carrier current visible Ishigaki–Hateruma section plus exact October2026 original calendar; no timetable clocks in public facts."
+    },
+    {
+      "factId": "hateruma229-airport-shuttle-0",
+      "kind": "service",
+      "sourceActionId": "hateruma229:bus",
+      "sourceUrl": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+      "observedResponseSha256": "845dab9442b329f972dfc9f967f42a67fd1e29494c46b3ba2f3a19513f1f17ae",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hateruma229:bus",
+          "url": "https://www.town.taketomi.lg.jp/userfiles/files/topics/seisakusuishin/koustu-syoko/080105haterumabasu.pdf",
+          "observedResponseSha256": "41e15a42ebd4c35db848d65e2a8353941738f9d45daa4284bcdf457a65482f8e"
+        },
+        {
+          "sourceActionId": "hateruma229:calendar-static",
+          "url": "https://www.dai1air.com/ishigaki/images/diagram/calendar202610HTR.png",
+          "observedResponseSha256": "4957c8704cb042597f59ea7ff6afb8c2688f4c609cd51ae899bff224e3f6d265"
+        },
+        {
+          "sourceActionId": "hateruma:municipal-park-identity",
+          "url": "https://www.town.taketomi.lg.jp/userfiles/files/sanngyou_h28.pdf",
+          "observedResponseSha256": "826535407bdce0aa299c33e6e4caf2d2b1368015e5f7804c012a5f66c6998925"
+        }
+      ],
+      "operator": "竹富町",
+      "operatorRole": "MUNICIPAL_PUBLIC_SERVICE_ORGANIZER",
+      "privateVehicleOperator": "NOT_IDENTIFIED_NO_CONTRACTOR_GUESSED",
+      "line": "波照間空港・集落送迎",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "航空利用者向け無料送迎バス",
+      "direction": "PARK_TO_AIRPORT",
+      "serviceState": "active",
+      "reservation": "not_required",
+      "serviceAccessProfile": "AIR_PASSENGER_PUBLIC_SHUTTLE",
+      "callingStations": [
+        "ムシャーマ公園",
+        "波照間空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "ムシャマー公園",
+          "operator": "竹富町",
+          "line": "hateruma:airport-public-shuttle",
+          "mode": "local_bus",
+          "nodeKind": "public_pickup_facility",
+          "officialFacilityIdentity": {
+            "dataset": "ABR_EXACT_MUNICIPAL_PUBLIC_FACILITY_PARCEL",
+            "identityAnchor": "abr-parcel:473812:0009000:027800000000000:municipal-public-facility",
+            "nativeRecordSha256": "ed9053109691fbe8f0be97f941abb6d97539f55d61f0cca1440b2d51a48d5d33",
+            "archiveSha256": "36099b0e034a2016c7b4b2183a3ccc40384cb6b8c09edf478cb8740f0b598233",
+            "method": "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT",
+            "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+          },
+          "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:c380646d30e0e70d652548f97b6c6d58"
+        },
+        {
+          "name": "波照間空港",
+          "operator": "airport-facility:cf03_00065",
+          "line": "airport:cf03_00065",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00065",
+            "requirementId": "review:official-airport:波照間",
+            "expectedRequirementName": "波照間",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Carrier current visible passenger flights independently identify Hateruma airport. Town current shuttle page explicitly describes airport and park boarding/alighting points at shelters etc. Whole airport passenger gateway only; no coordinates-derived walk or exact curb/door claim."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "parentCallingSequence": {
+        "sourceTripLabel": "independently listed park-origin shuttle",
+        "calls": [
+          "ムシャーマ公園",
+          "波照間空港"
+        ],
+        "selectedStartIndex": 0,
+        "selectedEndIndex": 1
+      },
+      "accessContract": {
+        "schemaVersion": 1,
+        "kind": "AIR_PASSENGER_PUBLIC_SHUTTLE",
+        "audience": "ELIGIBILITY_RESTRICTED",
+        "eligibilityKeys": [
+          "CURRENT_LINKED_FLIGHT_USER",
+          "NON_LODGING_VISITOR_OR_ISLAND_RESIDENT"
+        ],
+        "reservationRequirement": "NOT_REQUIRED",
+        "reviewedServiceDate": "2026-10-05",
+        "conditionsEvidenceRef": "transport-evidence:086:fcf7701cb42324a068dd6e4366754b1e",
+        "passengerRules": {
+          "maximumPartySize": 9,
+          "overcrowdingMayRefuse": true,
+          "noCapacityGuarantee": true,
+          "wetBodyAllowed": false,
+          "intermediateAlightingAllowed": false,
+          "eatingAllowed": false,
+          "drinkingAllowed": false,
+          "smokingIncludingHeatedAndElectronicAllowed": false,
+          "lodgingVisitorPolicy": "PRINCIPALLY_ACCOMMODATION_PICKUP_EXCLUDED_FROM_THIS_REVIEW"
+        },
+        "flightService": {
+          "servicePatternId": "transport-pattern:086:c584c7278457d517b94ae6f170cd30ff",
+          "sourceFactRef": "transport-evidence:086:cb16de8abab78dfdd528062d2a3cb463",
+          "reviewedServiceDate": "20261005",
+          "relation": "DEPARTURE",
+          "airportNodeId": "transport-node:086:ba6e999225700e3dceac70cd28323a5c",
+          "calendarEvidenceRef": "transport-evidence:086:2ac94ec31094348942f1b2ada21f9dc3"
+        },
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:c4108116289b0d286a2187271f853c92"
+        ]
+      },
+      "conditionEvidence": [
+        {
+          "conditionId": "hateruma229-flight-user-0",
+          "sourceActionId": "hateruma229:bus",
+          "sourceUrl": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+          "observedResponseSha256": "845dab9442b329f972dfc9f967f42a67fd1e29494c46b3ba2f3a19513f1f17ae",
+          "accessTerms": {
+            "schemaVersion": 1,
+            "kind": "AIR_PASSENGER_PUBLIC_SHUTTLE",
+            "audience": "ELIGIBILITY_RESTRICTED",
+            "eligibilityKeys": [
+              "CURRENT_LINKED_FLIGHT_USER",
+              "NON_LODGING_VISITOR_OR_ISLAND_RESIDENT"
+            ],
+            "reservationRequirement": "NOT_REQUIRED",
+            "reviewedServiceDate": "2026-10-05",
+            "conditionsEvidenceRef": "transport-evidence:086:fcf7701cb42324a068dd6e4366754b1e",
+            "passengerRules": {
+              "maximumPartySize": 9,
+              "overcrowdingMayRefuse": true,
+              "noCapacityGuarantee": true,
+              "wetBodyAllowed": false,
+              "intermediateAlightingAllowed": false,
+              "eatingAllowed": false,
+              "drinkingAllowed": false,
+              "smokingIncludingHeatedAndElectronicAllowed": false,
+              "lodgingVisitorPolicy": "PRINCIPALLY_ACCOMMODATION_PICKUP_EXCLUDED_FROM_THIS_REVIEW"
+            },
+            "flightService": {
+              "servicePatternId": "transport-pattern:086:c584c7278457d517b94ae6f170cd30ff",
+              "sourceFactRef": "transport-evidence:086:cb16de8abab78dfdd528062d2a3cb463",
+              "reviewedServiceDate": "20261005",
+              "relation": "DEPARTURE",
+              "airportNodeId": "transport-node:086:ba6e999225700e3dceac70cd28323a5c",
+              "calendarEvidenceRef": "transport-evidence:086:2ac94ec31094348942f1b2ada21f9dc3"
+            }
+          },
+          "corroboratingEvidence": [
+            {
+              "sourceActionId": "hateruma229:bus",
+              "url": "https://www.town.taketomi.lg.jp/userfiles/files/topics/seisakusuishin/koustu-syoko/080105haterumabasu.pdf",
+              "observedResponseSha256": "41e15a42ebd4c35db848d65e2a8353941738f9d45daa4284bcdf457a65482f8e"
+            },
+            {
+              "sourceActionId": "hateruma229:calendar-static",
+              "url": "https://www.dai1air.com/ishigaki/images/diagram/calendar202610HTR.png",
+              "observedResponseSha256": "4957c8704cb042597f59ea7ff6afb8c2688f4c609cd51ae899bff224e3f6d265"
+            }
+          ],
+          "locator": "All town passenger conditions and independent airport operating-day rule, with separate carrier date evidence. No reservation or capacity guarantee."
+        }
+      ],
+      "corroboratingConditionEvidenceRefs": [
+        "transport-evidence:086:c4108116289b0d286a2187271f853c92"
+      ],
+      "serviceStateScope": "Current Jan2026 terms, actual published flight days only. Visitors lodging at accommodation excluded from the tested narrow qualification; no seat/dispatch/itinerary promise.",
+      "locator": "Two separately printed non-stop airport–park rows; no reverse inference, no harbor extension."
+    },
+    {
+      "factId": "hateruma229-airport-shuttle-1",
+      "kind": "service",
+      "sourceActionId": "hateruma229:bus",
+      "sourceUrl": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+      "observedResponseSha256": "845dab9442b329f972dfc9f967f42a67fd1e29494c46b3ba2f3a19513f1f17ae",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hateruma229:bus",
+          "url": "https://www.town.taketomi.lg.jp/userfiles/files/topics/seisakusuishin/koustu-syoko/080105haterumabasu.pdf",
+          "observedResponseSha256": "41e15a42ebd4c35db848d65e2a8353941738f9d45daa4284bcdf457a65482f8e"
+        },
+        {
+          "sourceActionId": "hateruma229:calendar-static",
+          "url": "https://www.dai1air.com/ishigaki/images/diagram/calendar202610HTR.png",
+          "observedResponseSha256": "4957c8704cb042597f59ea7ff6afb8c2688f4c609cd51ae899bff224e3f6d265"
+        },
+        {
+          "sourceActionId": "hateruma:municipal-park-identity",
+          "url": "https://www.town.taketomi.lg.jp/userfiles/files/sanngyou_h28.pdf",
+          "observedResponseSha256": "826535407bdce0aa299c33e6e4caf2d2b1368015e5f7804c012a5f66c6998925"
+        }
+      ],
+      "operator": "竹富町",
+      "operatorRole": "MUNICIPAL_PUBLIC_SERVICE_ORGANIZER",
+      "privateVehicleOperator": "NOT_IDENTIFIED_NO_CONTRACTOR_GUESSED",
+      "line": "波照間空港・集落送迎",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "航空利用者向け無料送迎バス",
+      "direction": "AIRPORT_TO_PARK",
+      "serviceState": "active",
+      "reservation": "not_required",
+      "serviceAccessProfile": "AIR_PASSENGER_PUBLIC_SHUTTLE",
+      "callingStations": [
+        "波照間空港",
+        "ムシャーマ公園"
+      ],
+      "callingComponents": [
+        {
+          "name": "波照間空港",
+          "operator": "airport-facility:cf03_00065",
+          "line": "airport:cf03_00065",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00065",
+            "requirementId": "review:official-airport:波照間",
+            "expectedRequirementName": "波照間",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Carrier current visible passenger flights independently identify Hateruma airport. Town current shuttle page explicitly describes airport and park boarding/alighting points at shelters etc. Whole airport passenger gateway only; no coordinates-derived walk or exact curb/door claim."
+          }
+        },
+        {
+          "name": "ムシャマー公園",
+          "operator": "竹富町",
+          "line": "hateruma:airport-public-shuttle",
+          "mode": "local_bus",
+          "nodeKind": "public_pickup_facility",
+          "officialFacilityIdentity": {
+            "dataset": "ABR_EXACT_MUNICIPAL_PUBLIC_FACILITY_PARCEL",
+            "identityAnchor": "abr-parcel:473812:0009000:027800000000000:municipal-public-facility",
+            "nativeRecordSha256": "ed9053109691fbe8f0be97f941abb6d97539f55d61f0cca1440b2d51a48d5d33",
+            "archiveSha256": "36099b0e034a2016c7b4b2183a3ccc40384cb6b8c09edf478cb8740f0b598233",
+            "method": "EXACT_OFFICIAL_NATIVE_FACILITY_AND_REVIEWED_PUBLIC_BUS_COMPONENT",
+            "coordinateScope": "OFFICIAL_FACILITY_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION"
+          },
+          "publicFacilityComponentReviewEvidenceRef": "transport-evidence:086:273b676cdfbdc8e6e4d0d0126e536b70"
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "parentCallingSequence": {
+        "sourceTripLabel": "independently listed airport-origin shuttle",
+        "calls": [
+          "波照間空港",
+          "ムシャーマ公園"
+        ],
+        "selectedStartIndex": 0,
+        "selectedEndIndex": 1
+      },
+      "accessContract": {
+        "schemaVersion": 1,
+        "kind": "AIR_PASSENGER_PUBLIC_SHUTTLE",
+        "audience": "ELIGIBILITY_RESTRICTED",
+        "eligibilityKeys": [
+          "CURRENT_LINKED_FLIGHT_USER",
+          "NON_LODGING_VISITOR_OR_ISLAND_RESIDENT"
+        ],
+        "reservationRequirement": "NOT_REQUIRED",
+        "reviewedServiceDate": "2026-10-05",
+        "conditionsEvidenceRef": "transport-evidence:086:fcf7701cb42324a068dd6e4366754b1e",
+        "passengerRules": {
+          "maximumPartySize": 9,
+          "overcrowdingMayRefuse": true,
+          "noCapacityGuarantee": true,
+          "wetBodyAllowed": false,
+          "intermediateAlightingAllowed": false,
+          "eatingAllowed": false,
+          "drinkingAllowed": false,
+          "smokingIncludingHeatedAndElectronicAllowed": false,
+          "lodgingVisitorPolicy": "PRINCIPALLY_ACCOMMODATION_PICKUP_EXCLUDED_FROM_THIS_REVIEW"
+        },
+        "flightService": {
+          "servicePatternId": "transport-pattern:086:dca30c342faae9f7c803ef2a12cac234",
+          "sourceFactRef": "transport-evidence:086:d29596a315d8b040cb7cf4028789c563",
+          "reviewedServiceDate": "20261005",
+          "relation": "ARRIVAL",
+          "airportNodeId": "transport-node:086:ba6e999225700e3dceac70cd28323a5c",
+          "calendarEvidenceRef": "transport-evidence:086:2ac94ec31094348942f1b2ada21f9dc3"
+        },
+        "sourceEvidenceRefs": [
+          "transport-evidence:086:847f902840913336f44fd1b05c3f52aa"
+        ]
+      },
+      "conditionEvidence": [
+        {
+          "conditionId": "hateruma229-flight-user-1",
+          "sourceActionId": "hateruma229:bus",
+          "sourceUrl": "https://www.town.taketomi.lg.jp/topics/1753249932/",
+          "observedResponseSha256": "845dab9442b329f972dfc9f967f42a67fd1e29494c46b3ba2f3a19513f1f17ae",
+          "accessTerms": {
+            "schemaVersion": 1,
+            "kind": "AIR_PASSENGER_PUBLIC_SHUTTLE",
+            "audience": "ELIGIBILITY_RESTRICTED",
+            "eligibilityKeys": [
+              "CURRENT_LINKED_FLIGHT_USER",
+              "NON_LODGING_VISITOR_OR_ISLAND_RESIDENT"
+            ],
+            "reservationRequirement": "NOT_REQUIRED",
+            "reviewedServiceDate": "2026-10-05",
+            "conditionsEvidenceRef": "transport-evidence:086:fcf7701cb42324a068dd6e4366754b1e",
+            "passengerRules": {
+              "maximumPartySize": 9,
+              "overcrowdingMayRefuse": true,
+              "noCapacityGuarantee": true,
+              "wetBodyAllowed": false,
+              "intermediateAlightingAllowed": false,
+              "eatingAllowed": false,
+              "drinkingAllowed": false,
+              "smokingIncludingHeatedAndElectronicAllowed": false,
+              "lodgingVisitorPolicy": "PRINCIPALLY_ACCOMMODATION_PICKUP_EXCLUDED_FROM_THIS_REVIEW"
+            },
+            "flightService": {
+              "servicePatternId": "transport-pattern:086:dca30c342faae9f7c803ef2a12cac234",
+              "sourceFactRef": "transport-evidence:086:d29596a315d8b040cb7cf4028789c563",
+              "reviewedServiceDate": "20261005",
+              "relation": "ARRIVAL",
+              "airportNodeId": "transport-node:086:ba6e999225700e3dceac70cd28323a5c",
+              "calendarEvidenceRef": "transport-evidence:086:2ac94ec31094348942f1b2ada21f9dc3"
+            }
+          },
+          "corroboratingEvidence": [
+            {
+              "sourceActionId": "hateruma229:bus",
+              "url": "https://www.town.taketomi.lg.jp/userfiles/files/topics/seisakusuishin/koustu-syoko/080105haterumabasu.pdf",
+              "observedResponseSha256": "41e15a42ebd4c35db848d65e2a8353941738f9d45daa4284bcdf457a65482f8e"
+            },
+            {
+              "sourceActionId": "hateruma229:calendar-static",
+              "url": "https://www.dai1air.com/ishigaki/images/diagram/calendar202610HTR.png",
+              "observedResponseSha256": "4957c8704cb042597f59ea7ff6afb8c2688f4c609cd51ae899bff224e3f6d265"
+            }
+          ],
+          "locator": "All town passenger conditions and independent airport operating-day rule, with separate carrier date evidence. No reservation or capacity guarantee."
+        }
+      ],
+      "corroboratingConditionEvidenceRefs": [
+        "transport-evidence:086:847f902840913336f44fd1b05c3f52aa"
+      ],
+      "serviceStateScope": "Current Jan2026 terms, actual published flight days only. Visitors lodging at accommodation excluded from the tested narrow qualification; no seat/dispatch/itinerary promise.",
+      "locator": "Two separately printed non-stop airport–park rows; no reverse inference, no harbor extension."
+    }
+  ],
+  "scope": "One new exact public park facility and original airport HOLD upgrade. Four independently evidenced directed rides; no harbor, walks, flight code, seat/dispatch or same-day itinerary guarantee."
+}

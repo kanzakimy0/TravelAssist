@@ -1,0 +1,519 @@
+{
+  "phaseId": "164-core-seven-izumo-matsue-yakumo-national-chain",
+  "strategy": [
+    "FIXED_SEVEN_CORE_AIRPORT_SCOPE",
+    "EXACT_SAME_OPERATOR_P11_AND_S12_IDENTITIES",
+    "INDEPENDENT_ASYMMETRIC_ACTUAL_RAIL_CALLS",
+    "EXPLICIT_PUBLIC_GATEWAYS",
+    "REUSE_REVIEWED_OKAYAMA_MAP"
+  ],
+  "completedActionIds": [
+    "bus:matsue-ichibata:core-seven-izumo-independent-direct-sections-and-frontage",
+    "rail:jr-west:core-seven-izumo-yakumo-actual-calls-and-matsue-public-gateway"
+  ],
+  "facts": [
+    {
+      "factId": "core-seven-izumo-matsue-airport-bound",
+      "kind": "service",
+      "sourceActionId": "bus:matsue-ichibata:core-seven-izumo-independent-direct-sections-and-frontage",
+      "sourceUrl": "https://t-matsue.ichibata.co.jp/wp-content/media/%E5%87%BA%E9%9B%B2%E7%A9%BA%E6%B8%AF%E9%80%A3%E7%B5%A1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E6%96%B0%EF%BC%892026.10.1-10.24.pdf",
+      "observedResponseSha256": "d6a95036f5401af30138d3c05a4ebeed29f999706bee0cd3fdeb50f054087572",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:matsue-ichibata:core-seven-izumo-independent-direct-sections-and-frontage",
+          "url": "https://t-matsue.ichibata.co.jp/airport-bus-izumo/",
+          "observedResponseSha256": "9471ed80bd9e7b99127b81a4f312eba1e42dbc1b8671e903329d31bd3fd4aca4"
+        },
+        {
+          "sourceActionId": "bus:matsue-ichibata:core-seven-izumo-independent-direct-sections-and-frontage",
+          "url": "https://t-matsue.ichibata.co.jp/wp-content/media/%E5%87%BA%E9%9B%B2%E7%A9%BA%E6%B8%AF%E9%80%A3%E7%B5%A1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E6%96%B0%EF%BC%892026.10.1-10.24.pdf",
+          "observedResponseSha256": "d6a95036f5401af30138d3c05a4ebeed29f999706bee0cd3fdeb50f054087572"
+        }
+      ],
+      "callingStations": [
+        "JR松江駅",
+        "出雲空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "JR松江駅",
+          "operator": "松江一畑交通（株）",
+          "line": "p11-stop:P11-22_32:bs559",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_32:bs559",
+            "recordSha256": "6d0ba753928c1a836c06cd227ee72dba105fe09ec11899cc84be5f05ecadc18d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Matsue Ichibata road-stop identity, independently corroborated by current same-operator Izumo airport service. Exclude Izumo Ichibata and neighboring joint Yonago components. Coarse road representative only; no bay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "松江一畑交通（株）",
+              "currentOperatorName": "松江一畑交通株式会社",
+              "currentStopName": "JR松江駅",
+              "historicalRoute": "空港連絡バス出雲空港⇔松江線",
+              "url": "https://t-matsue.ichibata.co.jp/airport-bus-izumo/",
+              "observedResponseSha256": "9471ed80bd9e7b99127b81a4f312eba1e42dbc1b8671e903329d31bd3fd4aca4"
+            }
+          }
+        },
+        {
+          "name": "出雲空港",
+          "operator": "松江一畑交通（株）",
+          "line": "p11-stop:P11-22_32:bs1079",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_32:bs1079",
+            "recordSha256": "f28a03a5a5cc3ef11d59d452c6ae4f9027b5cbf1bc79a67624e722d42934ebc4",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Matsue Ichibata road-stop identity, independently corroborated by current same-operator Izumo airport service. Exclude Izumo Ichibata and neighboring joint Yonago components. Coarse road representative only; no bay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "松江一畑交通（株）",
+              "currentOperatorName": "松江一畑交通株式会社",
+              "currentStopName": "出雲空港",
+              "historicalRoute": "空港連絡バス出雲空港⇔松江線",
+              "url": "https://t-matsue.ichibata.co.jp/airport-bus-izumo/",
+              "observedResponseSha256": "9471ed80bd9e7b99127b81a4f312eba1e42dbc1b8671e903329d31bd3fd4aca4"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "出雲空港連絡バス・松江線",
+      "operator": "松江一畑交通株式会社",
+      "direction": "airport-bound",
+      "serviceClass": "空港連絡バス",
+      "reviewMethod": "INDEPENDENT_ACTUAL_CURRENT_TRIP_CONTIGUOUS_TWO_CALL_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_1_24_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "locator": "Individually reviewed first actual row for this direction, excluding preceding/following Matsue Shinjiko Onsen call. Airport departure depends on flight arrival and baggage collection; no train connection, availability, clock, fare or frequency promise. Selected unmarked row applies before October4."
+    },
+    {
+      "factId": "core-seven-izumo-airport-matsue-bound",
+      "kind": "service",
+      "sourceActionId": "bus:matsue-ichibata:core-seven-izumo-independent-direct-sections-and-frontage",
+      "sourceUrl": "https://t-matsue.ichibata.co.jp/wp-content/media/%E5%87%BA%E9%9B%B2%E7%A9%BA%E6%B8%AF%E9%80%A3%E7%B5%A1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E6%96%B0%EF%BC%892026.10.1-10.24.pdf",
+      "observedResponseSha256": "d6a95036f5401af30138d3c05a4ebeed29f999706bee0cd3fdeb50f054087572",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:matsue-ichibata:core-seven-izumo-independent-direct-sections-and-frontage",
+          "url": "https://t-matsue.ichibata.co.jp/airport-bus-izumo/",
+          "observedResponseSha256": "9471ed80bd9e7b99127b81a4f312eba1e42dbc1b8671e903329d31bd3fd4aca4"
+        },
+        {
+          "sourceActionId": "bus:matsue-ichibata:core-seven-izumo-independent-direct-sections-and-frontage",
+          "url": "https://t-matsue.ichibata.co.jp/wp-content/media/%E5%87%BA%E9%9B%B2%E7%A9%BA%E6%B8%AF%E9%80%A3%E7%B5%A1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E6%96%B0%EF%BC%892026.10.1-10.24.pdf",
+          "observedResponseSha256": "d6a95036f5401af30138d3c05a4ebeed29f999706bee0cd3fdeb50f054087572"
+        }
+      ],
+      "callingStations": [
+        "出雲空港",
+        "JR松江駅"
+      ],
+      "callingComponents": [
+        {
+          "name": "出雲空港",
+          "operator": "松江一畑交通（株）",
+          "line": "p11-stop:P11-22_32:bs1079",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_32:bs1079",
+            "recordSha256": "f28a03a5a5cc3ef11d59d452c6ae4f9027b5cbf1bc79a67624e722d42934ebc4",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Matsue Ichibata road-stop identity, independently corroborated by current same-operator Izumo airport service. Exclude Izumo Ichibata and neighboring joint Yonago components. Coarse road representative only; no bay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "松江一畑交通（株）",
+              "currentOperatorName": "松江一畑交通株式会社",
+              "currentStopName": "出雲空港",
+              "historicalRoute": "空港連絡バス出雲空港⇔松江線",
+              "url": "https://t-matsue.ichibata.co.jp/airport-bus-izumo/",
+              "observedResponseSha256": "9471ed80bd9e7b99127b81a4f312eba1e42dbc1b8671e903329d31bd3fd4aca4"
+            }
+          }
+        },
+        {
+          "name": "JR松江駅",
+          "operator": "松江一畑交通（株）",
+          "line": "p11-stop:P11-22_32:bs559",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_32:bs559",
+            "recordSha256": "6d0ba753928c1a836c06cd227ee72dba105fe09ec11899cc84be5f05ecadc18d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Matsue Ichibata road-stop identity, independently corroborated by current same-operator Izumo airport service. Exclude Izumo Ichibata and neighboring joint Yonago components. Coarse road representative only; no bay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "松江一畑交通（株）",
+              "currentOperatorName": "松江一畑交通株式会社",
+              "currentStopName": "JR松江駅",
+              "historicalRoute": "空港連絡バス出雲空港⇔松江線",
+              "url": "https://t-matsue.ichibata.co.jp/airport-bus-izumo/",
+              "observedResponseSha256": "9471ed80bd9e7b99127b81a4f312eba1e42dbc1b8671e903329d31bd3fd4aca4"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "出雲空港連絡バス・松江線",
+      "operator": "松江一畑交通株式会社",
+      "direction": "matsue-bound",
+      "serviceClass": "空港連絡バス",
+      "reviewMethod": "INDEPENDENT_ACTUAL_CURRENT_TRIP_CONTIGUOUS_TWO_CALL_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_1_24_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "locator": "Individually reviewed first actual row for this direction, excluding preceding/following Matsue Shinjiko Onsen call. Airport departure depends on flight arrival and baggage collection; no train connection, availability, clock, fare or frequency promise. Selected unmarked row applies before October4."
+    },
+    {
+      "factId": "core-seven-izumo-yakumo-1001M-contiguous-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:core-seven-izumo-yakumo-actual-calls-and-matsue-public-gateway",
+      "sourceUrl": "https://www.jr-odekake.net/railroad/train/yakumo/pdf/jikokuhyo.pdf",
+      "observedResponseSha256": "44cc1b2e0f6752df686a9a068f8e0f7bb31eef2d068f2bcd2135f6999b560958",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:core-seven-izumo-yakumo-actual-calls-and-matsue-public-gateway",
+          "url": "https://www.jr-odekake.net/railroad/train/yakumo/",
+          "observedResponseSha256": "7d8daa1068dd4ff1e374196787db8c1a9e4a8f2f3d8509e7e8e64099565bfba8"
+        },
+        {
+          "sourceActionId": "rail:jr-west:core-seven-izumo-yakumo-actual-calls-and-matsue-public-gateway",
+          "url": "https://www.jr-odekake.net/railroad/train/yakumo/pdf/jikokuhyo.pdf",
+          "observedResponseSha256": "44cc1b2e0f6752df686a9a068f8e0f7bb31eef2d068f2bcd2135f6999b560958"
+        }
+      ],
+      "callingStations": [
+        "岡山",
+        "倉敷",
+        "備中高梁",
+        "新見",
+        "生山",
+        "米子",
+        "安来",
+        "松江"
+      ],
+      "callingComponents": [
+        {
+          "name": "岡山",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "倉敷",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "備中高梁",
+          "operator": "西日本旅客鉄道",
+          "line": "伯備線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新見",
+          "operator": "西日本旅客鉄道",
+          "line": "伯備線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "生山",
+          "operator": "西日本旅客鉄道",
+          "line": "伯備線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "米子",
+          "operator": "西日本旅客鉄道",
+          "line": "山陰線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "安来",
+          "operator": "西日本旅客鉄道",
+          "line": "山陰線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "松江",
+          "operator": "西日本旅客鉄道",
+          "line": "山陰線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "line": "やくも・岡山松江連絡",
+      "operator": "西日本旅客鉄道",
+      "direction": "matsue-bound",
+      "serviceClass": "やくも",
+      "serviceNumber": "1",
+      "reviewMethod": "VISUALLY_REVIEWED_ACTUAL_INDEPENDENT_TRAIN_COLUMN_CONTIGUOUS_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "MARCH_14_2026_PUBLISHED_SERVICE_CURRENT_OCTOBER_2_NOT_REALTIME",
+      "locator": "1001M current official column individually viewed. Retain complete ordered calls within Okayama-Matsue only. Yakumo1 passes Hoki-Daisen; Yakumo2 stops there; both pass Neu. Do not infer reverse, union optional calls, retain timetable values or promise bus connections."
+    },
+    {
+      "factId": "core-seven-izumo-yakumo-1002M-contiguous-section",
+      "kind": "service",
+      "sourceActionId": "rail:jr-west:core-seven-izumo-yakumo-actual-calls-and-matsue-public-gateway",
+      "sourceUrl": "https://www.jr-odekake.net/railroad/train/yakumo/pdf/jikokuhyo.pdf",
+      "observedResponseSha256": "44cc1b2e0f6752df686a9a068f8e0f7bb31eef2d068f2bcd2135f6999b560958",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-west:core-seven-izumo-yakumo-actual-calls-and-matsue-public-gateway",
+          "url": "https://www.jr-odekake.net/railroad/train/yakumo/",
+          "observedResponseSha256": "7d8daa1068dd4ff1e374196787db8c1a9e4a8f2f3d8509e7e8e64099565bfba8"
+        },
+        {
+          "sourceActionId": "rail:jr-west:core-seven-izumo-yakumo-actual-calls-and-matsue-public-gateway",
+          "url": "https://www.jr-odekake.net/railroad/train/yakumo/pdf/jikokuhyo.pdf",
+          "observedResponseSha256": "44cc1b2e0f6752df686a9a068f8e0f7bb31eef2d068f2bcd2135f6999b560958"
+        }
+      ],
+      "callingStations": [
+        "松江",
+        "安来",
+        "米子",
+        "伯耆大山",
+        "生山",
+        "新見",
+        "備中高梁",
+        "倉敷",
+        "岡山"
+      ],
+      "callingComponents": [
+        {
+          "name": "松江",
+          "operator": "西日本旅客鉄道",
+          "line": "山陰線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "安来",
+          "operator": "西日本旅客鉄道",
+          "line": "山陰線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "米子",
+          "operator": "西日本旅客鉄道",
+          "line": "山陰線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "伯耆大山",
+          "operator": "西日本旅客鉄道",
+          "line": "伯備線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "生山",
+          "operator": "西日本旅客鉄道",
+          "line": "伯備線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新見",
+          "operator": "西日本旅客鉄道",
+          "line": "伯備線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "備中高梁",
+          "operator": "西日本旅客鉄道",
+          "line": "伯備線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "倉敷",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "岡山",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "intercity",
+      "line": "やくも・岡山松江連絡",
+      "operator": "西日本旅客鉄道",
+      "direction": "okayama-bound",
+      "serviceClass": "やくも",
+      "serviceNumber": "2",
+      "reviewMethod": "VISUALLY_REVIEWED_ACTUAL_INDEPENDENT_TRAIN_COLUMN_CONTIGUOUS_SECTION",
+      "serviceState": "active",
+      "serviceStateScope": "MARCH_14_2026_PUBLISHED_SERVICE_CURRENT_OCTOBER_2_NOT_REALTIME",
+      "locator": "1002M current official column individually viewed. Retain complete ordered calls within Okayama-Matsue only. Yakumo1 passes Hoki-Daisen; Yakumo2 stops there; both pass Neu. Do not infer reverse, union optional calls, retain timetable values or promise bus connections."
+    },
+    {
+      "factId": "core-seven-izumo-public-arrival-lobby-airport-bus",
+      "kind": "transfer",
+      "sourceActionId": "bus:matsue-ichibata:core-seven-izumo-independent-direct-sections-and-frontage",
+      "sourceUrl": "https://t-matsue.ichibata.co.jp/wp-content/media/%E5%87%BA%E9%9B%B2%E7%A9%BA%E6%B8%AF%E9%80%A3%E7%B5%A1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E6%96%B0%EF%BC%892026.10.1-10.24.pdf",
+      "observedResponseSha256": "d6a95036f5401af30138d3c05a4ebeed29f999706bee0cd3fdeb50f054087572",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:matsue-ichibata:core-seven-izumo-independent-direct-sections-and-frontage",
+          "url": "https://t-matsue.ichibata.co.jp/airport-bus-izumo/",
+          "observedResponseSha256": "9471ed80bd9e7b99127b81a4f312eba1e42dbc1b8671e903329d31bd3fd4aca4"
+        },
+        {
+          "sourceActionId": "bus:matsue-ichibata:core-seven-izumo-independent-direct-sections-and-frontage",
+          "url": "https://t-matsue.ichibata.co.jp/wp-content/media/%E5%87%BA%E9%9B%B2%E7%A9%BA%E6%B8%AF%E9%80%A3%E7%B5%A1%E3%83%90%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E6%96%B0%EF%BC%892026.10.1-10.24.pdf",
+          "observedResponseSha256": "d6a95036f5401af30138d3c05a4ebeed29f999706bee0cd3fdeb50f054087572"
+        }
+      ],
+      "components": [
+        {
+          "name": "出雲空港",
+          "operator": "airport-facility:cf03_00078",
+          "line": "airport:cf03_00078",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00078",
+            "requirementId": "review:official-airport:出雲",
+            "expectedRequirementName": "出雲",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Current operator PDF explicitly places public Matsue bus frontage at arrival-lobby entrance. Coarse airport to same-operator road component only, not airside, precise bay or timed connection."
+          }
+        },
+        {
+          "name": "出雲空港",
+          "operator": "松江一畑交通（株）",
+          "line": "p11-stop:P11-22_32:bs1079",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_32:bs1079",
+            "recordSha256": "f28a03a5a5cc3ef11d59d452c6ae4f9027b5cbf1bc79a67624e722d42934ebc4",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Matsue Ichibata road-stop identity, independently corroborated by current same-operator Izumo airport service. Exclude Izumo Ichibata and neighboring joint Yonago components. Coarse road representative only; no bay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "松江一畑交通（株）",
+              "currentOperatorName": "松江一畑交通株式会社",
+              "currentStopName": "出雲空港",
+              "historicalRoute": "空港連絡バス出雲空港⇔松江線",
+              "url": "https://t-matsue.ichibata.co.jp/airport-bus-izumo/",
+              "observedResponseSha256": "9471ed80bd9e7b99127b81a4f312eba1e42dbc1b8671e903329d31bd3fd4aca4"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_GATE_AND_CARRIER_FRONTAGE_REVIEW",
+      "hubScopeComplete": false,
+      "locator": "Current carrier PDF explicitly identifies airport Matsue bus boarding at public arrival-lobby entrance frontage. Ordinary public entry/exit relation, no airside access or unreviewed precise gate geometry."
+    },
+    {
+      "factId": "core-seven-matsue-jr-public-north-exit-airport-bus",
+      "kind": "transfer",
+      "sourceActionId": "rail:jr-west:core-seven-izumo-yakumo-actual-calls-and-matsue-public-gateway",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0640734_1d441930-9961-4e32-b584-b0844549f3bc.gif",
+      "observedResponseSha256": "3dccb469d3b607c53b718ebe2ba165329cd5bcf86fd34ea9a1c5725e8115dbfc",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:matsue-ichibata:core-seven-izumo-independent-direct-sections-and-frontage",
+          "url": "https://t-matsue.ichibata.co.jp/airport-bus-izumo/",
+          "observedResponseSha256": "9471ed80bd9e7b99127b81a4f312eba1e42dbc1b8671e903329d31bd3fd4aca4"
+        },
+        {
+          "sourceActionId": "rail:jr-west:core-seven-izumo-yakumo-actual-calls-and-matsue-public-gateway",
+          "url": "https://eki.jr-odekake.net/premises/0640734_1d441930-9961-4e32-b584-b0844549f3bc.gif",
+          "observedResponseSha256": "3dccb469d3b607c53b718ebe2ba165329cd5bcf86fd34ea9a1c5725e8115dbfc"
+        }
+      ],
+      "components": [
+        {
+          "name": "松江",
+          "operator": "西日本旅客鉄道",
+          "line": "山陰線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "JR松江駅",
+          "operator": "松江一畑交通（株）",
+          "line": "p11-stop:P11-22_32:bs559",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_32:bs559",
+            "recordSha256": "6d0ba753928c1a836c06cd227ee72dba105fe09ec11899cc84be5f05ecadc18d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact Matsue Ichibata road-stop identity, independently corroborated by current same-operator Izumo airport service. Exclude Izumo Ichibata and neighboring joint Yonago components. Coarse road representative only; no bay coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "松江一畑交通（株）",
+              "currentOperatorName": "松江一畑交通株式会社",
+              "currentStopName": "JR松江駅",
+              "historicalRoute": "空港連絡バス出雲空港⇔松江線",
+              "url": "https://t-matsue.ichibata.co.jp/airport-bus-izumo/",
+              "observedResponseSha256": "9471ed80bd9e7b99127b81a4f312eba1e42dbc1b8671e903329d31bd3fd4aca4"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_CURRENT_PUBLIC_GATE_AND_CARRIER_FRONTAGE_REVIEW",
+      "hubScopeComplete": false,
+      "locator": "Viewed current-linked March22 2025 JR map: platforms descend through gate to public north exit with bus frontage. Carrier identifies JR Matsue airport stop9 and explicitly same road stop for boarding and alighting. Retain ordinary public station/bus relation only; no paid-area shortcut, walking-time or universal accessibility guarantee."
+    }
+  ]
+}

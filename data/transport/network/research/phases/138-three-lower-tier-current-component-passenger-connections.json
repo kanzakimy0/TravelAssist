@@ -1,0 +1,119 @@
+{
+  "phaseId": "138-three-lower-tier-current-component-passenger-connections",
+  "strategy": [
+    "REMAINING_T2_T3_EXACT_HUB_COMPONENT_PRIORITY",
+    "CURRENT_EXPLICIT_NEWTRAM_INTERNAL_TRANSFER_ROUTES",
+    "CURRENT_SIGNED_JR_PUBLIC_EXIT"
+  ],
+  "completedActionIds": [
+    "hub:osaka-metro:two-current-newtram-interchanges",
+    "hub:sendai:nagamachi-current-south-two-jr-public-connection"
+  ],
+  "facts": [
+    {
+      "factId": "cosmosquare-chuo-newtram-current-platform-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka-metro:two-current-newtram-interchanges",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/P09_%E3%82%B3%E3%82%B9%E3%83%A2%E3%82%B9%E3%82%AF%E3%82%A8%E3%82%A2_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "8e96f840b1c0c70c7fd693bbbbfe49042cd582dd3da3da6484f85d83f3d86ab1",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka-metro:two-current-newtram-interchanges",
+          "url": "https://subway.osakametro.co.jp/station_guide/P/p09/index.php",
+          "observedResponseSha256": "abbd8cb15c55e446197d91ceea0941ce608dbe738bbc9c963926ffcab066c7e1"
+        }
+      ],
+      "locator": "Currently linked official plan explicitly connects the lower Chuo island platform with the upper New Tram platform using internal stairs/escalators/elevator, without a street or retail detour. Preserve the two S12 mode/line components; no automatic New Tram service is inferred. Diagram individually viewed and response hash matched. Retain only coarse bidirectional passenger topology; no fare, walking time, elevator availability, all-hours or universal accessible-route assertion.",
+      "components": [
+        {
+          "name": "コスモスクエア",
+          "operator": "大阪市高速電気軌道",
+          "line": "4号線(中央線)",
+          "mode": "metro"
+        },
+        {
+          "name": "コスモスクエア",
+          "operator": "大阪市高速電気軌道",
+          "line": "南港ポートタウン線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_PASSAGES_AND_LICENSED_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "suminoe-yotsubashi-newtram-current-connecting-passage",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka-metro:two-current-newtram-interchanges",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/Y21_%E4%BD%8F%E4%B9%8B%E6%B1%9F%E5%85%AC%E5%9C%92_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "ad1299fd9ff1a95132d44d1910f41355117d768f1a977a813ea56255eb62dadc",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka-metro:two-current-newtram-interchanges",
+          "url": "https://subway.osakametro.co.jp/station_guide/Y/y21/index.php",
+          "observedResponseSha256": "8fa4c6b9f29a4764ba8200453c17d11dfafa27f80cfced03becfafb91ac582ca"
+        }
+      ],
+      "locator": "Currently linked official plan separately describes both transfer directions: Yotsubashi platform to connecting passage to New Tram concourse and platform. Use this labeled rail transfer, excluding Oscar Dream retail exits and the limited-hours south-north gate as an all-hours guarantee. Diagram individually viewed and response hash matched. Retain only coarse bidirectional passenger topology; no fare, walking time, elevator availability, all-hours or universal accessible-route assertion.",
+      "components": [
+        {
+          "name": "住之江公園",
+          "operator": "大阪市高速電気軌道",
+          "line": "3号線(四つ橋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "住之江公園",
+          "operator": "大阪市高速電気軌道",
+          "line": "南港ポートタウン線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_PASSAGES_AND_LICENSED_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "nagamachi-jr-namboku-current-south-two-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:sendai:nagamachi-current-south-two-jr-public-connection",
+      "sourceUrl": "https://www.kotsu.city.sendai.jp/assets/img/subway/station/nagamachi/N15_%E9%95%B7%E7%94%BA.pdf",
+      "observedResponseSha256": "8cfb20697fa45aa446fd888f24b7c4d56de998be04f43d3d096f305a7b370eb7",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:sendai:nagamachi-current-south-two-jr-public-connection",
+          "url": "https://www.kotsu.city.sendai.jp/subway/station/list/nagamachi/",
+          "observedResponseSha256": "829535d95ff019bf8cfcd78c758e7ebb3c56c9e40bcac0bd924ad36cdb98a8fb"
+        }
+      ],
+      "locator": "Currently linked city map joins both Namboku platform directions through the ticket gate and public corridor to south exit 2, explicitly signed toward JR Nagamachi and the bus area. Its station-area inset locates that public exit on the JR approach. Bind exact JR Tohoku and municipal Namboku components, without merging nearby Nagamachi-Itchome or Nagamachi-Minami. Diagram individually viewed and response hash matched. Retain only coarse bidirectional passenger topology; no fare, walking time, elevator availability, all-hours or universal accessible-route assertion.",
+      "components": [
+        {
+          "name": "長町",
+          "operator": "東日本旅客鉄道",
+          "line": "東北線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "長町",
+          "operator": "仙台市",
+          "line": "南北線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [0, 1],
+        [1, 0]
+      ],
+      "reviewMethod": "CURRENT_PRIMARY_PASSAGES_AND_LICENSED_OPERATOR_COMPONENTS",
+      "hubScopeComplete": false
+    }
+  ]
+}

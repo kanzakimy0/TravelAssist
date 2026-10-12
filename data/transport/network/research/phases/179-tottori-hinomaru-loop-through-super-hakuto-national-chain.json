@@ -1,0 +1,457 @@
+{
+  "phaseId": "179-tottori-hinomaru-loop-through-super-hakuto-national-chain",
+  "strategy": [
+    "LICENSED_NATIVE_GTFS_CC_BY_2_1_JP",
+    "FULL_53_CALL_LOOP_PATTERN",
+    "TWO_DATE_SPECIFIC_SUPER_HAKUTO_DIRECTIONS",
+    "PRESERVE_NATIVE_POINTS_AND_OPERATOR_TRANSITIONS",
+    "THREE_COARSE_PUBLIC_INTERFACES"
+  ],
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "phase179-loop-package-reuse.json",
+      "packageSha256": "f390d7a79ffc72b510275384ce49018c1dd8407811eb89e11bd1fe5da7a349a5",
+      "sourceActionId": "bus:hinomaru:prefecture-licensed-loop",
+      "reviewedServiceDate": "20261002"
+    }
+  ],
+  "completedActionIds": [
+    "bus:hinomaru:prefecture-licensed-loop",
+    "airport:tottori:current-public-arrival-bus-frontage",
+    "hub:tottori:station-north-public-bus-terminal",
+    "rail:chizukyu:current-super-hakuto-timetable-2026-03-14"
+  ],
+  "facts": [
+    {
+      "factId": "tottori-super-hakuto-54D-oct2-out",
+      "kind": "service",
+      "sourceActionId": "rail:chizukyu:current-super-hakuto-timetable-2026-03-14",
+      "sourceUrl": "https://www.chizukyu.co.jp/user/filer_public/69/69/696911ae-06e5-484b-8f61-f7e22d4a6e98/02026nian-3yue-14ri-gai-zheng-zhi-tou-xian-shi-ke-biao.pdf",
+      "observedResponseSha256": "95d74c1f11461d5c3e375ffa6aa39511ea96ebf259a638bea0599e77eb22a499",
+      "serviceDate": "2026-10-02",
+      "callingStations": [
+        "鳥取",
+        "郡家",
+        "智頭",
+        "大原",
+        "佐用",
+        "上郡",
+        "姫路"
+      ],
+      "callingComponents": [
+        {
+          "name": "鳥取",
+          "operator": "西日本旅客鉄道",
+          "line": "因美線",
+          "mode": "conventional_rail",
+          "s12StationCode": "004541"
+        },
+        {
+          "name": "郡家",
+          "operator": "西日本旅客鉄道",
+          "line": "因美線",
+          "mode": "conventional_rail",
+          "s12StationCode": "004779"
+        },
+        {
+          "name": "智頭",
+          "operator": "西日本旅客鉄道",
+          "line": "因美線",
+          "mode": "conventional_rail",
+          "s12StationCode": "005190"
+        },
+        {
+          "name": "大原",
+          "operator": "智頭急行",
+          "line": "智頭線",
+          "mode": "conventional_rail",
+          "s12StationCode": "005612"
+        },
+        {
+          "name": "佐用",
+          "operator": "智頭急行",
+          "line": "智頭線",
+          "mode": "conventional_rail",
+          "s12StationCode": "005994"
+        },
+        {
+          "name": "上郡",
+          "operator": "智頭急行",
+          "line": "智頭線",
+          "mode": "conventional_rail",
+          "s12StationCode": "006398"
+        },
+        {
+          "name": "姫路",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail",
+          "s12StationCode": "006509"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "airport",
+      "line": "特急スーパーはくと",
+      "operator": "西日本旅客鉄道 / 智頭急行",
+      "direction": "鳥取→姫路",
+      "serviceClass": "特急スーパーはくと",
+      "serviceNumber": "スーパーはくと4号",
+      "reviewMethod": "EXACT_DATE_PUBLISHED_TIMETABLE_AND_S12_CALLING_COMPONENTS",
+      "serviceState": "active",
+      "serviceStateScope": "智頭急行 current timetable revised 2026-03-14; active on frozen weekday 2026-10-02; timetable columns 4号 and 5号; no unpublished whole-train or runtime data.",
+      "locator": "智頭急行 official current 智頭線時刻表, effective 2026-03-14, page 1. Directional column 4号 (鳥取発→姫路方向) or 5号 (姫路方向→鳥取着), selected route-call rows only; all seven displayed/selected station calls maintained in actual direction. Source response bytes retained privately; only calls/date/operator facts proposed.",
+      "reviewedTrainCode": "スーパーはくと4号",
+      "segmentOperatorRefs": [
+        [
+          "西日本旅客鉄道"
+        ],
+        [
+          "西日本旅客鉄道"
+        ],
+        [
+          "西日本旅客鉄道",
+          "智頭急行"
+        ],
+        [
+          "智頭急行"
+        ],
+        [
+          "智頭急行"
+        ],
+        [
+          "智頭急行",
+          "西日本旅客鉄道"
+        ]
+      ],
+      "throughServiceReview": {
+        "kind": "EXPLICIT_CURRENT_THROUGH_TRAIN",
+        "serviceIdentifier": "スーパーはくと4号",
+        "operatorRefs": [
+          "西日本旅客鉄道",
+          "智頭急行"
+        ],
+        "passengerInterchangeRequired": false,
+        "boundaryScope": "BETWEEN_CONSECUTIVE_PASSENGER_CALLS",
+        "evidence": {
+          "sourceActionId": "rail:chizukyu:current-super-hakuto-timetable-2026-03-14",
+          "url": "https://www.chizukyu.co.jp/user/filer_public/69/69/696911ae-06e5-484b-8f61-f7e22d4a6e98/02026nian-3yue-14ri-gai-zheng-zhi-tou-xian-shi-ke-biao.pdf",
+          "observedResponseSha256": "95d74c1f11461d5c3e375ffa6aa39511ea96ebf259a638bea0599e77eb22a499"
+        }
+      },
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:chizukyu:current-super-hakuto-timetable-2026-03-14",
+          "url": "https://www.chizukyu.co.jp/user/filer_public/69/69/696911ae-06e5-484b-8f61-f7e22d4a6e98/02026nian-3yue-14ri-gai-zheng-zhi-tou-xian-shi-ke-biao.pdf",
+          "observedResponseSha256": "95d74c1f11461d5c3e375ffa6aa39511ea96ebf259a638bea0599e77eb22a499"
+        }
+      ]
+    },
+    {
+      "factId": "tottori-super-hakuto-55D-oct2-in",
+      "kind": "service",
+      "sourceActionId": "rail:chizukyu:current-super-hakuto-timetable-2026-03-14",
+      "sourceUrl": "https://www.chizukyu.co.jp/user/filer_public/69/69/696911ae-06e5-484b-8f61-f7e22d4a6e98/02026nian-3yue-14ri-gai-zheng-zhi-tou-xian-shi-ke-biao.pdf",
+      "observedResponseSha256": "95d74c1f11461d5c3e375ffa6aa39511ea96ebf259a638bea0599e77eb22a499",
+      "serviceDate": "2026-10-02",
+      "callingStations": [
+        "姫路",
+        "上郡",
+        "佐用",
+        "大原",
+        "智頭",
+        "郡家",
+        "鳥取"
+      ],
+      "callingComponents": [
+        {
+          "name": "姫路",
+          "operator": "西日本旅客鉄道",
+          "line": "山陽線",
+          "mode": "conventional_rail",
+          "s12StationCode": "006509"
+        },
+        {
+          "name": "上郡",
+          "operator": "智頭急行",
+          "line": "智頭線",
+          "mode": "conventional_rail",
+          "s12StationCode": "006398"
+        },
+        {
+          "name": "佐用",
+          "operator": "智頭急行",
+          "line": "智頭線",
+          "mode": "conventional_rail",
+          "s12StationCode": "005994"
+        },
+        {
+          "name": "大原",
+          "operator": "智頭急行",
+          "line": "智頭線",
+          "mode": "conventional_rail",
+          "s12StationCode": "005612"
+        },
+        {
+          "name": "智頭",
+          "operator": "西日本旅客鉄道",
+          "line": "因美線",
+          "mode": "conventional_rail",
+          "s12StationCode": "005190"
+        },
+        {
+          "name": "郡家",
+          "operator": "西日本旅客鉄道",
+          "line": "因美線",
+          "mode": "conventional_rail",
+          "s12StationCode": "004779"
+        },
+        {
+          "name": "鳥取",
+          "operator": "西日本旅客鉄道",
+          "line": "因美線",
+          "mode": "conventional_rail",
+          "s12StationCode": "004541"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "airport",
+      "line": "特急スーパーはくと",
+      "operator": "西日本旅客鉄道 / 智頭急行",
+      "direction": "姫路→鳥取",
+      "serviceClass": "特急スーパーはくと",
+      "serviceNumber": "スーパーはくと5号",
+      "reviewMethod": "EXACT_DATE_PUBLISHED_TIMETABLE_AND_S12_CALLING_COMPONENTS",
+      "serviceState": "active",
+      "serviceStateScope": "智頭急行 current timetable revised 2026-03-14; active on frozen weekday 2026-10-02; timetable columns 4号 and 5号; no unpublished whole-train or runtime data.",
+      "locator": "智頭急行 official current 智頭線時刻表, effective 2026-03-14, page 1. Directional column 4号 (鳥取発→姫路方向) or 5号 (姫路方向→鳥取着), selected route-call rows only; all seven displayed/selected station calls maintained in actual direction. Source response bytes retained privately; only calls/date/operator facts proposed.",
+      "reviewedTrainCode": "スーパーはくと5号",
+      "segmentOperatorRefs": [
+        [
+          "西日本旅客鉄道",
+          "智頭急行"
+        ],
+        [
+          "智頭急行"
+        ],
+        [
+          "智頭急行"
+        ],
+        [
+          "智頭急行",
+          "西日本旅客鉄道"
+        ],
+        [
+          "西日本旅客鉄道"
+        ],
+        [
+          "西日本旅客鉄道"
+        ]
+      ],
+      "throughServiceReview": {
+        "kind": "EXPLICIT_CURRENT_THROUGH_TRAIN",
+        "serviceIdentifier": "スーパーはくと5号",
+        "operatorRefs": [
+          "西日本旅客鉄道",
+          "智頭急行"
+        ],
+        "passengerInterchangeRequired": false,
+        "boundaryScope": "BETWEEN_CONSECUTIVE_PASSENGER_CALLS",
+        "evidence": {
+          "sourceActionId": "rail:chizukyu:current-super-hakuto-timetable-2026-03-14",
+          "url": "https://www.chizukyu.co.jp/user/filer_public/69/69/696911ae-06e5-484b-8f61-f7e22d4a6e98/02026nian-3yue-14ri-gai-zheng-zhi-tou-xian-shi-ke-biao.pdf",
+          "observedResponseSha256": "95d74c1f11461d5c3e375ffa6aa39511ea96ebf259a638bea0599e77eb22a499"
+        }
+      },
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:chizukyu:current-super-hakuto-timetable-2026-03-14",
+          "url": "https://www.chizukyu.co.jp/user/filer_public/69/69/696911ae-06e5-484b-8f61-f7e22d4a6e98/02026nian-3yue-14ri-gai-zheng-zhi-tou-xian-shi-ke-biao.pdf",
+          "observedResponseSha256": "95d74c1f11461d5c3e375ffa6aa39511ea96ebf259a638bea0599e77eb22a499"
+        }
+      ]
+    },
+    {
+      "factId": "tottori-airport-arrivals-to-loop-stop",
+      "kind": "transfer",
+      "sourceActionId": "airport:tottori:current-public-arrival-bus-frontage",
+      "sourceUrl": "https://www.ttj-ap-bld.co.jp/images/floormap01.png?v=250818",
+      "observedResponseSha256": "cfe79e4c986cfe7366af2589cb7f5007d4b3801230f9a7c6677050333f442ae3",
+      "corroboratingEvidence": [],
+      "components": [
+        {
+          "name": "鳥取空港",
+          "operator": "airport-facility:cf03_00074",
+          "line": "airport:cf03_00074",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00074",
+            "requirementId": "review:official-airport:鳥取",
+            "expectedRequirementName": "鳥取",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": {
+              "sourceActionId": "airport:tottori:current-public-arrival-bus-frontage",
+              "url": "https://www.ttj-ap-bld.co.jp/images/floormap01.png?v=250818",
+              "observedResponseSha256": "cfe79e4c986cfe7366af2589cb7f5007d4b3801230f9a7c6677050333f442ae3",
+              "scope": "Current official 1F plan shows arrival lobby and BUS at exterior frontage. No bay asserted; native airport loop stop remains distinct from shuttle."
+            }
+          }
+        },
+        {
+          "name": "鳥取砂丘コナン空港",
+          "operator": "日ノ丸自動車",
+          "line": "gtfs:hinomaru-tottori-prefecture:route:R310100009",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:hinomaru-tottori-prefecture",
+            "stopId": "S310100015200100",
+            "sourceArchiveSha256": "9ad7cb61d4e6cf33d89b400e3ced110b4331a3f83e4ab49b5e9dbab708180f4d",
+            "recordSha256": "6acb2d262c0a19ee023279ae3c19fbdc51e1caebc6e43fc1a6e35a6b9868f2fe",
+            "expectedPlatformCode": "１",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": {
+              "sourceActionId": "airport:tottori:current-public-arrival-bus-frontage",
+              "url": "https://www.ttj-ap-bld.co.jp/images/floormap01.png?v=250818",
+              "observedResponseSha256": "cfe79e4c986cfe7366af2589cb7f5007d4b3801230f9a7c6677050333f442ae3",
+              "scope": "Current official 1F plan shows arrival lobby and BUS at exterior frontage. No bay asserted; native airport loop stop remains distinct from shuttle."
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_PUBLIC_TERMINAL_INTERFACE_WITH_EXACT_NATIVE_STOP_ID",
+      "hubScopeComplete": false,
+      "locator": "Current official 1F plan shows arrival lobby and BUS at exterior frontage. No bay asserted; native airport loop stop remains distinct from shuttle."
+    },
+    {
+      "factId": "tottori-public-gate-to-loop-out-stop",
+      "kind": "transfer",
+      "sourceActionId": "hub:tottori:station-north-public-bus-terminal",
+      "sourceUrl": "https://www.hinomarubus.co.jp/wp/wp-content/themes/theme/pdf/route/tottori_platform2304.pdf",
+      "observedResponseSha256": "fc1db326cdb3a65dffb73e927ea3c2a4df20e49315de36197b253f74d5d58abf",
+      "corroboratingEvidence": [],
+      "components": [
+        {
+          "name": "鳥取",
+          "operator": "西日本旅客鉄道",
+          "line": "因美線",
+          "mode": "conventional_rail",
+          "s12StationCode": "004541"
+        },
+        {
+          "name": "鳥取駅",
+          "operator": "日ノ丸自動車",
+          "line": "gtfs:hinomaru-tottori-prefecture:route:R310100009",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:hinomaru-tottori-prefecture",
+            "stopId": "S310100000100400",
+            "sourceArchiveSha256": "9ad7cb61d4e6cf33d89b400e3ced110b4331a3f83e4ab49b5e9dbab708180f4d",
+            "recordSha256": "b84044d5a9a66888623fccbd79c35e45ba88a22aedf68254e9d99ab977513369",
+            "expectedPlatformCode": "４",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": {
+              "sourceActionId": "hub:tottori:station-north-public-bus-terminal",
+              "url": "https://www.hinomarubus.co.jp/wp/wp-content/themes/theme/pdf/route/tottori_platform2304.pdf",
+              "observedResponseSha256": "fc1db326cdb3a65dffb73e927ea3c2a4df20e49315de36197b253f74d5d58abf",
+              "scope": "Public station north-exit path to terminal; current station guide assigns stand 4 and native stop platform_code ４."
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_PUBLIC_TERMINAL_INTERFACE_WITH_EXACT_NATIVE_STOP_ID",
+      "hubScopeComplete": false,
+      "locator": "Public station north-exit path to terminal; current station guide assigns stand 4 and native stop platform_code ４."
+    },
+    {
+      "factId": "tottori-public-gate-to-loop-in-stop",
+      "kind": "transfer",
+      "sourceActionId": "hub:tottori:station-north-public-bus-terminal",
+      "sourceUrl": "https://www.city.tottori.lg.jp/site/gaikokunokatahe/28809.html",
+      "observedResponseSha256": "e117e26b000e9565352f2d65399880003c7145cf1f9360ce97d432bb43b094fc",
+      "corroboratingEvidence": [],
+      "components": [
+        {
+          "name": "鳥取",
+          "operator": "西日本旅客鉄道",
+          "line": "因美線",
+          "mode": "conventional_rail",
+          "s12StationCode": "004541"
+        },
+        {
+          "name": "鳥取駅",
+          "operator": "日ノ丸自動車",
+          "line": "gtfs:hinomaru-tottori-prefecture:route:R310100009",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:hinomaru-tottori-prefecture",
+            "stopId": "S310100000100600",
+            "sourceArchiveSha256": "9ad7cb61d4e6cf33d89b400e3ced110b4331a3f83e4ab49b5e9dbab708180f4d",
+            "recordSha256": "481be46c8d25dc084154e4cd4fa4815f64afd33377c4f4a2b517f04f497fb350",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": {
+              "sourceActionId": "hub:tottori:station-north-public-bus-terminal",
+              "url": "https://www.city.tottori.lg.jp/site/gaikokunokatahe/28809.html",
+              "observedResponseSha256": "e117e26b000e9565352f2d65399880003c7145cf1f9360ce97d432bb43b094fc",
+              "scope": "Current official city public transport guide, section on ticket sale locations: Tottori Bus Terminal directions are provided after exiting Tottori Station north exit; station ticket office adjacent to public gate. Coarse public terminal relationship only; exact unnumbered native GTFS return stop remains distinct, with no inferred bay or geometry."
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_PUBLIC_TERMINAL_INTERFACE_WITH_EXACT_NATIVE_STOP_ID",
+      "hubScopeComplete": false,
+      "locator": "Current official city public transport guide, section on ticket sale locations: Tottori Bus Terminal directions are provided after exiting Tottori Station north exit; station ticket office adjacent to public gate. Coarse public terminal relationship only; exact unnumbered native GTFS return stop remains distinct, with no inferred bay or geometry."
+    }
+  ],
+  "scope": {
+    "baseline": 178,
+    "date": "2026-10-02",
+    "counts": {
+      "busEdges": 52,
+      "railEdges": 12,
+      "transferEdges": 6,
+      "total": 70
+    },
+    "canonicalMutation": false,
+    "importerRun": false,
+    "s12ArchiveSha256": "0785e932a32b3ec15e1a1345537ae145eafe1c07bf38d5c16c11ee2b391e7a28",
+    "railSource": "Independent operator timetable; JR timetable observations removed from the phase facts. Rights review status: copyright notice only found, no express data-mining/secondary-use restriction seen on retrieved schedule page; minimum facts only remain a root-review candidate.",
+    "rightsReview": "TOPOLOGY_FACT_ONLY_ALLOWED; current Chizu Express page copyright reserved, no explicit secondary-use prohibition found, only minimum nonexpressive facts claimed.",
+    "edgeBudget": {
+      "licensedLoop": 52,
+      "rail": 12,
+      "transfers": 6,
+      "total": 70
+    }
+  }
+}

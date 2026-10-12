@@ -1,0 +1,226 @@
+{
+  "phaseId": "178-miho-current-licensed-regular-airport-bus-national-chain",
+  "strategy": [
+    "ORIGINAL_REQUIRED_AIRPORT_GROUND_CHAIN",
+    "C28_FORMAL_AIRPORT_TO_CURRENT_PUBLIC_ALIAS",
+    "FIRST_INTRODUCTION_EXACT_LICENSED_NATIVE_GTFS_ARCHIVE",
+    "TWO_COMPLETE_NATIVE_REGULAR_PATTERNS_31_33_CALLS",
+    "ALL_NECESSARY_MIDDLE_STOPS_ORDINARY_PICKUP_DROPOFF",
+    "AIRPORT_BAY1_AND_DISTINCT_YONAGO_BAY4_ARRIVAL_PUBLIC_INTERFACES"
+  ],
+  "serviceDate": "2026-10-02",
+  "licensedGtfsPackages": [
+    {
+      "packageFile": "miho-standalone-airport-package.json",
+      "packageSha256": "1cc17661f9c2b6cfef6813164ca02d67cde28db0540c70b206a8e388f469516e",
+      "sourceActionId": "bus:hinomaru:prefecture-licensed-loop",
+      "reviewedServiceDate": "20261002"
+    }
+  ],
+  "completedActionIds": [
+    "government:mlit:miho-formal-and-public-name",
+    "airport:miho:terminal-public-frontage-to-hinomaru-regular-bus",
+    "station:jr-west:yonago-north-exit-public-interface",
+    "bus:hinomaru:prefecture-licensed-loop"
+  ],
+  "facts": [
+    {
+      "factId": "miho-c28-public-terminal-to-regular-airport-stop-S310100004200100",
+      "kind": "transfer",
+      "sourceActionId": "airport:miho:terminal-public-frontage-to-hinomaru-regular-bus",
+      "sourceUrl": "https://www.yonago-air.com/wp/wp-content/uploads/2025/12/1F_2025_2.jpg",
+      "observedResponseSha256": "5d316cf6fca027ab857d3b538b91076ea38ffe957406bfae453608cf4b6382a0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:miho:terminal-public-frontage-to-hinomaru-regular-bus",
+          "url": "https://www.yonago-air.com/access/bus",
+          "observedResponseSha256": "f0f9376c0e46f69841ecc6d4f490783964b76aa612e58fa8467d7b8b9f6bea13"
+        },
+        {
+          "sourceActionId": "bus:hinomaru:prefecture-licensed-loop",
+          "url": "https://odp-pref-tottori.tori-info.co.jp/bus_data/2.zip",
+          "observedResponseSha256": "9ad7cb61d4e6cf33d89b400e3ced110b4331a3f83e4ab49b5e9dbab708180f4d"
+        },
+        {
+          "sourceActionId": "government:mlit:miho-formal-and-public-name",
+          "url": "https://www.cab.mlit.go.jp/wcab/airport/common-use/miho.html",
+          "observedResponseSha256": "f711eebbe9e6a31c332b0a3e308b69c1b1d8a05288c7de101053789782f51e14"
+        }
+      ],
+      "serviceDate": "2026-10-02",
+      "reviewedAirportPublicNames": [
+        "米子鬼太郎空港",
+        "米子空港"
+      ],
+      "locator": "Current official 1F floor plan shows public terminal exits and numbered bus bay1 on the domestic-side frontage. Visible current airport bus-access table names Yonago local service and directs readers to 境港線（外浜線）. Independently licensed current GTFS route R310100019 has the same exact airport endpoint with platform_code１ in both actual directions. This is coarse public terminal/bus-stop access only; no traced geometry, exact distance/time or accessibility claim. Hidden legacy HTML bay guidance is excluded.",
+      "components": [
+        {
+          "name": "美保飛行場",
+          "operator": "airport-facility:cf03_00077",
+          "line": "airport:cf03_00077",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00077",
+            "requirementId": "review:official-airport:美保",
+            "expectedRequirementName": "美保",
+            "method": "REVIEWED_EXPLICIT_AIRFIELD_PUBLIC_NAME_ALIAS",
+            "currentPublicNames": [
+              "米子鬼太郎空港",
+              "米子空港"
+            ],
+            "currentPassengerAccessReview": "Exact historical C28 airport reference point plus current official CAB formal/public-name binding and independently reviewed public terminal access to licensed regular bus platform1. This original requirement is currently HOLD and requires admission in this phase; not an already admitted airport.",
+            "officialNameEvidence": {
+              "officialName": "美保飛行場",
+              "requirementName": "美保",
+              "publicName": "米子鬼太郎空港",
+              "equivalenceKind": "EXPLICIT_PRIMARY_FORMAL_AND_PUBLIC_NAME",
+              "url": "https://www.cab.mlit.go.jp/wcab/airport/common-use/miho.html",
+              "observedResponseSha256": "f711eebbe9e6a31c332b0a3e308b69c1b1d8a05288c7de101053789782f51e14",
+              "locator": "Current CAB page title and heading 美保飛行場, public airport section 米子空港へ行かいや～ and linked 米子鬼太郎空港ホームページ identify this formal facility and public airport name."
+            }
+          }
+        },
+        {
+          "name": "米子鬼太郎空港",
+          "operator": "日ノ丸自動車",
+          "line": "gtfs:hinomaru-tottori-prefecture:route:R310100019",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:hinomaru-tottori-prefecture",
+            "stopId": "S310100004200100",
+            "sourceArchiveSha256": "9ad7cb61d4e6cf33d89b400e3ced110b4331a3f83e4ab49b5e9dbab708180f4d",
+            "recordSha256": "26b4cf1cfe19beffc79358db3f758e1130bf3e0f3b732e53432fc3d0e47d839f",
+            "expectedPlatformCode": "１",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current official 1F floor plan shows public terminal exits and numbered bus bay1 on the domestic-side frontage. Visible current airport bus-access table names Yonago local service and directs readers to 境港線（外浜線）. Independently licensed current GTFS route R310100019 has the same exact airport endpoint with platform_code１ in both actual directions. This is coarse public terminal/bus-stop access only; no traced geometry, exact distance/time or accessibility claim. Hidden legacy HTML bay guidance is excluded."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_PUBLIC_TERMINAL_OR_STATION_INTERFACE_AND_EXACT_CURRENT_LICENSED_GTFS_POINT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "miho-outbound-gtfs-stop-S310100003800300-to-existing-jr-yonago-public-north-gate",
+      "kind": "transfer",
+      "sourceActionId": "station:jr-west:yonago-north-exit-public-interface",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0640728_895b9ef5-97cd-4135-aad5-a33c36f4913d.pdf",
+      "observedResponseSha256": "33a3420793b72b8bcdf02bdcb99d7aa4d1955868de81305248634dc95e250466",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "station:jr-west:yonago-north-exit-public-interface",
+          "url": "https://www.city.yonago.lg.jp/secure/62285/noriba97.png",
+          "observedResponseSha256": "9795be4cb10413835fbf9432b69b1ff86037b4405b94f3028fdb7f6f98db4b15"
+        },
+        {
+          "sourceActionId": "bus:hinomaru:prefecture-licensed-loop",
+          "url": "https://odp-pref-tottori.tori-info.co.jp/bus_data/2.zip",
+          "observedResponseSha256": "9ad7cb61d4e6cf33d89b400e3ced110b4331a3f83e4ab49b5e9dbab708180f4d"
+        }
+      ],
+      "serviceDate": "2026-10-02",
+      "locator": "Current municipal north-plaza map effective2026-09-07 explicitly relocates bay4 to the central island and shows the public crossing and station direction. Exact licensed departure stop S310100003800300 platform_code４ belongs to the selected current route40/境港線 trip. JR premises map shows north exit/public station access. No obsolete bay4 location, same-name merge or coordinate snapping is asserted.",
+      "components": [
+        {
+          "name": "米子",
+          "operator": "西日本旅客鉄道",
+          "line": "山陰線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "米子駅",
+          "operator": "日ノ丸自動車",
+          "line": "gtfs:hinomaru-tottori-prefecture:route:R310100019",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:hinomaru-tottori-prefecture",
+            "stopId": "S310100003800300",
+            "sourceArchiveSha256": "9ad7cb61d4e6cf33d89b400e3ced110b4331a3f83e4ab49b5e9dbab708180f4d",
+            "recordSha256": "ae62055b09691c338676c36f02045c90de936bd80224050ae6ee458cb6b5f2e9",
+            "expectedPlatformCode": "４",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current municipal north-plaza map effective2026-09-07 explicitly relocates bay4 to the central island and shows the public crossing and station direction. Exact licensed departure stop S310100003800300 platform_code４ belongs to the selected current route40/境港線 trip. JR premises map shows north exit/public station access. No obsolete bay4 location, same-name merge or coordinate snapping is asserted."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_PUBLIC_TERMINAL_OR_STATION_INTERFACE_AND_EXACT_CURRENT_LICENSED_GTFS_POINT",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "miho-inbound-gtfs-stop-S310100003800100-to-existing-jr-yonago-public-north-gate",
+      "kind": "transfer",
+      "sourceActionId": "station:jr-west:yonago-north-exit-public-interface",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0640728_895b9ef5-97cd-4135-aad5-a33c36f4913d.pdf",
+      "observedResponseSha256": "33a3420793b72b8bcdf02bdcb99d7aa4d1955868de81305248634dc95e250466",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "station:jr-west:yonago-north-exit-public-interface",
+          "url": "https://www.city.yonago.lg.jp/secure/62285/noriba97.png",
+          "observedResponseSha256": "9795be4cb10413835fbf9432b69b1ff86037b4405b94f3028fdb7f6f98db4b15"
+        },
+        {
+          "sourceActionId": "bus:hinomaru:prefecture-licensed-loop",
+          "url": "https://odp-pref-tottori.tori-info.co.jp/bus_data/2.zip",
+          "observedResponseSha256": "9ad7cb61d4e6cf33d89b400e3ced110b4331a3f83e4ab49b5e9dbab708180f4d"
+        }
+      ],
+      "serviceDate": "2026-10-02",
+      "locator": "Current municipal north-plaza map labels the distinct alighting area 降車専用 and station direction; JR premises map shows public north-gate access. Exact licensed arrival point S310100003800100 is the current regular trip terminal, separate from outbound platform4. Native platform_code is blank: no numbered arrival bay or coordinate match is asserted.",
+      "components": [
+        {
+          "name": "米子",
+          "operator": "西日本旅客鉄道",
+          "line": "山陰線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "米子駅",
+          "operator": "日ノ丸自動車",
+          "line": "gtfs:hinomaru-tottori-prefecture:route:R310100019",
+          "nodeKind": "bus_stop",
+          "gtfsIdentity": {
+            "sourceId": "gtfs:hinomaru-tottori-prefecture",
+            "stopId": "S310100003800100",
+            "sourceArchiveSha256": "9ad7cb61d4e6cf33d89b400e3ced110b4331a3f83e4ab49b5e9dbab708180f4d",
+            "recordSha256": "31b0de315733682514c0f1bb72f1a65073ef8dd111f14c53ee9b7f64ace6538f",
+            "expectedPlatformCode": "",
+            "method": "EXACT_LICENSED_GTFS_STOP_AND_CURRENT_INTERCHANGE",
+            "currentPassengerAccessReview": "Current municipal north-plaza map labels the distinct alighting area 降車専用 and station direction; JR premises map shows public north-gate access. Exact licensed arrival point S310100003800100 is the current regular trip terminal, separate from outbound platform4. Native platform_code is blank: no numbered arrival bay or coordinate match is asserted."
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "OFFICIAL_PUBLIC_TERMINAL_OR_STATION_INTERFACE_AND_EXACT_CURRENT_LICENSED_GTFS_POINT",
+      "hubScopeComplete": false
+    }
+  ]
+}

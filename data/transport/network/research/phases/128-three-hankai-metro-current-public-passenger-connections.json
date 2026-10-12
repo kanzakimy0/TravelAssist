@@ -1,0 +1,214 @@
+{
+  "phaseId": "128-three-hankai-metro-current-public-passenger-connections",
+  "strategy": [
+    "T0_THEN_T1_TRAM_COMPONENT_PRIORITY",
+    "BILATERAL_CURRENT_PUBLIC_EXIT_REVIEW",
+    "NO_SAME_NAME_OR_COORDINATE_ONLY_TRANSFER"
+  ],
+  "completedActionIds": [
+    "hub:osaka-metro:three-current-hankai-passenger-exits",
+    "hub:hankai:three-current-metro-interchange-identities",
+    "hub:jr-west:shinimamiya-current-east-public-metro-connection"
+  ],
+  "facts": [
+    {
+      "factId": "tennoji-metro-hankai-current-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka-metro:three-current-hankai-passenger-exits",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/M23_%E5%A4%A9%E7%8E%8B%E5%AF%BA_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "c7a05c976c7b83007526d91da9bb20256bb6d3a5b1d46354a692242ac4e3ad6e",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka-metro:three-current-hankai-passenger-exits",
+          "url": "https://subway.osakametro.co.jp/station_guide/M/m23/",
+          "observedResponseSha256": "223ddcb784e5818b07eb4cabb1bca1c6f381408ac598f1b4bb54e0256211f8ed"
+        },
+        {
+          "sourceActionId": "hub:hankai:three-current-metro-interchange-identities",
+          "url": "https://www.hankai.co.jp/route/",
+          "observedResponseSha256": "6c04aba161fdbbb0edfd1fdb5f58482b3c843c2622f159d498c173ccd8f3a084"
+        },
+        {
+          "sourceActionId": "hub:hankai:three-current-metro-interchange-identities",
+          "url": "https://www.hankai.co.jp/route/hn01",
+          "observedResponseSha256": "97d32cc345c418eb57d0c1d2002c271cc2707e4cd6fae713ea9ad77b2b0a31be"
+        }
+      ],
+      "locator": "Both Midosuji direction platforms join the west ticket gate by depicted stairs; the public corridor reaches exit 11 explicitly labeled Hankai Tennoji. Hankai current other-rail connection section independently pairs Tennoji-ekimae with Metro Tennoji. Current linked diagram individually viewed and source hash matched. Coarse bidirectional public passenger relation only; no all-hours, accessible-route, fare or through-service assertion.",
+      "components": [
+        {
+          "name": "天王寺",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "天王寺駅前",
+          "operator": "阪堺電気軌道",
+          "line": "上町線",
+          "mode": "tram"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "BILATERAL_CURRENT_METRO_EXIT_AND_TRAM_INTERCHANGE_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "shin-metro-hankai-current-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka-metro:three-current-hankai-passenger-exits",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/M22_%E5%8B%95%E7%89%A9%E5%9C%92%E5%89%8D_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "8c6994176ce3853e21c06248702aa15e7b5f5171a559e6595c3d8bdb7e7976bb",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka-metro:three-current-hankai-passenger-exits",
+          "url": "https://subway.osakametro.co.jp/station_guide/M/m22/",
+          "observedResponseSha256": "ec1ed93df8e9a8e047b443add3b061a217afcdaa70683de1689122cea47cd220"
+        },
+        {
+          "sourceActionId": "hub:hankai:three-current-metro-interchange-identities",
+          "url": "https://www.hankai.co.jp/route/",
+          "observedResponseSha256": "6c04aba161fdbbb0edfd1fdb5f58482b3c843c2622f159d498c173ccd8f3a084"
+        },
+        {
+          "sourceActionId": "hub:hankai:three-current-metro-interchange-identities",
+          "url": "https://www.hankai.co.jp/route/hn52",
+          "observedResponseSha256": "7f3e12046411b0386e15c6afe86fbadf0e0c7bb007579c631f933b4e4571e04d"
+        }
+      ],
+      "locator": "Midosuji platforms connect via depicted stairs and common connecting passage to north gate and public exit 6 explicitly labeled Hankai Shin-imamiya-ekimae. Hankai current connection list independently names Metro Dobutsuen-mae. Do not confuse the separate JR or Nankai Shin-imamiya components. Current linked diagram individually viewed and source hash matched. Coarse bidirectional public passenger relation only; no all-hours, accessible-route, fare or through-service assertion.",
+      "components": [
+        {
+          "name": "動物園前",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "新今宮駅前",
+          "operator": "阪堺電気軌道",
+          "line": "阪堺線",
+          "mode": "tram"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "BILATERAL_CURRENT_METRO_EXIT_AND_TRAM_INTERCHANGE_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "ebisu-metro-hankai-current-passenger-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:osaka-metro:three-current-hankai-passenger-exits",
+      "sourceUrl": "https://subway.osakametro.co.jp/station_guide/station/K18_%E6%81%B5%E7%BE%8E%E9%A0%88%E7%94%BA_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+      "observedResponseSha256": "5e2a161e70d37c2f878d19f95fb74de6d44233b5e2a3943db091778095509010",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:osaka-metro:three-current-hankai-passenger-exits",
+          "url": "https://subway.osakametro.co.jp/station_guide/K/k18/",
+          "observedResponseSha256": "2d8a820f7e678a8e6cf23d57123258f84995cda7c751d9bc1f511d7f15f418ce"
+        },
+        {
+          "sourceActionId": "hub:hankai:three-current-metro-interchange-identities",
+          "url": "https://www.hankai.co.jp/route/",
+          "observedResponseSha256": "6c04aba161fdbbb0edfd1fdb5f58482b3c843c2622f159d498c173ccd8f3a084"
+        },
+        {
+          "sourceActionId": "hub:hankai:three-current-metro-interchange-identities",
+          "url": "https://www.hankai.co.jp/route/hn51",
+          "observedResponseSha256": "09523c25e70c1e2f31d24b5a59625f3a535d062ab56f0f6eaef3db4c5855c4fd"
+        }
+      ],
+      "locator": "Both Sakaisuji direction platform faces join stairs B to south gate and public exit 4 explicitly labeled Hankai. Current Hankai route page independently lists Metro Ebisucho connection and current station page identifies HN51. Retain separate same-named Metro/tram components; no route inferred from old S12 coordinates or pre-relocation position. Current linked diagram individually viewed and source hash matched. Coarse bidirectional public passenger relation only; no all-hours, accessible-route, fare or through-service assertion.",
+      "components": [
+        {
+          "name": "恵美須町",
+          "operator": "大阪市高速電気軌道",
+          "line": "6号線(堺筋線)",
+          "mode": "metro"
+        },
+        {
+          "name": "恵美須町",
+          "operator": "阪堺電気軌道",
+          "line": "阪堺線",
+          "mode": "tram"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "BILATERAL_CURRENT_METRO_EXIT_AND_TRAM_INTERCHANGE_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "shinimamiya-jr-metro-current-east-exit-six-public-connection",
+      "kind": "transfer",
+      "sourceActionId": "hub:jr-west:shinimamiya-current-east-public-metro-connection",
+      "sourceUrl": "https://eki.jr-odekake.net/premises/0620506_32f9be81-6b62-45e7-92a4-136dc98025ab.pdf",
+      "observedResponseSha256": "37d19f6b8cf859b7b3175ae61589d9571d5b5bd6bb725ed3498f09d429f917da",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "hub:jr-west:shinimamiya-current-east-public-metro-connection",
+          "url": "https://eki.jr-odekake.net/premises?id=0620506",
+          "observedResponseSha256": "e7b76d72d3c1853ce86c946a842cadaba6d17b37acb40c0fb28a6675984f3484"
+        },
+        {
+          "sourceActionId": "hub:osaka-metro:three-current-hankai-passenger-exits",
+          "url": "https://subway.osakametro.co.jp/station_guide/station/M22_%E5%8B%95%E7%89%A9%E5%9C%92%E5%89%8D_%E6%A7%8B%E5%86%85%E5%9B%B3.pdf",
+          "observedResponseSha256": "8c6994176ce3853e21c06248702aa15e7b5f5171a559e6595c3d8bdb7e7976bb"
+        }
+      ],
+      "locator": "Individually viewed current-linked February 5 2026 JR diagram shows both Osaka Loop platform islands descending to 1F Tsutenkaku/east gate and public direction explicitly naming Hankai and Midosuji/Sakaisuji subway. Current Metro diagram independently joins Midosuji platforms to north gate and public exit 6 naming JR Shin-imamiya. Preserve the distinct railway/operator components and coarse bidirectional outside-ticket passenger connection, without retail shortcut, fare, walking time, all-hours or accessible-route guarantee.",
+      "components": [
+        {
+          "name": "新今宮",
+          "operator": "西日本旅客鉄道",
+          "line": "大阪環状線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "動物園前",
+          "operator": "大阪市高速電気軌道",
+          "line": "1号線(御堂筋線)",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "BILATERAL_CURRENT_JR_EAST_GATE_AND_METRO_EXIT_SIX",
+      "hubScopeComplete": false
+    }
+  ]
+}

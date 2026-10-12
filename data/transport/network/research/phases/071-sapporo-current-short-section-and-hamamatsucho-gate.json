@@ -1,0 +1,144 @@
+{
+  "phaseId": "071-sapporo-current-short-section-and-hamamatsucho-gate",
+  "strategy": [
+    "CURRENT_MUNICIPAL_DIRECTIONAL_DEPARTURES",
+    "PARTNER_JR_MONORAIL_GATE",
+    "rail"
+  ],
+  "completedActionIds": [
+    "metro:sapporo:n06-n07-current-directional-section",
+    "hub:jreast:hamamatsucho-monorail-transfer-gate"
+  ],
+  "facts": [
+    {
+      "factId": "sapporo-n06-n07-directional-makomanai-bound",
+      "kind": "service",
+      "sourceActionId": "metro:sapporo:n06-n07-current-directional-section",
+      "sourceUrl": "https://www.city.sapporo.jp/st/subway/route_time/h26/n06.html",
+      "observedResponseSha256": "146ceb1aa9c7b02ebd716a39d51ff4b42c26578427445edb461ebc806788dfbc",
+      "locator": "Official passenger departures revised 2026-08-01 independently published at both consecutive numbered N06/N07 stations, corroborated by municipal directional line order. Retain only Sapporo-Odori section with no intervening station; no complete Nanboku train, train number, express classification or timetable clocks claimed. Both directions have separate departure evidence.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.city.sapporo.jp/st/subway/route_time/h26/n07.html",
+          "observedResponseSha256": "6587dd176f55d674cc4beefa76e51166fdf792454d3110a8ec25872e0d784621"
+        },
+        {
+          "url": "https://www.city.sapporo.jp/st/time/index.html",
+          "observedResponseSha256": "7a2f1489f32165977ebcaa498a246e53677978563af1b7bf6509509ae75bd04d"
+        },
+        {
+          "url": "https://www.city.sapporo.jp/st/route_konaizu/index.html",
+          "observedResponseSha256": "c5459570f691e300954287bd0cab441a0ef8139f46eabb7f57ef0c05d038de38"
+        }
+      ],
+      "line": "南北線・さっぽろ大通区間",
+      "operator": "札幌市",
+      "mode": "metro",
+      "serviceClass": "南北線旅客列車・隣接駅区間",
+      "direction": "makomanai-bound",
+      "callingStations": [
+        "さっぽろ",
+        "大通"
+      ],
+      "callingComponents": [
+        {
+          "name": "さっぽろ",
+          "operator": "札幌市",
+          "line": "南北線",
+          "mode": "metro"
+        },
+        {
+          "name": "大通",
+          "operator": "札幌市",
+          "line": "南北線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "CURRENT_DIRECTIONAL_DEPARTURES_AT_BOTH_ADJACENT_NUMBERED_STATIONS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_SECTION_NOT_REALTIME"
+    },
+    {
+      "factId": "sapporo-n06-n07-directional-asabu-bound",
+      "kind": "service",
+      "sourceActionId": "metro:sapporo:n06-n07-current-directional-section",
+      "sourceUrl": "https://www.city.sapporo.jp/st/subway/route_time/h26/n07.html",
+      "observedResponseSha256": "6587dd176f55d674cc4beefa76e51166fdf792454d3110a8ec25872e0d784621",
+      "locator": "Official passenger departures revised 2026-08-01 independently published at both consecutive numbered N06/N07 stations, corroborated by municipal directional line order. Retain only Sapporo-Odori section with no intervening station; no complete Nanboku train, train number, express classification or timetable clocks claimed. Both directions have separate departure evidence.",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.city.sapporo.jp/st/subway/route_time/h26/n06.html",
+          "observedResponseSha256": "146ceb1aa9c7b02ebd716a39d51ff4b42c26578427445edb461ebc806788dfbc"
+        },
+        {
+          "url": "https://www.city.sapporo.jp/st/time/index.html",
+          "observedResponseSha256": "7a2f1489f32165977ebcaa498a246e53677978563af1b7bf6509509ae75bd04d"
+        },
+        {
+          "url": "https://www.city.sapporo.jp/st/route_konaizu/index.html",
+          "observedResponseSha256": "c5459570f691e300954287bd0cab441a0ef8139f46eabb7f57ef0c05d038de38"
+        }
+      ],
+      "line": "南北線・さっぽろ大通区間",
+      "operator": "札幌市",
+      "mode": "metro",
+      "serviceClass": "南北線旅客列車・隣接駅区間",
+      "direction": "asabu-bound",
+      "callingStations": [
+        "大通",
+        "さっぽろ"
+      ],
+      "callingComponents": [
+        {
+          "name": "大通",
+          "operator": "札幌市",
+          "line": "南北線",
+          "mode": "metro"
+        },
+        {
+          "name": "さっぽろ",
+          "operator": "札幌市",
+          "line": "南北線",
+          "mode": "metro"
+        }
+      ],
+      "reviewMethod": "CURRENT_DIRECTIONAL_DEPARTURES_AT_BOTH_ADJACENT_NUMBERED_STATIONS",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_SECTION_NOT_REALTIME"
+    },
+    {
+      "factId": "hamamatsucho-jr-explicit-monorail-gate",
+      "kind": "transfer",
+      "sourceActionId": "hub:jreast:hamamatsucho-monorail-transfer-gate",
+      "sourceUrl": "https://www.jreast.co.jp/estation/station/info.aspx?StationCd=1248",
+      "observedResponseSha256": "f07508b678257f80746da414eeaa596e0401d9a99199767b800469df6d0a1217",
+      "locator": "Current JR East Hamamatsucho station information explicitly lists an operational monorail interchange gate. Bind independently identified JR Hamamatsucho and Monorail Hamamatsucho components. No old construction-plan walking route or proposed future station layout used.",
+      "components": [
+        {
+          "name": "浜松町",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "モノレール浜松町",
+          "operator": "東京モノレール",
+          "line": "東京モノレール羽田空港線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CURRENT_PARTNER_OPERATOR_EXPLICIT_INTERCHANGE_GATE",
+      "hubScopeComplete": false
+    }
+  ]
+}

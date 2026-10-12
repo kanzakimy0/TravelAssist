@@ -1,0 +1,771 @@
+{
+  "phaseId": "039-tokyu-explicit-interchanges",
+  "strategy": [
+    "TOKYU_OFFICIAL_INTERCHANGE_LIST",
+    "EXACT_OPERATOR_COMPONENT_STAR_PAIRS",
+    "transfer"
+  ],
+  "completedActionIds": [
+    "private:tokyu:local"
+  ],
+  "facts": [
+    {
+      "factId": "tokyu-interchange-渋谷",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/ty/",
+      "observedResponseSha256": "86bfd3a25a4e406d452af0285d377e9861c65e56052e2c319af57f4086740b34",
+      "locator": "Official station-specific interchange list at 渋谷: 田園都市線, 東京メトロ半蔵門線, 東京メトロ副都心線, 東京メトロ銀座線, JR山手線, JR埼京線, JR湘南新宿ライン, 京王井の頭線. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "渋谷",
+          "operator": "東急電鉄",
+          "line": "東横線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "渋谷",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "渋谷",
+          "operator": "京王電鉄",
+          "line": "井の頭線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "渋谷",
+          "operator": "東京地下鉄",
+          "line": "3号線銀座線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-武蔵小杉",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/ty/",
+      "observedResponseSha256": "86bfd3a25a4e406d452af0285d377e9861c65e56052e2c319af57f4086740b34",
+      "locator": "Official station-specific interchange list at 武蔵小杉: 目黒線, JR横須賀線, JR湘南新宿ライン, JR南武線. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "武蔵小杉",
+          "operator": "東急電鉄",
+          "line": "東横線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "武蔵小杉",
+          "operator": "東日本旅客鉄道",
+          "line": "南武線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-日吉",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/ty/",
+      "observedResponseSha256": "86bfd3a25a4e406d452af0285d377e9861c65e56052e2c319af57f4086740b34",
+      "locator": "Official station-specific interchange list at 日吉: 目黒線, 東急新横浜線, 横浜市営地下鉄グリーンライン. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "日吉",
+          "operator": "東急電鉄",
+          "line": "東横線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "日吉",
+          "operator": "横浜市",
+          "line": "4号線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-菊名",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/ty/",
+      "observedResponseSha256": "86bfd3a25a4e406d452af0285d377e9861c65e56052e2c319af57f4086740b34",
+      "locator": "Official station-specific interchange list at 菊名: JR横浜線. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "菊名",
+          "operator": "東急電鉄",
+          "line": "東横線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "菊名",
+          "operator": "東日本旅客鉄道",
+          "line": "横浜線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-横浜",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/ty/",
+      "observedResponseSha256": "86bfd3a25a4e406d452af0285d377e9861c65e56052e2c319af57f4086740b34",
+      "locator": "Official station-specific interchange list at 横浜: 横浜高速鉄道みなとみらい線, JR京浜東北線, JR横浜線, JR東海道線, JR横須賀線, JR湘南新宿ライン, 相鉄本線, 京急本線, 横浜市営地下鉄ブルーライン. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "横浜",
+          "operator": "東急電鉄",
+          "line": "東横線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "横浜",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "横浜",
+          "operator": "京浜急行電鉄",
+          "line": "本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "横浜",
+          "operator": "相模鉄道",
+          "line": "相鉄本線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "横浜",
+          "operator": "横浜高速鉄道",
+          "line": "みなとみらい21線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "横浜",
+          "operator": "横浜市",
+          "line": "3号線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-目黒",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/mg/",
+      "observedResponseSha256": "318576495b372460135fe86d3a58108a7326ceb2f334847e0ca01bb0d59af0dc",
+      "locator": "Official station-specific interchange list at 目黒: 東京メトロ南北線, JR山手線, 都営三田線. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "目黒",
+          "operator": "東急電鉄",
+          "line": "目黒線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "目黒",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "目黒",
+          "operator": "東京地下鉄",
+          "line": "7号線南北線",
+          "mode": "metro"
+        },
+        {
+          "name": "目黒",
+          "operator": "東京都",
+          "line": "6号線三田線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-新横浜",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/sh/",
+      "observedResponseSha256": "b667acec668ed9943e2ffc4e4b7f146a8f69f9dbb98afe6a615df1acff37c350",
+      "locator": "Official station-specific interchange list at 新横浜: 東海道新幹線, JR横浜線, 相鉄新横浜線, 横浜市営地下鉄ブルーライン. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "新横浜",
+          "operator": "東急電鉄",
+          "line": "東急新横浜線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新横浜",
+          "operator": "東日本旅客鉄道",
+          "line": "横浜線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新横浜",
+          "operator": "東海旅客鉄道",
+          "line": "東海道新幹線",
+          "mode": "shinkansen"
+        },
+        {
+          "name": "新横浜",
+          "operator": "相模鉄道",
+          "line": "相鉄新横浜線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "新横浜",
+          "operator": "横浜市",
+          "line": "3号線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-あざみ野",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/dt/",
+      "observedResponseSha256": "c5fe6f5a71f440da04a2db844c500870633ccdadd67b1971352a421556d6258e",
+      "locator": "Official station-specific interchange list at あざみ野: 横浜市営地下鉄ブルーライン. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "あざみ野",
+          "operator": "東急電鉄",
+          "line": "田園都市線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "あざみ野",
+          "operator": "横浜市",
+          "line": "3号線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-長津田",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/dt/",
+      "observedResponseSha256": "c5fe6f5a71f440da04a2db844c500870633ccdadd67b1971352a421556d6258e",
+      "locator": "Official station-specific interchange list at 長津田: こどもの国線, JR横浜線. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "長津田",
+          "operator": "東急電鉄",
+          "line": "田園都市線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "長津田",
+          "operator": "東日本旅客鉄道",
+          "line": "横浜線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-中央林間",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/dt/",
+      "observedResponseSha256": "c5fe6f5a71f440da04a2db844c500870633ccdadd67b1971352a421556d6258e",
+      "locator": "Official station-specific interchange list at 中央林間: 小田急江ノ島線. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "中央林間",
+          "operator": "東急電鉄",
+          "line": "田園都市線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中央林間",
+          "operator": "小田急電鉄",
+          "line": "江ノ島線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-大井町",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/om/",
+      "observedResponseSha256": "c25cee24141e20790a3da643ffaf4415fab6ac23b10b06f1f04fbe84e4aa8003",
+      "locator": "Official station-specific interchange list at 大井町: JR京浜東北線, 東京臨海高速鉄道りんかい線. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "大井町",
+          "operator": "東急電鉄",
+          "line": "大井町線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "大井町",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "大井町",
+          "operator": "東京臨海高速鉄道",
+          "line": "臨海副都心線",
+          "mode": "private_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-中延",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/om/",
+      "observedResponseSha256": "c25cee24141e20790a3da643ffaf4415fab6ac23b10b06f1f04fbe84e4aa8003",
+      "locator": "Official station-specific interchange list at 中延: 都営浅草線. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "中延",
+          "operator": "東急電鉄",
+          "line": "大井町線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "中延",
+          "operator": "東京都",
+          "line": "1号線浅草線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-五反田",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/ik/",
+      "observedResponseSha256": "a83b031f33a604e1b21feb0b12d1b9ffe8e138995d1a102bb710f6afc7f70b52",
+      "locator": "Official station-specific interchange list at 五反田: JR山手線, 都営浅草線. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "五反田",
+          "operator": "東急電鉄",
+          "line": "池上線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "五反田",
+          "operator": "東日本旅客鉄道",
+          "line": "山手線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "五反田",
+          "operator": "東京都",
+          "line": "1号線浅草線",
+          "mode": "metro"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    },
+    {
+      "factId": "tokyu-interchange-蒲田",
+      "kind": "transfer",
+      "sourceActionId": "private:tokyu:local",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/ik/",
+      "observedResponseSha256": "a83b031f33a604e1b21feb0b12d1b9ffe8e138995d1a102bb710f6afc7f70b52",
+      "locator": "Official station-specific interchange list at 蒲田: 東急多摩川線, JR京浜東北線. Only explicitly named operators with independently resolved station components are bound. Different-name stations need separate physical review and are not guessed. Star pairs from the source operator only; no timing or through-service assertion.",
+      "components": [
+        {
+          "name": "蒲田",
+          "operator": "東急電鉄",
+          "line": "池上線",
+          "mode": "private_rail"
+        },
+        {
+          "name": "蒲田",
+          "operator": "東日本旅客鉄道",
+          "line": "東海道線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_OFFICIAL_STATION_INTERCHANGE_LIST_AND_EXACT_COMPONENT_REVIEW",
+      "hubScopeComplete": false
+    }
+  ],
+  "reviewedRedundantPairs": [
+    {
+      "reviewedFactId": "tokyu-interchange-渋谷",
+      "from": {
+        "name": "渋谷",
+        "operator": "東急電鉄",
+        "line": "東横線",
+        "mode": "private_rail"
+      },
+      "to": {
+        "name": "渋谷",
+        "operator": "東京地下鉄",
+        "line": "3号線銀座線",
+        "mode": "metro"
+      },
+      "existingFactId": "metro-official-interchange-ginza-渋谷",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/ty/",
+      "observedResponseSha256": "86bfd3a25a4e406d452af0285d377e9861c65e56052e2c319af57f4086740b34",
+      "decision": "ALREADY_EVIDENCED_PAIR_NO_DUPLICATE_EDGE"
+    },
+    {
+      "reviewedFactId": "tokyu-interchange-渋谷",
+      "from": {
+        "name": "渋谷",
+        "operator": "東京地下鉄",
+        "line": "3号線銀座線",
+        "mode": "metro"
+      },
+      "to": {
+        "name": "渋谷",
+        "operator": "東急電鉄",
+        "line": "東横線",
+        "mode": "private_rail"
+      },
+      "existingFactId": "metro-official-interchange-ginza-渋谷",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/ty/",
+      "observedResponseSha256": "86bfd3a25a4e406d452af0285d377e9861c65e56052e2c319af57f4086740b34",
+      "decision": "ALREADY_EVIDENCED_PAIR_NO_DUPLICATE_EDGE"
+    },
+    {
+      "reviewedFactId": "tokyu-interchange-中目黒",
+      "from": {
+        "name": "中目黒",
+        "operator": "東急電鉄",
+        "line": "東横線",
+        "mode": "private_rail"
+      },
+      "to": {
+        "name": "中目黒",
+        "operator": "東京地下鉄",
+        "line": "2号線日比谷線",
+        "mode": "metro"
+      },
+      "existingFactId": "metro-official-interchange-hibiya-中目黒",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/ty/",
+      "observedResponseSha256": "86bfd3a25a4e406d452af0285d377e9861c65e56052e2c319af57f4086740b34",
+      "decision": "ALREADY_EVIDENCED_PAIR_NO_DUPLICATE_EDGE"
+    },
+    {
+      "reviewedFactId": "tokyu-interchange-中目黒",
+      "from": {
+        "name": "中目黒",
+        "operator": "東京地下鉄",
+        "line": "2号線日比谷線",
+        "mode": "metro"
+      },
+      "to": {
+        "name": "中目黒",
+        "operator": "東急電鉄",
+        "line": "東横線",
+        "mode": "private_rail"
+      },
+      "existingFactId": "metro-official-interchange-hibiya-中目黒",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/ty/",
+      "observedResponseSha256": "86bfd3a25a4e406d452af0285d377e9861c65e56052e2c319af57f4086740b34",
+      "decision": "ALREADY_EVIDENCED_PAIR_NO_DUPLICATE_EDGE"
+    },
+    {
+      "reviewedFactId": "tokyu-interchange-目黒",
+      "from": {
+        "name": "目黒",
+        "operator": "東急電鉄",
+        "line": "目黒線",
+        "mode": "private_rail"
+      },
+      "to": {
+        "name": "目黒",
+        "operator": "東京地下鉄",
+        "line": "7号線南北線",
+        "mode": "metro"
+      },
+      "existingFactId": "metro-official-interchange-namboku-目黒",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/mg/",
+      "observedResponseSha256": "318576495b372460135fe86d3a58108a7326ceb2f334847e0ca01bb0d59af0dc",
+      "decision": "ALREADY_EVIDENCED_PAIR_NO_DUPLICATE_EDGE"
+    },
+    {
+      "reviewedFactId": "tokyu-interchange-目黒",
+      "from": {
+        "name": "目黒",
+        "operator": "東京地下鉄",
+        "line": "7号線南北線",
+        "mode": "metro"
+      },
+      "to": {
+        "name": "目黒",
+        "operator": "東急電鉄",
+        "line": "目黒線",
+        "mode": "private_rail"
+      },
+      "existingFactId": "metro-official-interchange-namboku-目黒",
+      "sourceUrl": "https://www.tokyu.co.jp/railway/mg/",
+      "observedResponseSha256": "318576495b372460135fe86d3a58108a7326ceb2f334847e0ca01bb0d59af0dc",
+      "decision": "ALREADY_EVIDENCED_PAIR_NO_DUPLICATE_EDGE"
+    }
+  ]
+}

@@ -1,0 +1,510 @@
+{
+  "phaseId": "196-oshima-current-public-entrance-bus-nca-and-explicit-walking-chain",
+  "strategy": [
+    "ORIGINAL_AIRPORT_SAME_ID_ADMISSION",
+    "INDEPENDENT_CURRENT_BUS_ADJACENT_DIRECTIONS",
+    "CURRENT_CARRIER_OCTOBER_TWO_FLIGHTS",
+    "EXPLICIT_OFFICIAL_NAMED_PUBLIC_WALK",
+    "EXISTING_CHOFU_FORMAL_IDENTITY_REUSE"
+  ],
+  "completedActionIds": [
+    "government:p11:reviewed-airport-bus-identities",
+    "government:c28:airport-identities",
+    "bus:oshima:current-airport-entrance-chinooka-independent-sections",
+    "airport:oshima:current-nca-directions-and-explicit-public-walk"
+  ],
+  "facts": [
+    {
+      "factId": "oshima-airport-entrance-adjacent-independent-0",
+      "kind": "service",
+      "sourceActionId": "bus:oshima:current-airport-entrance-chinooka-independent-sections",
+      "sourceUrl": "https://oshima-bus.com/files/260827_jikoku_kouen.pdf",
+      "observedResponseSha256": "952df7258ef040d31f763f8ad40c17a0acfd3cfaedbec37199d54a017141acd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:oshima:current-airport-entrance-chinooka-independent-sections",
+          "url": "https://oshima-bus.com/files/rosen-bus/rosen202506.pdf",
+          "observedResponseSha256": "f7311339102095084573c3fd0f28d5be143b45e1c69be03f3702be4f2903d03d"
+        },
+        {
+          "sourceActionId": "bus:oshima:current-airport-entrance-chinooka-independent-sections",
+          "url": "https://oshima-bus.com/abouts.html",
+          "observedResponseSha256": "9d79bf4d6305a385df340d447f9ae1aa1a121a025cb6e5d669ebd6c539bb95a8"
+        },
+        {
+          "sourceActionId": "bus:oshima:current-airport-entrance-chinooka-independent-sections",
+          "url": "https://oshima-bus.com/rosen-bus.html",
+          "observedResponseSha256": "c0e6a2e0089851113a1a792fc6b6ea38f65b6fdf8e8d0d2b837c689d1433e4e6"
+        }
+      ],
+      "operator": "大島旅客自動車株式会社",
+      "line": "大島公園ライン",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "路線バス",
+      "direction": "元町港発大島公園行",
+      "serviceState": "active",
+      "serviceStateScope": "OperatorOct1 2026-Feb5 2027; eachdirection independentlyreviewed dailyrow1. Airportterminalbranch is skippedbyselectedrows; onlynamedairportentrancepublicroadstop used. No ferry-dependentrows, clock guarantees or inferredreverse.",
+      "parentCallingStations": [
+        "元町港",
+        "町役場前",
+        "元町北口",
+        "支庁前",
+        "大島高校前",
+        "郷土資料館入口",
+        "地の岡",
+        "大島空港入口",
+        "ぶらっとハウス・体験館入口",
+        "北の山",
+        "桜通り",
+        "さくら小学校入口",
+        "岡田郵便局前",
+        "岡田出張所前",
+        "岡田",
+        "岡田港",
+        "岡田出張所前",
+        "塚の本",
+        "秋の浜入口",
+        "泉津",
+        "椿トンネル",
+        "大島公園"
+      ],
+      "sectionStartIndex": 6,
+      "callingStations": [
+        "地の岡",
+        "大島空港入口"
+      ],
+      "callingComponents": [
+        {
+          "name": "地の岡",
+          "operator": "大島旅客自動車（株）",
+          "line": "p11-stop:P11-22_13:bs78",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs78",
+            "recordSha256": "d7ffe7164ffedbd694aece929a9673052325caeee56383aa58534ba038d0d012",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native sameoperator P11大島公園ライン representative. CurrentOct1-Feb5 independent dailyrow1 tables name adjacent地の岡 and大島空港入口 in respective directions. No oppositepole collapse or preciseplatformcoordinate. Operatorbrand resolved by own currentcorporate legalname.",
+            "currentOperatorEvidence": {
+              "recordOperator": "大島旅客自動車（株）",
+              "currentOperatorName": "大島旅客自動車株式会社",
+              "currentStopName": "地の岡",
+              "historicalRoute": "大島公園ライン",
+              "url": "https://oshima-bus.com/abouts.html",
+              "observedResponseSha256": "9d79bf4d6305a385df340d447f9ae1aa1a121a025cb6e5d669ebd6c539bb95a8"
+            }
+          }
+        },
+        {
+          "name": "大島空港入口",
+          "operator": "大島旅客自動車（株）",
+          "line": "p11-stop:P11-22_13:bs76",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs76",
+            "recordSha256": "e604c5f4b14c2f14bc5eb3d78d76c2f06e70fc26ff589b311ceaa14b034b93e0",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native sameoperator P11大島公園ライン representative. CurrentOct1-Feb5 independent dailyrow1 tables name adjacent地の岡 and大島空港入口 in respective directions. No oppositepole collapse or preciseplatformcoordinate. Operatorbrand resolved by own currentcorporate legalname.",
+            "currentOperatorEvidence": {
+              "recordOperator": "大島旅客自動車（株）",
+              "currentOperatorName": "大島旅客自動車株式会社",
+              "currentStopName": "大島空港入口",
+              "historicalRoute": "大島公園ライン",
+              "url": "https://oshima-bus.com/abouts.html",
+              "observedResponseSha256": "9d79bf4d6305a385df340d447f9ae1aa1a121a025cb6e5d669ebd6c539bb95a8"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Upperindependentdirectiontable dailyrow1, columns7地の岡→8大島空港入口; adjacentcalls; terminalcolumn9 notused."
+    },
+    {
+      "factId": "oshima-airport-entrance-adjacent-independent-1",
+      "kind": "service",
+      "sourceActionId": "bus:oshima:current-airport-entrance-chinooka-independent-sections",
+      "sourceUrl": "https://oshima-bus.com/files/260827_jikoku_kouen.pdf",
+      "observedResponseSha256": "952df7258ef040d31f763f8ad40c17a0acfd3cfaedbec37199d54a017141acd0",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:oshima:current-airport-entrance-chinooka-independent-sections",
+          "url": "https://oshima-bus.com/files/rosen-bus/rosen202506.pdf",
+          "observedResponseSha256": "f7311339102095084573c3fd0f28d5be143b45e1c69be03f3702be4f2903d03d"
+        },
+        {
+          "sourceActionId": "bus:oshima:current-airport-entrance-chinooka-independent-sections",
+          "url": "https://oshima-bus.com/abouts.html",
+          "observedResponseSha256": "9d79bf4d6305a385df340d447f9ae1aa1a121a025cb6e5d669ebd6c539bb95a8"
+        },
+        {
+          "sourceActionId": "bus:oshima:current-airport-entrance-chinooka-independent-sections",
+          "url": "https://oshima-bus.com/rosen-bus.html",
+          "observedResponseSha256": "c0e6a2e0089851113a1a792fc6b6ea38f65b6fdf8e8d0d2b837c689d1433e4e6"
+        }
+      ],
+      "operator": "大島旅客自動車株式会社",
+      "line": "大島公園ライン",
+      "mode": "local_bus",
+      "purpose": "airport",
+      "serviceClass": "路線バス",
+      "direction": "大島公園発元町港行",
+      "serviceState": "active",
+      "serviceStateScope": "OperatorOct1 2026-Feb5 2027; eachdirection independentlyreviewed dailyrow1. Airportterminalbranch is skippedbyselectedrows; onlynamedairportentrancepublicroadstop used. No ferry-dependentrows, clock guarantees or inferredreverse.",
+      "parentCallingStations": [
+        "大島公園",
+        "椿トンネル",
+        "泉津",
+        "秋の浜入口",
+        "岡田出張所前",
+        "岡田",
+        "岡田港",
+        "岡田出張所前",
+        "塚の本",
+        "岡田郵便局前",
+        "さくら小学校入口",
+        "桜通り",
+        "北の山",
+        "ぶらっとハウス・体験館入口",
+        "大島空港入口",
+        "地の岡",
+        "郷土資料館入口",
+        "大島高校前",
+        "支庁前",
+        "元町北口",
+        "町役場前",
+        "元町港"
+      ],
+      "sectionStartIndex": 14,
+      "callingStations": [
+        "大島空港入口",
+        "地の岡"
+      ],
+      "callingComponents": [
+        {
+          "name": "大島空港入口",
+          "operator": "大島旅客自動車（株）",
+          "line": "p11-stop:P11-22_13:bs76",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs76",
+            "recordSha256": "e604c5f4b14c2f14bc5eb3d78d76c2f06e70fc26ff589b311ceaa14b034b93e0",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native sameoperator P11大島公園ライン representative. CurrentOct1-Feb5 independent dailyrow1 tables name adjacent地の岡 and大島空港入口 in respective directions. No oppositepole collapse or preciseplatformcoordinate. Operatorbrand resolved by own currentcorporate legalname.",
+            "currentOperatorEvidence": {
+              "recordOperator": "大島旅客自動車（株）",
+              "currentOperatorName": "大島旅客自動車株式会社",
+              "currentStopName": "大島空港入口",
+              "historicalRoute": "大島公園ライン",
+              "url": "https://oshima-bus.com/abouts.html",
+              "observedResponseSha256": "9d79bf4d6305a385df340d447f9ae1aa1a121a025cb6e5d669ebd6c539bb95a8"
+            }
+          }
+        },
+        {
+          "name": "地の岡",
+          "operator": "大島旅客自動車（株）",
+          "line": "p11-stop:P11-22_13:bs78",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs78",
+            "recordSha256": "d7ffe7164ffedbd694aece929a9673052325caeee56383aa58534ba038d0d012",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native sameoperator P11大島公園ライン representative. CurrentOct1-Feb5 independent dailyrow1 tables name adjacent地の岡 and大島空港入口 in respective directions. No oppositepole collapse or preciseplatformcoordinate. Operatorbrand resolved by own currentcorporate legalname.",
+            "currentOperatorEvidence": {
+              "recordOperator": "大島旅客自動車（株）",
+              "currentOperatorName": "大島旅客自動車株式会社",
+              "currentStopName": "地の岡",
+              "historicalRoute": "大島公園ライン",
+              "url": "https://oshima-bus.com/abouts.html",
+              "observedResponseSha256": "9d79bf4d6305a385df340d447f9ae1aa1a121a025cb6e5d669ebd6c539bb95a8"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "Lowerindependentdirectiontable dailyrow1, columns8大島空港入口→7地の岡; adjacent calls, numberedterminalcolumn9 is skipped."
+    },
+    {
+      "factId": "oshima-nca-independent-direction-0",
+      "kind": "service",
+      "sourceActionId": "airport:oshima:current-nca-directions-and-explicit-public-walk",
+      "sourceUrl": "https://central-air.co.jp/pdf/2026-10%E5%A4%A7%E5%B3%B6%E3%83%BBOshimaRev2.pdf",
+      "observedResponseSha256": "e1fcb891e150fe6039f58c02bc9a8ac58932ce1052d82201d474c2575dae304f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:oshima:current-nca-directions-and-explicit-public-walk",
+          "url": "https://central-air.co.jp/schedule-fee.html",
+          "observedResponseSha256": "6b9dc9e67c4072c112e05eceff7ac3c198b2b70b9f71b803ce57265df6d06806"
+        },
+        {
+          "sourceActionId": "airport:oshima:current-nca-directions-and-explicit-public-walk",
+          "url": "https://central-air.co.jp/guide-access.html",
+          "observedResponseSha256": "8fe83ddd0e871d0b182aa170cf84e896f80edf3fcb376e6a7dba018a4faad0f9"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+          "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+        }
+      ],
+      "operator": "新中央航空株式会社",
+      "line": "調布・大島国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "RJTF-OIM",
+      "serviceState": "active",
+      "serviceStateScope": "CurrentOctober2026 schedule revision2, October3 explicitlyBpattern. NCA101and102 independentlyprintedoppositedirections; bothAandB include them. Staticphysicalcarrierrelation only; no clocks, futurecalendaror timedconnectionguarantee.",
+      "callingStations": [
+        "調布飛行場",
+        "大島空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "調布飛行場",
+          "operator": "airport-facility:cf03_00029",
+          "line": "airport:cf03_00029",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00029",
+            "requirementId": "review:official-airport:調布",
+            "expectedRequirementName": "調布",
+            "method": "REVIEWED_EXACT_CURRENT_OFFICIAL_AIRFIELD_NAME",
+            "officialNameEvidence": {
+              "officialName": "調布飛行場",
+              "requirementName": "調布",
+              "publicName": "調布飛行場",
+              "equivalenceKind": "EXACT_PRIMARY_CURRENT_FORMAL_NAME",
+              "locator": "Tokyo port bureau current Chofu airfield access/facility pages explicitly name the passenger facility 調布飛行場; original required name調布 plus exact飛行場 suffix. No invented 空港 public alias.",
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+              "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+            },
+            "currentPassengerAccessReview": "Current government access names Odakyu調40 from Keio Chofu north bay14, airfield bus stop zero-minute terminal access. Root-reviewed facility diagram places bus pole on public terminal/front-carpark access outside airfield. C28 remains airport reference point only."
+          }
+        },
+        {
+          "name": "大島空港",
+          "operator": "airport-facility:cf03_00032",
+          "line": "airport:cf03_00032",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00032",
+            "requirementId": "review:official-airport:大島",
+            "expectedRequirementName": "大島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Carrier own airport guide explicitly gives walking connection between airport and namednearest大島空港入口; currentbus officialindependentdirections serve this exactP11 stop. Coarse wholeairport publicwalking relation, no exactcurb/doorway orairside access."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "CurrentOctober2026Bpattern independentlylistsNCA101 調布→大島. Originalsame-IDC28大島空港, noaliasrenaming."
+    },
+    {
+      "factId": "oshima-nca-independent-direction-1",
+      "kind": "service",
+      "sourceActionId": "airport:oshima:current-nca-directions-and-explicit-public-walk",
+      "sourceUrl": "https://central-air.co.jp/pdf/2026-10%E5%A4%A7%E5%B3%B6%E3%83%BBOshimaRev2.pdf",
+      "observedResponseSha256": "e1fcb891e150fe6039f58c02bc9a8ac58932ce1052d82201d474c2575dae304f",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "airport:oshima:current-nca-directions-and-explicit-public-walk",
+          "url": "https://central-air.co.jp/schedule-fee.html",
+          "observedResponseSha256": "6b9dc9e67c4072c112e05eceff7ac3c198b2b70b9f71b803ce57265df6d06806"
+        },
+        {
+          "sourceActionId": "airport:oshima:current-nca-directions-and-explicit-public-walk",
+          "url": "https://central-air.co.jp/guide-access.html",
+          "observedResponseSha256": "8fe83ddd0e871d0b182aa170cf84e896f80edf3fcb376e6a7dba018a4faad0f9"
+        },
+        {
+          "sourceActionId": "airport:tokyo:chofu-current-formal-airfield-and-public-frontage",
+          "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+          "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+        }
+      ],
+      "operator": "新中央航空株式会社",
+      "line": "調布・大島国内線",
+      "mode": "flight",
+      "serviceClass": "定期旅客便",
+      "direction": "OIM-RJTF",
+      "serviceState": "active",
+      "serviceStateScope": "CurrentOctober2026 schedule revision2, October3 explicitlyBpattern. NCA101and102 independentlyprintedoppositedirections; bothAandB include them. Staticphysicalcarrierrelation only; no clocks, futurecalendaror timedconnectionguarantee.",
+      "callingStations": [
+        "大島空港",
+        "調布飛行場"
+      ],
+      "callingComponents": [
+        {
+          "name": "大島空港",
+          "operator": "airport-facility:cf03_00032",
+          "line": "airport:cf03_00032",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00032",
+            "requirementId": "review:official-airport:大島",
+            "expectedRequirementName": "大島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Carrier own airport guide explicitly gives walking connection between airport and namednearest大島空港入口; currentbus officialindependentdirections serve this exactP11 stop. Coarse wholeairport publicwalking relation, no exactcurb/doorway orairside access."
+          }
+        },
+        {
+          "name": "調布飛行場",
+          "operator": "airport-facility:cf03_00029",
+          "line": "airport:cf03_00029",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00029",
+            "requirementId": "review:official-airport:調布",
+            "expectedRequirementName": "調布",
+            "method": "REVIEWED_EXACT_CURRENT_OFFICIAL_AIRFIELD_NAME",
+            "officialNameEvidence": {
+              "officialName": "調布飛行場",
+              "requirementName": "調布",
+              "publicName": "調布飛行場",
+              "equivalenceKind": "EXACT_PRIMARY_CURRENT_FORMAL_NAME",
+              "locator": "Tokyo port bureau current Chofu airfield access/facility pages explicitly name the passenger facility 調布飛行場; original required name調布 plus exact飛行場 suffix. No invented 空港 public alias.",
+              "url": "https://www.kouwan.metro.tokyo.lg.jp/rito/tmg-airport/chofu/koutuu",
+              "observedResponseSha256": "228c09fe003704eb744d68755c841c8d3b826012f759d02f463bdb205a446d6d"
+            },
+            "currentPassengerAccessReview": "Current government access names Odakyu調40 from Keio Chofu north bay14, airfield bus stop zero-minute terminal access. Root-reviewed facility diagram places bus pole on public terminal/front-carpark access outside airfield. C28 remains airport reference point only."
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "0"
+        }
+      ],
+      "locator": "CurrentOctober2026Bpattern independentlylistsNCA102 大島→調布. Existingexactformal調布飛行場 boundtoTokyoauthority review."
+    },
+    {
+      "factId": "oshima-explicit-public-walk-airport-to-named-entrance-stop",
+      "kind": "transfer",
+      "sourceActionId": "airport:oshima:current-nca-directions-and-explicit-public-walk",
+      "sourceUrl": "https://central-air.co.jp/guide-access.html",
+      "observedResponseSha256": "8fe83ddd0e871d0b182aa170cf84e896f80edf3fcb376e6a7dba018a4faad0f9",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:oshima:current-airport-entrance-chinooka-independent-sections",
+          "url": "https://oshima-bus.com/files/260827_jikoku_kouen.pdf",
+          "observedResponseSha256": "952df7258ef040d31f763f8ad40c17a0acfd3cfaedbec37199d54a017141acd0"
+        },
+        {
+          "sourceActionId": "bus:oshima:current-airport-entrance-chinooka-independent-sections",
+          "url": "https://oshima-bus.com/files/rosen-bus/rosen202506.pdf",
+          "observedResponseSha256": "f7311339102095084573c3fd0f28d5be143b45e1c69be03f3702be4f2903d03d"
+        },
+        {
+          "sourceActionId": "bus:oshima:current-airport-entrance-chinooka-independent-sections",
+          "url": "https://oshima-bus.com/abouts.html",
+          "observedResponseSha256": "9d79bf4d6305a385df340d447f9ae1aa1a121a025cb6e5d669ebd6c539bb95a8"
+        },
+        {
+          "sourceActionId": "airport:oshima:current-nca-directions-and-explicit-public-walk",
+          "url": "https://central-air.co.jp/schedule-fee.html",
+          "observedResponseSha256": "6b9dc9e67c4072c112e05eceff7ac3c198b2b70b9f71b803ce57265df6d06806"
+        }
+      ],
+      "components": [
+        {
+          "name": "大島空港",
+          "operator": "airport-facility:cf03_00032",
+          "line": "airport:cf03_00032",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00032",
+            "requirementId": "review:official-airport:大島",
+            "expectedRequirementName": "大島",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Carrier own airport guide explicitly gives walking connection between airport and namednearest大島空港入口; currentbus officialindependentdirections serve this exactP11 stop. Coarse wholeairport publicwalking relation, no exactcurb/doorway orairside access."
+          }
+        },
+        {
+          "name": "大島空港入口",
+          "operator": "大島旅客自動車（株）",
+          "line": "p11-stop:P11-22_13:bs76",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_13:bs76",
+            "recordSha256": "e604c5f4b14c2f14bc5eb3d78d76c2f06e70fc26ff589b311ceaa14b034b93e0",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact native sameoperator P11大島公園ライン representative. CurrentOct1-Feb5 independent dailyrow1 tables name adjacent地の岡 and大島空港入口 in respective directions. No oppositepole collapse or preciseplatformcoordinate. Operatorbrand resolved by own currentcorporate legalname.",
+            "currentOperatorEvidence": {
+              "recordOperator": "大島旅客自動車（株）",
+              "currentOperatorName": "大島旅客自動車株式会社",
+              "currentStopName": "大島空港入口",
+              "historicalRoute": "大島公園ライン",
+              "url": "https://oshima-bus.com/abouts.html",
+              "observedResponseSha256": "9d79bf4d6305a385df340d447f9ae1aa1a121a025cb6e5d669ebd6c539bb95a8"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "CARRIER_EXPLICIT_NAMED_PUBLIC_WALK_AIRPORT_TO_EXACT_OPERATOR_STOP",
+      "hubScopeComplete": false,
+      "locator": "Carrierown大島空港 guide explicitly identifies nearest大島空港入口 via walking. Currentoperator table independentlyserves thissame nativeoperator/name and separates it from大島空港ターミナル. Public pedestrian relation only; no duration, precisegeometry, coordinate proximity or airside access claimed."
+    }
+  ],
+  "scope": "OriginalOshimaairport chain only, twoexactP11 representatives, originalsame-IDHOLDupgrade, sixedges. Noport, islandloop, helicopternetwork or otherisland expansion."
+}

@@ -1,0 +1,250 @@
+{
+  "phaseId": "103-yutorito-municipal-directional-guideway-and-ozone-closure",
+  "strategy": [
+    "INDEPENDENT_MUNICIPAL_CURRENT_DIRECTIONAL_OPERATING_PATTERNS",
+    "EXPLICIT_GUIDEWAY_PUBLIC_APPROACH_CLOSES_OZONE"
+  ],
+  "completedActionIds": [
+    "special:yutorito:municipal-directional-guideway-patterns-and-ozone"
+  ],
+  "facts": [
+    {
+      "factId": "yutorito-current-municipal-guideway-pattern-obataryokuchibound",
+      "kind": "service",
+      "sourceActionId": "special:yutorito:municipal-directional-guideway-patterns-and-ozone",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/Yomiage/CityBusRoute/RosenMapKikanDetail?code=3&direction=%E5%BE%80&from=%E5%A4%A7%E6%9B%BD%E6%A0%B9&name=%E3%82%86%E3%81%A8%E3%82%8A%E3%83%BC%E3%81%A8%E3%83%A9%E3%82%A4%E3%83%B3&to=%E9%AB%98%E8%94%B5%E5%AF%BA",
+      "observedResponseSha256": "99c1bd7389dfc8511f53b56a5e67bb5f0f95af55e12846152b7b37c4ca948c5a",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.kotsu.city.nagoya.jp/Yomiage/CityBusRoute/BusStopDiaResult?name=%E5%A4%A7%E6%9B%BD%E6%A0%B9&pole=0G1&keito=6303001&drvdiv=%E5%B9%B3%E6%97%A5&hour=10&min=0",
+          "observedResponseSha256": "c4a8e277cff921c35ec884056940b885e340ec73ee25e3d9d7e196ee10625308"
+        },
+        {
+          "url": "https://www.kotsu.city.nagoya.jp/Yomiage/CityBusRoute/BusStopDetail?name=%E5%A4%A7%E6%9B%BD%E6%A0%B9",
+          "observedResponseSha256": "770f2f313cf910c64894690c1ce11419a1c721eb1fc058d92e88ab211e88e401"
+        },
+        {
+          "url": "https://www.kotsu.city.nagoya.jp/rp/ticket/trp0001550.htm",
+          "observedResponseSha256": "072bd935c2969ea8c8e79335d4c0049ab6e22e6140bd5f9d276e1842019f7bb9"
+        }
+      ],
+      "locator": "Municipal current directional operating-pattern stop list code 3 reviewed separately for outward and return service. Retain only continuous nine-station fixed-guideway subsection between Ozone and Obata Ryokuchi; exclude all surface bus branches beyond it. Municipal weekday departure result (hour 10/minute 0 query) corroborates actual operation: outward first displayed departure carries Kozoji via Obata-Ryokuchi legend, inward first displayed departure explicitly bound for Ozone. No clock values, inferred reverse adjacency, full schedule, surface-only namesake stop or live operating guarantee retained. Independent S12 exact operator/line station identities preserve the fixed-guideway component.",
+      "line": "ガイドウェイバス志段味線",
+      "operator": "名古屋ガイドウェイバス",
+      "mode": "fixed_guideway",
+      "serviceClass": "ゆとりーとライン高架区間",
+      "direction": "obataryokuchibound",
+      "callingStations": [
+        "大曽根",
+        "ナゴヤドーム前矢田",
+        "砂田橋",
+        "守山",
+        "金屋",
+        "川宮",
+        "川村",
+        "白沢渓谷",
+        "小幡緑地"
+      ],
+      "callingComponents": [
+        {
+          "name": "大曽根",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "ナゴヤドーム前矢田",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "砂田橋",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "守山",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "金屋",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "川宮",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "川村",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "白沢渓谷",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "小幡緑地",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "CURRENT_MUNICIPAL_DIRECTIONAL_OPERATING_PATTERN_PLUS_ACTUAL_DEPARTURE_LEGEND",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "yutorito-current-municipal-guideway-pattern-ozonebound",
+      "kind": "service",
+      "sourceActionId": "special:yutorito:municipal-directional-guideway-patterns-and-ozone",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/Yomiage/CityBusRoute/RosenMapKikanDetail?code=3&direction=%E5%BE%A9&from=%E5%A4%A7%E6%9B%BD%E6%A0%B9&name=%E3%82%86%E3%81%A8%E3%82%8A%E3%83%BC%E3%81%A8%E3%83%A9%E3%82%A4%E3%83%B3&to=%E9%AB%98%E8%94%B5%E5%AF%BA",
+      "observedResponseSha256": "3b41957a9239253a382ecf5d9cb8cfd596cdc6d85ba3e652750458b9a13b422f",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.kotsu.city.nagoya.jp/Yomiage/CityBusRoute/BusStopDiaResult?name=%E5%B0%8F%E5%B9%A1%E7%B7%91%E5%9C%B0&pole=6G1&keito=6303002&drvdiv=%E5%B9%B3%E6%97%A5&hour=10&min=0",
+          "observedResponseSha256": "98ecbeab78178ae51b56d2a6c46aab2636ee2b9c33643e615a2ec96280f50c8e"
+        },
+        {
+          "url": "https://www.kotsu.city.nagoya.jp/Yomiage/CityBusRoute/BusStopDetail?name=%E5%B0%8F%E5%B9%A1%E7%B7%91%E5%9C%B0",
+          "observedResponseSha256": "f6af1bebdb088e6a17c6b6fa825c77011b667b03da412e710cef32d5e7d084f8"
+        },
+        {
+          "url": "https://www.kotsu.city.nagoya.jp/rp/ticket/trp0001550.htm",
+          "observedResponseSha256": "072bd935c2969ea8c8e79335d4c0049ab6e22e6140bd5f9d276e1842019f7bb9"
+        }
+      ],
+      "locator": "Municipal current directional operating-pattern stop list code 3 reviewed separately for outward and return service. Retain only continuous nine-station fixed-guideway subsection between Ozone and Obata Ryokuchi; exclude all surface bus branches beyond it. Municipal weekday departure result (hour 10/minute 0 query) corroborates actual operation: outward first displayed departure carries Kozoji via Obata-Ryokuchi legend, inward first displayed departure explicitly bound for Ozone. No clock values, inferred reverse adjacency, full schedule, surface-only namesake stop or live operating guarantee retained. Independent S12 exact operator/line station identities preserve the fixed-guideway component.",
+      "line": "ガイドウェイバス志段味線",
+      "operator": "名古屋ガイドウェイバス",
+      "mode": "fixed_guideway",
+      "serviceClass": "ゆとりーとライン高架区間",
+      "direction": "ozonebound",
+      "callingStations": [
+        "小幡緑地",
+        "白沢渓谷",
+        "川村",
+        "川宮",
+        "金屋",
+        "守山",
+        "砂田橋",
+        "ナゴヤドーム前矢田",
+        "大曽根"
+      ],
+      "callingComponents": [
+        {
+          "name": "小幡緑地",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "白沢渓谷",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "川村",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "川宮",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "金屋",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "守山",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "砂田橋",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "ナゴヤドーム前矢田",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        },
+        {
+          "name": "大曽根",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "reviewMethod": "CURRENT_MUNICIPAL_DIRECTIONAL_OPERATING_PATTERN_PLUS_ACTUAL_DEPARTURE_LEGEND",
+      "serviceState": "active",
+      "serviceStateScope": "CURRENT_PUBLISHED_STATIC_PATTERN_NOT_REALTIME"
+    },
+    {
+      "factId": "ozone-metro-guideway-current-public-stair-passage",
+      "kind": "transfer",
+      "sourceActionId": "special:yutorito:municipal-directional-guideway-patterns-and-ozone",
+      "sourceUrl": "https://www.kotsu.city.nagoya.jp/rp/reader/trp0001178.htm",
+      "observedResponseSha256": "a656b0e9d2878fb36f457fe10a26876f5153f5819e3ae89ac3cda4547d68b500",
+      "corroboratingEvidence": [
+        {
+          "url": "https://www.kotsu.city.nagoya.jp/datas/eki_campus_files/M12_Ozone.gif",
+          "observedResponseSha256": "f0ba4805836d70e2ea1f55819301dad7f09d5850322e9e7d7037ae08eeeb4f07"
+        },
+        {
+          "url": "https://www.kotsu.city.nagoya.jp/rp/reader/trp0001169.htm",
+          "observedResponseSha256": "e493669f6a8a3389c9668228d16a2e7bcc793d022d4cb90392ce672b69cbfd0a"
+        }
+      ],
+      "locator": "Current municipal interchange guide section subway to Yutorito explicitly describes exit 2 public approach to the guideway staircase, with separate upward and downward escalators. The current municipal Ozone diagram independently signs Yutorito from the east public concourse. Bind this reviewed physical passage to the fixed-guideway S12 station rather than nearby surface bus bays. Retain only minimum relation, no route prose/distances, duration or live accessibility guarantee.",
+      "components": [
+        {
+          "name": "大曽根",
+          "operator": "名古屋市",
+          "line": "2号線名城線",
+          "mode": "metro"
+        },
+        {
+          "name": "大曽根",
+          "operator": "名古屋ガイドウェイバス",
+          "line": "ガイドウェイバス志段味線",
+          "mode": "fixed_guideway"
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "EXPLICIT_MUNICIPAL_PUBLIC_STAIR_AND_BOTH_DIRECTION_ESCALATOR_APPROACH",
+      "hubScopeComplete": false
+    }
+  ]
+}

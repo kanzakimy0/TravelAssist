@@ -1,0 +1,114 @@
+{
+  "task": "TASK-083-A",
+  "scope": "CANONICAL_OWNER_CORRECTION",
+  "baseDevelopSha": "5b951195698d3e421f34a9922393b454412fa4bb",
+  "runtimeManifest": {
+    "path": "src/shared/data/canonical-poi-pilot100.runtime-manifest.v1.json",
+    "sha256": "b4f714078d2780324f9e98fbaf58001177040dbc30d9693e7bfef1019d6643df",
+    "datasetRevision": "task-083-a-pilot100-owner-adjudication-v2",
+    "datasetSha256": "0a91f0ec36c193b4a95c15dcad01338286ea91afb5003f3e1abdf7c7a9366ad5",
+    "datasetFileSha256": "c3ed64d518913be8c9c8d4ec07ed85bf4a446228e73ca1ac19026057efd1c6af"
+  },
+  "focused": {
+    "pass": 20,
+    "fail": 0,
+    "exitCode": 0
+  },
+  "fullRegression": {
+    "command": "node --import ./tests/register-route-ts.mjs --test --test-concurrency=4 tests/*.test.mjs",
+    "pass": 2829,
+    "fail": 0,
+    "exitCode": 0
+  },
+  "lint": {
+    "exitCode": 0,
+    "errors": 0,
+    "existingWarnings": 10
+  },
+  "typecheck": {
+    "exitCode": 0
+  },
+  "formatCheckDeploy": {
+    "exitCode": 0
+  },
+  "deployValidateLocal": {
+    "exitCode": 0
+  },
+  "build": {
+    "exitCode": 0,
+    "artifactFiles": 1908,
+    "parentCommit": "5b951195698d3e421f34a9922393b454412fa4bb",
+    "includesWorkingTreeChanges": true
+  },
+  "artifactVerify": {
+    "exitCode": 0,
+    "failures": []
+  },
+  "readOnlyReauthorization": "PASS",
+  "readOnlyOwnerAudit": "PASS",
+  "readOnlyTrustedBaseline": "PASS",
+  "transportArtifactsChanged": 0,
+  "exactHeadQualityGate": "See correction PR body for final-head and merged-develop run receipts.",
+  "logs": {
+    "artifact-verify.log": {
+      "path": ".cache/qa/canonical-owner/artifact-verify.log",
+      "sha256": "27dd021e240dcbc22e3a03163c4ee09e251064b31d86eb9ab113e46e9649b39c"
+    },
+    "audit.log": {
+      "path": ".cache/qa/canonical-owner/audit.log",
+      "sha256": "769af2feb675618af13add1383bc1545dd4b87a19be972a7784a3ebbe207c265"
+    },
+    "baseline-rebind.log": {
+      "path": ".cache/qa/canonical-owner/baseline-rebind.log",
+      "sha256": "310bf1db61fdb8d10addc788a78a8136bd43a13cf244643647af519f5f1aed68"
+    },
+    "build.log": {
+      "path": ".cache/qa/canonical-owner/build.log",
+      "sha256": "70a1b57c44344f15fb3e5d7841460fc7830e6ad0114a68436ac237e3a2e97c8a"
+    },
+    "deploy-validate.log": {
+      "path": ".cache/qa/canonical-owner/deploy-validate.log",
+      "sha256": "e66d3f8322fc1a357ede3ee93152789b93f9bf64d9fc209d59d052a268906993"
+    },
+    "focused.log": {
+      "path": ".cache/qa/canonical-owner/focused.log",
+      "sha256": "256f69cf0d0648785e271f2aff2261c5688a03550c7a9f2a398b1bbce7ba3894"
+    },
+    "format.log": {
+      "path": ".cache/qa/canonical-owner/format.log",
+      "sha256": "f0633e03b36adc235b1a8f5f6eec8113effd9485fad9d22fce550dd1a4b5e885"
+    },
+    "full-regression.log": {
+      "path": ".cache/qa/canonical-owner/full-regression.log",
+      "sha256": "1356f09786df6bb5a9c746ab3953bd6f38a8dbda4dfdfcafb820054e49bd6d69"
+    },
+    "lint.log": {
+      "path": ".cache/qa/canonical-owner/lint.log",
+      "sha256": "ef5b5a340ab38605807bea4b5298afac24e8c9886bcd6bdebe1971faa178f673"
+    },
+    "read-only-baseline.log": {
+      "path": ".cache/qa/canonical-owner/read-only-baseline.log",
+      "sha256": "310bf1db61fdb8d10addc788a78a8136bd43a13cf244643647af519f5f1aed68"
+    },
+    "read-only-owner-audit.log": {
+      "path": ".cache/qa/canonical-owner/read-only-owner-audit.log",
+      "sha256": "7875b7152361c50b4238ac9375e9db85624de40847c5d49e3d348c0ec1214bc4"
+    },
+    "read-only-reauthorization.log": {
+      "path": ".cache/qa/canonical-owner/read-only-reauthorization.log",
+      "sha256": "b22f7bb06fde81d52718ca219b89fdbfa534e175b2a0cf5e2fecc207d09aed00"
+    },
+    "reauthorize.log": {
+      "path": ".cache/qa/canonical-owner/reauthorize.log",
+      "sha256": "db2d24f2f943015c5987be3ffad58326d307e55a4a32715cbb8f7219055336ff"
+    },
+    "recommendation-replay.log": {
+      "path": ".cache/qa/canonical-owner/recommendation-replay.log",
+      "sha256": "a64ae0569c4ff3ab3c1cd74ed09521517e8ab68b6c0edf8f86ca867f44bdca6c"
+    },
+    "typecheck.log": {
+      "path": ".cache/qa/canonical-owner/typecheck.log",
+      "sha256": "63d16c81d21252686c12fcf1c42872b9cc629b7cdf2bf9db4714b3d9dcbfdc0f"
+    }
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "kind": "REVIEWED_NATIVE_OR_MINIMAL_FACTS",
+  "source": {
+    "sourceId": "hateruma229:abr:master",
+    "url": "https://data.address-br.digital.go.jp/mt_parcel/city/mt_parcel_city473812.csv.zip",
+    "observedAt": "2026-10-03T19:44:55.026800+00:00",
+    "contentSha256": "36099b0e034a2016c7b4b2183a3ccc40384cb6b8c09edf478cb8740f0b598233",
+    "rightsClass": "RAW_PERSISTENCE_ALLOWED",
+    "rightsDecision": "REVIEWED_PDL_1_0_PLUS_MOJ_TERMS",
+    "license": "PDL-1.0+MOJ-MAP-DATA-TERMS",
+    "rightsBindingSchemaVersion": 1,
+    "rightsBinding": {
+      "license": "PDL-1.0+MOJ-MAP-DATA-TERMS",
+      "attribution": "デジタル庁 アドレス・ベース・レジストリ 地番マスター/地番マスター位置参照 竹富町; 法務省 登記所備付地図データ. 2026-10-04利用; TravelAssistが公共施設台帳の公園地号に完全一致結合して作成。",
+      "shareAlikeRequired": false,
+      "shareAlikeScope": "NONE"
+    },
+    "attribution": "デジタル庁 アドレス・ベース・レジストリ 地番マスター/地番マスター位置参照 竹富町; 法務省 登記所備付地図データ. 2026-10-04利用; TravelAssistが公共施設台帳の公園地号に完全一致結合して作成。",
+    "persistenceAllowed": true,
+    "rawPayloadRetained": true,
+    "derivedDataAllowed": true,
+    "redistributionAllowed": true,
+    "retainedArchive": "sources/raw/hateruma-abr-master-473812.zip",
+    "retainedArchiveSha256": "36099b0e034a2016c7b4b2183a3ccc40384cb6b8c09edf478cb8740f0b598233",
+    "nativeArchiveRole": "ABR_MASTER",
+    "rightsReview": {
+      "pdlTermsResponseSha256": "7c808e8a07a46266382d5d071c67ac07cb70812e5334ad0be76b742beee59f14",
+      "mojTermsResponseSha256": "275914c735b19cc7a274a13aac22e0c08378269d9d80f26f6b285aca32367b99",
+      "processingDisclosure": "TravelAssist selected exact source composite-key parcel join and separately reviewed municipal public-park identity; representative point, not curb or navigation geometry.",
+      "noIndividualIdentification": true,
+      "termsEvidenceRefs": [
+        "transport-evidence:086:5c8b8f8357a313e8ab6d6933c8515dfe",
+        "transport-evidence:086:64543feb963618c7a01362a2b25e8c3d"
+      ]
+    }
+  },
+  "evidence": [
+    {
+      "evidenceId": "transport-evidence:086:cb8fca4343719348f9c99d9df3eba5a2",
+      "sourceId": "hateruma229:abr:master",
+      "sourceSha256": "36099b0e034a2016c7b4b2183a3ccc40384cb6b8c09edf478cb8740f0b598233",
+      "record": {
+        "dataset": "ABR_EXACT_MUNICIPAL_PUBLIC_FACILITY_PARCEL",
+        "nativeRecord": {
+          "master": {
+            "lg_code": "473812",
+            "machiaza_id": "0009000",
+            "prc_id": "027800000000000",
+            "city": "竹富町",
+            "ward": "",
+            "oaza_cho": "字波照間",
+            "chome": "",
+            "koaza": "",
+            "machiaza_dist": "",
+            "prc_num1": "2780",
+            "prc_num2": "",
+            "prc_num3": "",
+            "rsdt_addr_flg": "0",
+            "prc_rec_flg": "1",
+            "prc_area_code": "",
+            "efct_date": "1947-04-17",
+            "ablt_date": "",
+            "src_code": "1",
+            "remarks": "",
+            "real_prop_num": ""
+          },
+          "position": {
+            "lg_code": "473812",
+            "machiaza_id": "0009000",
+            "prc_id": "027800000000000",
+            "rep_lon": "123.775640806",
+            "rep_lat": "24.060652813",
+            "rep_srid": "EPSG:6668",
+            "rep_scale": "500",
+            "rep_src_code": "1",
+            "plygn_fname": "",
+            "plygn_kcode": "",
+            "plygn_fmt": "",
+            "plygn_srid": "EPSG:6668",
+            "plygn_scale": "500",
+            "plygn_src_code": "1",
+            "moj_map_city_code": "47381",
+            "moj_map_oaza_code": "007",
+            "moj_map_chome_code": "000",
+            "moj_map_koaza_code": "0000",
+            "moj_map_spare_code": "00",
+            "moj_map_brushid": "H000001154"
+          },
+          "municipalFacilityAddressReview": {
+            "kind": "REVIEWED_OFFICIAL_NAMED_FACILITY_EXACT_PARCEL",
+            "sourceFactId": "hateruma:municipal-park-exact-address:2016:p8",
+            "sourceActionId": "hateruma:municipal-park-identity",
+            "sourceUrl": "https://www.town.taketomi.lg.jp/userfiles/files/sanngyou_h28.pdf",
+            "observedResponseSha256": "826535407bdce0aa299c33e6e4caf2d2b1368015e5f7804c012a5f66c6998925",
+            "municipalityCode": "473812",
+            "city": "竹富町",
+            "oazaCho": "字波照間",
+            "parcelNumbers": [
+              "2780",
+              "",
+              ""
+            ],
+            "facilityName": "ムシャマー公園",
+            "officialAddress": "竹富町字波照間2780番地",
+            "areaSquareMetres": 4000,
+            "physicalPage": 8,
+            "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+            "coordinateProximityUsed": false,
+            "googleCoordinatesUsed": false
+          }
+        },
+        "nativeRecordSha256": "ed9053109691fbe8f0be97f941abb6d97539f55d61f0cca1440b2d51a48d5d33",
+        "archiveSha256": "36099b0e034a2016c7b4b2183a3ccc40384cb6b8c09edf478cb8740f0b598233",
+        "positionArchiveSha256": "a5ec9ac3cac764b83f198c636877d142e37969d6bda5b7099e151854ab800092",
+        "memberSha256": "2cce18c452ac061563c465c50970cb942247047b134d50ab95030f1e81fdec4f",
+        "positionMemberSha256": "c88c3374661801a3a9e8447ffd2d97575a5fe85b77f27179dbb9377325abb440",
+        "name": "ムシャマー公園",
+        "address": "竹富町字波照間2780番地",
+        "municipalityCode": "473812",
+        "latitude": 24.060652813,
+        "longitude": 123.775640806,
+        "coordinateReferenceSystem": "EPSG:6668",
+        "coordinateScope": "OFFICIAL_PARCEL_REPRESENTATIVE_NOT_BUS_POLE_ENTRANCE_OR_NAVIGATION",
+        "identityAnchor": "abr-parcel:473812:0009000:027800000000000:municipal-public-facility"
+      },
+      "recordSha256": "ce65f8e699e244cbc8a20ec6e92ff92b671d3f52431baf3c60988be9c229b175",
+      "locator": "Exact original native master+position composite-key join and independent municipal public park parcel evidence"
+    }
+  ]
+}

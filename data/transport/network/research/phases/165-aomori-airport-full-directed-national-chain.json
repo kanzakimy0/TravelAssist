@@ -1,0 +1,802 @@
+{
+  "phaseId": "165-aomori-airport-full-directed-national-chain",
+  "strategy": [
+    "FULL_ORIGINAL_CONTINUOUS_SCOPE",
+    "REUSED_SOURCE_CACHE_AND_EXACT_P11_IDENTITIES",
+    "INDEPENDENT_RESTRICTED_CALLS",
+    "PRIMARY_PUBLIC_GATE_AND_FRONTAGE",
+    "EXISTING_SHINAOMORI_INTERCHANGE_REUSED"
+  ],
+  "completedActionIds": [
+    "bus:jrbus-tohoku:aomori-airport-current-directed-chain",
+    "rail:jr-east:aomori-shinaomori-actual-directed-sections",
+    "public:times:aomori-airport-public-exit-bus-signage",
+    "public:aomori-city:station-east-public-passage-and-jrbus"
+  ],
+  "facts": [
+    {
+      "factId": "aomori-core-airport-bus-airport-bound",
+      "kind": "service",
+      "sourceActionId": "bus:jrbus-tohoku:aomori-airport-current-directed-chain",
+      "sourceUrl": "https://www.jrbustohoku.co.jp/route/1/282/",
+      "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:jrbus-tohoku:aomori-airport-current-directed-chain",
+          "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+          "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+        }
+      ],
+      "callingStations": [
+        "青森駅",
+        "新町一丁目",
+        "県庁通り",
+        "新町二丁目",
+        "柳町通り",
+        "大野十文字",
+        "農協会館前",
+        "青森朝日放送局前",
+        "青森空港"
+      ],
+      "callingComponents": [
+        {
+          "name": "青森駅",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1066",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1066",
+            "recordSha256": "a8e0d54b99e82e63d9c672837e69b3b1ba2d387a3c74bbe9f545ccb9fc0af0f2",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "青森駅",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "新町一丁目",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1104",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1104",
+            "recordSha256": "6c3cb3025e4eac7203bc034a13e6d1165eb553a04ced6c74345a0730a3fe4572",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "新町一丁目",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "県庁通り",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1122",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1122",
+            "recordSha256": "14695806495cbf338ded191f7fdd2874aae2111d7fa59eec48722346d6f5e470",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "県庁通り",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "新町二丁目",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1142",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1142",
+            "recordSha256": "ee4b652cdf7e2b103adae6b9b638fb8ab9baaa103d8291ce22e15f15feda074a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "新町二丁目",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "柳町通り",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1207",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1207",
+            "recordSha256": "958c8c57492acd8de11482564d4a2e15ac9456e73db4ae8f46602586bb25792d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "柳町通り",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "大野十文字",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1370",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1370",
+            "recordSha256": "1418bc42237547fdc9e6a3971f9c10c0e1f48dac00794869b2228c6a6842bc0d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "大野十文字",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "農協会館前",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1434",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1434",
+            "recordSha256": "8455c9fcc5bddb4c6cbd5a41346eaa34e36cdd10a5470ed9087e94f4fd272ecc",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "農協会館前",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "青森朝日放送局前",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1525",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1525",
+            "recordSha256": "c6775f926ceb647d8b662a88c58d066f5cc6a22b1d2047d334990b38ffff9629",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "青森朝日放送局前",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "青森空港",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1869",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1869",
+            "recordSha256": "ff60e01225415bd9d3d0b7fc407bc84f7be9facd40fc881cc4005790caffd680",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "青森空港",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "青森空港線",
+      "operator": "ジェイアールバス東北株式会社",
+      "direction": "airport-bound",
+      "serviceClass": "空港連絡バス",
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_FIRST_COLUMN_ALL_ORDERED_CALLS",
+      "serviceState": "active",
+      "serviceStateScope": "SEPTEMBER_1_OCTOBER_24_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "locator": "Each direction independently reviewed from current first daily actual column. Eight sequential segments; intermediate pickup/dropoff restrictions explicit; no arbitrary reverse, clock data, frequency or guaranteed onward connection."
+    },
+    {
+      "factId": "aomori-core-airport-bus-city-bound",
+      "kind": "service",
+      "sourceActionId": "bus:jrbus-tohoku:aomori-airport-current-directed-chain",
+      "sourceUrl": "https://www.jrbustohoku.co.jp/route/1/282/",
+      "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "bus:jrbus-tohoku:aomori-airport-current-directed-chain",
+          "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+          "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+        }
+      ],
+      "callingStations": [
+        "青森空港",
+        "青森朝日放送局前",
+        "農協会館前",
+        "大野十文字",
+        "柳町通り",
+        "新町二丁目",
+        "県庁通り",
+        "新町一丁目",
+        "青森駅"
+      ],
+      "callingComponents": [
+        {
+          "name": "青森空港",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1869",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1869",
+            "recordSha256": "ff60e01225415bd9d3d0b7fc407bc84f7be9facd40fc881cc4005790caffd680",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "青森空港",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "青森朝日放送局前",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1525",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1525",
+            "recordSha256": "c6775f926ceb647d8b662a88c58d066f5cc6a22b1d2047d334990b38ffff9629",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "青森朝日放送局前",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "農協会館前",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1434",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1434",
+            "recordSha256": "8455c9fcc5bddb4c6cbd5a41346eaa34e36cdd10a5470ed9087e94f4fd272ecc",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "農協会館前",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "大野十文字",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1370",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1370",
+            "recordSha256": "1418bc42237547fdc9e6a3971f9c10c0e1f48dac00794869b2228c6a6842bc0d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "大野十文字",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "柳町通り",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1207",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1207",
+            "recordSha256": "958c8c57492acd8de11482564d4a2e15ac9456e73db4ae8f46602586bb25792d",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "柳町通り",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "新町二丁目",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1142",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1142",
+            "recordSha256": "ee4b652cdf7e2b103adae6b9b638fb8ab9baaa103d8291ce22e15f15feda074a",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "新町二丁目",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "県庁通り",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1122",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1122",
+            "recordSha256": "14695806495cbf338ded191f7fdd2874aae2111d7fa59eec48722346d6f5e470",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "県庁通り",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "新町一丁目",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1104",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1104",
+            "recordSha256": "6c3cb3025e4eac7203bc034a13e6d1165eb553a04ced6c74345a0730a3fe4572",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "新町一丁目",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        },
+        {
+          "name": "青森駅",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1066",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1066",
+            "recordSha256": "a8e0d54b99e82e63d9c672837e69b3b1ba2d387a3c74bbe9f545ccb9fc0af0f2",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "青森駅",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        }
+      ],
+      "callingRestrictions": [
+        {
+          "pickupType": "0",
+          "dropOffType": "1"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        },
+        {
+          "pickupType": "1",
+          "dropOffType": "0"
+        }
+      ],
+      "mode": "airport_bus",
+      "purpose": "airport",
+      "line": "青森空港線",
+      "operator": "ジェイアールバス東北株式会社",
+      "direction": "aomori-bound",
+      "serviceClass": "空港連絡バス",
+      "reviewMethod": "INDEPENDENT_CURRENT_ACTUAL_FIRST_COLUMN_ALL_ORDERED_CALLS",
+      "serviceState": "active",
+      "serviceStateScope": "SEPTEMBER_1_OCTOBER_24_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "locator": "Each direction independently reviewed from current first daily actual column. Eight sequential segments; intermediate pickup/dropoff restrictions explicit; no arbitrary reverse, clock data, frequency or guaranteed onward connection."
+    },
+    {
+      "factId": "aomori-core-ou-642M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-east:aomori-shinaomori-actual-directed-sections",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/015/015001.html",
+      "observedResponseSha256": "0a31645f00bb15df42a0c91e388768be8271e3aaea8330e4c3ea0d48199f12ac",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-east:aomori-shinaomori-actual-directed-sections",
+          "url": "https://timetables.jreast.co.jp/2610/train/015/015001.html",
+          "observedResponseSha256": "0a31645f00bb15df42a0c91e388768be8271e3aaea8330e4c3ea0d48199f12ac"
+        }
+      ],
+      "callingStations": [
+        "青森",
+        "新青森"
+      ],
+      "callingComponents": [
+        {
+          "name": "青森",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "新青森",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "regional",
+      "line": "奥羽線・青森新青森連絡",
+      "operator": "東日本旅客鉄道",
+      "direction": "新青森-bound",
+      "serviceClass": "普通",
+      "serviceNumber": "642M",
+      "reviewMethod": "ACTUAL_INDEPENDENT_TRAIN_COLUMN_CONTIGUOUS_SECTION_OCTOBER2_CALENDAR",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "locator": "642M independently reviewed October2026 train calendar td.ok contains day2; only contiguous two-call section retained; omitted further route, clocks and calendar data. Existing exact ShinAomori national connection reused."
+    },
+    {
+      "factId": "aomori-core-ou-621M",
+      "kind": "service",
+      "sourceActionId": "rail:jr-east:aomori-shinaomori-actual-directed-sections",
+      "sourceUrl": "https://timetables.jreast.co.jp/2610/train/010/014651.html",
+      "observedResponseSha256": "9f0eebbe7e8d6a0cfb9272be7f431eb4da7725170de607dd3b3a1b133e087038",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "rail:jr-east:aomori-shinaomori-actual-directed-sections",
+          "url": "https://timetables.jreast.co.jp/2610/train/010/014651.html",
+          "observedResponseSha256": "9f0eebbe7e8d6a0cfb9272be7f431eb4da7725170de607dd3b3a1b133e087038"
+        }
+      ],
+      "callingStations": [
+        "新青森",
+        "青森"
+      ],
+      "callingComponents": [
+        {
+          "name": "新青森",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "青森",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        }
+      ],
+      "mode": "conventional_rail",
+      "purpose": "regional",
+      "line": "奥羽線・青森新青森連絡",
+      "operator": "東日本旅客鉄道",
+      "direction": "青森-bound",
+      "serviceClass": "普通",
+      "serviceNumber": "621M",
+      "reviewMethod": "ACTUAL_INDEPENDENT_TRAIN_COLUMN_CONTIGUOUS_SECTION_OCTOBER2_CALENDAR",
+      "serviceState": "active",
+      "serviceStateScope": "OCTOBER_2_2026_PUBLISHED_SERVICE_NOT_REALTIME",
+      "locator": "621M independently reviewed October2026 train calendar td.ok contains day2; only contiguous two-call section retained; omitted further route, clocks and calendar data. Existing exact ShinAomori national connection reused."
+    },
+    {
+      "factId": "aomori-core-airport-public-exit-bus-frontage",
+      "kind": "transfer",
+      "sourceActionId": "public:times:aomori-airport-public-exit-bus-signage",
+      "sourceUrl": "https://rental.timescar.jp/aomori/items/shop/aomori-0001.jpg",
+      "observedResponseSha256": "61e9ee16561db09b6b8c7104ca68ebb700a20372f627ed0e2924659810486257",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "public:times:aomori-airport-public-exit-bus-signage",
+          "url": "https://rental.timescar.jp/aomori/shop/0208/route01.html",
+          "observedResponseSha256": "0421808afc851cc6ae8e44a1ec7a1af460ad237875614390be084ced9ec916c5"
+        },
+        {
+          "sourceActionId": "bus:jrbus-tohoku:aomori-airport-current-directed-chain",
+          "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+          "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+        }
+      ],
+      "components": [
+        {
+          "name": "青森空港",
+          "operator": "airport-facility:cf03_00020",
+          "line": "airport:cf03_00020",
+          "mode": "flight",
+          "airportIdentity": {
+            "dataset": "C28-21",
+            "referencePointId": "cf03_00020",
+            "requirementId": "review:transport-node:45ab138f-704f-51c1-a4f7-db3a5f19b9b8",
+            "expectedRequirementName": "青森",
+            "method": "REVIEWED_EXACT_OFFICIAL_NAME_WITH_AIRPORT_SUFFIX",
+            "currentPassengerAccessReview": "Public arrival exit doors and bus directional signage visibly reviewed in primary ground operator guide; current carrier identifies airport road stop2. Coarse public exit/frontage only; no airside or exact bay geometry."
+          }
+        },
+        {
+          "name": "青森空港",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1869",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1869",
+            "recordSha256": "ff60e01225415bd9d3d0b7fc407bc84f7be9facd40fc881cc4005790caffd680",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "青森空港",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_PUBLIC_EXIT_BUS_SIGN_AND_CURRENT_CARRIER",
+      "hubScopeComplete": false,
+      "locator": "Viewed public arrival exit with bus sign left; official ground operator guide confirms public doors to frontage. JR Bus current page identifies airport2. No airside, coordinates, rental mode, walking distance or timing retained."
+    },
+    {
+      "factId": "aomori-core-jr-east-free-passage-to-airport-bus11",
+      "kind": "transfer",
+      "sourceActionId": "public:aomori-city:station-east-public-passage-and-jrbus",
+      "sourceUrl": "https://www.city.aomori.aomori.jp/_res/projects/default_project/_page_/001/006/804/20240315-20.pdf",
+      "observedResponseSha256": "8ac6c62e52cee26f7f9ca59c5da8b937dfe28ed81ae4a0155aa2437ba226e772",
+      "corroboratingEvidence": [
+        {
+          "sourceActionId": "public:aomori-city:station-east-public-passage-and-jrbus",
+          "url": "https://www.city.aomori.aomori.jp/kurashi_kankyo/koutsuu/1002395/1002396.html",
+          "observedResponseSha256": "44b79d914be472ab1657efc11a469c2b28a3b65c3b30d4822cb7d47fd1705b55"
+        },
+        {
+          "sourceActionId": "bus:jrbus-tohoku:aomori-airport-current-directed-chain",
+          "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+          "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+        }
+      ],
+      "components": [
+        {
+          "name": "青森",
+          "operator": "東日本旅客鉄道",
+          "line": "奥羽線",
+          "mode": "conventional_rail"
+        },
+        {
+          "name": "青森駅",
+          "operator": "ジェイアールバス東北（株）",
+          "line": "p11-stop:P11-22_02:bs1066",
+          "mode": "airport_bus",
+          "nodeKind": "bus_stop",
+          "busIdentity": {
+            "dataset": "P11-22",
+            "stopRecordId": "P11-22_02:bs1066",
+            "recordSha256": "a8e0d54b99e82e63d9c672837e69b3b1ba2d387a3c74bbe9f545ccb9fc0af0f2",
+            "method": "EXACT_P11_OPERATOR_STOP_AND_CURRENT_SERVICE",
+            "coordinateScope": "SAME_OPERATOR_ROAD_STOP_REPRESENTATIVE_NOT_PLATFORM_OR_ENTRANCE",
+            "currentPassengerAccessReview": "Exact same JR Bus Tohoku road-stop component independently corroborated by current airport actual calls; P11 geometry is coarse representative, not bay/direction coordinates.",
+            "currentOperatorEvidence": {
+              "recordOperator": "ジェイアールバス東北（株）",
+              "currentOperatorName": "ジェイアールバス東北株式会社",
+              "currentStopName": "青森駅",
+              "historicalRoute": "青森路線　青森-青森空港",
+              "url": "https://www.jrbustohoku.co.jp/route/1/282/",
+              "observedResponseSha256": "0917445c8096ef8e1524c993c3f61f954c3442a0132268e946868d57a7b17d9c"
+            }
+          }
+        }
+      ],
+      "directions": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "reviewMethod": "VISUALLY_REVIEWED_MUNICIPAL_PUBLIC_PASSAGE_AND_CURRENT_CARRIER",
+      "hubScopeComplete": false,
+      "locator": "JR gate to free public east passage shown in official2024 map; subsequent city guide confirms completion and east busplaza11; 2026carrier confirms both directions same11. Exclude construction-only upper passages and paid areas; no coordinate-proximity merge."
+    }
+  ]
+}
